@@ -9,7 +9,7 @@ palette = 'overrides'
 
 [palettes.overrides]
 background = "#11111A"
-orange = "#E78A4E"
+orange = "#FAB387"
 # green = 'cyan'
 
 [directory]
