@@ -104,8 +104,8 @@ return {
       end,
     },
     config = function(_, opts)
-      local colors = require "core.colors"
-      opts.color_overrides = { all = colors.catbox_material }
+      -- local colors = require "core.colors"
+      -- opts.color_overrides = { all = colors.catbox_material }
       require("catppuccin").setup(opts)
       vim.cmd.colorscheme "catppuccin"
     end,
