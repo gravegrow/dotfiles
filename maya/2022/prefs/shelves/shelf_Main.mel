@@ -1,0 +1,298 @@
+global proc shelf_Main () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Edit various component values for the selected object(s)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Component Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "editPCM.png" 
+        -image1 "editPCM.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "ComponentEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Edit the attributes of the selected object(s)" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Attribute Spread Sheet" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "list.svg" 
+        -image1 "list.svg" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "SpreadSheetEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    separator
+        -enable 1
+        -width 32
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -style "shelf" 
+        -horizontal 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Renamer" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Comet Rename" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "text.png" 
+        -image1 "text.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "// --------------------------------------------------------------------------\n// cometRename.mel - MEL Script\n// --------------------------------------------------------------------------\n//\n// DESCRIPTION:\n//\tA nice renaming utility that allows basic Prefix, Suffix, Search &\n//\tReplace, and Rename+Number methods.  Works properly on any hierarchy,\n//\teven if renaming nodes in the hierarchy out of order.\n//\n// REQUIRES:\n//\tNothing.\n//\n//\n// USAGE:\n//\tsource \"cometRename.mel\"; cometRename();\n//\n// AUTHORS:\n//\tMichael B. Comet - comet@comet-cartoons.com\n//\tCopyright ©2003 Michael B. Comet - All Rights Reserved.\n//\n// VERSIONS:\n//\t1.00 - Feb 20, 2003 - Initial Release.\n//\t1.10 - Feb 20, 2003 - Fixed so also handles non-unique node names.\n//\t1.20 - Feb 28, 2003 - Fixed up code so string Replace won't die \n//\t\tif you search for nothing...And also sanity check for other \n//\t\tfields not to be blank\n//\t\tAlso made UI nicer so won't hit wrong buttons.\n//\n// --------------------------------------------------------------------------\n\n\n/*\n * stringReplace() - Given a main string str, looks for ALL occurances\n *\tof $search, and replaces them with $replace.\n *\n *\tThis properly handles the replace string being similar or a part\n *\tof the search string, and handling multiple matches.\n */\nproc string stringReplace(string $str, string $search, string $replace)\n{\n    string $retstr = \"\";\n\n    \t// Sanity check please!\n    if ($search == \"\")\n        return $str;\n    \n    if ($str == \"\")\n        return $str;\n        \n        \n    int $len = size($str);\n    int $lenS = size($search);\n    \n    int $i, $j;\n    int $match;\n    \n    for ($i=1; $i <= $len; ++$i)\n        {\n\t$match = 0;\n\n\t// Now get substring from where we are currently\n\t// to the number of letters past of the length\n\t// of the search string.  Basically the same\n\t// length as the search string.  So if it is identical\n\t// we know we have a match.\n\t//\n\t// If not, we don't.  We also make sure we aren't\n\t// trying to look past the end of the string...\n\t//\n\t$j = $i + ($lenS - 1);\n\n\tif ($j <= $len)\n\t    {\n\t    string $part = `substring $str $i $j`;\n\t    if ($part == $search)\n\t        $match = 1;\n\t    }\n\t\n\tif ($match == 1)\n\t    {\n\t    $retstr += $replace; // we did it, so insert replace str\n\t    $i = $j;\t// skip forward\n\t    }\n\telse\n\t    {\n\t    string $char = `substring $str $i $i`;\n\t    $retstr += $char;\n\t    }\n\t}\n\n    return $retstr;\n\t\n}\n\n// --------------------------------------------------------------------------\n\n/*\n * getShortName() - Given a string, get last part after last | pipe.\n */\nproc string getShortName(string $obj)\n{\n    string $ret = \"\";\n    \n    if ($obj == \"\")\n        return $ret;\n        \n    string $parts[];\n    int $cnt = tokenize($obj, \"|\", $parts);\n    \n    if ($cnt <= 0)\n        $ret = $obj;\n    else\n        $ret = $parts[($cnt-1)];\n    \n    return $ret;\n}\n\n// --------------------------------------------------------------------------\n\n/*\n * chop() - Removes last char\n */\nproc string chop(string $str)\n{\n    string $ret = \"\";\n\n    int $cnt = size($str);\n    \n    if ($cnt <= 1)\n        return $ret;\n    \n    $ret = `substring $str 1 ($cnt-1)`;\n\n    return $ret;\n}\n\n// --------------------------------------------------------------------------\n\n/*\n * cR_doRename() - Does real work of renaming selected objects\n *\n *    $mode:  0=S&R 1=Pre 2=Suf 3=R&N\n */\nglobal proc cR_doRename(int $mode)\n{\n    string $objs[] = `ls -sl -long`;\n    int $objCnt = size($objs);\n    int $i;\n\n\t// Get all UI data...\n\t//\n    string $search = `textField -q -tx tfSearch`;\n    string $replace = `textField -q -tx tfReplace`;\n    string $prefix = `textField -q -tx tfPrefix`;\n    string $suffix = `textField -q -tx tfSuffix`;\n    string $rename = `textField -q -tx tfRename`;\n    int $start = `intField -q -v ifNumber`;\n    int $padding = `intField -q -v ifPadding`;\n    \n    string $shortName;\n    string $newShortName;\n    string $newName;\n\n\t// Now do it\n\t//\n    for ($i=0; $i < $objCnt; ++$i)\n        {\n\t$obj = $objs[$i];\n\t\n\t$shortName = getShortName($obj);\n\t\t\n\tswitch ($mode)\n\t    {\n\t    case 0:\n\t        if ($search == \"\")\n\t            {\n\t            warning -sl 0 (\"Can't search and replace, search entry field is blank!\");\n\t            return;\n\t            }\n\t        $newShortName = stringReplace($shortName, $search, $replace);\n\t        break;\n\n\t    case 1:\n\t        if ($prefix == \"\")\n\t            {\n\t            warning -sl 0 (\"Can't add prefix, prefix entry field is blank!\");\n\t            return;\n\t    \t    }\n\t        $newShortName = ($prefix + $shortName);\n\t        break;\n\n\t    case 2:\n\t        if ($suffix == \"\")\n\t            {\n\t            warning -sl 0 (\"Can't add suffix, suffix entry field is blank!\");\n\t            return;\n\t    \t    }\n\t        $newShortName = ($shortName + $suffix);\n\t        break;\n\n\t    case 3:\n\t        if ($rename == \"\")\n\t            {\n\t            warning -sl 0 (\"Can't rename and number, rename entry field is blank!\");\n\t            return;\n\t            }\n\t    \t\t// get index of string as user wants\n\t    \tint $n = $i + $start;\n\t    \t\t// pad of 0's\n\t    \tstring $padStr = \"\";\n\t    \t\n\t    \t\t// Add padding as needed\n\t    \tfor ($p=1; $p < $padding; ++$p)\n\t    \t    {\n\t\t    if ($n < pow(10, $p) )\n\t\t        $padStr += \"0\";\n\t\t    }\n\t    \t\n\t    \t$newShortName = ($rename+$padStr+$n);\n\t        break;\n\n\t    } // end of switch\n\t\t\n\t\n\t$newName = `rename $obj $newShortName`;\n\tselect -r $newName;\n\tstring $newLongNames[] = `ls -sl -long`;\n\tstring $newLongName = $newLongNames[0];\n\t\n\t    // Now update rest of stuff in list in case |long|names\n\t    // required it\n\tfor ($j=0; $j < $objCnt; ++$j)\n\t    {\n\t    string $tmp = $objs[$j];\n\n\t    $tmp += \"|\";\t// add to end for easy replacing\n\t    $tmp = `substitute ($obj+\"|\") $tmp (\"|\"+$newLongName+\"|\")`;\n\t    $tmp = chop($tmp);\n\t    \n\t    $objs[$j] = $tmp;\n\t    }\n\t\n\n\t}  // end of for all objs\n\n    select $objs;\n    \n}\n\n\n// --------------------------------------------------------------------------\n\n/*\n * cometRename() - Main UI entry.\n */\nglobal proc cometRename()\n{\n    if (`window -ex cometRenameWin` != true)\n        {\n\twindow -w 310 -h 360 -t (\"cometRename - 1.20\") -in \"cometRename\" -s true -tb true cometRenameWin;\n\n\tcolumnLayout cr_mainCol;\n\n\tseparator -style \"in\" -w 300 -h 8;\n\n\trowColumnLayout -nc 2 -cw 1 50 -cw 2 250;\n\t    text -l \"Search: \" -al \"right\";\n\t    textField -tx \"\" tfSearch;\n\t    setParent \"..\";\n\trowColumnLayout -nc 2 -cw 1 50 -cw 2 250;\n\t    text -l \"Replace: \" -al \"right\";\n\t    textField -tx \"\" tfReplace;\n\t    setParent \"..\";\n\tseparator -style \"none\" -w 300 -h 4;\n\tbutton -l \"Search And Replace\" -al \"center\" -w 300 -c (\"cR_doRename(0);\") -ann \"Searches for Search text and replaecs with Replace text.  Replace CAN be blank to remove text, or CAN be a part of or contain search string in it.\" butSearchReplace;\n\n\tseparator -style \"none\" -w 300 -h 10;\n\tseparator -style \"in\" -w 300 -h 8;\n\n\trowColumnLayout -nc 2 -cw 1 50 -cw 2 250;\n\t    text -l \"Prefix: \" -al \"right\";\n\t    textField -tx \"\" tfPrefix;\n\t    setParent \"..\";\n\tseparator -style \"none\" -w 300 -h 4;\n\tbutton -l \"Add Prefix\" -al \"center\" -w 300 -c (\"cR_doRename(1);\") -ann \"Adds prefix text in before current name of each object\" butPrefix;\n\n\n\tseparator -style \"none\" -w 300 -h 10;\n\tseparator -style \"in\" -w 300 -h 8;\n\n\trowColumnLayout -nc 2 -cw 1 50 -cw 2 250;\n\t    text -l \"Suffix: \" -al \"right\";\n\t    textField -tx \"\" tfSuffix;\n\t    setParent \"..\";\n\tseparator -style \"none\" -w 300 -h 4;\n\tbutton -l \"Add Suffix\" -al \"center\" -w 300 -c (\"cR_doRename(2);\") -ann \"Adds suffix text in after current name of each object\" butSuffix;\n\n\tseparator -style \"none\" -w 300 -h 10;\n\tseparator -style \"in\" -w 300 -h 8;\n\n\trowColumnLayout -nc 2 -cw 1 50 -cw 2 250;\n\t    text -l \"Rename: \" -al \"right\";\n\t    textField -tx \"\" tfRename;\n\t    setParent \"..\";\n\trowColumnLayout -nc 2 -cw 1 50 -cw 2 60;\n\t    text -l \"Start #: \" -al \"right\";\n\t    intField -v 1 -w 60 -min 0 ifNumber;\n\t    setParent \"..\";\n\trowColumnLayout -nc 2 -cw 1 50 -cw 2 60;\n\t    text -l \"Padding: \" -al \"right\";\n\t    intField -v 0 -w 60 -min 0 ifPadding;\n\t    setParent \"..\";\n\tseparator -style \"none\" -w 300 -h 4;\n\tbutton -l \"Rename And Number\" -al \"center\" -w 300 -c (\"cR_doRename(3);\") -ann \"Renames each object with the base rename text, then adds a number after each, with the specfied number of zero padding in front of the number\" butRenameNumber;\n\n\tseparator -style \"in\" -w 300 -h 8;\n\n\n\tshowWindow cometRenameWin;\n\t}\n    else\t// else just pop it up from being minimized again\n    \t{\n\tshowWindow cometRenameWin;\n\t}\n\n}\n\n\n// --------------------------------------------------------------------------\ncometRename;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "User Script" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Bulk Rename" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "list.svg" 
+        -image1 "list.svg" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from toolset import renamer\n\nrenamer.batch_rename()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Control Tool" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Control Tool" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "curveEP.png" 
+        -image1 "curveEP.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from control_tools import main\n\nmain.open_ui()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    separator
+        -enable 1
+        -width 32
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -style "shelf" 
+        -horizontal 0
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Matrix Constarint" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Matrix Constarint" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "parentConstraint.svg" 
+        -image1 "parentConstraint.svg" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from maya import cmds\n\n\ndef matrixCosstraint(parenting = False):\n    driver = cmds.ls(sl=True)[0]\n    driven = cmds.ls(sl=True)[1]\n    \n    mtrxDecom = cmds.shadingNode('decomposeMatrix', asUtility = True, name = driver + '_wSrt')\n    \n    if parenting:\n        mtrxMult = cmds.shadingNode('multMatrix', asUtility = True, name = driver + '_mtrxFramed')\n        cmds.connectAttr((driver + '.worldMatrix[0]'), (mtrxMult + '.matrixIn[0]'), force = True)\n        cmds.connectAttr((driven + '.parentInverseMatrix[0]'), (mtrxMult + '.matrixIn[1]'), force = True)\n        cmds.connectAttr((mtrxMult + '.matrixSum'), (mtrxDecom + '.inputMatrix'), force = True)\n    \n    else:\n        cmds.connectAttr((driver + '.worldMatrix[0]'), (mtrxDecom + '.inputMatrix'), force = True)\n          \n    cmds.connectAttr((mtrxDecom + '.outputTranslate'), (driven +'.translate'), force = True)\n    cmds.connectAttr((mtrxDecom + '.outputRotate'), (driven +'.rotate'), force = True)\n    cmds.connectAttr((mtrxDecom + '.outputScale'), (driven +'.scale'), force = True)\n    \nmatrixCosstraint()" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Adjust blend shape weights" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Shape Editor" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "blendShapeEditor.png" 
+        -image1 "blendShapeEditor.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "ShapeEditor" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Open command port." 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "open port" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "condition.svg" 
+        -image1 "condition.svg" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from maya import cmds\n\nPORT = 5115\n\nif not cmds.commandPort(':{0}'.format(PORT), query=True):\n    cmds.commandPort(name=':{0}'.format(PORT))\n\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 

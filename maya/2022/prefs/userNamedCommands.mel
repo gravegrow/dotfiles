@@ -1,0 +1,280 @@
+//Maya Preference 2022 (Release 1)
+//
+//
+
+nameCommand
+	-annotation "ToogleShelfNameCommand"
+	-sourceType "mel"
+	-command ("ToogleShelf")
+	ToogleShelfNameCommand;
+
+nameCommand
+	-annotation "ResetTransformNameCommand"
+	-sourceType "mel"
+	-command ("ResetTransform")
+	ResetTransformNameCommand;
+
+nameCommand
+	-annotation "ToggleGridNameCommand"
+	-sourceType "mel"
+	-command ("ToggleGrid")
+	ToggleGridNameCommand;
+
+nameCommand
+	-annotation "DisplayWireframeNameCommand"
+	-sourceType "mel"
+	-command ("DisplayWireframe")
+	DisplayWireframeNameCommand;
+
+nameCommand
+	-annotation "ToggleWireframeOnShadedCmdNameCommand"
+	-sourceType "mel"
+	-command ("ToggleWireframeOnShadedCmd")
+	ToggleWireframeOnShadedCmdNameCommand;
+
+nameCommand
+	-annotation "DisplayShadedNameCommand"
+	-sourceType "mel"
+	-command ("DisplayShaded")
+	DisplayShadedNameCommand;
+
+nameCommand
+	-annotation "SelectHierarchyNameCommand"
+	-sourceType "mel"
+	-command ("SelectHierarchy")
+	SelectHierarchyNameCommand;
+
+nameCommand
+	-annotation "StaticTransformNameCommand"
+	-sourceType "mel"
+	-command ("CreateStaticTransform")
+	StaticTransformNameCommand;
+
+nameCommand
+	-annotation "CleanJointNameCommand"
+	-sourceType "mel"
+	-command ("CreateCleanJoint")
+	CleanJointNameCommand;
+
+nameCommand
+	-annotation "CreateControlNameCommand"
+	-sourceType "mel"
+	-command ("CreateControl")
+	CreateControlNameCommand;
+
+nameCommand
+	-annotation "MatchTranslationNameCommand"
+	-sourceType "mel"
+	-command ("MatchTranslation")
+	MatchTranslationNameCommand;
+
+nameCommand
+	-annotation "MatchTransformNameCommand"
+	-sourceType "mel"
+	-command ("MatchTransform")
+	MatchTransformNameCommand;
+
+nameCommand
+	-annotation "RedoNameCommand"
+	-sourceType "mel"
+	-command ("Redo")
+	RedoNameCommand;
+
+nameCommand
+	-annotation "joint_on_selected_edgeNameCommand"
+	-sourceType "mel"
+	-command ("joint_on_selected_edge")
+	joint_on_selected_edgeNameCommand;
+
+nameCommand
+	-annotation "MoveRotateScaleToolToggleSnapRelativeModeNameCommand"
+	-sourceType "mel"
+	-command ("MoveRotateScaleToolToggleSnapRelativeMode")
+	MoveRotateScaleToolToggleSnapRelativeModeNameCommand;
+
+nameCommand
+	-annotation "MoveRotateScaleToolToggleSnapModeNameCommand"
+	-sourceType "mel"
+	-command ("MoveRotateScaleToolToggleSnapMode")
+	MoveRotateScaleToolToggleSnapModeNameCommand;
+
+nameCommand
+	-annotation "ResetTrahsformNameCommand"
+	-sourceType "mel"
+	-command ("ResetTrahsform")
+	ResetTrahsformNameCommand;
+
+nameCommand
+	-annotation "CreateStaticNameCommand"
+	-sourceType "mel"
+	-command ("CreateStatic")
+	CreateStaticNameCommand;
+
+nameCommand
+	-annotation "CreateJointNameCommand"
+	-sourceType "mel"
+	-command ("CreateJoint")
+	CreateJointNameCommand;
+
+nameCommand
+	-annotation "SelectHiNameCommand"
+	-sourceType "mel"
+	-command ("SelectHi")
+	SelectHiNameCommand;
+
+nameCommand
+	-annotation "dR_objectXrayTGLNameCommand"
+	-sourceType "mel"
+	-command ("dR_objectXrayTGL")
+	dR_objectXrayTGLNameCommand;
+
+nameCommand
+	-annotation "dR_viewXrayTGLNameCommand"
+	-sourceType "mel"
+	-command ("dR_viewXrayTGL")
+	dR_viewXrayTGLNameCommand;
+
+nameCommand
+	-annotation "ToggleWireframeModeNameCommand"
+	-sourceType "mel"
+	-command ("ToggleWireframeMode")
+	ToggleWireframeModeNameCommand;
+
+nameCommand
+	-annotation "ParentNameCommand"
+	-sourceType "mel"
+	-command ("Parent")
+	ParentNameCommand;
+
+nameCommand
+	-annotation "UnparentNameCommand"
+	-sourceType "mel"
+	-command ("Unparent")
+	UnparentNameCommand;
+
+nameCommand
+	-annotation "NodeEditorHideAttributesNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorHideAttributes")
+	NodeEditorHideAttributesNameCommand;
+
+nameCommand
+	-annotation "NodeEditorShowConnectedAttrsNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorShowConnectedAttrs")
+	NodeEditorShowConnectedAttrsNameCommand;
+
+nameCommand
+	-annotation "NodeEditorShowAllAttrsNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorShowAllAttrs")
+	NodeEditorShowAllAttrsNameCommand;
+
+nameCommand
+	-annotation "NodeEditorShowCustomAttrsNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorShowCustomAttrs")
+	NodeEditorShowCustomAttrsNameCommand;
+
+nameCommand
+	-annotation "NodeEditorToggleNodeTitleModeNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorToggleNodeTitleMode")
+	NodeEditorToggleNodeTitleModeNameCommand;
+
+nameCommand
+	-annotation "ToggleShelfNameCommand"
+	-sourceType "mel"
+	-command ("ToggleShelf")
+	ToggleShelfNameCommand;
+
+nameCommand
+	-annotation "NodeEditorShowAllCustomAttrsNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorShowAllCustomAttrs")
+	NodeEditorShowAllCustomAttrsNameCommand;
+
+nameCommand
+	-annotation "NodeEditorPinSelectedNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorPinSelected")
+	NodeEditorPinSelectedNameCommand;
+
+nameCommand
+	-annotation "NodeEditorPinByDefaultNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorPinByDefault")
+	NodeEditorPinByDefaultNameCommand;
+
+nameCommand
+	-annotation "NodeEditorToggleNodeSelectedPinsNameCommand"
+	-sourceType "mel"
+	-command ("NodeEditorToggleNodeSelectedPins")
+	NodeEditorToggleNodeSelectedPinsNameCommand;
+
+nameCommand
+	-annotation "SelectToggleModeNameCommand"
+	-sourceType "mel"
+	-command ("SelectToggleMode")
+	SelectToggleModeNameCommand;
+
+nameCommand
+	-annotation "DisplaySmoothShadedNameCommand"
+	-sourceType "mel"
+	-command ("DisplaySmoothShaded")
+	DisplaySmoothShadedNameCommand;
+
+nameCommand
+	-annotation "dR_objectHideTGLNameCommand"
+	-sourceType "mel"
+	-command ("dR_objectHideTGL")
+	dR_objectHideTGLNameCommand;
+
+nameCommand
+	-annotation "ToggleVisibilityAndKeepSelectionNameCommand"
+	-sourceType "mel"
+	-command ("ToggleVisibilityAndKeepSelection")
+	ToggleVisibilityAndKeepSelectionNameCommand;
+
+nameCommand
+	-annotation "dR_wireframeSmoothTGLNameCommand"
+	-sourceType "mel"
+	-command ("dR_wireframeSmoothTGL")
+	dR_wireframeSmoothTGLNameCommand;
+
+nameCommand
+	-annotation "ToggleAutoSmoothNameCommand"
+	-sourceType "mel"
+	-command ("ToggleAutoSmooth")
+	ToggleAutoSmoothNameCommand;
+
+nameCommand
+	-annotation "ViewportEnableSmoothingNameCommand"
+	-sourceType "mel"
+	-command ("ViewportEnableSmoothing")
+	ViewportEnableSmoothingNameCommand;
+
+nameCommand
+	-annotation "DefaultQualityDisplayNameCommand"
+	-sourceType "mel"
+	-command ("DefaultQualityDisplay")
+	DefaultQualityDisplayNameCommand;
+
+nameCommand
+	-annotation "LowQualityDisplayNameCommand"
+	-sourceType "mel"
+	-command ("LowQualityDisplay")
+	LowQualityDisplayNameCommand;
+
+nameCommand
+	-annotation "MediumQualityDisplayNameCommand"
+	-sourceType "mel"
+	-command ("MediumQualityDisplay")
+	MediumQualityDisplayNameCommand;
+
+nameCommand
+	-annotation "HighQualityDisplayNameCommand"
+	-sourceType "mel"
+	-command ("HighQualityDisplay")
+	HighQualityDisplayNameCommand;
+

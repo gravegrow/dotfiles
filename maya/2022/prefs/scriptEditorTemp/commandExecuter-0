@@ -1,0 +1,2 @@
+from maya import cmds
+cmds.scriptEditorInfo(historyFilename='~/tempLogHistory.txt', writeHistory=True)
