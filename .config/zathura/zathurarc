@@ -1,0 +1,8 @@
+# vim: ft=bash
+set recolor
+set recolor-darkcolor "#9A9FAE"
+set recolor-lightcolor rgba(0,0,0,0)
+set default-bg "#1c1c1c"
+set font "JetBrainsMono Nerd Font Bold 9"
+set recolor-keephue
+/* set recolor-reverse-video */
