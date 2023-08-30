@@ -1,0 +1,57 @@
+format = """
+${custom.bgfill}$python$directory$git_branch[█](background)$jobs$fill
+$character
+"""
+
+right_format = ""
+add_newline = false
+palette = 'overrides'
+
+[palettes.overrides]
+background = "#11111A"
+orange = "#E78A4E"
+# green = 'cyan'
+
+[directory]
+truncation_length = 8
+# truncation_symbol = "󱞪 "
+home_symbol = "~"
+style = "fg:blue bg:background bold"
+format = """\
+[▐](fg:bright-blue )\
+[ ](fg:background bg:bright-blue)\
+[ $path]($style)\
+ """
+
+[fill]
+symbol = ' '
+
+[time]
+disabled = false
+time_format = '%R'
+style = "fg:bright-purple bg:background bold"
+format = """\
+[▐](fg:bright-purple)\
+[󰥔 ](fg:background bg:bright-purple)\
+[ $time ]($style)\
+"""
+
+[jobs]
+symbol = ' [󰶳](green)'
+symbol_threshold = 1
+
+[python]
+style = "fg:orange bg:background bold"
+symbol = "[█](fg:background) "
+format = "[${symbol}]($style)"
+
+[git_branch]
+style = "fg:green bg:background bold"
+symbol = """\
+[▐](fg:green)\
+[ ](fg:background bg:green) 󰘬\
+"""
+
+format = """\
+[ $symbol $branch]($style)\
+"""
