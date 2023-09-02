@@ -1,14 +1,15 @@
 * {
-    bg0:    #1D2021;
-    bg1:    #141617;
-    bg2:    #83a598;
-    bg3:    #2A2F30;
-    border: #1c1c1c;
-    fg0:    #928374;
-    fg1:    #ECEFF4;
-    fg2:    #D8DEE9;
-    fg3:    #282828;
-    fg4:    #689d6a;
+    background:    #1e1e2e;
+    bg1:    #11111b;
+    bg2:    #11111b;
+    bg3:    #89B4FA;
+    border: #11111b;
+    fg0:    #9399b2;
+    fg3:    #313244;
+    fg4:    #a6e3a1;
+    inputborder: #b4befe;
+    selection: #f38ba8;
+
     /* border-radius: 6px; */
     border-radius: 0px;
 }
