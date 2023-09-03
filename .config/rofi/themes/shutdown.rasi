@@ -1,7 +1,7 @@
 @import "colors.rasi"
 
 * {
-    font:   "JetBrainsMono Nerd Font Medium 11";
+    font:   "JetBrainsMono Nerd Font Light 11";
 }
 mainbox {
   children: [listview];
@@ -16,16 +16,15 @@ listview {
     fixed-height: true;
 }
 
-
 window {
     location:       north east;
     width:          200;
-    y-offset:       28;
-    x-offset:       -4;
+    y-offset:       42;
+    x-offset:       -14;
 
-    border:         1px;
+    border:         2px;
     border-radius:  @border-radius;
     border-color:       @border;
 
-    background-color:   @bg0;
+    background-color:   @background;
 }

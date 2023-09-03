@@ -2,8 +2,11 @@ alias vim='nvim'
 alias vi='nvim'
 alias ls='exa -l --icons --group-directories-first'
 alias la='exa -l --icons --group-directories-first -a'
-alias py='python'
-alias dotfiles="git --git-dir=$HOME/dotfiles/ --work-tree=$HOME"
+alias py='python3'
+alias python='python3'
+alias apt='nala'
+
+alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 
 fish_vi_key_bindings

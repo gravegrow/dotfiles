@@ -1,9 +1,9 @@
 local M = {}
 M.borders = {}
 M.icons = {
-  error = " ",
+  error = " ",
   warning = " ",
-  hint = " ",
+  hint = "󰌵 ",
   info = " ",
   folder = " ",
   page = "󰈙",
