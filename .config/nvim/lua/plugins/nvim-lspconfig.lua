@@ -11,6 +11,20 @@ M.ensure_installed = {
 
 M.servers = {}
 
+clangdconf = function()
+  capabilities = lsputils.capabilities
+  capabilities.offsetEncoding = { "utf-16" }
+  return {
+    capabilities = capabilities,
+    on_attach = function(c, b)
+      c.server_capabilities.signatureHelpProvider = false
+      lsputils.on_attach(c, b)
+    end,
+  }
+end
+
+M.servers.clangd = clangdconf()
+
 M.servers.lua_ls = {
   settings = {
     Lua = {

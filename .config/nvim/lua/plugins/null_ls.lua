@@ -10,6 +10,7 @@ M.ensure_installed = {
   "prettier",
   "taplo",
   "astyle",
+  "clang-format",
 }
 
 M.config = function()
@@ -41,6 +42,8 @@ M.config = function()
 
       formatting.prettier,
       formatting.taplo,
+
+      formatting.clang_format,
     },
   }
 end
