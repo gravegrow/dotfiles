@@ -1,0 +1,35 @@
+[global]
+frame_color = "#11111a"
+frame_width = 1
+separator_color= frame
+separator_height = 1
+
+origin = top-right
+offset = 12x35
+
+width = (200, 300)
+horizontal_padding = 15
+
+font = Roboto Light 13 
+alignment = center
+
+highlight = "#A7B0EC"
+
+scale = 1.2
+min_icon_size = 128
+min_icon_size = 128
+
+[urgency_low]
+background = "#1E1E2E"
+foreground = "#A7B0EC"
+
+[urgency_normal]
+background = "#1E1E2E"
+foreground = "#A7B0EC"
+
+[urgency_critical]
+background = "#1E1E2E"
+foreground = "#A7B0EC"
+frame_color = "#FAB387"
+
+# vim: ft=cfg
