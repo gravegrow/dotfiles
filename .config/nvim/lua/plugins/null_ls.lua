@@ -43,7 +43,9 @@ M.config = function()
       formatting.prettier,
       formatting.taplo,
 
-      formatting.clang_format,
+      formatting.gdformat,
+      -- diagnostics.gdlint,
+      -- formatting.clang_format,
     },
   }
 end

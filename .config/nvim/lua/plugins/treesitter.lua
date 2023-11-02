@@ -13,6 +13,7 @@ return {
       "json",
       "bash",
       "fish",
+      "gdscript",
     },
     highlight = {
       enable = true,

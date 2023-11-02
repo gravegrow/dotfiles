@@ -27,9 +27,6 @@ M.cmp_config = function()
         cmp.config.compare.order,
       },
     },
-    completion = {
-      completeopt = "menu,menuone,noinsert",
-    },
     window = {
       completion = {
         side_padding = 0,
@@ -80,6 +77,7 @@ M.cmp_config = function()
     },
     sources = {
       { name = "luasnip" },
+      { name = "quickgd" },
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
       { name = "path" },

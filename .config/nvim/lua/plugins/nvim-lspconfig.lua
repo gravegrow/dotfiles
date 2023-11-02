@@ -23,8 +23,6 @@ clangdconf = function()
   }
 end
 
-M.servers.clangd = clangdconf()
-
 M.servers.lua_ls = {
   settings = {
     Lua = {
@@ -81,6 +79,7 @@ M.config = function()
   require("mason").setup()
   local lspconfig = require "lspconfig"
   local mason_lsp = require "mason-lspconfig"
+  lspconfig.gdscript.setup {}
 
   M.servers.omnisharp_mono.handlers = {
     ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {}),
@@ -114,20 +113,20 @@ return {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "Hoffs/omnisharp-extended-lsp.nvim",
-      {
-        "ray-x/lsp_signature.nvim",
-        opts = {
-          hint_enable = true,
-          hint_prefix = "",
-          bind = true, -- This is mandatory, otherwise border config won't get registered.
-          handler_opts = {
-            border = "single",
-          },
-          toggle_key = "<M-k>",
-          doc_lines = 0,
-          floating_window = false,
-        },
-      },
+      -- {
+      --   "ray-x/lsp_signature.nvim",
+      --   opts = {
+      --     hint_enable = true,
+      --     hint_prefix = "",
+      --     bind = true, -- This is mandatory, otherwise border config won't get registered.
+      --     handler_opts = {
+      --       border = "single",
+      --     },
+      --     toggle_key = "<M-k>",
+      --     doc_lines = 0,
+      --     floating_window = false,
+      --   },
+      -- },
     },
   },
 }

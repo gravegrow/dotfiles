@@ -4,7 +4,6 @@ alias ls='exa -l --icons --group-directories-first'
 alias la='exa -l --icons --group-directories-first -a'
 alias py='python3'
 alias python='python3'
-alias apt='nala'
 
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
@@ -30,11 +29,13 @@ set --export PATH $PATH $GOPATH/bin
 set --export PATH $PATH ~/.local/bin/
 set --export PATH $PATH ~/.cargo/bin/
 
+
 set --export PATH $PATH /usr/autodesk/maya/bin
 set --export PYTHONPATH ""
 set --export PYTHONPATH $PYTHONPATH /media/storage/dev/maya/tools/
 set --export PYTHONPATH $PYTHONPATH /media/storage/dev/maya/toolset/
 set --export PYTHONPATH $PYTHONPATH /media/storage/development/maya/MayaKit/
+set --export TMPDIR /tmp
 
 
 fish_ssh_agent

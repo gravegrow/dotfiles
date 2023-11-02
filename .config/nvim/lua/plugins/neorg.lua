@@ -1,6 +1,7 @@
 return {
   "nvim-neorg/neorg",
   build = ":Neorg sync-parsers",
+  ft = { "norg" },
   cmd = "Neorg",
   keys = { { "<leader>no", "<cmd>Neorg index<cr>" } },
   opts = {
@@ -10,7 +11,7 @@ return {
         config = {
           folds = false,
         },
-      }, -- Adds pretty icons to your documents
+      },                  -- Adds pretty icons to your documents
       ["core.dirman"] = { -- Manages Neorg workspaces
         config = {
           default_workspace = "notes",

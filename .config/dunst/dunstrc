@@ -7,8 +7,8 @@ separator_height = 1
 origin = top-right
 offset = 12x35
 
-width = (200, 300)
-horizontal_padding = 15
+width = 
+horizontal_padding = 10
 
 font = Roboto Light 13 
 alignment = center
@@ -16,8 +16,24 @@ alignment = center
 highlight = "#A7B0EC"
 
 scale = 1.2
+# min_icon_size = 45  
+# max_icon_size = 45
+
+show_indicators = no
+
+enable_recursive_icon_lookup = true
+icon_theme = "kora"
+
+[spotify]
+appname = "Spotify"
+min_icon_size = 64
+max_icon_size = 64
+
+
+[flameshot]
+appname = "flameshot"
 min_icon_size = 128
-min_icon_size = 128
+max_icon_size = 128
 
 [urgency_low]
 background = "#1E1E2E"

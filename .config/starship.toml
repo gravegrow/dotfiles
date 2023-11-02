@@ -18,8 +18,8 @@ truncation_length = 8
 home_symbol = "~"
 style = "fg:blue bg:background bold"
 format = """\
-[▐](fg:bright-blue )\
-[ ](fg:background bg:bright-blue)\
+[](fg:bright-blue )\
+[  ](fg:background bg:bright-blue)\
 [ $path]($style)\
  """
 
@@ -31,8 +31,8 @@ disabled = false
 time_format = '%R'
 style = "fg:bright-purple bg:background bold"
 format = """\
-[▐](fg:bright-purple)\
-[󰥔 ](fg:background bg:bright-purple)\
+[](fg:bright-purple)\
+[ 󰥔 ](fg:background bg:bright-purple)\
 [ $time ]($style)\
 """
 
@@ -48,8 +48,8 @@ format = "[${symbol}]($style)"
 [git_branch]
 style = "fg:green bg:background bold"
 symbol = """\
-[▐](fg:green)\
-[ ](fg:background bg:green) 󰘬\
+[](fg:green)\
+[  ](fg:background bg:green) 󰘬\
 """
 
 format = """\

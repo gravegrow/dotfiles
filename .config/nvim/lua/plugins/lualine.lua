@@ -27,8 +27,34 @@ M.filetype_icon = {
   icon_only = true,
 }
 
+M.lsp = {
+  -- Lsp server name .
+  cond = function()
+    local clients = vim.lsp.get_active_clients()
+    return #clients > 0
+  end,
+  function()
+    local msg = "No Active Lsp"
+    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+      return msg
+    end
+    for _, client in ipairs(clients) do
+      if client.name ~= "null-ls" then
+        local filetypes = client.config.filetypes
+        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+          return client.name
+        end
+      end
+    end
+    return msg
+  end,
+  icon = { " " },
+}
+
 M.cursor = {
-  "%l:%c | %L",
+  "%l:%L",
   cond = function()
     return vim.fn.winwidth(0) > 60
   end,
@@ -109,7 +135,7 @@ M.opts = {
     lualine_c = { M.filename, M.fileformat },
     lualine_x = {},
     lualine_y = { M.diff, M.separator, M.branch },
-    lualine_z = { M.separator, M.cursor },
+    lualine_z = { M.separator, M.lsp, M.separator, M.cursor },
   },
 }
 
@@ -135,6 +161,9 @@ return {
     M.macro.color = { fg = colors.red, bg = colors.mantle, gui = "bold" }
 
     M.diff.color = { bg = colors.mantle }
+
+    M.lsp.color = { fg = colors.pink, bg = colors.mantle }
+    M.lsp.icon.color = { bg = colors.pink, fg = colors.mantle }
 
     theme.normal.c.bg = colors.crust
     theme.normal.c.fg = colors.surface0
