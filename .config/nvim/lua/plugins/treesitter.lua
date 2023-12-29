@@ -8,10 +8,9 @@ return {
       "python",
       "c_sharp",
       "vim",
-      "markdown",
-      "markdown_inline",
+      "vimdoc",
+      "c",
       "json",
-      "bash",
       "fish",
       "gdscript",
     },
@@ -25,8 +24,8 @@ return {
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
   end,
-  dependencies = {
+  --[[ dependencies = {
     "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/playground",
-  },
+  }, ]]
 }

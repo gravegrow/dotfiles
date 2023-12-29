@@ -7,6 +7,8 @@ vim.keymap.set("v", "P", '"_dP', options)
 vim.keymap.set("v", "<", "<gv", options)
 vim.keymap.set("v", ">", ">gv", options)
 
+vim.keymap.set("n", "gf", ":edit <cfile><cr>", options)
+
 vim.keymap.set({ "i" }, "<S-Tab>", "<C-d>", options)
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", options)
 vim.keymap.set("v", "K", "<Nop>", options)

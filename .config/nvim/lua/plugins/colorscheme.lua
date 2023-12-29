@@ -20,8 +20,9 @@ return {
       },
       custom_highlights = function(colors)
         return {
+          -- FloatBorder = { fg = colors.mantle, bg = colors.mantle },
           SagaNormal = { bg = colors.base },
-          SagaBorder = { fg = colors.teal },
+          SagaBorder = { fg = colors.blue },
           CodeActionNumber = { bg = colors.mantle, fg = colors.yellow, style = { "bold" } },
 
           MsgArea = { fg = colors.text, bg = colors.crust },

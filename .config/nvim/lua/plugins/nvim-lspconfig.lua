@@ -5,45 +5,62 @@ M.ensure_installed = {
   "pyright",
   "lua_ls",
   "jsonls",
-  "omnisharp_mono",
-  "clangd",
 }
 
 M.servers = {}
 
-clangdconf = function()
-  capabilities = lsputils.capabilities
-  capabilities.offsetEncoding = { "utf-16" }
-  return {
-    capabilities = capabilities,
-    on_attach = function(c, b)
-      c.server_capabilities.signatureHelpProvider = false
-      lsputils.on_attach(c, b)
-    end,
-  }
-end
-
 M.servers.lua_ls = {
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      workspace = {
-        library = {
-          vim.api.nvim_get_runtime_file("", true),
-          [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-          [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+  on_init = function(client)
+    local path = client.workspace_folders[1].name
+    if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+      client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+        Lua = {
+          runtime = {
+            -- Tell the language server which version of Lua you're using
+            -- (most likely LuaJIT in the case of Neovim)
+            version = "LuaJIT",
+          },
+          -- Make the server aware of Neovim runtime files
+          diagnostics = {
+            globals = { "vim" },
+          },
+          workspace = {
+            checkThirdParty = false,
+            library = {
+              vim.env.VIMRUNTIME,
+              -- "${3rd}/luv/library"
+              -- "${3rd}/busted/library",
+            },
+            -- or pull in all of 'runtimepath'. NOTE: this is a lot slower
+            -- library = vim.api.nvim_get_runtime_file("", true)
+          },
         },
-        maxPreload = 100000,
-        preloadFileSize = 10000,
-        checkThirdParty = false,
-      },
-    },
-  },
+      })
+
+      client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+    end
+    return true
+  end,
+  -- settings = {
+  --   Lua = {
+  --     runtime = {
+  --       version = "LuaJIT",
+  --     },
+  --     diagnostics = {
+  --       globals = { "vim" },
+  --     },
+  --     workspace = {
+  --       library = {
+  --         vim.api.nvim_get_runtime_file("", true),
+  --         [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+  --         [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+  --       },
+  --       maxPreload = 100000,
+  --       preloadFileSize = 10000,
+  --       checkThirdParty = false,
+  --     },
+  --   },
+  -- },
 }
 
 local maya_completions = "/media/storage/dev/maya/devkitBase/devkit/other/Python27/pymel/extras/completion/"
@@ -60,33 +77,15 @@ M.servers.pyright = {
   },
 }
 
-M.servers.omnisharp_mono = {
-  on_attach = function(client, bufnr)
-    local tokenModifiers = client.server_capabilities.semanticTokensProvider.legend.tokenModifiers
-    for i, v in ipairs(tokenModifiers) do
-      tokenModifiers[i] = v:gmatch "[^_ ]*" ()
-    end
-    local tokenTypes = client.server_capabilities.semanticTokensProvider.legend.tokenTypes
-    for i, v in ipairs(tokenTypes) do
-      tokenTypes[i] = v:gmatch "[^_ ]*" ()
-    end
-  end,
-  capabilities = lsputils.capabilities_with_dynamic_registration,
-  flags = { debounce_text_changes = 150 },
-}
-
 M.config = function()
   require("mason").setup()
   local lspconfig = require "lspconfig"
   local mason_lsp = require "mason-lspconfig"
+
   lspconfig.gdscript.setup {}
 
-  M.servers.omnisharp_mono.handlers = {
-    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {}),
-    ["textDocument/definition"] = require("omnisharp_extended").handler,
-  }
-
   mason_lsp.setup { ensure_installed = M.ensure_installed }
+
   mason_lsp.setup_handlers {
     function(server_name)
       local config = {}
@@ -112,21 +111,6 @@ return {
     {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "Hoffs/omnisharp-extended-lsp.nvim",
-      -- {
-      --   "ray-x/lsp_signature.nvim",
-      --   opts = {
-      --     hint_enable = true,
-      --     hint_prefix = "",
-      --     bind = true, -- This is mandatory, otherwise border config won't get registered.
-      --     handler_opts = {
-      --       border = "single",
-      --     },
-      --     toggle_key = "<M-k>",
-      --     doc_lines = 0,
-      --     floating_window = false,
-      --   },
-      -- },
     },
   },
 }

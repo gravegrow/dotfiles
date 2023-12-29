@@ -4,6 +4,7 @@ alias ls='exa -l --icons --group-directories-first'
 alias la='exa -l --icons --group-directories-first -a'
 alias py='python3'
 alias python='python3'
+alias godot="/media/storage/software/godot/Godot_v4.2-stable_linux.x86_64"
 
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
@@ -24,8 +25,8 @@ set --export XDG_CACHE_HOME $HOME/.cache
 
 set --export HISTFILE $XDG_STATE_HOME/bash/history
 
-set --export GOPATH $HOME/.go
-set --export PATH $PATH $GOPATH/bin
+set --export GOPATH $HOME/.local/src/go/bin/
+set --export PATH $PATH $GOPATH
 set --export PATH $PATH ~/.local/bin/
 set --export PATH $PATH ~/.cargo/bin/
 

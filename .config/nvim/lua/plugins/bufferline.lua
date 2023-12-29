@@ -1,4 +1,5 @@
-return {
+return {}
+--[[ return {
   "akinsho/bufferline.nvim",
   version = "*",
   event = "BufReadPre",
@@ -46,4 +47,4 @@ return {
 
     bufferline.setup(opts)
   end,
-}
+} ]]

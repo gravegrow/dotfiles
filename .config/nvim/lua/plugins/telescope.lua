@@ -15,33 +15,33 @@ M.opts = {
     prompt_prefix = "  ",
     selection_caret = " ",
     file_ignore_patterns = {
-      ".pyc",
-      ".pdf",
-      ".mid",
-      ".midi",
-      ".wav",
-      ".gif",
-      ".ico",
-      ".jpg",
-      ".jpeg",
-      ".png",
-      ".psd",
-      ".tga",
-      ".tif",
-      ".tiff",
-      ".3ds",
-      ".3DS",
-      ".fbx",
-      ".FBX",
-      ".lxo",
-      ".LXO",
-      ".ma",
-      ".MA",
-      ".obj",
-      ".OBJ",
-      ".svg",
-      ".SVG",
-      ".import",
+      "*.pyc",
+      "*.pdf",
+      "*.mid",
+      "*.midi",
+      "*.wav",
+      "*.gif",
+      "*.ico",
+      "*.jpg",
+      "*.jpeg",
+      "*.png",
+      "*.psd",
+      "*.tga",
+      "*.tif",
+      "*.tiff",
+      "*.3ds",
+      "*.3DS",
+      "*.fbx",
+      "*.FBX",
+      "*.lxo",
+      "*.LXO",
+      "*.ma",
+      "*.MA",
+      "*.obj",
+      "*.OBJ",
+      "*.svg",
+      "*.SVG",
+      "*.import",
     },
   },
   pickers = {
@@ -65,6 +65,7 @@ M.config = function(_, opts)
   vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
   vim.keymap.set("n", "<leader>lg", builtin.live_grep)
   vim.keymap.set("n", "<leader>th", builtin.highlights)
+  vim.keymap.set("n", "<leader>fb", builtin.buffers)
   vim.keymap.set("n", "<leader>fh", function()
     builtin.find_files { hidden = true }
   end)
@@ -78,6 +79,7 @@ M.keys = {
   { "<leader>lg" },
   { "<leader>th" },
   { "<leader>fh" },
+  { "<leader>fb" },
 }
 
 return {

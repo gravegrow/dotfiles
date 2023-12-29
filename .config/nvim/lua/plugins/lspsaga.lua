@@ -2,6 +2,9 @@ return {
   "glepnir/lspsaga.nvim",
   event = "LspAttach",
   opts = {
+    definition = {
+      width = 1,
+    },
     rename = {
       quit = "<ESC>",
       in_select = false,

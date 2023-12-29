@@ -105,6 +105,16 @@ M.mode = {
   "mode",
 }
 
+M.unsaved_changes = {
+
+  function()
+    return "[+]"
+  end,
+  cond = function()
+    return vim.bo[0].modified
+  end,
+}
+
 M.separator = {
   function()
     return " "
@@ -131,7 +141,7 @@ M.opts = {
   },
   sections = {
     lualine_a = { M.default_icon, M.filetype_icon },
-    lualine_b = { M.mode, M.separator, M.macro, M.diagnostics },
+    lualine_b = { M.mode, M.separator, M.macro, M.diagnostics, M.unsaved_changes },
     lualine_c = { M.filename, M.fileformat },
     lualine_x = {},
     lualine_y = { M.diff, M.separator, M.branch },
@@ -147,6 +157,8 @@ return {
     local colors = require("catppuccin.palettes").get_palette "mocha"
 
     M.separator.color = { bg = colors.crust }
+
+    M.unsaved_changes.color = { fg = colors.green, bg = colors.crust }
 
     M.branch.color = { bg = colors.mantle, fg = colors.green, gui = "bold" }
     M.branch.icon.color = { fg = colors.mantle, bg = colors.green }

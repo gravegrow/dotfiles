@@ -23,6 +23,9 @@ format = """\
 [ $path]($style)\
  """
 
+[custom.trancience]
+format = "$time$character"
+
 [fill]
 symbol = ' '
 
@@ -33,7 +36,7 @@ style = "fg:bright-purple bg:background bold"
 format = """\
 [](fg:bright-purple)\
 [ 󰥔 ](fg:background bg:bright-purple)\
-[ $time ]($style)\
+[ $time  ]($style)\
 """
 
 [jobs]
