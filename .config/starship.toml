@@ -1,5 +1,5 @@
 format = """
-${custom.bgfill}$python$directory$git_branch[█](background)$jobs$fill
+${custom.bgfill}$python$directory$git_branch[█](background)$jobs$fill
 $character
 """
 
@@ -18,10 +18,9 @@ truncation_length = 8
 home_symbol = "~"
 style = "fg:blue bg:background bold"
 format = """\
-[](fg:bright-blue )\
-[  ](fg:background bg:bright-blue)\
-[ $path]($style)\
- """
+[](fg:bright-blue )\
+[ ](fg:background bg:bright-blue)\
+[ $path]($style)"""
 
 [custom.trancience]
 format = "$time$character"
@@ -45,7 +44,7 @@ symbol_threshold = 1
 
 [python]
 style = "fg:orange bg:background bold"
-symbol = "[█](fg:background) "
+symbol = "[](fg:background) "
 format = "[${symbol}]($style)"
 
 [git_branch]

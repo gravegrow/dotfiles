@@ -26,7 +26,7 @@ M.config = function()
     on_attach = require("core.commands").format_on_save,
     sources = {
       formatting.stylua,
-      formatting.black.with { extra_args = { "--line-length", "90" } },
+      formatting.black.with { extra_args = { "--line-length", "100" } },
 
       diagnostics.fish,
       diagnostics.pylint.with {
