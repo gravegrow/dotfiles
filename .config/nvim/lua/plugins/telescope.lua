@@ -63,7 +63,7 @@ M.config = function(_, opts)
   vim.keymap.set("n", "<leader>fg", builtin.git_files)
   vim.keymap.set("n", "<leader>fo", builtin.oldfiles)
   vim.keymap.set("n", "<leader>fd", builtin.diagnostics)
-  vim.keymap.set("n", "<leader>lg", builtin.live_grep)
+  vim.keymap.set("n", "<leader>fl", builtin.live_grep)
   vim.keymap.set("n", "<leader>th", builtin.highlights)
   vim.keymap.set("n", "<leader>fb", builtin.buffers)
   vim.keymap.set("n", "<leader>fh", function()
@@ -76,7 +76,7 @@ M.keys = {
   { "<leader>fg" },
   { "<leader>fo" },
   { "<leader>fd" },
-  { "<leader>lg" },
+  { "<leader>fl" },
   { "<leader>th" },
   { "<leader>fh" },
   { "<leader>fb" },

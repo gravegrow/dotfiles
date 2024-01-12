@@ -1,9 +1,14 @@
 #!/bin/bash
 
+dotfiles=$(git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ls-files | xargs -n 1 dirname |  grep -e ".config/\w*\w" --only-matching | xargs -n 1 realpath | uniq )
+other="/media/storage/development/python"
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find /media/storage/development/python -mindepth 1 -maxdepth 1 -type d | fzf)
+    other_found=$(find $other -mindepth 1 -maxdepth 1 -type d )
+    dotfiles_found=$(find $dotfiles -maxdepth 0 -type d)
+    selected=$(find $other_found $dotfiles_found -maxdepth 0 -type d | fzf) 
 fi
 
 if [[ -z $selected ]]; then
@@ -16,7 +21,7 @@ selected_name=$(basename "$selected" | tr . _)
 function poetry {
   if [ -f $selected/pyproject.toml ] ; then
     tmux send "poetry shell" ENTER
-    sleep 0.4
+    sleep 0.5 
     tmux send "clear" ENTER
   fi
 }

@@ -51,7 +51,7 @@ M.config = function()
 end
 
 return {
-  "jose-elias-alvarez/null-ls.nvim",
+  "nvimtools/none-ls.nvim",
   event = "BufReadPre",
   config = M.config,
   dependencies = {
