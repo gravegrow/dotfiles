@@ -5,6 +5,7 @@ M.ensure_installed = {
   "pyright",
   "lua_ls",
   "jsonls",
+  "yamlls",
 }
 
 M.servers = {}

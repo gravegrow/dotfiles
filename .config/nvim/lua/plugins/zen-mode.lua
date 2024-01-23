@@ -8,8 +8,8 @@ return {
       height = 0.95,
       options = {
         -- signcolumn = "no", -- disable signcolumn
-        number = false,         -- disable number column
-        relativenumber = false, -- disable relative numbers
+        number = true,         -- disable number column
+        relativenumber = true, -- disable relative numbers
         -- cursorline = false, -- disable cursorline
         -- cursorcolumn = false, -- disable cursor column
         -- foldcolumn = "0", -- disable fold column

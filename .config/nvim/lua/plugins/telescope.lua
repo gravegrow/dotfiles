@@ -25,6 +25,8 @@ M.opts = {
       "*.jpg",
       "*.jpeg",
       "*.png",
+      "*.PNG",
+      "*.Png",
       "*.psd",
       "*.tga",
       "*.tif",

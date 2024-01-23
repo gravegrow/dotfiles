@@ -8,6 +8,7 @@ return {
     opts = {
       flavour = "mocha",
       integrations = {
+        -- harpoon = true,
         native_lsp = {
           enabled = true,
           underlines = {
@@ -24,6 +25,8 @@ return {
           SagaNormal = { bg = colors.base },
           SagaBorder = { fg = colors.blue },
           CodeActionNumber = { bg = colors.mantle, fg = colors.yellow, style = { "bold" } },
+
+          HarpoonBorder = { fg = colors.mantle, bg = colors.mantle },
 
           MsgArea = { fg = colors.text, bg = colors.crust },
           CursorLine = { style = { "bold" } },
