@@ -8,7 +8,7 @@ if [[ $# -eq 1 ]]; then
 else
     other_found=$(find $other -mindepth 1 -maxdepth 1 -type d )
     dotfiles_found=$(find $dotfiles -maxdepth 0 -type d)
-    selected=$(find $other_found $dotfiles_found -maxdepth 0 -type d | fzf) 
+    selected=$(find $other_found $dotfiles_found -maxdepth 0 -type d | fzf)
 fi
 
 if [[ -z $selected ]]; then
@@ -16,24 +16,20 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-# tmux_running=$(pgrep tmux)
 
-function poetry {
-  if [ -f $selected/pyproject.toml ] ; then
-    tmux send "poetry shell" ENTER
-    sleep 0.5 
-    tmux send "clear" ENTER
-  fi
-}
 
 if tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -A -s $selected_name 
+    tmux new-session -A -s $selected_name
     exit 0
 fi
 
-tmux new-session -d -s $selected_name -c $selected
-poetry
+
+if [[ -f "$selected/.tmux.session" ]] ; then
+    tmux new-session -d -s $selected_name -c $selected
+    (cd "$selected" || return && /bin/bash "./.tmux.session")
+    tmux attach
+    exit 0
+fi
+
+tmux new-session -d -s $selected_name -c $selected nvim
 tmux attach
-
-
-

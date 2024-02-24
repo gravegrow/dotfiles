@@ -4,7 +4,7 @@ alias ls='exa -l --icons --group-directories-first'
 alias la='exa -l --icons --group-directories-first -a'
 alias py='python3'
 alias python='python3'
-alias godot="/media/storage/software/godot/Godot_v4.2-stable_linux.x86_64"
+alias godot="/media/storage/software/godot/Godot_v4.2.1-stable_linux.x86_64"
 
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
@@ -38,12 +38,17 @@ set --export PYTHONPATH $PYTHONPATH /media/storage/dev/maya/toolset/
 set --export PYTHONPATH $PYTHONPATH /media/storage/development/maya/MayaKit/
 set --export TMPDIR /tmp
 
+
 fish_ssh_agent
 
 fish_add_path /home/gravegrow/.spicetify
 
 function mkcd
     mkdir -p -- $argv && cd -- $argv
+end
+
+function mkfile
+    mkdir -p $(dirname $argv) && touch $argv
 end
 
 function starship_transient_prompt_func

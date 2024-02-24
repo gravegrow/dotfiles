@@ -1,7 +1,7 @@
 return {
     "nvim-tree/nvim-tree.lua",
-    keys = { "<leader>e" },
-    cmd = "NvimTreeToggle",
+    -- keys = { "<leader>e" },
+    -- cmd = "NvimTreeToggle",
     opts = {
         sort_by = "case_sensitive",
         view = { adaptive_size = true },
@@ -21,13 +21,13 @@ return {
                 },
             },
         },
-        -- sync_root_with_cwd = false,
-        -- respect_buf_cwd = false,
-        update_cwd = true,
+        -- sync_root_with_cwd = true,
+        -- respect_buf_cwd = true,
+        -- update_cwd = true,
         filters = {},
         update_focused_file = {
-            enable = true,
-            update_cwd = true,
+            enable = false,
+            update_cwd = false,
         },
     },
     config = function(_, opts)

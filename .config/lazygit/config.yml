@@ -1,7 +1,7 @@
 gui:
   border: "rounded"
   nerdFontsVersion: "3"
-  showBottomLine: false
+  showBottomLine: true
   showRandomTip: true
   showPanelJumps: true
   theme:
