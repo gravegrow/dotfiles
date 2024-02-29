@@ -42,27 +42,6 @@ return {
   },
 
   {
-    'catppuccin/nvim',
-    name = 'catppuccin',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      flavour = 'mocha',
-      integrations = {
-        mini = {
-          enabled = true,
-        },
-      },
-    },
-    config = function(_, opts)
-      require('catppuccin').setup(opts)
-      vim.cmd.colorscheme 'catppuccin'
-
-      require('user.utils').apply_custom_highlights()
-    end,
-  },
-
-  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     config = function()

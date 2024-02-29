@@ -111,10 +111,6 @@ return {
       luasnip.config.setup({})
 
       cmp.setup({
-        snippet = {
-          expand = function(args) luasnip.lsp_expand(args.body) end,
-        },
-        completion = { completeopt = 'menu,menuone,noinsert,noselect' },
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-n>'] = cmp.mapping.select_next_item(),
@@ -133,16 +129,21 @@ return {
             if luasnip.locally_jumpable(-1) then luasnip.jump(-1) end
           end, { 'i', 's' }),
         }),
+        completion = { completeopt = 'menu,menuone,noinsert,noselect' },
+        window = { documentation = { winhighlight = 'Normal:CmpDoc,FloatBorder:CmpDocBorder' } },
+        snippet = {
+          expand = function(args) luasnip.lsp_expand(args.body) end,
+        },
         formatting = {
           format = lspkind.cmp_format({
             mode = 'text_symbol',
-            maxwidth = 20,
+            maxwidth = 25,
             ellipsis_char = '...',
             show_labelDetails = true,
             ---@diagnostic disable-next-line
             before = function(entry, vim_item)
               local label = vim_item.abbr
-              local minwidth = 20
+              local minwidth = 25
               if string.len(label) < minwidth then
                 local padding = string.rep(' ', minwidth - string.len(label))
                 vim_item.abbr = label .. padding

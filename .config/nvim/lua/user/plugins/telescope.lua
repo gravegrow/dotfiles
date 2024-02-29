@@ -1,7 +1,6 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
-    branch = '0.1.x',
     event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
@@ -19,7 +18,6 @@ return {
           selection_caret = ' ',
           borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
           results_title = false,
-          preview_title = false,
           layout_strategy = 'vertical',
           layout_config = {
             height = 0.98,
