@@ -1,26 +1,45 @@
 return {
-{
+  {
     'nvim-telescope/telescope.nvim',
+    branch = '0.1.x',
     event = 'VeryLazy',
     dependencies = {
       'nvim-lua/plenary.nvim',
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         build = 'make',
-        cond = function()
-          return vim.fn.executable 'make' == 1
-        end,
+        cond = function() return vim.fn.executable 'make' == 1 end,
       },
       { 'nvim-telescope/telescope-ui-select.nvim' },
     },
     config = function()
-      require('telescope').setup {
+      require('telescope').setup({
+        defaults = {
+          prompt_prefix = '  ',
+          selection_caret = ' ',
+          borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+          results_title = false,
+          preview_title = false,
+          layout_strategy = 'vertical',
+          layout_config = {
+            height = 0.98,
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
           },
         },
-      }
+        pickers = {
+          current_buffer_fuzzy_find = {
+            theme = 'dropdown',
+            previewer = false,
+            layout_config = {
+              height = 0.45,
+            },
+          },
+        },
+      })
 
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
@@ -38,11 +57,12 @@ return {
       vim.keymap.set('n', '<leader>fo', builtin.oldfiles, { desc = '[F]ind [O]ld Files' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-      vim.keymap.set('n', '<leader>/', function()
-        builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-          previewer = false,
-        })
-      end, { desc = '[/] Fuzzily search in current buffer' })
+      vim.keymap.set(
+        'n',
+        '<leader>/',
+        function() builtin.current_buffer_fuzzy_find() end,
+        { desc = '[/] Fuzzily search in current buffer' }
+      )
     end,
   },
 }

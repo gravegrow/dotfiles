@@ -7,5 +7,5 @@ return {
     require('mini.splitjoin').setup()
     require('mini.statusline').setup()
     require('mini.surround').setup()
-  end
+  end,
 }

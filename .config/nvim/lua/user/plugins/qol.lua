@@ -8,26 +8,27 @@ return {
       require('which-key').setup()
 
       -- Document existing key chains
-      require('which-key').register {
+      require('which-key').register({
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[D]iagnostic', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]find', _ = 'which_key_ignore' },
+        ['<leader>t'] = { name = '[T]theme', _ = 'which_key_ignore' },
         ['gp'] = { name = '[P]review', _ = 'which_key_ignore' },
-      }
-    end
+      })
+    end,
   },
 
   {
     'folke/todo-comments.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    opts = {}
+    opts = {},
   },
 
   {
-    "kyazdani42/nvim-web-devicons",
-    opts = { override = { gd = { icon = "" } }, },
+    'kyazdani42/nvim-web-devicons',
+    opts = { override = { gd = { icon = '' } } },
   },
 
   {
@@ -35,23 +36,29 @@ return {
     opts = {
       on_attach = function()
         local gitsigns = package.loaded.gitsigns
-        vim.keymap.set('n', 'gph', gitsigns.preview_hunk, { desc = "[G]itsigns [P]review [H]unk" })
-      end
+        vim.keymap.set('n', 'gph', gitsigns.preview_hunk, { desc = '[G]itsigns [P]review [H]unk' })
+      end,
     },
   },
 
   {
-    'folke/tokyonight.nvim',
-    -- "catppuccin/nvim", name = "catppuccin",
+    'catppuccin/nvim',
+    name = 'catppuccin',
     lazy = false,
     priority = 1000,
-    config = function()
-      -- vim.cmd.colorscheme('catppuccin-mocha')
-      vim.cmd.colorscheme('tokyonight-night')
+    opts = {
+      flavour = 'mocha',
+      integrations = {
+        mini = {
+          enabled = true,
+        },
+      },
+    },
+    config = function(_, opts)
+      require('catppuccin').setup(opts)
+      vim.cmd.colorscheme 'catppuccin'
 
-      vim.api.nvim_set_hl(0, "Normal", { bg = nil })
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = nil })
-      vim.api.nvim_set_hl(0, "SignColumn", { bg = nil })
+      require('user.utils').apply_custom_highlights()
     end,
   },
 
@@ -60,21 +67,20 @@ return {
     build = ':TSUpdate',
     config = function()
       ---@diagnostic disable-next-line: missing-fields
-      require('nvim-treesitter.configs').setup {
+      require('nvim-treesitter.configs').setup({
         ensure_installed = { 'bash', 'lua', 'markdown', 'vim', 'vimdoc' },
-        -- Autoinstall languages that are not installed
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
-      }
+      })
     end,
   },
 
   {
-    "mbbill/undotree",
-
+    'mbbill/undotree',
     config = function()
-      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Open [U]ndotree" })
+      vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Open [U]ndotree' })
+      vim.g.undotree_DiffAutoOpen = 0
     end,
-  }
+  },
 }

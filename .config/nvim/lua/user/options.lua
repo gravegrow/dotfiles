@@ -1,9 +1,8 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-
 -- Fallback colorscheme
-vim.cmd.colorscheme('habamax')
+vim.cmd.colorscheme 'habamax'
 
 -- Make statusline global
 vim.opt.laststatus = 3
@@ -12,7 +11,9 @@ vim.opt.laststatus = 3
 vim.opt.cmdheight = 0
 
 -- Make relative line numbers default
+vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.numberwidth = 3
 
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
@@ -66,7 +67,7 @@ vim.opt.scrolloff = 10
 vim.opt.hlsearch = false
 
 -- Hide characters after at the end of a buffer
-vim.opt.fillchars = { eob = " " }
+vim.opt.fillchars = { eob = ' ' }
 
 -- Position on new splits
 vim.opt.splitbelow = true
@@ -78,3 +79,10 @@ vim.opt.tabstop = 4
 -- Wrap words
 vim.opt.wrap = true
 vim.opt.linebreak = true
+
+-- Autoformating
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
+  desc = 'Changes formatting options',
+  group = vim.api.nvim_create_augroup('on-formatopts', { clear = true }),
+  callback = function() vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) end,
+})

@@ -1,21 +1,21 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [manager]
-hovered         = { fg = "black"   , bg     = "blue", bold  = true }
-preview_hovered = { bg = "blue"    , fg      = "black" }
-border_style    = { fg = "#313244" }
-find_keyword    = { fg = "#FAB387" , bold = true }
-tab_active      = { bg = "lightred", fg  = "black"  , bold = true }
-tab_inactive    = { fg = "gray"    , bold    = false }
-syntect_theme   = "$HOME/dotfiles/.config/yazi/themes/Catppuccin-mocha_1_1.tmTheme"
+hovered = { fg = "black", bg = "blue", bold = true }
+preview_hovered = { bg = "blue", fg = "black" }
+border_style = { fg = "#313244" }
+find_keyword = { fg = "#FAB387", bold = true }
+tab_active = { bg = "reset", fg = "blue", bold = true }
+tab_inactive = { fg = "white", bg = "darkgray", bold = false }
+syntect_theme = "$HOME/dotfiles/.config/yazi/themes/Catppuccin-mocha_1_1.tmTheme"
 
 
 [status]
-separator_open  = ""
+separator_open = ""
 separator_close = ""
 separator_style = { fg = "darkgray", bg = "black" }
 
-mode_normal = { bg='#b4befe', fg = "black", bold = true }
+mode_normal = { bg = '#b4befe', fg = "black", bold = true }
 
 [tasks]
 border = { fg = "red" }
