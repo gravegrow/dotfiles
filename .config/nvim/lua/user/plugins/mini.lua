@@ -87,7 +87,7 @@ function M.statusline()
           '%=', -- End left alignment
           { hl = 'MiniStatuslineFilename', strings = { git } },
           { hl = 'MiniStatusBlock', strings = { '%l:%L' } },
-          { hl = 'MiniStatusListIcon', strings = { '' } },
+          { hl = 'MiniStatusListIcon', strings = { '󰈚' } },
         })
       end,
     },

@@ -47,6 +47,7 @@ return {
         taplo = {},
         yamlls = {},
         jsonls = {},
+        bashls = {},
 
         lua_ls = {
           settings = {
@@ -71,6 +72,7 @@ return {
       vim.list_extend(ensure_installed, {
         'stylua',
         'gdtoolkit',
+        'shfmt',
       })
 
       require('mason').setup()
@@ -102,6 +104,7 @@ return {
       formatters_by_ft = {
         lua = { 'stylua' },
         gdscript = { 'gdformat' },
+        sh = { 'shfmt' },
       },
     },
   },

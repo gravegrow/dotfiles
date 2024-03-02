@@ -1,34 +1,24 @@
 #!/bin/bash
 
-dotfiles=$(git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME ls-files | xargs -n 1 dirname |  grep -e ".config/\w*\w" --only-matching | xargs -n 1 realpath | uniq )
-other="/media/storage/development/python $HOME/dotfiles/.config"
-
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    other_found=$(find $other -mindepth 1 -maxdepth 1 -type d )
-    dotfiles_found=$(find $dotfiles -maxdepth 0 -type d)
-    selected=$(find $other_found $dotfiles_found -maxdepth 0 -type d | fzf)
-fi
+folders="/media/storage/development/python $HOME/dotfiles/.config"
+selected=$(find $folders -mindepth 1 -maxdepth 1 -type d | fzf)
 
 if [[ -z $selected ]]; then
-    exit 0
+	exit 0
 fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-
-if tmux has-session -t=$selected_name 2> /dev/null; then
-    tmux new-session -A -s $selected_name
-    exit 0
+if tmux has-session -t=$selected_name 2>/dev/null; then
+	tmux new-session -A -s $selected_name
+	exit 0
 fi
 
-
-if [[ -f "$selected/.tmux.session" ]] ; then
-    tmux new-session -d -s $selected_name -c $selected
-    (cd "$selected" || return && /bin/bash "./.tmux.session")
-    tmux attach
-    exit 0
+if [[ -f "$selected/.tmux.session" ]]; then
+	tmux new-session -d -s $selected_name -c $selected
+	(cd "$selected" || return && /bin/bash "./.tmux.session")
+	tmux attach
+	exit 0
 fi
 
 tmux new-session -d -s $selected_name -c $selected nvim
