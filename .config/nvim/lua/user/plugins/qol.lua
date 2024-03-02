@@ -12,10 +12,8 @@ return {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
         ['<leader>d'] = { name = '[D]iagnostic', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-        ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>f'] = { name = '[F]find', _ = 'which_key_ignore' },
-        ['<leader>t'] = { name = '[T]theme', _ = 'which_key_ignore' },
-        ['gp'] = { name = '[P]review', _ = 'which_key_ignore' },
+        ['gh'] = { name = '[H]unk', _ = 'which_key_ignore' },
       })
     end,
   },
@@ -36,7 +34,8 @@ return {
     opts = {
       on_attach = function()
         local gitsigns = package.loaded.gitsigns
-        vim.keymap.set('n', 'gph', gitsigns.preview_hunk, { desc = '[G]itsigns [P]review [H]unk' })
+        vim.keymap.set('n', 'ghp', gitsigns.preview_hunk, { desc = '[G]itsigns [H]unk [P]review' })
+        vim.keymap.set('n', 'ghp', gitsigns.reset_hunk, { desc = '[G]itsigns [H]unk [R]eset' })
       end,
     },
   },
@@ -60,6 +59,31 @@ return {
     config = function()
       vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Open [U]ndotree' })
       vim.g.undotree_DiffAutoOpen = 0
+    end,
+  },
+
+  {
+    'ThePrimeagen/harpoon',
+    branch = 'harpoon2',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+
+    opts = { settings = { save_on_toggle = true } },
+
+    config = function(_, opts)
+      local harpoon = require 'harpoon'
+
+      harpoon:setup(opts)
+
+      local toggle_opts = { title = '' }
+      vim.keymap.set('n', '<leader>a', function() harpoon:list():append() end)
+      vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end)
+
+      vim.keymap.set('n', '<C-h>', function() harpoon:list():select(1) end)
+      vim.keymap.set('n', '<C-j>', function() harpoon:list():select(2) end)
+      vim.keymap.set('n', '<C-k>', function() harpoon:list():select(3) end)
+      vim.keymap.set('n', '<C-l>', function() harpoon:list():select(4) end)
+
+      vim.cmd 'autocmd Filetype harpoon setlocal cursorline'
     end,
   },
 }

@@ -5,9 +5,22 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim', opts = { notification = { window = { winblend = 1 } } } },
     },
     config = function()
+      vim.diagnostic.config({
+        severity_sort = true,
+        update_in_insert = false,
+        virtual_text = {
+          severity = { min = vim.diagnostic.severity.ERROR },
+        },
+      })
+
+      vim.fn.sign_define('DiagnosticSignError', { text = '' })
+      vim.fn.sign_define('DiagnosticSignWarn', { text = '' })
+      vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
+      vim.fn.sign_define('DiagnosticSignHint', { text = '' })
+
       vim.api.nvim_create_autocmd('LspAttach', {
         group = vim.api.nvim_create_augroup('on-lsp-attach', { clear = true }),
         callback = function(event)
@@ -23,6 +36,7 @@ return {
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          vim.keymap.set({ 'n', 'i' }, '<A-k>', vim.lsp.buf.signature_help, { desc = 'Signature Help' })
         end,
       })
 
@@ -32,6 +46,8 @@ return {
       local servers = {
         -- pyright = {},
         taplo = {},
+        yamlls = {},
+        jsonls = {},
 
         lua_ls = {
           settings = {
@@ -100,7 +116,9 @@ return {
       },
       'saadparwaiz1/cmp_luasnip',
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
       'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
       'onsails/lspkind.nvim',
       'rafamadriz/friendly-snippets',
     },
@@ -115,9 +133,12 @@ return {
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
-          ['<C-y>'] = cmp.mapping.confirm({
-            select = true,
-          }),
+          ['<C-y>'] = cmp.mapping(
+            cmp.mapping.confirm({
+              select = true,
+            }),
+            { 'i', 'c' }
+          ),
           ['<CR>'] = cmp.mapping.confirm({
             select = false,
             behavior = cmp.ConfirmBehavior.Replace,
@@ -140,8 +161,7 @@ return {
             maxwidth = 25,
             ellipsis_char = '...',
             show_labelDetails = true,
-            ---@diagnostic disable-next-line
-            before = function(entry, vim_item)
+            before = function(_, vim_item)
               local label = vim_item.abbr
               local minwidth = 25
               if string.len(label) < minwidth then
@@ -153,12 +173,42 @@ return {
           }),
         },
         sources = {
-          { name = 'nvim_lsp' },
+          { name = 'nvim_lsp', group_index = 1 },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'buffer', group_index = 2 },
+        },
+      })
+
+      cmp.setup.cmdline({ '/', '?' }, {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
           { name = 'buffer' },
         },
       })
+
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline({
+          ['<C-y>'] = {
+            c = cmp.mapping.confirm({ select = true }),
+          },
+        }),
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          { name = 'cmdline' },
+        }),
+      })
     end,
+  },
+  {
+    'ray-x/lsp_signature.nvim',
+    event = 'VeryLazy',
+    opts = {
+      max_width = 200,
+      hint_enable = false,
+      border = 'none',
+      doc_lines = 0,
+    },
   },
 }

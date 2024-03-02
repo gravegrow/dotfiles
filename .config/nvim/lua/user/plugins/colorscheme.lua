@@ -12,20 +12,21 @@ local function override_hl(name, opts) set_hl(name, vim.tbl_extend('force', get_
 
 ---@param colors CtpColors<string>
 ---@param background string|nil
-local function apply_custom_highlights(colors, background)
+local function apply_custom_highlights(colors)
   background = background or colors.base
 
-  override_hl('Normal', { bg = background })
-  override_hl('NormalNC', { bg = background })
+  override_hl('Normal', { bg = nil })
+  override_hl('NormalNC', { bg = nil })
   set_hl('SignColumn', { fg = colors.peach, bold = true })
 
   set_hl('FloatBorder', { fg = colors.mantle, bg = colors.mantle })
+  override_hl('NormalFloat', { bg = colors.mantle })
   override_hl('Pmenu', { bg = colors.mantle })
 
   set_hl('CursorLineNr', { fg = colors.peach, bold = true })
   override_hl('CursorLine', { bold = true })
 
-  override_hl('CmpDocBorder', { bg = colors.crust })
+  set_hl('CmpDoc', { bg = colors.crust })
   set_hl('CmpDocBorder', { fg = colors.crust, bg = colors.crust })
 
   override_hl('TelescopeNormal', { bg = colors.mantle })
@@ -37,6 +38,13 @@ local function apply_custom_highlights(colors, background)
 
   set_hl('TelescopePromptBorder', { bg = colors.crust, fg = colors.crust })
   override_hl('TelescopePromptNormal', { bg = colors.crust })
+
+  set_hl('DiagnosticVirtualTextError', { bg = nil, fg = get_hl('DiagnosticVirtualTextError').fg })
+
+  for _, diag in ipairs({ 'Error', 'Ok', 'Hint', 'Info', 'Warn' }) do
+    local hl = 'DiagnosticUnderline' .. diag
+    set_hl(hl, { fg = get_hl(hl).sp, bold = true, italic = true })
+  end
 end
 
 return {
@@ -60,6 +68,6 @@ return {
     require('catppuccin').setup(opts)
     vim.cmd.colorscheme 'catppuccin'
 
-    apply_custom_highlights(pallete, '#1e1e2e')
+    apply_custom_highlights(pallete)
   end,
 }

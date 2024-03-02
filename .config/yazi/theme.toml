@@ -5,7 +5,7 @@ hovered = { fg = "black", bg = "blue", bold = true }
 preview_hovered = { bg = "blue", fg = "black" }
 border_style = { fg = "#313244" }
 find_keyword = { fg = "#FAB387", bold = true }
-tab_active = { bg = "reset", fg = "blue", bold = true }
+tab_active = { bg = "reset", fg = "#B4BEFE", bold = true }
 tab_inactive = { fg = "white", bg = "darkgray", bold = false }
 syntect_theme = "$HOME/dotfiles/.config/yazi/themes/Catppuccin-mocha_1_1.tmTheme"
 
