@@ -1,0 +1,140 @@
+global proc shelf_Shit () {
+    global string $gBuffStr;
+    global string $gBuffStr0;
+    global string $gBuffStr1;
+
+
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "AdvancedSkeleton5" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "AdvancedSkeleton5" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/icons/AS5.png" 
+        -image1 "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/icons/AS5.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "source \"/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5.mel\";AdvancedSkeleton5;" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Selector:biped" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Selector:biped" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/icons/asBiped.png" 
+        -image1 "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/icons/asBiped.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "source \"/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/Selector/biped.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "Selector:face" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "Selector:face" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/icons/asFace.png" 
+        -image1 "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/icons/asFace.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "source \"/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/Selector/face.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "picker" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "picker" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/picker/pickerFiles/icons/picker.png" 
+        -image1 "/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/picker/pickerFiles/icons/picker.png" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "source \"/media/storage/dev/maya/rigging/advanced_skeleton/5_855/AdvancedSkeleton5Files/picker/picker.mel\";" 
+        -sourceType "mel" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+
+} 

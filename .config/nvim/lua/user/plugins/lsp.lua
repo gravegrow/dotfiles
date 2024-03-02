@@ -5,7 +5,6 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
-      { 'j-hui/fidget.nvim', opts = { notification = { window = { winblend = 1 } } } },
     },
     config = function()
       vim.diagnostic.config({
@@ -17,7 +16,7 @@ return {
       })
 
       vim.fn.sign_define('DiagnosticSignError', { text = '' })
-      vim.fn.sign_define('DiagnosticSignWarn', { text = '' })
+      vim.fn.sign_define('DiagnosticSignWarn', { text = '' })
       vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
       vim.fn.sign_define('DiagnosticSignHint', { text = '' })
 
@@ -131,6 +130,8 @@ return {
       cmp.setup({
         mapping = cmp.mapping.preset.insert({
           ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
           ['<C-n>'] = cmp.mapping.select_next_item(),
           ['<C-p>'] = cmp.mapping.select_prev_item(),
           ['<C-y>'] = cmp.mapping(
@@ -201,6 +202,7 @@ return {
       })
     end,
   },
+
   {
     'ray-x/lsp_signature.nvim',
     event = 'VeryLazy',

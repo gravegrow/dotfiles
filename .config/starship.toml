@@ -1,0 +1,36 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$directory$git_branch$python$jobs
+$shell$character
+"""
+
+add_newline = true
+palette = 'overrides'
+
+[palettes.overrides]
+orange = "#FAB387"
+
+[directory]
+truncation_length = 8
+home_symbol = "~"
+format = "[  ](bg:blue fg:black)[ $path ](bg:black fg:blue bold)"
+
+[jobs]
+symbol = ' [󰶳](red)'
+symbol_threshold = 1
+
+[shell]
+disabled = false
+fish_indicator = ""
+format = "$indicator"
+bash_indicator = "[ 󱆃 ](bg:red fg:black)[ bash ](fg:red bg:black)"
+
+[python]
+symbol = "[ ](fg:orange bg:black)"
+format = "$symbol"
+
+[git_branch]
+style = "fg:green bg:black bold"
+symbol = "[  ](fg:black bg:green) 󰘬 "
+format = "[$symbol$branch ]($style)"

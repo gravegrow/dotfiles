@@ -35,7 +35,7 @@ return {
       on_attach = function()
         local gitsigns = package.loaded.gitsigns
         vim.keymap.set('n', 'ghp', gitsigns.preview_hunk, { desc = '[G]itsigns [H]unk [P]review' })
-        vim.keymap.set('n', 'ghp', gitsigns.reset_hunk, { desc = '[G]itsigns [H]unk [R]eset' })
+        vim.keymap.set('n', 'ghr', gitsigns.reset_hunk, { desc = '[G]itsigns [H]unk [R]eset' })
       end,
     },
   },
@@ -74,7 +74,7 @@ return {
 
       harpoon:setup(opts)
 
-      local toggle_opts = { title = '' }
+      local toggle_opts = { title = ' Harpoon ', title_pos = 'center' }
       vim.keymap.set('n', '<leader>a', function() harpoon:list():append() end)
       vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end)
 
@@ -84,6 +84,40 @@ return {
       vim.keymap.set('n', '<C-l>', function() harpoon:list():select(4) end)
 
       vim.cmd 'autocmd Filetype harpoon setlocal cursorline'
+    end,
+  },
+
+  {
+    {
+      'folke/noice.nvim',
+      event = 'VeryLazy',
+      opts = {
+        cmdline = { view = 'cmdline' },
+        lsp = { signature = { enabled = false } },
+        views = { mini = { win_options = { winhighlight = { Normal = 'Normal' } } } },
+
+        routes = {
+          {
+            view = 'virtualtext',
+            filter = { event = 'msg_showmode' },
+            opts = { hl_group = 'MacroRecording' },
+          },
+        },
+      },
+      dependencies = { 'MunifTanjim/nui.nvim' },
+    },
+  },
+
+  {
+    'NvChad/nvim-colorizer.lua',
+    event = 'BufReadPost',
+    config = function()
+      require('colorizer').setup({
+        user_default_options = {
+          names = false,
+          mode = 'virtualtext',
+        },
+      })
     end,
   },
 }

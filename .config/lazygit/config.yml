@@ -1,0 +1,28 @@
+gui:
+  border: "rounded"
+  nerdFontsVersion: "3"
+  showBottomLine: true
+  showRandomTip: true
+  showPanelJumps: true
+  expandFocusedSidePanel: true
+  theme:
+    activeBorderColor:
+      - blue
+      - bold
+    inactiveBorderColor:
+      - "#585b70"
+    searchingActiveBorderColor:
+      - cyan
+      - bold
+    optionsTextColor:
+      - blue
+    selectedLineBgColor:
+      - "#181825" # set to `default` to have no background colour
+    cherryPickedCommitBgColor:
+      - cyan
+    cherryPickedCommitFgColor:
+      - blue
+    unstagedChangesColor:
+      - red
+    defaultFgColor:
+      - default

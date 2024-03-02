@@ -6,4 +6,5 @@
   pkgs.bat
   pkgs.git
   pkgs.lazygit
+  pkgs.stow
 ]
