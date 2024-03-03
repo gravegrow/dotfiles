@@ -88,24 +88,23 @@ return {
   },
 
   {
-    {
-      'folke/noice.nvim',
-      event = 'VeryLazy',
-      opts = {
-        cmdline = { view = 'cmdline' },
-        lsp = { signature = { enabled = false } },
-        views = { mini = { win_options = { winhighlight = { Normal = 'Normal' } } } },
+    'folke/noice.nvim',
+    event = 'VeryLazy',
+    opts = {
+      cmdline = { view = 'cmdline' },
+      lsp = { signature = { enabled = false }, hover = { enabled = false } },
+      views = { mini = { win_options = { winhighlight = { Normal = 'Normal' } } } },
+      messages = { enabled = true },
 
-        routes = {
-          {
-            view = 'virtualtext',
-            filter = { event = 'msg_showmode' },
-            opts = { hl_group = 'MacroRecording' },
-          },
+      routes = {
+        {
+          filter = { event = 'msg_showmode' },
+          opts = { hl_group = 'MacroRecording' },
+          view = 'virtualtext',
         },
       },
-      dependencies = { 'MunifTanjim/nui.nvim' },
     },
+    dependencies = { 'MunifTanjim/nui.nvim' },
   },
 
   {

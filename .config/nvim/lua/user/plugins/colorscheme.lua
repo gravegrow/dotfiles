@@ -31,6 +31,10 @@ local function override_hl(name, opts) set_hl(name, vim.tbl_extend('force', get_
 function M.apply_overrides(colors)
   override_hl('Normal', { bg = nil })
   override_hl('NormalNC', { bg = nil })
+
+  override_hl('NormalSB', { bg = colors.mantle })
+  override_hl('SignColumnSB', { bg = colors.mantle })
+
   set_hl('SignColumn', { fg = colors.peach, bold = true })
 
   override_hl('MsgArea', { bg = colors.mantle })
@@ -75,6 +79,32 @@ function M.apply_overrides(colors)
 
     set_hl('MiniStatus' .. diag, { fg = get_hl(hl).fg, bg = colors.crust })
   end
+
+  local group = vim.api.nvim_create_augroup('colorscheme-apply', { clear = true })
+
+  vim.api.nvim_create_autocmd('ColorSchemePre', {
+    group = group,
+    callback = function() vim.api.nvim_del_augroup_by_id(group) end,
+  })
+
+  local function set_whl()
+    local win = vim.api.nvim_get_current_win()
+    local whl = vim.split(vim.wo[win].winhighlight, ',')
+    vim.list_extend(whl, { 'Normal:NormalSB', 'SignColumn:SignColumnSB' })
+    whl = vim.tbl_filter(function(hl) return hl ~= '' end, whl)
+    vim.opt_local.winhighlight = table.concat(whl, ',')
+  end
+
+  vim.api.nvim_create_autocmd('FileType', {
+    group = group,
+    pattern = { 'qf', 'help', 'terminal' },
+    callback = set_whl,
+  })
+
+  vim.api.nvim_create_autocmd('TermOpen', {
+    group = group,
+    callback = set_whl,
+  })
 end
 
 M.catbox_material = {

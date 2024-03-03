@@ -133,12 +133,13 @@ keymap = [
 	{ on = [ "w" ], exec = "tasks_show", desc = "Show the tasks manager" },
 
 	# Goto
-	{ on = [ "g", "h" ],       exec = "cd ~",             desc = "Go to the home directory" },
-	{ on = [ "g", "c" ],       exec = "cd ~/.config",     desc = "Go to the config directory" },
-	{ on = [ "g", "m" ],       exec = "cd /media",        desc = "Go to the media directory" },
-	{ on = [ "g", "d" ],       exec = "cd ~/dotfiles",    desc = "Go to the dotfiles directory" },
-	{ on = [ "g", "t" ],       exec = "cd /tmp",          desc = "Go to the temporary directory" },
-	{ on = [ "g", "i" ],       exec = "cd --interactive", desc = "Go to a directory interactively" },
+	{ on = [ "g", "h" ],       exec = "cd ~",                           desc = "Go to the home directory" },
+	{ on = [ "g", "c" ],       exec = "cd ~/.config",                   desc = "Go to the config directory" },
+	{ on = [ "g", "m" ],       exec = "cd /media",                      desc = "Go to the media directory" },
+	{ on = [ "g", "d" ],       exec = "cd ~/dotfiles",                  desc = "Go to the dotfiles directory" },
+	{ on = [ "g", "D" ],       exec = "cd /media/storage/downloads",    desc = "Go to the global downloads" },
+	{ on = [ "g", "t" ],       exec = "cd /tmp",                        desc = "Go to the temporary directory" },
+	{ on = [ "g", "i" ],       exec = "cd --interactive",               desc = "Go to a directory interactively" },
 
 	# Help
 	{ on = [ "?" ], exec = "help", desc = "Open help" },

@@ -9,6 +9,7 @@ M.plugin = {
     require('mini.comment').setup()
     require('mini.splitjoin').setup()
     require('mini.surround').setup()
+    require('mini.pairs').setup()
 
     M.statusline()
     M.files()
