@@ -3,3 +3,4 @@ maya/Fbx/Logs
 maya/FBX/Logs
 maya/mayaLog
 .uuid
+.config/fish/fish_variables

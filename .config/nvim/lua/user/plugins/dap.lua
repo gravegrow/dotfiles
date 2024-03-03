@@ -25,6 +25,7 @@ return {
       },
     }
 
+    ---@diagnostic disable missing-required
     dapui.setup({
       layouts = {
         {
@@ -37,16 +38,10 @@ return {
           position = 'left',
           size = 40,
         },
-        {
-          elements = {
-            { id = 'repl', size = 0.5 },
-            { id = 'console', size = 0.5 },
-          },
-          position = 'bottom',
-          size = 10,
-        },
+        { elements = { { id = 'repl', size = 0.5 }, { id = 'console', size = 0.5 } }, position = 'bottom', size = 10 },
       },
     })
+
     require('nvim-dap-virtual-text').setup()
 
     local namespace = vim.api.nvim_create_namespace 'dap-hlng'

@@ -21,6 +21,14 @@ vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Show [D]i
 vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+vim.keymap.set('v', '<a-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
+vim.keymap.set('v', '<a-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+
+vim.keymap.set('v', '<', '<gv', { desc = 'Move selection right' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Move selection left' })
+
+vim.keymap.set('n', 'gf', ':edit <cfile><cr>', { desc = 'Go to [F]ile under cursor, creating needed' })
+
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
   group = vim.api.nvim_create_augroup('on-highlight-yank', { clear = true }),

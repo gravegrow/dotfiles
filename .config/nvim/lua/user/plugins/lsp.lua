@@ -96,7 +96,7 @@ return {
   {
     'stevearc/conform.nvim',
     opts = {
-      notify_on_error = false,
+      notify_on_error = true,
       format_on_save = {
         timeout_ms = 500,
         lsp_fallback = true,
