@@ -4,3 +4,5 @@ maya/FBX/Logs
 maya/mayaLog
 .uuid
 .config/fish/fish_variables
+.config/godot/recent_dirs
+.config/godot/text_editor_themes/
