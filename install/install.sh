@@ -34,8 +34,14 @@ install_awesome() {
 	sudo nala install /tmp/awesome/build/*.deb
 }
 
+install_other() {
+	sudo nala install mpv
+}
+
 install_nix
 install_fish
+install_other
+
 install_neovim &
 install_kitty &
 install_awesome &

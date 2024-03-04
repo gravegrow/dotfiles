@@ -12,18 +12,18 @@ local themes_path = gfs.get_themes_dir()
 
 local theme = {}
 
-theme.font = 'sans 8'
+theme.font = 'BerkeleyMono Nerd Font Mono Bold 8'
 
-theme.bg_normal = '#222222'
-theme.bg_focus = '#535d6c'
+theme.bg_normal = '#11111b'
+theme.bg_focus = '#11111b'
 theme.bg_urgent = '#ff0000'
 theme.bg_minimize = '#444444'
 theme.bg_systray = theme.bg_normal
 
-theme.fg_normal = '#aaaaaa'
-theme.fg_focus = '#ffffff'
-theme.fg_urgent = '#ffffff'
-theme.fg_minimize = '#ffffff'
+theme.fg_normal = '#7f849c'
+theme.fg_focus = '#7f849c'
+theme.fg_urgent = '#7f849c'
+theme.fg_minimize = '#7f849c'
 
 theme.useless_gap = dpi(3)
 theme.border_width = dpi(1)
@@ -43,10 +43,9 @@ theme.border_color_marked = '#91231c'
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
 
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(taglist_square_size, theme.fg_normal)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(taglist_square_size, theme.fg_normal)
+theme.taglist_fg_focus = '#89b4fa'
+theme.taglist_fg_occupied = '#45475a'
+theme.taglist_underline_occupied = '#1e1e2e'
 
 -- Variables set for theming notifications:
 -- notification_font
@@ -122,16 +121,15 @@ theme.icon_theme = nil
 
 -- Set different colors for urgent notifications.
 rnotification.connect_signal(
-    'request::rules',
-    function()
-        rnotification.append_rule({
-            rule = { urgency = 'critical' },
-            properties = { bg = '#ff0000', fg = '#ffffff' },
-        })
-    end
+  'request::rules',
+  function()
+    rnotification.append_rule({
+      rule = { urgency = 'critical' },
+      properties = { bg = '#ff0000', fg = '#ffffff' },
+    })
+  end
 )
 
 return theme
 
 -- vim: filetype=lua:expandtab:shiftwidth=4:tabstop=8:softtabstop=4:textwidth=80
-

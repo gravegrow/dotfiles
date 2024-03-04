@@ -63,15 +63,14 @@ function M.apply_overrides(colors)
 
   set_hl('DiagnosticVirtualTextError', { bg = nil, fg = get_hl('DiagnosticVirtualTextError').fg })
 
-  set_hl('MacroRecording', { fg = colors.red, bold = true })
-
   set_hl('MiniStatusListIcon', { fg = colors.mantle, bg = colors.peach })
-  set_hl('MiniStatusBlock', { fg = colors.text, bg = colors.mantle, bold = true })
-
+  set_hl('MiniStatusBlock', { fg = colors.text, bg = colors.mantle, bold = false })
   set_hl('MiniStatuslineFilename', { fg = colors.surface1, bg = colors.crust })
-
   set_hl('MiniFilesTitle', { fg = colors.surface1, bg = colors.mantle })
   set_hl('MiniFilesTitleFocused', { fg = colors.rosewater, bg = colors.mantle, bold = true })
+
+  set_hl('MacroRecording', { fg = colors.red, bold = true })
+  set_hl('NoiceVirtualText', { fg = get_hl('Comment').fg })
 
   for _, diag in ipairs({ 'Error', 'Ok', 'Hint', 'Info', 'Warn' }) do
     local hl = 'Diagnostic' .. diag

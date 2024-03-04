@@ -10,8 +10,7 @@
     inputborder: #b4befe;
     selection: #f38ba8;
 
-    /* border-radius: 6px; */
-    border-radius: 0px;
+    border-radius: 7px;
 }
 
 @import "common.rasi"

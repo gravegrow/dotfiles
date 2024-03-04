@@ -1,5 +1,5 @@
 * {
-    font:   "JetBrainsMono Nerd Font Medium 12";
+    font:   "BerkeleyMono Nerd Font Mono Medium 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -40,7 +40,7 @@ inputbar {
     background-color:   @bg1;
     border-color:       @inputborder;
     border:         1px;
-    border-radius:  @border-radius;
+    border-radius:  0;
 
     padding:    8px 16px;
     spacing:    8px;
@@ -55,7 +55,7 @@ entry {
     placeholder:        "Search";
     placeholder-color:  @fg3;
     text-color: @fg4;
-    font:   "JetBrainsMono Nerd Font Bold 13";
+    font:   "BerkeleyMono Nerd Font Mono Bold 13";
 }
 
 message {
