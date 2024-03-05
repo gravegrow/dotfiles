@@ -6,8 +6,7 @@ local xresources = require('beautiful.xresources')
 local rnotification = require('ruled.notification')
 local dpi = xresources.apply_dpi
 
-local gfs = require('gears.filesystem')
-local themes_path = gfs.get_themes_dir()
+local gears = require('gears')
 
 local theme = {}
 
@@ -22,13 +21,18 @@ theme.layout_icons = { tile = '󰙀', max = '' }
 
 theme.app_inactive = '#45475a'
 theme.app_minimized = '#1e1e2e'
-theme.app_background = '#1e1e2e'
+theme.app_background = '#181825'
 
-theme.font = 'BerkeleyMono Nerd Font Mono Bold 8'
-theme.icon_font = 'BerkeleyMono Nerd Font Mono 10'
-theme.clock_font = 'BerkeleyMono Nerd Font Mono Bold 6'
+theme.font = 'BerkeleyMono Nerd Font Mono Bold 10'
+theme.icon_font = 'BerkeleyMono Nerd Font Mono 12'
+theme.clock_font = 'BerkeleyMono Nerd Font Mono Bold 8'
 
 theme.widget_background = '#0a0a10'
+theme.widget_shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 5) end
+theme.widget_margin = 2
+
+theme.sidebar_width = dpi(25)
+theme.sidebar_position = 'left'
 
 theme.bg_normal = '#11111b'
 theme.bg_focus = '#11111b'
@@ -43,8 +47,8 @@ theme.fg_minimize = '#585b70'
 
 theme.useless_gap = dpi(2)
 theme.border_width = dpi(1)
-theme.border_color_normal = '#000000'
-theme.border_color_active = '#535d6c'
+theme.border_color_normal = '#1e1e2e'
+theme.border_color_active = '#333444'
 theme.border_color_marked = '#91231c'
 
 theme.taglist_fg_focus = '#89b4fa'
@@ -57,7 +61,7 @@ theme.taglist_fg_empty = '#45475a'
 -- notification_[width|height|margin]
 -- notification_[border_color|border_width|shape|opacity]
 
-theme.wallpaper = themes_path .. 'default/background.png'
+theme.wallpaper = nil
 
 -- Set different colors for urgent notifications.
 rnotification.connect_signal(

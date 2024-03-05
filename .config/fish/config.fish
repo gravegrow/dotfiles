@@ -25,6 +25,7 @@ set --export PATH $PATH ~/.cargo/bin/
 
 set --export TMPDIR /tmp
 
+set --export  LOCALE_ARCHIVE "$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"
 
 fish_ssh_agent
 fish_add_path $HOME/.spicetify

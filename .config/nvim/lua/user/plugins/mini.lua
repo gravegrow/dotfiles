@@ -70,8 +70,8 @@ function M.statusline()
         local git = vim.b.gitsigns_head and ' ' .. vim.b.gitsigns_head or ''
         local lsp = section_lsp()
         local diagnostics = section_diagnostics({ trunc_width = 75 })
-        local icon, _ = devicons.get_icon(vim.api.nvim_buf_get_name(0), vim.bo.filetype)
-        icon = icon and ' ' .. icon or ''
+        local icon, _ = devicons.get_icon_by_filetype(vim.bo.filetype)
+        icon = icon and ' ' .. icon or ' '
         local filename = statusline.section_filename({ trunc_width = 140 }) .. icon
 
         return statusline.combine_groups({
