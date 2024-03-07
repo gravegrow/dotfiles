@@ -1,0 +1,11 @@
+{
+    "runtime.path": [
+        "weztypes/?/?.lua",
+        "?/init.lua",
+        "?.lua"
+    ],
+    "diagnostics.disable": [
+        "missing-fields",
+        "inject-field"
+    ]
+}

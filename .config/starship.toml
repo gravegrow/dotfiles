@@ -9,7 +9,7 @@ add_newline = true
 palette = 'overrides'
 
 [palettes.overrides]
-orange = "#FAB387"
+orange = "#C98F6C"
 
 [directory]
 truncation_length = 8

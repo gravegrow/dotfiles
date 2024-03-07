@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 folders="/media/storage/development/python $HOME/dotfiles/.config"
+
 selected=$(find $folders -mindepth 1 -maxdepth 1 -type d | fzf)
 
 if [[ -z $selected ]]; then
@@ -9,17 +10,48 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-if tmux has-session -t=$selected_name 2>/dev/null; then
-	tmux new-session -A -s $selected_name
+tmux_running=$(pgrep tmux)
+
+if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+	tmux new-session -s $selected_name -c $selected
 	exit 0
 fi
 
-if [[ -f "$selected/.tmux.session" ]]; then
-	tmux new-session -d -s $selected_name -c $selected
-	(cd "$selected" || return && /bin/bash "./.tmux.session")
-	tmux attach
-	exit 0
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
+	tmux new-session -ds $selected_name -c $selected
 fi
 
-tmux new-session -d -s $selected_name -c $selected nvim
-tmux attach
+tmux switch-client -t $selected_name
+
+# if tmux has-session -t=$selected_name 2>/dev/null; then
+# 	if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+# 		echo "here"
+# 		tmux switch-client -t $selected_name
+# 		exit 0
+# 	fi
+#
+# 	tmux new-session -A -s $selected_name
+# 	exit 0
+# fi
+#
+# if [[ -f "$selected/.tmux.session" ]]; then
+# 	tmux new-session -d -s $selected_name -c $selected
+# 	(cd "$selected" || return && /bin/bash "./.tmux.session")
+#
+# 	if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+# 		tmux switch-client -t $selected_name
+# 		exit 0
+# 	fi
+#
+# 	tmux attach
+# 	exit 0
+# fi
+#
+# tmux new-session -d -s $selected_name -c $selected nvim
+#
+# if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+# 	tmux switch-client -t $selected_name
+# 	exit 0
+# fi
+#
+# tmux attach
