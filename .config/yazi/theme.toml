@@ -1,13 +1,13 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [manager]
-hovered = { fg = "black", bg = "blue", bold = true }
-preview_hovered = { bg = "blue", fg = "black" }
-border_style = { fg = "#313244" }
-find_keyword = { fg = "#FAB387", bold = true }
+cwd = { fg = 'green', bold = true }
+hovered = { fg = '#bac2df', bg = "#25211f", bold = true }
+preview_hovered = { bg = "#25211f", bold = true }
+border_style = { fg = "#141110" }
+find_keyword = { fg = "#b77e64", bold = true }
 tab_active = { bg = "reset", fg = "#B4BEFE", bold = true }
 tab_inactive = { fg = "white", bg = "darkgray", bold = false }
-syntect_theme = "$HOME/dotfiles/.config/yazi/themes/Catppuccin-mocha_1_1.tmTheme"
 
 
 [status]
@@ -15,10 +15,10 @@ separator_open = ""
 separator_close = ""
 separator_style = { fg = "darkgray", bg = "black" }
 
-mode_normal = { bg = '#b4befe', fg = "black", bold = true }
-
-[tasks]
-border = { fg = "red" }
 
 [help]
 footer = { fg = "gray", bg = "black" }
+
+
+[filetype]
+rules = [{ name = "*", fg = "#9CA4AA" }, { name = "*/", fg = "#9A8F8A" }]

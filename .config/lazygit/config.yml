@@ -6,23 +6,11 @@ gui:
   showPanelJumps: true
   expandFocusedSidePanel: true
   theme:
-    activeBorderColor:
-      - blue
-      - bold
     inactiveBorderColor:
-      - "#585b70"
-    searchingActiveBorderColor:
-      - cyan
-      - bold
-    optionsTextColor:
-      - blue
+      - "#6E6763"
     selectedLineBgColor:
-      - "#181825" # set to `default` to have no background colour
+      - "#25211F"
     cherryPickedCommitBgColor:
       - cyan
-    cherryPickedCommitFgColor:
-      - blue
     unstagedChangesColor:
-      - red
-    defaultFgColor:
-      - default
+      - '#c76b77' 

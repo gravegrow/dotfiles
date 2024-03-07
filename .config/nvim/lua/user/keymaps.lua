@@ -27,16 +27,16 @@ vim.keymap.set('n', 'gf', ':edit <cfile><cr>', { desc = '[G]o to [F]ile' })
 vim.keymap.set({ 'n', 'v', 'x' }, 'q:', ':q<CR>', { desc = 'It was defenetly a typo and you are want to Quit' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('on-highlight-yank', { clear = true }),
-  callback = function() vim.highlight.on_yank({ higroup = 'Number' }) end,
+	desc = 'Highlight when yanking (copying) text',
+	group = vim.api.nvim_create_augroup('on-highlight-yank', { clear = true }),
+	callback = function() vim.highlight.on_yank({ higroup = 'YankHighlight' }) end,
 })
 
 for _, key in ipairs({ 'd', 'u', 'o', 'i' }) do
-  vim.keymap.set(
-    'n',
-    string.format('<c-%s>', key),
-    string.format('<c-%s>zz', key),
-    { desc = string.format('Center screen when moving with <C-%s>', key) }
-  )
+	vim.keymap.set(
+		'n',
+		string.format('<c-%s>', key),
+		string.format('<c-%s>zz', key),
+		{ desc = string.format('Center screen when moving with <C-%s>', key) }
+	)
 end
