@@ -83,6 +83,9 @@ M.custom_highlights = function(colors)
 		MiniFilesTitleFocused = { fg = colors.rosewater, bg = colors.mantle, bold = true },
 		MiniStatuslineModeVisual = { bg = colors.green, fg = colors.mantle },
 
+		GitSignsAddPreview = { bg = '#3B4439' },
+		GitSignsDeletePreview = { bg = '#402120' },
+
 		MacroRecording = { link = 'DiagnosticError' },
 		YankHighlight = { link = 'DiagnosticWarn' },
 	}
