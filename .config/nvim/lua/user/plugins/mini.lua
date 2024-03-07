@@ -2,7 +2,6 @@ local M = {}
 
 M.plugin = {
   'echasnovski/mini.nvim',
-  dependencies = { 'kyazdani42/nvim-web-devicons' },
   config = function()
     require('mini.ai').setup()
     require('mini.align').setup()

@@ -1,3 +1,4 @@
+-- print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
 local M = {}
 
 M.plugin = {
@@ -6,79 +7,111 @@ M.plugin = {
   lazy = false,
   priority = 1000,
   opts = {
-    flavour = 'mocha',
+    no_underline = true,
+    styles = {
+      comments = { 'italic' },
+      conditionals = { 'italic' },
+      loops = { 'bold' },
+      functions = {},
+      keywords = { 'bold' },
+      strings = { 'italic' },
+      variables = {},
+      numbers = {},
+      booleans = { 'italic' },
+      properties = {},
+      types = {},
+      operators = { 'bold' },
+    },
     integrations = {
       mini = { enabled = true },
       mason = true,
-      lsp_trouble = true,
     },
   },
   config = function(_, opts)
-    -- opts.color_overrides = { all = M.catbox_material }
+    opts.color_overrides = { all = M.dim_colors }
+    opts.custom_highlights = M.custom_highlights
+
     require('catppuccin').setup(opts)
     vim.cmd.colorscheme 'catppuccin'
 
-    M.apply_overrides(require('catppuccin.palettes').get_palette(opts.flavour))
+    M.set_special_buffers()
   end,
 }
 
----@return vim.api.keyset.hl_info
-local function get_hl(name) return vim.api.nvim_get_hl(0, { name = name }) end
-local function set_hl(name, opts) return vim.api.nvim_set_hl(0, name, opts) end
-local function override_hl(name, opts) set_hl(name, vim.tbl_extend('force', get_hl(name), opts)) end
+M.custom_highlights = function(colors)
+  local custom = {
+    Constant = { fg = colors.text, bold = true },
 
----@param colors CtpColors<string>
-function M.apply_overrides(colors)
-  override_hl('Normal', { bg = nil })
-  override_hl('NormalNC', { bg = nil })
+    ['@keyword.function'] = { bold = true },
+    ['@keyword.return'] = { bold = true },
+    ['@punctuation.bracket'] = { fg = colors.flamingo },
+    ['@variable.parameter'] = { italic = true },
 
-  override_hl('NormalSB', { bg = colors.mantle })
-  override_hl('SignColumnSB', { bg = colors.mantle })
+    FloatBorder = { fg = colors.mantle, bg = colors.mantle },
+    FloatTitle = { fg = colors.mantle, bg = colors.rosewater, bold = true },
+    NormalFloat = { bg = colors.mantle },
 
-  set_hl('SignColumn', { fg = colors.peach, bold = true })
+    NormalSB = { bg = colors.mantle },
+    SignColumnSB = { bg = colors.mantle },
 
-  override_hl('MsgArea', { bg = colors.mantle })
+    CursorLine = { bold = true },
+    CursorLineNr = { fg = colors.peach, bold = true },
 
-  set_hl('FloatBorder', { fg = colors.mantle, bg = colors.mantle })
-  set_hl('FloatTitle', { bg = colors.rosewater, fg = colors.mantle, bold = true })
+    NormalNC = { bg = colors.base },
+    Pmenu = { bg = colors.mantle },
 
-  override_hl('NormalFloat', { bg = colors.mantle })
-  override_hl('Pmenu', { bg = colors.mantle })
+    TelescopeNormal = { bg = colors.mantle },
+    TelescopeTitle = { fg = colors.crust, bold = true },
+    TelescopeSelection = { link = 'CursorLine' },
 
-  set_hl('CursorLineNr', { fg = colors.peach, bold = true })
-  override_hl('CursorLine', { bold = true })
+    TelescopePreviewNormal = { bg = colors.crust },
+    TelescopePreviewBorder = { fg = colors.crust, bg = colors.crust },
+    TelescopePreviewTitle = { bg = colors.lavender, fg = colors.base, bold = true },
 
-  set_hl('CmpDoc', { bg = colors.crust })
-  set_hl('CmpDocBorder', { fg = colors.crust, bg = colors.crust })
+    TelescopePromptBorder = { bg = colors.crust, fg = colors.crust },
+    TelescopePromptNormal = { bg = colors.crust },
+    TelescopePromptTitle = { fg = colors.crust, bg = colors.lavender, bold = true },
 
-  override_hl('TelescopeNormal', { bg = colors.mantle })
-  set_hl('TelescopeTitle', { fg = colors.crust, bg = colors.lavender, bold = true })
+    CmpDoc = { bg = colors.crust },
+    CmpDocBorder = { fg = colors.crust, bg = colors.crust },
 
-  set_hl('TelescopePreviewNormal', { bg = colors.base })
-  set_hl('TelescopePreviewBorder', { fg = colors.lavender })
-  set_hl('TelescopePreviewTitle', { fg = colors.lavender, bg = colors.base, bold = true })
+    MiniStatusListIcon = { fg = colors.mantle, bg = colors.peach },
+    MiniStatusBlock = { fg = colors.text, bg = colors.mantle, bold = false },
+    MiniStatuslineFilename = { fg = colors.surface1, bg = colors.crust },
+    MiniFilesTitle = { fg = colors.surface1, bg = colors.mantle },
+    MiniFilesTitleFocused = { fg = colors.rosewater, bg = colors.mantle, bold = true },
+    MiniStatuslineModeVisual = { bg = colors.green, fg = colors.mantle },
 
-  set_hl('TelescopePromptBorder', { bg = colors.crust, fg = colors.crust })
-  override_hl('TelescopePromptNormal', { bg = colors.crust })
+    MacroRecording = { fg = colors.red, bold = true },
+  }
 
-  set_hl('DiagnosticVirtualTextError', { bg = nil, fg = get_hl('DiagnosticVirtualTextError').fg })
+  colors.Error = '#c76b77'
+  colors.Warn = '#B77E64'
+  colors.Info = '#88bed7'
+  colors.Hint = '#B279A7'
+  colors.Ok = colors.text
 
-  set_hl('MiniStatusListIcon', { fg = colors.mantle, bg = colors.peach })
-  set_hl('MiniStatusBlock', { fg = colors.text, bg = colors.mantle, bold = false })
-  set_hl('MiniStatuslineFilename', { fg = colors.surface1, bg = colors.crust })
-  set_hl('MiniFilesTitle', { fg = colors.surface1, bg = colors.mantle })
-  set_hl('MiniFilesTitleFocused', { fg = colors.rosewater, bg = colors.mantle, bold = true })
-
-  set_hl('MacroRecording', { fg = colors.red, bold = true })
-  set_hl('NoiceVirtualText', { fg = get_hl('Comment').fg })
+  local groups = {
+    '',
+    'Sign',
+    'Floating',
+    'Underline',
+    'VirtualText',
+  }
 
   for _, diag in ipairs({ 'Error', 'Ok', 'Hint', 'Info', 'Warn' }) do
-    local hl = 'Diagnostic' .. diag
-    set_hl('DiagnosticUnderline' .. diag, { fg = get_hl(hl).fg, bold = true, italic = true })
+    for _, group in ipairs(groups) do
+      local name = 'Diagnostic' .. group .. diag
+      custom[name] = { fg = colors[diag], bg = nil, bold = true, italic = true }
+    end
 
-    set_hl('MiniStatus' .. diag, { fg = get_hl(hl).fg, bg = colors.crust })
+    custom['MiniStatus' .. diag] = { fg = colors[diag], bg = colors.mantle }
   end
 
+  return custom
+end
+
+function M.set_special_buffers()
   local group = vim.api.nvim_create_augroup('colorscheme-apply', { clear = true })
 
   vim.api.nvim_create_autocmd('ColorSchemePre', {
@@ -96,7 +129,7 @@ function M.apply_overrides(colors)
 
   vim.api.nvim_create_autocmd('FileType', {
     group = group,
-    pattern = { 'qf', 'help', 'terminal' },
+    pattern = { 'qf', 'help', 'terminal', 'undotree' },
     callback = set_whl,
   })
 
@@ -106,33 +139,33 @@ function M.apply_overrides(colors)
   })
 end
 
-M.catbox_material = {
-  base = '#1D2021',
-  blue = '#89B482',
-  crust = '#141617',
-  flamingo = '#EF9F76',
-  green = '#A9B665',
-  lavender = '#7DAEA3',
-  mantle = '#191919',
-  maroon = '#eba0ac',
-  mauve = '#EA6962',
-  overlay0 = '#504945',
-  overlay1 = '#D4BE98',
-  overlay2 = '#D4BE98',
-  peach = '#EF9F76',
-  pink = '#f5c2e7',
-  red = '#EA6962',
-  rosewater = '#f5e0dc',
-  sapphire = '#A9B665',
-  sky = '#E78A4E',
-  subtext0 = '#a6adc8',
-  subtext1 = '#bac2de',
-  surface0 = '#282828',
-  surface1 = '#3c3836',
-  surface2 = '#504945',
-  teal = '#94e2d5',
-  text = '#D4BE98',
-  yellow = '#D8A657',
+M.dim_colors = {
+  base = '#1C1917',
+  blue = '#b3bfd1',
+  crust = '#141110',
+  flamingo = '#837771',
+  green = '#a1aba0',
+  lavender = '#9CA4AA',
+  mantle = '#191515',
+  maroon = '#d4c4c7',
+  mauve = '#B3BBC3',
+  overlay0 = '#6E6763',
+  overlay1 = '#7f849d',
+  overlay2 = '#9CA4AA',
+  peach = '#9a8f89',
+  pink = '#e2d4df',
+  red = '#af9da2',
+  rosewater = '#c9b8b6',
+  sapphire = '#74c7ed',
+  sky = '#B4BDC3',
+  subtext0 = '#979FA4',
+  subtext1 = '#bac2df',
+  surface0 = '#2a2622',
+  surface1 = '#302b27',
+  surface2 = '#585b71',
+  teal = '#b0c4c1',
+  text = '#9CA4AA',
+  yellow = '#cfc5af',
 }
 
 return M.plugin

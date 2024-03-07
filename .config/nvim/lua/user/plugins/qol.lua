@@ -93,7 +93,6 @@ return {
     opts = {
       cmdline = { view = 'cmdline' },
       lsp = { signature = { enabled = false }, hover = { enabled = false } },
-      views = { mini = { win_options = { winhighlight = { Normal = 'Normal' } } } },
       messages = { enabled = true, view_search = false },
 
       routes = {

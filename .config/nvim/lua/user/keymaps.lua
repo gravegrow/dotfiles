@@ -24,7 +24,7 @@ vim.keymap.set('v', '>', '>gv', { desc = 'Move selection left, keep visual selec
 
 vim.keymap.set('n', 'gf', ':edit <cfile><cr>', { desc = '[G]o to [F]ile' })
 
-vim.keymap.set('n', 'q:', ':q<CR>', { desc = 'It was defenetly a typo and you are want to Quit' })
+vim.keymap.set({ 'n', 'v', 'x' }, 'q:', ':q<CR>', { desc = 'It was defenetly a typo and you are want to Quit' })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
   desc = 'Highlight when yanking (copying) text',
