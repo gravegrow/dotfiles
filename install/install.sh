@@ -8,10 +8,6 @@ install_nix() {
 	sh <(curl -L https://nixos.org/nix/install) --daemon
 }
 
-install_nix_packages() {
-	wezterm -e '$HOME/dotfiles/install/install-nix-packages.sh'
-}
-
 install_fish() {
 	sudo apt-add-repository ppa:fish-shell/release-3 -y
 	sudo nala install fish -y
@@ -48,5 +44,3 @@ install_wezterm
 install_neovim
 install_awesome
 install_fish
-
-install_nix_packages
