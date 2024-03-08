@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-folders="/media/storage/development/python $HOME/dotfiles/.config"
+folders="$HOME/dotfiles/.config"
 
 selected=$(find $folders -mindepth 1 -maxdepth 1 -type d | fzf)
 
@@ -9,7 +9,6 @@ if [[ -z $selected ]]; then
 fi
 
 selected_name=$(basename "$selected" | tr . _)
-
 tmux_running=$(pgrep tmux)
 
 if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then

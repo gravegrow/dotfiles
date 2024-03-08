@@ -17,10 +17,10 @@ install_fish() {
 	sudo chsh -s $(which fish) $USER
 }
 
-install_kitty() {
-	curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin
-	sudo ln -s ~/.local/kitty.app/bin/kitty /usr/bin/
-	sudo ln -s ~/.local/kitty.app/bin/kitten /usr/bin/
+install_wezterm() {
+	curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
+	echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
+	sudo nala install wezterm
 }
 
 install_neovim() {
@@ -43,9 +43,9 @@ install_other() {
 }
 
 install_nix
+install_wezterm
 install_fish
 install_other
 
 install_neovim
-install_kitty
 install_awesome
