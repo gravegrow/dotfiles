@@ -1,10 +1,10 @@
 { pkgs ? import <nixpkgs> {} }:
 [
   pkgs.eza
+  pkgs.tldr
   pkgs.tree
   pkgs.bat
   pkgs.btop
-  pkgs.git
   pkgs.lazygit
   pkgs.stow
   pkgs.tmux
@@ -13,6 +13,8 @@
   pkgs.starship
   pkgs.gpick
   pkgs.sxiv
-  pkgs.firefox
+  pkgs.cinnamon.nemo
+  # pkgs.firefox
   pkgs.brave
+  pkgs.glibcLocales
 ]

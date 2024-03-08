@@ -132,8 +132,9 @@ function M.special_cases()
 
 	for diag, color in pairs(colors) do
 		for _, grp in ipairs(groups) do
+			local italic = (grp == 'VirtualText' or grp == 'Underline') and true or false
 			local name = 'Diagnostic' .. grp .. diag
-			set_hl(name, { fg = color, bg = nil, bold = true, italic = true })
+			set_hl(name, { fg = color, bg = nil, bold = true, italic = italic })
 		end
 		set_hl('MiniStatus' .. diag, { fg = colors[diag], bg = colors.mantle })
 	end

@@ -1,14 +1,15 @@
 #/bin/bash
 
 sudo apt update -y
-sudo apt install nala -y
+sudo apt install nala curl git -y
 sudo nala upgrade -y
 
 install_nix() {
 	sh <(curl -L https://nixos.org/nix/install) --daemon
-	nix-env -if $HOME/dotfiles/install/packages.nix
-	nix-channel --add https://github.com/guibou/nixGL/archive/main.tar.gz nixgl && nix-channel --update
-	nix-env -iA nixgl.auto.nixGLDefault
+}
+
+install_nix_packages() {
+	wezterm -e '$HOME/dotfiles/install/install-nix-packages.sh'
 }
 
 install_fish() {
@@ -18,9 +19,9 @@ install_fish() {
 }
 
 install_wezterm() {
-	curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
-	echo 'deb [signed-by=/usr/share/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *' | sudo tee /etc/apt/sources.list.d/wezterm.list
-	sudo nala install wezterm
+	curl -LO https://github.com/wez/wezterm/releases/download/20240203-110809-5046fc22/wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
+	sudo nala install -y ./wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
+	rm wezterm-20240203-110809-5046fc22.Ubuntu22.04.deb
 }
 
 install_neovim() {
@@ -32,7 +33,7 @@ install_neovim() {
 
 install_awesome() {
 	sudo apt build-dep awesome
-	sudo nala install libxcb-xfixes0-dev xterm -y
+	sudo nala install libxcb-xfixes0-dev -y
 	git clone https://github.com/awesomewm/awesome /tmp/awesome
 	make -C /tmp/awesome package
 	sudo nala install /tmp/awesome/build/*.deb -y
@@ -44,8 +45,8 @@ install_other() {
 
 install_nix
 install_wezterm
-install_fish
-install_other
-
 install_neovim
 install_awesome
+install_fish
+
+install_nix_packages
