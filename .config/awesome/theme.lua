@@ -22,17 +22,17 @@ theme.app_inactive = '#45475a'
 theme.app_minimized = '#1e1e2e'
 theme.app_selected = theme.selected
 
-theme.font = 'BerkeleyMono Nerd Font Mono Bold 10'
+theme.font = 'BerkeleyMono Nerd Font Mono Bold 12'
 theme.icon_font = 'BerkeleyMono Nerd Font Mono 14'
-theme.clock_font = 'BerkeleyMono Nerd Font Mono Bold 8'
+theme.clock_font = 'BerkeleyMono Nerd Font Mono Bold 10'
 
-theme.sidebar_width = dpi(24)
+theme.sidebar_width = 35
 theme.sidebar_position = 'left'
-theme.sidebar_margin = -dpi(0)
+theme.sidebar_margin = 0
 
 theme.widget_background = '#0a0a0a'
 theme.widget_shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 5) end
-theme.widget_margin = dpi(2)
+theme.widget_margin = 5
 
 theme.green = '#A1ABA0'
 theme.bg_normal = '#141110'

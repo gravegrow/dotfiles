@@ -15,12 +15,15 @@ theme.init(gears.filesystem.get_configuration_dir() .. 'theme.lua')
 
 local widgets = require('widgets')
 
-awful.spawn('/usr/libexec/polkit-gnome-authentication-agent-1')
-awful.spawn('/usr/libexec/gsd-xsettings')
-awful.spawn("gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark'")
-awful.spawn('gsettings set org.gnome.desktop.wm.preferences button-layout :')
+awful.spawn.with_shell('xrandr --output DisplayPort-1 --auto --mode "3440x1440_120.00" --set TearFree on')
+awful.spawn.with_shell('xrandr --output HDMI-A-0 --right-of DisplayPort-1 --auto --scale 1.3333x1.3333')
+awful.spawn.with_shell('xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank')
 
-local terminal = 'wezterm'
+awful.spawn('/usr/libexec/polkit-gnome-authentication-agent-1')
+-- awful.spawn('/usr/libexec/gsd-xsettings')
+-- awful.spawn('gsettings set org.gnome.desktop.interface gtk-theme "Yaru-dark"')
+-- awful.spawn('gsettings set org.gnome.desktop.wm.preferences button-layout :')
+
 local mods = {
 	SUPER = 'Mod4',
 	SHIFT = 'Shift',
@@ -68,14 +71,9 @@ screen.connect_signal(
 screen.connect_signal('request::desktop_decoration', function(self)
 	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, self, awful.layout.layouts[1])
 
-	local margin_side = theme.sidebar_position == 'left' and 'right' or 'left'
-
 	self.sidebar = awful.wibar({
 		position = theme.sidebar_position,
 		width = theme.sidebar_width,
-		margins = {
-			[margin_side] = theme.sidebar_margin,
-		},
 		screen = self,
 		widget = {
 			layout = wibox.layout.align.vertical,
@@ -99,6 +97,7 @@ screen.connect_signal('request::desktop_decoration', function(self)
 				widgets.volume(),
 				widgets.clock(),
 				widgets.power(),
+				wibox.widget.systray(),
 			},
 		},
 	})
@@ -108,11 +107,28 @@ end)
 
 -- {{{ Key bindings
 
+local apps = {
+	terminal = 'wezterm',
+	launcher = 'rofi -modi drun,run -show drun',
+	browser = 'firefox',
+	browser_alt = 'firefox --private-window',
+	file_explorer = 'wezterm -e yazi',
+	colorpicker = 'gpick --pick',
+	screenshot_region = 'flameshot gui',
+	screenshot_screen = 'flameshot screen -p ~/Pictures/screenshot.png',
+}
+
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER }, 'w', function() mouse.screen.sidebar.visible = not mouse.screen.sidebar.visible end),
 	awful.key({ mods.SUPER, mods.CONTROL }, 'r', awesome.restart),
-	awful.key({ mods.SUPER }, 'Return', function() awful.spawn(terminal) end),
+	awful.key({ mods.SUPER }, 'Return', function() awful.spawn(apps.terminal) end),
+	awful.key({ mods.SUPER }, 'f', function() awful.spawn(apps.browser) end),
+	awful.key({ mods.SUPER }, 'e', function() awful.spawn(apps.file_explorer) end),
+	awful.key({ mods.SUPER, mods.SHIFT }, 'f', function() awful.spawn(apps.browser_alt) end),
+	awful.key({ mods.SUPER }, 'p', function() awful.spawn(apps.screenshot_region) end),
+	awful.key({ mods.SUPER }, 'c', function() awful.spawn(apps.colorpicker) end),
+	awful.key({ mods.SUPER }, 'space', function() awful.spawn.with_shell(apps.launcher) end),
 })
 
 -- Tags related keybindings
@@ -288,6 +304,7 @@ ruled.client.connect_signal('request::rules', function()
 				'Wpa_gui',
 				'veromix',
 				'xtightvncviewer',
+				'Lutris',
 			},
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
 			-- and the name shown there might not match defined rules here.
@@ -341,3 +358,50 @@ client.connect_signal('mouse::enter', function(c)
 		raise = false,
 	})
 end)
+
+local multibox = {}
+multibox.name = 'hurz'
+multibox.arrange = function(p)
+	local workarea = p.workarea
+	local clients = p.clients
+
+	local terminal_width = 300
+	local master_width = 2000
+	local second_width = workarea.width - terminal_width - master_width - theme.useless_gap * 8
+
+	local geometry = {
+		height = workarea.height - theme.useless_gap * 2,
+		x = workarea.x + theme.useless_gap,
+		y = workarea.y + theme.useless_gap,
+	}
+
+	geometry.width = master_width
+	clients[1]:geometry(geometry)
+
+	geometry.width = terminal_width
+	geometry.x = geometry.x + master_width + theme.useless_gap * 3
+	clients[2]:geometry(geometry)
+
+	geometry.width = second_width
+	geometry.height = geometry.height / 2 - theme.useless_gap * 1.5
+	geometry.x = geometry.x + terminal_width + theme.useless_gap * 3
+	clients[3]:geometry(geometry)
+
+	geometry.y = geometry.y + geometry.height + theme.useless_gap * 3
+	clients[4]:geometry(geometry)
+
+	for i = 5, #clients do
+		local g = {}
+		g.width = 1200
+		g.height = 1200
+		g.x = workarea.width / 2 - g.height / 2
+		g.y = workarea.height / 2 - g.height / 2
+
+		clients[i]:geometry(g)
+		clients[i].floating = true
+		clients[i].ontop = true
+	end
+end
+
+awful.layout.set(multibox, screen[1].tags[6])
+awful.layout.set(multibox, screen[1].tags[7])

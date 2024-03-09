@@ -15,4 +15,11 @@
   pkgs.sxiv
   # pkgs.cinnamon.nemo
   pkgs.glibcLocales
+  pkgs.fzf
+  pkgs.go
+  pkgs.nodejs_21
+  pkgs.cargo
+  pkgs.keepassxc
+  pkgs.gh
+  pkgs.rofi
 ]

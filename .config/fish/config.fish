@@ -7,6 +7,7 @@ alias bat='batcat'
 
 alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
+set -U fish_color_autosugestion '#232120'
 
 fish_vi_key_bindings
 
