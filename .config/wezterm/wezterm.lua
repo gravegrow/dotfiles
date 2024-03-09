@@ -7,6 +7,7 @@ config.window_close_confirmation = 'NeverPrompt'
 config.window_padding = { bottom = 0 }
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
+config.disable_default_key_bindings = true
 
 config.colors = {
 	background = '#1C1917',
@@ -37,6 +38,16 @@ config.colors = {
 }
 
 config.keys = {
+	{
+		key = '+',
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.IncreaseFontSize,
+	},
+	{
+		key = '_',
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.DecreaseFontSize,
+	},
 	{
 		key = 'i',
 		mods = 'CTRL|SHIFT',

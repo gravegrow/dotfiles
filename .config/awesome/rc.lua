@@ -11,10 +11,9 @@ local theme = require('beautiful')
 local naughty = require('naughty')
 local ruled = require('ruled')
 
-local widgets = require('widgets')
-local utils = require('widgets.utils')
-
 theme.init(gears.filesystem.get_configuration_dir() .. 'theme.lua')
+
+local widgets = require('widgets')
 
 awful.spawn('/usr/libexec/polkit-gnome-authentication-agent-1')
 awful.spawn('/usr/libexec/gsd-xsettings')
@@ -69,9 +68,14 @@ screen.connect_signal(
 screen.connect_signal('request::desktop_decoration', function(self)
 	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, self, awful.layout.layouts[1])
 
+	local margin_side = theme.sidebar_position == 'left' and 'right' or 'left'
+
 	self.sidebar = awful.wibar({
 		position = theme.sidebar_position,
 		width = theme.sidebar_width,
+		margins = {
+			[margin_side] = theme.sidebar_margin,
+		},
 		screen = self,
 		widget = {
 			layout = wibox.layout.align.vertical,

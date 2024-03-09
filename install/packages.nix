@@ -13,8 +13,6 @@
   pkgs.starship
   pkgs.gpick
   pkgs.sxiv
-  pkgs.cinnamon.nemo
-  # pkgs.firefox
-  pkgs.brave
+  # pkgs.cinnamon.nemo
   pkgs.glibcLocales
 ]
