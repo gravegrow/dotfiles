@@ -13,7 +13,7 @@
   pkgs.starship
   pkgs.gpick
   pkgs.sxiv
-  # pkgs.cinnamon.nemo
+  pkgs.cinnamon.nemo
   pkgs.glibcLocales
   pkgs.fzf
   pkgs.go
@@ -22,4 +22,5 @@
   pkgs.keepassxc
   pkgs.gh
   pkgs.rofi
+  pkgs.pavucontrol
 ]

@@ -36,7 +36,7 @@ install_awesome() {
 }
 
 install_other() {
-	sudo nala install xdotool -y
+	sudo nala install xdotool python3-pip python3-venv blueman -y
 }
 
 install_nix

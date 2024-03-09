@@ -94,10 +94,10 @@ screen.connect_signal('request::desktop_decoration', function(self)
 			},
 			{
 				layout = wibox.layout.fixed.vertical,
+				wibox.widget.systray(),
 				widgets.volume(),
 				widgets.clock(),
 				widgets.power(),
-				wibox.widget.systray(),
 			},
 		},
 	})
