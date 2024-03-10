@@ -14,14 +14,24 @@ return function()
 		bottom = 3,
 		widget = wibox.container.margin,
 		buttons = gears.table.join(
-			awful.button({}, 1, function() awful.spawn('pactl set-sink-mute @DEFAULT_SINK@ toggle') end),
-			awful.button({}, 3, function() awful.spawn('gnome-control-center sound') end),
+			awful.button({}, 1, function()
+				awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+')
+				awesome.emit_signal('volume_change')
+			end),
+			awful.button({}, 3, function()
+				awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')
+				awesome.emit_signal('volume_change')
+			end),
 			awful.button({}, 4, function()
-				awful.spawn('pactl set-sink-volume @DEFAULT_SINK@ +5%')
+				awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%+')
 				awesome.emit_signal('volume_change')
 			end),
 			awful.button({}, 5, function()
-				awful.spawn('pactl set-sink-volume @DEFAULT_SINK@ -5%')
+				awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 1%-')
+				awesome.emit_signal('volume_change')
+			end),
+			awful.button({}, 2, function()
+				awful.spawn('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')
 				awesome.emit_signal('volume_change')
 			end)
 		),

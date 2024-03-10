@@ -13,7 +13,8 @@ local theme = {}
 theme.app_icons = {}
 theme.app_icons['org.wezfurlong.wezterm'] = { icon = '', color = '#b4befe' }
 theme.app_icons.default = { icon = '󰧭', color = '#a6adc8' }
-theme.app_icons.firefox = { icon = '', color = '#fab387' }
+theme.app_icons['Firefox-esr'] = { icon = '', color = '#fab387' }
+theme.app_icons['explorer.exe'] = { icon = '󰺷', color = '#921919' }
 
 theme.layout_icons = { tile = '󰙀', max = '' }
 theme.selected = '#25211E'
@@ -52,9 +53,13 @@ theme.border_color_normal = theme.bg_normal
 theme.border_color_active = theme.selected
 theme.border_color_marked = '#91231c'
 
+theme.floating_shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 10) end
+
 theme.taglist_fg_focus = '#89b4fa'
 theme.taglist_fg_occupied = '#45475a'
 theme.taglist_fg_empty = '#45475a'
+
+theme.systray_icon_spacing = 8
 
 -- Variables set for theming notifications:
 -- notification_font

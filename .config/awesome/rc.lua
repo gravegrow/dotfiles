@@ -19,10 +19,12 @@ awful.spawn.with_shell('xrandr --output DisplayPort-1 --auto --mode "3440x1440_1
 awful.spawn.with_shell('xrandr --output HDMI-A-0 --right-of DisplayPort-1 --auto --scale 1.3333x1.3333')
 awful.spawn.with_shell('xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank')
 
-awful.spawn('/usr/libexec/polkit-gnome-authentication-agent-1')
--- awful.spawn('/usr/libexec/gsd-xsettings')
--- awful.spawn('gsettings set org.gnome.desktop.interface gtk-theme "Yaru-dark"')
--- awful.spawn('gsettings set org.gnome.desktop.wm.preferences button-layout :')
+awful.spawn.once('picom')
+awful.spawn('openrgb -p main')
+awful.spawn.once('/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1')
+awful.spawn.once('/usr/libexec/gsd-xsettings')
+awful.spawn('gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"')
+awful.spawn('gsettings set org.gnome.desktop.wm.preferences button-layout :')
 
 local mods = {
 	SUPER = 'Mod4',
@@ -71,6 +73,15 @@ screen.connect_signal(
 screen.connect_signal('request::desktop_decoration', function(self)
 	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, self, awful.layout.layouts[1])
 
+	self.systray = {
+		{
+			widget = wibox.widget.systray,
+			horizontal = false,
+		},
+		margins = 8,
+		widget = wibox.container.margin,
+	}
+
 	self.sidebar = awful.wibar({
 		position = theme.sidebar_position,
 		width = theme.sidebar_width,
@@ -94,7 +105,7 @@ screen.connect_signal('request::desktop_decoration', function(self)
 			},
 			{
 				layout = wibox.layout.fixed.vertical,
-				wibox.widget.systray(),
+				self.systray,
 				widgets.volume(),
 				widgets.clock(),
 				widgets.power(),
@@ -110,8 +121,9 @@ end)
 local apps = {
 	terminal = 'wezterm',
 	launcher = 'rofi -modi drun,run -show drun',
-	browser = 'firefox',
-	browser_alt = 'firefox --private-window',
+	browser = 'firefox-esr',
+	browser_alt = 'brave-browser',
+	browser_private = 'firefox-esr --private-window',
 	file_explorer = 'wezterm -e yazi',
 	colorpicker = 'gpick --pick',
 	screenshot_region = 'flameshot gui',
@@ -124,11 +136,28 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER, mods.CONTROL }, 'r', awesome.restart),
 	awful.key({ mods.SUPER }, 'Return', function() awful.spawn(apps.terminal) end),
 	awful.key({ mods.SUPER }, 'f', function() awful.spawn(apps.browser) end),
+	awful.key({ mods.SUPER }, 'b', function() awful.spawn(apps.browser_alt) end),
 	awful.key({ mods.SUPER }, 'e', function() awful.spawn(apps.file_explorer) end),
-	awful.key({ mods.SUPER, mods.SHIFT }, 'f', function() awful.spawn(apps.browser_alt) end),
+	awful.key({ mods.SUPER, mods.SHIFT }, 'b', function() awful.spawn(apps.browser_private) end),
 	awful.key({ mods.SUPER }, 'p', function() awful.spawn(apps.screenshot_region) end),
 	awful.key({ mods.SUPER }, 'c', function() awful.spawn(apps.colorpicker) end),
 	awful.key({ mods.SUPER }, 'space', function() awful.spawn.with_shell(apps.launcher) end),
+})
+
+-- Volume
+awful.keyboard.append_global_keybindings({
+	awful.key({}, '#123', function()
+		awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+')
+		awesome.emit_signal('volume_change')
+	end),
+	awful.key({}, '#122', function()
+		awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')
+		awesome.emit_signal('volume_change')
+	end),
+	awful.key({}, '#121', function()
+		awful.spawn('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')
+		awesome.emit_signal('volume_change')
+	end),
 })
 
 -- Tags related keybindings
@@ -252,12 +281,14 @@ client.connect_signal('request::default_keybindings', function()
 			{ description = 'move to master' }
 		),
 		awful.key({ mods.SUPER, mods.SHIFT }, 'q', function(c) c:kill() end, { description = 'close' }),
-		awful.key(
-			{ mods.SUPER, mods.SHIFT },
-			'space',
-			awful.client.floating.toggle,
-			{ description = 'toggle floating' }
-		),
+		awful.key({ mods.SUPER, mods.SHIFT }, 'space', function(c)
+			awful.client.floating.toggle()
+			if c.floating then
+				c.shape = theme.floating_shape
+			else
+				c.shape = gears.shape.rectangle
+			end
+		end, { description = 'toggle floating' }),
 		awful.key({ mods.SUPER }, 'o', function(c) c:move_to_screen() end, { description = 'move to screen' }),
 		awful.key({ mods.SUPER }, 'n', function(c) c.minimized = true end, { description = 'minimize' }),
 	})
@@ -266,6 +297,7 @@ end)
 -- }}}
 
 -- {{{ Rules
+
 -- Rules to apply to new clients.
 ruled.client.connect_signal('request::rules', function()
 	-- All clients will match this rule.
@@ -277,49 +309,35 @@ ruled.client.connect_signal('request::rules', function()
 			raise = true,
 			screen = awful.screen.preferred,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
-			maximized_vertical = false,
-			maximized_horizontal = false,
 		},
 
 		callback = awful.client.setslave,
 	})
 
-	-- Floating clients.
-	client.connect_signal('property::floating', function(c) c.ontop = c.floating end)
-
 	ruled.client.append_rule({
 		id = 'floating',
 		rule_any = {
-			instance = {
-				'copyq',
-				'pinentry',
-			},
+			instance = {},
 			class = {
 				'Arandr',
 				'Blueman-manager',
 				'Gpick',
-				'Kruler',
-				'Sxiv',
-				'Tor Browser',
-				'Wpa_gui',
-				'veromix',
-				'xtightvncviewer',
 				'Lutris',
+				'gnome-calculator',
+				'gnome-calendar',
 			},
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
 			-- and the name shown there might not match defined rules here.
 			name = {
 				'Event Tester', -- xev.
 			},
-			role = {
-				'AlarmWindow', -- Thunderbird's calendar.
-				'ConfigManager', -- Thunderbird's about:config.
-				'pop-up', -- e.g. Google Chrome's (detached) Developer Tools.
-			},
+			role = {},
 		},
 		properties = {
 			floating = true,
+			shape = theme.floating_shape,
 		},
+		callback = function(c) awful.placement.centered(c) end,
 	})
 
 	-- Set Firefox to always map on the tag named "2" on screen 1.
@@ -359,47 +377,48 @@ client.connect_signal('mouse::enter', function(c)
 	})
 end)
 
+client.connect_signal('property::floating', function(c) c.ontop = c.floating and not c.fullscreen end)
+
 local multibox = {}
-multibox.name = 'hurz'
+multibox.name = 'multibox'
 multibox.arrange = function(p)
 	local workarea = p.workarea
 	local clients = p.clients
 
-	local terminal_width = 300
+	local terminal_width = 200
 	local master_width = 2000
-	local second_width = workarea.width - terminal_width - master_width - theme.useless_gap * 8
+	local second_width = workarea.width - terminal_width - master_width
 
 	local geometry = {
-		height = workarea.height - theme.useless_gap * 2,
-		x = workarea.x + theme.useless_gap,
-		y = workarea.y + theme.useless_gap,
+		height = workarea.height,
+		x = workarea.x,
+		y = workarea.y,
 	}
 
 	geometry.width = master_width
 	clients[1]:geometry(geometry)
 
 	geometry.width = terminal_width
-	geometry.x = geometry.x + master_width + theme.useless_gap * 3
+	geometry.x = geometry.x + master_width
 	clients[2]:geometry(geometry)
 
 	geometry.width = second_width
-	geometry.height = geometry.height / 2 - theme.useless_gap * 1.5
-	geometry.x = geometry.x + terminal_width + theme.useless_gap * 3
-	clients[3]:geometry(geometry)
-
-	geometry.y = geometry.y + geometry.height + theme.useless_gap * 3
+	geometry.height = geometry.height / 2
+	geometry.x = geometry.x + terminal_width
 	clients[4]:geometry(geometry)
+
+	geometry.y = geometry.y + geometry.height
+	clients[3]:geometry(geometry)
 
 	for i = 5, #clients do
 		local g = {}
-		g.width = 1200
-		g.height = 1200
-		g.x = workarea.width / 2 - g.height / 2
-		g.y = workarea.height / 2 - g.height / 2
+		g.width = 1280
+		g.height = 720
 
 		clients[i]:geometry(g)
 		clients[i].floating = true
 		clients[i].ontop = true
+		awful.placement.centered(clients[i])
 	end
 end
 

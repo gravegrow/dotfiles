@@ -20,7 +20,7 @@ local widget = function(screen)
 
 	local result = awful.widget.tasklist({
 		screen = screen,
-		filter = awful.widget.tasklist.filter.currenttags,
+		filter = awful.widget.tasklist.filter.minimizedcurrenttags,
 		layout = { layout = wibox.layout.fixed.vertical, spacing = 2 },
 		buttons = {
 			awful.button({}, 1, function(c) c:activate({ context = 'tasklist' }) end),
@@ -30,10 +30,15 @@ local widget = function(screen)
 		},
 		widget_template = {
 			{
+				-- {
+				-- 	id = 'app_role',
+				-- 	widget = wibox.widget.text_role,
+				-- 	font = theme.icon_font,
+				-- },
 				{
-					id = 'app_role',
-					widget = wibox.widget.textbox,
-					font = theme.icon_font,
+					{ id = 'icon_role', widget = wibox.widget.imagebox },
+					margins = 5,
+					widget = wibox.container.margin,
 				},
 				halign = 'center',
 				valign = 'center',
@@ -44,8 +49,8 @@ local widget = function(screen)
 			forced_width = theme.sidebar_width,
 			shape = theme.widget_shape,
 			widget = wibox.container.background,
-			create_callback = icons_callback,
-			update_callback = icons_callback,
+			-- create_callback = icons_callback,
+			-- update_callback = icons_callback,
 		},
 	})
 
