@@ -2,8 +2,7 @@
 
 format = """
 $directory$git_branch$python$jobs
-$shell$character
-"""
+$shell$character"""
 
 add_newline = true
 palette = 'overrides'
@@ -33,4 +32,9 @@ format = "$symbol"
 [git_branch]
 style = "fg:green bg:black bold"
 symbol = "[  ](fg:black bg:green) 󰘬 "
-format = "[$symbol$branch ]($style)"
+format = "[󰘬 $branch ]($style)"
+
+[character]
+success_symbol = '[ ➤](#A1ABA0)'
+error_symbol = '[ ](#c76b77)'
+vimcmd_symbol = '[ ](#F9E2AF)'

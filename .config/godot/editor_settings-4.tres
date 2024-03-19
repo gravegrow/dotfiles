@@ -3,11 +3,12 @@
 [resource]
 interface/editor/accept_dialog_cancel_ok_buttons = 2
 interface/theme/preset = "Custom"
-interface/theme/base_color = Color(0.168627, 0.168627, 0.247059, 1)
+interface/theme/base_color = Color(0.2, 0.184314, 0.176471, 1)
 interface/theme/accent_color = Color(0.705882, 0.745098, 0.996078, 1)
-interface/theme/contrast = 0.2
+interface/theme/contrast = 0.3
 interface/theme/icon_saturation = 0.6
 interface/theme/corner_radius = 6
+interface/multi_window/restore_windows_on_load = false
 filesystem/directories/default_project_path = "/media/storage/development"
 filesystem/file_dialog/show_hidden_files = true
 filesystem/import/fbx/fbx2gltf_path = "/media/storage/software/godot/FBX2glTF-linux-x86_64/FBX2glTF-linux-x86_64"
@@ -174,6 +175,12 @@ text_editor/theme/highlighting/comment_markers/notice_list = "INFO,NOTE,NOTICE,T
 metadata/script_setup_templates_dictionary = {
 "": "0ObjectEmpty",
 "3": "0ObjectEmpty",
+"A": "0ObjectEmpty",
+"Ac": "0ObjectEmpty",
+"Act": "0ObjectEmpty",
+"Acti": "0ObjectEmpty",
+"Actio": "0ObjectEmpty",
+"Action": "0ObjectEmpty",
 "Area3D": "0NodeDefault",
 "CSGBox3D": "0NodeDefault",
 "Camera3D": "0NodeDefault",
@@ -189,6 +196,7 @@ metadata/script_setup_templates_dictionary = {
 "Labe": "0ObjectEmpty",
 "Label": "0NodeDefault",
 "LineEdit": "0NodeDefault",
+"MeshInstance3D": "0NodeDefault",
 "N": "0ObjectEmpty",
 "No": "0ObjectEmpty",
 "Nod": "0ObjectEmpty",
@@ -204,6 +212,7 @@ metadata/script_setup_templates_dictionary = {
 "Re": "0ObjectEmpty",
 "Res": "0ObjectEmpty",
 "Reso": "0ObjectEmpty",
+"Resoi": "0ObjectEmpty",
 "Resou": "0ObjectEmpty",
 "Resour": "0ObjectEmpty",
 "Resourc": "0ObjectEmpty",

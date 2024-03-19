@@ -19,8 +19,25 @@
   pkgs.go
   pkgs.nodejs_21
   pkgs.cargo
-  pkgs.keepassxc
   pkgs.gh
   pkgs.rofi
   pkgs.pavucontrol
+  pkgs.cargo
+  pkgs.fd
+  pkgs.feh
+  pkgs.gh
+  pkgs.glibc
+  pkgs.gnome-calculator
+  pkgs.gnome-calendar
+  pkgs.go
+  pkgs.gpick
+  pkgs.jq
+  pkgs.keepassxc
+  pkgs.lorien
+  pkgs.nodejs
+  pkgs.perl
+  pkgs.poppler
+  pkgs.protonup
+  pkgs.telegram
+  pkgs.unar
 ]

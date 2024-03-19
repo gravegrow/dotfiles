@@ -60,8 +60,9 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- Disable highlighting on search
-vim.opt.hlsearch = false
+-- Highlighting on search
+vim.opt.hlsearch = true
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlighting after serch' })
 
 -- Hide characters after at the end of a buffer
 vim.opt.fillchars = { eob = ' ' }
@@ -79,7 +80,7 @@ vim.opt.linebreak = true
 
 -- Autoformating
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-  desc = 'Changes formatting options',
-  group = vim.api.nvim_create_augroup('on-formatopts', { clear = true }),
-  callback = function() vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) end,
+	desc = 'Changes formatting options',
+	group = vim.api.nvim_create_augroup('on-formatopts', { clear = true }),
+	callback = function() vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) end,
 })

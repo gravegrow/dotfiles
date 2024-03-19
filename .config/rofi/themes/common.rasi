@@ -60,7 +60,7 @@ entry {
 
 message {
     margin:             12px 0 0;
-    border-radius:      @border-radius;
+    border-radius:      5;
     border-color:       @bg2;
     background-color:   @bg2;
 }
@@ -82,7 +82,7 @@ listview {
 element {
     padding:        8px 16px;
     spacing:        8px;
-    border-radius:  @border-radius;
+    border-radius:  5px;
 }
 
 element normal active {

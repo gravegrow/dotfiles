@@ -3,9 +3,7 @@ alias la='exa -la --icons --group-directories-first'
 alias tree="tree -C"
 alias py='python3'
 alias python='python3'
-alias bat='batcat'
 
-alias dotfiles="git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
 
 set -U fish_color_autosugestion '#232120'
 
@@ -46,3 +44,5 @@ end
 starship init fish | source
 enable_transience
 
+
+fish_add_path /home/gravegrow/.spicetify

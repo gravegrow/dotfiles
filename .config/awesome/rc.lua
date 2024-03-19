@@ -84,6 +84,7 @@ screen.connect_signal('request::desktop_decoration', function(self)
 
 	self.sidebar = awful.wibar({
 		position = theme.sidebar_position,
+		-- position = self == screen[1] and 'right' or 'left',
 		width = theme.sidebar_width,
 		screen = self,
 		widget = {
@@ -192,10 +193,9 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER, mods.SHIFT }, 'n', function()
 		local c = awful.client.restore()
 		-- Focus restored client
-		if c then c:activate({
-			raise = true,
-			context = 'key.unminimize',
-		}) end
+		if c then
+			c:activate({ raise = true, context = 'key.unminimize' })
+		end
 	end, {
 		description = 'restore minimized',
 		group = 'client',
@@ -239,7 +239,9 @@ awful.keyboard.append_global_keybindings({
 		on_press = function(index)
 			local screen = awful.screen.focused()
 			local tag = screen.tags[index]
-			if tag then tag:view_only() end
+			if tag then
+				tag:view_only()
+			end
 		end,
 	}),
 	awful.key({
@@ -250,7 +252,9 @@ awful.keyboard.append_global_keybindings({
 		on_press = function(index)
 			if client.focus then
 				local tag = client.focus.screen.tags[index]
-				if tag then client.focus:move_to_tag(tag) end
+				if tag then
+					client.focus:move_to_tag(tag)
+				end
 			end
 		end,
 	}),
@@ -283,11 +287,12 @@ client.connect_signal('request::default_keybindings', function()
 		awful.key({ mods.SUPER, mods.SHIFT }, 'q', function(c) c:kill() end, { description = 'close' }),
 		awful.key({ mods.SUPER, mods.SHIFT }, 'space', function(c)
 			awful.client.floating.toggle()
-			if c.floating then
-				c.shape = theme.floating_shape
-			else
-				c.shape = gears.shape.rectangle
-			end
+
+			-- if c.floating then
+			-- 	c.shape = theme.floating_shape
+			-- else
+			-- 	c.shape = gears.shape.rectangle
+			-- end
 		end, { description = 'toggle floating' }),
 		awful.key({ mods.SUPER }, 'o', function(c) c:move_to_screen() end, { description = 'move to screen' }),
 		awful.key({ mods.SUPER }, 'n', function(c) c.minimized = true end, { description = 'minimize' }),
@@ -308,9 +313,8 @@ ruled.client.connect_signal('request::rules', function()
 			focus = awful.client.focus.filter,
 			raise = true,
 			screen = awful.screen.preferred,
-			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+			placement = awful.placement.centered + awful.placement.no_offscreen,
 		},
-
 		callback = awful.client.setslave,
 	})
 
@@ -335,16 +339,24 @@ ruled.client.connect_signal('request::rules', function()
 		},
 		properties = {
 			floating = true,
-			shape = theme.floating_shape,
+			-- shape = theme.floating_shape,
 		},
-		callback = function(c) awful.placement.centered(c) end,
 	})
 
-	-- Set Firefox to always map on the tag named "2" on screen 1.
-	-- ruled.client.append_rule {
-	--     rule       = { class = "Firefox"     },
-	--     properties = { screen = 1, tag = "2" }
-	-- }
+	ruled.client.append_rule({
+		rule = { class = 'discord' },
+		properties = { screen = 2, tag = '2' },
+	})
+
+	ruled.client.append_rule({
+		rule = { class = 'Spotify' },
+		properties = { screen = 2, tag = '3' },
+	})
+
+	ruled.client.append_rule({
+		rule = { class = 'qBittorrent' },
+		properties = { screen = 2, tag = '5' },
+	})
 end)
 -- }}}
 
@@ -377,7 +389,21 @@ client.connect_signal('mouse::enter', function(c)
 	})
 end)
 
-client.connect_signal('property::floating', function(c) c.ontop = c.floating and not c.fullscreen end)
+client.connect_signal('property::maximized', function(c)
+	if not c.maximized then
+		return
+	end
+	c.maximized = false
+end)
+
+client.connect_signal('property::floating', function(c)
+	c.ontop = c.floating and not c.fullscreen
+
+	if c.floating then
+		awful.placement.centered(c)
+		awful.placement.no_offscreen(c)
+	end
+end)
 
 local multibox = {}
 multibox.name = 'multibox'
@@ -386,7 +412,7 @@ multibox.arrange = function(p)
 	local clients = p.clients
 
 	local terminal_width = 200
-	local master_width = 2000
+	local master_width = 2045
 	local second_width = workarea.width - terminal_width - master_width
 
 	local geometry = {

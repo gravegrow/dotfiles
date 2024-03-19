@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.font = wezterm.font 'BerkeleyMono Nerd Font Mono'
-config.font_size = 15
+config.font_size = 14
 config.window_close_confirmation = 'NeverPrompt'
 config.window_padding = { top = config.font_size, bottom = config.font_size, left = '1cell', right = '1cell' }
 config.enable_tab_bar = false
@@ -41,7 +41,7 @@ config.keys = {
 		key = 'i',
 		mods = 'CTRL|SHIFT',
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = { 'tmux', 'new-session', '-s', 'Sessions', '~/.config/scripts/tmux-sessionizer' },
+			args = { 'tmux', 'new-session', '-As', 'Sessions', '~/.config/scripts/tmux-sessionizer' },
 		}),
 	},
 }
