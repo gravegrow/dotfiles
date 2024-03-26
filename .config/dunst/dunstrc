@@ -3,7 +3,7 @@ frame_color = "#352E2B"
 frame_width = 1
 separator_color= frame
 separator_height = 1
-corner_radius = 10
+corner_radius = 7
 
 origin = top-right
 offset = 10x30
@@ -21,7 +21,7 @@ scale = 1
 show_indicators = no
 
 enable_recursive_icon_lookup = true
-icon_theme = "Numix"
+icon_theme = "Papirus-Dark"
 
 [spotify]
 appname = "Spotify"

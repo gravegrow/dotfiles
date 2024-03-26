@@ -46,3 +46,5 @@ enable_transience
 
 
 fish_add_path /home/gravegrow/.spicetify
+pyenv init - | source
+

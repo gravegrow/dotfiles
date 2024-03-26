@@ -27,8 +27,8 @@
   pkgs.feh
   pkgs.gh
   pkgs.glibc
-  pkgs.gnome-calculator
-  pkgs.gnome-calendar
+  pkgs.gnome.gnome-calculator
+  pkgs.gnome.gnome-calendar
   pkgs.go
   pkgs.gpick
   pkgs.jq
@@ -38,6 +38,6 @@
   pkgs.perl
   pkgs.poppler
   pkgs.protonup
-  pkgs.telegram
+  pkgs.telegram-desktop
   pkgs.unar
 ]

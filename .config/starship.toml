@@ -1,40 +1,32 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$directory$git_branch$python$jobs
-$shell$character"""
+$directory$git_branch$python
+$jobs$character"""
 
 add_newline = true
-palette = 'overrides'
-
-[palettes.overrides]
-orange = "#C98F6C"
 
 [directory]
 truncation_length = 8
 home_symbol = "~"
-format = "[  ](bg:blue fg:black)[ $path ](bg:black fg:blue bold)"
-
-[jobs]
-symbol = ' [󰶳](red)'
-symbol_threshold = 1
-
-[shell]
-disabled = false
-fish_indicator = ""
-format = "$indicator"
-bash_indicator = "[ 󱆃 ](bg:red fg:black)[ bash ](fg:red bg:black)"
+style = "fg:blue bold"
+format = "[ $path ]($style bold)"
 
 [python]
-symbol = "[ ](fg:orange bg:black)"
-format = "$symbol"
+style = "fg:#C98F6C bold"
+symbol = "[ ]($style)"
+format = "$symbol[$version](bold)"
 
 [git_branch]
-style = "fg:green bg:black bold"
-symbol = "[  ](fg:black bg:green) 󰘬 "
-format = "[󰘬 $branch ]($style)"
+style = "fg:green bold"
+symbol = "󰘬"
+format = "[$symbol $branch ]($style)"
 
 [character]
-success_symbol = '[ ➤](#A1ABA0)'
-error_symbol = '[ ](#c76b77)'
-vimcmd_symbol = '[ ](#F9E2AF)'
+success_symbol = '[➤](#A1ABA0)'
+error_symbol = '[](#c76b77)'
+vimcmd_symbol = '[](#F9E2AF)'
+
+[jobs]
+symbol = '[](#A6E3A1)'
+symbol_threshold = 1

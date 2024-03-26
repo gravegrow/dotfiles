@@ -43,6 +43,7 @@ return {
 			capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 			local servers = {
+				-- basedpyright = {},
 				pyright = {},
 				ruff_lsp = {},
 				taplo = {},
@@ -179,11 +180,7 @@ return {
 					{ name = 'nvim_lsp' },
 					{ name = 'luasnip' },
 					{ name = 'path' },
-					{ name = 'buffer' },
-				},
-				performance = {
-					max_view_entries = 15,
-					-- fetching_timeout = 80,
+					-- { name = 'buffer' },
 				},
 			})
 

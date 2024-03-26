@@ -144,7 +144,7 @@ global proc shelf_Main () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "from toolset import renamer\n\nrenamer.batch_rename()" 
+        -command "import subprocess\nimport tempfile\nfrom typing import Generator, Tuple\n\nfrom maya import cmds\nfrom maya.api import OpenMaya as om\n\n\ndef generate_file_from_selection(selection: Tuple[om.MObject]) -> str:\n    with tempfile.NamedTemporaryFile(\"w\", delete=False) as file:\n        for mob in selection:\n            fn_dep = om.MFnDependencyNode(mob)\n            file.write(f\"{fn_dep.name()}\\n\")\n\n        file.close()\n        return file.name\n\n\ndef iterate_selection() -> Generator[om.MObject, None, None]:\n    selection: om.MSelectionList = om.MGlobal.getActiveSelectionList()\n\n    for index in range(0, selection.length()):\n        yield selection.getDependNode(index)\n\n\ndef batch_rename(terminal: str = \"wezterm\", editor: str = \"nvim\"):\n    selection = tuple(iterate_selection())\n\n    if not selection:\n        cmds.warning(\"Nothing is selected\")\n        return\n\n    file = generate_file_from_selection(selection)\n    subprocess.Popen([terminal, \"-e\", editor, file])\n\n    with open(file, encoding=\"utf-8\") as file:\n        names = file.read().splitlines()\n        file.close()\n\n    if len(names) != len(selection):\n        cmds.error(\"Output entry count missmatch.\")\n\n    dag_mod = om.MDGModifier()\n\n    for index, name in enumerate(names):\n        mob = selection[index]\n        dag_mod.renameNode(mob, name)\n\n    dag_mod.doIt()\n\nbatch_rename()\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1

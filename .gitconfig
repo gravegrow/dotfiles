@@ -1,3 +1,5 @@
 [user]
 	email = gravegrow@gmail.com
 	name = gravegrow
+[init]
+	defaultBranch = master

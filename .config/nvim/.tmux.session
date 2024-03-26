@@ -1,2 +1,1 @@
-send-keys 'nvim'
-new-window -n 'NVIM'
+send-keys 'nvim' ENTER
