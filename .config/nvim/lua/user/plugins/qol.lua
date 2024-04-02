@@ -77,7 +77,7 @@ return {
 
 			local toggle_opts = { title = ' Harpoon ', title_pos = 'center' }
 			vim.keymap.set('n', '<leader>a', function() harpoon:list():append() end)
-			vim.keymap.set('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end)
+			vim.keymap.set('n', '<leader>e', function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end)
 
 			vim.keymap.set('n', '<C-h>', function() harpoon:list():select(1) end)
 			vim.keymap.set('n', '<C-j>', function() harpoon:list():select(2) end)

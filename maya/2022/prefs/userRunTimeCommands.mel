@@ -29,7 +29,7 @@ runTimeCommand
 	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import rig_tools.creator as creator\n\ncreator.Joint()")
+	-command ("from mayatoolset.api import nodes\n\nnodes.create_joint()")
 	CreateJoint;
 
 runTimeCommand
@@ -44,7 +44,7 @@ runTimeCommand
 	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import rig_tools.creator as creator\n\ncreator.Static()")
+	-command ("from mayatoolset.api import nodes\n\nnodes.create_static()")
 	CreateStatic;
 
 runTimeCommand

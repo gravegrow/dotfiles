@@ -144,7 +144,7 @@ global proc shelf_Main () {
         -style "iconOnly" 
         -marginWidth 1
         -marginHeight 1
-        -command "import subprocess\nimport tempfile\nfrom typing import Generator, Tuple\n\nfrom maya import cmds\nfrom maya.api import OpenMaya as om\n\n\ndef generate_file_from_selection(selection: Tuple[om.MObject]) -> str:\n    with tempfile.NamedTemporaryFile(\"w\", delete=False) as file:\n        for mob in selection:\n            fn_dep = om.MFnDependencyNode(mob)\n            file.write(f\"{fn_dep.name()}\\n\")\n\n        file.close()\n        return file.name\n\n\ndef iterate_selection() -> Generator[om.MObject, None, None]:\n    selection: om.MSelectionList = om.MGlobal.getActiveSelectionList()\n\n    for index in range(0, selection.length()):\n        yield selection.getDependNode(index)\n\n\ndef batch_rename(terminal: str = \"wezterm\", editor: str = \"nvim\"):\n    selection = tuple(iterate_selection())\n\n    if not selection:\n        cmds.warning(\"Nothing is selected\")\n        return\n\n    file = generate_file_from_selection(selection)\n    subprocess.Popen([terminal, \"-e\", editor, file])\n\n    with open(file, encoding=\"utf-8\") as file:\n        names = file.read().splitlines()\n        file.close()\n\n    if len(names) != len(selection):\n        cmds.error(\"Output entry count missmatch.\")\n\n    dag_mod = om.MDGModifier()\n\n    for index, name in enumerate(names):\n        mob = selection[index]\n        dag_mod.renameNode(mob, name)\n\n    dag_mod.doIt()\n\nbatch_rename()\n" 
+        -command "import subprocess\nimport tempfile\nfrom typing import Generator, Tuple\n\nfrom maya import cmds\nfrom maya.api import OpenMaya as om\n\n\ndef generate_file_from_selection(selection: Tuple[om.MObject]) -> str:\n    with tempfile.NamedTemporaryFile(\"w\", delete=False) as file:\n        for mob in selection:\n            fn_dep = om.MFnDependencyNode(mob)\n            file.write(f\"{fn_dep.name()}\\n\")\n\n        file.close()\n        return file.name\n\n\ndef iterate_selection() -> Generator[om.MObject, None, None]:\n    selection: om.MSelectionList = om.MGlobal.getActiveSelectionList()\n\n    for index in range(0, selection.length()):\n        yield selection.getDependNode(index)\n\n\ndef batch_rename(terminal: str = \"wezterm\", editor: str = \"nvim\"):\n    selection = tuple(iterate_selection())\n\n    if not selection:\n        cmds.warning(\"Nothing is selected\")\n        return\n\n    file = generate_file_from_selection(selection)\n    subprocess.call([terminal, \"-e\", editor, file])\n\n    with open(file, encoding=\"utf-8\") as file:\n        names = file.read().splitlines()\n        file.close()\n\n    if len(names) != len(selection):\n        cmds.error(\"Output entry count missmatch.\")\n\n    dag_mod = om.MDGModifier()\n\n    for index, name in enumerate(names):\n        mob = selection[index]\n        dag_mod.renameNode(mob, name)\n\n    dag_mod.doIt()\n\nbatch_rename()\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1
@@ -290,6 +290,39 @@ global proc shelf_Main () {
         -marginWidth 1
         -marginHeight 1
         -command "from maya import cmds\n\nPORT = 5115\n\nif not cmds.commandPort(':{0}'.format(PORT), query=True):\n    cmds.commandPort(name=':{0}'.format(PORT))\n\n" 
+        -sourceType "python" 
+        -commandRepeatable 1
+        -flat 1
+    ;
+    shelfButton
+        -enableCommandRepeat 1
+        -flexibleWidthType 3
+        -flexibleWidthValue 32
+        -enable 1
+        -width 33
+        -height 32
+        -manage 1
+        -visible 1
+        -preventOverride 0
+        -annotation "User Script" 
+        -enableBackground 0
+        -backgroundColor 0 0 0 
+        -highlightColor 0.321569 0.521569 0.65098 
+        -align "center" 
+        -label "MGroup" 
+        -labelOffset 0
+        -rotation 0
+        -flipX 0
+        -flipY 0
+        -useAlpha 1
+        -overlayLabelColor 0.8 0.8 0.8 
+        -overlayLabelBackColor 0 0 0 0.5 
+        -image "transform.svg" 
+        -image1 "transform.svg" 
+        -style "iconOnly" 
+        -marginWidth 1
+        -marginHeight 1
+        -command "from typing import Union\n\nfrom maya import cmds\n\n\nclass GroupCreator:\n    suffix: str\n    selection: Union[tuple, None]\n\n    def create(self, suffix=\"buffer\"):\n        self.suffix = suffix\n        self.selection = cmds.ls(sl=True, type=\"transform\")\n\n        if self.selection:\n            for current in tuple(self.selection):\n                self.__create_buffer__(current)\n        else:\n            self.__create_empty_group__()\n\n    def __create_empty_group__(self):\n        cmds.group(em=True)\n\n    def __create_buffer__(self, transform):\n        matrix = cmds.xform(transform, q=True, matrix=True)\n        buffer_name = \"{0}_{1}\".format(transform, self.suffix)\n        buffer = cmds.group(name=buffer_name, em=True)\n        parent = cmds.listRelatives(transform, parent=True)\n\n        if parent:\n            cmds.parent(buffer, parent[0])\n\n        cmds.xform(buffer, matrix=matrix)\n        cmds.parent(transform, buffer)\n        cmds.select(self.selection)\n\n\ncreator = GroupCreator()\ncreator.create()\n" 
         -sourceType "python" 
         -commandRepeatable 1
         -flat 1

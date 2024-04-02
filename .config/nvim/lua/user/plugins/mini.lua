@@ -109,7 +109,7 @@ function M.files()
 		},
 	})
 
-	vim.keymap.set('n', '<leader>e', function()
+	vim.keymap.set('n', '<c-e>', function()
 		if not files.close() then files.open() end
 	end, { desc = 'Mini File [E]xplorer' })
 end

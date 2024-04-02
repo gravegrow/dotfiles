@@ -28,7 +28,7 @@ M.plugin = {
 		},
 	},
 	config = function(_, opts)
-		opts.color_overrides = { all = M.dim_colors }
+		opts.color_overrides = { mocha = M.dim_colors }
 		opts.custom_highlights = M.custom_highlights
 
 		require('catppuccin').setup(opts)
@@ -97,14 +97,18 @@ function M.special_cases()
 
 	vim.api.nvim_create_autocmd('ColorSchemePre', {
 		group = group,
-		callback = function() vim.api.nvim_del_augroup_by_id(group) end,
+		callback = function()
+			vim.api.nvim_del_augroup_by_id(group)
+		end,
 	})
 
 	local function set_whl()
 		local win = vim.api.nvim_get_current_win()
 		local whl = vim.split(vim.wo[win].winhighlight, ',')
 		vim.list_extend(whl, { 'Normal:NormalSB', 'SignColumn:SignColumnSB' })
-		whl = vim.tbl_filter(function(hl) return hl ~= '' end, whl)
+		whl = vim.tbl_filter(function(hl)
+			return hl ~= ''
+		end, whl)
 		vim.opt_local.winhighlight = table.concat(whl, ',')
 	end
 
@@ -128,7 +132,9 @@ function M.special_cases()
 	}
 
 	local groups = { '', 'Sign', 'Floating', 'Underline', 'VirtualText' }
-	local set_hl = function(name, opts) vim.api.nvim_set_hl(0, name, opts) end
+	local set_hl = function(name, opts)
+		vim.api.nvim_set_hl(0, name, opts)
+	end
 
 	for diag, color in pairs(colors) do
 		for _, grp in ipairs(groups) do

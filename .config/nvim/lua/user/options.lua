@@ -78,9 +78,14 @@ vim.opt.tabstop = 4
 vim.opt.wrap = true
 vim.opt.linebreak = true
 
+-- Disable folds
+vim.opt.foldenable = false
+
 -- Autoformating
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
 	desc = 'Changes formatting options',
 	group = vim.api.nvim_create_augroup('on-formatopts', { clear = true }),
-	callback = function() vim.opt.formatoptions:remove({ 'c', 'r', 'o' }) end,
+	callback = function()
+		vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
+	end,
 })

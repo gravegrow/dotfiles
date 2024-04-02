@@ -1,5 +1,5 @@
 * {
-    font:   "BerkeleyMono Nerd Font Mono Medium 12";
+    font:   "BerkeleyMono Nerd Font Mono Medium 11";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -29,7 +29,7 @@ window {
 }
 
 mainbox {
-    padding:    12px;
+    padding:    14px;
 }
 
 element selected {
@@ -40,10 +40,10 @@ inputbar {
     background-color:   @bg1;
     border-color:       @inputborder;
     border:         1px;
-    border-radius:  0;
+    border-radius:  7;
 
-    padding:    8px 16px;
-    spacing:    8px;
+    padding:    7px 14px;
+    spacing:    7px;
     children:   [ entry ];
 }
 
@@ -66,13 +66,13 @@ message {
 }
 
 textbox {
-    padding:    8px 24px;
+    padding:    0px 0px;
 }
 
 listview {
     background-color:   transparent;
 
-    margin:     12px 0 0;
+    margin:     7px 0 0;
     lines:      8;
     columns:    1;
 
@@ -80,9 +80,9 @@ listview {
 }
 
 element {
-    padding:        8px 16px;
-    spacing:        8px;
-    border-radius:  5px;
+    padding:        7px 14px;
+    spacing:        0px;
+    border-radius:  @border-radius;
 }
 
 element normal active {

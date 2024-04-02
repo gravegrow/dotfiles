@@ -1,6 +1,6 @@
 return {
+	-- dir = '/media/storage/development/maya/maya-sender.nvim',
 	'gravegrow/maya-sender.nvim',
-	build = { ':UpdateRemotePlugins' },
 	ft = 'python',
 	opts = { port = 5115 },
 	config = function(_, opts)

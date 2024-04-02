@@ -50,6 +50,11 @@ rules = [
     "edit",
     "reveal",
   ] },
+  { name = "*.fb2", use = [
+    "open",
+    "edit",
+    "reveal",
+  ] },
   { mime = "text/*", use = [
     "edit",
     "reveal",

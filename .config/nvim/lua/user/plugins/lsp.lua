@@ -117,7 +117,9 @@ return {
 		dependencies = {
 			{
 				'L3MON4D3/LuaSnip',
-				build = (function() return 'make install_jsregexp' end)(),
+				build = (function()
+					return 'make install_jsregexp'
+				end)(),
 			},
 			'saadparwaiz1/cmp_luasnip',
 			'hrsh7th/cmp-nvim-lsp',
@@ -147,17 +149,23 @@ return {
 						{ 'i', 'c' }
 					),
 					['<C-l>'] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then luasnip.expand_or_jump() end
+						if luasnip.expand_or_locally_jumpable() then
+							luasnip.expand_or_jump()
+						end
 					end, { 'i', 's' }),
 					['<C-h>'] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then luasnip.jump(-1) end
+						if luasnip.locally_jumpable(-1) then
+							luasnip.jump(-1)
+						end
 					end, { 'i', 's' }),
 				}),
 				-- completion = { completeopt = 'menu,menuone,noinsert,noselect' },
 				preselect = cmp.PreselectMode.None,
 				window = { documentation = { winhighlight = 'Normal:CmpDoc,FloatBorder:CmpDocBorder' } },
 				snippet = {
-					expand = function(args) luasnip.lsp_expand(args.body) end,
+					expand = function(args)
+						luasnip.lsp_expand(args.body)
+					end,
 				},
 				formatting = {
 					format = lspkind.cmp_format({
@@ -176,11 +184,13 @@ return {
 						end,
 					}),
 				},
+				performance = { fetching_timeout = 80 },
 				sources = {
 					{ name = 'nvim_lsp' },
 					{ name = 'luasnip' },
 					{ name = 'path' },
-					-- { name = 'buffer' },
+					{ name = 'buffer' },
+					{ name = 'neorg' },
 				},
 			})
 

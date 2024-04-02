@@ -278,3 +278,9 @@ nameCommand
 	-command ("HighQualityDisplay")
 	HighQualityDisplayNameCommand;
 
+nameCommand
+	-annotation "IncrementAndSaveNameCommand"
+	-sourceType "mel"
+	-command ("IncrementAndSave")
+	IncrementAndSaveNameCommand;
+

@@ -2,7 +2,7 @@ alias ls='exa -l --icons --group-directories-first'
 alias la='exa -la --icons --group-directories-first'
 alias tree="tree -C"
 alias py='python3'
-alias python='python3'
+alias lg='lazygit'
 
 
 set -U fish_color_autosugestion '#232120'

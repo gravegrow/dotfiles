@@ -2,7 +2,7 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
 config.font = wezterm.font 'BerkeleyMono Nerd Font Mono'
-config.font_size = 14
+config.font_size = 15
 config.window_close_confirmation = 'NeverPrompt'
 config.window_padding = { top = config.font_size, bottom = config.font_size, left = '1cell', right = '1cell' }
 config.enable_tab_bar = false
@@ -25,7 +25,7 @@ config.colors = {
 		'#B4BDC3',
 	},
 	brights = {
-		'#191515',
+		'#25211E',
 		'#af9da2',
 		'#a1aba0',
 		'#cfc5af',
