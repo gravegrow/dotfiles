@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-folders="$HOME/dotfiles/.config /media/storage/development/maya/ /media/storage/development/notes/"
+devel="/media/storage/development/"
+folders="$HOME/dotfiles/.config $devel/maya/ $devel/notes/ $devel/godot/"
 
 selected=$(find $folders -mindepth 1 -maxdepth 1 -type d | fzf)
 
@@ -13,43 +14,10 @@ selected_name=$(basename "$selected" | tr . -)
 if ! tmux has-session -t=$selected_name 2>/dev/null; then
 	tmux new-session -ds $selected_name -c $selected
 
-	if [[ -f "$selected/.tmux.session" ]]; then
+	if [[ -f "$selected/.tmux" ]]; then
 		cd "$selected"
-		tmux source -t $selected_name "$selected/.tmux.session"
+		tmux source -t $selected_name "$selected/.tmux"
 	fi
 fi
 
 tmux switch-client -t $selected_name
-
-# if tmux has-session -t=$selected_name 2>/dev/null; then
-# 	if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
-# 		echo "here"
-# 		tmux switch-client -t $selected_name
-# 		exit 0
-# 	fi
-#
-# 	tmux new-session -A -s $selected_name
-# 	exit 0
-# fi
-#
-# if [[ -f "$selected/.tmux.session" ]]; then
-# 	tmux new-session -d -s $selected_name -c $selected
-# 	(cd "$selected" || return && /bin/bash "./.tmux.session")
-#
-# 	if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
-# 		tmux switch-client -t $selected_name
-# 		exit 0
-# 	fi
-#
-# 	tmux attach
-# 	exit 0
-# fi
-#
-# tmux new-session -d -s $selected_name -c $selected nvim
-#
-# if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
-# 	tmux switch-client -t $selected_name
-# 	exit 0
-# fi
-#
-# tmux attach

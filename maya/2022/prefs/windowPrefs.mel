@@ -24,13 +24,13 @@ windowPref -topLeftCorner 730 2332 -widthHeight 1106 708 -maximized false Prefer
 windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempReporterWnd;
 windowPref -topLeftCorner 19 927 -widthHeight 1395 1358 -maximized false shelfEditor;
 windowPref -topLeftCorner 28 1885 -widthHeight 1545 1402 -maximized false Viewport20OptionsWindow;
-windowPref -topLeftCorner 359 365 -widthHeight 1575 708 -maximized false HotkeyEditor;
+windowPref -topLeftCorner 20 0 -widthHeight 3440 1420 -maximized false HotkeyEditor;
 windowPref -topLeftCorner 379 1641 -widthHeight 899 696 -maximized false OptionBoxWindow;
 windowPref -topLeftCorner 535 2267 -widthHeight 394 902 -maximized false cometRenameWin;
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
 windowPref -topLeftCorner 28 2120 -widthHeight 1310 1402 -maximized false faceHelpImage;
-windowPref -topLeftCorner 19 2453 -widthHeight 884 1418 -maximized false AddAttrWin;
+windowPref -topLeftCorner 487 1381 -widthHeight 494 847 -maximized false AddAttrWin;
 windowPref -topLeftCorner 483 1275 -widthHeight 888 472 -maximized false connectWindowModal;
 windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false createRenderNodeWindow;
 windowPref -topLeftCorner 235 2048 -widthHeight 935 847 -maximized false expressionEditorWin;

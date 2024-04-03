@@ -48,7 +48,7 @@ M.custom_highlights = function(colors)
 		['@variable.parameter'] = { italic = true },
 		['@function.builtin'] = { fg = colors.sky, bold = true },
 
-		FloatBorder = { fg = colors.mantle, bg = colors.mantle },
+		FloatBorder = { fg = colors.peach, bg = colors.base },
 		FloatTitle = { fg = colors.mantle, bg = colors.rosewater, bold = true },
 		NormalFloat = { bg = colors.mantle },
 
@@ -75,6 +75,12 @@ M.custom_highlights = function(colors)
 
 		CmpDoc = { bg = colors.crust },
 		CmpDocBorder = { fg = colors.crust, bg = colors.crust },
+		CmpBorder = { fg = colors.peach, bg = colors.base },
+
+		CmpItemAbbrMatch = { link = 'DiagnosticWarn' },
+		CmpItemAbbrMatchFuzzy = { link = 'DiagnosticWarn' },
+		CmpItemAbbrMatchDefault = { link = 'DiagnosticWarn' },
+		CmpItemAbbrMatchFuzzyDefault = { link = 'DiagnosticWarn' },
 
 		MiniStatusListIcon = { fg = colors.mantle, bg = colors.peach },
 		MiniStatusBlock = { fg = colors.text, bg = colors.mantle, bold = false },
@@ -83,7 +89,7 @@ M.custom_highlights = function(colors)
 		MiniFilesTitleFocused = { fg = colors.rosewater, bg = colors.mantle, bold = true },
 		MiniStatuslineModeVisual = { bg = colors.green, fg = colors.mantle },
 
-		GitSignsAddPreview = { fg = '#6F8352' },
+		GitSignsAddPreview = { fg = '#A6E3A1' },
 		GitSignsDeletePreview = { fg = '#C14A4A' },
 
 		MacroRecording = { link = 'DiagnosticError' },

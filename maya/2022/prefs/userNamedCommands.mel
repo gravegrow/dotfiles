@@ -284,3 +284,9 @@ nameCommand
 	-command ("IncrementAndSave")
 	IncrementAndSaveNameCommand;
 
+nameCommand
+	-annotation "SaveSceneNameCommand"
+	-sourceType "mel"
+	-command ("SaveScene")
+	SaveSceneNameCommand;
+

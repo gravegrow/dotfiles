@@ -15,6 +15,10 @@ return {
 				},
 			})
 
+			vim.diagnostic.config({
+				float = { border = 'single' },
+			})
+
 			vim.fn.sign_define('DiagnosticSignError', { text = '' })
 			vim.fn.sign_define('DiagnosticSignWarn', { text = '' })
 			vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
@@ -40,17 +44,19 @@ return {
 			})
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+			local status, cmp = pcall(require, 'cmp_nvim_lsp')
+
+			if status then
+				capabilities = vim.tbl_deep_extend('force', capabilities, cmp.default_capabilities())
+			end
 
 			local servers = {
-				-- basedpyright = {},
-				pyright = {},
 				ruff_lsp = {},
+				pyright = {},
 				taplo = {},
 				yamlls = {},
 				jsonls = {},
 				bashls = {},
-
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -110,110 +116,6 @@ return {
 				sh = { 'shfmt' },
 			},
 		},
-	},
-
-	{
-		'hrsh7th/nvim-cmp',
-		dependencies = {
-			{
-				'L3MON4D3/LuaSnip',
-				build = (function()
-					return 'make install_jsregexp'
-				end)(),
-			},
-			'saadparwaiz1/cmp_luasnip',
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-cmdline',
-			'onsails/lspkind.nvim',
-			'rafamadriz/friendly-snippets',
-		},
-		config = function()
-			local cmp = require 'cmp'
-			local luasnip = require 'luasnip'
-			local lspkind = require 'lspkind'
-			luasnip.config.setup({})
-
-			cmp.setup({
-				mapping = cmp.mapping.preset.insert({
-					['<C-Space>'] = cmp.mapping.complete(),
-					['<C-d>'] = cmp.mapping.scroll_docs(4),
-					['<C-u>'] = cmp.mapping.scroll_docs(-4),
-					['<C-n>'] = cmp.mapping.select_next_item(),
-					['<C-p>'] = cmp.mapping.select_prev_item(),
-					['<C-y>'] = cmp.mapping(
-						cmp.mapping.confirm({
-							select = true,
-						}),
-						{ 'i', 'c' }
-					),
-					['<C-l>'] = cmp.mapping(function()
-						if luasnip.expand_or_locally_jumpable() then
-							luasnip.expand_or_jump()
-						end
-					end, { 'i', 's' }),
-					['<C-h>'] = cmp.mapping(function()
-						if luasnip.locally_jumpable(-1) then
-							luasnip.jump(-1)
-						end
-					end, { 'i', 's' }),
-				}),
-				-- completion = { completeopt = 'menu,menuone,noinsert,noselect' },
-				preselect = cmp.PreselectMode.None,
-				window = { documentation = { winhighlight = 'Normal:CmpDoc,FloatBorder:CmpDocBorder' } },
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
-				},
-				formatting = {
-					format = lspkind.cmp_format({
-						mode = 'text_symbol',
-						maxwidth = 25,
-						ellipsis_char = '...',
-						show_labelDetails = true,
-						before = function(_, vim_item)
-							local label = vim_item.abbr
-							local minwidth = 25
-							if string.len(label) < minwidth then
-								local padding = string.rep(' ', minwidth - string.len(label))
-								vim_item.abbr = label .. padding
-							end
-							return vim_item
-						end,
-					}),
-				},
-				performance = { fetching_timeout = 80 },
-				sources = {
-					{ name = 'nvim_lsp' },
-					{ name = 'luasnip' },
-					{ name = 'path' },
-					{ name = 'buffer' },
-					{ name = 'neorg' },
-				},
-			})
-
-			cmp.setup.cmdline({ '/', '?' }, {
-				mapping = cmp.mapping.preset.cmdline(),
-				sources = {
-					{ name = 'buffer' },
-				},
-			})
-
-			cmp.setup.cmdline(':', {
-				mapping = cmp.mapping.preset.cmdline({
-					['<C-y>'] = {
-						c = cmp.mapping.confirm({ select = true }),
-					},
-				}),
-				sources = cmp.config.sources({
-					{ name = 'path' },
-				}, {
-					{ name = 'cmdline' },
-				}),
-			})
-		end,
 	},
 
 	{

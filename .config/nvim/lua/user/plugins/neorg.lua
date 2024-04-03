@@ -15,7 +15,10 @@ return {
 					config = { engine = 'nvim-cmp' },
 				},
 				['core.concealer'] = {
-					config = { icon_preset = 'diamond' },
+					config = {
+						icon_preset = 'diamond',
+						folds = false,
+					},
 				},
 			},
 		},
