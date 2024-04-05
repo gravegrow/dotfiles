@@ -30,7 +30,7 @@ windowPref -topLeftCorner 535 2267 -widthHeight 394 902 -maximized false cometRe
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
 windowPref -topLeftCorner 28 2120 -widthHeight 1310 1402 -maximized false faceHelpImage;
-windowPref -topLeftCorner 487 1381 -widthHeight 494 847 -maximized false AddAttrWin;
+windowPref -topLeftCorner 730 2319 -widthHeight 1119 708 -maximized false AddAttrWin;
 windowPref -topLeftCorner 483 1275 -widthHeight 888 472 -maximized false connectWindowModal;
 windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false createRenderNodeWindow;
 windowPref -topLeftCorner 235 2048 -widthHeight 935 847 -maximized false expressionEditorWin;
@@ -47,7 +47,7 @@ windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false Lockin
 windowPref -topLeftCorner 36 1725 -widthHeight 626 376 -maximized true teAnimSourceRemapNamespacesWindow;
 windowPref -topLeftCorner 523 1327 -widthHeight 786 415 -maximized false menuSetEditorWindow;
 windowPref -topLeftCorner 551 1497 -widthHeight 445 337 -maximized false namespaceEditor;
-windowPref -topLeftCorner 464 1266 -widthHeight 418 653 -maximized false DeleteAttrWin;
+windowPref -topLeftCorner 730 2319 -widthHeight 1119 708 -maximized false DeleteAttrWin;
 windowPref -topLeftCorner 178 2001 -widthHeight 665 790 -maximized false assetWindow;
 windowPref -topLeftCorner 668 38 -widthHeight 559 374 -maximized false window2;
 windowPref -topLeftCorner 20 1567 -widthHeight 1871 1418 -maximized false projectWindow;

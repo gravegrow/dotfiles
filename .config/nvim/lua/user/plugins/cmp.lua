@@ -51,9 +51,13 @@ return {
 			-- completion = { completeopt = 'menu,menuone,noinsert,noselect' },
 			preselect = cmp.PreselectMode.None,
 			window = {
-				documentation = { winhighlight = 'Normal:CmpDoc,FloatBorder:CmpDocBorder' },
+				documentation = cmp.config.window.bordered({
+					winhighlight = 'Normal:CmpDoc,FloatBorder:CmpBorder',
+					border = 'single',
+				}),
 				completion = cmp.config.window.bordered({
 					winhighlight = 'FloatBorder:CmpBorder,Normal:Normal',
+					border = 'single',
 				}),
 			},
 			snippet = {
@@ -110,10 +114,10 @@ return {
 					cmp.config.compare.score,
 					cmp.config.compare.offset,
 					cmp.config.compare.exact,
+					cmp.config.compare.length,
 					require('cmp-under-comparator').under,
 					cmp.config.compare.kind,
 					cmp.config.compare.sort_text,
-					cmp.config.compare.length,
 					cmp.config.compare.order,
 				},
 			},

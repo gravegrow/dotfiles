@@ -22,7 +22,17 @@ return {
 	{
 		'folke/todo-comments.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
-		opts = {},
+		config = function()
+			local todo = require 'todo-comments'
+			todo.setup()
+			vim.keymap.set('n', ']t', function()
+				todo.jump_next()
+			end, { desc = 'Next todo comment' })
+
+			vim.keymap.set('n', '[t', function()
+				todo.jump_prev()
+			end, { desc = 'Previous todo comment' })
+		end,
 	},
 
 	{
@@ -38,6 +48,14 @@ return {
 				vim.keymap.set('n', 'ghp', gitsigns.preview_hunk, { desc = '[G]itsigns [H]unk [P]review' })
 				vim.keymap.set('n', 'ghr', gitsigns.reset_hunk, { desc = '[G]itsigns [H]unk [R]eset' })
 			end,
+			signs = {
+				add = { text = '┃' },
+				change = { text = '┃' },
+				delete = { text = '━' },
+				topdelete = { text = '━' },
+				changedelete = { text = '~' },
+				untracked = { text = '┆' },
+			},
 		},
 	},
 
@@ -76,13 +94,25 @@ return {
 			harpoon:setup(opts)
 
 			local toggle_opts = { title = ' Harpoon ', title_pos = 'center' }
-			vim.keymap.set('n', '<leader>a', function() harpoon:list():append() end)
-			vim.keymap.set('n', '<leader>e', function() harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts) end)
+			vim.keymap.set('n', '<leader>a', function()
+				harpoon:list():add()
+			end)
+			vim.keymap.set('n', '<leader>e', function()
+				harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
+			end)
 
-			vim.keymap.set('n', '<C-h>', function() harpoon:list():select(1) end)
-			vim.keymap.set('n', '<C-j>', function() harpoon:list():select(2) end)
-			vim.keymap.set('n', '<C-k>', function() harpoon:list():select(3) end)
-			vim.keymap.set('n', '<C-l>', function() harpoon:list():select(4) end)
+			vim.keymap.set('n', '<C-h>', function()
+				harpoon:list():select(1)
+			end)
+			vim.keymap.set('n', '<C-j>', function()
+				harpoon:list():select(2)
+			end)
+			vim.keymap.set('n', '<C-k>', function()
+				harpoon:list():select(3)
+			end)
+			vim.keymap.set('n', '<C-l>', function()
+				harpoon:list():select(4)
+			end)
 
 			vim.cmd 'autocmd Filetype harpoon setlocal cursorline'
 		end,

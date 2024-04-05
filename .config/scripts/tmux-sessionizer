@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-devel="/media/storage/development/"
-folders="$HOME/dotfiles/.config $devel/maya/ $devel/notes/ $devel/godot/"
+devel="/media/storage/development"
+folders="$HOME/dotfiles/.config $devel/maya/ $devel/notes/ $devel/godot"
 
 selected=$(find $folders -mindepth 1 -maxdepth 1 -type d | fzf)
 

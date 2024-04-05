@@ -81,6 +81,9 @@ vim.opt.linebreak = true
 -- Disable folds
 vim.opt.foldenable = false
 
+-- Conceal for norg
+vim.opt.conceallevel = 3
+
 -- Autoformating
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
 	desc = 'Changes formatting options',
