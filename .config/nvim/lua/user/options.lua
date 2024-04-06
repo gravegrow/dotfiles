@@ -84,6 +84,10 @@ vim.opt.foldenable = false
 -- Conceal for norg
 vim.opt.conceallevel = 3
 
+-- Spellchecking
+vim.opt.spelllang = 'en_us'
+vim.opt.spell = true
+
 -- Autoformating
 vim.api.nvim_create_autocmd({ 'BufEnter' }, {
 	desc = 'Changes formatting options',

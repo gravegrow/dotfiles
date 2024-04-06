@@ -7,7 +7,6 @@ return {
 				return 'make install_jsregexp'
 			end)(),
 		},
-		'lukas-reineke/cmp-under-comparator',
 		'saadparwaiz1/cmp_luasnip',
 		'hrsh7th/cmp-nvim-lsp',
 		'hrsh7th/cmp-buffer',
@@ -69,13 +68,13 @@ return {
 				format = lspkind.cmp_format({
 					mode = 'text_symbol',
 					-- menu = {
-					-- 	-- stylua: ignore start
+					-- stylua: ignore start
 					-- nvim_lsp = '[LSP]',
-					-- 	path     = '[PTH]',
-					-- 	neorg    = '[NRG]',
-					-- 	buffer   = '[BUF]',
-					-- 	luasnip  = '[SNP]',
-					-- 	-- stylua: ignore end
+					-- path     = '[PTH]',
+					-- neorg    = '[NRG]',
+					-- buffer   = '[BUF]',
+					-- luasnip  = '[SNP]',
+					-- stylua: ignore end
 					-- },
 					maxwidth = 25,
 					ellipsis_char = '...',
@@ -111,14 +110,25 @@ return {
 			-- sorting = defaults.sorting,
 			sorting = {
 				comparators = {
+					-- compare.score_offset, -- not good at all
+					cmp.config.compare.locality,
+					cmp.config.compare.recently_used,
 					cmp.config.compare.score,
 					cmp.config.compare.offset,
-					cmp.config.compare.exact,
-					cmp.config.compare.length,
-					require('cmp-under-comparator').under,
-					cmp.config.compare.kind,
-					cmp.config.compare.sort_text,
 					cmp.config.compare.order,
+					-- compare.scopes, -- what?
+					-- compare.sort_text,
+					-- compare.exact,
+					-- compare.kind,
+					-- compare.length, -- useless
+
+					-- cmp.config.compare.exact,
+					-- cmp.config.compare.length,
+					-- cmp.config.compare.score,
+					-- cmp.config.compare.offset,
+					-- cmp.config.compare.kind,
+					-- cmp.config.compare.sort_text,
+					-- cmp.config.compare.order,
 				},
 			},
 		})

@@ -28,13 +28,13 @@ M.plugin = {
 		},
 	},
 	config = function(_, opts)
-		opts.color_overrides = { mocha = M.dim_colors }
+		opts.color_overrides = { mocha = M.palette }
 		opts.custom_highlights = M.custom_highlights
 
 		require('catppuccin').setup(opts)
 		vim.cmd.colorscheme 'catppuccin'
 
-		M.special_cases()
+		M.extra_config()
 	end,
 }
 
@@ -65,8 +65,8 @@ M.custom_highlights = function(colors)
 		TelescopeTitle = { fg = colors.crust, bold = true },
 		TelescopeSelection = { link = 'CursorLine' },
 
-		TelescopePreviewNormal = { bg = colors.crust },
-		TelescopePreviewBorder = { fg = colors.crust, bg = colors.crust },
+		-- TelescopePreviewNormal = { bg = colors.crust },
+		-- TelescopePreviewBorder = { fg = colors.crust, bg = colors.crust },
 		TelescopePreviewTitle = { bg = colors.lavender, fg = colors.base, bold = true },
 
 		TelescopePromptBorder = { bg = colors.crust, fg = colors.crust },
@@ -83,7 +83,7 @@ M.custom_highlights = function(colors)
 		CmpItemAbbrMatchFuzzyDefault = { link = 'DiagnosticWarn' },
 
 		MiniStatusListIcon = { fg = colors.mantle, bg = colors.peach },
-		MiniStatusBlock = { fg = colors.text, bg = colors.mantle, bold = false },
+		MiniStatusBlock = { fg = colors.overlay0, bg = colors.surface0, bold = true },
 		MiniStatuslineFilename = { fg = colors.surface1, bg = colors.crust },
 		MiniFilesTitle = { fg = colors.surface1, bg = colors.mantle },
 		MiniFilesTitleFocused = { fg = colors.rosewater, bg = colors.mantle, bold = true },
@@ -94,11 +94,14 @@ M.custom_highlights = function(colors)
 
 		MacroRecording = { link = 'DiagnosticError' },
 		YankHighlight = { link = 'DiagnosticWarn' },
+
+		SpellBad = { fg = colors.red, bold = true },
 	}
+
 	return custom
 end
 
-function M.special_cases()
+function M.extra_config(colors)
 	local group = vim.api.nvim_create_augroup('colorscheme-apply', { clear = true })
 
 	vim.api.nvim_create_autocmd('ColorSchemePre', {
@@ -129,30 +132,30 @@ function M.special_cases()
 		callback = set_whl,
 	})
 
-	local colors = {
-		Error = '#c76b77',
-		Warn = '#b77e64',
-		Info = '#88bed7',
-		Hint = '#B279A7',
-		Ok = '#6E6763',
-	}
-
 	local groups = { '', 'Sign', 'Floating', 'Underline', 'VirtualText' }
 	local set_hl = function(name, opts)
 		vim.api.nvim_set_hl(0, name, opts)
 	end
 
-	for diag, color in pairs(colors) do
+	for diag, color in pairs(M.diagnostics) do
 		for _, grp in ipairs(groups) do
 			local italic = (grp == 'VirtualText' or grp == 'Underline') and true or false
 			local name = 'Diagnostic' .. grp .. diag
 			set_hl(name, { fg = color, bg = nil, bold = true, italic = italic })
 		end
-		set_hl('MiniStatus' .. diag, { fg = colors[diag], bg = colors.mantle })
+		set_hl('MiniStatus' .. diag, { fg = M.diagnostics[diag], bg = M.palette.surface0 })
 	end
 end
 
-M.dim_colors = {
+M.diagnostics = {
+	Error = '#c76b77',
+	Warn = '#b77e64',
+	Info = '#88bed7',
+	Hint = '#B279A7',
+	Ok = '#6E6763',
+}
+
+M.palette = {
 	base = '#1c1917',
 	blue = '#b3bfd1',
 	crust = '#141110',
@@ -173,12 +176,12 @@ M.dim_colors = {
 	sky = '#B4BDC3',
 	subtext0 = '#979FA4',
 	subtext1 = '#bac2df',
-	surface0 = '#2a2622',
+	surface0 = '#25211E',
 	surface1 = '#302b27',
 	surface2 = '#585b71',
 	teal = '#b0c4c1',
 	text = '#9CA4AA',
-	yellow = '#cfc5af',
+	yellow = '#9E9391',
 }
 
 return M.plugin

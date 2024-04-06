@@ -1,21 +1,4 @@
-local M = {}
-
-M.plugin = {
-	'echasnovski/mini.nvim',
-	config = function()
-		require('mini.ai').setup()
-		require('mini.align').setup()
-		require('mini.comment').setup()
-		require('mini.splitjoin').setup()
-		require('mini.surround').setup()
-		-- require('mini.pairs').setup()
-
-		M.statusline()
-		M.files()
-	end,
-}
-
-function M.statusline()
+local function setup()
 	local diagnostic_levels = {
 		{ name = 'ERROR', sign = '' },
 		{ name = 'WARN', sign = '' },
@@ -30,11 +13,15 @@ function M.statusline()
 		local buf_ft = vim.bo.filetype
 		local clients = vim.lsp.get_clients()
 
-		if next(clients) == nil then return '' end
+		if next(clients) == nil then
+			return ''
+		end
 
 		for _, client in ipairs(clients) do
 			local filetypes = client.config.filetypes
-			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then return client.name end
+			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+				return client.name
+			end
 		end
 		return ''
 	end
@@ -50,18 +37,59 @@ function M.statusline()
 	local section_diagnostics = function(args)
 		local has_no_lsp_attached = #vim.lsp.get_clients() == 0
 		local dont_show = statusline.is_truncated(args.trunc_width) or has_no_lsp_attached
-		if dont_show then return '' end
+		if dont_show then
+			return ''
+		end
 		local counts = get_diagnostic_count()
 		local severity, t = vim.diagnostic.severity, {}
 		for _, level in ipairs(diagnostic_levels) do
 			local n = counts[severity[level.name]] or 0
-			if n > 0 then t[level.name] = string.format('%s %s', level.sign, n) end
+			if n > 0 then
+				t[level.name] = string.format('%s %s', level.sign, n)
+			end
 		end
 
-		if vim.tbl_count(t) == 0 then return '' end
+		if vim.tbl_count(t) == 0 then
+			return ''
+		end
 		return t
 	end
 
+	local function GetModifiedBuffersCount()
+		local count = 0
+		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+			if vim.bo[buf].modified then
+				count = count + 1
+			end
+		end
+
+		if count == 0 then
+			return ''
+		end
+
+		if count == 1 then
+			return ' [+]'
+		end
+
+		return (' [%s]'):format(count)
+	end
+
+	local function get_filetype_icon()
+		local icon, _ = devicons.get_icon_by_filetype(vim.bo.filetype) or '', nil
+		icon = vim.bo.filetype == 'gdscript' and '' or icon
+		return ' ' .. icon
+	end
+
+	local section_filename = function(args)
+		if vim.bo.buftype == 'terminal' then
+			return '%t'
+		else
+			local filename = vim.fn.fnamemodify(vim.fn.expand '%', ':t')
+			return filename .. GetModifiedBuffersCount() .. get_filetype_icon()
+		end
+	end
+
+	---@diagnostic disable-next-line
 	statusline.setup({
 		content = {
 			active = function()
@@ -69,10 +97,7 @@ function M.statusline()
 				local git = vim.b.gitsigns_head and ' ' .. vim.b.gitsigns_head or ''
 				local lsp = section_lsp()
 				local diagnostics = section_diagnostics({ trunc_width = 75 })
-				local icon, _ = devicons.get_icon_by_filetype(vim.bo.filetype) or '', nil
-
-				icon = vim.bo.filetype == 'gdscript' and '' or icon
-				local filename = statusline.section_filename({ trunc_width = 140 }) .. ' ' .. icon
+				local filename = section_filename()
 
 				return statusline.combine_groups({
 					{ hl = mode_hl, strings = { '' } },
@@ -95,23 +120,4 @@ function M.statusline()
 	})
 end
 
-function M.files()
-	local files = require 'mini.files'
-	files.setup({
-		mappings = {
-			close = '<Esc>',
-			go_in_plus = '<CR>',
-		},
-		windows = {
-			max_number = 3,
-			width_focus = 30,
-			width_preview = 20,
-		},
-	})
-
-	vim.keymap.set('n', '<c-e>', function()
-		if not files.close() then files.open() end
-	end, { desc = 'Mini File [E]xplorer' })
-end
-
-return M.plugin
+return { setup = setup }
