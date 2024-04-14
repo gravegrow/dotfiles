@@ -77,7 +77,7 @@ return {
 					-- stylua: ignore end
 					-- },
 					maxwidth = 25,
-					ellipsis_char = '...',
+					ellipsis_char = '..',
 					show_labelDetails = true,
 					before = function(entry, vim_item)
 						local label = vim_item.abbr
@@ -95,16 +95,10 @@ return {
 				}),
 			},
 			sources = cmp.config.sources({
-				{
-					name = 'nvim_lsp',
-					entry_filter = function(entry, ctx)
-						return require('cmp').lsp.CompletionItemKind.Text ~= entry:get_kind()
-					end,
-				},
+				{ name = 'nvim_lsp' },
 				{ name = 'path' },
 				{ name = 'neorg' },
 				{ name = 'luasnip' },
-			}, {
 				{ name = 'buffer', keyword_length = 3 },
 			}),
 			-- sorting = defaults.sorting,

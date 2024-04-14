@@ -65,7 +65,7 @@ vim.opt.hlsearch = true
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlighting after serch' })
 
 -- Hide characters after at the end of a buffer
-vim.opt.fillchars = { eob = ' ' }
+vim.opt.fillchars = { eob = ' ', fold = ' ' }
 
 -- Position on new splits
 vim.opt.splitbelow = true
@@ -77,9 +77,6 @@ vim.opt.tabstop = 4
 -- Wrap words
 vim.opt.wrap = true
 vim.opt.linebreak = true
-
--- Disable folds
-vim.opt.foldenable = false
 
 -- Conceal for norg
 vim.opt.conceallevel = 3

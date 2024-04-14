@@ -5,6 +5,7 @@ return {
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
 			'WhoIsSethDaniel/mason-tool-installer.nvim',
+			'hrsh7th/cmp-nvim-lsp',
 		},
 		config = function()
 			vim.diagnostic.config({
@@ -23,6 +24,13 @@ return {
 			vim.fn.sign_define('DiagnosticSignWarn', { text = '' })
 			vim.fn.sign_define('DiagnosticSignInfo', { text = '' })
 			vim.fn.sign_define('DiagnosticSignHint', { text = '' })
+
+			vim.api.nvim_create_autocmd('LspAttach', {
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					client.server_capabilities.semanticTokensProvider = nil
+				end,
+			})
 
 			vim.api.nvim_create_autocmd('LspAttach', {
 				group = vim.api.nvim_create_augroup('on-lsp-attach', { clear = true }),
@@ -44,11 +52,7 @@ return {
 			})
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local status, cmp = pcall(require, 'cmp_nvim_lsp')
-
-			if status then
-				capabilities = vim.tbl_deep_extend('force', capabilities, cmp.default_capabilities())
-			end
+			capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 			local servers = {
 				ruff_lsp = {},

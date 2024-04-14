@@ -12,6 +12,8 @@ return {
 		local toggle_opts = { title = ' Harpoon ', title_pos = 'center' }
 		vim.keymap.set('n', '<leader>a', function()
 			harpoon:list():add()
+			local name = vim.fn.expand '%:t'
+			vim.notify('"' .. name .. '" added to Harpoon list.')
 		end, { desc = 'Harpoon [A]dd to list' })
 		vim.keymap.set('n', '<leader>e', function()
 			harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)

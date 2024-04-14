@@ -8,33 +8,8 @@ config.window_padding = { top = config.font_size, bottom = config.font_size, lef
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 
-config.colors = {
-	background = '#1C1917',
-	foreground = '#9A8F8A',
-	cursor_bg = '#837771',
-	cursor_border = '#837771',
-	cursor_fg = '#1C1917',
-	ansi = {
-		'#141110',
-		'#af9da2',
-		'#a1aba0',
-		'#cfc5af',
-		'#b3bfd1',
-		'#e2d4df',
-		'#b0c4c1',
-		'#B4BDC3',
-	},
-	brights = {
-		'#25211E',
-		'#af9da2',
-		'#a1aba0',
-		'#cfc5af',
-		'#9aa4ac',
-		'#e2d4df',
-		'#b0c4c1',
-		'#9A8F8A',
-	},
-}
+config.color_scheme = 'tomorrow'
+config.underline_thickness = '1px'
 
 config.keys = {
 	{
@@ -44,6 +19,20 @@ config.keys = {
 			args = { 'tmux', 'new-session', '-As', 'Sessions', '~/.config/scripts/tmux-sessionizer' },
 		}),
 	},
+	{
+		key = 'n',
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = {
+				'tmux',
+				'new-session',
+				'-As',
+				'Sessions',
+				'~/.config/scripts/tmux-sessionizer /media/storage/development/notes',
+			},
+		}),
+	},
+	{ key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
 }
 
 return config

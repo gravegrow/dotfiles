@@ -28,7 +28,7 @@ M.plugin = {
 		},
 	},
 	config = function(_, opts)
-		opts.color_overrides = { mocha = M.palette }
+		opts.color_overrides = { all = M.palette }
 		opts.custom_highlights = M.custom_highlights
 
 		require('catppuccin').setup(opts)
@@ -48,6 +48,18 @@ M.custom_highlights = function(colors)
 		['@variable.parameter'] = { italic = true },
 		['@function.builtin'] = { fg = colors.sky, bold = true },
 
+		NeorgDone = { fg = '#819B69' },
+		NeorgPending = { fg = '#B77E64' },
+		NeorgUndone = { fg = '#DE6E7C' },
+		NeorgBold = { fg = '#9f6067', bold = true },
+
+		NeorgHeading1 = { fg = '#8aadf4' },
+		NeorgHeading2 = { fg = '#ca9ee6' },
+		NeorgHeading3 = { fg = '#b7bdf8' },
+		NeorgHeading4 = { fg = '#b7bdf8' },
+		NeorgHeading5 = { fg = '#b7bdf8' },
+		NeorgHeading6 = { fg = '#b7bdf8' },
+
 		FloatBorder = { fg = colors.peach, bg = colors.base },
 		FloatTitle = { fg = colors.mantle, bg = colors.rosewater, bold = true },
 		NormalFloat = { bg = colors.mantle },
@@ -57,6 +69,7 @@ M.custom_highlights = function(colors)
 
 		CursorLine = { bold = true },
 		CursorLineNr = { fg = colors.peach, bold = true },
+		Folded = { link = 'CursorLine' },
 
 		NormalNC = { bg = colors.base },
 		Pmenu = { bg = colors.mantle },
@@ -95,7 +108,7 @@ M.custom_highlights = function(colors)
 		MacroRecording = { link = 'DiagnosticError' },
 		YankHighlight = { link = 'DiagnosticWarn' },
 
-		SpellBad = { fg = colors.red, bold = true },
+		SpellBad = { italic = true, bold = true },
 	}
 
 	return custom
@@ -151,6 +164,7 @@ M.diagnostics = {
 	Error = '#c76b77',
 	Warn = '#b77e64',
 	Info = '#88bed7',
+	Information = '#88bed7',
 	Hint = '#B279A7',
 	Ok = '#6E6763',
 }

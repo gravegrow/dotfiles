@@ -1,9 +1,20 @@
 return {
 	{
 		'vhyrro/luarocks.nvim',
-		priority = 1000,
-		config = true,
 		lazy = true,
+		ft = 'neorg',
+		opts = {
+			rocks = { 'magick' },
+		},
+	},
+	{
+		'3rd/image.nvim',
+		lazy = true,
+		ft = 'neorg',
+		dependencies = { 'luarocks.nvim' },
+		config = function()
+			require('image').setup()
+		end,
 	},
 	{
 		'nvim-neorg/neorg',
@@ -18,10 +29,31 @@ return {
 				},
 				['core.concealer'] = {
 					config = {
-						icon_preset = 'diamond',
-						folds = false,
+						folds = true,
 					},
 				},
+				-- ['core.highlights'] = {
+				-- 	config = {
+				-- 		highlights = {
+				-- 			todo_items = {
+				-- 				done = '+NeorgDone',
+				-- 				undone = '+NeorgUndone',
+				-- 				pending = '+NeorgPending',
+				-- 			},
+				-- 			markup = {
+				-- 				bold = '+NeorgBold',
+				-- 			},
+				-- 			headings = {
+				-- 				{ prefix = '+NeorgHeading1', title = '+NeorgHeading1' },
+				-- 				{ prefix = '+NeorgHeading2', title = '+NeorgHeading2' },
+				-- 				{ prefix = '+NeorgHeading3', title = '+NeorgHeading3' },
+				-- 				{ prefix = '+NeorgHeading4', title = '+NeorgHeading4' },
+				-- 				{ prefix = '+NeorgHeading5', title = '+NeorgHeading5' },
+				-- 				{ prefix = '+NeorgHeading6', title = '+NeorgHeading6' },
+				-- 			},
+				-- 		},
+				-- 	},
+				-- },
 			},
 		},
 		config = function(_, opts)

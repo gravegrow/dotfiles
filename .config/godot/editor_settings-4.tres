@@ -1,6 +1,7 @@
 [gd_resource type="EditorSettings" format=3]
 
 [resource]
+interface/editor/main_font_size = 18
 interface/editor/accept_dialog_cancel_ok_buttons = 2
 interface/theme/preset = "Custom"
 interface/theme/base_color = Color(0.2, 0.184314, 0.176471, 1)
@@ -53,6 +54,8 @@ text_editor/behavior/files/trim_trailing_whitespace_on_save = true
 text_editor/behavior/files/restore_scripts_on_load = false
 text_editor/behavior/files/auto_reload_scripts_on_external_change = true
 text_editor/completion/add_type_hints = true
+editors/3d/navigation/navigation_scheme = 1
+editors/3d/navigation/pan_modifier = 2
 run/output/font_size = 14
 run/output/always_close_output_on_stop = true
 debugger/auto_switch_to_remote_scene_tree = true
@@ -136,7 +139,7 @@ export/ssh/scp = ""
 network/language_server/remote_host = "127.0.0.1"
 network/language_server/remote_port = 6005
 network/language_server/enable_smart_resolve = true
-network/language_server/show_native_symbols_in_editor = true
+network/language_server/show_native_symbols_in_editor = false
 network/language_server/use_thread = false
 editors/3d_gizmos/gizmo_colors/camera = Color(0.8, 0.4, 0.8, 1)
 editors/3d_gizmos/gizmo_colors/stream_player_3d = Color(0.4, 0.8, 1, 1)
@@ -218,6 +221,7 @@ metadata/script_setup_templates_dictionary = {
 "RichTextLabel": "0NodeDefault",
 "ShapeCast3D": "0NodeDefault",
 "SpinBox": "0NodeDefault",
+"StaticBody3D": "0NodeDefault",
 "n": "0ObjectEmpty"
 }
 metadata/export_template_download_directory = "/home/gravegrow/.cache/godot"
