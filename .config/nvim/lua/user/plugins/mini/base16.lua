@@ -36,9 +36,10 @@ local setup = function()
 	vim.api.nvim_set_hl(0, 'SignColumn', { fg = palette.base03 })
 	vim.api.nvim_set_hl(0, 'Comment', { fg = palette.base03 })
 	vim.api.nvim_set_hl(0, 'Whitespace', { fg = palette.base02 })
-	vim.api.nvim_set_hl(0, 'CursorLine', { bg = palette.base02 })
+	vim.api.nvim_set_hl(0, 'CursorLine', { bg = palette.base02, bold = true })
 
 	vim.api.nvim_set_hl(0, '@string', { italic = true, fg = palette.base0B })
+	vim.api.nvim_set_hl(0, '@string.special.path', { italic = true, fg = palette.base09 })
 
 	vim.api.nvim_set_hl(0, '@operator', { fg = palette.base09 })
 
@@ -57,6 +58,9 @@ local setup = function()
 	vim.api.nvim_set_hl(0, '@constructor', { fg = palette.base0A })
 
 	vim.api.nvim_set_hl(0, '@type.builtin', { fg = palette.base0A, italic = true })
+	vim.api.nvim_set_hl(0, '@property', { fg = palette.base0E })
+
+	vim.api.nvim_set_hl(0, 'TelescopeSelection', { link = 'CursorLine' })
 
 	local groups = { '', 'Sign', 'Floating', 'Underline', 'VirtualText' }
 	local set_hl = function(name, opts)
