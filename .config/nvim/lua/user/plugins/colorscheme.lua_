@@ -28,8 +28,8 @@ M.plugin = {
 		},
 	},
 	config = function(_, opts)
-		opts.color_overrides = { all = M.palette }
-		opts.custom_highlights = M.custom_highlights
+		-- opts.color_overrides = { all = M.palette }
+		-- opts.custom_highlights = M.custom_highlights
 
 		require('catppuccin').setup(opts)
 		vim.cmd.colorscheme 'catppuccin'

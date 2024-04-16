@@ -54,6 +54,11 @@ return {
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+			local handlers = {
+				['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
+				['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
+			}
+
 			local servers = {
 				ruff_lsp = {},
 				pyright = {},
@@ -78,8 +83,8 @@ return {
 			}
 
 			local lspconfig = require 'lspconfig'
-			lspconfig.gdscript.setup({ capabilities = capabilities })
-			lspconfig.gdshader_lsp.setup({ capabilities = capabilities })
+			lspconfig.gdscript.setup({ capabilities = capabilities, handlers = handlers })
+			lspconfig.gdshader_lsp.setup({ capabilities = capabilities, handlers = handlers })
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
@@ -99,6 +104,7 @@ return {
 							settings = server.settings,
 							filetypes = server.filetypes,
 							capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {}),
+							handlers = handlers,
 						})
 					end,
 				},

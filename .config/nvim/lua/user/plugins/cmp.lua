@@ -51,11 +51,11 @@ return {
 			preselect = cmp.PreselectMode.None,
 			window = {
 				documentation = cmp.config.window.bordered({
-					winhighlight = 'Normal:CmpDoc,FloatBorder:CmpBorder',
+					winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
 					border = 'single',
 				}),
 				completion = cmp.config.window.bordered({
-					winhighlight = 'FloatBorder:CmpBorder,Normal:Normal',
+					winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',
 					border = 'single',
 				}),
 			},

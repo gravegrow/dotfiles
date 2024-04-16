@@ -1,7 +1,6 @@
 [gd_resource type="EditorSettings" format=3]
 
 [resource]
-interface/editor/main_font_size = 18
 interface/editor/accept_dialog_cancel_ok_buttons = 2
 interface/theme/preset = "Custom"
 interface/theme/base_color = Color(0.2, 0.184314, 0.176471, 1)

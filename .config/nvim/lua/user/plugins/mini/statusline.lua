@@ -113,7 +113,7 @@ local function setup()
 					'%=', -- End left alignment
 					{ hl = 'MiniStatuslineFilename', strings = { git } },
 					{ hl = 'MiniStatusBlock', strings = { '%l:%L' } },
-					{ hl = 'MiniStatusListIcon', strings = { '󰈚' } },
+					{ hl = mode_hl, strings = { '󰈚' } },
 				})
 			end,
 		},
