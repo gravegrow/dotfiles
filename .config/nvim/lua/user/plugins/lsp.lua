@@ -47,6 +47,7 @@ return {
 					map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 					map('K', vim.lsp.buf.hover, 'Hover Documentation')
 					map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+
 					vim.keymap.set({ 'n', 'i' }, '<A-k>', vim.lsp.buf.signature_help, { desc = 'Signature Help' })
 				end,
 			})
@@ -125,17 +126,6 @@ return {
 				gdscript = { 'gdformat' },
 				sh = { 'shfmt' },
 			},
-		},
-	},
-
-	{
-		'ray-x/lsp_signature.nvim',
-		event = 'VeryLazy',
-		opts = {
-			max_width = 200,
-			hint_enable = false,
-			border = 'none',
-			doc_lines = 0,
 		},
 	},
 }

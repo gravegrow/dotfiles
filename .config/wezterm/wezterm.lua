@@ -33,6 +33,7 @@ config.keys = {
 		}),
 	},
 	{ key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
+	{ key = 'p', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
 }
 
 return config

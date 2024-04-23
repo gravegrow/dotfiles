@@ -105,18 +105,18 @@ return {
 			sorting = {
 				comparators = {
 					-- compare.score_offset, -- not good at all
+					-- cmp.config.compare.exact,
 					cmp.config.compare.locality,
-					cmp.config.compare.recently_used,
 					cmp.config.compare.score,
+					cmp.config.compare.recently_used,
+					cmp.config.compare.length,
 					cmp.config.compare.offset,
 					cmp.config.compare.order,
 					-- compare.scopes, -- what?
 					-- compare.sort_text,
 					-- compare.exact,
 					-- compare.kind,
-					-- compare.length, -- useless
 
-					-- cmp.config.compare.exact,
 					-- cmp.config.compare.length,
 					-- cmp.config.compare.score,
 					-- cmp.config.compare.offset,
