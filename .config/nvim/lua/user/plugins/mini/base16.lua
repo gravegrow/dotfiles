@@ -12,7 +12,7 @@ local setup = function()
 		base09 = '#b39580',
 		base0A = '#b3a280',
 		base0B = '#9cb380',
-		base0C = '#80b3aa',
+		base0C = '#97B7B3',
 		base0D = '#809bb3',
 		base0E = '#9c8aa8',
 		base0F = '#a3685a',
@@ -27,6 +27,10 @@ local setup = function()
 		Ok = palette.base04,
 	}
 
+	local sets = {
+		keyword = palette.base08,
+	}
+
 	vim.cmd.hi 'clear'
 	---@diagnostic disable-next-line
 	require('mini.base16').setup({ palette = palette })
@@ -36,7 +40,6 @@ local setup = function()
 	end
 
 	set_hl('Normal', { bg = palette.base01 })
-	set_hl('NormalFloat', { fg = palette.base05, bg = palette.base01 })
 	set_hl('NormalNC', { bg = palette.base01 })
 	set_hl('NormalSB', { bg = palette.base00 })
 	set_hl('Comment', { fg = palette.base06, italic = true })
@@ -47,33 +50,39 @@ local setup = function()
 	set_hl('LineNrAbove', { fg = palette.base04 })
 	set_hl('LineNrBelow', { fg = palette.base04 })
 	set_hl('LineNrSB', { bg = palette.base00, fg = palette.base04 })
-	set_hl('WinSeparator', { bg = palette.base00, fg = palette.base00 })
+	set_hl('WinSeparator', { bg = palette.base01, fg = palette.base00 })
 	set_hl('StatusLineNC', { bg = palette.base00, fg = palette.base00 })
 	set_hl('StatusLine', { bg = palette.base00, fg = palette.base00 })
-	set_hl('FloatBorder', { fg = palette.base0F, bold = true })
 	set_hl('PmenuThumb', { bg = palette.base09 })
+	set_hl('Title', { bg = palette.base09, fg = palette.base00, bold = true })
+
+	set_hl('NormalFloat', { fg = palette.base05, bg = palette.base01 })
+	set_hl('FloatBorder', { fg = palette.base04 })
 
 	set_hl('@string', { italic = true, fg = palette.base0B })
 	set_hl('@string.special.path', { italic = true, fg = palette.base09 })
-	set_hl('@string.special.url', { italic = true, fg = palette.base09 })
+	set_hl('@string.special.url', { link = '@string.special.path' })
+	set_hl('@markup.strikethrough', { strikethrough = true })
+	set_hl('@markup.underline', { underline = true })
 
 	set_hl('@operator', { fg = palette.base09 })
 	set_hl('@constant', { fg = palette.base09, bold = true })
-	set_hl('@attribute', { fg = palette.base0F, bold = true })
+	set_hl('@attribute', { fg = palette.base0F, bold = false })
 	set_hl('@property', { fg = palette.base0E })
 	set_hl('@boolean', { fg = palette.base09, italic = true })
-	set_hl('@number', { fg = palette.base09, italic = true })
+	set_hl('@number', { fg = palette.base09, italic = false })
+	set_hl('@number.float', { link = '@number' })
 	set_hl('@constructor', { fg = palette.base0A })
 
 	set_hl('@variable', { fg = palette.base05 })
-	set_hl('@variable.member', { fg = palette.base07 })
+	set_hl('@variable.member', { fg = palette.base0E })
 	set_hl('@variable.builtin', { fg = palette.base08 })
 	set_hl('@variable.parameter', { fg = palette.base07 })
 
-	set_hl('@keyword', { fg = palette.base0E, bold = true })
-	set_hl('@keyword.repeat', { fg = palette.base0E, bold = true })
-	set_hl('@keyword.operator', { fg = palette.base0E, bold = true })
-	set_hl('@keyword.return', { fg = palette.base0E, bold = true })
+	set_hl('@keyword', { fg = sets.keyword, bold = true })
+	set_hl('@keyword.repeat', { fg = sets.keyword, bold = true })
+	set_hl('@keyword.operator', { fg = sets.keyword, bold = true })
+	set_hl('@keyword.return', { fg = sets.keyword, bold = true })
 
 	set_hl('@function.builtin', { fg = palette.base09 })
 	set_hl('@function.parameter', { fg = palette.base0F, bold = true })
@@ -87,12 +96,15 @@ local setup = function()
 
 	set_hl('CmpItemAbbrMatch', { fg = palette.base0F, bold = true })
 	set_hl('CmpItemAbbrMatchFuzzy', { fg = palette.base0F, bold = true })
+	set_hl('CmpItemAbbrDeprecated', { fg = palette.base06, strikethrough = true })
+	set_hl('CmpItemAbbrDeprecatedDefault', { fg = palette.base06, strikethrough = true })
 
 	set_hl('MiniStatusBlock', { fg = palette.base05, bg = palette.base02 })
 	set_hl('MiniStatuslineFilename', { fg = palette.base04, bg = palette.base00 })
 	set_hl('MiniStatuslineModeReplace', { fg = palette.base00, bg = palette.base08 })
 	set_hl('MiniStatuslineModeNormal', { fg = palette.base00, bg = palette.base04 })
 	set_hl('MiniFilesBorder', { link = 'FloatBorder' })
+	set_hl('MiniFilesTitleFocused', { fg = palette.base07, bold = true })
 
 	set_hl('YankHighlight', { fg = palette.base0F, bold = true })
 	set_hl('MacroRecording', { fg = palette.base08, bold = true })
@@ -114,9 +126,15 @@ local setup = function()
 	set_hl('NeorgPending', { fg = palette.base09 })
 	set_hl('NeorgUndone', { fg = palette.base08 })
 	set_hl('NeorgBold', { fg = palette.base08, bold = true })
+	set_hl('NeorgStrikethrough', { strikethrough = true })
+	set_hl('NeorgUnderlined', { underline = true })
 
 	set_hl('LazyNormal', { bg = palette.base02 })
 	set_hl('LazyBackdrop', { bg = palette.base01 })
+
+	set_hl('FzfLuaBorder', { link = 'FloatBorder' })
+	set_hl('FzfLuaTitle', { fg = palette.base00, bg = palette.base07, bold = true })
+	set_hl('FzfLuaPreviewTitle', { fg = palette.base00, bg = palette.base09, bold = true })
 
 	local groups = { '', 'Sign', 'Floating', 'Underline', 'VirtualText' }
 	for diag, color in pairs(diagnostics) do
@@ -152,11 +170,11 @@ local setup = function()
 		vim.opt_local.winhighlight = table.concat(whl, ',')
 	end
 
-	vim.api.nvim_create_autocmd('FileType', {
-		group = group,
-		pattern = { 'qf', 'help', 'undotree' },
-		callback = set_whl,
-	})
+	-- vim.api.nvim_create_autocmd('FileType', {
+	-- 	group = group,
+	-- 	pattern = { 'qf', 'help', 'undotree' },
+	-- 	callback = set_whl,
+	-- })
 end
 
 return { setup = setup }

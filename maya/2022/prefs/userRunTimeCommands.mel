@@ -59,7 +59,7 @@ runTimeCommand
 	-helpUrl ""
 	-hotkeyCtx ""
 	-commandLanguage "python"
-	-command ("import rig_tools.creator as creator\n\ncreator.Control()")
+	-command ("")
 	CreateControl;
 
 runTimeCommand
@@ -91,4 +91,19 @@ runTimeCommand
 	-commandLanguage "python"
 	-command ("from maya import cmds\n\npanel = cmds.getPanel(withFocus=True)\nmode = cmds.modelEditor(panel, q=True, da=True)\n\nif mode == 'wireframe':\n    cmds.modelEditor(panel, e=True, da='smoothShaded')\nelse:\n    cmds.modelEditor(panel, e=True, da='wireframe')\n")
 	ToggleWireframeMode;
+
+runTimeCommand
+	-label ""
+	-annotation "Creates Buffer node"
+	-longAnnotation ""
+	-category "Custom Scripts"
+	-image ""
+	-tags ""
+	-keywords ""
+	-plugin ""
+	-helpUrl ""
+	-hotkeyCtx ""
+	-commandLanguage "python"
+	-command ("from mayatoolset.api import nodes\n\nnodes.create_buffer()")
+	CreateBuffer;
 

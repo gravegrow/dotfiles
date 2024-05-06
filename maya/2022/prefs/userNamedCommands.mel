@@ -290,3 +290,9 @@ nameCommand
 	-command ("SaveScene")
 	SaveSceneNameCommand;
 
+nameCommand
+	-annotation "CreateBufferNameCommand"
+	-sourceType "mel"
+	-command ("CreateBuffer")
+	CreateBufferNameCommand;
+

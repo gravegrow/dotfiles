@@ -24,8 +24,8 @@ windowPref -topLeftCorner 730 2332 -widthHeight 1106 708 -maximized false Prefer
 windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempReporterWnd;
 windowPref -topLeftCorner 19 927 -widthHeight 1395 1358 -maximized false shelfEditor;
 windowPref -topLeftCorner 28 1885 -widthHeight 1545 1402 -maximized false Viewport20OptionsWindow;
-windowPref -topLeftCorner 20 0 -widthHeight 3440 1420 -maximized false HotkeyEditor;
-windowPref -topLeftCorner 379 1641 -widthHeight 899 696 -maximized false OptionBoxWindow;
+windowPref -topLeftCorner 207 272 -widthHeight 1817 866 -maximized false HotkeyEditor;
+windowPref -topLeftCorner 777 514 -widthHeight 682 438 -maximized false OptionBoxWindow;
 windowPref -topLeftCorner 535 2267 -widthHeight 394 902 -maximized false cometRenameWin;
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
@@ -34,7 +34,7 @@ windowPref -topLeftCorner 730 2319 -widthHeight 1119 708 -maximized false AddAtt
 windowPref -topLeftCorner 483 1275 -widthHeight 888 472 -maximized false connectWindowModal;
 windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false createRenderNodeWindow;
 windowPref -topLeftCorner 235 2048 -widthHeight 935 847 -maximized false expressionEditorWin;
-windowPref -topLeftCorner 28 2325 -widthHeight 1105 1402 -maximized false RenameAttrWin;
+windowPref -topLeftCorner 730 2438 -widthHeight 1000 708 -maximized false RenameAttrWin;
 windowPref -topLeftCorner 28 2325 -widthHeight 1105 1402 -maximized false FbxWarningWindow;
 windowPref -topLeftCorner 647 933 -widthHeight 200 180 -maximized false eyeLidSetupWin;
 windowPref -topLeftCorner 141 1121 -widthHeight 1710 1406 -maximized true assignNewMaterialWindow;

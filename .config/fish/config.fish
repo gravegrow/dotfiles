@@ -21,7 +21,6 @@ set --export GOPATH $HOME/.local/src/go/bin/
 set --export PATH $PATH $GOPATH
 set --export PATH $PATH ~/.local/bin/
 set --export PATH $PATH ~/.cargo/bin/
-
 set --export TMPDIR /tmp
 
 set --export  LOCALE_ARCHIVE "$(nix-env --installed --no-name --out-path --query glibc-locales)/lib/locale/locale-archive"

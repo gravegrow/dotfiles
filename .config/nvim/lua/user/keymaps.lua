@@ -14,7 +14,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic 
 vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [D]isplay' })
 vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
 
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
 vim.keymap.set('v', '<a-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
 vim.keymap.set('v', '<a-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
@@ -29,7 +29,9 @@ vim.keymap.set({ 'n', 'v', 'x' }, 'q:', ':q', { desc = 'It was defenetly a typo 
 vim.api.nvim_create_autocmd('TextYankPost', {
 	desc = 'Highlight when yanking (copying) text',
 	group = vim.api.nvim_create_augroup('on-highlight-yank', { clear = true }),
-	callback = function() vim.highlight.on_yank({ higroup = 'YankHighlight' }) end,
+	callback = function()
+		vim.highlight.on_yank({ higroup = 'YankHighlight' })
+	end,
 })
 
 for _, key in ipairs({ 'd', 'u', 'o', 'i' }) do

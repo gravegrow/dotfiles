@@ -42,6 +42,8 @@ return {
 							},
 							markup = {
 								bold = '+NeorgBold',
+								underline = '+NeorgUnderlined',
+								strikethrough = '+NeorgStrikethrough',
 							},
 							headings = {
 								{ prefix = '+NeorgHeading1', title = '+NeorgHeading1' },

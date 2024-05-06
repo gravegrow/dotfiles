@@ -73,6 +73,7 @@ vim.opt.splitright = true
 
 -- :help tabstop
 vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
 
 -- Wrap words
 vim.opt.wrap = true
