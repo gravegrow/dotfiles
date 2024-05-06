@@ -135,6 +135,7 @@ local setup = function()
 	set_hl('FzfLuaBorder', { link = 'FloatBorder' })
 	set_hl('FzfLuaTitle', { fg = palette.base00, bg = palette.base07, bold = true })
 	set_hl('FzfLuaPreviewTitle', { fg = palette.base00, bg = palette.base09, bold = true })
+	set_hl('FzfLuaCursorLine', { fg = palette.base00, bg = palette.base00 })
 
 	local groups = { '', 'Sign', 'Floating', 'Underline', 'VirtualText' }
 	for diag, color in pairs(diagnostics) do

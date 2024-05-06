@@ -1,6 +1,5 @@
 return {
 	'ibhagwan/fzf-lua',
-	-- optional for icon support
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
 	opts = {
 		'telescope',
@@ -10,22 +9,26 @@ return {
 			preview = {
 				horizontal = 'right:65%',
 				vertical = 'down:45%',
+				flip_columns = 90,
 			},
 		},
-		hls = false,
 		files = {
+			fd_opts = ' --color=never --type f --hidden --follow  --exclude .git --exclude {%s}',
 			cwd_prompt = false,
 			formatter = 'path.filename_first',
 			actions = false,
 		},
 		fzf_opts = {
-			-- nullify fzf-lua's settings to inherit from FZF_DEFAULT_OPTS
-			['--info'] = false,
-			['--layout'] = false,
+			['--layout'] = 'reverse',
+			['--info'] = 'right',
 		},
 	},
 	config = function(_, opts)
 		local fzf = require 'fzf-lua'
+
+		local exclude = '*.tscn,*.tres,*.png,*.glb,*.import,*.ttf,.git*,*.spl'
+		opts.files.fd_opts = opts.files.fd_opts:format(exclude)
+
 		fzf.setup(opts)
 
 		vim.keymap.set('n', '<leader>ff', fzf.files, { desc = '[F]ind [F]iles' })
@@ -40,6 +43,8 @@ return {
 		vim.keymap.set('n', '<leader>fr', fzf.resume, { desc = '[F]ind [R]esume last result' })
 		vim.keymap.set('n', '<leader>fo', fzf.oldfiles, { desc = '[F]ind [O]ld Files' })
 		vim.keymap.set('n', '<leader><leader>', fzf.buffers, { desc = '[ ] Find existing buffers' })
-		vim.keymap.set('n', '<leader>/', fzf.lgrep_curbuf, { desc = '[/] Fuzzily search in current buffer' })
+		vim.keymap.set('n', '<leader>/', function()
+			fzf.lgrep_curbuf({ winopts = { preview = { hidden = 'hidden' } } })
+		end, { desc = '[/] Fuzzily search in current buffer' })
 	end,
 }
