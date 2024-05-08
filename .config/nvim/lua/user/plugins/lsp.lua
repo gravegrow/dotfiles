@@ -40,10 +40,10 @@ return {
 					end
 
 					-- map('gd', require('fzf-lua').lsp_definitions, '[G]oto [D]efinition')
+
 					map('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
 					map('gr', require('fzf-lua').lsp_references, '[G]oto [R]eferences')
 					map('gI', require('fzf-lua').lsp_implementations, '[G]oto [I]mplementation')
-					map('<leader>D', require('fzf-lua').lsp_typedefs, 'Type [D]efinition')
 					map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
 					map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
 					map('K', vim.lsp.buf.hover, 'Hover Documentation')

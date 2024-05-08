@@ -1,4 +1,4 @@
-set -gx FZF_DEFAULT_OPTS "--height=100% --border sharp \
---reverse --cycle --info right \
---prompt ' ' --pointer  \
---color=gutter:-1,pointer:1,bg+:#25211E,hl+:#A3685A,hl:#A3685A,fg+:#b6b2af"
+set -gx FZF_DEFAULT_OPTS "--prompt ' ' --pointer ➤ \
+--height=100% --border sharp --reverse --cycle --info right \
+--color=gutter:-1,pointer:1,hl+:1,hl:1,info:3,\
+fg+:#b6b2af,bg+:#25211E,border:#544C45"

@@ -54,7 +54,6 @@ local setup = function()
 	set_hl('StatusLineNC', { bg = palette.base00, fg = palette.base00 })
 	set_hl('StatusLine', { bg = palette.base00, fg = palette.base00 })
 	set_hl('PmenuThumb', { bg = palette.base09 })
-	set_hl('Title', { bg = palette.base09, fg = palette.base00, bold = true })
 
 	set_hl('NormalFloat', { fg = palette.base05, bg = palette.base01 })
 	set_hl('FloatBorder', { fg = palette.base04 })
