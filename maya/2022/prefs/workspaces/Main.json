@@ -157,7 +157,7 @@
                                                             "tabWidget": {
                                                                 "selectedIndex": 0,
                                                                 "controlWidth": 1072,
-                                                                "controlHeight": 977,
+                                                                "controlHeight": 975,
                                                                 "collapsed": true,
                                                                 "controls": [
                                                                     {
@@ -173,7 +173,7 @@
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
                                                                         "controlWidth": 1072,
-                                                                        "controlHeight": 977
+                                                                        "controlHeight": 975
                                                                     }
                                                                 ]
                                                             }
@@ -333,20 +333,20 @@
     ],
     "closedControls": [
         {
-            "objectName": "TimeSlider",
-            "posX": 1725,
-            "posY": 29,
-            "controlHeight": 1398,
-            "controlWidth": 1702,
+            "objectName": "createNodePanel2Window",
+            "posX": 2326,
+            "posY": 735,
+            "controlHeight": 692,
+            "controlWidth": 1101,
             "widthProperty": "free",
             "heightProperty": "free"
         },
         {
-            "objectName": "SetControlToolsWinObjectWorkspaceControl",
-            "posX": 1635,
-            "posY": 324,
-            "controlHeight": 828,
-            "controlWidth": 424,
+            "objectName": "componentEditorPanel1Window",
+            "posX": 707,
+            "posY": 305,
+            "controlHeight": 749,
+            "controlWidth": 1254,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -360,29 +360,38 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "HelpLine",
-            "posX": 2457,
-            "posY": 395,
-            "controlHeight": 26,
-            "controlWidth": 667,
-            "widthProperty": "free",
-            "heightProperty": "fixed"
-        },
-        {
-            "objectName": "hyperShadePanel1Window",
-            "posX": 1446,
-            "posY": 302,
-            "controlHeight": 992,
-            "controlWidth": 1226,
+            "objectName": "TimeSlider",
+            "posX": 1725,
+            "posY": 29,
+            "controlHeight": 1398,
+            "controlWidth": 1702,
             "widthProperty": "free",
             "heightProperty": "free"
         },
         {
-            "objectName": "SimpleRigToolWorkspaceControl",
-            "posX": 13,
-            "posY": 35,
-            "controlHeight": 1388,
-            "controlWidth": 1695,
+            "objectName": "timeEditorPanel1Window",
+            "posX": 677,
+            "posY": 365,
+            "controlHeight": 744,
+            "controlWidth": 2073,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "CharcoalEditor2Window",
+            "posX": 1120,
+            "posY": 187,
+            "controlHeight": 1061,
+            "controlWidth": 1196,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "SetControlToolsWinObjectWorkspaceControl",
+            "posX": 1635,
+            "posY": 324,
+            "controlHeight": 828,
+            "controlWidth": 424,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -405,11 +414,20 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "shapePanel1Window",
-            "posX": 346,
-            "posY": 174,
-            "controlHeight": 1394,
-            "controlWidth": 3420,
+            "objectName": "referenceEditorPanel1Window",
+            "posX": 2360,
+            "posY": 349,
+            "controlHeight": 755,
+            "controlWidth": 562,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "SimpleRigToolWorkspaceControl",
+            "posX": 13,
+            "posY": 35,
+            "controlHeight": 1388,
+            "controlWidth": 1695,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -423,40 +441,22 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "createNodePanel2Window",
-            "posX": 2326,
-            "posY": 735,
-            "controlHeight": 692,
-            "controlWidth": 1101,
+            "objectName": "shapePanel1Window",
+            "posX": 346,
+            "posY": 174,
+            "controlHeight": 1394,
+            "controlWidth": 3420,
             "widthProperty": "free",
             "heightProperty": "free"
         },
         {
-            "objectName": "AttributeEditor",
-            "posX": 1437,
-            "posY": 121,
-            "controlHeight": 1193,
-            "controlWidth": 562,
-            "widthProperty": "preferred",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "timeEditorPanel1Window",
-            "posX": 677,
-            "posY": 365,
-            "controlHeight": 744,
-            "controlWidth": 2073,
+            "objectName": "HelpLine",
+            "posX": 2457,
+            "posY": 395,
+            "controlHeight": 26,
+            "controlWidth": 667,
             "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "CharcoalEditor2Window",
-            "posX": 1120,
-            "posY": 187,
-            "controlHeight": 1061,
-            "controlWidth": 1196,
-            "widthProperty": "free",
-            "heightProperty": "free"
+            "heightProperty": "fixed"
         },
         {
             "objectName": "posePanel1Window",
@@ -468,20 +468,11 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "componentEditorPanel1Window",
-            "posX": 707,
-            "posY": 305,
-            "controlHeight": 749,
-            "controlWidth": 1254,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "referenceEditorPanel1Window",
-            "posX": 2360,
-            "posY": 349,
-            "controlHeight": 755,
-            "controlWidth": 562,
+            "objectName": "hyperShadePanel1Window",
+            "posX": 1446,
+            "posY": 302,
+            "controlHeight": 992,
+            "controlWidth": 1226,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -492,6 +483,15 @@
             "controlHeight": 1375,
             "controlWidth": 725,
             "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "AttributeEditor",
+            "posX": 1437,
+            "posY": 121,
+            "controlHeight": 1193,
+            "controlWidth": 562,
+            "widthProperty": "preferred",
             "heightProperty": "free"
         }
     ],

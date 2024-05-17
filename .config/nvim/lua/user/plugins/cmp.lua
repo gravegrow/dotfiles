@@ -1,5 +1,6 @@
 return {
 	'hrsh7th/nvim-cmp',
+	event = 'VeryLazy',
 	dependencies = {
 		{
 			'L3MON4D3/LuaSnip',
@@ -20,19 +21,39 @@ return {
 		local luasnip = require 'luasnip'
 		local lspkind = require 'lspkind'
 		local defaults = require 'cmp.config.default'()
-
 		luasnip.config.setup({})
 
 		cmp.setup({
 			mapping = cmp.mapping.preset.insert({
-				['<C-Space>'] = cmp.mapping.complete(),
+				['<c-space>'] = cmp.mapping({
+					i = cmp.mapping.complete(),
+					c = function(
+						_ --[[fallback]]
+					)
+						if cmp.visible() then
+							if not cmp.confirm({ select = true }) then
+								return
+							end
+						else
+							cmp.complete()
+						end
+					end,
+				}),
 				['<C-d>'] = cmp.mapping.scroll_docs(4),
 				['<C-u>'] = cmp.mapping.scroll_docs(-4),
-				['<C-n>'] = cmp.mapping.select_next_item(),
-				['<C-p>'] = cmp.mapping.select_prev_item(),
+				['<C-n>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+				['<C-p>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 				['<C-y>'] = cmp.mapping(
 					cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Insert,
 						select = true,
+					}),
+					{ 'i', 'c' }
+				),
+				['<M-y>'] = cmp.mapping(
+					cmp.mapping.confirm({
+						behavior = cmp.ConfirmBehavior.Replace,
+						select = false,
 					}),
 					{ 'i', 'c' }
 				),
@@ -95,10 +116,10 @@ return {
 				}),
 			},
 			sources = cmp.config.sources({
-				{ name = 'nvim_lsp' },
+				{ name = 'nvim_lsp', keyword_length = 2 },
 				{ name = 'path' },
 				{ name = 'neorg' },
-				{ name = 'luasnip' },
+				{ name = 'luasnip', keyword_length = 2 },
 				{ name = 'buffer', keyword_length = 3 },
 			}),
 			-- sorting = defaults.sorting,

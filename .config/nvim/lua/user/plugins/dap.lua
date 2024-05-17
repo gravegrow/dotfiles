@@ -1,5 +1,6 @@
 return {
 	'mfussenegger/nvim-dap',
+	event = 'LspAttach',
 	dependencies = {
 		'theHamsta/nvim-dap-virtual-text',
 		'nvim-neotest/nvim-nio',

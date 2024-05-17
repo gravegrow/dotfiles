@@ -26,6 +26,7 @@ extract = [
   { exec = 'unar "$1"', desc = "Extract here", for = "unix" },
   { exec = 'unar "%1"', desc = "Extract here", for = "windows" },
 ]
+
 play = [
   { exec = 'mpv "$@"', orphan = true, for = "unix" },
   { exec = 'mpv "%1"', orphan = true, for = "windows" },

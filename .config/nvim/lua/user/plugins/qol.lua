@@ -23,6 +23,7 @@ return {
 	{
 		'folke/todo-comments.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
+		event = 'VeryLazy',
 		config = function()
 			local todo = require 'todo-comments'
 			todo.setup()
@@ -38,11 +39,13 @@ return {
 
 	{
 		'kyazdani42/nvim-web-devicons',
+		event = 'VeryLazy',
 		opts = { override = { gd = { icon = '' } } },
 	},
 
 	{
 		'lewis6991/gitsigns.nvim',
+		event = 'BufEnter',
 		opts = {
 			on_attach = function()
 				local gitsigns = package.loaded.gitsigns
@@ -62,6 +65,7 @@ return {
 
 	{
 		'nvim-treesitter/nvim-treesitter',
+		event = 'BufEnter',
 		build = ':TSUpdate',
 		config = function()
 			---@diagnostic disable-next-line: missing-fields
@@ -76,6 +80,7 @@ return {
 
 	{
 		'mbbill/undotree',
+		event = 'VeryLazy',
 		config = function()
 			vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = 'Open [U]ndotree' })
 			vim.g.undotree_DiffAutoOpen = 0

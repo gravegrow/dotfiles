@@ -1,6 +1,7 @@
 return {
 	'ibhagwan/fzf-lua',
 	dependencies = { 'nvim-tree/nvim-web-devicons' },
+	event = 'VeryLazy',
 	opts = {
 		'telescope',
 		winopts = {
@@ -26,7 +27,7 @@ return {
 	config = function(_, opts)
 		local fzf = require 'fzf-lua'
 
-		local exclude = '*.tscn,*.tres,*.png,*.glb,*.import,*.ttf,.git*,*.spl'
+		local exclude = '*.tscn,*.tres,*.png,*.glb,*.import,*.ttf,.git*,*.spl,*.material'
 		opts.files.fd_opts = opts.files.fd_opts:format(exclude)
 
 		fzf.setup(opts)

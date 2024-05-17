@@ -6,15 +6,15 @@ local setup = function()
 		base03 = '#302a27',
 		base04 = '#544c45',
 		base05 = '#9e9794',
-		base06 = '#555555',
-		base07 = '#9ba0c0',
-		base08 = '#af6a6a',
-		base09 = '#b39580',
-		base0A = '#b3a280',
-		base0B = '#9cb380',
-		base0C = '#97B7B3',
-		base0D = '#809bb3',
-		base0E = '#9c8aa8',
+		base06 = '#464646',
+		base07 = '#8791A6',
+		base08 = '#945B5B',
+		base09 = '#B7927B',
+		base0A = '#C4B28A',
+		base0B = '#8A9A7B',
+		base0C = '#8EA4A2',
+		base0D = '#86A1BB',
+		base0E = '#938AA9',
 		base0F = '#a3685a',
 	}
 
@@ -27,7 +27,16 @@ local setup = function()
 		Ok = palette.base04,
 	}
 
-	local sets = {
+	-- palette.base05 = '#9e9794'
+	-- palette.base07 = '#989FA4'
+	-- palette.base09 = '#8D8580'
+	-- palette.base0A = '#93736c'
+	-- palette.base0B = '#868C91'
+	-- palette.base0C = '#9CA4AA'
+	-- palette.base0D = '#979FA3'
+	-- palette.base0E = '#B4BDC3'
+
+	local types = {
 		keyword = palette.base08,
 	}
 
@@ -39,24 +48,30 @@ local setup = function()
 		vim.api.nvim_set_hl(0, name, opts)
 	end
 
-	set_hl('Normal', { bg = palette.base01 })
-	set_hl('NormalNC', { bg = palette.base01 })
-	set_hl('NormalSB', { bg = palette.base00 })
-	set_hl('Comment', { fg = palette.base06, italic = true })
-	set_hl('Whitespace', { fg = palette.base03 })
-	set_hl('CursorLine', { bg = palette.base02, bold = true })
-	set_hl('Visual', { bg = palette.base03, bold = true })
-	set_hl('CursorLineNR', { fg = palette.base0F, bold = true })
-	set_hl('LineNrAbove', { fg = palette.base04 })
-	set_hl('LineNrBelow', { fg = palette.base04 })
-	set_hl('LineNrSB', { bg = palette.base00, fg = palette.base04 })
-	set_hl('WinSeparator', { bg = palette.base01, fg = palette.base00 })
-	set_hl('StatusLineNC', { bg = palette.base00, fg = palette.base00 })
-	set_hl('StatusLine', { bg = palette.base00, fg = palette.base00 })
-	set_hl('PmenuThumb', { bg = palette.base09 })
+	local highlights = {
+		Normal = { bg = palette.base01 },
+		NormalNC = { bg = palette.base01 },
+		NormalSB = { bg = palette.base00 },
+		Comment = { fg = palette.base06, italic = true },
+		Whitespace = { fg = palette.base03 },
+		CursorLine = { bg = palette.base02, bold = true },
+		Visual = { bg = palette.base03, bold = true },
+		CursorLineNR = { fg = palette.base0F, bold = true },
+		LineNrAbove = { fg = palette.base04 },
+		LineNrBelow = { fg = palette.base04 },
+		LineNrSB = { bg = palette.base00, fg = palette.base04 },
+		WinSeparator = { bg = palette.base01, fg = palette.base00 },
+		StatusLineNC = { bg = palette.base00, fg = palette.base00 },
+		StatusLine = { bg = palette.base00, fg = palette.base00 },
+		PmenuThumb = { bg = palette.base09 },
 
-	set_hl('NormalFloat', { fg = palette.base05, bg = palette.base01 })
-	set_hl('FloatBorder', { fg = palette.base04 })
+		NormalFloat = { fg = palette.base05, bg = palette.base01 },
+		FloatBorder = { fg = palette.base04 },
+	}
+
+	for h, v in pairs(highlights) do
+		set_hl(h, v)
+	end
 
 	set_hl('@string', { italic = true, fg = palette.base0B })
 	set_hl('@string.special.path', { italic = true, fg = palette.base09 })
@@ -74,14 +89,14 @@ local setup = function()
 	set_hl('@constructor', { fg = palette.base0A })
 
 	set_hl('@variable', { fg = palette.base05 })
-	set_hl('@variable.member', { fg = palette.base0E })
+	set_hl('@variable.member', { fg = palette.base07 })
 	set_hl('@variable.builtin', { fg = palette.base08 })
 	set_hl('@variable.parameter', { fg = palette.base07 })
 
-	set_hl('@keyword', { fg = sets.keyword, bold = true })
-	set_hl('@keyword.repeat', { fg = sets.keyword, bold = true })
-	set_hl('@keyword.operator', { fg = sets.keyword, bold = true })
-	set_hl('@keyword.return', { fg = sets.keyword, bold = true })
+	set_hl('@keyword', { fg = types.keyword, bold = true })
+	set_hl('@keyword.repeat', { fg = types.keyword, bold = true })
+	set_hl('@keyword.operator', { fg = types.keyword, bold = true })
+	set_hl('@keyword.return', { fg = types.keyword, bold = true })
 
 	set_hl('@function.builtin', { fg = palette.base09 })
 	set_hl('@function.parameter', { fg = palette.base0F, bold = true })
@@ -115,8 +130,8 @@ local setup = function()
 	set_hl('SpellBad', { italic = true, bold = true })
 
 	set_hl('NeorgHeading1', { fg = palette.base0D })
-	set_hl('NeorgHeading2', { fg = palette.base09 })
-	set_hl('NeorgHeading3', { fg = palette.base07 })
+	set_hl('NeorgHeading2', { fg = palette.base07 })
+	set_hl('NeorgHeading3', { fg = palette.base0E })
 	set_hl('NeorgHeading4', { fg = palette.base0A })
 	set_hl('NeorgHeading5', { fg = palette.base0C })
 	set_hl('NeorgHeading6', { fg = palette.base0F })
@@ -124,9 +139,18 @@ local setup = function()
 	set_hl('NeorgDone', { fg = palette.base0B })
 	set_hl('NeorgPending', { fg = palette.base09 })
 	set_hl('NeorgUndone', { fg = palette.base08 })
-	set_hl('NeorgBold', { fg = palette.base08, bold = true })
+	set_hl('NeorgBold', { fg = palette.base04, bold = true })
 	set_hl('NeorgStrikethrough', { strikethrough = true })
 	set_hl('NeorgUnderlined', { underline = true })
+
+	set_hl('NeorgMarkupVerbatim', { link = 'Comment' })
+
+	-- Colors are for nested quotes
+	set_hl('Blue', { fg = palette.base0D })
+	set_hl('Yellow', { fg = palette.base09 })
+	set_hl('Red', { fg = palette.base08 })
+	set_hl('Green', { fg = palette.base0B })
+	set_hl('Brown', { fg = palette.base0F })
 
 	set_hl('LazyNormal', { bg = palette.base02 })
 	set_hl('LazyBackdrop', { bg = palette.base01 })

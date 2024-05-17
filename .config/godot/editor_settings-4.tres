@@ -183,6 +183,7 @@ metadata/script_setup_templates_dictionary = {
 "CanvasLayer": "0NodeDefault",
 "CharacterBody3D": "0CharacterBody3DBasic Movement",
 "CollisionShape3D": "0NodeDefault",
+"ColorRect": "0NodeDefault",
 "Control": "0NodeDefault",
 "DebugStat": "0ObjectEmpty",
 "HBoxContainer": "0NodeDefault",
