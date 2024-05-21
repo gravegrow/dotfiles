@@ -81,7 +81,7 @@ local setup = function()
 
 	set_hl('@operator', { fg = palette.base09 })
 	set_hl('@constant', { fg = palette.base09, bold = true })
-	set_hl('@attribute', { fg = palette.base0F, bold = false })
+	set_hl('@attribute', { fg = palette.base07, bold = false })
 	set_hl('@property', { fg = palette.base0E })
 	set_hl('@boolean', { fg = palette.base09, italic = true })
 	set_hl('@number', { fg = palette.base09, italic = false })

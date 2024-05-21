@@ -10,7 +10,7 @@ prepend_keymap =[
 ]
 
 keymap = [
-	{ on = [ "c", "x" ], run = 'chmod +x "$1"',     desc = "[C]Mod E[X]ecutable" },
+	{ on = [ "c", "x" ], run = 'chmod +x "$@"',     desc = "[C]Mod E[X]ecutable" },
 	{ on = [ "<Esc>" ], run = "escape",             desc = "Exit visual mode, clear selected, or cancel search" },
 	{ on = [ "q" ],     run = "quit",               desc = "Exit the process" },
 	{ on = [ "Q" ],     run = "quit --no-cwd-file", desc = "Exit the process without writing cwd-file" },

@@ -10,7 +10,6 @@ return {
 			preview = {
 				horizontal = 'right:65%',
 				vertical = 'down:45%',
-				flip_columns = 90,
 			},
 		},
 		files = {

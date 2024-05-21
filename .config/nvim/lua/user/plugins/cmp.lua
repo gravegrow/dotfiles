@@ -74,6 +74,7 @@ return {
 				documentation = cmp.config.window.bordered({
 					winhighlight = 'Normal:Normal,FloatBorder:FloatBorder',
 					border = 'single',
+					maxwidth = 0,
 				}),
 				completion = cmp.config.window.bordered({
 					winhighlight = 'FloatBorder:FloatBorder,Normal:Normal',

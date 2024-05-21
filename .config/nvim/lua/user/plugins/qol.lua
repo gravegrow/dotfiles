@@ -107,16 +107,9 @@ return {
 	},
 
 	{
-		'NvChad/nvim-colorizer.lua',
+		'brenoprata10/nvim-highlight-colors',
 		event = 'BufReadPost',
-		config = function()
-			require('colorizer').setup({
-				user_default_options = {
-					names = false,
-					mode = 'virtualtext',
-				},
-			})
-		end,
+		opts = { render = 'virtual' },
 	},
 
 	{ 'Fymyte/rasi.vim', ft = 'rasi' },

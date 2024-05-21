@@ -67,9 +67,9 @@ local function setup()
 			return ''
 		end
 
-		if count == 1 then
-			return ' [+]'
-		end
+		-- if count == 1 then
+		-- 	return ' [+]'
+		-- end
 
 		return (' [%s]'):format(count)
 	end
