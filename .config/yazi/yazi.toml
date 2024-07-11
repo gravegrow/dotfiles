@@ -28,10 +28,15 @@ extract = [
 ]
 
 play = [
-  { exec = 'mpv "$@"', orphan = true, for = "unix" },
-  { exec = 'mpv "%1"', orphan = true, for = "windows" },
+  { exec = 'flatpak run io.mpv.Mpv "$@"', orphan = true, for = "unix" },
+  { exec = 'flatpak run io.mpv.Mpv "%1"', orphan = true, for = "windows" },
   { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
 ]
+# play = [
+#   { exec = 'mpv "$@"', orphan = true, for = "unix" },
+#   { exec = 'mpv "%1"', orphan = true, for = "windows" },
+#   { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
+# ]
 shell = [{ exec = 'bash "$@"', desc = 'Shell' }]
 
 [open]
@@ -124,6 +129,11 @@ rules = [
     "reveal",
   ] },
 ]
+
+
+[preview]
+max_width=1024
+
 
 [tasks]
 micro_workers = 10

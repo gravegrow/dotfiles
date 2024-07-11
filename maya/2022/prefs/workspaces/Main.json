@@ -333,146 +333,11 @@
     ],
     "closedControls": [
         {
-            "objectName": "createNodePanel2Window",
-            "posX": 2326,
-            "posY": 735,
-            "controlHeight": 692,
-            "controlWidth": 1101,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "componentEditorPanel1Window",
-            "posX": 707,
-            "posY": 305,
-            "controlHeight": 749,
-            "controlWidth": 1254,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "contentBrowserPanel1Window",
-            "posX": 2326,
-            "posY": 735,
-            "controlHeight": 692,
-            "controlWidth": 1101,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "TimeSlider",
-            "posX": 1725,
-            "posY": 29,
-            "controlHeight": 1398,
-            "controlWidth": 1702,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
             "objectName": "timeEditorPanel1Window",
             "posX": 677,
             "posY": 365,
             "controlHeight": 744,
             "controlWidth": 2073,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "CharcoalEditor2Window",
-            "posX": 1120,
-            "posY": 187,
-            "controlHeight": 1061,
-            "controlWidth": 1196,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "SetControlToolsWinObjectWorkspaceControl",
-            "posX": 1635,
-            "posY": 324,
-            "controlHeight": 828,
-            "controlWidth": 424,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "SSEwindow",
-            "posX": 835,
-            "posY": 238,
-            "controlHeight": 1006,
-            "controlWidth": 877,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "scriptEditorPanel1Window",
-            "posX": 3770,
-            "posY": 313,
-            "controlHeight": 891,
-            "controlWidth": 1142,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "referenceEditorPanel1Window",
-            "posX": 2360,
-            "posY": 349,
-            "controlHeight": 755,
-            "controlWidth": 562,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "SimpleRigToolWorkspaceControl",
-            "posX": 13,
-            "posY": 35,
-            "controlHeight": 1388,
-            "controlWidth": 1695,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "graphEditor1Window",
-            "posX": 1135,
-            "posY": 355,
-            "controlHeight": 692,
-            "controlWidth": 1101,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "shapePanel1Window",
-            "posX": 346,
-            "posY": 174,
-            "controlHeight": 1394,
-            "controlWidth": 3420,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "HelpLine",
-            "posX": 2457,
-            "posY": 395,
-            "controlHeight": 26,
-            "controlWidth": 667,
-            "widthProperty": "free",
-            "heightProperty": "fixed"
-        },
-        {
-            "objectName": "posePanel1Window",
-            "posX": 2019,
-            "posY": 327,
-            "controlHeight": 626,
-            "controlWidth": 1126,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "hyperShadePanel1Window",
-            "posX": 1446,
-            "posY": 302,
-            "controlHeight": 992,
-            "controlWidth": 1226,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -486,12 +351,147 @@
             "heightProperty": "free"
         },
         {
+            "objectName": "referenceEditorPanel1Window",
+            "posX": 2360,
+            "posY": 349,
+            "controlHeight": 755,
+            "controlWidth": 562,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "graphEditor1Window",
+            "posX": 1135,
+            "posY": 355,
+            "controlHeight": 692,
+            "controlWidth": 1101,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
             "objectName": "AttributeEditor",
             "posX": 1437,
             "posY": 121,
             "controlHeight": 1193,
             "controlWidth": 562,
             "widthProperty": "preferred",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "HelpLine",
+            "posX": 2457,
+            "posY": 395,
+            "controlHeight": 26,
+            "controlWidth": 667,
+            "widthProperty": "free",
+            "heightProperty": "fixed"
+        },
+        {
+            "objectName": "SSEwindow",
+            "posX": 835,
+            "posY": 238,
+            "controlHeight": 1006,
+            "controlWidth": 877,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "SimpleRigToolWorkspaceControl",
+            "posX": 13,
+            "posY": 35,
+            "controlHeight": 1388,
+            "controlWidth": 1695,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "scriptEditorPanel1Window",
+            "posX": 3770,
+            "posY": 313,
+            "controlHeight": 891,
+            "controlWidth": 1142,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "hyperShadePanel1Window",
+            "posX": 1446,
+            "posY": 302,
+            "controlHeight": 992,
+            "controlWidth": 1226,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "componentEditorPanel1Window",
+            "posX": 707,
+            "posY": 305,
+            "controlHeight": 749,
+            "controlWidth": 1254,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "createNodePanel2Window",
+            "posX": 2326,
+            "posY": 735,
+            "controlHeight": 692,
+            "controlWidth": 1101,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "SetControlToolsWinObjectWorkspaceControl",
+            "posX": 1635,
+            "posY": 324,
+            "controlHeight": 828,
+            "controlWidth": 424,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "contentBrowserPanel1Window",
+            "posX": 2326,
+            "posY": 735,
+            "controlHeight": 692,
+            "controlWidth": 1101,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "posePanel1Window",
+            "posX": 2019,
+            "posY": 327,
+            "controlHeight": 626,
+            "controlWidth": 1126,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "CharcoalEditor2Window",
+            "posX": 1120,
+            "posY": 187,
+            "controlHeight": 1061,
+            "controlWidth": 1196,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "shapePanel1Window",
+            "posX": 346,
+            "posY": 174,
+            "controlHeight": 1394,
+            "controlWidth": 3420,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "TimeSlider",
+            "posX": 1725,
+            "posY": 29,
+            "controlHeight": 1398,
+            "controlWidth": 1702,
+            "widthProperty": "free",
             "heightProperty": "free"
         }
     ],

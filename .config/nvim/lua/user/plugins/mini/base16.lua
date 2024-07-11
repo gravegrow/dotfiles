@@ -1,20 +1,20 @@
 local setup = function()
 	local palette = {
-		base00 = '#141110',
-		base01 = '#1C1917',
+		base00 = '#12120f',
+		base01 = '#181616',
 		base02 = '#25211E',
 		base03 = '#302a27',
 		base04 = '#544c45',
 		base05 = '#9e9794',
 		base06 = '#464646',
-		base07 = '#8791A6',
+		base07 = '#807E96',
 		base08 = '#945B5B',
 		base09 = '#B7927B',
 		base0A = '#C4B28A',
 		base0B = '#8A9A7B',
 		base0C = '#8EA4A2',
 		base0D = '#86A1BB',
-		base0E = '#938AA9',
+		base0E = '#C8B3CA',
 		base0F = '#a3685a',
 	}
 
@@ -27,17 +27,8 @@ local setup = function()
 		Ok = palette.base04,
 	}
 
-	-- palette.base05 = '#9e9794'
-	-- palette.base07 = '#989FA4'
-	-- palette.base09 = '#8D8580'
-	-- palette.base0A = '#93736c'
-	-- palette.base0B = '#868C91'
-	-- palette.base0C = '#9CA4AA'
-	-- palette.base0D = '#979FA3'
-	-- palette.base0E = '#B4BDC3'
-
-	local types = {
-		keyword = palette.base08,
+	local links = {
+		KeywordHL = { fg = palette.base08, italic = true },
 	}
 
 	vim.cmd.hi 'clear'
@@ -82,7 +73,7 @@ local setup = function()
 	set_hl('@operator', { fg = palette.base09 })
 	set_hl('@constant', { fg = palette.base09, bold = true })
 	set_hl('@attribute', { fg = palette.base07, bold = false })
-	set_hl('@property', { fg = palette.base0E })
+	set_hl('@property', { fg = palette.base07 })
 	set_hl('@boolean', { fg = palette.base09, italic = true })
 	set_hl('@number', { fg = palette.base09, italic = false })
 	set_hl('@number.float', { link = '@number' })
@@ -93,10 +84,10 @@ local setup = function()
 	set_hl('@variable.builtin', { fg = palette.base08 })
 	set_hl('@variable.parameter', { fg = palette.base07 })
 
-	set_hl('@keyword', { fg = types.keyword, bold = true })
-	set_hl('@keyword.repeat', { fg = types.keyword, bold = true })
-	set_hl('@keyword.operator', { fg = types.keyword, bold = true })
-	set_hl('@keyword.return', { fg = types.keyword, bold = true })
+	set_hl('@keyword', links.KeywordHL)
+	set_hl('@keyword.repeat', links.KeywordHL)
+	set_hl('@keyword.operator', links.KeywordHL)
+	set_hl('@keyword.return', links.KeywordHL)
 
 	set_hl('@function.builtin', { fg = palette.base09 })
 	set_hl('@function.parameter', { fg = palette.base0F, bold = true })

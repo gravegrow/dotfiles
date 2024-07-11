@@ -15,7 +15,7 @@ format = "[ $path ]($style bold)"
 [python]
 style = "fg:#C98F6C bold"
 symbol = "[ ]($style)"
-format = "$symbol[$version](bold)"
+format = "$venv$symbol[$version](bold)"
 
 [git_branch]
 style = "fg:green bold"

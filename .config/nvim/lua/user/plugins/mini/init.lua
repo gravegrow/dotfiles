@@ -4,7 +4,6 @@ return {
 		config = function()
 			require('mini.ai').setup()
 			require('mini.align').setup()
-			require('mini.comment').setup()
 			require('mini.splitjoin').setup()
 			require('mini.surround').setup()
 
@@ -20,5 +19,12 @@ return {
 		config = function()
 			require('user.plugins.mini.base16').setup()
 		end,
+	},
+
+	{
+		'rose-pine/neovim',
+		name = 'rose-pine',
+		lazy = false,
+		priority = 1000,
 	},
 }

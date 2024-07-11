@@ -107,10 +107,23 @@ return {
 	},
 
 	{
-		'brenoprata10/nvim-highlight-colors',
+		'NvChad/nvim-colorizer.lua',
 		event = 'BufReadPost',
-		opts = { render = 'virtual' },
+		config = function()
+			require('colorizer').setup({
+				user_default_options = {
+					names = false,
+					mode = 'virtualtext',
+				},
+			})
+		end,
 	},
+
+	-- {
+	-- 	'brenoprata10/nvim-highlight-colors',
+	-- 	event = 'BufReadPost',
+	-- 	opts = { render = 'virtual', virtual_symbol_position = 'eol', virtual_symbol = '●' },
+	-- },
 
 	{ 'Fymyte/rasi.vim', ft = 'rasi' },
 	{ 'fladson/vim-kitty' },
