@@ -56,7 +56,7 @@ local setup = function()
 		StatusLine = { bg = palette.base00, fg = palette.base00 },
 		PmenuThumb = { bg = palette.base09 },
 
-		NormalFloat = { fg = palette.base05, bg = palette.base01 },
+		NormalFloat = { fg = palette.base05, bg = palette.base00 },
 		FloatBorder = { fg = palette.base04 },
 	}
 
@@ -88,6 +88,7 @@ local setup = function()
 	set_hl('@keyword.repeat', links.KeywordHL)
 	set_hl('@keyword.operator', links.KeywordHL)
 	set_hl('@keyword.return', links.KeywordHL)
+	set_hl('@keyword.directive.python', { link = 'Comment' })
 
 	set_hl('@function.builtin', { fg = palette.base09 })
 	set_hl('@function.parameter', { fg = palette.base0F, bold = true })

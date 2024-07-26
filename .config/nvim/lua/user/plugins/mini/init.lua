@@ -11,20 +11,4 @@ return {
 			require('user.plugins.mini.files').setup()
 		end,
 	},
-
-	{
-		'echasnovski/mini.base16',
-		lazy = false,
-		priority = 1000,
-		config = function()
-			require('user.plugins.mini.base16').setup()
-		end,
-	},
-
-	{
-		'rose-pine/neovim',
-		name = 'rose-pine',
-		lazy = false,
-		priority = 1000,
-	},
 }

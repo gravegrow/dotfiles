@@ -6,16 +6,14 @@ return {
 		event = 'VeryLazy',
 		config = function()
 			require('which-key').setup()
-
-			-- Document existing key chains
-			require('which-key').register({
-				['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-				['<leader>d'] = { name = '[D]iagnostic', _ = 'which_key_ignore' },
-				['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
-				['<leader>f'] = { name = '[F]find', _ = 'which_key_ignore' },
-				['<leader>m'] = { name = '[M]aya', _ = 'which_key_ignore' },
-				['<leader>n'] = { name = '[N]eorg', _ = 'which_key_ignore' },
-				['gh'] = { name = '[H]unk', _ = 'which_key_ignore' },
+			require('which-key').add({
+				{ '<leader>c', group = '[C]ode' },
+				{ '<leader>d', group = '[D]iagnostic' },
+				{ '<leader>r', group = '[R]ename' },
+				{ '<leader>f', group = '[F]find' },
+				{ '<leader>m', group = '[M]aya' },
+				{ '<leader>n', group = '[N]eorg' },
+				{ 'gh', group = '[H]unk' },
 			})
 		end,
 	},
@@ -118,12 +116,6 @@ return {
 			})
 		end,
 	},
-
-	-- {
-	-- 	'brenoprata10/nvim-highlight-colors',
-	-- 	event = 'BufReadPost',
-	-- 	opts = { render = 'virtual', virtual_symbol_position = 'eol', virtual_symbol = '●' },
-	-- },
 
 	{ 'Fymyte/rasi.vim', ft = 'rasi' },
 	{ 'fladson/vim-kitty' },

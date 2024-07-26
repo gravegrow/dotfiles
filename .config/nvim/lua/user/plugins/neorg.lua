@@ -8,15 +8,6 @@ return {
 		},
 	},
 	{
-		'3rd/image.nvim',
-		lazy = true,
-		ft = 'neorg',
-		dependencies = { 'luarocks.nvim' },
-		config = function()
-			require('image').setup()
-		end,
-	},
-	{
 		'nvim-neorg/neorg',
 		dependencies = { 'luarocks.nvim' },
 		version = '*',
@@ -60,12 +51,7 @@ return {
 		},
 		config = function(_, opts)
 			require('neorg').setup(opts)
-			vim.keymap.set(
-				'n',
-				'<leader>nc',
-				'<cmd>Neorg toggle-concealer<cr>',
-				{ desc = '[N]eorg [C]oncealer toggle' }
-			)
+			vim.keymap.set('n', '<leader>nc', '<cmd>Neorg toggle-concealer<cr>', { desc = '[N]eorg [C]oncealer toggle' })
 		end,
 	},
 }
