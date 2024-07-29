@@ -2,15 +2,24 @@
 
 format = """
 $directory$git_branch$python
-$jobs$character"""
+$shell$jobs$character"""
 
 add_newline = true
+
+[shell]
+disabled = false
+fish_indicator = ""
+bash_indicator = " bash "
+format = "[$indicator]($style)"
+style = "fg:#A1ABA0"
+
 
 [directory]
 truncation_length = 8
 home_symbol = "~"
 style = "fg:blue bold"
 format = "[ $path ]($style bold)"
+
 
 [python]
 style = "fg:#C98F6C bold"
