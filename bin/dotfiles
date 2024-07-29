@@ -20,7 +20,7 @@ DOTFILES_LOG="$HOME/.dotfiles.log"
 
 function _task {
 	if [[ $TASK != "" ]]; then
-		printf "${OVERWRITE}${GREEN} [✓]  ${CLEAN}${TASK}\n"
+		printf "${OVERWRITE}${GREEN} [✓]  ${CLEAN}${TASK}${CLEAN}\n"
 	fi
 	TASK=$1
 	printf "${GRAY} [ ]  ${TASK} \n${CLEAN}"
@@ -50,7 +50,7 @@ function _cmd {
 }
 
 function _task_done {
-	printf "${OVERWRITE}${GREEN} [✓]  ${GREEN}${TASK}\n"
+	printf "${OVERWRITE}${GREEN} [✓]  ${CLEAN}${TASK}${CLEAN}\n"
 	TASK=""
 }
 
@@ -94,4 +94,11 @@ else
 	_cmd "git -C $DOTFILES_DIR pull --quiet"
 fi
 
+_task "Running playbook"
 _task_done
+
+if [[ -f $VAULT_SECRET ]]; then
+	ansible-playbook --vault-password-file $VAULT_SECRET "$DOTFILES_DIR/main.yml" "$@"
+else
+	ansible-playbook "$DOTFILES_DIR/main.yml" "$@"
+fi
