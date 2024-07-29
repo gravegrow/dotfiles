@@ -23,7 +23,7 @@ function _task {
 		printf "${OVERWRITE}${GREEN} [✓]  ${CLEAN}${TASK}\n"
 	fi
 	TASK=$1
-	printf "${GRAY} [ ]  ${TASK} \n"
+	printf "${GRAY} [ ]  ${TASK} \n${CLEAN}"
 }
 
 function _cmd {
@@ -42,7 +42,7 @@ function _cmd {
 	while read line; do
 		printf "      ${line}\n"
 	done <$DOTFILES_LOG
-	printf "\n"
+	printf "\n${CLEAN}"
 	# remove log file
 	rm $DOTFILES_LOG
 	# exit installation
@@ -63,6 +63,11 @@ function archlinux_setup() {
 		_cmd "sudo pacman -S --noconfirm ansible"
 	fi
 
+	if ! [ -x "$(command -v git)" ]; then
+		_task "Installing Git"
+		_cmd "sudo pacman -S --noconfirm git"
+	fi
+
 	if ! pacman -Q openssh >/dev/null 2>&1; then
 		_task "Installing OpenSSH"
 		_cmd "sudo pacman -S --noconfirm openssh"
@@ -74,7 +79,7 @@ _task "Loading Setup for detected OS: $ID"
 
 case $ID in
 arch)
-	arch_setup
+	archlinux_setup
 	;;
 *)
 	echo "Unsupported OS: ${ID}"
@@ -83,12 +88,10 @@ esac
 
 if ! [[ -d "$DOTFILES_DIR" ]]; then
 	_task "Cloning dotfiles repository"
-	git clone --quiet -b ansible https://github.com/gravegrow/dotfiles.git $DOTFILES_DIR
+	_cmd "git clone --quiet -b ansible https://github.com/gravegrow/dotfiles.git $DOTFILES_DIR"
 else
 	_task "Updating dotfiles repository"
-	git -C $DOTFILES_DIR pull --quiet
+	_cmd "git -C $DOTFILES_DIR pull --quiet"
 fi
 
 _task_done
-
-popd 2>&1 >/dev/null
