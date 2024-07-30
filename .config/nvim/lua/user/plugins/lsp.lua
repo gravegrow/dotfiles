@@ -1,7 +1,6 @@
 return {
 	{
 		'neovim/nvim-lspconfig',
-		event = 'VeryLazy',
 		dependencies = {
 			'williamboman/mason.nvim',
 			'williamboman/mason-lspconfig.nvim',
@@ -58,7 +57,7 @@ return {
 			local ok, cmp_lsp = pcall(require, 'cmp_nvim_lsp')
 
 			if ok then
-				capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+				capabilities = vim.tbl_deep_extend('force', capabilities, cmp_lsp.default_capabilities())
 			end
 
 			local handlers = {
