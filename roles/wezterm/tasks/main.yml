@@ -13,4 +13,3 @@
     src: wezterm
     dest: '~/.config/wezterm'
     state: 'link'
-    force: true
