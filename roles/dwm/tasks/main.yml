@@ -14,7 +14,6 @@
     - dwm
     - dwmblocks
   community.general.make:
-    target: all
-    chdir: "{{ item }}"
-    file: "{{ role_path }}/files/{{ item }}/Makefile"
+    target: install
+    chdir: "{{ role_path }}/files/{{ item }}"
     make: /usr/bin/make
