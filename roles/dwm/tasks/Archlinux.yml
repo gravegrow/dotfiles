@@ -1,5 +1,5 @@
 ---
-- name: "Install build dependencies"
+- name: "DWM | Install build dependencies"
   become: true
   community.general.pacman:
     name: 

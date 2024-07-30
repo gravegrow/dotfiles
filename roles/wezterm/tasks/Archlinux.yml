@@ -1,5 +1,5 @@
 ---
-- name: "Install"
+- name: "Wezterm | Install"
   community.general.pacman:
     name: wezterm
     state: present

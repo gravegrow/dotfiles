@@ -1,5 +1,5 @@
 ---
-- name: "Install"
+- name: "Yazi | Install"
   community.general.pacman:
     name: yazi
     state: present
