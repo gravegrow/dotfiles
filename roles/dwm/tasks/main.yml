@@ -16,5 +16,5 @@
   community.general.make:
     target: all
     chdir: "{{ item }}"
-    file: "{{ item }}/Makefile"
+    file: "{{ role_path }}{{ item }}/Makefile"
     make: /usr/bin/make
