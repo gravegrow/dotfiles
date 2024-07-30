@@ -1,11 +1,2 @@
----
 - name: Dotfiles Setup
   hosts: localhost
-  connection: local
-
-  pre_tasks:
-
-  - name: Register Current User
-    ansible.builtin.set_fact:
-      host_user: "{{ ansible_env['USER']}}"
-    when: host_user is not defined
