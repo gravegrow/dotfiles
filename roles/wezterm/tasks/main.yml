@@ -11,5 +11,5 @@
 - name: "Wezterm | Symlink Config"
   ansible.builtin.file:
     src: 'wezterm'
-    dest: '~/.config/wezterm'
+    dest: '~/.config/'
     state: 'link'
