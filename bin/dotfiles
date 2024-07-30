@@ -93,6 +93,17 @@ function archlinux_setup() {
 source /etc/os-release
 _task "Loading Setup for detected OS: $ID"
 
+update_ansible_galaxy() {
+	local os=$1
+	local os_requirements=""
+	_task "Updating Ansible Galaxy"
+	if [ -f "$DOTFILES_DIR/requirements/$os.yml" ]; then
+		_task "${OVERWRITE}Updating Ansible Galaxy with OS Config: $os"
+		os_requirements="$DOTFILES_DIR/requirements/$os.yml"
+	fi
+	_cmd "ansible-galaxy install -r $DOTFILES_DIR/requirements/common.yml $os_requirements"
+}
+
 case $ID in
 arch)
 	archlinux_setup
@@ -110,6 +121,9 @@ else
 	_cmd "git -C $DOTFILES_DIR pull --quiet"
 fi
 
+pushd "$DOTFILES_DIR" 2>&1 >/dev/null
+update_ansible_galaxy $ID
+
 _task "Running playbook"
 _task_done
 
@@ -118,3 +132,5 @@ if [[ -f $VAULT_SECRET ]]; then
 else
 	ansible-playbook "$DOTFILES_DIR/main.yml" "$@"
 fi
+
+popd 2>&1 >/dev/null
