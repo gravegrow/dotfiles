@@ -1,0 +1,21 @@
+#!/bin/env bash
+
+xrandr --output DisplayPort-1 --auto --mode "3440x1440_120.00" --set TearFree on
+xrandr --output HDMI-A-0 --right-of DisplayPort-1 --auto --scale 1.3333x1.3333
+
+# xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank &
+picom &
+feh --bg-fill ~/dotfiles/.local/share/backgrounds/bg.png &
+openrgb -p main &
+
+/usr/libexec/gsd-xsettings &
+adb devices &
+gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark-Compact" &
+gsettings set org.gnome.desktop.wm.preferences theme "Orchis-Dark-Compact" &
+gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' &
+gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors-white' &
+gsettings set org.gnome.desktop.wm.preferences button-layout : &
+gsettings set org.cinnamon.desktop.default-applications.terminal exec wezterm &
+gsettings set org.gnome.desktop.default-applications.terminal exec wezterm &
+
+setxkbmap -layout us,ru -option grp:alt_space_toggle &

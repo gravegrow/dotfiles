@@ -1,0 +1,19 @@
+---
+- name: "Checking for Distribution Config: {{ ansible_distribution }}"
+  ansible.builtin.stat:
+    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+  register: wezterm_distribution_config
+
+- name: "Run Tasks: {{ ansible_distribution }}"
+  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+  when: wezterm_distribution_config.stat.exists
+
+- name: "Build and install DWM and DwmBlocks"
+  become: true
+  loop:
+    - dwm
+    - dwmblocks
+  community.general.make:
+    target: install
+    chdir: "{{ item }}"
+    make: /usr/bin/make

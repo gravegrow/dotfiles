@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# gpick --pick --single --output | xsel -ib
+gpick --pick

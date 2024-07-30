@@ -22,6 +22,7 @@ function _task {
 	if [[ $TASK != "" ]]; then
 		printf "${OVERWRITE}${GREEN} [✓]  ${CLEAN}${TASK}${CLEAN}\n"
 	fi
+
 	TASK=$1
 	printf "${GRAY} [ ]  ${TASK} \n${CLEAN}"
 }
