@@ -1,3 +1,4 @@
+---
 - name: "Wezterm | Install"
   community.general.pacman:
     name: wezterm
