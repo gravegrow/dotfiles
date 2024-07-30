@@ -1,7 +1,7 @@
 ---
 - name: "Install"
   community.general.pacman:
-    name: wezterm
+    name: yazi
     state: present
   become: true
 

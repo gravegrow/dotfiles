@@ -1,0 +1,26 @@
+"$schema" = "https://yazi-rs.github.io/schemas/theme.json"
+
+[manager]
+cwd = { fg = 'green', bold = true }
+hovered = { fg = '#bac2df', bg = "#25211f", bold = true }
+preview_hovered = { bg = "#25211f", bold = true }
+border_style = { fg = "#141110" }
+find_keyword = { fg = "#b77e64", bold = true }
+tab_active = { bg = "reset", fg = "#B4BEFE", bold = true }
+tab_inactive = { fg = "white", bg = "darkgray", bold = false }
+
+
+[status]
+separator_open = ""
+separator_close = ""
+separator_style = { fg = "darkgray", bg = "black" }
+mode_normal = { bg = "#809bb3", fg = "black", bold = true }
+mode_select = { bg = "#9CB380", fg = "black", bold = true }
+
+
+[help]
+footer = { fg = "gray", bg = "black" }
+
+
+[filetype]
+rules = [{ name = "*", fg = "#9CA4AA" }, { name = "*/", fg = "#9A8F8A" }]

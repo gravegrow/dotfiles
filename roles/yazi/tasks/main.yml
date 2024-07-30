@@ -10,6 +10,6 @@
 
 - name: "Symlink Config"
   ansible.builtin.file:
-    src: '{{ role_path }}/files/wezterm'
-    dest: '~/.config/wezterm'
+    src: '{{ role_path }}/files/yazi'
+    dest: '~/.config/yazi'
     state: 'link'
