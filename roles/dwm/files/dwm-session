@@ -1,7 +1,9 @@
 #!/bin/bash
 
-dwm-autostart
+if ! [ -x "$(command -v dwm-autostart)" ]; then
+  dwm-autostart
+fi
 
-while type dwm >/dev/null; do 
-  dwm && continue || break; 
+while type dwm >/dev/null; do
+  dwm && continue || break
 done
