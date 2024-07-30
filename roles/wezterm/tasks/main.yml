@@ -9,7 +9,6 @@
   when: wezterm_distribution_config.stat.exists
 
 - name: "Wezterm | Symlink Config"
-  ansible.builtin.file:
+  ansible.builtin.copy:
     src: wezterm
-    dest: '~/.config/wezterm'
-    state: 'link'
+    dest: '~/.config/'
