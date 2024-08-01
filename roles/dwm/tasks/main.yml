@@ -21,7 +21,7 @@
 - name: DWM | Move session file to xsessions
   ansible.builtin.copy:
     src: dwm.desktop
-    dest: /usr/share/xsessions/dwm-session
+    dest: /usr/share/xsessions/dwm.desktop
 
 - name: DWM | Move executable file to binaries
   ansible.builtin.copy:
