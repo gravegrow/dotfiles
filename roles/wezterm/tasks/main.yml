@@ -1,15 +1,15 @@
 ---
-- name: "Wezterm | Checking for Distribution Config: {{ ansible_distribution }}"
+- name: 'Wezterm | Checking for Distribution Config: {{ ansible_distribution }}'
   ansible.builtin.stat:
-    path: "{{ role_path }}/tasks/{{ ansible_distribution }}.yml"
+    path: '{{ role_path }}/tasks/{{ ansible_distribution }}.yml'
   register: wezterm_distribution_config
 
-- name: "Wezterm | Run Tasks: {{ ansible_distribution }}"
-  ansible.builtin.include_tasks: "{{ ansible_distribution }}.yml"
+- name: 'Wezterm | Run Tasks: {{ ansible_distribution }}'
+  ansible.builtin.include_tasks: '{{ ansible_distribution }}.yml'
   when: wezterm_distribution_config.stat.exists
 
-- name: "Wezterm | Symlink Config"
+- name: Wezterm | Symlink Config
   ansible.builtin.file:
     src: '{{ role_path }}/files/wezterm'
-    dest: '~/.config/wezterm'
-    state: 'link'
+    dest: ~/.config/wezterm
+    state: link

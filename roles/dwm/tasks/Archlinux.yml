@@ -1,13 +1,12 @@
 ---
-- name: "DWM | Install build dependencies"
+- name: DWM | Install build dependencies
   become: true
   community.general.pacman:
-    name: 
-      - base-devel 
-      - libx11 
-      - libxft 
-      - libxinerama 
-      - freetype2 
+    name:
+      - base-devel
+      - libx11
+      - libxft
+      - libxinerama
+      - freetype2
       - fontconfig
     state: present
-

@@ -1,7 +1,6 @@
 ---
-- name: "Yazi | Install"
+- name: Yazi | Install
+  become: true
   community.general.pacman:
     name: yazi
     state: present
-  become: true
-
