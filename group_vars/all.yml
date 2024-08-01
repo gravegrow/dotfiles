@@ -1,4 +1,8 @@
+---
 default_roles:
   - dwm
+  - fonts
+  - nemo
   - wezterm
+  - utils
   - yazi

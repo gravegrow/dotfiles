@@ -1,0 +1,30 @@
+---
+- name: Utils | Installing system utilities
+  become: true
+  loop:
+    - fzf
+    - man
+    - pavucontrol
+    - eza
+    - feh
+    - tldr
+    - tree
+    - bat
+    - btop
+    - gpick
+    - github-cli
+    - fd
+    - keepassxc
+    - ripgrep
+    - curl
+    - fontconfig
+    - nodejs
+    - npm
+    - perl
+    - python-neovim
+    - ruby
+    - flameshot
+
+  community.general.pacman:
+    name: '{{ item }}'
+    state: present

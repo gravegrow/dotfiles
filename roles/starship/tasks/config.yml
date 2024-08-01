@@ -1,0 +1,6 @@
+---
+- name: Starship | Config
+  ansible.builtin.file:
+    src: '{{ role_path }}/files/starship.toml'
+    dest: ~/.config/starship.toml
+    state: link

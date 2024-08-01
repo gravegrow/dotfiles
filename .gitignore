@@ -6,3 +6,4 @@ maya/mayaLog
 .config/fish/fish_variables
 .config/godot/recent_dirs
 .config/godot/text_editor_themes/
+callback_plugins/__pycache__

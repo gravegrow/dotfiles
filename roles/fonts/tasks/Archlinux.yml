@@ -1,0 +1,10 @@
+---
+- name: Fonts | Installing extra fonts
+  become: true
+  loop:
+    - jetbrains-mono
+    - firacode
+
+  community.general.pacman:
+    name: ttf-{{item}}-nerd
+    state: present
