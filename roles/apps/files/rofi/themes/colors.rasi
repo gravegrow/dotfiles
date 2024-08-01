@@ -1,0 +1,16 @@
+* {
+    background:    #25211E;
+    bg1:    #141110;
+    bg2:    #141110;
+    bg3:    #AF9DA2;
+    border: #25211E;
+    fg0:    #9A8F8A;
+    fg3:    #302B27;
+    fg4:    #AF9DA2;
+    inputborder: #000000;
+    selection: #9AA4AC;
+
+    border-radius: 8px;
+}
+
+@import "common.rasi"

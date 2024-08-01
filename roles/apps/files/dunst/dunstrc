@@ -1,0 +1,50 @@
+[global]
+frame_color = "#352E2B"
+frame_width = 1
+separator_color= frame
+separator_height = 1
+corner_radius = 7
+
+origin = top-right
+offset = 10x30
+
+width = (370,700)
+horizontal_padding = 10
+
+font = BerkeleyMono Nerd Font Mono 10
+alignment = center
+
+highlight = "#A7B0EC"
+transparency = 0
+
+scale = 1
+show_indicators = no
+
+enable_recursive_icon_lookup = true
+icon_theme = "Papirus-Dark"
+
+[spotify]
+appname = "Spotify"
+min_icon_size = 64
+max_icon_size = 64
+
+
+[flameshot]
+appname = "flameshot"
+min_icon_size = 128
+max_icon_size = 128
+
+[urgency_low]
+background = "#25211E"
+foreground = "#B3BFD1"
+
+[urgency_normal]
+background = "#25211E"
+foreground = "#B3BFD1"
+
+[urgency_critical]
+background = "#1E1E2E"
+foreground = "#B3BFD1"
+frame_color = "#FAB387"
+
+# vim: ft=cfg

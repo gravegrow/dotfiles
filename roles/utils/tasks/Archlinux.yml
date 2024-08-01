@@ -18,12 +18,18 @@
     - ripgrep
     - curl
     - fontconfig
+    - luarocks
     - nodejs
     - npm
     - perl
     - python-neovim
     - ruby
     - flameshot
+    - unzip
+    - wget
+    - go
+    - cargo
+    - pyenv
 
   community.general.pacman:
     name: '{{ item }}'

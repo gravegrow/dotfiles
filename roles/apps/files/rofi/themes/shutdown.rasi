@@ -1,0 +1,30 @@
+@import "colors.rasi"
+
+* {
+    font:   "JetBrainsMono Nerd Font Light 11";
+}
+mainbox {
+  children: [listview];
+}
+
+listview {
+    background-color:   transparent;
+
+    margin:     0px 0 0;
+    lines:      3;
+    columns:    1;
+    fixed-height: true;
+}
+
+window {
+    location:       north east;
+    width:          200;
+    y-offset:       42;
+    x-offset:       -14;
+
+    border:         2px;
+    border-radius:  @border-radius;
+    border-color:       @border;
+
+    background-color:   @background;
+}

@@ -1,7 +1,0 @@
----
-- name: Starship | Install
-  become: true
-  community.general.pacman:
-    name: starship
-    state: present
-  when: ansible_facts['os_family'] == 'Archlinux'

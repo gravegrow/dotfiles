@@ -1,8 +1,8 @@
 ---
 default_roles:
+  - apps
   - dwm
+  - display_manager
   - fonts
   - nemo
-  - wezterm
   - utils
-  - yazi

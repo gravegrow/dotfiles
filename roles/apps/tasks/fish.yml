@@ -1,0 +1,16 @@
+---
+- name: Fish | Install
+  become: true
+  loop:
+    - fish
+    - fisher
+  community.general.pacman:
+    name: '{{ item }}'
+    state: present
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: Fish | Setup for user
+  become: true
+  user:
+    name: '{{ ansible_user_id }}'
+    shell: /bin/fish

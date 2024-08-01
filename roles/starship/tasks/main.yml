@@ -1,7 +1,0 @@
----
-- name: Starship | Run Tasks
-  loop:
-    - install
-    - config
-
-  ansible.builtin.include_tasks: '{{ item }}.yml'

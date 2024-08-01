@@ -1,0 +1,16 @@
+gui:
+  border: "single"
+  nerdFontsVersion: "3"
+  showBottomLine: true
+  showRandomTip: true
+  showPanelJumps: true
+  expandFocusedSidePanel: true
+  theme:
+    inactiveBorderColor:
+      - "#6E6763"
+    selectedLineBgColor:
+      - "#25211F"
+    cherryPickedCommitBgColor:
+      - cyan
+    unstagedChangesColor:
+      - '#c76b77' 

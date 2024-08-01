@@ -1,0 +1,36 @@
+---
+- name: Apps | Install
+  become: true
+  loop:
+    - dunst
+    - lazygit
+    - mpv
+    - neovim
+    - picom
+    - rofi
+    - starship
+    - tmux
+    - wezterm
+    - yazi
+
+  community.general.pacman:
+    name: '{{ item }}'
+    state: present
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: Apps | Fish
+  ansible.builtin.include_tasks: fish.yml
+
+- name: Apps | Find all config files
+  find:
+    paths: '{{ role_path }}/files'
+    recurse: false
+    file_type: any
+  register: find
+
+- name: Apps | Link config files
+  file:
+    src: '{{ item.path }}'
+    path: ~/.config/{{ item.path | basename }}
+    state: link
+  with_items: '{{ find.files }}'

@@ -1,0 +1,15 @@
+lastupdatecheck: 0
+recentrepos:
+- /home/gravegrow/dotfiles
+- /media/storage/development/godot/TheRitual
+- /media/storage/development/notes
+- /media/storage/development/maya/MayaToolset
+- /media/storage/development/maya/maya-sender.nvim
+- /media/storage/software/neovim
+startuppopupversion: 5
+customcommandshistory:
+- q
+- wq
+- qa
+hidecommandlog: false
+ignorewhitespaceindiffview: false

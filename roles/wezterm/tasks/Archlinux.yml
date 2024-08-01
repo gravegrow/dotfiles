@@ -1,6 +1,0 @@
----
-- name: Wezterm | Install
-  become: true
-  community.general.pacman:
-    name: wezterm
-    state: present
