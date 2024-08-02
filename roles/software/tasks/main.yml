@@ -28,7 +28,9 @@
     paths: '{{ role_path }}/files'
     recurse: false
     file_type: any
-    excludes: nemo
+    excludes:
+      - nemo
+      - maya
   register: find
 
 - name: Software | Link config files
@@ -37,3 +39,9 @@
     path: ~/.config/{{ item.path | basename }}
     state: link
   with_items: '{{ find.files }}'
+
+- name: Software | Linking maya config files
+  file:
+    src: '{{ role_path }}/files/maya'
+    path: ~/maya
+    state: link
