@@ -48,6 +48,7 @@
     state: present
 
 - name: UFW Firewall | Install
+  become: true
   community.general.pacman:
     name: ufw
     state: present
