@@ -8,11 +8,8 @@
 
 - name: Nemo | Creating directories
   ansible.builtin.file:
-    path: '{{ item }}'
+    path: ~/.local/share
     state: directory
-  loop:
-    - ~/.local/share
-    - ~/.local/share/nemo
 
 - name: Nemo | Linking Config
   ansible.builtin.file:
