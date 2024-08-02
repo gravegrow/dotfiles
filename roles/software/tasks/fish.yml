@@ -5,8 +5,7 @@
     - fish
     - fisher
   loop_control:
-    loop_var:
-      loop_var: package
+    loop_var: package
   community.general.pacman:
     name: '{{ package }}'
     state: present
