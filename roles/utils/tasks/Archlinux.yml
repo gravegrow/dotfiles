@@ -2,6 +2,10 @@
 - name: Utils | Installing system utilities
   become: true
   loop:
+    - android-tools
+    - firefox
+    - blueman
+    - poetry
     - fzf
     - man
     - pavucontrol
@@ -30,6 +34,13 @@
     - go
     - cargo
     - pyenv
+    - qbittorrent
+    - gnome-calculator
+    - gnome-calendar
+    - gnome-disk-utility
+    - zathura
+    - zathura-pdf-poppler
+    - polkit-gnome
 
   community.general.pacman:
     name: '{{ item }}'

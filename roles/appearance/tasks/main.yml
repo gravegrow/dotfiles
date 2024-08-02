@@ -1,0 +1,8 @@
+---
+- name: Appearance | Run Tasks
+  loop:
+    - display_manager.yml
+    - fonts.yml
+    - plymouth.yml
+
+  ansible.builtin.include_tasks: '{{ item }}'

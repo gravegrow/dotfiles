@@ -7,9 +7,11 @@ xrandr --output HDMI-A-0 --right-of DisplayPort-1 --auto --scale 1.3333x1.3333
 picom &
 feh --bg-fill ~/dotfiles/.local/share/backgrounds/bg.png &
 openrgb -p main &
+adb devices &
 
 /usr/libexec/gsd-xsettings &
-adb devices &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
 gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark-Compact" &
 gsettings set org.gnome.desktop.wm.preferences theme "Orchis-Dark-Compact" &
 gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' &

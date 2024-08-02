@@ -45,7 +45,6 @@ static const char *colors[][3] = {
 static const char *const autostart[] = {
     "dwmblocks", NULL,
     "dunst", NULL,
-    "/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1", NULL,
     NULL /* terminate */
 };
 
@@ -129,9 +128,9 @@ static const char *mutevol[] = {"dwm-volume-change", "toggle", NULL};
 
 /* commands */
 static const char *termcmd[] = {"wezterm", NULL};
+static const char *roficmd[] = {"rofi", "-show", "drun", "-terminal", "wezterm", NULL};
 static const char *privatebrowsercmd[] = {"brave-browser", "--incognito", NULL};
 static const char *browsercmd[] = {"brave-browser", NULL};
-static const char *roficmd[] = {"rofi", "-show", "drun", NULL};
 static const char *gpickcmd[] = {"dwm-gpick", NULL};
 static const char *filesguicmd[] = {"nemo", NULL};
 static const char *filestuicmd[] = {"wezterm", "-e", "yazi", NULL};

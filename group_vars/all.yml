@@ -1,8 +1,7 @@
 ---
 default_roles:
-  - apps
-  - dwm
-  - display_manager
-  - fonts
-  - nemo
-  - utils
+  - appearance
+  # - dwm
+  # - nemo
+  # - software
+  # - utils
