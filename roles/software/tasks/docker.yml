@@ -7,6 +7,7 @@
   when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: Docker | Enable service
+  become: true
   ansible.builtin.service:
     name: docker
     enabled: true
