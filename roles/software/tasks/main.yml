@@ -23,6 +23,7 @@
   with_items:
     - fish.yml
     - docker.yml
+    - nemo.yml
 
 - name: Software | Find all config files
   find:
