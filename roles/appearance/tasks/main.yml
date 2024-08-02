@@ -4,5 +4,7 @@
     - display_manager.yml
     - fonts.yml
     - plymouth.yml
+    - theme.yml
+    - cursor.yml
 
   ansible.builtin.include_tasks: '{{ item }}'

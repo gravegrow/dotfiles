@@ -1,0 +1,19 @@
+---
+- name: GTK Theme | Downloading
+  ansible.builtin.git:
+    repo: https://github.com/vinceliuice/Orchis-theme.git
+    dest: /tmp/Orchis-theme
+
+- name: GTK Theme | Installing
+  ansible.builtin.shell: /tmp/Orchis-theme/install.sh -c dark -l -t default grey
+
+- name: GTK Theme | Linking config files
+  file:
+    src: '{{ role_path }}/files/gtk-3.0'
+    path: ~/.config/gtk-3.0
+    state: link
+
+- name: GTK Theme | Cleaning
+  ansible.builtin.file:
+    path: /tmp/Orchis-theme
+    state: absent

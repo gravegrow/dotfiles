@@ -18,14 +18,17 @@
     state: present
   when: ansible_facts['os_family'] == 'Archlinux'
 
-- name: Software | Fish
-  ansible.builtin.include_tasks: fish.yml
+- name: Software | Managed
+  ansible.builtin.include_tasks:
+    - fish.yml
+    - docker.yml
 
 - name: Software | Find all config files
   find:
     paths: '{{ role_path }}/files'
     recurse: false
     file_type: any
+    excludes: nemo
   register: find
 
 - name: Software | Link config files

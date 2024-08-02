@@ -1,6 +1,0 @@
----
-- name: Nemo | Install
-  become: true
-  community.general.pacman:
-    name: nemo
-    state: present
