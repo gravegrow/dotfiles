@@ -130,6 +130,15 @@ return {
 				lua = { 'stylua' },
 				gdscript = { 'gdformat' },
 				sh = { 'shfmt' },
+				yaml = { 'yamlfix' },
+			},
+			formatters = {
+				yamlfix = {
+					env = {
+						YAMLFIX_SEQUENCE_STYLE = 'block_style',
+						YAMLFIX_WHITELINES = '1',
+					},
+				},
 			},
 		},
 	},
