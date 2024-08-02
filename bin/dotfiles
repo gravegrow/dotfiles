@@ -13,7 +13,7 @@ CHECK_MARK="${GREEN}\xE2\x9C\x94${CLEAN}"
 ARROW="${SEA}\xE2\x96\xB6${CLEAN}"
 
 # VAULT_SECRET="$HOME/.ansible-vault/vault.secret"
-DOTFILES_DIR="$HOME/.config/dotfiles"
+DOTFILES_DIR="$HOME/.dotfiles"
 SSH_DIR="$HOME/.ssh"
 
 DOTFILES_LOG="$HOME/.dotfiles.log"
