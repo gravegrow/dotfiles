@@ -19,7 +19,8 @@
   when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: Software | Managed
-  ansible.builtin.include_tasks:
+  ansible.builtin.include_tasks: '{{ item }}'
+  with_items:
     - fish.yml
     - docker.yml
 
