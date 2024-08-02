@@ -4,8 +4,11 @@
   loop:
     - fish
     - fisher
+  loop_control:
+    loop_var:
+      loop_var: package
   community.general.pacman:
-    name: '{{ item }}'
+    name: '{{ package }}'
     state: present
   when: ansible_facts['os_family'] == 'Archlinux'
 
