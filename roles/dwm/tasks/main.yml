@@ -42,6 +42,7 @@
     dest: ~/.profile
 
 - name: DWM | Copying monitor profile file to xorg conf
+  become: true
   ansible.builtin.copy:
     src: 10-monitor.conf
     dest: /etc/X11/xorg.conf.d/10-monitor.conf
