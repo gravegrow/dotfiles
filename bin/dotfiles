@@ -62,7 +62,7 @@ function archlinux_setup() {
 
 	_task "Setting TTY font"
 	_cmd "sudo pacman -S --noconfirm terminus-font"
-	_cmd "sudo setfont ter-132n"
+	_cmd "sudo setfont ter-128n"
 
 	if ! [ -x "$(command -v ansible)" ]; then
 		_task "Installing Ansible"
@@ -118,13 +118,13 @@ arch)
 	;;
 esac
 
-# if ! [[ -d "$DOTFILES_DIR" ]]; then
-# 	_task "Cloning dotfiles repository"
-# 	_cmd "git clone --quiet -b ansible https://github.com/gravegrow/dotfiles.git $DOTFILES_DIR"
-# else
-# 	_task "Updating dotfiles repository"
-# 	_cmd "git -C $DOTFILES_DIR pull --quiet"
-# fi
+if ! [[ -d "$DOTFILES_DIR" ]]; then
+	_task "Cloning dotfiles repository"
+	_cmd "git clone --quiet -b ansible https://github.com/gravegrow/dotfiles.git $DOTFILES_DIR"
+else
+	_task "Updating dotfiles repository"
+	_cmd "git -C $DOTFILES_DIR pull --quiet"
+fi
 
 pushd "$DOTFILES_DIR" 2>&1 >/dev/null
 update_ansible_galaxy $ID
