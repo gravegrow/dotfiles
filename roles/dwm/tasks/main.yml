@@ -41,6 +41,11 @@
     src: .profile
     dest: ~/.profile
 
+- name: DWM | Copying monitor profile file to xorg conf
+  ansible.builtin.copy:
+    src: 10-monitor.conf
+    dest: /etc/X11/xorg.conf.d/10-monitor.conf
+
 - name: DWM | Sourcing .profile in .bash_profile
   lineinfile:
     path: ~/.bash_profile
