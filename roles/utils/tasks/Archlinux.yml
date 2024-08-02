@@ -2,6 +2,7 @@
 - name: Utils | Installing system utilities
   become: true
   loop:
+    - timeshift
     - android-tools
     - firefox
     - blueman
@@ -45,3 +46,20 @@
   community.general.pacman:
     name: '{{ item }}'
     state: present
+
+- name: UFW Firewall | Install
+  community.general.pacman:
+    name: ufw
+    state: present
+
+- name: UFW Firewall | Config
+  become: true
+  command: ufw {{ item }}
+  with_items:
+    - disable
+    - limit 22/tcp
+    - allow 80/tcp
+    - allow 443/tcp
+    - default deny incomig
+    - default allow outgoing
+    - enable

@@ -13,10 +13,9 @@
   loop:
     - dwm
     - dwmblocks
-  community.general.make:
-    target: install
+  command:
+    cmd: /usr/bin/make clean install
     chdir: '{{ role_path }}/files/{{ item }}'
-    make: /usr/bin/make
 
 - name: DWM | Create xsessions
   become: true
