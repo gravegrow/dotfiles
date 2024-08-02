@@ -15,6 +15,15 @@
       vt.global_cursor_default=0"
   when: ansible_facts['os_family'] == 'Archlinux'
 
+- name: Plymouth | Modify grubs splash screen
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: ^GRUB_CMDLINE_LINUX_DEFAULT=
+    line: GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash rd.udev.log_priority=3
+      vt.global_cursor_default=0"
+  when: ansible_facts['os_family'] == 'Archlinux'
+
 - name: Plymouth | Find if plymouth allready in mkinitcpio
   ansible.builtin.shell: cat /etc/mkinitcpio.conf
   register: file_desc
@@ -28,6 +37,22 @@
   when:
     - file_desc.stdout.find('plymouth') == -1
     - ansible_facts['os_family'] == 'Archlinux'
+
+- name: Grub | Modify timeout
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: ^GRUB_TIMEOUT=
+    line: GRUB_TIMEOUT=3
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: Grub | Modify timeout
+  become: true
+  ansible.builtin.lineinfile:
+    path: /etc/default/grub
+    regexp: ^GRUB_TIMEOUT_STYLE=
+    line: GRUB_TIMEOUT_STYLE='hidden'
+  when: ansible_facts['os_family'] == 'Archlinux'
 
 - name: Plymouth | Update grub
   ansible.builtin.command: grub-mkconfig -o /boot/grub/grub.cfg
