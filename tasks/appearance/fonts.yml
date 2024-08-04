@@ -12,5 +12,5 @@
 - name: Fonts | Linking fonts directory
   ansible.builtin.file:
     src: '{{ playbook_dir }}/{{ fonts_path }}'
-    path: ~/.config/fonts
+    path: ~/.local/share/fonts
     state: link

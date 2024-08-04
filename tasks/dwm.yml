@@ -65,6 +65,6 @@
     insertafter: EOF
     path: ~/.profile
     block: |-
-      if [ -d "{{ playbook_dir }}/dwm/bin" ]; then
-          PATH="{{ playbook_dir }}/dwm/bin:$PATH"
+      if [ -d "{{ playbook_dir }}/{{ dwm_path }}/bin" ]; then
+          PATH="{{ playbook_dir }}/{{ dwm_path }}/bin:$PATH"
       fi
