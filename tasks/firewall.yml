@@ -1,0 +1,19 @@
+---
+- name: UFW Firewall | Installing
+  become: true
+  community.general.pacman:
+    name: ufw
+    state: present
+  changed_when: false
+
+- name: UFW Firewall | Configuring
+  become: true
+  command: ufw {{ item }}
+  with_items:
+    - disable
+    - limit 22/tcp
+    - allow 80/tcp
+    - allow 443/tcp
+    - default deny incoming
+    - default allow outgoing
+    - enable

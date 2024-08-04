@@ -1,0 +1,7 @@
+---
+- name: Software packages | Installing
+  become: true
+  community.general.pacman:
+    name: '{{ software_packages }}'
+    state: present
+  changed_when: false

@@ -1,0 +1,7 @@
+---
+- name: Dev packages | Installing
+  become: true
+  community.general.pacman:
+    name: '{{ dev_packages }}'
+    state: present
+  changed_when: false

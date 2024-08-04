@@ -1,0 +1,13 @@
+---
+- name: Dispaly Manager | Installing GDM
+  become: true
+  community.general.pacman:
+    name: gdm
+    state: present
+  changed_when: false
+
+- name: Dispaly Manager | Enabling GDM service
+  become: true
+  ansible.builtin.service:
+    name: gdm
+    enabled: true

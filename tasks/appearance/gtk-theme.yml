@@ -1,0 +1,9 @@
+---
+- name: GTK-Theme | Installing
+  become: true
+  with_items:
+    - orchis-theme-git
+    - kvantum-theme-orchis-git
+  community.general.pacman:
+    name: '{{ item }}'
+  changed_when: false

@@ -1,0 +1,146 @@
+---
+base_packages:
+  - xdotool
+  - xsel
+  - xclip
+  - xdg-utils
+  - xdg-user-dirs
+  - man
+  - wget
+  - curl
+  - git
+
+xorg_packages:
+  - xorg
+  - xorg-apps
+  - xorg-drivers
+  - xorg-apps
+  - xorg-fonts
+  - xorg-server
+  - xorg-xinit
+  - xorg-xrandr
+
+dwm_deps:
+  - base-devel
+  - libx11
+  - libxft
+  - libxinerama
+  - freetype2
+  - fontconfig
+
+dev_packages:
+  - pyenv
+  - cargo
+  - go
+  - ruby
+  - python-neovim
+  - perl
+  - npm
+  - nodejs
+  - luarocks
+  - curl
+  - ripgrep
+  - fd
+  - github-cli
+  - fzf
+  - poetry
+
+software_packages:
+  - neovim
+  - nemo
+  - fish
+  - docker
+  - dunst
+  - fastfetch
+  - lazygit
+  - mpv
+  - neovim
+  - picom
+  - rofi
+  - starship
+  - tmux
+  - wezterm
+  - yazi
+  - timeshift
+  - firefox
+  - brave-bin
+  - blueman
+  - pavucontrol
+  - eza
+  - feh
+  - tldr
+  - tree
+  - bat
+  - btop
+  - gpick
+  - keepassxc
+  - flameshot
+  - unzip
+  - unrar
+  - qbittorrent
+  - gnome-calculator
+  - gnome-calendar
+  - gnome-disk-utility
+  - zathura
+  - zathura-pdf-poppler
+  - polkit-gnome
+  - ntfs-3g
+  - android-tools
+  - discord
+  - telegram-desktop
+  - spotify
+  - spicetify-cli
+  - qt5ct
+  - lxappearance
+
+font_packages:
+  - ttf-jetbrains-mono-nerd
+  - ttf-firacode-nerd
+  - noto-fonts
+  - noto-fonts-emoji
+
+gaming_packages:
+  - steam
+  - lutris
+  - wine-staging
+  - winetricks
+  - protontricks
+  - gamemode
+  - gamescope
+
+lutris_dependencies:
+  - lib32-gamemode
+  - lib32-vk3d
+  - python-protobuf
+  - vk3d
+  - vulkan-tools
+
+wine_dependencies:
+  - giflib
+  - lib32-giflib
+  - gnutls
+  - lib32-gnutls
+  - v4l-utils
+  - lib32-v4l-utils
+  - libpulse
+  - lib32-libpulse
+  - alsa-plugins
+  - lib32-alsa-plugins
+  - alsa-lib
+  - lib32-alsa-lib
+  - sqlite
+  - lib32-sqlite
+  - libxcomposite
+  - lib32-libxcomposite
+  - ocl-icd
+  - lib32-ocl-icd
+  - libva
+  - lib32-libva
+  - gtk3
+  - lib32-gtk3
+  - gst-plugins-base-libs
+  - lib32-gst-plugins-base-libs
+  - vulkan-icd-loader
+  - lib32-vulkan-icd-loader
+  - sdl2
+  - lib32-sdl2

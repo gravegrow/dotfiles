@@ -1,0 +1,18 @@
+---
+- name: Fish | Installing
+  become: true
+  with_items:
+    - fish
+    - fisher
+  loop_control:
+    loop_var: fish_package
+  community.general.pacman:
+    name: '{{ fish_package }}'
+    state: present
+  changed_when: false
+
+- name: Fish | Setting up for user
+  become: true
+  user:
+    name: '{{ ansible_user_id }}'
+    shell: /bin/fish

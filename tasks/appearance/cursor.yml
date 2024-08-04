@@ -1,0 +1,31 @@
+---
+- name: Cursor | Downloading
+  ansible.builtin.get_url:
+    url: https://github.com/alvatip/Nordzy-cursors/releases/download/1.0.0/Nordzy-cursors-white.tar.gz
+    dest: /tmp/Nordzy-cursors-white.tar.gz
+
+- name: Cursor | Creating icons directory
+  ansible.builtin.file:
+    path: ~/.icons/
+    state: directory
+
+- name: Cursor | Installing
+  ansible.builtin.unarchive:
+    src: /tmp/Nordzy-cursors-white.tar.gz
+    dest: ~/.icons/
+
+- name: Cursor | Creating Xresources
+  file:
+    path: ~/.Xresources
+    state: touch
+
+- name: Cursor | Setting Xresources
+  ansible.builtin.lineinfile:
+    path: ~/.Xresources
+    line: 'Xcursor.theme: Nordzy-cursors-white'
+    insertafter: EOF
+
+- name: Cursor | Cleaning
+  ansible.builtin.file:
+    path: /tmp/Nordzy-cursors-white.tar.gz
+    state: absent

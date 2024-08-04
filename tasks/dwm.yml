@@ -1,0 +1,70 @@
+---
+- name: DWM | Installing xorg packages
+  become: true
+  community.general.pacman:
+    name: '{{xorg_packages}}'
+    state: present
+  changed_when: false
+
+- name: DWM | Installing build dependencies
+  become: true
+  community.general.pacman:
+    name: '{{dwm_deps}}'
+    state: present
+  changed_when: false
+
+- name: DWM | Building and installing DWM and DWMBLOCKS
+  become: true
+  loop:
+    - dwm
+    - dwmblocks
+  command:
+    cmd: /usr/bin/make clean install
+    chdir: '{{ dwm_path }}/{{ item }}'
+
+- name: DWM | Create xsessions
+  become: true
+  ansible.builtin.file:
+    path: /usr/share/xsessions
+    state: directory
+
+- name: DWM | Copying session file to xsessions
+  become: true
+  ansible.builtin.copy:
+    src: '{{ dwm_path }}/dwm.desktop'
+    dest: /usr/share/xsessions/dwm.desktop
+
+- name: DWM | Copying session executable file to binaries
+  become: true
+  ansible.builtin.copy:
+    src: '{{ dwm_path }}/dwm-session'
+    dest: /usr/local/bin/dwm-session
+    mode: a+x
+
+- name: DWM | Copying .profile file to home
+  ansible.builtin.copy:
+    src: '{{ dwm_path }}//profile'
+    dest: ~/.profile
+
+- name: DWM | Copying monitor profile file to xorg conf
+  become: true
+  ansible.builtin.copy:
+    src: '{{ dwm_path }}//10-monitor.conf'
+    dest: /etc/X11/xorg.conf.d/10-monitor.conf
+
+- name: DWM | Sourcing .profile in .bash_profile
+  lineinfile:
+    path: ~/.bash_profile
+    line: '[[ -f ~/.profile ]] && . ~/.profile'
+    insertafter: EOF
+  when: lookup('file', '~/.bash_profile') is not search('. ~/.profile')
+
+- name: DWM | Adding executables to .profile
+  ansible.builtin.blockinfile:
+    prepend_newline: true
+    insertafter: EOF
+    path: ~/.profile
+    block: |-
+      if [ -d "{{ playbook_dir }}/dwm/bin" ]; then
+          PATH="{{ playbook_dir }}/dwm/bin:$PATH"
+      fi

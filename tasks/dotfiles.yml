@@ -1,0 +1,45 @@
+---
+- name: Dotfiles | Finding dotfiles
+  find:
+    paths: '{{ dotfiles_path }}'
+    recurse: false
+    file_type: any
+    excludes:
+      - nemo
+      - maya
+      - starship
+      - pfonts
+  register: found_dotfiles
+
+- name: Dotfiles | Linking config files
+  file:
+    src: '{{ playbook_dir }}/{{ item.path }}'
+    path: ~/.config/{{ item.path | basename }}
+    state: link
+  with_items: '{{ found_dotfiles.files }}'
+
+- name: Dotfiles | Linking maya config files
+  file:
+    src: '{{ playbook_dir }}/{{ dotfiles_path }}/maya'
+    path: ~/maya
+    state: link
+
+- name: Dotfiles | Linking starship config files
+  file:
+    src: '{{ playbook_dir }}/{{ dotfiles_path }}/starship/starship.toml'
+    path: ~/.config/starship.toml
+    state: link
+
+- name: Dotfiles | Creating nemo directories
+  ansible.builtin.file:
+    path: ~/.local/share
+    state: directory
+
+- name: Dotfiles | Linking nemo config
+  ansible.builtin.file:
+    src: '{{ playbook_dir }}/{{ dotfiles_path }}/nemo'
+    dest: ~/.local/share/nemo
+    state: link
+
+- name: Dotfiles | Creating Home directories
+  ansible.builtin.command: xdg-user-dirs-update

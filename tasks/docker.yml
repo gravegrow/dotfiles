@@ -1,0 +1,13 @@
+---
+- name: Docker | Installing
+  become: true
+  community.general.pacman:
+    name: docker
+    state: present
+  when: ansible_facts['os_family'] == 'Archlinux'
+
+- name: Docker | Enabling service
+  become: true
+  ansible.builtin.service:
+    name: docker
+    enabled: true

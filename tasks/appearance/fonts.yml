@@ -1,0 +1,16 @@
+---
+- name: Fonts | Installing extra fonts
+  become: true
+  with_items: '{{ font_packages }}'
+  loop_control:
+    loop_var: font
+  community.general.pacman:
+    name: '{{ font }}'
+    state: present
+  changed_when: false
+
+- name: Fonts | Linking fonts directory
+  ansible.builtin.file:
+    src: '{{ playbook_dir }}/{{ fonts_path }}'
+    path: ~/.config/fonts
+    state: link
