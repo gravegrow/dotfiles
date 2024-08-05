@@ -11,32 +11,13 @@
   community.general.ufw:
     state: disabled
 
-- name: UFW Firewall | Configuring rules
+- name: UFW Firewall | Configuring
   become: true
-  community.general.ufw:
-    rule: '{{ item.rule }}'
-    port: '{{ item.port }}'
-    proto: '{{ item.proto }}'
+  community.general.ufw: ufw {{ item }}
   with_items:
-    - rule1:
-        - rule: limit
-        - port: 22
-        - proto: tcp
-
-    - rule2:
-        - rule: allow
-        - port: 80
-        - proto: tcp
-
-    - rule3:
-        - rule: allow
-        - port: 443
-        - proto: tcp
-
-- name: UFW Firewall | Configuring defaults
-  become: true
-  command: ufw {{ item }}
-  with_items:
+    - limit 22/tcp
+    - allow 80/tcp
+    - allow 443/tcp
     - default deny incoming
     - default allow outgoing
 
