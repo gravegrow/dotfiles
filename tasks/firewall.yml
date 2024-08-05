@@ -13,7 +13,7 @@
 
 - name: UFW Firewall | Configuring
   become: true
-  community.general.ufw: ufw {{ item }}
+  command: ufw {{ item }}
   with_items:
     - limit 22/tcp
     - allow 80/tcp
