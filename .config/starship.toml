@@ -10,6 +10,7 @@ add_newline = true
 disabled = false
 fish_indicator = ""
 bash_indicator = " bash "
+zsh_indicator = " zsh "
 format = "[$indicator]($style)"
 style = "fg:#A1ABA0"
 
