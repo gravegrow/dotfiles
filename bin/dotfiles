@@ -120,7 +120,7 @@ esac
 
 if ! [[ -d "$DOTFILES_DIR" ]]; then
 	_task "Cloning dotfiles repository"
-	_cmd "git clone --quiet -b ansible https://github.com/gravegrow/dotfiles.git $DOTFILES_DIR"
+	_cmd "git clone --quiet https://github.com/gravegrow/dotfiles.git $DOTFILES_DIR"
 else
 	_task "Updating dotfiles repository"
 	_cmd "git -C $DOTFILES_DIR pull --quiet"
