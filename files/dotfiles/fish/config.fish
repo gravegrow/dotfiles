@@ -8,13 +8,7 @@ if type -q bat
     alias cat='bat'
 end
 
-set --export EDITOR 'nvim'
-set --export GOPATH $HOME/.local/src/go/bin/
-set --export PATH $PATH $GOPATH
-set --export PATH $PATH ~/.local/bin/
-set --export PATH $PATH ~/.cargo/bin/
 set -U FZF_COMPLETE 2
-
 
 fish_vi_key_bindings
 fish_ssh_agent

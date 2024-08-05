@@ -52,12 +52,15 @@
     src: '{{ dwm_path }}//10-monitor.conf'
     dest: /etc/X11/xorg.conf.d/10-monitor.conf
 
-- name: DWM | Sourcing .profile in .bash_profile
-  lineinfile:
-    path: ~/.bash_profile
-    line: '[[ -f ~/.profile ]] && . ~/.profile'
-    insertafter: EOF
-  when: lookup('file', '~/.bash_profile') is not search('. ~/.profile')
+- name: DWM | Removing bash profile
+  file:
+    name: '{{ bash_item }}'
+    state: absent
+  loop_control:
+    loop_var: bash_item
+  with_items:
+    - .bash_profile
+    - .bash_history
 
 - name: DWM | Adding executables to .profile
   ansible.builtin.blockinfile:

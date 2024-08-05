@@ -8,10 +8,10 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-if [ -d "$HOME/.local/bin" ]; then
-	PATH="$HOME/.local/bin:$PATH"
-fi
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+[ -d "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
 
+export EDITOR=nvim
 export XDG_CURRENT_DESKTOP=DWM
 export XDG_SESSION_DESKTOP=$XDG_CURRENT_DESKTOP
 export XDG_DATA_HOME=$HOME/.local/share
@@ -19,3 +19,5 @@ export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
 export TMPDIR=/tmp
+
+# vim:ft=sh
