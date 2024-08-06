@@ -1,5 +1,0 @@
-#!/bin/bash
-
-pid=$(xdotool getactivewindow getwindowgeometry --shell | grep -E "WINDOW" | grep -Eo "[0-9]+")
-xdotool windowmove $pid 1950 20
-xdotool windowsize $pid 318 520
