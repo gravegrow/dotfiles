@@ -1,10 +1,10 @@
 #!/bin/bash
 
-if [ ! -d $HOME/pictures ]; then
-	mkdir $HOME/pictures
+if [ ! -d $HOME/Pictures/Screenshot ]; then
+	mkdir -p $HOME/Pictures/Screenshot
 fi
 
-file=$HOME/pictures/$(date +'%d-%m-%Y_%H-%-M-%S').png
+file=$HOME/Pictures/Screenshots/$(date +'%d-%m-%Y_%H-%-M-%S').png
 
 flameshot screen -p "$file"
 

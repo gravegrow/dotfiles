@@ -1,10 +1,10 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 32;    /* snap pixel */
-static const unsigned int systraypinning = 0; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
-static const unsigned int systrayonleft = 0; /* 0: systray in the right corner, >0: systray on left of status text */
+static const unsigned int systraypinning = 1; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
+static const unsigned int systrayonleft = 1; /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2; /* systray spacing */
 static const int systraypinningfailfirst = 1; /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray = 0;               /* 0 means no systray */
@@ -14,7 +14,7 @@ static const int swallowfloating = 0; /* 1 means swallow floating windows by def
 
 static const unsigned int gappx = 0; /* gaps between windows */
 static const int vertpad = 0;        /* vertical padding of bar */
-static const int sidepad = gappx;    /* horizontal padding of bar */
+static const int sidepad = 0;    /* horizontal padding of bar */
 
 static const int barpad = 0; /* horizontal padding of bar */
 static const int user_bh = 2; /* 2 is the default spacing around the bar's font */
@@ -28,18 +28,18 @@ static const unsigned int ulinestroke = 0; /* thickness / height of the underlin
 static const unsigned int ulinevoffset = 0; /* how far above the bottom of the bar the line should appear */
 static const int ulineall = 0; /* 1 to show underline on all tags, 0 for just the active ones */
 
-static const char color_bg[] = "#141110";
+static const char color_bg[] = "#12120F";
 static const char color_fg[] = "#b4befe";
 static const char color_blue[] = "#89B4FA";
 static const char color_gray[] = "#9A8F89";
-static const char color_selection[] = "#25211E";
-static const char color_inactive[] = "#2F2A26";
+static const char color_selection[] = "#544C45";
+static const char color_inactive[] = "#544C45";
 
 static const char *colors[][3] = {
     /*               fg              bg         border   */
-    [SchemeNorm]  = {color_inactive, color_bg, "#000000"},
+    [SchemeNorm]  = {color_inactive, color_bg, color_bg},
     [SchemeSel]   = {color_gray,     color_bg, color_selection},
-    [SchemeTitle] = {"#80756F",     color_bg, color_bg},
+    [SchemeTitle] = {"#80756F",      color_bg, color_bg},
 };
 
 static const char *const autostart[] = {
@@ -52,15 +52,15 @@ static const char *const autostart[] = {
 static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const char *tagsel[][2] = {
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
-    {"#89B4FA", color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
+    {color_blue, color_bg},
 };
 
 static const Rule rules[] = {
@@ -129,8 +129,8 @@ static const char *mutevol[] = {"dwm-volume-change", "toggle", NULL};
 /* commands */
 static const char *termcmd[] = {"wezterm", NULL};
 static const char *roficmd[] = {"rofi", "-show", "drun", "-terminal", "wezterm", NULL};
-static const char *privatebrowsercmd[] = {"brave-browser", "--incognito", NULL};
-static const char *browsercmd[] = {"brave-browser", NULL};
+static const char *privatebrowsercmd[] = {"brave", "--incognito", NULL};
+static const char *browsercmd[] = {"brave", NULL};
 static const char *gpickcmd[] = {"dwm-gpick", NULL};
 static const char *filesguicmd[] = {"nemo", NULL};
 static const char *filestuicmd[] = {"wezterm", "-e", "yazi", NULL};

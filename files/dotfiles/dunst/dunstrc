@@ -3,7 +3,7 @@ frame_color = "#352E2B"
 frame_width = 1
 separator_color= frame
 separator_height = 1
-corner_radius = 7
+corner_radius = 0
 
 origin = top-right
 offset = 10x30
@@ -31,8 +31,8 @@ max_icon_size = 64
 
 [flameshot]
 appname = "flameshot"
-min_icon_size = 128
-max_icon_size = 128
+min_icon_size = 64
+max_icon_size = 64
 
 [urgency_low]
 background = "#25211E"

@@ -27,7 +27,7 @@ return {
 		local fzf = require 'fzf-lua'
 
 		local exclude = '*.tscn,*.tres,*.png,*.glb,*.import,*.ttf,.git*,*.spl,*.material'
-		opts.files.fd_opts = opts.files.fd_opts:format(exclude)
+		-- opts.files.fd_opts = opts.files.fd_opts:format(exclude)
 
 		fzf.setup(opts)
 

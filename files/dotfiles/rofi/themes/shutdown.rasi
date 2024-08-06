@@ -3,6 +3,7 @@
 * {
     font:   "JetBrainsMono Nerd Font Light 11";
 }
+
 mainbox {
   children: [listview];
 }
@@ -19,12 +20,11 @@ listview {
 window {
     location:       north east;
     width:          200;
-    y-offset:       42;
-    x-offset:       -14;
+    y-offset:       20;
+    x-offset:       0;
 
-    border:         2px;
-    border-radius:  @border-radius;
+    border:             1px;
+    border-radius:      @border-radius;
     border-color:       @border;
-
     background-color:   @background;
 }

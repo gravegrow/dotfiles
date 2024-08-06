@@ -27,16 +27,16 @@ extract = [
   { exec = 'unar "%1"', desc = "Extract here", for = "windows" },
 ]
 
-play = [
-  { exec = 'flatpak run io.mpv.Mpv "$@"', orphan = true, for = "unix" },
-  { exec = 'flatpak run io.mpv.Mpv "%1"', orphan = true, for = "windows" },
-  { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
-]
 # play = [
-#   { exec = 'mpv "$@"', orphan = true, for = "unix" },
-#   { exec = 'mpv "%1"', orphan = true, for = "windows" },
+#   { exec = 'flatpak run io.mpv.Mpv "$@"', orphan = true, for = "unix" },
+#   { exec = 'flatpak run io.mpv.Mpv "%1"', orphan = true, for = "windows" },
 #   { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
 # ]
+play = [
+  { exec = 'mpv "$@"', orphan = true, for = "unix" },
+  { exec = 'mpv "%1"', orphan = true, for = "windows" },
+  { exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, desc = "Show media info", for = "unix" },
+]
 shell = [{ exec = 'bash "$@"', desc = 'Shell' }]
 
 [open]
@@ -47,13 +47,13 @@ rules = [
     "reveal",
   ] },
   { mime = "text/x-bash", use = [
-    "shell",
     "edit",
+    "shell",
     "reveal",
   ] },
   { name = "*.sh", use = [
-    "shell",
     "edit",
+    "shell",
     "reveal",
   ] },
   { name = "*.fb2", use = [
