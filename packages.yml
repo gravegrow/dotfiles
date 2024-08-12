@@ -50,6 +50,7 @@ software_packages:
   - nemo
   - fish
   - docker
+  - docker-compose
   - dunst
   - fastfetch
   - lazygit
@@ -92,6 +93,11 @@ software_packages:
   - spicetify-cli
   - qt5ct
   - lxappearance
+  - ffmpegthumbnailer
+  - jq
+  - poppler
+  - unarchiver
+  - p7zip
 
 font_packages:
   - ttf-jetbrains-mono-nerd
