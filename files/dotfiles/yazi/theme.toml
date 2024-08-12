@@ -1,21 +1,21 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
 [manager]
-cwd = { fg = 'green', bold = true }
+cwd = { fg = '#9c8aa8', bold = true }
 hovered = { fg = '#bac2df', bg = "#25211f", bold = true }
 preview_hovered = { bg = "#25211f", bold = true }
-border_style = { fg = "#141110" }
+border_style = { fg = "#25211E" }
 find_keyword = { fg = "#b77e64", bold = true }
-tab_active = { bg = "reset", fg = "#B4BEFE", bold = true }
-tab_inactive = { fg = "white", bg = "darkgray", bold = false }
-
+tab_active = { fg = "#B4BEFE", bold = true }
+tab_inactive = { fg = "darkgray", bold = false }
+# border_symbol = "┃"
 
 [status]
 separator_open = ""
 separator_close = ""
 separator_style = { fg = "darkgray", bg = "black" }
-mode_normal = { bg = "#809bb3", fg = "black", bold = true }
-mode_select = { bg = "#9CB380", fg = "black", bold = true }
+mode_normal = { bg = "#809bb3", fg = "#12120F", bold = true }
+mode_select = { bg = "#9CB380", fg = "#12120F", bold = true }
 
 
 [help]
@@ -23,4 +23,15 @@ footer = { fg = "gray", bg = "black" }
 
 
 [filetype]
-rules = [{ name = "*", fg = "#9CA4AA" }, { name = "*/", fg = "#9A8F8A" }]
+rules = [
+	{ name = "*", is = "link", fg = "#97B7B3" },
+	{ name = "*/", is = "link", fg = "#97B7B3" },
+	{ name = "*", is = "orphan", fg = "red" },
+]
+
+[icon]
+prepend_dirs = [
+	{ name = "maya", text = "" },
+	{ name = "dotfiles", text = "󱁿" },
+	{ name = "Templates", text = "󱉟" },
+]
