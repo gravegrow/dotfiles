@@ -1,6 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
     - /home/gravegrow/.config/dotfiles
+    - /media/storage/software/StabilityMatrix/Data/Packages/ComfyUI/custom_nodes/Fooocus_Nodes
+    - /media/storage/software/StabilityMatrix/Data/Packages/ComfyUI
     - /media/storage/development/godot/TheRitual
     - /media/storage/development/notes
     - /media/storage/development/maya/MayaToolset

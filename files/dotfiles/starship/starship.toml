@@ -1,8 +1,8 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$directory$git_branch$python
-$shell$jobs$character"""
+$directory$git_branch$git_commit$python
+$sudo$shell$jobs$character"""
 
 add_newline = true
 
@@ -24,12 +24,18 @@ format = "[ $path ]($style bold)"
 [python]
 style = "fg:#C98F6C bold"
 symbol = "[ ]($style)"
-format = "$venv$symbol[$version](bold)"
+format = "$symbol[$version](bold)[ $virtualenv]($style)"
 
 [git_branch]
 style = "fg:green bold"
 symbol = ""
 format = "[$symbol $branch ]($style)"
+only_attached = true
+
+[git_commit]
+style = "fg:green bold"
+format = '[󰜘 $hash$tag]($style) '
+only_detached = true
 
 [character]
 success_symbol = '[➤](#A1ABA0)'
@@ -39,3 +45,9 @@ vimcmd_symbol = '[](#F9E2AF)'
 [jobs]
 symbol = '[](#A6E3A1)'
 symbol_threshold = 1
+
+[sudo]
+style = 'yellow'
+symbol = ''
+format = "[$symbol ]($style)"
+disabled = false

@@ -1,13 +1,18 @@
 set __set_dims "$HOME/.config/scripts/crafting-term"
 
 function __wow-crafting
+    set -l path /media/games/tools/custom/
     $__set_dims
-    set path /media/games/tools/custom/
-    tmux new-session -ds $argv -c $path
+
+    if ! tmux has-session -t=$argv 2>/dev/null
+        tmux new-session -ds $argv -c $path
+    end
+
+    tmux kill-pane -a -t 1
     tmux split-window -t $argv -l 66% -c $path
     tmux split-window -t $argv -l 50% -c $path
     tmux select-pane -t 1
-    sleep 0.2
+
     tmux a -t $argv
 end
 
