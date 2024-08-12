@@ -2,7 +2,7 @@
 
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
-static const unsigned int snap = 32;    /* snap pixel */
+static const unsigned int snap = 0;    /* snap pixel */
 static const unsigned int systraypinning = 1; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 1; /* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2; /* systray spacing */
@@ -12,7 +12,7 @@ static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 
-static const unsigned int gappx = 0; /* gaps between windows */
+static const unsigned int gappx = 1; /* gaps between windows */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 0;    /* horizontal padding of bar */
 
@@ -76,7 +76,7 @@ static const Rule rules[] = {
     {"Spotify",                             NULL,     NULL,    1 << 2,      0,          0,          0,          1},
     {"mpv",                                 NULL,     NULL,    0,           0,          0,          0,          0},
     {"polkit-gnome-authentication-agent-1", NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"stalonetray",                         NULL,     NULL,    0,           1,          0,          0,         -1},
+    {"stalonetray",                         NULL,     NULL,    ~0,           1,          0,          0,         -1},
 
     {NULL, NULL, "Control Tools",                              0,           1,          0,          0,         -1},
     {NULL, NULL, "Attribute Editor",                           0,           1,          0,          0,         -1},

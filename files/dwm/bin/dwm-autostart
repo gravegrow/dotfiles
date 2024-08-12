@@ -7,7 +7,7 @@ xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 60.00 
 $HOME/.spoof-dpi/bin/spoof-dpi &
 
 picom &
-feh --bg-fill ~/dotfiles/.local/share/backgrounds/bg.png &
+feh --bg-fill ~/.config/dotfiles/files/wallpapers/solid.png
 openrgb -p main &
 adb devices &
 
