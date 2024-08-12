@@ -1,9 +1,11 @@
 #!/bin/bash
 
-xrandr --output DisplayPort-1 --mode 3440x1440 --rate 120.00 --set TearFree on &
-xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 60.00 --scale 1.3333x1.3333 &
-
+xrandr --output DisplayPort-1 --mode 3440x1440 --rate 120.00 --set TearFree on
+xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 60.00 --scale 1.3333x1.3333
 # xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank &
+
+$HOME/.spoof-dpi/bin/spoof-dpi &
+
 picom &
 feh --bg-fill ~/dotfiles/.local/share/backgrounds/bg.png &
 openrgb -p main &
