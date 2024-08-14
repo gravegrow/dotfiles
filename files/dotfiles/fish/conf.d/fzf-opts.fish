@@ -11,4 +11,4 @@ set -l FZF_BINDS --bind 'tab:down,shift-tab:up,ctrl-y:accept'
 set -gx FZF_DEFAULT_OPTS $FZF_ICONS $FZF_BORDERS $FZF_HEIGHT $FZF_LAYOUT $FZF_COLORS $FZF_BINDS
 
 set -U FZF_COMPLETE 2
-set -U FZF_COMPLETE_OPTS --exact --tiebreak=begin --select-1 --info=inline-right --margin=0,1,0,1
+set -U FZF_COMPLETE_OPTS --tiebreak=begin --select-1 --info=inline-right --margin=0,1,0,1

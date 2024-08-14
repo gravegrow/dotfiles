@@ -1,6 +1,6 @@
 local setup = function()
 	local palette = {
-		base00 = '#12120f',
+		base00 = '#121212',
 		base01 = '#181616',
 		base02 = '#25211E',
 		base03 = '#302a27',

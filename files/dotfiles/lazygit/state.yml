@@ -1,6 +1,7 @@
 lastupdatecheck: 0
 recentrepos:
     - /home/gravegrow/.config/dotfiles
+    - /home/gravegrow/.config/dotfiles/files/dwm-latest
     - /media/storage/software/StabilityMatrix/Data/Packages/ComfyUI/custom_nodes/Fooocus_Nodes
     - /media/storage/software/StabilityMatrix/Data/Packages/ComfyUI
     - /media/storage/development/godot/TheRitual
