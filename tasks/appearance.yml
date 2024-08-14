@@ -2,9 +2,9 @@
 - name: Appearance | Running Tasks
   with_items:
     - cursor.yml
-    - display_manager.yml
+    # - display_manager.yml
     - fonts.yml
-    - plymouth.yml
+    # - plymouth.yml
     - gtk-theme.yml
   loop_control:
     loop_var: appearance_task

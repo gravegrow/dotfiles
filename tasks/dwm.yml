@@ -1,10 +1,10 @@
 ---
-- name: DWM | Installing xorg packages
-  become: true
-  community.general.pacman:
-    name: '{{xorg_packages}}'
-    state: present
-  changed_when: false
+# - name: DWM | Installing xorg packages
+#   become: true
+#   community.general.pacman:
+#     name: '{{xorg_packages}}'
+#     state: present
+#   changed_when: false
 
 - name: DWM | Installing build dependencies
   become: true
@@ -46,16 +46,8 @@
     src: '{{ dwm_path }}//profile'
     dest: ~/.profile
 
-- name: DWM | Copying monitor profile file to xorg conf
-  become: true
-  ansible.builtin.copy:
-    src: '{{ dwm_path }}//10-monitor.conf'
-    dest: /etc/X11/xorg.conf.d/10-monitor.conf
-
 - name: DWM | Removing bash profile
-  file:
-    name: '{{ bash_item }}'
-    state: absent
+  command: 'mv {{ bash_item }} {{ bash_item }}.bak'
   loop_control:
     loop_var: bash_item
   with_items:
