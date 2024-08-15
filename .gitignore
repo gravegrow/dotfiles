@@ -8,3 +8,4 @@ maya/mayaLog
 .config/godot/text_editor_themes/
 callback_plugins/__pycache__
 files/dotfiles/fish/fish_variables
+files/dotfiles/lazygit/state.yml

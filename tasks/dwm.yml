@@ -47,7 +47,9 @@
     dest: ~/.profile
 
 - name: DWM | Removing bash profile
-  command: 'mv {{ bash_item }} {{ bash_item }}.bak'
+  file: 
+    name: '{{ bash_item }}'
+    state: absent
   loop_control:
     loop_var: bash_item
   with_items:
