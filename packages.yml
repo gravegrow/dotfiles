@@ -69,7 +69,7 @@ software_packages:
   - pavucontrol
   - eza
   - feh
-  - tldr
+  - tealdeer
   - tree
   - bat
   - btop

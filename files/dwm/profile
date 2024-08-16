@@ -9,7 +9,7 @@ export TMPDIR=/tmp
 export GTK_THEME=Orchis-Dark-Compact
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=kvantum
-export QT_SCALE_FACTOR=1.2
+export QT_SCALE_FACTOR=1.05
 
 export XDG_CURRENT_DESKTOP=DWM
 export XDG_SESSION_DESKTOP=$XDG_CURRENT_DESKTOP

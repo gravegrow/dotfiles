@@ -47,7 +47,7 @@
     dest: ~/.profile
 
 - name: DWM | Removing bash profile
-  file: 
+  file:
     name: '{{ bash_item }}'
     state: absent
   loop_control:
