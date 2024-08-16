@@ -19,6 +19,7 @@ xorg_packages:
   - xorg-server
   - xorg-xinit
   - xorg-xrandr
+  - xorg-xkill
 
 dwm_deps:
   - base-devel
