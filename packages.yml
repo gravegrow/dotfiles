@@ -101,6 +101,8 @@ software_packages:
   - snapper
   - snapper-gui-git
   - snap-pac
+  - openrgb
+  - paru
 
 font_packages:
   - ttf-jetbrains-mono-nerd
@@ -117,6 +119,7 @@ gaming_packages:
   - protontricks
   - gamemode
   - gamescope
+  - protonplus
 
 lutris_dependencies:
   - lib32-gamemode

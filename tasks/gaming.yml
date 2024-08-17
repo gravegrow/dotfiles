@@ -1,24 +1,21 @@
 ---
 - name: Gaming | Installing gaming packages
   become: true
-  kewlfft.aur.aur:
+  community.general.pacman:
     name: '{{ gaming_packages }}'
-    use: yay
     state: present
   changed_when: false
 
 - name: Gaming | Installing wine dependencies
   become: true
-  kewlfft.aur.aur:
+  community.general.pacman:
     name: '{{ wine_dependencies }}'
-    use: yay
     state: present
   changed_when: false
 
 - name: Gaming | Installing lutris dependencies
   become: true
-  kewlfft.aur.aur:
+  community.general.pacman:
     name: '{{ lutris_dependencies }}'
-    use: yay
     state: present
   changed_when: false

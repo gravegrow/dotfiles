@@ -33,9 +33,3 @@
   failed_when: false
 
 - import_tasks: tasks/update.yml
-
-- name: Chaotic-AUR | Installing yay
-  become: true
-  community.general.pacman:
-    name: yay
-    state: present
