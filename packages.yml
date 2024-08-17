@@ -63,7 +63,6 @@ software_packages:
   - tmux
   - wezterm
   - yazi
-  - timeshift
   - firefox
   - brave-bin
   - blueman
@@ -99,12 +98,16 @@ software_packages:
   - poppler
   - unarchiver
   - p7zip
+  - snapper
+  - snapper-gui-git
+  - snap-pac
 
 font_packages:
   - ttf-jetbrains-mono-nerd
   - ttf-firacode-nerd
   - noto-fonts
   - noto-fonts-emoji
+  - noto-fonts-cjk
 
 gaming_packages:
   - steam

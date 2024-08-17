@@ -76,7 +76,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Wrap words
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.linebreak = true
 
 -- Conceal for norg
