@@ -1,15 +1,6 @@
 return {
 	{
-		'vhyrro/luarocks.nvim',
-		lazy = true,
-		ft = 'neorg',
-		opts = {
-			rocks = { 'magick' },
-		},
-	},
-	{
 		'nvim-neorg/neorg',
-		dependencies = { 'luarocks.nvim' },
 		version = '*',
 		ft = 'norg',
 		opts = {
@@ -21,6 +12,11 @@ return {
 				['core.concealer'] = {
 					config = {
 						folds = true,
+						icons = {
+							heading = {
+								icons = { '󰎤', '󰎧', '󰎪', '󰎭', '󰎱', '󰎳' },
+							},
+						},
 					},
 				},
 				['core.highlights'] = {

@@ -12,8 +12,6 @@ config.window_padding = {
 	right = '1cell',
 }
 
--- front_end = 'WebGPU'
-
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 

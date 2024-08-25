@@ -35,6 +35,8 @@ only_attached = true
 [git_commit]
 style = "fg:green bold"
 format = '[󰜘 $hash$tag]($style) '
+tag_symbol = " - "
+tag_disabled = false
 only_detached = true
 
 [character]

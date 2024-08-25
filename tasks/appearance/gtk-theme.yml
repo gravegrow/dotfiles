@@ -4,6 +4,7 @@
   with_items:
     - orchis-theme-git
     - kvantum-theme-orchis-git
+    - kvantum-theme-materia
   community.general.pacman:
     name: '{{ item }}'
   changed_when: false

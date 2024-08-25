@@ -13,4 +13,11 @@ gui:
     cherryPickedCommitBgColor:
       - cyan
     unstagedChangesColor:
-      - '#c76b77' 
+      - red
+
+  spinner:
+    frames:
+      - ◴
+      - ◷
+      - ◶
+      - ◵

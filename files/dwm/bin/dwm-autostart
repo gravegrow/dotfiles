@@ -1,7 +1,8 @@
 #!/bin/bash
 
-xrandr --output DisplayPort-1 --mode 3440x1440 --rate 120.00 --set TearFree on
-xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 60.00 --scale 1.3333x1.3333
+xrandr --output DisplayPort-1 --mode 3440x1440R
+# xrandr --output DisplayPort-1 --mode 3440x1440 --rate 120.00 --set TearFree on
+xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 50.00 --scale 1.3333x1.3333
 # xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank &
 
 $HOME/.spoof-dpi/bin/spoof-dpi &
@@ -13,13 +14,5 @@ adb devices &
 
 /usr/libexec/gsd-xsettings &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark-Compact" &
-gsettings set org.gnome.desktop.wm.preferences theme "Orchis-Dark-Compact" &
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark' &
-gsettings set org.gnome.desktop.interface cursor-theme 'Nordzy-cursors-white' &
-gsettings set org.gnome.desktop.wm.preferences button-layout : &
-gsettings set org.cinnamon.desktop.default-applications.terminal exec wezterm &
-gsettings set org.gnome.desktop.default-applications.terminal exec wezterm &
 
 setxkbmap -layout us,ru -option grp:alt_space_toggle &

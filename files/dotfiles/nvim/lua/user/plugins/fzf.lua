@@ -20,7 +20,6 @@ return {
 		},
 		fzf_opts = {
 			['--layout'] = 'reverse',
-			['--info'] = 'right',
 		},
 	},
 	config = function(_, opts)

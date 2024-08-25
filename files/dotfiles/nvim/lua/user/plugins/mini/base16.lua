@@ -18,6 +18,25 @@ local setup = function()
 		base0F = '#a3685a',
 	}
 
+	-- palette = {
+	-- 	base00 = '#191D24',
+	-- 	base01 = '#242933',
+	-- 	base02 = '#2E3440',
+	-- 	base03 = '#3B4252',
+	-- 	base04 = '#434C5E',
+	-- 	base05 = '#BBC3D4',
+	-- 	base06 = '#60728A',
+	-- 	base07 = '#81A1C1',
+	-- 	base08 = '#B74E58',
+	-- 	base09 = '#CB775D',
+	-- 	base0A = '#E7C173',
+	-- 	base0B = '#97B67C',
+	-- 	base0C = '#80B3B2',
+	-- 	base0D = '#88C0D0',
+	-- 	base0E = '#A97EA1',
+	-- 	base0F = '#CB775D',
+	-- }
+	--
 	local diagnostics = {
 		Error = palette.base08,
 		Warn = palette.base0F,
@@ -131,7 +150,7 @@ local setup = function()
 	set_hl('NeorgDone', { fg = palette.base0B })
 	set_hl('NeorgPending', { fg = palette.base09 })
 	set_hl('NeorgUndone', { fg = palette.base08 })
-	set_hl('NeorgBold', { fg = palette.base04, bold = true })
+	set_hl('NeorgBold', { fg = palette.base05, bold = true })
 	set_hl('NeorgStrikethrough', { strikethrough = true })
 	set_hl('NeorgUnderlined', { underline = true })
 
