@@ -1,5 +1,5 @@
 [global]
-frame_color = "#352E2B"
+frame_color = "#121212"
 frame_width = 1
 separator_color= frame
 separator_height = 1
@@ -35,11 +35,11 @@ min_icon_size = 64
 max_icon_size = 64
 
 [urgency_low]
-background = "#25211E"
+background = "#242424"
 foreground = "#B3BFD1"
 
 [urgency_normal]
-background = "#25211E"
+background = "#242424"
 foreground = "#B3BFD1"
 
 [urgency_critical]

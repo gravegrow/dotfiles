@@ -36,12 +36,6 @@ return {
 	},
 
 	{
-		'kyazdani42/nvim-web-devicons',
-		event = 'VeryLazy',
-		opts = { override = { gd = { icon = '' } } },
-	},
-
-	{
 		'lewis6991/gitsigns.nvim',
 		event = 'BufEnter',
 		opts = {
@@ -116,7 +110,4 @@ return {
 			})
 		end,
 	},
-
-	{ 'Fymyte/rasi.vim', ft = 'rasi' },
-	{ 'fladson/vim-kitty' },
 }

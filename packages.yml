@@ -1,25 +1,25 @@
 ---
 base_packages:
-  - xdotool
-  - xsel
-  - xclip
-  - xdg-utils
-  - xdg-user-dirs
-  - man
-  - wget
   - curl
   - git
+  - man
+  - wget
+  - xclip
+  - xdg-user-dirs
+  - xdg-utils
+  - xdotool
+  - xsel
 
 xorg_packages:
   - xorg
   - xorg-apps
-  - xorg-drivers
   - xorg-apps
+  - xorg-drivers
   - xorg-fonts
   - xorg-server
   - xorg-xinit
-  - xorg-xrandr
   - xorg-xkill
+  - xorg-xrandr
 
 dwm_deps:
   - base-devel
@@ -30,79 +30,81 @@ dwm_deps:
   - fontconfig
 
 dev_packages:
-  - pyenv
   - cargo
-  - go
-  - ruby
-  - python-neovim
-  - perl
-  - npm
-  - nodejs
-  - luarocks
   - curl
-  - ripgrep
   - fd
-  - github-cli
   - fzf
+  - github-cli
+  - go
+  - luarocks
+  - nodejs
+  - npm
+  - perl
   - poetry
+  - pyenv
+  - python-neovim
+  - python-uv
+  - ripgrep
+  - ruby
 
 software_packages:
-  - neovim
-  - nemo
-  - fish
+  - android-tools
+  - bat
+  - blueman
+  - brave-bin
+  - btop
+  - discord
   - docker
   - docker-compose
   - dunst
-  - fastfetch
-  - lazygit
-  - mpv
-  - neovim
-  - picom
-  - rofi
-  - starship
-  - tmux
-  - wezterm
-  - yazi
-  - firefox
-  - brave-bin
-  - blueman
-  - pavucontrol
+  - entr
   - eza
+  - fastfetch
   - feh
-  - tealdeer
-  - tree
-  - bat
-  - btop
-  - gpick
-  - keepassxc
+  - ffmpegthumbnailer
+  - firefox
+  - fish
   - flameshot
-  - unzip
-  - unrar
-  - qbittorrent
   - gnome-calculator
   - gnome-calendar
   - gnome-disk-utility
-  - zathura
-  - zathura-pdf-poppler
-  - polkit-gnome
-  - ntfs-3g
-  - android-tools
-  - discord
-  - telegram-desktop
-  - spotify
-  - spicetify-cli
-  - qt5ct
-  - lxappearance
-  - ffmpegthumbnailer
+  - gpick
   - jq
-  - poppler
-  - unarchiver
+  - keepassxc
+  - lazygit
+  - lxappearance
+  - mpv
+  - nemo
+  - neovim
+  - neovim
+  - ntfs-3g
+  - openrgb
   - p7zip
+  - paru
+  - pavucontrol
+  - picom
+  - polkit-gnome
+  - poppler
+  - qbittorrent
+  - qt5ct
+  - rofi
+  - snap-pac
   - snapper
   - snapper-gui-git
-  - snap-pac
-  - openrgb
-  - paru
+  - spicetify-cli
+  - spotify
+  - starship
+  - tealdeer
+  - telegram-desktop
+  - tmux
+  - tree
+  - unarchiver
+  - unrar
+  - unzip
+  - wezterm
+  - yazi
+  - zathura
+  - zathura-pdf-poppler
 
 font_packages:
   - ttf-jetbrains-mono-nerd
@@ -129,31 +131,31 @@ lutris_dependencies:
   - vulkan-tools
 
 wine_dependencies:
-  - giflib
-  - lib32-giflib
-  - gnutls
-  - lib32-gnutls
-  - v4l-utils
-  - lib32-v4l-utils
-  - libpulse
-  - lib32-libpulse
-  - alsa-plugins
-  - lib32-alsa-plugins
   - alsa-lib
-  - lib32-alsa-lib
-  - sqlite
-  - lib32-sqlite
-  - libxcomposite
-  - lib32-libxcomposite
-  - ocl-icd
-  - lib32-ocl-icd
-  - libva
-  - lib32-libva
-  - gtk3
-  - lib32-gtk3
+  - alsa-plugins
+  - giflib
+  - gnutls
   - gst-plugins-base-libs
+  - gtk3
+  - lib32-alsa-lib
+  - lib32-alsa-plugins
+  - lib32-giflib
+  - lib32-gnutls
   - lib32-gst-plugins-base-libs
-  - vulkan-icd-loader
-  - lib32-vulkan-icd-loader
-  - sdl2
+  - lib32-gtk3
+  - lib32-libpulse
+  - lib32-libva
+  - lib32-libxcomposite
+  - lib32-ocl-icd
   - lib32-sdl2
+  - lib32-sqlite
+  - lib32-v4l-utils
+  - lib32-vulkan-icd-loader
+  - libpulse
+  - libva
+  - libxcomposite
+  - ocl-icd
+  - sdl2
+  - sqlite
+  - v4l-utils
+  - vulkan-icd-loader

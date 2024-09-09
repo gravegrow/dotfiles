@@ -1,5 +1,5 @@
-alias ls='exa --icons --group-directories-first --color=always'
-alias la='exa --all  --icons --group-directories-first --color=always'
+alias ls='exa --oneline --icons --group-directories-first --color=always'
+alias la='ls --all'
 alias tree='tree -C'
 alias py='python3'
 alias lg='lazygit'

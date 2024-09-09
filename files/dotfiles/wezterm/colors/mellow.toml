@@ -1,3 +1,4 @@
+
 [colors]
 foreground = "#9A8F8A"
 background = "#161617"
@@ -9,22 +10,22 @@ cursor_border = "#b39580"
 selection_bg = "#25211E"
 
 ansi = [
-	"#121212",
-	"#af6a6a",
-	"#9cb380",
-	"#CB775D",
-	"#809bb3",
-	"#9c8aa8",
-	"#97B7B3",
+	"#131314",
+	"#EA83A5",
+	"#90B99F",
+	"#E6B99D",
+	"#ACA0CF",
+	"#E19ECA",
+	"#8EA4A2",
 	"#9a8f8a",
 ]
 brights = [
-	"#443b3b",
-	"#C5727A",
-	"#B1C89D",
-	"#D79784",
-	"#81A1C1",
-	"#BE9DB8",
-	"#9FC6C5",
+	"#2A2A2D",
+	"#F591B2",
+	"#9DC6AC",
+	"#F0C5A9",
+	"#B9AEDA",
+	"#ECAAD6",
+	"#8EA4A2",
 	"#9E9794",
 ]

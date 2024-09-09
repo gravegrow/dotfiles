@@ -12,7 +12,7 @@ static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 
-static const unsigned int gappx = 1; /* gaps between windows */
+static const unsigned int gappx = 10; /* gaps between windows */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 0;    /* horizontal padding of bar */
 
@@ -28,7 +28,7 @@ static const unsigned int ulinestroke = 0; /* thickness / height of the underlin
 static const unsigned int ulinevoffset = 0; /* how far above the bottom of the bar the line should appear */
 static const int ulineall = 0; /* 1 to show underline on all tags, 0 for just the active ones */
 
-static const char color_bg[] = "#12120F";
+static const char color_bg[] = "#161617";
 static const char color_fg[] = "#b4befe";
 static const char color_blue[] = "#89B4FA";
 static const char color_gray[] = "#9A8F89";
@@ -37,7 +37,7 @@ static const char color_inactive[] = "#544C45";
 
 static const char *colors[][3] = {
     /*               fg              bg         border   */
-    [SchemeNorm]  = {color_inactive, color_bg, color_bg},
+    [SchemeNorm]  = {color_inactive, color_bg, "#000000"},
     [SchemeSel]   = {color_gray,     color_bg, color_selection},
     [SchemeTitle] = {"#80756F",      color_bg, color_bg},
 };
