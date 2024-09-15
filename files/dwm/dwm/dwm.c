@@ -80,7 +80,7 @@
 
 /* enums */
 enum { CurNormal, CurResize, CurMove, CurResizeHorzArrow, CurResizeVertArrow, CurLast }; /* cursor */
-enum { SchemeNorm, SchemeSel, SchemeTitle }; /* color schemes */
+enum { SchemeNorm, SchemeSel, SchemeTitle, SchemeLayout }; /* color schemes */
 enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
        NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
@@ -259,7 +259,7 @@ static void spawn(const Arg *arg);
 static Monitor *systraytomon(Monitor *m);
 static void tag(const Arg *arg);
 static void tagmon(const Arg *arg);
-static void tile(Monitor *m);
+/*static void tile(Monitor *m);*/
 static void tilewide(Monitor *m);
 static void togglebar(const Arg *arg);
 static void togglefloating(const Arg *arg);
@@ -1233,7 +1233,7 @@ drawbar(Monitor *m)
 		x += w;
 	}
 	w = TEXTW(m->ltsymbol);
-	drw_setscheme(drw, scheme[SchemeNorm]);
+	drw_setscheme(drw, scheme[SchemeLayout]);
 	x = drw_text(drw, x, 0, w, bh, lrpad / 2, m->ltsymbol, 0);
 
 	if ((w = m->ww - tw - stw - x) > bh) {
@@ -1708,9 +1708,8 @@ monocle(Monitor *m)
 	for (c = m->clients; c; c = c->next)
 		if (ISVISIBLE(c))
 			n++;
-	if (n > 0) /* override layout symbol */
+	// if (n > 0) /* override layout symbol */
 		// snprintf(m->ltsymbol, sizeof m->ltsymbol, "[%d]", n);
-		snprintf(m->ltsymbol, sizeof m->ltsymbol, "");
 	for (c = nexttiled(m->clients); c; c = nexttiled(c->next))
 		resize(c, m->wx, m->wy, m->ww - 2 * c->bw, m->wh - 2 * c->bw, 0);
 }
@@ -2089,9 +2088,11 @@ resizeclient(Client *c, int x, int y, int w, int h)
     gapincr = gapoffset = 0;
   } else {
     if (c->mon->lt[c->mon->sellt]->arrange == monocle || n == 1) {
-      gapoffset = gappx;
-      gapincr = 2 * gappx - borderpx * 2;
-			wc.border_width = 0;
+      /*gapoffset = gappx;*/
+      /*gapincr = 2 * gappx - borderpx * 2;*/
+
+	gapincr = gapoffset = 0;
+	wc.border_width = 0;
     }else {
       gapoffset = gappx;
       gapincr = 2 * gappx;
@@ -2610,33 +2611,33 @@ tagmon(const Arg *arg)
 	sendmon(selmon->sel, dirtomon(arg->i));
 }
 
-void
-tile(Monitor *m)
-{
-	unsigned int i, n, h, mw, my, ty;
-	Client *c;
-
-	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);
-	if (n == 0)
-		return;
-
-	if (n > m->nmaster)
-		mw = m->nmaster ? m->ww * m->mfact : 0;
-	else
-		mw = m->ww;
-	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)
-		if (i < m->nmaster) {
-			h = (m->wh - my) / (MIN(n, m->nmaster) - i);
-			resize(c, m->wx, m->wy + my, mw - (2*c->bw) + (n > 1 ? gappx : 0), h - (2*c->bw), 0);
-			if (my + HEIGHT(c) < m->wh)
-				my += HEIGHT(c);
-		} else {
-			h = (m->wh - ty) / (n - i);
-			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);
-			if (ty + HEIGHT(c) < m->wh)
-				ty += HEIGHT(c);
-		}
-}
+/*void*/
+/*tile(Monitor *m)*/
+/*{*/
+/*	unsigned int i, n, h, mw, my, ty;*/
+/*	Client *c;*/
+/**/
+/*	for (n = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), n++);*/
+/*	if (n == 0)*/
+/*		return;*/
+/**/
+/*	if (n > m->nmaster)*/
+/*		mw = m->nmaster ? m->ww * m->mfact : 0;*/
+/*	else*/
+/*		mw = m->ww;*/
+/*	for (i = my = ty = 0, c = nexttiled(m->clients); c; c = nexttiled(c->next), i++)*/
+/*		if (i < m->nmaster) {*/
+/*			h = (m->wh - my) / (MIN(n, m->nmaster) - i);*/
+/*			resize(c, m->wx, m->wy + my, mw - (2*c->bw) + (n > 1 ? gappx : 0), h - (2*c->bw), 0);*/
+/*			if (my + HEIGHT(c) < m->wh)*/
+/*				my += HEIGHT(c);*/
+/*		} else {*/
+/*			h = (m->wh - ty) / (n - i);*/
+/*			resize(c, m->wx + mw, m->wy + ty, m->ww - mw - (2*c->bw), h - (2*c->bw), 0);*/
+/*			if (ty + HEIGHT(c) < m->wh)*/
+/*				ty += HEIGHT(c);*/
+/*		}*/
+/*}*/
 
 void
 tilewide(Monitor *m)

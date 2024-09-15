@@ -1,21 +1,19 @@
-set __set_dims "$HOME/.config/scripts/crafting-term"
-
-function __wow-crafting
-    set -l path /media/games/tools/custom/
-    $__set_dims
+function __tmux-crafting
+    printf "\033]1337;SetUserVar=%s=%s\007" ZEN_MODE ( echo -n on | base64 )
+    set -l pid $(xdotool getactivewindow getwindowgeometry --shell | grep -E "WINDOW" | grep -Eo "[0-9]+")
+    xdotool windowmove $pid 1460 20
+    xdotool windowsize $pid 520 280
 
     if ! tmux has-session -t=$argv 2>/dev/null
-        tmux new-session -ds $argv -c $path
+        tmux new-session -ds $argv
+        tmux split-window -t $argv -l 50% -hf
+        tmux select-pane -t 1
     end
 
-    tmux kill-pane -a -t 1
-    tmux split-window -t $argv -l 66% -c $path
-    tmux split-window -t $argv -l 50% -c $path
-    tmux select-pane -t 1
-
-    tmux a -t $argv
+    tmux attach -t $argv
 end
 
-alias crafting='__wow-crafting aliance'
-alias horde-crafting='__wow-crafting horde'
+
+alias farm1='__tmux-crafting system-1'
+alias farm2='__tmux-crafting system-2'
 

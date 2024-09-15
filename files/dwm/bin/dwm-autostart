@@ -7,8 +7,8 @@ xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s nob
 
 $HOME/.spoof-dpi/bin/spoof-dpi &
 
-# picom &
-feh --bg-fill ~/.config/dotfiles/files/wallpapers/solid.png
+picom &
+feh --bg-fill ~/.config/dotfiles/files/wallpapers/chaisawman-mine-palette.png
 openrgb -p main &
 adb devices &
 

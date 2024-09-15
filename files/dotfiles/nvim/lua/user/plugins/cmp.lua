@@ -70,17 +70,17 @@ return {
 			}),
 			-- completion = { completeopt = 'menu,menuone,noinsert,noselect' },
 			preselect = cmp.PreselectMode.None,
-			window = {
-				documentation = cmp.config.window.bordered({
-					winhighlight = "Normal:FloatNormal,FloatBorder:FloatBorder,Search:None",
-					border = "single",
-					maxwidth = 0,
-				}),
-				completion = cmp.config.window.bordered({
-					winhighlight = "FloatBorder:FloatBorder,Normal:FloatNormal",
-					border = "single",
-				}),
-			},
+			-- window = {
+			-- 	documentation = cmp.config.window.bordered({
+			-- winhighlight = "Normal:FloatNormal,FloatBorder:FloatBorder,Search:None",
+			-- 	border = "single",
+			-- 	maxwidth = 0,
+			-- }),
+			-- completion = cmp.config.window.bordered({
+			-- winhighlight = "FloatBorder:FloatBorder,Normal:FloatNormal",
+			border = "single",
+			-- }),
+			-- },
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)

@@ -9,12 +9,12 @@ cursor_border = "#b39580"
 selection_bg = "#25211E"
 
 ansi = [
-	"#121212",
+	"#0D0D0D",
 	"#af6a6a",
 	"#9cb380",
 	"#CB775D",
 	"#809bb3",
-	"#9c8aa8",
+	"#977b9f",
 	"#97B7B3",
 	"#9a8f8a",
 ]

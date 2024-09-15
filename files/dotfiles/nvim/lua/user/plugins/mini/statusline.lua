@@ -44,7 +44,8 @@ local function setup()
 		for _, level in ipairs(diagnostic_levels) do
 			local n = counts[severity[level.name]] or 0
 			if n > 0 then
-				t[level.name] = string.format("%s %s", level.sign, n)
+				-- t[level.name] = string.format("%s %s", level.sign, n)
+				t[level.name] = string.format("%s:%s", level.sign, n)
 			end
 		end
 
@@ -55,7 +56,7 @@ local function setup()
 	end
 
 	local function GetModifiedBuffersColor()
-		return vim.bo[0].modified and "MiniStatuslineModified" or "MiniStatuslineFilename"
+		return vim.bo[0].modified and "StatusLineModified" or "StatusLineFill"
 	end
 
 	local function get_filetype_icon()
@@ -84,18 +85,18 @@ local function setup()
 
 				return statusline.combine_groups({
 					{ hl = mode_hl, strings = { "" } },
-					{ hl = "MiniStatusBlock", strings = { lsp } },
+					{ hl = "StatusLine", strings = { lsp } },
 
-					{ hl = "MiniStatusError", strings = { diagnostics.ERROR } },
-					{ hl = "MiniStatusWarn", strings = { diagnostics.WARN } },
-					{ hl = "MiniStatusInfo", strings = { diagnostics.INFO } },
-					{ hl = "MiniStatusHint", strings = { diagnostics.HINT } },
+					{ hl = "StatusError", strings = { diagnostics.ERROR } },
+					{ hl = "StatusWarn", strings = { diagnostics.WARN } },
+					{ hl = "StatusInfo", strings = { diagnostics.INFO } },
+					{ hl = "StatusHint", strings = { diagnostics.HINT } },
 
 					"%<", -- Mark general truncate point
 					{ hl = GetModifiedBuffersColor(), strings = { get_filetype_icon(), filename } },
 					"%=", -- End left alignment
-					{ hl = "MiniStatuslineFilename", strings = { git } },
-					{ hl = "MiniStatusBlock", strings = { "%l:%L" } },
+					{ hl = "StatusLineFill", strings = { git } },
+					{ hl = "Statusline", strings = { "%l:%L | %c" } },
 					{ hl = mode_hl, strings = { "󰈚" } },
 				})
 			end,

@@ -15,6 +15,7 @@ config.window_padding = {
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 
+config.window_background_opacity = 0.98
 config.color_scheme = 'tomorrow'
 config.underline_thickness = '1px'
 config.underline_position = '-2px'
@@ -50,5 +51,17 @@ config.keys = {
 	{ key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
 	{ key = 'p', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
 }
+
+wezterm.on('user-var-changed', function(window, pane, name, value)
+	local overrides = window:get_config_overrides() or {}
+	if name == 'ZEN_MODE' then
+		if value == 'on' then
+			overrides.font_size = 12
+		else
+			overrides.font_size = nil
+		end
+	end
+	window:set_config_overrides(overrides)
+end)
 
 return config

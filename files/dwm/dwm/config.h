@@ -12,34 +12,42 @@ static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 
-static const unsigned int gappx = 10; /* gaps between windows */
+static const unsigned int gappx = 1; /* gaps between windows */
 static const int vertpad = 0;        /* vertical padding of bar */
-static const int sidepad = 0;    /* horizontal padding of bar */
+static const int sidepad = 2;    /* horizontal padding of bar */
 
-static const int barpad = 0; /* horizontal padding of bar */
-static const int user_bh = 2; /* 2 is the default spacing around the bar's font */
+static const int barpad = 4; /* horizontal padding of bar */
+static const int user_bh = 5; /* 2 is the default spacing around the bar's font */
 
 static const int showbar = 1; /* 0 means no bar */
 static const int topbar = 1;  /* 0 means bottom bar */
-static const char *fonts[] = {"BerkeleyMono Nerd Font Mono:style:bold:size=10.5"};
+static const char *fonts[] = {"Berkeley Mono Nerd Font Mono:size=11:style=bold"};
 
-static const unsigned int ulinepad = 0; /* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke = 0; /* thickness / height of the underline */
-static const unsigned int ulinevoffset = 0; /* how far above the bottom of the bar the line should appear */
-static const int ulineall = 0; /* 1 to show underline on all tags, 0 for just the active ones */
+static const unsigned int ulinepad = 2; /* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke = 2; /* thickness / height of the underline */
+static const unsigned int ulinevoffset = 2; /* how far above the bottom of the bar the line should appear */
+static const int ulineall = 1; /* 1 to show underline on all tags, 0 for just the active ones */
 
-static const char color_bg[] = "#161617";
-static const char color_fg[] = "#b4befe";
-static const char color_blue[] = "#89B4FA";
-static const char color_gray[] = "#9A8F89";
-static const char color_selection[] = "#544C45";
-static const char color_inactive[] = "#544C45";
+static const char color_bg[]     = "#161617";
+static const char color_fg[]     = "#80756F";
+
+static const char color_red[]    = "#945B5B";
+static const char color_orange[] = "#B7927B";
+static const char color_yellow[] = "#C4B28A";
+static const char color_green[]  = "#8A9A7B";
+static const char color_blue[]   = "#86A1BB";
+static const char color_teal[]   = "#97B7B3";
+static const char color_purple[] = "#807E96";
+
+static const char color_black[]  = "#0d0d0d";
+static const char color_gray[]   = "#464646";
 
 static const char *colors[][3] = {
     /*               fg              bg         border   */
-    [SchemeNorm]  = {color_inactive, color_bg, "#000000"},
-    [SchemeSel]   = {color_gray,     color_bg, color_selection},
-    [SchemeTitle] = {"#80756F",      color_bg, color_bg},
+    [SchemeNorm]   = {color_gray,  color_bg, color_black},
+    [SchemeSel]    = {color_gray,  color_bg, color_purple},
+    [SchemeTitle]  = {color_fg,    color_bg, color_bg},
+    [SchemeLayout] = {color_fg,    color_bg, color_black},
 };
 
 static const char *const autostart[] = {
@@ -52,15 +60,15 @@ static const char *const autostart[] = {
 static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
 static const char *tagsel[][2] = {
-    {color_blue, color_bg},
-    {color_blue, color_bg},
-    {color_blue, color_bg},
-    {color_blue, color_bg},
-    {color_blue, color_bg},
-    {color_blue, color_bg},
-    {color_blue, color_bg},
-    {color_blue, color_bg},
-    {color_blue, color_bg},
+    {color_red, color_bg},
+    {"#a47062", color_bg},
+    {"#b0856b", color_bg},
+    {"#bb9c78", color_bg},
+    {"#c3b388", color_bg},
+    {"#9eb68e", color_bg},
+    {"#81b4a1", color_bg},
+    {"#79adb4", color_bg},
+    {"#86a2bb", color_bg},
 };
 
 static const Rule rules[] = {
@@ -99,9 +107,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const Layout layouts[] = {
     /* symbol     arrange function */
     {"󰙀", tilewide},
-    {"><>", NULL}, /* no layout function means floating behavior */
     {"", monocle},
-    {"[]=", tile}, /* first entry is default */
+    {"󰄶", NULL}, /* no layout function means floating behavior */
 };
 
 /* key definitions */
@@ -160,7 +167,8 @@ static const Key keys[] = {
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY | ShiftMask, XK_q, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
-    {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
+    {MODKEY, XK_m, setlayout, {.v = &layouts[1]}},
+    {MODKEY, XK_f, setlayout, {.v = &layouts[2]}},
     {MODKEY | ShiftMask, XK_space, togglefloating, {0}},
     {MODKEY | ShiftMask, XK_f, togglefullscr, {0}},
     {MODKEY, XK_0, view, {.ui = ~0}},

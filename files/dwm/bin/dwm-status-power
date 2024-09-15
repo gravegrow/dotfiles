@@ -6,7 +6,7 @@ case $BUTTON in
 	# 3) notify-send "power 3";;
 esac
 
-barcolor=#141110
-widgetcolor=#af9da2
+fg=#945B5B
+bg=#161617
 
-printf "^c$widgetcolor^^b$barcolor^  "
+printf "^c$bg^^b$fg^  "

@@ -2,11 +2,11 @@
 
 [manager]
 cwd = { fg = '#9c8aa8', bold = true }
-hovered = { fg = '#bac2df', bg = "#25211f", bold = true }
-preview_hovered = { bg = "#25211f", bold = true }
-border_style = { fg = "#25211E" }
+hovered = { bg = "#2B2B2B", bold = true }
+preview_hovered = { bg = "#2B2B2B", bold = true }
+border_style = { fg = "#2B2B2B" }
 find_keyword = { fg = "#b77e64", bold = true }
-tab_active = { fg = "#B4BEFE", bold = true }
+tab_active = { fg = "blue", bold = true }
 tab_inactive = { fg = "darkgray", bold = false }
 # border_symbol = "┃"
 

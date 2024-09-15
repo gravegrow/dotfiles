@@ -15,13 +15,14 @@ case $BUTTON in
 	# 3) notify-send "clock 3";;
 esac
 
-barcolor=#141110
-widgetcolor=#9cb7c4
+barcolor=#161617
+widgetcolor=#86A1BB
 
 if [[ $1 ]]; then
 	printf "^c$widgetcolor^^b$barcolor^ "
 	printf "󰃰"
 else
 	printf "^c$widgetcolor^^b$barcolor^ "
+	# printf "󰃰 "
 	date "+%d %a %H:%M"
 fi
