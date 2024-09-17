@@ -9,4 +9,4 @@ esac
 fg=#945B5B
 bg=#161617
 
-printf "^c$bg^^b$fg^  "
+printf "^c$fg^^b$bg^  "

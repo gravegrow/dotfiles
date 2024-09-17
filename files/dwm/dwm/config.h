@@ -45,7 +45,7 @@ static const char color_gray[]   = "#464646";
 static const char *colors[][3] = {
     /*               fg              bg         border   */
     [SchemeNorm]   = {color_gray,  color_bg, color_black},
-    [SchemeSel]    = {color_gray,  color_bg, color_purple},
+    [SchemeSel]    = {color_gray,  color_bg, color_gray},
     [SchemeTitle]  = {color_fg,    color_bg, color_bg},
     [SchemeLayout] = {color_fg,    color_bg, color_black},
 };

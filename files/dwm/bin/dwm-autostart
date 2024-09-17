@@ -1,13 +1,13 @@
 #!/bin/bash
 
-xrandr --output DisplayPort-1 --mode 3440x1440R --set TearFree on
-# xrandr --output DisplayPort-1 --mode 3440x1440 --rate 120.00
-xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 50.00 --scale 1.3333x1.3333
+xrandr --output DisplayPort-1 --mode 3440x1440R --set TearFree on &
+# xrandr --output DisplayPort-1 --mode 3440x1440 --rate 120.00 --set TearFree on &
+xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 60.00 --scale 1.3333x1.3333 &
 xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank &
 
 $HOME/.spoof-dpi/bin/spoof-dpi &
 
-picom &
+# picom &
 feh --bg-fill ~/.config/dotfiles/files/wallpapers/chaisawman-mine-palette.png
 openrgb -p main &
 adb devices &

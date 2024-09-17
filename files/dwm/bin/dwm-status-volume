@@ -8,21 +8,23 @@ esac
 
 bg=#161617
 fg=#8A9A7B
-panelcolor=#1E2030
-icon="󰕾"
+muted_fg=#ED8796
 
-value="$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | sed "s/[^0-9]*//g" | sed "s/^0*//")%"
-if wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED"; then
-	fg=#ED8796
-	value="MUTED"
-	icon="󰝟"
-fi
+volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
 
-if [[ $1 ]]; then
-	return 0
-	printf "^c$fg^^b$bg^"
-	echo $icon
-else
-	printf "^c$fg^^b$bg^ "
-	echo "$icon $value"
-fi
+muted() {
+	printf "^b$muted_fg^^c$bg^ 󰝟 ^c$bg^^b$bg^ " && exit
+}
+
+[[ $volume == *"MUTED"* ]] && muted
+
+volume=${volume#Volume: }
+volume=$(printf "%.0f" ${volume//./})
+
+case 1 in
+$((volume > 5))) icon="󰕾" ;;
+$((volume >= 1))) icon="󰕾 " ;;
+*) muted ;;
+esac
+
+printf "^c$fg^^b$bg^$icon $volume%%"

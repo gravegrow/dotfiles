@@ -61,7 +61,8 @@ return {
 					hl.StatusInfo = { bg = colors.info, fg = colors.bg, bold = true }
 					hl.StatusHint = { bg = colors.hint, fg = colors.bg, bold = true }
 					hl.YankHighlight = { fg = palette.base0F, bold = true }
-					hl.TreesitterContext = { bg = colors.bg_dark }
+					hl.TreesitterContext = { bg = colors.bg }
+					hl.TreesitterContextSeparator = { fg = colors.orange, bg = colors.bg }
 				end,
 				on_colors = function(colors)
 					colors.bg = palette.base00
