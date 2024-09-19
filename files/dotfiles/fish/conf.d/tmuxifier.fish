@@ -14,6 +14,7 @@ function __tmux-crafting
 end
 
 
-alias farm1='__tmux-crafting system-1'
-alias farm2='__tmux-crafting system-2'
+function farm
+    __tmux-crafting "system-$argv"
+end
 
