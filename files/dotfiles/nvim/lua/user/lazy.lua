@@ -12,4 +12,4 @@ end
 ---@diagnostic disable-next-line
 vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('user.plugins', { change_detection = { notify = false } })
+require('lazy').setup('user.plugins', { change_detection = { notify = false }, ui = { backdrop = 100, } })
