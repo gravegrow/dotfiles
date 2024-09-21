@@ -76,17 +76,15 @@ return {
 				end, { "i", "s" }),
 			}),
 			preselect = cmp.PreselectMode.None,
-			-- window = {
-			-- documentation = cmp.config.window.bordered({
-			-- 	winhighlight = "Normal:FloatNormal,FloatBorder:FloatBorder,Search:None",
-			-- 	-- border = "single",
-			-- 	maxwidth = 0,
-			-- }),
-			-- completion = cmp.config.window.bordered({
-			-- 	winhighlight = "FloatBorder:FloatBorder,Normal:FloatNormal",
-			-- 	border = "single",
-			-- }),
-			-- },
+			window = {
+				documentation = cmp.config.window.bordered({
+					winhighlight = "Normal:TelescopePreviewNormal,FloatBorder:TelescopePreviewBorder,Error:None",
+				}),
+				-- completion = cmp.config.window.bordered({
+				-- 	winhighlight = "FloatBorder:FloatBorder,Normal:FloatNormal",
+				-- 	border = "single",
+				-- }),
+			},
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -120,13 +118,6 @@ return {
 				{ name = "path" },
 				{ name = "buffer" },
 			}),
-			-- sorting = {
-			-- 	comparators = {
-			-- 		cmp.config.compare.exact,
-			-- 		cmp.config.compare.offset,
-			-- 		cmp.config.compare.recently_used,
-			-- 	},
-			-- },
 			sorting = {
 				comparators = {
 					cmp.config.compare.offset,
@@ -173,7 +164,5 @@ return {
 				{ name = "cmdline" },
 			}),
 		})
-
-		require("luasnip.loaders.from_vscode").lazy_load()
 	end,
 }
