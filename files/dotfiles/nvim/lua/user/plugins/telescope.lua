@@ -11,13 +11,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			end,
 		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
-		{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
+		{ "nvim-tree/nvim-web-devicons" },
 	},
 	config = function()
 		require("telescope").setup({
 			defaults = {
 				prompt_prefix = " ",
-				selection_caret = "▌",
+				selection_caret = "▌ ",
 				sorting_strategy = "ascending",
 				layout_strategy = "flex",
 				path_display = { "filename_first" },

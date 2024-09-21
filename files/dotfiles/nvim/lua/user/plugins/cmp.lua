@@ -7,6 +7,14 @@ return {
 			build = (function()
 				return "make install_jsregexp"
 			end)(),
+			dependencies = {
+				{
+					"rafamadriz/friendly-snippets",
+					config = function()
+						require("luasnip.loaders.from_vscode").lazy_load()
+					end,
+				},
+			},
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
@@ -14,13 +22,12 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"onsails/lspkind.nvim",
-		-- "rafamadriz/friendly-snippets",
 	},
 	config = function()
 		local cmp = require "cmp"
 		local luasnip = require "luasnip"
 		local lspkind = require "lspkind"
-		local defaults = require "cmp.config.default"()
+		-- local defaults = require "cmp.config.default"()
 		luasnip.config.setup({})
 
 		cmp.setup({
@@ -68,17 +75,16 @@ return {
 					end
 				end, { "i", "s" }),
 			}),
-			-- completion = { completeopt = 'menu,menuone,noinsert,noselect' },
 			preselect = cmp.PreselectMode.None,
 			-- window = {
-			-- 	documentation = cmp.config.window.bordered({
-			-- winhighlight = "Normal:FloatNormal,FloatBorder:FloatBorder,Search:None",
-			-- 	border = "single",
+			-- documentation = cmp.config.window.bordered({
+			-- 	winhighlight = "Normal:FloatNormal,FloatBorder:FloatBorder,Search:None",
+			-- 	-- border = "single",
 			-- 	maxwidth = 0,
 			-- }),
 			-- completion = cmp.config.window.bordered({
-			-- winhighlight = "FloatBorder:FloatBorder,Normal:FloatNormal",
-			border = "single",
+			-- 	winhighlight = "FloatBorder:FloatBorder,Normal:FloatNormal",
+			-- 	border = "single",
 			-- }),
 			-- },
 			snippet = {
@@ -89,15 +95,6 @@ return {
 			formatting = {
 				format = lspkind.cmp_format({
 					mode = "text_symbol",
-					-- menu = {
-					-- stylua: ignore start
-					-- nvim_lsp = '[LSP]',
-					-- path     = '[PTH]',
-					-- neorg    = '[NRG]',
-					-- buffer   = '[BUF]',
-					-- luasnip  = '[SNP]',
-					-- stylua: ignore end
-					-- },
 					maxwidth = 35,
 					ellipsis_char = "..",
 					show_labelDetails = true,
@@ -118,20 +115,25 @@ return {
 			},
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "path" },
 				{ name = "neorg" },
 				{ name = "luasnip" },
+				{ name = "path" },
 				{ name = "buffer" },
 			}),
-			-- sorting = defaults.sorting,
+			-- sorting = {
+			-- 	comparators = {
+			-- 		cmp.config.compare.exact,
+			-- 		cmp.config.compare.offset,
+			-- 		cmp.config.compare.recently_used,
+			-- 	},
+			-- },
 			sorting = {
 				comparators = {
 					cmp.config.compare.offset,
 					cmp.config.compare.exact,
 					cmp.config.compare.score,
 
-					-- copied from cmp-under, but I don't think I need the plugin for this.
-					-- I might add some more of my own.
+					-- copied from cmp-under
 					function(entry1, entry2)
 						local _, entry1_under = entry1.completion_item.label:find "^_+"
 						local _, entry2_under = entry2.completion_item.label:find "^_+"

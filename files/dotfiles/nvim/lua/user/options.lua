@@ -27,7 +27,6 @@ opt.wrap = false -- Display long lines as just one line
 
 opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
 opt.fillchars = "eob: " -- Don't show `~` outside of buffer
-opt.fillchars:append "vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣"
 
 opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
 opt.list = true -- Define which helper symbols to show

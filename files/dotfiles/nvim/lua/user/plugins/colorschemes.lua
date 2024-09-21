@@ -10,8 +10,8 @@ return {
 			palette = {
 				main = {
 					base = "#161617",
-					surface = "#252527",
-					overlay = "#343332",
+					surface = "#232325",
+					overlay = "#29292e",
 					subtle = "#7c7c83",
 					muted = "#464646",
 					text = "#9A8F8A",
@@ -22,21 +22,33 @@ return {
 					foam = "#8EA4A2",
 					iris = "#807e96",
 					highlight_low = "#252527",
-					highlight_med = "#45444b",
-					highlight_high = "#585760",
+					highlight_med = "#2a2a2c",
+					highlight_high = "#4a4950",
 				},
 			},
+			groups = { border = "surface" },
 			highlight_groups = {
 				Comment = { fg = "muted", italic = true },
+				FloatTitle = { bg = "overlay", fg = "text" },
+				WinSeparator = { link = "FloatBorder" },
 				TelescopeNormal = { bg = "surface" },
-				TelescopeTitle = { bg = "overlay", fg = "text" },
-				TelescopeBorder = { bg = "surface", fg = "surface" },
+				TelescopeTitle = { link = "FloatTitle" },
 				TelescopeSelection = { bg = "overlay", bold = true },
 				TelescopePreviewNormal = { bg = "overlay" },
 				TelescopePreviewBorder = { bg = "overlay", fg = "overlay" },
 				TelescopePreviewTitle = { bg = "overlay", fg = "overlay" },
+				MiniFilesBorderModified = { bg = "surface", fg = "gold" },
 			},
 		})
+
 		vim.cmd.colorscheme "rose-pine"
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "undotree", "qf", "help" },
+			group = vim.api.nvim_create_augroup("floating-window-style", { clear = true }),
+			callback = function()
+				vim.cmd "set winhighlight=Normal:NormalFloat"
+			end,
+		})
 	end,
 }

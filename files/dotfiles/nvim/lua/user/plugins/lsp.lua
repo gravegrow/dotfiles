@@ -21,13 +21,8 @@ return {
 			vim.diagnostic.config({
 				severity_sort = true,
 				update_in_insert = false,
-				virtual_text = {
-					severity = { min = vim.diagnostic.severity.ERROR },
-				},
-			})
-
-			vim.diagnostic.config({
 				float = { border = "single" },
+				virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
 			})
 
 			vim.fn.sign_define("DiagnosticSignError", { text = "" })
@@ -36,29 +31,19 @@ return {
 			vim.fn.sign_define("DiagnosticSignHint", { text = "" })
 
 			vim.api.nvim_create_autocmd("LspAttach", {
-				callback = function(args)
-					local client = vim.lsp.get_client_by_id(args.data.client_id)
-					if not client then
-						return
-					end
-					client.server_capabilities.semanticTokensProvider = nil
-				end,
-			})
-
-			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("on-lsp-attach", { clear = true }),
 				callback = function(event)
-					local map = function(keys, func, desc)
+					local keymap = function(keys, func, desc)
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
-					map("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-					map("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-					map("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-					map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-					map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-					map("K", vim.lsp.buf.hover, "Hover Documentation")
-					map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+					keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+					keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+					keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+					keymap("K", vim.lsp.buf.hover, "Hover Documentation")
+					keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
 					vim.keymap.set({ "n", "i" }, "<A-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
 				end,
@@ -71,14 +56,22 @@ return {
 				capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
 			end
 
-			local handlers = {
-				-- ['textDocument/hover'] = vim.lsp.with(vim.lsp.handlers.hover, { border = 'single' }),
-				-- ['textDocument/signatureHelp'] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = 'single' }),
-			}
-
 			local servers = {
 				ruff_lsp = {},
-				pyright = {},
+				basedpyright = {
+					settings = {
+						pyright = {
+							-- Using Ruff's import organizer
+							disableOrganizeImports = true,
+						},
+						python = {
+							analysis = {
+								-- Ignore all files for analysis to exclusively use Ruff for linting
+								ignore = { "*" },
+							},
+						},
+					},
+				},
 				taplo = {},
 				yamlls = {},
 				jsonls = {},
@@ -96,8 +89,8 @@ return {
 			}
 
 			local lspconfig = require "lspconfig"
-			lspconfig.gdscript.setup({ capabilities = capabilities, handlers = handlers })
-			lspconfig.gdshader_lsp.setup({ capabilities = capabilities, handlers = handlers })
+			lspconfig.gdscript.setup({ capabilities = capabilities })
+			lspconfig.gdshader_lsp.setup({ capabilities = capabilities })
 
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
@@ -117,7 +110,6 @@ return {
 							settings = server.settings,
 							filetypes = server.filetypes,
 							capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
-							handlers = handlers,
 						})
 					end,
 				},
@@ -147,5 +139,20 @@ return {
 				},
 			},
 		},
+	},
+
+	{
+		"ray-x/lsp_signature.nvim",
+		event = "VeryLazy",
+		opts = {
+			doc_lines = 0,
+			handler_opts = {
+				border = "single",
+			},
+			hint_enable = false,
+		},
+		config = function(_, opts)
+			require("lsp_signature").setup(opts)
+		end,
 	},
 }
