@@ -1,49 +1,71 @@
 local keymap = vim.keymap.set
 
-keymap({ 'n', 'v' }, '<Space>', '<Nop>', { desc = 'Unbind space' })
+keymap({ "n", "v" }, "<Space>", "<Nop>", { desc = "Unbind space" })
 
 -- Move by visible lines. Notes:
 -- - Don't map in Operator-pending mode because it severely changes behavior:
 --   like `dj` on non-wrapped line will not delete it.
 -- - Condition on `v:count == 0` to allow easier use of relative line numbers.
-keymap({ 'n', 'x' }, 'j', [[v:count == 0 ? 'gj' : 'j']], { expr = true })
-keymap({ 'n', 'x' }, 'k', [[v:count == 0 ? 'gk' : 'k']], { expr = true })
+keymap({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
+keymap({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
-keymap(  'n',        '<C-S>', '<Cmd>silent! update | redraw<CR>',      { desc = 'Save' })
-keymap({ 'i', 'x' }, '<C-S>', '<Esc><Cmd>silent! update | redraw<CR>', { desc = 'Save and go to Normal mode' })
+keymap("n", "<C-S>", "<Cmd>silent! update | redraw<CR>", { desc = "Save" })
+keymap({ "i", "x" }, "<C-S>", "<Esc><Cmd>silent! update | redraw<CR>", { desc = "Save and go to Normal mode" })
 
-keymap('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlighting after serch' })
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting after serch" })
 
-keymap('x', 'p', '"_dP', { desc = 'Paste without copying visual selection' })
+keymap("v", "p", '"_dP', { desc = "Paste without copying visual selection" })
 
-keymap('n', '<C-Left>',  '"<Cmd>vertical resize -" . v:count1 . "<CR>"', { expr = true, replace_keycodes = false, desc = 'Decrease window width' })
-keymap('n', '<C-Down>',  '"<Cmd>resize -"          . v:count1 . "<CR>"', { expr = true, replace_keycodes = false, desc = 'Decrease window height' })
-keymap('n', '<C-Up>',    '"<Cmd>resize +"          . v:count1 . "<CR>"', { expr = true, replace_keycodes = false, desc = 'Increase window height' })
-keymap('n', '<C-Right>', '"<Cmd>vertical resize +" . v:count1 . "<CR>"', { expr = true, replace_keycodes = false, desc = 'Increase window width' })
+keymap(
+	"n",
+	"<C-Left>",
+	'"<Cmd>vertical resize -" . v:count1 . "<CR>"',
+	{ expr = true, replace_keycodes = false, desc = "Decrease window width" }
+)
 
-keymap('v', 'y', 'myy`y', { desc = 'Keep cursor position while Yanking' })
-keymap('v', 'Y', 'myY`y', { desc = 'Keep cursor position while Yanking' })
+keymap(
+	"n",
+	"<C-Down>",
+	'"<Cmd>resize -"          . v:count1 . "<CR>"',
+	{ expr = true, replace_keycodes = false, desc = "Decrease window height" }
+)
+keymap(
+	"n",
+	"<C-Up>",
+	'"<Cmd>resize +"          . v:count1 . "<CR>"',
+	{ expr = true, replace_keycodes = false, desc = "Increase window height" }
+)
+keymap(
+	"n",
+	"<C-Right>",
+	'"<Cmd>vertical resize +" . v:count1 . "<CR>"',
+	{ expr = true, replace_keycodes = false, desc = "Increase window width" }
+)
 
-keymap('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic message' })
-keymap('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic message' })
+keymap("v", "y", "myy`y", { desc = "Keep cursor position while Yanking" })
+keymap("v", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })
 
-keymap('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [D]isplay' })
-keymap('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
+keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous [D]iagnostic message" })
+keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next [D]iagnostic message" })
 
-keymap('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+keymap("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show [D]iagnostic [D]isplay" })
+keymap("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [D]iagnostic [Q]uickfix list" })
 
-keymap('x', '<a-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
-keymap('x', '<a-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-keymap('v', '<', '<gv', { desc = 'Move selection right, keep visual selection' })
-keymap('v', '>', '>gv', { desc = 'Move selection left, keep visual selection' })
+keymap("x", "<a-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+keymap("x", "<a-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
-keymap('n', 'gf', ':edit <cfile><cr>', { desc = '[G]o to [F]ile' })
+keymap("v", "<", "<gv", { desc = "Move selection right, keep visual selection" })
+keymap("v", ">", ">gv", { desc = "Move selection left, keep visual selection" })
 
-for _, key in ipairs({ 'd', 'u', 'o', 'i' }) do
-    keymap( 'n',
-        string.format('<c-%s>', key),
-        string.format('<c-%s>zz', key),
-        { desc = string.format('Center screen when moving with <C-%s>', key) }
-    )
+keymap("n", "gf", ":edit <cfile><cr>", { desc = "[G]o to [F]ile" })
+
+for _, key in ipairs({ "d", "u", "o", "i" }) do
+	keymap(
+		"n",
+		string.format("<c-%s>", key),
+		string.format("<c-%s>zz", key),
+		{ desc = string.format("Center screen when moving with <C-%s>", key) }
+	)
 end
