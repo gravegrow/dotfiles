@@ -1,44 +1,41 @@
-vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { desc = 'Unbind space' })
+local keymap = vim.keymap.set
 
-vim.keymap.set({ 'n', 'v' }, '<c-s>', '<cmd>update<cr>', { desc = 'Save file if new changes' })
-vim.keymap.set({ 'i' }, '<c-s>', '<c-o><cmd>update<cr>', { desc = 'Save file if new changes' })
+keymap({ "n", "v" }, "<Space>", "<Nop>", { desc = "Unbind space" })
 
-vim.keymap.set('v', 'p', '"_dP', { desc = 'Paste without copying visual selection' })
+keymap({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
+keymap({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
-vim.keymap.set('v', 'y', 'myy`y', { desc = 'Keep cursor position while Yanking' })
-vim.keymap.set('v', 'Y', 'myY`y', { desc = 'Keep cursor position while Yanking' })
+keymap("n", "<C-S>", "<Cmd>silent! update | redraw<CR>", { desc = "Save" })
+keymap({ "i", "x" }, "<C-S>", "<Esc><Cmd>silent! update | redraw<CR>", { desc = "Save and go to Normal mode" })
 
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous [D]iagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Next [D]iagnostic message' })
+keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting after serch" })
 
-vim.keymap.set('n', '<leader>dd', vim.diagnostic.open_float, { desc = 'Show [D]iagnostic [D]isplay' })
-vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open [D]iagnostic [Q]uickfix list' })
+-- keymap("v", "p", '"_dP', { desc = "Paste without copying visual selection" })
 
--- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+keymap("v", "y", "myy`y", { desc = "Keep cursor position while Yanking" })
+keymap("v", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })
 
-vim.keymap.set('v', '<a-j>', ":m '>+1<CR>gv=gv", { desc = 'Move selection down' })
-vim.keymap.set('v', '<a-k>', ":m '<-2<CR>gv=gv", { desc = 'Move selection up' })
+keymap("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous [D]iagnostic message" })
+keymap("n", "]d", vim.diagnostic.goto_next, { desc = "Next [D]iagnostic message" })
 
-vim.keymap.set('v', '<', '<gv', { desc = 'Move selection right, keep visual selection' })
-vim.keymap.set('v', '>', '>gv', { desc = 'Move selection left, keep visual selection' })
+keymap("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show [D]iagnostic [D]isplay" })
+keymap("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [D]iagnostic [Q]uickfix list" })
 
-vim.keymap.set('n', 'gf', ':edit <cfile><cr>', { desc = '[G]o to [F]ile' })
+keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
-vim.keymap.set({ 'n', 'v', 'x' }, 'q:', ':q', { desc = 'It was defenetly a typo and you are want to Quit' })
+keymap("x", "<a-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+keymap("x", "<a-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-	desc = 'Highlight when yanking (copying) text',
-	group = vim.api.nvim_create_augroup('on-highlight-yank', { clear = true }),
-	callback = function()
-		vim.highlight.on_yank({ higroup = 'YankHighlight' })
-	end,
-})
+keymap("v", "<", "<gv", { desc = "Move selection right, keep visual selection" })
+keymap("v", ">", ">gv", { desc = "Move selection left, keep visual selection" })
 
-for _, key in ipairs({ 'd', 'u', 'o', 'i' }) do
-	vim.keymap.set(
-		'n',
-		string.format('<c-%s>', key),
-		string.format('<c-%s>zz', key),
-		{ desc = string.format('Center screen when moving with <C-%s>', key) }
+keymap("n", "gf", ":edit <cfile><cr>", { desc = "[G]o to [F]ile" })
+
+for _, key in ipairs({ "d", "u", "o", "i" }) do
+	keymap(
+		"n",
+		string.format("<c-%s>", key),
+		string.format("<c-%s>zz", key),
+		{ desc = string.format("Center screen when moving with <C-%s>", key) }
 	)
 end

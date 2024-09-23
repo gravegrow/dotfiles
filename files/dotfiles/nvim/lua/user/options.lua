@@ -1,102 +1,120 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
 
--- Fallback colorscheme
-vim.cmd.colorscheme 'habamax'
+local opt = vim.opt
 
--- Make statusline global
-vim.opt.laststatus = 3
+opt.undofile = true -- Enable persistent undo (see also `:h undodir`)
+opt.swapfile = false -- Disable swap file
 
--- Cmdline height
-vim.opt.cmdheight = 0
+opt.backup = false -- Don't store backup while overwriting the file
+opt.writebackup = false -- Don't store backup while overwriting the file
 
--- Make relative line numbers default
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.numberwidth = 3
+opt.mouse = "a" -- Enable mouse for all available modes
 
--- Enable mouse mode, can be useful for resizing splits for example!
-vim.opt.mouse = 'a'
+vim.cmd "filetype plugin indent on" -- Enable all filetype plugins
 
--- Don't show the mode, since it's already in status line
-vim.opt.showmode = false
+-- Appearance
+opt.breakindent = true -- Indent wrapped lines to match line start
+opt.cursorline = true -- Highlight current line
+opt.linebreak = true -- Wrap long lines at 'breakat' (if 'wrap' is set)
+opt.number = true -- Show line numbers
+opt.relativenumber = true -- Show line numbers
+opt.splitbelow = true -- Horizontal splits will be below
+opt.splitright = true -- Vertical splits will be to the right
 
---  Sync clipboard between OS and Neovim. See `:help 'clipboard'`
-vim.opt.clipboard = 'unnamedplus'
+opt.ruler = false -- Don't show cursor position in command line
+opt.showmode = false -- Don't show mode in command line
+opt.wrap = false -- Display long lines as just one line
 
--- Enable break indent
-vim.opt.breakindent = true
+opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
+opt.fillchars = "eob: " -- Don't show `~` outside of buffer
 
--- Save undo history
-vim.opt.undofile = true
+opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
+opt.list = true -- Define which helper symbols to show
 
--- Disable swap
-vim.opt.swapfile = false
+opt.pumheight = 10 -- Make popup menu smaller
+opt.laststatus = 3 -- Make statusline global
+opt.cmdheight = 0 -- Cmdline height
+opt.shortmess:append "I" -- Disable intro screen
+-- opt.conceallevel = 3 -- Conceal for neorg
 
--- Case-insensitive searching UNLESS \C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- Editing
+opt.ignorecase = true -- Ignore case when searching (use `\C` to force not doing that)
+opt.incsearch = true -- Show search results while typing
+opt.infercase = true -- Infer letter cases for a richer built-in keyword completion
+opt.smartcase = true -- Don't ignore case when searching if pattern has upper case
+opt.smartindent = true -- Make indenting smart
 
--- Keep signcolumn on by default
-vim.opt.signcolumn = 'yes'
+opt.completeopt = "menuone,noinsert,noselect" -- Customize completions
+opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
+opt.formatoptions = "qjl1" -- Don't autoformat comments
+
+opt.tabstop = 3 -- A TAB character looks like 4 spaces
+opt.expandtab = false -- If True pressing the TAB key will insert spaces instead of a TAB character
+opt.softtabstop = 3 -- Number of spaces inserted instead of a TAB character
+opt.shiftwidth = 3 -- Number of spaces inserted when indenting
+
+opt.clipboard = "unnamedplus" --  Sync clipboard between OS and Neovim. See `:help 'clipboard'`
+opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 
 -- Decrease update time
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 
--- Configure how new splits should be opened
-vim.opt.splitright = true
-vim.opt.splitbelow = true
-
--- Sets how neovim will display certain whitespace in the editor.
---  See :help 'list'
---  and :help 'listchars'
-vim.opt.list = true
-vim.opt.listchars = { tab = '  ', trail = '·', nbsp = '␣' }
-
--- Show which line your cursor is on
-vim.opt.cursorline = true
-
--- Minimal number of screen lines to keep above and below the cursor.
-vim.opt.scrolloff = 10
-
--- Highlighting on search
-vim.opt.hlsearch = true
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear highlighting after serch' })
-
--- Hide characters after at the end of a buffer
-vim.opt.fillchars = { eob = ' ', fold = ' ' }
-
--- Position on new splits
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-
--- :help tabstop
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-
--- Wrap words
-vim.opt.wrap = false
-vim.opt.linebreak = true
-
--- Conceal for norg
-vim.opt.conceallevel = 3
-
 -- Spellchecking
-vim.opt.spelllang = 'en_us'
-vim.opt.spell = true
+opt.spelllang = "en_us"
+opt.spell = false
 
 -- Autoformating
-vim.api.nvim_create_autocmd({ 'BufEnter' }, {
-	desc = 'Changes formatting options',
-	group = vim.api.nvim_create_augroup('on-formatopts', { clear = true }),
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+	desc = "Changes formatting options",
+	group = vim.api.nvim_create_augroup("on-formatopts", { clear = true }),
 	callback = function()
-		vim.opt.formatoptions:remove({ 'c', 'r', 'o' })
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
+
+-- Highlight opt. yank
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copt.ying) text",
+	group = vim.api.nvim_create_augroup("on-highlight-yank", { clear = true }),
+	callback = function()
+		vim.highlight.on_yank({ higroup = "WarningMsg" })
+	end,
+})
+
+local cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
+vim.api.nvim_create_autocmd("RecordingEnter", {
+	desc = "Changes cursorline color when starting recording a macro",
+	group = vim.api.nvim_create_augroup("on-recording-enter", { clear = true }),
+	callback = function()
+		cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
+		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#231D1E" })
+	end,
+})
+
+vim.api.nvim_create_autocmd("RecordingLeave", {
+	desc = "Restores cursorline color when starting recording a macro",
+	group = vim.api.nvim_create_augroup("on-recording-leave", { clear = true }),
+	callback = function()
+		vim.api.nvim_set_hl(0, "CursorLine", cursorline)
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.md",
+	group = vim.api.nvim_create_augroup("create-on-save", { clear = true }),
+	callback = function()
+		local normalized = vim.fs.normalize(vim.fn.expand "%")
+		local is_file = vim.fn.filereadable(normalized) ~= 0
+
+		if not is_file then
+			vim.fn.mkdir(vim.fn.expand "%:h", "p")
+		end
 	end,
 })
 
 vim.filetype.add({
 	filename = {
-		['.tmux'] = 'tmux',
+		[".tmux"] = "tmux",
 	},
 })

@@ -1,15 +1,15 @@
 return {
-	{
-		"echasnovski/mini.nvim",
-		config = function()
-			require("mini.ai").setup()
-			require("mini.align").setup()
-			require("mini.icons").setup()
-			require("mini.splitjoin").setup()
-			require("mini.surround").setup()
+	"echasnovski/mini.nvim",
+	config = function()
+		require("mini.ai").setup()
+		require("mini.align").setup()
+		require("mini.pairs").setup()
+		require("mini.splitjoin").setup()
+		require("mini.surround").setup()
 
-			require("user.plugins.mini.statusline").setup()
-			require("user.plugins.mini.files").setup()
-		end,
-	},
+		require("mini.icons").setup()
+		require("mini.icons").mock_nvim_web_devicons()
+
+		require("user.plugins.mini.files").setup()
+	end,
 }
