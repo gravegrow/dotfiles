@@ -2,10 +2,6 @@ local keymap = vim.keymap.set
 
 keymap({ "n", "v" }, "<Space>", "<Nop>", { desc = "Unbind space" })
 
--- Move by visible lines. Notes:
--- - Don't map in Operator-pending mode because it severely changes behavior:
---   like `dj` on non-wrapped line will not delete it.
--- - Condition on `v:count == 0` to allow easier use of relative line numbers.
 keymap({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 keymap({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
@@ -14,33 +10,7 @@ keymap({ "i", "x" }, "<C-S>", "<Esc><Cmd>silent! update | redraw<CR>", { desc = 
 
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting after serch" })
 
-keymap("v", "p", '"_dP', { desc = "Paste without copying visual selection" })
-
-keymap(
-	"n",
-	"<C-Left>",
-	'"<Cmd>vertical resize -" . v:count1 . "<CR>"',
-	{ expr = true, replace_keycodes = false, desc = "Decrease window width" }
-)
-
-keymap(
-	"n",
-	"<C-Down>",
-	'"<Cmd>resize -"          . v:count1 . "<CR>"',
-	{ expr = true, replace_keycodes = false, desc = "Decrease window height" }
-)
-keymap(
-	"n",
-	"<C-Up>",
-	'"<Cmd>resize +"          . v:count1 . "<CR>"',
-	{ expr = true, replace_keycodes = false, desc = "Increase window height" }
-)
-keymap(
-	"n",
-	"<C-Right>",
-	'"<Cmd>vertical resize +" . v:count1 . "<CR>"',
-	{ expr = true, replace_keycodes = false, desc = "Increase window width" }
-)
+-- keymap("v", "p", '"_dP', { desc = "Paste without copying visual selection" })
 
 keymap("v", "y", "myy`y", { desc = "Keep cursor position while Yanking" })
 keymap("v", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })

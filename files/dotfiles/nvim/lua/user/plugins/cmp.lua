@@ -18,7 +18,7 @@ return {
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
+		-- "hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"onsails/lspkind.nvim",
@@ -27,7 +27,7 @@ return {
 		local cmp = require "cmp"
 		local luasnip = require "luasnip"
 		local lspkind = require "lspkind"
-		-- local defaults = require "cmp.config.default"()
+
 		luasnip.config.setup({})
 
 		cmp.setup({
@@ -80,10 +80,6 @@ return {
 				documentation = cmp.config.window.bordered({
 					winhighlight = "Normal:TelescopePreviewNormal,FloatBorder:TelescopePreviewBorder,Error:None",
 				}),
-				-- completion = cmp.config.window.bordered({
-				-- 	winhighlight = "FloatBorder:FloatBorder,Normal:FloatNormal",
-				-- 	border = "single",
-				-- }),
 			},
 			snippet = {
 				expand = function(args)
@@ -116,7 +112,7 @@ return {
 				{ name = "neorg" },
 				{ name = "luasnip" },
 				{ name = "path" },
-				{ name = "buffer" },
+				-- { name = "buffer" },
 			}),
 			sorting = {
 				comparators = {
@@ -146,7 +142,11 @@ return {
 		})
 
 		cmp.setup.cmdline({ "/", "?" }, {
-			mapping = cmp.mapping.preset.cmdline(),
+			mapping = cmp.mapping.preset.cmdline({
+				["<C-y>"] = {
+					c = cmp.mapping.confirm({ select = true }),
+				},
+			}),
 			sources = {
 				{ name = "buffer" },
 			},

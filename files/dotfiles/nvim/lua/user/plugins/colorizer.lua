@@ -1,4 +1,11 @@
 return {
 	"NvChad/nvim-colorizer.lua",
-	opts = { user_default_options = { mode = "virtualtext", names = false, virtualtext = "󰄮" } },
+	lazy = false,
+	opts = {
+		user_default_options = {
+			mode = "virtualtext",
+			names = false,
+			virtualtext = "󰄮",
+		},
+	},
 }

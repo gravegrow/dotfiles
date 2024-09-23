@@ -75,7 +75,7 @@ static const Rule rules[] = {
     /* xprop(1): WM_CLASS(STRING) = instance, class WM_NAME(STRING) = title */
     /* class                                instance  title    tags mask    isfloating  isterminal  noswallow  monitor */
     {"Gimp",                                NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"Lutris",                              NULL,     NULL,    0,           1,          0,          0,         -1},
+    {"Lutris",                              NULL,     NULL,    1 << 6,      0,          0,          0,          1},
     {"gnome-calculator",                    NULL,     NULL,    0,           1,          0,          0,         -1},
     {"gnome-calendar",                      NULL,     NULL,    0,           1,          0,          0,         -1},
     {"Firefox",                             NULL,     NULL,    0,           0,          0,          0,         -1},
@@ -84,18 +84,18 @@ static const Rule rules[] = {
     {"Spotify",                             NULL,     NULL,    1 << 2,      0,          0,          0,          1},
     {"mpv",                                 NULL,     NULL,    0,           0,          0,          0,          0},
     {"polkit-gnome-authentication-agent-1", NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"stalonetray",                         NULL,     NULL,    ~0,           1,          0,          0,         -1},
+    {"stalonetray",                         NULL,     NULL,   ~0,           1,          0,          0,         -1},
 
-    {NULL, NULL, "Control Tools",                              0,           1,          0,          0,         -1},
-    {NULL, NULL, "Attribute Editor",                           0,           1,          0,          0,         -1},
-    {NULL, NULL, "Input Selection",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "Charcoal Editor 2",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "Constraint Options",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "Constraint Options",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "cometRename - 1.20",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "Attribute Spread Sheet",                            0,           1,          0,          0,         -1},
+    {NULL, NULL, "Control Tools",                               0,           1,          0,          0,         -1},
+    {NULL, NULL, "Attribute Editor",                            0,           1,          0,          0,         -1},
+    {NULL, NULL, "Input Selection",                             0,           1,          0,          0,         -1},
+    {NULL, NULL, "Charcoal Editor 2",                           0,           1,          0,          0,         -1},
+    {NULL, NULL, "Constraint Options",                          0,           1,          0,          0,         -1},
+    {NULL, NULL, "Constraint Options",                          0,           1,          0,          0,         -1},
+    {NULL, NULL, "cometRename - 1.20",                          0,           1,          0,          0,         -1},
+    {NULL, NULL, "Attribute Spread Sheet",                      0,           1,          0,          0,         -1},
     {NULL, NULL, "Component Editor",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "Rebuild Curve Options",                            0,           1,          0,          0,         -1},
+    {NULL, NULL, "Rebuild Curve Options",                       0,           1,          0,          0,         -1},
 };
 
 /* layout(s) */

@@ -3,11 +3,13 @@ return {
 	config = function()
 		require("mini.ai").setup()
 		require("mini.align").setup()
-		require("mini.surround").setup()
 		require("mini.pairs").setup()
-		require("user.plugins.mini.files").setup()
+		require("mini.splitjoin").setup()
+		require("mini.surround").setup()
 
 		require("mini.icons").setup()
-		require("mini.statusline").setup()
+		require("mini.icons").mock_nvim_web_devicons()
+
+		require("user.plugins.mini.files").setup()
 	end,
 }

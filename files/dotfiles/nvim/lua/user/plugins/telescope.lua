@@ -11,7 +11,6 @@ return { -- Fuzzy Finder (files, lsp, etc)
 			end,
 		},
 		{ "nvim-telescope/telescope-ui-select.nvim" },
-		{ "nvim-tree/nvim-web-devicons" },
 	},
 	config = function()
 		require("telescope").setup({
@@ -47,13 +46,18 @@ return { -- Fuzzy Finder (files, lsp, etc)
 		pcall(require("telescope").load_extension, "ui-select")
 
 		local builtin = require "telescope.builtin"
+		-- stylua: ignore
+		local document_diagnostics = function() builtin.diagnostics({ bufnr = 0 }) end
+
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[S]earch [F]iles" })
+		vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[S]earch [F]iles" })
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[H]elp" })
 		vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[H]elp" })
 		vim.keymap.set("n", "<leader>ft", builtin.highlights, { desc = "[T]heme Highlights" })
 		vim.keymap.set("n", "<leader>fb", builtin.builtin, { desc = "[B]uiltins" })
 		vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live [G]rep" })
-		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "[D]iagnostics" })
+		vim.keymap.set("n", "<leader>fd", document_diagnostics, { desc = "Document [D]iagnostics" })
+		vim.keymap.set("n", "<leader>fD", builtin.diagnostics, { desc = "Workspace [D]iagnostics" })
 		vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "[O]ld Files" })
 		vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 

@@ -35,7 +35,7 @@ opt.pumheight = 10 -- Make popup menu smaller
 opt.laststatus = 3 -- Make statusline global
 opt.cmdheight = 0 -- Cmdline height
 opt.shortmess:append "I" -- Disable intro screen
-opt.conceallevel = 3 -- Conceal for neorg
+-- opt.conceallevel = 3 -- Conceal for neorg
 
 -- Editing
 opt.ignorecase = true -- Ignore case when searching (use `\C` to force not doing that)
@@ -62,7 +62,7 @@ vim.opt.timeoutlen = 300
 
 -- Spellchecking
 opt.spelllang = "en_us"
-opt.spell = true
+opt.spell = false
 
 -- Autoformating
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
@@ -97,6 +97,19 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 	group = vim.api.nvim_create_augroup("on-recording-leave", { clear = true }),
 	callback = function()
 		vim.api.nvim_set_hl(0, "CursorLine", cursorline)
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*.md",
+	group = vim.api.nvim_create_augroup("create-on-save", { clear = true }),
+	callback = function()
+		local normalized = vim.fs.normalize(vim.fn.expand "%")
+		local is_file = vim.fn.filereadable(normalized) ~= 0
+
+		if not is_file then
+			vim.fn.mkdir(vim.fn.expand "%:h", "p")
+		end
 	end,
 })
 

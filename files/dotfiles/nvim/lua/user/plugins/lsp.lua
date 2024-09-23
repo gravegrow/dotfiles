@@ -29,10 +29,10 @@ return {
 			vim.fn.sign_define("DiagnosticSignError", { text = "" })
 			vim.fn.sign_define("DiagnosticSignWarn", { text = "" })
 			vim.fn.sign_define("DiagnosticSignInfo", { text = "" })
-			vim.fn.sign_define("DiagnosticSignHint", { text = "" })
+			vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
 
 			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("on-lsp-attach", { clear = true }),
+				group = vim.api.nvim_create_augroup("on-lsp-keybinds", { clear = true }),
 				callback = function(event)
 					local keymap = function(keys, func, desc)
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -50,6 +50,16 @@ return {
 				end,
 			})
 
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("on-lsp-semantic", { clear = true }),
+				callback = function(args)
+					local client = vim.lsp.get_client_by_id(args.data.client_id)
+					if client and client.name == "basedpyright" then
+						client.server_capabilities.semanticTokensProvider = nil
+					end
+				end,
+			})
+
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 
@@ -59,24 +69,24 @@ return {
 
 			local servers = {
 				ruff_lsp = {},
+				taplo = {},
+				yamlls = {},
+				jsonls = {},
+				bashls = {},
 				basedpyright = {
 					settings = {
 						pyright = {
 							-- Using Ruff's import organizer
 							disableOrganizeImports = true,
 						},
-						python = {
-							analysis = {
-								-- Ignore all files for analysis to exclusively use Ruff for linting
-								ignore = { "*" },
-							},
-						},
+						-- python = {
+						-- 	analysis = {
+						-- 		-- Ignore all files for analysis to exclusively use Ruff for linting
+						-- 		ignore = { "*" },
+						-- 	},
+						-- },
 					},
 				},
-				taplo = {},
-				yamlls = {},
-				jsonls = {},
-				bashls = {},
 				lua_ls = {
 					settings = {
 						Lua = {
@@ -84,6 +94,7 @@ return {
 								callSnippet = "Replace",
 							},
 							diagnostics = { disable = { "missing-fields" } },
+							format = { enable = false },
 						},
 					},
 				},
@@ -98,6 +109,7 @@ return {
 				"stylua",
 				"gdtoolkit",
 				"shfmt",
+				"prettier",
 			})
 
 			require("mason").setup()
@@ -127,6 +139,7 @@ return {
 			},
 			formatters_by_ft = {
 				lua = { "stylua" },
+				markdown = { "prettier" },
 				gdscript = { "gdformat" },
 				sh = { "shfmt" },
 				yaml = { "yamlfix" },
