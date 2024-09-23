@@ -16,7 +16,7 @@ return {
 			{ "<leader>d", group = "[D]iagnostic" },
 			{ "<leader>r", group = "[R]ename" },
 			{ "<leader>f", group = "[F]ind" },
-			{ "<leader>m", group = "[M]aya" },
+			-- { "<leader>m", group = "[M]aya" },
 			{ "<leader>n", group = "[N]eorg" },
 			{ "gh", group = "[H]unk" },
 		})

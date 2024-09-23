@@ -1,11 +1,19 @@
 return {
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
-		ft = "markdown",
+		ft = { "markdown" },
+		keys = {
+			{
+				"<leader>mt",
+				"<CMD>RenderMarkdown toggle<CR>",
+				desc = "Render [M]arkdown [T]oggle",
+			},
+		},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
 		opts = {
-			heading = { left_pad = 1 },
+			heading = { left_pad = 1, icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " } },
 			code = { left_pad = 1 },
+			bullet = { icons = { "•", "∘", "◆", "◇" } },
 		},
 	},
 

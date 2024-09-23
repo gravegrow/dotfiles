@@ -3,7 +3,7 @@ alias la='ls --all'
 alias tree='tree -C'
 alias py='python3'
 alias lg='lazygit'
-alias nvim='env TERM=wezterm nvim'
+#alias nvim='env TERM=wezterm nvim'
 
 if type -q bat
     alias cat='bat'

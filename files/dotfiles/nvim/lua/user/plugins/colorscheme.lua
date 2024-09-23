@@ -46,6 +46,7 @@ return {
 				BqfPreviewBorder = { link = "TelescopePreviewBorder" },
 				QuickFixLine = { fg = "gold" },
 				RenderMarkdownCode = { bg = "surface" },
+				RenderMarkdownDash = { fg = "overlay" },
 				-- Special = { fg = "iris", bold = true },
 
 				-- ["@type.builtin"] = { fg = "iris", bold = true },

@@ -10,7 +10,7 @@ keymap({ "i", "x" }, "<C-S>", "<Esc><Cmd>silent! update | redraw<CR>", { desc = 
 
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting after serch" })
 
--- keymap("v", "p", '"_dP', { desc = "Paste without copying visual selection" })
+keymap("x", "p", '"_dP', { desc = "Paste without copying visual selection" })
 
 keymap("v", "y", "myy`y", { desc = "Keep cursor position while Yanking" })
 keymap("v", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })

@@ -151,6 +151,9 @@ return {
 						YAMLFIX_WHITELINES = "1",
 					},
 				},
+				prettier = {
+					prepend_args = { "--prose-wrap", "always" },
+				},
 			},
 		},
 	},
