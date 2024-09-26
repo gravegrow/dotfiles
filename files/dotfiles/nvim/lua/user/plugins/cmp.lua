@@ -18,7 +18,7 @@ return {
 		},
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
-		-- "hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"onsails/lspkind.nvim",
@@ -88,7 +88,7 @@ return {
 			},
 			formatting = {
 				format = lspkind.cmp_format({
-					mode = "text_symbol",
+					mode = "symbol_text",
 					maxwidth = 35,
 					ellipsis_char = "..",
 					show_labelDetails = true,
@@ -99,20 +99,19 @@ return {
 							local padding = string.rep(" ", minwidth - string.len(label))
 							vim_item.abbr = label .. padding
 						end
-						if entry.completion_item.detail ~= nil and entry.completion_item.detail ~= "" then
-							vim_item.menu = entry.completion_item.detail
-						end
-						vim_item.dup = { buffer = 1, path = 1, nvim_lsp = 0 }
+						-- if entry.completion_item.detail then
+						-- 	vim_item.menu = entry.completion_item.detail
+						-- end
+						-- vim_item.dup = { buffer = 1, path = 1, nvim_lsp = 0 }
 						return vim_item
 					end,
 				}),
 			},
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "neorg" },
 				{ name = "luasnip" },
 				{ name = "path" },
-				-- { name = "buffer" },
+				{ name = "buffer" },
 			}),
 			sorting = {
 				comparators = {

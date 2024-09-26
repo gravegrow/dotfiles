@@ -38,11 +38,16 @@ return {
 						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
 					end
 
+					local function toggle_inlay_hints()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+					end
+
 					keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
 					keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
 					keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
 					keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 					keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+					keymap("<leader>ci", toggle_inlay_hints, "[C]ode [I]nlay Toggle")
 					keymap("K", vim.lsp.buf.hover, "Hover Documentation")
 					keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 

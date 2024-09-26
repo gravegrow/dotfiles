@@ -1,3 +1,11 @@
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "undotree", "qf", "help" },
+	group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
+	callback = function()
+		vim.cmd "set winhighlight=Normal:NormalFloat"
+	end,
+})
+
 return {
 	"rose-pine/neovim",
 	lazy = false,
@@ -8,18 +16,18 @@ return {
 		_G.ROSE_PINE_COLORS = {
 			base           = "#161617",
 			surface        = "#1f1f22",
-			overlay        = "#29292e",
+			overlay        = "#272830",
+			muted          = "#3c3c49",
 			subtle         = "#525265",
-			muted          = "#525256",
 			text           = "#9A8F8A",
 			love           = "#945B5B",
 			gold           = "#B7927B",
-			rose           = "#b6939c",
+			rose           = "#be8c8c",
 			pine           = "#627691",
 			foam           = "#8EA4A2",
 			iris           = "#807e96",
-			highlight_low  = "#252527",
-			highlight_med  = "#2a2a2c",
+			highlight_low  = "#272830",
+			highlight_med  = "#272830",
 			highlight_high = "#4a4950",
 		}
 
@@ -30,7 +38,8 @@ return {
 			groups = { border = "surface" },
 
 			highlight_groups = {
-				Comment = { fg = "muted", italic = true },
+				Comment = { italic = true },
+				CursorLineNr = { fg = "love" },
 				FloatTitle = { bg = "overlay", fg = "text" },
 				WinSeparator = { link = "FloatBorder" },
 				TelescopeNormal = { bg = "surface" },
@@ -47,22 +56,17 @@ return {
 				QuickFixLine = { fg = "gold" },
 				RenderMarkdownCode = { bg = "surface" },
 				RenderMarkdownDash = { fg = "overlay" },
-				-- Special = { fg = "iris", bold = true },
+				-- CmpItemAbbr = { fg = "text" },
+				PmenuSel = { bg = "overlay", bold = true },
+				Search = { blend = 100, bg = "overlay" },
+				CurSearch = { fg = "rose", bg = "none", bold = true, underline = true },
 
-				-- ["@type.builtin"] = { fg = "iris", bold = true },
+				["@type.builtin"] = { fg = "rose", italic = true },
 				["@markup.italic"] = { italic = true },
 				["@constructor.lua"] = { link = "@punctuation.bracket" },
 			},
 		})
 
 		vim.cmd.colorscheme "rose-pine"
-
-		vim.api.nvim_create_autocmd("FileType", {
-			pattern = { "undotree", "qf", "help" },
-			group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
-			callback = function()
-				vim.cmd "set winhighlight=Normal:NormalFloat"
-			end,
-		})
 	end,
 }
