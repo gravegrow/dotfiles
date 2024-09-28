@@ -58,9 +58,10 @@ return {
 				RenderMarkdownDash = { fg = "overlay" },
 				-- CmpItemAbbr = { fg = "text" },
 				PmenuSel = { bg = "overlay", bold = true },
-				Search = { blend = 100, bg = "overlay" },
-				CurSearch = { fg = "rose", bg = "none", bold = true, underline = true },
+				Search = { blend = 100, bg = "overlay", fg = "love" },
+				CurSearch = { fg = "love", bg = "overlay", bold = true, underline = true },
 
+				["@keyword.operator"] = { bold = true },
 				["@type.builtin"] = { fg = "rose", italic = true },
 				["@markup.italic"] = { italic = true },
 				["@constructor.lua"] = { link = "@punctuation.bracket" },

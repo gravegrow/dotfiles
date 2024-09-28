@@ -59,7 +59,7 @@ return {
 				group = vim.api.nvim_create_augroup("on-lsp-semantic", { clear = true }),
 				callback = function(args)
 					local client = vim.lsp.get_client_by_id(args.data.client_id)
-					if client and client.name == "basedpyright" then
+					if client and client.name == "pyright" then
 						client.server_capabilities.semanticTokensProvider = nil
 					end
 				end,
@@ -78,7 +78,7 @@ return {
 				yamlls = {},
 				jsonls = {},
 				bashls = {},
-				basedpyright = {
+				pyright = {
 					settings = {
 						pyright = {
 							-- Using Ruff's import organizer
@@ -145,6 +145,7 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				markdown = { "prettier" },
+				-- toml = { "taplo" },
 				gdscript = { "gdformat" },
 				sh = { "shfmt" },
 				yaml = { "yamlfix" },

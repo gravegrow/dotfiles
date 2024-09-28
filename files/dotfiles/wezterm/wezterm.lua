@@ -15,7 +15,7 @@ config.window_padding = {
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 
-config.window_background_opacity = 0.98
+-- config.window_background_opacity = 0.98
 config.color_scheme = 'not-rose-pine'
 config.underline_thickness = '1px'
 config.underline_position = '-2px'
