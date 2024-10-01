@@ -1,0 +1,11 @@
+set default-bg "#161617"
+set default-fg "#9A8F8A"
+
+set statusbar-bg "#1F1F22"
+set statusbar-fg "#9A8F8A"
+
+set recolor "true"
+set recolor-darkcolor "#9A8F8A"
+set recolor-lightcolor "#161617"
+
+set scroll-step 200

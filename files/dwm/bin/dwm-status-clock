@@ -16,7 +16,7 @@ case $BUTTON in
 esac
 
 barcolor=#161617
-widgetcolor=#86A1BB
+widgetcolor=#627691
 
 if [[ $1 ]]; then
 	printf "^c$widgetcolor^^b$barcolor^ "

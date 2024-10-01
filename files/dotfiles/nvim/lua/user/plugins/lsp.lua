@@ -11,7 +11,7 @@ return {
 	{ "Bilal2453/luvit-meta", lazy = true },
 	{
 		"neovim/nvim-lspconfig",
-		event = "BufEnter",
+		-- event = "BufEnter",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
@@ -74,6 +74,7 @@ return {
 
 			local servers = {
 				ruff_lsp = {},
+				clangd = {},
 				taplo = {},
 				yamlls = {},
 				jsonls = {},
@@ -84,12 +85,6 @@ return {
 							-- Using Ruff's import organizer
 							disableOrganizeImports = true,
 						},
-						-- python = {
-						-- 	analysis = {
-						-- 		-- Ignore all files for analysis to exclusively use Ruff for linting
-						-- 		ignore = { "*" },
-						-- 	},
-						-- },
 					},
 				},
 				lua_ls = {
@@ -145,10 +140,10 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				markdown = { "prettier" },
-				-- toml = { "taplo" },
 				gdscript = { "gdformat" },
 				sh = { "shfmt" },
 				yaml = { "yamlfix" },
+				fish = { "fish_indent" },
 			},
 			formatters = {
 				yamlfix = {
@@ -163,7 +158,6 @@ return {
 			},
 		},
 	},
-
 	{
 		"ray-x/lsp_signature.nvim",
 		event = "VeryLazy",

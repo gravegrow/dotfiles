@@ -7,7 +7,7 @@ case $BUTTON in
 esac
 
 bg=#161617
-fg=#8A9A7B
+fg=#807e96
 muted_fg=#ED8796
 
 volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)

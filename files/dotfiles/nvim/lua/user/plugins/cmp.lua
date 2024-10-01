@@ -99,10 +99,11 @@ return {
 							local padding = string.rep(" ", minwidth - string.len(label))
 							vim_item.abbr = label .. padding
 						end
+						vim_item.menu = nil
 						-- if entry.completion_item.detail then
 						-- 	vim_item.menu = entry.completion_item.detail
 						-- end
-						-- vim_item.dup = { buffer = 1, path = 1, nvim_lsp = 0 }
+						vim_item.dup = { buffer = 1, path = 1, nvim_lsp = 0 }
 						return vim_item
 					end,
 				}),

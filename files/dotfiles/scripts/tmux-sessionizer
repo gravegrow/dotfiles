@@ -3,9 +3,15 @@
 if [[ $# -eq 1 ]]; then
 	folders=$1
 else
-	devel="/media/storage/development"
-	wc="$devel/warcraft"
-	folders="$HOME/.config/dotfiles/files/dotfiles $devel/maya/ $devel/godot $devel/neovim/ $wc"
+	DEVEL="/media/storage/development"
+	folders="
+		$HOME/.config/dotfiles/files/dotfiles	
+		$DEVEL/maya/	
+		$DEVEL/godot	
+		$DEVEL/neovim/
+		$DEVEL/warcraft
+		$DEVEL/cpp
+	"
 fi
 
 selected=$(find $folders -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf)

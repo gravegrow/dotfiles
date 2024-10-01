@@ -36,10 +36,12 @@ return {
 			return vim.o.columns > 65
 		end
 
+		local utils = require "lualine.utils.utils"
+
 		local lsp = {
 			function()
 				local msg = ""
-				local clients = vim.lsp.get_clients()
+				local clients = vim.lsp.get_clients({ bufnr = 0 })
 				if next(clients) == nil then
 					return msg
 				end
@@ -51,16 +53,26 @@ return {
 				return msg
 			end,
 			padding = { left = 1, right = -1 },
-			color = { fg = colors.text, gui = "bold" },
+			color = {
+				fg = colors.text,
+				gui = "bold",
+			},
 		}
 
 		local loc_icon = function()
 			return "󰈚"
 		end
+
 		local location = {
 			function()
-				return "%c:%l:%L"
+				return "%l:%L"
 			end,
+			color = { fg = colors.subtle, gui = "bold" },
+		}
+
+		local diagnostics = {
+			"diagnostics",
+			symbols = { error = " ", warn = " ", info = " ", hint = "󰰁 " },
 		}
 
 		local simple_extension = function(filetype, display_name)
@@ -86,11 +98,11 @@ return {
 				lualine_b = {
 					lsp,
 					filetype_icon,
-					{ "diagnostics", symbols = { error = " ", warn = " ", info = " ", hint = "󰰁 " } },
+					diagnostics,
 				},
 				lualine_c = { { "filename" } },
 				lualine_x = { { "branch", icon = "", cond = width_cond } },
-				lualine_y = location,
+				lualine_y = { location },
 				lualine_z = { loc_icon },
 			},
 			extensions = {

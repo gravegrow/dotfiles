@@ -27,7 +27,7 @@ opt.showmode = false -- Don't show mode in command line
 opt.wrap = false -- Display long lines as just one line
 
 opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
-opt.fillchars = "eob: " -- Don't show `~` outside of buffer
+opt.fillchars = { eob = " ", fold = " " }
 
 opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
 opt.list = true -- Define which helper symbols to show
@@ -36,7 +36,6 @@ opt.pumheight = 10 -- Make popup menu smaller
 opt.laststatus = 3 -- Make statusline global
 opt.cmdheight = 0 -- Cmdline height
 opt.shortmess:append "I" -- Disable intro screen
--- opt.conceallevel = 3 -- Conceal for neorg
 
 -- Editing
 opt.ignorecase = true -- Ignore case when searching (use `\C` to force not doing that)

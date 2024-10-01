@@ -17,7 +17,6 @@ return {
 			{ "<leader>r", group = "[R]ename" },
 			{ "<leader>f", group = "[F]ind" },
 			-- { "<leader>m", group = "[M]aya" },
-			{ "<leader>n", group = "[N]eorg" },
 			{ "gh", group = "[H]unk" },
 		})
 	end,

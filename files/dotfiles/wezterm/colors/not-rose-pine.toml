@@ -3,8 +3,8 @@ foreground = "#9A8F8A"
 background = "#161617"
 
 cursor_fg = "#161617"
-cursor_bg = "#B7927B"
-cursor_border = "#B7927B"
+cursor_bg = "#be8c8c"
+cursor_border = "#be8c8c"
 
 selection_bg = "#232325"
 
@@ -14,12 +14,13 @@ ansi = [
 	"#889b7d",
 	"#B7927B",
 	"#627691",
-	"#b6939c",
+	"#be8c8c",
 	"#8EA4A2",
 	"#90847f",
 ]
+
 brights = [
-	"#29292E",
+	"#393946",
 	"#9c6363",
 	"#8f9d85",
 	"#b99b88",
