@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$directory$git_branch$git_commit$python
+$directory$git_branch$git_commit$python$c
 $sudo$shell$jobs$character"""
 
 add_newline = true
@@ -18,13 +18,18 @@ style = "fg:#A1ABA0"
 truncation_length = 8
 home_symbol = "~"
 style = "fg:blue bold"
-format = "[ $path ]($style bold)"
+format = "[ $path ]($style)"
 
 
 [python]
-style = "fg:#C98F6C bold"
-symbol = "[ ]($style)"
-format = "$symbol[$version](bold)[ $virtualenv]($style)"
+style = "fg:3 bg:black"
+format = "[](fg:black)[  $version ]($style bold)[ $virtualenv ]($style)"
+
+[c]
+detect_extensions = ["cpp"]
+commands = [["clang++", "--version"]]
+style = "fg:blue bg:black bold"
+format = '[](fg:black)[  $name $version ]($style)'
 
 [git_branch]
 style = "fg:green bold"
@@ -35,7 +40,7 @@ only_attached = true
 [git_commit]
 style = "fg:green bold"
 format = '[󰜘 $hash$tag]($style) '
-tag_symbol = " - "
+tag_symbol = " -"
 tag_disabled = false
 only_detached = true
 

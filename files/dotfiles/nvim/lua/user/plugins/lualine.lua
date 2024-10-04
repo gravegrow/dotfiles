@@ -8,7 +8,7 @@ return {
 			normal = {
 				a = { fg = colors.base, bg = colors.rose, gui = "bold" },
 				b = { fg = colors.text, bg = colors.overlay },
-				c = { fg = colors.subtle, bg = colors.surface },
+				c = { fg = colors.muted, bg = colors.surface },
 			},
 
 			insert = { a = { fg = colors.base, bg = colors.iris, gui = "bold" } },

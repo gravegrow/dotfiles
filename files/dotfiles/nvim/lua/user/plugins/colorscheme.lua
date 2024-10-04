@@ -17,7 +17,7 @@ return {
 			base           = "#161617",
 			surface        = "#1f1f22",
 			overlay        = "#272830",
-			muted          = "#3c3c49",
+			muted          = "#4f4f59",
 			subtle         = "#626275",
 			text           = "#9A8F8A",
 			love           = "#945B5B",
@@ -38,7 +38,7 @@ return {
 			groups = { border = "surface" },
 
 			highlight_groups = {
-				-- Comment = { italic = true, fg = "muted" },
+				Comment = { italic = true, fg = "muted" },
 				CursorLineNr = { fg = "subtle" },
 				FloatTitle = { bg = "overlay", fg = "text" },
 				WinSeparator = { link = "FloatBorder" },
@@ -57,8 +57,10 @@ return {
 				RenderMarkdownCode = { bg = "surface" },
 				RenderMarkdownDash = { fg = "overlay" },
 				PmenuSel = { bg = "overlay", bold = true },
-				Search = { blend = 100, bg = "overlay", fg = "love" },
+				Search = { blend = 100, bg = "overlay", fg = "love", bold = true },
 				CurSearch = { fg = "love", bg = "overlay", bold = true, underline = true },
+				LspInlayHint = { blend = 0 },
+				DapUIType = { fg = "foam", bold = true },
 
 				["@keyword.operator"] = { bold = true },
 				["@type.builtin.python"] = { fg = "rose", italic = true },
@@ -66,6 +68,17 @@ return {
 				["@constructor.lua"] = { link = "@punctuation.bracket" },
 			},
 		})
+
+		_G.set_separators_solid = function()
+			vim.api.nvim_set_hl(0, "WinSeparator", { link = "FloatBorder" })
+		end
+
+		_G.set_separators_pretty = function()
+			vim.api.nvim_set_hl(0, "WinSeparator", {
+				fg = _G.ROSE_PINE_COLORS.surface,
+				bg = _G.ROSE_PINE_COLORS.base,
+			})
+		end
 
 		vim.cmd.colorscheme "rose-pine"
 	end,
