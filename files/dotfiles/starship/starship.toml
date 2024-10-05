@@ -1,7 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-$directory$git_branch$git_commit$python$c
+$directory$git_branch$git_commit$python$c$lua
 $sudo$shell$jobs$character"""
 
 add_newline = true
@@ -23,13 +23,18 @@ format = "[ $path ]($style)"
 
 [python]
 style = "fg:3 bg:black"
-format = "[](fg:black)[  $version ]($style bold)[ $virtualenv ]($style)"
+pyenv_version_name = true
+format = "[](fg:black)[  $version ]($style bold)[$virtualenv ]($style)"
 
 [c]
 detect_extensions = ["cpp"]
 commands = [["clang++", "--version"]]
 style = "fg:blue bg:black bold"
-format = '[](fg:black)[  $name $version ]($style)'
+format = '[](fg:black)[  $name ]($style)'
+
+[lua]
+style = "fg:blue bg:black bold"
+format = '[](fg:black)[ 󰢱 lua ]($style)'
 
 [git_branch]
 style = "fg:green bold"

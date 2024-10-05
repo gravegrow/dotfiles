@@ -4,17 +4,23 @@ return {
 		ft = { "markdown" },
 		keys = {
 			{
-				"<leader>mt",
+				"<leader>mr",
 				"<CMD>RenderMarkdown toggle<CR>",
-				desc = "Render [M]arkdown [T]oggle",
+				desc = "[M]arkdown [R]ender Toggle",
 			},
 		},
 		dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
 		opts = {
-			heading = { left_pad = 1, icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " } },
+			heading = { icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " } },
 			code = { left_pad = 1 },
 			bullet = { icons = { "•", "∘", "◆", "◇" } },
 		},
+
+		config = function(_, opts)
+			local render = require "render-markdown"
+			render.setup(opts)
+			render.disable()
+		end,
 	},
 
 	{

@@ -12,14 +12,8 @@ return {
 			dapui.setup({
 				controls = { enabled = false },
 				layouts = {
-					-- {
-					-- 	elements = { { id = "stacks", size = 1 } },
-					-- 	position = "bottom",
-					-- 	size = 3,
-					-- },
 					{
 						elements = {
-							{ id = "repl", size = 0.60 },
 							{ id = "console", size = 0.40 },
 						},
 						position = "bottom",
@@ -31,18 +25,17 @@ return {
 							{ id = "scopes", size = 0.60 },
 						},
 						position = "top",
-						size = 8,
+						size = 12,
 					},
 				},
 			})
 
-			vim.api.nvim_create_autocmd({ "FileType", "BufReadPost" }, {
-				pattern = { "dapui*" },
-				group = vim.api.nvim_create_augroup("dapui-opts", { clear = true }),
-				callback = function()
-					vim.opt.colorcolumn = { 0 }
-				end,
-			})
+			local keymap = vim.keymap.set
+			keymap("n", "<leader>df", dapui.float_element, { desc = "[F]loat UI element" })
+
+			keymap("n", "<leader>dfr", function()
+				dapui.float_element("repl", { position = nil })
+			end, { desc = "[F]loat UI REPL" })
 
 			dap.listeners.before.attach.dapui_config = function()
 				_G.set_separators_pretty()
@@ -73,7 +66,6 @@ return {
 			{
 				"jay-babu/mason-nvim-dap.nvim",
 				opts = {
-					handlers = {},
 					ensure_installed = { "cppdbg" },
 				},
 			},
@@ -83,9 +75,28 @@ return {
 			local keymap = vim.keymap.set
 			local dap = require "dap"
 
-			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Error" })
-			vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "Error" })
-			vim.fn.sign_define("DapStopped", { text = "", texthl = "Warn" })
+			dap.adapters.cppdbg = {
+				id = "cppdbg",
+				type = "executable",
+				command = "OpenDebugAD7",
+			}
+
+			dap.configurations.cpp = {
+				{
+					name = "Launch file",
+					type = "cppdbg",
+					request = "launch",
+					program = function()
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopAtEntry = true,
+				},
+			}
+
+			vim.fn.sign_define("DapBreakpoint", { text = "󰃤", texthl = "Error" })
+			vim.fn.sign_define("DapBreakpointRejected", { text = "󰨰", texthl = "Error" })
+			vim.fn.sign_define("DapStopped", { text = "󰃤", texthl = "WarningMsg" })
 
 			keymap("n", "<leader>db", dap.toggle_breakpoint, { desc = "[B]reakpoint" })
 			keymap("n", "<leader>dc", dap.continue, { desc = "[C]ontinue" })

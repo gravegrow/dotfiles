@@ -27,7 +27,7 @@ opt.showmode = false -- Don't show mode in command line
 opt.wrap = false -- Display long lines as just one line
 
 opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
-opt.fillchars = { eob = " ", fold = " " }
+opt.fillchars = { eob = " ", fold = "━" }
 opt.fillchars:append "vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣"
 
 opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
@@ -49,10 +49,10 @@ opt.completeopt = "menuone,noinsert,noselect" -- Customize completions
 opt.virtualedit = "block" -- Allow going past the end of line in visual block mode
 opt.formatoptions = "qjl1" -- Don't autoformat comments
 
-opt.tabstop = 3 -- A TAB character looks like 4 spaces
+opt.tabstop = 2 -- A TAB character looks like N spaces
 opt.expandtab = false -- If True pressing the TAB key will insert spaces instead of a TAB character
-opt.softtabstop = 3 -- Number of spaces inserted instead of a TAB character
-opt.shiftwidth = 3 -- Number of spaces inserted when indenting
+opt.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
+opt.shiftwidth = 2 -- Number of spaces inserted when indenting
 
 opt.clipboard = "unnamedplus" --  Sync clipboard between OS and Neovim. See `:help 'clipboard'`
 opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor

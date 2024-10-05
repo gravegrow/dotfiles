@@ -31,6 +31,8 @@ keymap("v", ">", ">gv", { desc = "Move selection left, keep visual selection" })
 
 keymap("n", "gf", ":edit <cfile><cr>", { desc = "[G]o to [F]ile" })
 
+keymap("n", "<leader>;", "mmA;<ESC>`m", { desc = "Append semicolon" })
+
 for _, key in ipairs({ "d", "u", "o", "i" }) do
 	keymap(
 		"n",
