@@ -22,6 +22,7 @@ return {
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"onsails/lspkind.nvim",
+		"rcarriga/cmp-dap",
 	},
 	config = function()
 		local cmp = require "cmp"
