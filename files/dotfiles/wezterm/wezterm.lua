@@ -50,6 +50,8 @@ config.keys = {
 	},
 	{ key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
 	{ key = 'p', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
+	{ key = 'Tab', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment },
+	{ key = 'Tab', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
 }
 
 wezterm.on('user-var-changed', function(window, pane, name, value)

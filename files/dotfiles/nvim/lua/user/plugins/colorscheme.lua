@@ -56,11 +56,36 @@ return {
 				QuickFixLine = { fg = "gold" },
 				RenderMarkdownCode = { bg = "surface" },
 				RenderMarkdownDash = { fg = "overlay" },
-				PmenuSel = { bg = "overlay", bold = true },
+				PmenuSel = { bg = "overlay", bold = true, fg = "none" },
 				Search = { blend = 100, bg = "overlay", fg = "love", bold = true },
 				CurSearch = { fg = "love", bg = "overlay", bold = true, underline = true },
 				LspInlayHint = { blend = 0 },
 				DapUIType = { fg = "foam", bold = true },
+				LspSignatureActiveParameter = { bold = true, bg = "overlay" },
+				CmpItemMenu = { fg = "muted", italic = true },
+				CmpItemAbbrMatch = { fg = "rose" },
+				CmpItemAbbrDeprecated = { fg = "muted" },
+				CmpItemAbbrDeprecatedDefault = { link = "CmpItemAbbrDeprecated" },
+
+				CmpItemKindText = { fg = "text" },
+				CmpItemKindMethod = { link = "@method" },
+				CmpItemKindFunction = { link = "@function", reverse = true },
+				CmpItemKindConstructor = { link = "@constructor" },
+
+				CmpItemKindField = { link = "@field" },
+				CmpItemKindVariable = { link = "@variable" },
+				CmpItemKindProperty = { link = "@property" },
+
+				CmpItemKindClass = { link = "@class" },
+				CmpItemKindInterface = { link = "@interface" },
+				CmpItemKindStruct = { link = "@class" },
+				CmpItemKindModule = { link = "@module" },
+
+				CmpItemKindEnum = { link = "@class" },
+				CmpItemKindEnumMember = { link = "@constant" },
+
+				CmpItemKindKeyword = { link = "@keyword" },
+				CmpItemKindConstant = { link = "@constant" },
 
 				["@keyword.operator"] = { bold = true },
 				["@type.builtin.python"] = { fg = "rose", italic = true },

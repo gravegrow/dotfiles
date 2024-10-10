@@ -30,7 +30,7 @@ opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
 opt.fillchars = { eob = " ", fold = "━" }
 opt.fillchars:append "vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣"
 
-opt.listchars = { tab = "  ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
+opt.listchars = { tab = "┆ ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
 opt.list = true -- Define which helper symbols to show
 
 opt.pumheight = 10 -- Make popup menu smaller

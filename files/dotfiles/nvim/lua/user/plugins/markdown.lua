@@ -19,7 +19,7 @@ return {
 		config = function(_, opts)
 			local render = require "render-markdown"
 			render.setup(opts)
-			render.disable()
+			-- render.disable()
 		end,
 	},
 
@@ -36,6 +36,8 @@ return {
 				local opts = { buffer = bufnr }
 
 				map({ "n", "i" }, "<M-CR>", "<Cmd>MDListItemBelow<CR>", opts)
+				map({ "n", "i" }, "<M-S-o>", "<Cmd>MDListItemAbove<CR>", opts)
+				map({ "n", "i" }, "<M-o>", "<Cmd>MDListItemBelow<CR>", opts)
 				map({ "n", "x" }, "<leader>c", "<Cmd>MDTaskToggle<CR>", opts)
 
 				vim.api.nvim_create_autocmd("BufWritePre", {

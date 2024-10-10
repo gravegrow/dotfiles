@@ -16,14 +16,13 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
-			"hrsh7th/cmp-nvim-lsp",
 		},
 		config = function()
 			vim.diagnostic.config({
 				severity_sort = true,
 				update_in_insert = false,
 				float = { border = "single" },
-				virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
+				virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
 			})
 
 			vim.fn.sign_define("DiagnosticSignError", { text = "" })
@@ -79,14 +78,7 @@ return {
 				yamlls = {},
 				jsonls = {},
 				bashls = {},
-				pyright = {
-					settings = {
-						pyright = {
-							-- Using Ruff's import organizer
-							disableOrganizeImports = true,
-						},
-					},
-				},
+				pyright = {},
 				lua_ls = {
 					settings = {
 						Lua = {

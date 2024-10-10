@@ -1,5 +1,39 @@
+local kind_icons = {
+	Text = "󰉿",
+	Method = "󰊕",
+	Function = "󰊕",
+	Constructor = "󰒓",
+
+	Field = "󰜢",
+	Variable = "󰆦",
+	Property = "󰖷",
+
+	Class = "󱡠",
+	Interface = "󱡠",
+	Struct = "󱡠",
+	Module = "󰅩",
+
+	Unit = "󰪚",
+	Value = "󰦨",
+	Enum = "󰦨",
+	EnumMember = "󰦨",
+
+	Keyword = "󰻾",
+	Constant = "󰏿",
+
+	Snippet = "󱄽",
+	Color = "󰏘",
+	File = "󰈔",
+	Reference = "󰬲",
+	Folder = "󰉋",
+	Event = "󱐋",
+	Operator = "󰪚",
+	TypeParameter = "󰬛",
+}
+
 return {
-	"hrsh7th/nvim-cmp",
+	"iguanacucumber/magazine.nvim",
+	name = "nvim-cmp",
 	event = "VeryLazy",
 	dependencies = {
 		{
@@ -7,31 +41,28 @@ return {
 			build = (function()
 				return "make install_jsregexp"
 			end)(),
-			dependencies = {
-				{
-					"rafamadriz/friendly-snippets",
-					config = function()
-						require("luasnip.loaders.from_vscode").lazy_load()
-					end,
-				},
-			},
 		},
+		"rafamadriz/friendly-snippets",
 		"saadparwaiz1/cmp_luasnip",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"onsails/lspkind.nvim",
 		"rcarriga/cmp-dap",
 	},
 	config = function()
 		local cmp = require "cmp"
 		local luasnip = require "luasnip"
-		local lspkind = require "lspkind"
 
-		luasnip.config.setup({})
+		luasnip.config.setup()
+		require("luasnip.loaders.from_vscode").lazy_load()
 
 		cmp.setup({
+			snippet = {
+				expand = function(args)
+					luasnip.lsp_expand(args.body)
+				end,
+			},
 			mapping = cmp.mapping.preset.insert({
 				["<c-space>"] = cmp.mapping({
 					i = cmp.mapping.complete(),
@@ -78,40 +109,35 @@ return {
 			}),
 			preselect = cmp.PreselectMode.None,
 			window = {
+				completion = { col_offset = -2, side_padding = 0 },
 				documentation = cmp.config.window.bordered({
 					winhighlight = "Normal:TelescopePreviewNormal,FloatBorder:TelescopePreviewBorder,Error:None",
 				}),
 			},
-			snippet = {
-				expand = function(args)
-					luasnip.lsp_expand(args.body)
+			formatting = {
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, vim_item)
+					vim_item.menu = "(" .. (vim_item.kind or "") .. ")" or nil
+					vim_item.kind = " " .. (kind_icons[vim_item.kind] or "") .. ""
+
+					local label = vim_item.abbr or ""
+					local width = 25
+
+					if string.len(label) > width then
+						vim_item.abbr = vim_item.abbr:sub(1, width - 2) .. "··"
+					end
+
+					if string.len(label) < width then
+						local padding = string.rep(" ", width - string.len(label))
+						vim_item.abbr = label .. padding
+					end
+
+					return vim_item
 				end,
 			},
-			formatting = {
-				format = lspkind.cmp_format({
-					mode = "symbol_text",
-					maxwidth = 35,
-					ellipsis_char = "..",
-					show_labelDetails = true,
-					before = function(entry, vim_item)
-						local label = vim_item.abbr
-						local minwidth = 25
-						if string.len(label) < minwidth then
-							local padding = string.rep(" ", minwidth - string.len(label))
-							vim_item.abbr = label .. padding
-						end
-						vim_item.menu = nil
-						-- if entry.completion_item.detail then
-						-- 	vim_item.menu = entry.completion_item.detail
-						-- end
-						vim_item.dup = { buffer = 1, path = 1, nvim_lsp = 0 }
-						return vim_item
-					end,
-				}),
-			},
 			sources = cmp.config.sources({
-				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "nvim_lsp" },
 				{ name = "path" },
 				{ name = "buffer" },
 			}),
@@ -142,23 +168,30 @@ return {
 			},
 		})
 
-		cmp.setup.cmdline({ "/", "?" }, {
+		local opts = {
 			mapping = cmp.mapping.preset.cmdline({
-				["<C-y>"] = {
-					c = cmp.mapping.confirm({ select = true }),
-				},
+				["<C-y>"] = { c = cmp.mapping.confirm({ select = true }) },
 			}),
+			formatting = {
+				fields = { "kind", "abbr" },
+				format = function(entry, vim_item)
+					vim_item.kind = kind_icons[vim_item.kind] or ""
+					return vim_item
+				end,
+			},
+		}
+
+		cmp.setup.cmdline({ "/", "?" }, {
+			mapping = opts.mapping,
+			formatting = opts.formatting,
 			sources = {
 				{ name = "buffer" },
 			},
 		})
 
 		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline({
-				["<C-y>"] = {
-					c = cmp.mapping.confirm({ select = true }),
-				},
-			}),
+			mapping = opts.mapping,
+			formatting = opts.formatting,
 			sources = cmp.config.sources({
 				{ name = "path" },
 			}, {

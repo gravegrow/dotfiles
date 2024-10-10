@@ -17,7 +17,7 @@ return {
 							{ id = "console", size = 0.40 },
 						},
 						position = "bottom",
-						size = 8,
+						size = 12,
 					},
 					{
 						elements = {
@@ -33,18 +33,16 @@ return {
 			local keymap = vim.keymap.set
 			keymap("n", "<leader>df", dapui.float_element, { desc = "[F]loat UI element" })
 
-			keymap("n", "<leader>dfr", function()
-				dapui.float_element("repl", { position = nil })
-			end, { desc = "[F]loat UI REPL" })
-
 			dap.listeners.before.attach.dapui_config = function()
 				_G.set_separators_pretty()
 				dapui.open()
 			end
+
 			dap.listeners.before.launch.dapui_config = function()
 				_G.set_separators_pretty()
 				dapui.open()
 			end
+
 			dap.listeners.before.event_terminated.dapui_config = function()
 				_G.set_separators_solid()
 				dapui.close()
@@ -85,19 +83,19 @@ return {
 				},
 			}
 
-			-- dap.configurations.cpp = {
-			-- 	{
-			-- 		name = "CODELLDB: Launch file",
-			-- 		type = "codelldb",
-			-- 		request = "launch",
-			-- 		program = function()
-			-- 			return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-			-- 		end,
-			-- 		cwd = "${workspaceFolder}",
-			-- 		expressions = "native",
-			-- 		stopOnEntry = false,
-			-- 	},
-			-- }
+			dap.configurations.cpp = {
+				-- {
+				-- 	name = "CODELLDB: Launch file",
+				-- 	type = "codelldb",
+				-- 	request = "launch",
+				-- 	program = function()
+				-- 		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+				-- 	end,
+				-- 	cwd = "${workspaceFolder}",
+				-- 	expressions = "native",
+				-- 	stopOnEntry = false,
+				-- },
+			}
 
 			vim.fn.sign_define("DapBreakpoint", { text = "󰃤", texthl = "Error" })
 			vim.fn.sign_define("DapBreakpointRejected", { text = "󰨰", texthl = "Error" })
@@ -105,6 +103,7 @@ return {
 
 			keymap("n", "<leader>db", dap.toggle_breakpoint, { desc = "[B]reakpoint" })
 			keymap("n", "<leader>dc", dap.continue, { desc = "[C]ontinue" })
+			keymap("n", "<leader>dr", dap.repl.toggle, { desc = "[R]EPL" })
 
 			keymap("n", "<A-j>", dap.step_over, { desc = "Dap Step Over" })
 			keymap("n", "<A-l>", dap.step_into, { desc = "Dap Step In" })
