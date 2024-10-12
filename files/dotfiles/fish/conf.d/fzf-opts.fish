@@ -2,7 +2,7 @@ set -l FZF_ICONS --prompt '" "' --pointer '▌' --scrollbar '┃'
 set -l FZF_BORDERS --border none --preview-window sharp --margin 1
 set -l FZF_HEIGHT --height '~99% '--min-height 15
 set -l FZF_LAYOUT --reverse --cycle --info=inline-right
-set -l FZF_COLORS --color 'gutter:-1,pointer:4,scrollbar:4,hl+:1,hl:1,info:3' \
+set -l FZF_COLORS --color 'gutter:-1,pointer:9,scrollbar:4,hl+:1,hl:1,info:3' \
     --color 'fg+:white,bg+:8,border:gray' \
     --color 'preview-bg:0,preview-border:0'
 set -l FZF_BINDS --bind 'tab:down,shift-tab:up,ctrl-y:accept'

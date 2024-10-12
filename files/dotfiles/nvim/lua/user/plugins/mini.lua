@@ -1,5 +1,6 @@
 return {
 	"echasnovski/mini.nvim",
+	event = "VeryLazy",
 	config = function()
 		require("mini.ai").setup()
 		require("mini.align").setup()
@@ -16,7 +17,6 @@ return {
 			highlighters = {
 				fix = { pattern = "%f[%w]()FIX()%f[%W]", group = "MiniHipatternsFixme" },
 				hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
-				warn = { pattern = "%f[%w]()WARN()%f[%W]", group = "MiniHipatternsHack" },
 				todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
 				note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
 			},

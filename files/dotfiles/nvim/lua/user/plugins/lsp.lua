@@ -1,23 +1,63 @@
-return {
-	{
-		"folke/lazydev.nvim",
-		ft = "lua",
-		opts = {
-			library = {
-				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+local servers = {
+	pyright = {},
+	ruff_lsp = {},
+	clangd = {},
+	taplo = {},
+	yamlls = {},
+	jsonls = {},
+	bashls = {},
+	lua_ls = {
+		settings = {
+			Lua = {
+				completion = {
+					callSnippet = "Replace",
+				},
+				diagnostics = { disable = { "missing-fields" } },
+				format = { enable = false },
 			},
 		},
 	},
-	{ "Bilal2453/luvit-meta", lazy = true },
+}
+
+local formatters = {
+	"stylua",
+	"gdtoolkit",
+	"shfmt",
+	"prettier",
+}
+
+return {
 	{
 		"neovim/nvim-lspconfig",
-		-- event = "BufEnter",
+		event = "BufReadPre",
 		dependencies = {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 		config = function()
+			vim.api.nvim_create_autocmd("LspAttach", {
+				group = vim.api.nvim_create_augroup("on-lsp-keybinds", { clear = true }),
+				callback = function(event)
+					local keymap = function(keys, func, desc)
+						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+					end
+
+					local function toggle_inlay_hints()
+						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+					end
+
+					keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+					keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+					keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+					keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+					keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+					keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+					keymap("<leader>ci", toggle_inlay_hints, "[C]ode [I]nlay Toggle")
+					keymap("K", vim.lsp.buf.hover, "Hover Documentation")
+				end,
+			})
+
 			vim.diagnostic.config({
 				severity_sort = true,
 				update_in_insert = false,
@@ -31,30 +71,6 @@ return {
 			vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
 
 			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("on-lsp-keybinds", { clear = true }),
-				callback = function(event)
-					local keymap = function(keys, func, desc)
-						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-					end
-
-					local function toggle_inlay_hints()
-						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-					end
-
-					keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-					keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-					keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-					keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-					keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-					keymap("<leader>ci", toggle_inlay_hints, "[C]ode [I]nlay Toggle")
-					keymap("K", vim.lsp.buf.hover, "Hover Documentation")
-					keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-
-					vim.keymap.set({ "n", "i" }, "<A-k>", vim.lsp.buf.signature_help, { desc = "Signature Help" })
-				end,
-			})
-
-			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("on-lsp-semantic", { clear = true }),
 				callback = function(args)
 					local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -64,6 +80,11 @@ return {
 				end,
 			})
 
+			local handlers = {
+				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+			}
+
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
 			local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 
@@ -71,38 +92,13 @@ return {
 				capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
 			end
 
-			local servers = {
-				ruff_lsp = {},
-				clangd = {},
-				taplo = {},
-				yamlls = {},
-				jsonls = {},
-				bashls = {},
-				pyright = {},
-				lua_ls = {
-					settings = {
-						Lua = {
-							completion = {
-								callSnippet = "Replace",
-							},
-							diagnostics = { disable = { "missing-fields" } },
-							format = { enable = false },
-						},
-					},
-				},
-			}
-
 			local lspconfig = require "lspconfig"
+
 			lspconfig.gdscript.setup({ capabilities = capabilities })
 			lspconfig.gdshader_lsp.setup({ capabilities = capabilities })
 
 			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, {
-				"stylua",
-				"gdtoolkit",
-				"shfmt",
-				"prettier",
-			})
+			vim.list_extend(ensure_installed, formatters)
 
 			require("mason").setup()
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
@@ -113,55 +109,13 @@ return {
 						lspconfig[server_name].setup({
 							cmd = server.cmd,
 							settings = server.settings,
+							handlers = handlers,
 							filetypes = server.filetypes,
 							capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
 						})
 					end,
 				},
 			})
-		end,
-	},
-	{
-		"stevearc/conform.nvim",
-		opts = {
-			notify_on_error = true,
-			format_after_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
-			formatters_by_ft = {
-				lua = { "stylua" },
-				markdown = { "prettier" },
-				gdscript = { "gdformat" },
-				sh = { "shfmt" },
-				yaml = { "yamlfix" },
-				fish = { "fish_indent" },
-			},
-			formatters = {
-				yamlfix = {
-					env = {
-						YAMLFIX_SEQUENCE_STYLE = "block_style",
-						YAMLFIX_WHITELINES = "1",
-					},
-				},
-				prettier = {
-					prepend_args = { "--prose-wrap", "always" },
-				},
-			},
-		},
-	},
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "VeryLazy",
-		opts = {
-			doc_lines = 0,
-			handler_opts = {
-				border = "single",
-			},
-			hint_enable = false,
-		},
-		config = function(_, opts)
-			require("lsp_signature").setup(opts)
 		end,
 	},
 }

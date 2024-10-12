@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = "VeryLazy",
 	config = function()
 		local lualine = require "lualine"
 		local colors = ROSE_PINE_COLORS

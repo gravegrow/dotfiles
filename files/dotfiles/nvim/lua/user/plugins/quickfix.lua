@@ -1,6 +1,7 @@
 return {
 	{
 		"kevinhwang91/nvim-bqf",
+		event = "FileType qf",
 		opts = {
 			preview = {
 				winblend = 0,

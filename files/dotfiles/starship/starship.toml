@@ -50,9 +50,9 @@ tag_disabled = false
 only_detached = true
 
 [character]
-success_symbol = '[➤](#A1ABA0)'
+# success_symbol = '[➤](#A1ABA0)'
 error_symbol = '[](#c76b77)'
-vimcmd_symbol = '[](#F9E2AF)'
+# vimcmd_symbol = '[](#F9E2AF)'
 
 [jobs]
 symbol = '[](#A6E3A1)'
