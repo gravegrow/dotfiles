@@ -89,7 +89,8 @@ vim.api.nvim_create_autocmd("RecordingEnter", {
 	group = vim.api.nvim_create_augroup("on-recording-enter", { clear = true }),
 	callback = function()
 		cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
-		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#231D1E" })
+		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#331D1E" })
+		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.love })
 	end,
 })
 
@@ -97,7 +98,9 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
 	desc = "Restores cursorline color when starting recording a macro",
 	group = vim.api.nvim_create_augroup("on-recording-leave", { clear = true }),
 	callback = function()
+		---@diagnostic disable-next-line
 		vim.api.nvim_set_hl(0, "CursorLine", cursorline)
+		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.subtle })
 	end,
 })
 

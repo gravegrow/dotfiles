@@ -70,25 +70,15 @@ return {
 			vim.fn.sign_define("DiagnosticSignInfo", { text = "" })
 			vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
 
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("on-lsp-semantic", { clear = true }),
-				callback = function(args)
-					local client = vim.lsp.get_client_by_id(args.data.client_id)
-					if client and client.name == "pyright" then
-						client.server_capabilities.semanticTokensProvider = nil
-					end
-				end,
-			})
-
 			local handlers = {
 				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
 				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
 			}
 
 			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local ok, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+			local status, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 
-			if ok then
+			if status then
 				capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
 			end
 

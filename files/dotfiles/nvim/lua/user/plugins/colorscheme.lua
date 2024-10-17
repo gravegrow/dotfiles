@@ -15,7 +15,7 @@ return {
 		-- stylua: ignore
 		_G.ROSE_PINE_COLORS = {
 			base           = "#161617",
-			surface        = "#1f1f22",
+  		surface        = "#1f1f22",
 			overlay        = "#272830",
 			muted          = "#4f4f59",
 			subtle         = "#626275",
@@ -34,7 +34,7 @@ return {
 		require("rose-pine").setup({
 			variant = "main",
 			styles = { italic = false },
-			palette = { main = ROSE_PINE_COLORS },
+			palette = { main = _G.ROSE_PINE_COLORS },
 			groups = { border = "surface" },
 
 			highlight_groups = {
@@ -42,6 +42,7 @@ return {
 				CursorLineNr = { fg = "subtle" },
 				FloatTitle = { bg = "overlay", fg = "text" },
 				WinSeparator = { link = "FloatBorder" },
+				TelescopeMatching = { fg = "love" },
 				TelescopeNormal = { bg = "surface" },
 				TelescopeTitle = { link = "FloatTitle" },
 				TelescopeSelection = { bg = "overlay", bold = true },
@@ -62,30 +63,13 @@ return {
 				LspInlayHint = { blend = 0 },
 				DapUIType = { fg = "foam", bold = true },
 				LspSignatureActiveParameter = { bold = true, bg = "overlay" },
+
 				CmpItemMenu = { fg = "muted", italic = true },
-				CmpItemAbbrMatch = { fg = "rose" },
+				CmpItemAbbrMatch = { fg = "love" },
 				CmpItemAbbrDeprecated = { fg = "muted" },
 				CmpItemAbbrDeprecatedDefault = { link = "CmpItemAbbrDeprecated" },
 
-				CmpItemKindText = { fg = "text" },
-				CmpItemKindMethod = { link = "@method" },
-				CmpItemKindFunction = { link = "@function", reverse = true },
-				CmpItemKindConstructor = { link = "@constructor" },
-
-				CmpItemKindField = { link = "@field" },
-				CmpItemKindVariable = { link = "@variable" },
-				CmpItemKindProperty = { link = "@property" },
-
-				CmpItemKindClass = { link = "@class" },
-				CmpItemKindInterface = { link = "@interface" },
-				CmpItemKindStruct = { link = "@class" },
-				CmpItemKindModule = { link = "@module" },
-
-				CmpItemKindEnum = { link = "@class" },
-				CmpItemKindEnumMember = { link = "@constant" },
-
-				CmpItemKindKeyword = { link = "@keyword" },
-				CmpItemKindConstant = { link = "@constant" },
+				NoiceVirtualText = { link = "Comment" },
 
 				["@keyword.operator"] = { bold = true },
 				["@type.builtin.python"] = { fg = "rose", italic = true },

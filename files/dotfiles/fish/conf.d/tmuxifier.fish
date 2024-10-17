@@ -1,8 +1,12 @@
-function __tmux-crafting
+function farm-window
     printf "\033]1337;SetUserVar=%s=%s\007" ZEN_MODE ( echo -n on | base64 )
     set -l pid $(xdotool getactivewindow getwindowgeometry --shell | grep -E "WINDOW" | grep -Eo "[0-9]+")
     xdotool windowmove $pid 1460 20
     xdotool windowsize $pid 520 280
+end
+
+function __tmux-crafting
+    farm-window
 
     set -l SESH "system-$argv"
 

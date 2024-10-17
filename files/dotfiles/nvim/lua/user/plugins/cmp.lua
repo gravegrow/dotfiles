@@ -65,9 +65,7 @@ return {
 			mapping = cmp.mapping.preset.insert({
 				["<c-space>"] = cmp.mapping({
 					i = cmp.mapping.complete(),
-					c = function(
-						_ --[[fallback]]
-					)
+					c = function(_)
 						if cmp.visible() then
 							if not cmp.confirm({ select = true }) then
 								return
@@ -114,10 +112,11 @@ return {
 				}),
 			},
 			formatting = {
-				fields = { "kind", "abbr", "menu" },
+				fields = { "kind", "abbr" },
 				format = function(entry, vim_item)
-					vim_item.menu = "(" .. (vim_item.kind or "") .. ")" or nil
+					-- vim_item.menu = "(" .. (vim_item.kind or "") .. ")" or nil
 					vim_item.kind = " " .. (kind_icons[vim_item.kind] or "") .. ""
+					vim_item.menu = nil
 
 					local label = vim_item.abbr or ""
 					local width = 25
@@ -135,10 +134,16 @@ return {
 				end,
 			},
 			sources = cmp.config.sources({
-				{ name = "luasnip" },
+				{
+					name = "lazydev",
+					group_index = 0,
+				},
 				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
 				{ name = "path" },
-				{ name = "buffer" },
+				{
+					{ name = "buffer" },
+				},
 			}),
 			sorting = {
 				comparators = {
@@ -176,14 +181,29 @@ return {
 				fields = { "kind", "abbr" },
 				format = function(entry, vim_item)
 					vim_item.kind = kind_icons[vim_item.kind] or ""
+
+					local label = vim_item.abbr or ""
+					local width = 20
+
+					if string.len(label) < width then
+						local padding = string.rep(" ", width - string.len(label))
+						vim_item.abbr = label .. padding
+					end
 					return vim_item
 				end,
+			},
+			window = {
+				completion = cmp.config.window.bordered({
+					border = "single",
+					winhighlight = "Normal:Normal,FloatBorder:@attribute,Error:None",
+				}),
 			},
 		}
 
 		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = opts.mapping,
 			formatting = opts.formatting,
+			window = opts.window,
 			sources = {
 				{ name = "buffer" },
 			},
@@ -192,6 +212,7 @@ return {
 		cmp.setup.cmdline(":", {
 			mapping = opts.mapping,
 			formatting = opts.formatting,
+			window = opts.window,
 			sources = cmp.config.sources({
 				{ name = "path" },
 			}, {

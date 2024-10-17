@@ -105,9 +105,9 @@ return {
 			keymap("n", "<leader>dc", dap.continue, { desc = "[C]ontinue" })
 			keymap("n", "<leader>dr", dap.repl.toggle, { desc = "[R]EPL" })
 
-			keymap("n", "<A-j>", dap.step_over, { desc = "Dap Step Over" })
-			keymap("n", "<A-l>", dap.step_into, { desc = "Dap Step In" })
-			keymap("n", "<A-h>", dap.step_out, { desc = "Dap Step Out" })
+			keymap("n", "<M-j>", dap.step_over, { desc = "Dap Step Over" })
+			keymap("n", "<M-l>", dap.step_into, { desc = "Dap Step In" })
+			keymap("n", "<M-h>", dap.step_out, { desc = "Dap Step Out" })
 		end,
 	},
 }
