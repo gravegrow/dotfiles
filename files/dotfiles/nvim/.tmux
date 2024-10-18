@@ -1,1 +1,1 @@
-send-keys nvim ENTER
+send-keys "nvim" C-m

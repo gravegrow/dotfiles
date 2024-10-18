@@ -34,7 +34,7 @@ local kind_icons = {
 return {
 	"iguanacucumber/magazine.nvim",
 	name = "nvim-cmp",
-	event = "VeryLazy",
+	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 		{
 			"L3MON4D3/LuaSnip",
@@ -200,24 +200,10 @@ return {
 			},
 		}
 
-		cmp.setup.cmdline({ "/", "?" }, {
-			mapping = opts.mapping,
-			formatting = opts.formatting,
-			window = opts.window,
-			sources = {
-				{ name = "buffer" },
-			},
-		})
+		local buf_opts = { sources = { { name = "buffer" } } }
+		local cmd_opts = { sources = cmp.config.sources({ { name = "path" }, { name = "cmdline" } }) }
 
-		cmp.setup.cmdline(":", {
-			mapping = opts.mapping,
-			formatting = opts.formatting,
-			window = opts.window,
-			sources = cmp.config.sources({
-				{ name = "path" },
-			}, {
-				{ name = "cmdline" },
-			}),
-		})
+		cmp.setup.cmdline({ "/", "?" }, vim.tbl_extend("force", opts, buf_opts))
+		cmp.setup.cmdline(":", vim.tbl_extend("force", opts, cmd_opts))
 	end,
 }

@@ -1,8 +1,12 @@
 return {
 	"mbbill/undotree",
-	event = "VeryLazy",
+	lazy = true,
+	keys = { {
+		"<leader>u",
+		"<cmd>lua vim.cmd.UndotreeToggle()<cr>",
+		desc = "Open [U]ndotree",
+	} },
 	config = function()
-		vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Open [U]ndotree" })
 		vim.g.undotree_DiffAutoOpen = 0
 	end,
 }

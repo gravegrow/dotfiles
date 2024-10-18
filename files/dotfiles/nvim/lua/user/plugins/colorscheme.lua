@@ -26,9 +26,9 @@ return {
 			pine           = "#627691",
 			foam           = "#8EA4A2",
 			iris           = "#807e96",
-			highlight_low  = "#272830",
+			-- highlight_low  = "#272830",
 			highlight_med  = "#272830",
-			highlight_high = "#4a4950",
+			-- highlight_high = "#4a4950",
 		}
 
 		require("rose-pine").setup({

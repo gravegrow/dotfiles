@@ -1,6 +1,6 @@
 return {
 	"lewis6991/gitsigns.nvim",
-	event = "BufEnter",
+	event = "VeryLazy",
 	opts = {
 		on_attach = function()
 			local gitsigns = package.loaded.gitsigns

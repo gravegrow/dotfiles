@@ -28,6 +28,7 @@ format = "[](fg:black)[  $version ]($style bold)[$virtualenv ]($style)"
 
 [c]
 detect_extensions = ["cpp"]
+detect_files = ["CMakeLists.txt"]
 commands = [["clang++", "--version"]]
 style = "fg:blue bg:black bold"
 format = '[](fg:black)[  $name ]($style)'

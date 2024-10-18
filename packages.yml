@@ -46,6 +46,7 @@ dev_packages:
   - python-uv
   - ripgrep
   - ruby
+  - cmake
 
 software_packages:
   - android-tools
