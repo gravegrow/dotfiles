@@ -1,11 +1,3 @@
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "undotree", "qf", "help" },
-	group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
-	callback = function()
-		vim.cmd "set winhighlight=Normal:NormalFloat"
-	end,
-})
-
 return {
 	"rose-pine/neovim",
 	lazy = false,
@@ -88,6 +80,14 @@ return {
 				bg = _G.ROSE_PINE_COLORS.base,
 			})
 		end
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = { "undotree", "qf", "help" },
+			group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
+			callback = function()
+				vim.cmd "set winhighlight=Normal:NormalFloat"
+			end,
+		})
 
 		vim.cmd.colorscheme "rose-pine"
 	end,
