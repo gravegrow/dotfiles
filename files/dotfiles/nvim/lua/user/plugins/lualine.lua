@@ -37,8 +37,6 @@ return {
 			return vim.o.columns > 65
 		end
 
-		local utils = require "lualine.utils.utils"
-
 		local lsp = {
 			function()
 				local msg = ""

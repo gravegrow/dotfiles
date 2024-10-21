@@ -1,20 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $# -eq 1 ]]; then
-	folders=$1
-else
-	DEVEL="/media/storage/development"
-	folders="
-		$HOME/.config/dotfiles/files/dotfiles	
-		$DEVEL/maya/	
-		$DEVEL/godot	
-		$DEVEL/neovim/
-		$DEVEL/warcraft
-		$DEVEL/cpp
-	"
-fi
-
-selected=$(find $folders -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf)
+selected=$(find $@ -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf --preview "tree {1} --color=always" --height=100%)
 
 if [[ -z $selected ]]; then
 	exit 0

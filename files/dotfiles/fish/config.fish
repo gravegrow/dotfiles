@@ -1,9 +1,10 @@
-alias ls='exa --oneline --icons --group-directories-first --color=always'
+alias ls='echo "" && eza --icons=auto --group-directories-first --color=always'
 alias la='ls --all'
-alias tree='tree -C'
+#alias tree='tree -C'
+alias tree='eza --tree --icons=auto'
 alias py='python3'
 alias lg='lazygit'
-alias bat='bat --style plain'
+alias bat='bat --style plain --theme ansi'
 
 #alias nvim='env TERM=wezterm nvim'
 

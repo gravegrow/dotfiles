@@ -1,111 +1,121 @@
 local servers = {
-	pyright = {},
-	ruff_lsp = {},
-	clangd = {},
-	taplo = {},
-	yamlls = {},
-	jsonls = {},
-	bashls = {},
-	lua_ls = {
-		settings = {
-			Lua = {
-				completion = {
-					callSnippet = "Replace",
-				},
-				diagnostics = { disable = { "missing-fields" } },
-				format = { enable = false },
-			},
-		},
-	},
+  pyright = {},
+  ruff_lsp = {},
+  clangd = {},
+  taplo = {},
+  yamlls = {},
+  jsonls = {},
+  bashls = {},
+  neocmake = {},
+  lua_ls = {
+    settings = {
+      Lua = {
+        completion = {
+          callSnippet = "Replace",
+        },
+        diagnostics = { disable = { "missing-fields" } },
+        format = { enable = false },
+      },
+    },
+  },
 }
 
 local formatters = {
-	"stylua",
-	"gdtoolkit",
-	"shfmt",
-	"prettier",
+  "stylua",
+  "gdtoolkit",
+  "shfmt",
+  "prettier",
 }
 
 return {
-	{
-		"neovim/nvim-lspconfig",
-		event = "BufReadPre",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-			"WhoIsSethDaniel/mason-tool-installer.nvim",
-		},
-		config = function()
-			vim.api.nvim_create_autocmd("LspAttach", {
-				group = vim.api.nvim_create_augroup("on-lsp-keybinds", { clear = true }),
-				callback = function(event)
-					local keymap = function(keys, func, desc)
-						vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
-					end
+  {
+    "neovim/nvim-lspconfig",
+    event = "BufReadPre",
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+    },
+    config = function()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("on-lsp-keybinds", { clear = true }),
+        callback = function(event)
+          local keymap = function(keys, func, desc)
+            vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+          end
 
-					local function toggle_inlay_hints()
-						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-					end
+          local function toggle_inlay_hints()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end
 
-					keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-					keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-					keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-					keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-					keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-					keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-					keymap("<leader>ci", toggle_inlay_hints, "[C]ode [I]nlay Toggle")
-					keymap("K", vim.lsp.buf.hover, "Hover Documentation")
-				end,
-			})
+          keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+          keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+          keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+          keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+          keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+          keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+          keymap("<leader>ci", toggle_inlay_hints, "[C]ode [I]nlay Toggle")
+          keymap("K", vim.lsp.buf.hover, "Hover Documentation")
+        end,
+      })
 
-			vim.diagnostic.config({
-				severity_sort = true,
-				update_in_insert = false,
-				float = { border = "single" },
-				virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
-			})
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if client and client.name == "basedpyright" then
+            vim.highlight.priorities.semantic_tokens = 95
+          end
+        end,
+      })
 
-			vim.fn.sign_define("DiagnosticSignError", { text = "" })
-			vim.fn.sign_define("DiagnosticSignWarn", { text = "" })
-			vim.fn.sign_define("DiagnosticSignInfo", { text = "" })
-			vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
+      vim.diagnostic.config({
+        severity_sort = true,
+        update_in_insert = false,
+        float = { border = "single" },
+        virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
+      })
 
-			local handlers = {
-				["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
-				["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
-			}
+      vim.fn.sign_define("DiagnosticSignError", { text = "" })
+      vim.fn.sign_define("DiagnosticSignWarn", { text = "" })
+      vim.fn.sign_define("DiagnosticSignInfo", { text = "" })
+      vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
 
-			local capabilities = vim.lsp.protocol.make_client_capabilities()
-			local status, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+      local handlers = {
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+      }
 
-			if status then
-				capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
-			end
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local status, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 
-			local lspconfig = require "lspconfig"
+      if status then
+        capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
+      end
 
-			lspconfig.gdscript.setup({ capabilities = capabilities })
-			lspconfig.gdshader_lsp.setup({ capabilities = capabilities })
+      local lspconfig = require "lspconfig"
 
-			local ensure_installed = vim.tbl_keys(servers or {})
-			vim.list_extend(ensure_installed, formatters)
+      lspconfig.gdscript.setup({ capabilities = capabilities })
+      lspconfig.gdshader_lsp.setup({ capabilities = capabilities })
 
-			require("mason").setup()
-			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-			require("mason-lspconfig").setup({
-				handlers = {
-					function(server_name)
-						local server = servers[server_name] or {}
-						lspconfig[server_name].setup({
-							cmd = server.cmd,
-							settings = server.settings,
-							handlers = handlers,
-							filetypes = server.filetypes,
-							capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
-						})
-					end,
-				},
-			})
-		end,
-	},
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, formatters)
+
+      require("mason").setup()
+      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      require("mason-lspconfig").setup({
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            lspconfig[server_name].setup({
+              cmd = server.cmd,
+              settings = server.settings,
+              handlers = handlers,
+              filetypes = server.filetypes,
+              capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
+            })
+          end,
+        },
+      })
+    end,
+  },
 }

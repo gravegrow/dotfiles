@@ -47,8 +47,6 @@ return {
 				BqfPreviewFloat = { link = "TelescopePreviewNormal" },
 				BqfPreviewBorder = { link = "TelescopePreviewBorder" },
 				QuickFixLine = { fg = "gold" },
-				RenderMarkdownCode = { bg = "surface" },
-				RenderMarkdownDash = { fg = "overlay" },
 				PmenuSel = { bg = "overlay", bold = true, fg = "none" },
 				Search = { blend = 100, bg = "overlay", fg = "love", bold = true },
 				CurSearch = { fg = "love", bg = "overlay", bold = true, underline = true },
@@ -67,6 +65,17 @@ return {
 				["@type.builtin.python"] = { fg = "rose", italic = true },
 				["@markup.italic"] = { italic = true },
 				["@constructor.lua"] = { link = "@punctuation.bracket" },
+
+				RenderMarkdownH1Bg = { bg = "none" },
+				RenderMarkdownH2Bg = { bg = "none" },
+				RenderMarkdownH3Bg = { bg = "none" },
+				RenderMarkdownH4Bg = { bg = "none" },
+				RenderMarkdownH5Bg = { bg = "none" },
+				RenderMarkdownH6Bg = { bg = "none" },
+
+				RenderMarkdownDash = { fg = "overlay" },
+				RenderMarkdownCode = { link = "NormalFloat" },
+				-- RenderMarkdownCodeInline = { bg = "none", blend = 30 },
 			},
 		})
 

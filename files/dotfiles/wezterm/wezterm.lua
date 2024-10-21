@@ -21,35 +21,35 @@ config.underline_thickness = '1px'
 config.underline_position = '-2px'
 config.strikethrough_position = '0.5cell'
 
+local make_session_keymap = function(key, paths, header)
+	return {
+		key = key,
+		mods = 'CTRL|SHIFT',
+		action = wezterm.action.SpawnCommandInNewTab({
+			args = {
+				'tmux',
+				'new-session',
+				'-As',
+				'Sessions',
+				'~/.config/scripts/tmux-sessionizer ' .. paths,
+			},
+		}),
+	}
+end
+
 config.keys = {
-	{
-		key = 'i',
-		mods = 'CTRL|SHIFT',
-		action = wezterm.action.SpawnCommandInNewTab({
-			args = {
-				'tmux',
-				'new-session',
-				'-As',
-				'Sessions',
-				'~/.config/scripts/tmux-sessionizer',
-			},
-		}),
-	},
-	{
-		key = 'n',
-		mods = 'CTRL|SHIFT',
-		action = wezterm.action.SpawnCommandInNewTab({
-			args = {
-				'tmux',
-				'new-session',
-				'-As',
-				'Sessions',
-				'~/.config/scripts/tmux-sessionizer /media/storage/development/notes',
-			},
-		}),
-	},
+	make_session_keymap('i', '~/.config/dotfiles/files/dotfiles/'),
+	make_session_keymap('n', '/media/storage/development/notes'),
+	make_session_keymap('m', '/media/storage/development/maya'),
+	make_session_keymap(
+		'p',
+		''
+			.. '/media/storage/development/cpp '
+			.. '/media/storage/development/godot '
+			.. '/media/storage/development/warcraft '
+	),
+
 	{ key = 'Enter', mods = 'ALT', action = wezterm.action.DisableDefaultAssignment },
-	{ key = 'p', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
 	{ key = 'Tab', mods = 'CTRL', action = wezterm.action.DisableDefaultAssignment },
 	{ key = 'Tab', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
 }

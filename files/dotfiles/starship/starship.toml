@@ -6,12 +6,19 @@ $sudo$shell$jobs$character"""
 
 add_newline = true
 
+[fill]
+symbol = ' '
+
 [shell]
 disabled = false
 fish_indicator = ""
 bash_indicator = " bash "
 format = "[$indicator]($style)"
 style = "fg:#A1ABA0"
+
+[cmd_duration]
+style = "fg:yellow bg:black bold"
+format = "[](fg:black)[  $duration ]($style)"
 
 
 [directory]
@@ -23,7 +30,7 @@ format = "[ $path ]($style)"
 
 [python]
 style = "fg:3 bg:black"
-pyenv_version_name = true
+pyenv_version_name = false
 format = "[](fg:black)[  $version ]($style bold)[$virtualenv ]($style)"
 
 [c]
@@ -51,9 +58,12 @@ tag_disabled = false
 only_detached = true
 
 [character]
-# success_symbol = '[➤](#A1ABA0)'
+# success_symbol = '[»](green)'
+# vimcmd_symbol = '[«](green)'
+# vimcmd_visual_symbol = '[«](yellow)'
+# vimcmd_replace_symbol = '[«](purple)'
+# vimcmd_replace_one_symbol = '[«](purple)'
 error_symbol = '[](#c76b77)'
-# vimcmd_symbol = '[](#F9E2AF)'
 
 [jobs]
 symbol = '[](#A6E3A1)'

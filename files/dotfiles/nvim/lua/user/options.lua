@@ -67,58 +67,58 @@ opt.spell = false
 
 -- Autoformating
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
-	desc = "Changes formatting options",
-	group = vim.api.nvim_create_augroup("on-formatopts", { clear = true }),
-	callback = function()
-		vim.opt.formatoptions:remove({ "c", "r", "o" })
-	end,
+  desc = "Changes formatting options",
+  group = vim.api.nvim_create_augroup("on-formatopts", { clear = true }),
+  callback = function()
+    vim.opt.formatoptions:remove({ "c", "r", "o" })
+  end,
 })
 
 -- Highlight opt. yank
 vim.api.nvim_create_autocmd("TextYankPost", {
-	desc = "Highlight when yanking (copt.ying) text",
-	group = vim.api.nvim_create_augroup("on-highlight-yank", { clear = true }),
-	callback = function()
-		vim.highlight.on_yank({ higroup = "WarningMsg" })
-	end,
+  desc = "Highlight when yanking (copt.ying) text",
+  group = vim.api.nvim_create_augroup("on-highlight-yank", { clear = true }),
+  callback = function()
+    vim.highlight.on_yank({ higroup = "WarningMsg" })
+  end,
 })
 
 local cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
 vim.api.nvim_create_autocmd("RecordingEnter", {
-	desc = "Changes cursorline color when starting recording a macro",
-	group = vim.api.nvim_create_augroup("on-recording-enter", { clear = true }),
-	callback = function()
-		cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
-		vim.api.nvim_set_hl(0, "CursorLine", { bg = "#331D1E" })
-		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.love })
-	end,
+  desc = "Changes cursorline color when starting recording a macro",
+  group = vim.api.nvim_create_augroup("on-recording-enter", { clear = true }),
+  callback = function()
+    cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#331D1E" })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.love })
+  end,
 })
 
 vim.api.nvim_create_autocmd("RecordingLeave", {
-	desc = "Restores cursorline color when starting recording a macro",
-	group = vim.api.nvim_create_augroup("on-recording-leave", { clear = true }),
-	callback = function()
-		---@diagnostic disable-next-line
-		vim.api.nvim_set_hl(0, "CursorLine", cursorline)
-		vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.subtle })
-	end,
+  desc = "Restores cursorline color when starting recording a macro",
+  group = vim.api.nvim_create_augroup("on-recording-leave", { clear = true }),
+  callback = function()
+    ---@diagnostic disable-next-line
+    vim.api.nvim_set_hl(0, "CursorLine", cursorline)
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.subtle })
+  end,
 })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
-	pattern = "*.md",
-	group = vim.api.nvim_create_augroup("create-on-save", { clear = true }),
-	callback = function()
-		local normalized = vim.fs.normalize(vim.fn.expand "%")
-		local is_file = vim.fn.filereadable(normalized) ~= 0
+  pattern = "*.md",
+  group = vim.api.nvim_create_augroup("create-on-save", { clear = true }),
+  callback = function()
+    local normalized = vim.fs.normalize(vim.fn.expand "%")
+    local is_file = vim.fn.filereadable(normalized) ~= 0
 
-		if not is_file then
-			vim.fn.mkdir(vim.fn.expand "%:h", "p")
-		end
-	end,
+    if not is_file then
+      vim.fn.mkdir(vim.fn.expand "%:h", "p")
+    end
+  end,
 })
 
 vim.filetype.add({
-	filename = {
-		[".tmux"] = "tmux",
-	},
+  filename = {
+    [".tmux"] = "tmux",
+  },
 })
