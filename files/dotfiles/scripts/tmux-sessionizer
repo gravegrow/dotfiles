@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-selected=$(find $@ -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf --preview "tree {1} --color=always" --height=100%)
+selected=$(find $@ -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf)
 
 if [[ -z $selected ]]; then
 	exit 0

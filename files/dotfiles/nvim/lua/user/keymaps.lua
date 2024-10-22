@@ -34,24 +34,24 @@ keymap("n", "gf", ":edit <cfile><cr>", { desc = "[G]o to [F]ile" })
 keymap("n", "<leader>;", "mmA;<ESC>`m", { desc = "Append semicolon" })
 
 keymap("n", "<c-n>", function()
-	local status = pcall(vim.cmd.cnext)
-	if not status then
-		pcall(vim.cmd.cfirst)
-	end
+  local status = pcall(vim.cmd.cnext)
+  if not status then
+    pcall(vim.cmd.cfirst)
+  end
 end, { desc = "Next QF item" })
 
 keymap("n", "<c-p>", function()
-	local status = pcall(vim.cmd.cprev)
-	if not status then
-		pcall(vim.cmd.clast)
-	end
+  local status = pcall(vim.cmd.cprev)
+  if not status then
+    pcall(vim.cmd.clast)
+  end
 end, { desc = "Prev QF item" })
 
 for _, key in ipairs({ "d", "u", "o", "i" }) do
-	keymap(
-		"n",
-		string.format("<c-%s>", key),
-		string.format("<c-%s>zz", key),
-		{ desc = string.format("Center screen when moving with <C-%s>", key) }
-	)
+  keymap(
+    "n",
+    string.format("<c-%s>", key),
+    string.format("<c-%s>zz", key),
+    { desc = string.format("Center screen when moving with <C-%s>", key) }
+  )
 end
