@@ -12,7 +12,7 @@ static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 
-static const unsigned int gappx = 1; /* gaps between windows */
+static const unsigned int gappx = 0; /* gaps between windows */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 2;    /* horizontal padding of bar */
 
@@ -29,15 +29,15 @@ static const unsigned int ulinevoffset = 2; /* how far above the bottom of the b
 static const int ulineall = 1; /* 1 to show underline on all tags, 0 for just the active ones */
 
 static const char color_bg[]     = "#161617";
-static const char color_fg[]     = "#80756F";
+static const char color_fg[]     = "#9A8F8A";
 
 static const char color_red[]    = "#945B5B";
-static const char color_orange[] = "#B7927B";
-static const char color_yellow[] = "#C4B28A";
+static const char color_orange[] = "#b7927b";
+static const char color_pink[]   = "#be8c8c";
 static const char color_green[]  = "#8A9A7B";
-static const char color_blue[]   = "#86A1BB";
-static const char color_teal[]   = "#97B7B3";
-static const char color_purple[] = "#807E96";
+static const char color_blue[]   = "#627691";
+static const char color_teal[]   = "#8EA4A2";
+static const char color_purple[] = "#807e96";
 
 static const char color_black[]  = "#0d0d0d";
 static const char color_gray[]   = "#464646";
