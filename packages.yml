@@ -125,9 +125,9 @@ gaming_packages:
 
 lutris_dependencies:
   - lib32-gamemode
-  - lib32-vk3d
+  - lib32-vkd3d
   - python-protobuf
-  - vk3d
+  - vkd3d
   - vulkan-tools
 
 wine_dependencies:
