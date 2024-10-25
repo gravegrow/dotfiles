@@ -114,6 +114,7 @@ return {
         simple_extension("lazy", "Lazy"),
         simple_extension("mason", "Mason"),
         simple_extension("undotree", "Undotree"),
+        simple_extension("help", "Help"),
       },
     })
   end,
