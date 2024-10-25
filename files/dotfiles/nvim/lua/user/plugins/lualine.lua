@@ -51,7 +51,7 @@ return {
         end
         return msg
       end,
-      padding = { left = 1, right = -1 },
+      padding = { left = -1, right = 1 },
       color = {
         fg = colors.text,
         gui = "bold",
@@ -72,13 +72,15 @@ return {
     local diagnostics = {
       "diagnostics",
       symbols = { error = " ", warn = " ", info = " ", hint = "󰰁 " },
+      sections = { "error", "warn" },
+      padding = { left = -1, right = 1 },
     }
 
     local simple_extension = function(filetype, display_name)
       return {
         sections = {
-					-- stylua: ignore
-					lualine_a = { function() return display_name end, },
+          -- stylua: ignore
+          lualine_a = { function() return display_name end, },
           lualine_b = { filetype_icon },
         },
         filetypes = { filetype },
@@ -93,22 +95,25 @@ return {
       },
 
       sections = {
-        lualine_a = { mode_icon },
+        lualine_a = {},
         lualine_b = {
-          lsp,
           filetype_icon,
+          lsp,
           diagnostics,
         },
         lualine_c = { { "filename" } },
         lualine_x = { { "branch", icon = "", cond = width_cond } },
         lualine_y = { location },
-        lualine_z = { loc_icon },
+        lualine_z = {},
       },
       extensions = {
         "quickfix",
         simple_extension("harpoon", "Harpoon"),
         simple_extension("minifiles", "Minifiles"),
         simple_extension("TelescopePrompt", "Telescope"),
+        simple_extension("lazy", "Lazy"),
+        simple_extension("mason", "Mason"),
+        simple_extension("undotree", "Undotree"),
       },
     })
   end,
