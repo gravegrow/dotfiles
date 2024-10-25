@@ -89,9 +89,6 @@ software_packages:
   - qbittorrent
   - qt5ct
   - rofi
-  - snap-pac
-  - snapper
-  - snapper-gui-git
   - spicetify-cli
   - spotify
   - starship
