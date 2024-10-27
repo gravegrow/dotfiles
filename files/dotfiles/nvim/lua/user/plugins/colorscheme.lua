@@ -29,10 +29,10 @@ return {
     --   surface           = "#1f1f22",
     --   overlay           = "#272830",
     --   muted             = "#4f4f59",
-    --   subtle            = "#626275",
+    --   subtle            = "#35353b",
     --   text              = "#6e6e7f",
     --   love              = "#7b7b8a",
-    --   gold              = "#888895",
+    --   gold              = "#57575b",
     --   rose              = "#9595a0",
     --   pine              = "#a3a3ab",
     --   foam              = "#b0b0b6",
@@ -54,7 +54,7 @@ return {
 
       highlight_groups = {
         Comment = { italic = true, fg = "muted" },
-        CursorLineNr = { fg = "subtle" },
+        CursorLineNr = { fg = "iris" },
         FloatTitle = { bg = "overlay", fg = "text" },
         WinSeparator = { link = "FloatBorder" },
         TelescopeMatching = { fg = "love" },
@@ -77,7 +77,6 @@ return {
         DapUIType = { fg = "foam", bold = true },
         LspSignatureActiveParameter = { bold = true, bg = "overlay" },
 
-        CmpItemMenu = { fg = "muted", italic = true },
         CmpItemAbbrMatch = { fg = "love" },
         CmpItemAbbrDeprecated = { fg = "muted" },
         CmpItemAbbrDeprecatedDefault = { link = "CmpItemAbbrDeprecated" },
@@ -88,17 +87,23 @@ return {
         ["@type.builtin.python"] = { fg = "rose", italic = true },
         ["@markup.italic"] = { italic = true },
         ["@constructor.lua"] = { link = "@punctuation.bracket" },
+        ["@punctuation.bracket"] = { bold = true },
 
-        RenderMarkdownH1Bg = { bg = "none" },
-        RenderMarkdownH2Bg = { bg = "none" },
-        RenderMarkdownH3Bg = { bg = "none" },
-        RenderMarkdownH4Bg = { bg = "none" },
-        RenderMarkdownH5Bg = { bg = "none" },
-        RenderMarkdownH6Bg = { bg = "none" },
+        ColorColumn = { bg = "none", blend = 5 },
+
+        RenderMarkdownH1Bg = { bg = "none", blend = 5 },
+        RenderMarkdownH2Bg = { link = "RenderMarkdownH1Bg" },
+        RenderMarkdownH3Bg = { link = "RenderMarkdownH1Bg" },
+        RenderMarkdownH4Bg = { link = "RenderMarkdownH1Bg" },
+        RenderMarkdownH5Bg = { link = "RenderMarkdownH1Bg" },
+        RenderMarkdownH6Bg = { link = "RenderMarkdownH1Bg" },
 
         RenderMarkdownDash = { fg = "overlay" },
         RenderMarkdownCode = { link = "NormalFloat" },
         -- RenderMarkdownCodeInline = { bg = "none", blend = 30 },
+
+        -- Monochrome additions
+        String = { italic = true },
       },
     })
 

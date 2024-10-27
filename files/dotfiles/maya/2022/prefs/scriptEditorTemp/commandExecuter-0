@@ -1,2 +1,3 @@
-from maya import cmds
-cmds.scriptEditorInfo(historyFilename='~/tempLogHistory.txt', writeHistory=True)
+import mayarigging.main as mm
+
+mm.hello_maya()

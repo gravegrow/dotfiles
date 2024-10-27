@@ -45,7 +45,7 @@ return {
           return msg
         end
         for _, client in ipairs(clients) do
-          if client.name ~= "ruff_lsp" then
+          if client.name ~= "ruff" then
             return client.name:gsub("_", "-")
           end
         end

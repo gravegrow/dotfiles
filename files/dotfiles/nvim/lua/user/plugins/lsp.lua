@@ -1,6 +1,6 @@
 local servers = {
   pyright = {},
-  ruff_lsp = {},
+  ruff = {},
   clangd = {},
   taplo = {},
   yamlls = {},
@@ -59,14 +59,14 @@ return {
         end,
       })
 
-      vim.api.nvim_create_autocmd("LspAttach", {
-        callback = function(args)
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client and client.name == "basedpyright" then
-            vim.highlight.priorities.semantic_tokens = 95
-          end
-        end,
-      })
+      -- vim.api.nvim_create_autocmd("LspAttach", {
+      --   callback = function(args)
+      --     local client = vim.lsp.get_client_by_id(args.data.client_id)
+      --     if client and client.name == "basedpyright" then
+      --       vim.highlight.priorities.semantic_tokens = 95
+      --     end
+      --   end,
+      -- })
 
       vim.diagnostic.config({
         severity_sort = true,
@@ -106,6 +106,12 @@ return {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
+
+            if server_name == "ruff" then
+              lspconfig[server_name].setup(server)
+              return
+            end
+
             lspconfig[server_name].setup({
               cmd = server.cmd,
               settings = server.settings,

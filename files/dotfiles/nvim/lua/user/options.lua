@@ -20,7 +20,16 @@ opt.number = true -- Show line numbers
 opt.relativenumber = true -- Show line numbers
 opt.splitbelow = true -- Horizontal splits will be below
 opt.splitright = true -- Vertical splits will be to the right
--- opt.colorcolumn = { 81 }
+
+local function colorcolumn_fill(start)
+  local result = { start }
+  for i = 1, 200 do
+    table.insert(result, start + i)
+  end
+  return result
+end
+
+opt.colorcolumn = colorcolumn_fill(81)
 
 opt.ruler = false -- Don't show cursor position in command line
 opt.showmode = false -- Don't show mode in command line
@@ -58,8 +67,8 @@ opt.clipboard = "unnamedplus" --  Sync clipboard between OS and Neovim. See `:he
 opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 
 -- Decrease update time
-vim.opt.updatetime = 250
-vim.opt.timeoutlen = 300
+vim.opt.updatetime = 100
+vim.opt.timeoutlen = 250
 
 -- Spellchecking
 opt.spelllang = "en_us"
