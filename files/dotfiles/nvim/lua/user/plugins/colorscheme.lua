@@ -123,6 +123,7 @@ return {
       group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
       callback = function()
         vim.cmd "set winhighlight=Normal:NormalFloat"
+        vim.opt_local.colorcolumn = {}
       end,
     })
 

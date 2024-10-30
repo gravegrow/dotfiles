@@ -13,7 +13,7 @@ return {
       gdscript = { "gdformat" },
       sh = { "shfmt" },
       yaml = { "yamlfix" },
-      fish = { "fish_indent" },
+      -- fish = { "fish_indent" },
     },
     formatters = {
       yamlfix = {

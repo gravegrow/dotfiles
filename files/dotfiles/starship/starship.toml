@@ -30,7 +30,6 @@ format = "[ $path ]($style)"
 
 [python]
 style = "fg:3 bg:black"
-pyenv_version_name = false
 format = "[](fg:black)[  $version ]($style bold)[$virtualenv ]($style)"
 
 [c]

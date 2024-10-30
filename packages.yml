@@ -41,7 +41,6 @@ dev_packages:
   - npm
   - perl
   - poetry
-  - pyenv
   - python-neovim
   - python-uv
   - ripgrep

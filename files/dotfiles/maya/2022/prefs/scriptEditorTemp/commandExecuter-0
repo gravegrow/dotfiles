@@ -1,3 +1,0 @@
-import mayarigging.main as mm
-
-mm.hello_maya()
