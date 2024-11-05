@@ -1,3 +1,1 @@
-import maya_rigging.main as ep
-
-ep.hello_maya()
+import maya_rigging

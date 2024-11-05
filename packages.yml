@@ -45,6 +45,7 @@ dev_packages:
   - python-uv
   - ripgrep
   - ruby
+  - clang
   - cmake
 
 software_packages:
@@ -103,6 +104,8 @@ software_packages:
   - yazi
   - zathura
   - zathura-pdf-poppler
+  - reflector
+  - rsync
 
 font_packages:
   - ttf-jetbrains-mono-nerd

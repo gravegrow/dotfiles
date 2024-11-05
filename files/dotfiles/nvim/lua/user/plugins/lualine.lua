@@ -23,10 +23,6 @@ return {
       },
     }
 
-    local mode_icon = function()
-      return ""
-    end
-
     local filetype_icon = {
       "filetype",
       icon_only = true,
@@ -57,10 +53,6 @@ return {
         gui = "bold",
       },
     }
-
-    local loc_icon = function()
-      return "󰈚"
-    end
 
     local location = {
       function()

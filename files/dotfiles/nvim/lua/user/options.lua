@@ -29,7 +29,7 @@ local function colorcolumn_fill(start)
   return result
 end
 
-opt.colorcolumn = colorcolumn_fill(81)
+-- opt.colorcolumn = colorcolumn_fill(81)
 
 opt.ruler = false -- Don't show cursor position in command line
 opt.showmode = false -- Don't show mode in command line

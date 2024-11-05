@@ -53,6 +53,7 @@ return {
       },
 
       highlight_groups = {
+        Constant = { fg = "text" },
         Comment = { italic = true, fg = "muted" },
         CursorLineNr = { fg = "iris" },
         FloatTitle = { bg = "overlay", fg = "text" },
@@ -84,14 +85,16 @@ return {
         NoiceVirtualText = { link = "Comment" },
 
         ["@keyword.operator"] = { bold = true },
+        ["@variable.builtin"] = { bold = false },
         ["@type.builtin.python"] = { fg = "rose", italic = true },
         ["@markup.italic"] = { italic = true },
         ["@constructor.lua"] = { link = "@punctuation.bracket" },
         ["@punctuation.bracket"] = { bold = true },
+        ["@constant"] = { link = "Constant" },
 
-        ColorColumn = { bg = "none", blend = 5 },
+        ColorColumn = { bg = "none", blend = 0 },
 
-        RenderMarkdownH1Bg = { bg = "none", blend = 5 },
+        RenderMarkdownH1Bg = { bg = "none", blend = 0 },
         RenderMarkdownH2Bg = { link = "RenderMarkdownH1Bg" },
         RenderMarkdownH3Bg = { link = "RenderMarkdownH1Bg" },
         RenderMarkdownH4Bg = { link = "RenderMarkdownH1Bg" },
