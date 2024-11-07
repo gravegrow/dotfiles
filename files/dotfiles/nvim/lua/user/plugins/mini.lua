@@ -37,8 +37,10 @@ return {
     vim.keymap.set("n", "<c-e>", function()
       local minifiles = require "mini.files"
       if not minifiles.close() then
-        minifiles.open(vim.api.nvim_buf_get_name(0), false)
-        minifiles.reveal_cwd()
+        -- minifiles.open(vim.api.nvim_buf_get_name(0), false)
+        -- minifiles.reveal_cwd()
+
+        minifiles.open()
         minifiles.refresh({
           content = {
             filter = function(fs_entry)

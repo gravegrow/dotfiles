@@ -92,14 +92,11 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-local cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
 vim.api.nvim_create_autocmd("RecordingEnter", {
   desc = "Changes cursorline color when starting recording a macro",
   group = vim.api.nvim_create_augroup("on-recording-enter", { clear = true }),
   callback = function()
-    cursorline = vim.api.nvim_get_hl(0, { name = "CursorLine" })
-    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#331D1E" })
-    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.love })
+    vim.api.nvim_set_hl(0, "CursorLine", { link = "CursorLineRecording" })
   end,
 })
 
@@ -107,9 +104,7 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
   desc = "Restores cursorline color when starting recording a macro",
   group = vim.api.nvim_create_augroup("on-recording-leave", { clear = true }),
   callback = function()
-    ---@diagnostic disable-next-line
-    vim.api.nvim_set_hl(0, "CursorLine", cursorline)
-    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = _G.ROSE_PINE_COLORS.subtle })
+    vim.api.nvim_set_hl(0, "CursorLine", { link = "CursorLineDefault" })
   end,
 })
 
@@ -125,6 +120,22 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     end
   end,
 })
+
+local hex = function(n)
+  return string.format("#%06x", n)
+end
+
+local get_hl = function(hl_name)
+  return vim.api.nvim_get_hl(0, { name = hl_name }) or 0
+end
+
+vim.g.get_fg = function(hl_name)
+  return hex(get_hl(hl_name).fg)
+end
+
+vim.g.get_bg = function(hl_name)
+  return hex(get_hl(hl_name).bg)
+end
 
 vim.filetype.add({
   filename = {

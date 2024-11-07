@@ -3,23 +3,19 @@ return {
   event = "VeryLazy",
   config = function()
     local lualine = require "lualine"
-    local colors = ROSE_PINE_COLORS
+    local colors = {
+      base = vim.g.get_bg "Normal",
+      text = vim.g.get_fg "Normal",
+      surface = vim.g.get_bg "NormalFloat",
+      muted = vim.g.get_fg "Comment",
+      iris = vim.g.get_fg "CursorLineNr",
+    }
 
     local theme = {
       normal = {
-        a = { fg = colors.base, bg = colors.rose, gui = "bold" },
+        a = { fg = colors.text, bg = colors.base, gui = "bold" },
         b = { fg = colors.text, bg = colors.surface },
         c = { fg = colors.muted, bg = colors.surface },
-      },
-
-      insert = { a = { fg = colors.base, bg = colors.iris, gui = "bold" } },
-      visual = { a = { fg = colors.base, bg = colors.gold, gui = "bold" } },
-      replace = { a = { fg = colors.base, bg = colors.love, gui = "bold" } },
-
-      inactive = {
-        a = { fg = colors.base, bg = colors.base },
-        b = { fg = colors.base, bg = colors.base },
-        c = { fg = colors.base, bg = colors.base },
       },
     }
 
@@ -58,7 +54,7 @@ return {
       function()
         return "%l:%L"
       end,
-      color = { fg = colors.subtle, gui = "bold" },
+      color = { fg = colors.iris, gui = "bold" },
     }
 
     local diagnostics = {
@@ -93,7 +89,7 @@ return {
           lsp,
           diagnostics,
         },
-        lualine_c = { { "filename" } },
+        lualine_c = { { "filename", path = 1 } },
         lualine_x = { { "branch", icon = "", cond = width_cond } },
         lualine_y = { location },
         lualine_z = {},

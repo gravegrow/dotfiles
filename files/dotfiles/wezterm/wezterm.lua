@@ -5,6 +5,9 @@ config.font = wezterm.font 'BerkeleyMono Nerd Font Mono'
 config.font_size = 16
 config.window_close_confirmation = 'NeverPrompt'
 
+-- config.font = wezterm.font 'Kode Mono'
+-- config.line_height = 0.95
+
 config.window_padding = {
 	top = config.font_size,
 	bottom = config.font_size,
