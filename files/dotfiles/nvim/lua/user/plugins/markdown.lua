@@ -34,11 +34,17 @@ return {
       on_attach = function(bufnr)
         local map = vim.keymap.set
         local opts = { buffer = bufnr }
+        local markdown = require "markdown.link"
 
         map({ "n", "i" }, "<M-CR>", "<Cmd>MDListItemBelow<CR>", opts)
         map({ "n", "i" }, "<M-S-o>", "<Cmd>MDListItemAbove<CR>", opts)
         map({ "n", "i" }, "<M-o>", "<Cmd>MDListItemBelow<CR>", opts)
         map({ "n", "x" }, "<leader>c", "<Cmd>MDTaskToggle<CR>", opts)
+
+        map({ "n" }, "<CR>", function()
+          vim.cmd ":norm f["
+          markdown.follow()
+        end, opts)
 
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = bufnr,

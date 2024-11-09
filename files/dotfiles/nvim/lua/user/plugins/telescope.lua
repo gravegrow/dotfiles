@@ -46,15 +46,17 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require("telescope").load_extension, "ui-select")
 
     local builtin = require "telescope.builtin"
-		-- stylua: ignore
-		local document_diagnostics = function() builtin.diagnostics({ bufnr = 0 }) end
+
+    local document_diagnostics = function()
+      builtin.diagnostics({ bufnr = 0 })
+    end
 
     vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "[F]iles" })
     vim.keymap.set("n", "<leader>fF", function()
       builtin.find_files({ hidden = true })
     end, { desc = "[S]earch [F]iles with hidden" })
     vim.keymap.set("n", "<leader>fg", builtin.git_files, { desc = "[G]IT" })
-    vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[F]iles" })
+    vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "[K]eymaps" })
     vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "[H]elp" })
     vim.keymap.set("n", "<leader>ft", builtin.highlights, { desc = "[T]heme Highlights" })
     vim.keymap.set("n", "<leader>fb", builtin.builtin, { desc = "[B]uiltins" })

@@ -1,5 +1,6 @@
 alias ls='echo "" && eza --icons=auto --group-directories-first --color=always'
 alias la='ls --all'
+alias ll='ls -l'
 #alias tree='tree -C'
 alias tree='ls --tree'
 alias py='python3'

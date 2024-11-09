@@ -61,6 +61,7 @@ return {
         CursorLine = { bg = "overlay" },
         CursorLineDefault = { bg = "overlay" },
         CursorLineRecording = { bg = "love", blend = 15 },
+        Number = { fg = "pine" },
 
         CmpItemAbbrMatch = { fg = "love" },
         CmpItemAbbrDeprecated = { fg = "muted" },
