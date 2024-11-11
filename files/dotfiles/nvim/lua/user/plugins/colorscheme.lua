@@ -1,7 +1,7 @@
 return {
   "rose-pine/neovim",
   lazy = false,
-  -- enabled = false,
+  enabled = true,
   priority = 1000,
   name = "rose-pine",
   config = function()
@@ -20,6 +20,7 @@ return {
       foam              = "#8EA4A2",
       iris              = "#807e96",
       highlight_med     = "#272830",
+      highlight         = "#dbd8d6",
     }
 
     require("rose-pine").setup({
@@ -53,8 +54,8 @@ return {
         BqfPreviewBorder = { link = "TelescopePreviewBorder" },
         QuickFixLine = { fg = "gold" },
         PmenuSel = { bg = "overlay", bold = true, fg = "none" },
-        Search = { blend = 100, bg = "overlay", fg = "love", bold = true },
-        CurSearch = { fg = "love", bg = "overlay", bold = true, underline = true },
+        Search = { fg = "highlight", bg = "overlay", bold = true, blend = 100 },
+        CurSearch = { fg = "highlight", bg = "overlay", bold = true, underline = true },
         LspInlayHint = { blend = 0 },
         DapUIType = { fg = "foam", bold = true },
         LspSignatureActiveParameter = { bold = true, bg = "overlay" },
@@ -93,11 +94,11 @@ return {
       },
     })
 
-    _G.set_separators_solid = function()
+    vim.g.set_separators_solid = function()
       vim.api.nvim_set_hl(0, "WinSeparator", { link = "FloatBorder" })
     end
 
-    _G.set_separators_pretty = function()
+    vim.g.set_separators_pretty = function()
       vim.api.nvim_set_hl(0, "WinSeparator", {
         fg = palette.surface,
         bg = palette.base,

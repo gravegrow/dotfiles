@@ -24,6 +24,8 @@ config.underline_thickness = '1px'
 config.underline_position = '-2px'
 config.strikethrough_position = '0.5cell'
 
+config.max_fps = 120
+
 local make_session_keymap = function(key, paths, header)
 	return {
 		key = key,

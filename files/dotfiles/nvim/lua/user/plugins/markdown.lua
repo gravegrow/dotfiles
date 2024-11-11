@@ -40,6 +40,7 @@ return {
         map({ "n", "i" }, "<M-S-o>", "<Cmd>MDListItemAbove<CR>", opts)
         map({ "n", "i" }, "<M-o>", "<Cmd>MDListItemBelow<CR>", opts)
         map({ "n", "x" }, "<leader>c", "<Cmd>MDTaskToggle<CR>", opts)
+        map({ "n" }, "<leader>mt", "<Cmd>MDInsertToc<CR>", opts)
 
         map({ "n" }, "<CR>", function()
           vim.cmd ":norm f["

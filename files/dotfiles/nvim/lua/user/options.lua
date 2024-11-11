@@ -66,8 +66,8 @@ opt.shiftwidth = 2 -- Number of spaces inserted when indenting
 opt.clipboard = "unnamedplus" --  Sync clipboard between OS and Neovim. See `:help 'clipboard'`
 opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 
--- -- Decrease update time
--- vim.opt.updatetime = 100
+-- Decrease update time
+-- vim.opt.updatetime = 60
 -- vim.opt.timeoutlen = 250
 
 -- Spellchecking

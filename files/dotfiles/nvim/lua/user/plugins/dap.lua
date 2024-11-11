@@ -34,21 +34,21 @@ return {
       keymap("n", "<leader>df", dapui.float_element, { desc = "[F]loat UI element" })
 
       dap.listeners.before.attach.dapui_config = function()
-        _G.set_separators_pretty()
+        vim.g.set_separators_pretty()
         dapui.open()
       end
 
       dap.listeners.before.launch.dapui_config = function()
-        _G.set_separators_pretty()
+        vim.g.set_separators_pretty()
         dapui.open()
       end
 
       dap.listeners.before.event_terminated.dapui_config = function()
-        _G.set_separators_solid()
+        vim.g.set_separators_solid()
         dapui.close()
       end
       dap.listeners.before.event_exited.dapui_config = function()
-        _G.set_separators_solid()
+        vim.g.set_separators_solid()
         dapui.close()
       end
     end,
