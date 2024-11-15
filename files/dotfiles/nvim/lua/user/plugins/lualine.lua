@@ -67,9 +67,17 @@ return {
     local simple_extension = function(filetype, display_name)
       return {
         sections = {
-          -- stylua: ignore
-          lualine_a = { function() return display_name end, },
-          lualine_b = { filetype_icon },
+          lualine_b = {
+            filetype_icon,
+            {
+              function()
+                return display_name
+              end,
+              color = { gui = "bold" },
+              padding = { left = -1, right = 1 },
+            },
+          },
+          lualine_y = { location },
         },
         filetypes = { filetype },
       }
@@ -103,6 +111,7 @@ return {
         simple_extension("mason", "Mason"),
         simple_extension("undotree", "Undotree"),
         simple_extension("help", "Help"),
+        simple_extension("man", "Manual"),
       },
     })
   end,

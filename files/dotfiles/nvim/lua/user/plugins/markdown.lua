@@ -43,7 +43,7 @@ return {
         map({ "n" }, "<leader>mt", "<Cmd>MDInsertToc<CR>", opts)
 
         map({ "n" }, "<CR>", function()
-          vim.cmd ":norm f["
+          vim.cmd ":norm m'f["
           markdown.follow()
         end, opts)
 
