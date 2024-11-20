@@ -1,10 +1,11 @@
 return {
-  "rose-pine/neovim",
-  lazy = false,
-  enabled = true,
-  priority = 1000,
-  name = "rose-pine",
-  config = function()
+  {
+    "rose-pine/neovim",
+    lazy = false,
+    -- enabled = false,
+    priority = 1000,
+    name = "rose-pine",
+    config = function()
     -- stylua: ignore
     local palette = {
       base              = "#161617",
@@ -23,97 +24,133 @@ return {
       highlight         = "#dbd8d6",
     }
 
-    require("rose-pine").setup({
-      variant = "main",
-      styles = { italic = false },
-      palette = { main = palette },
-      groups = {
-        border = "surface",
-        error = "#945b5b",
-        warn = "#B7927B",
-      },
+      require("rose-pine").setup({
+        variant = "main",
+        styles = { italic = false },
+        palette = { main = palette },
+        groups = {
+          border = "surface",
+          error = "#945b5b",
+          warn = "#B7927B",
+        },
 
-      highlight_groups = {
-        String = { italic = true },
-        Constant = { fg = "text" },
-        Comment = { italic = true, fg = "muted" },
-        CursorLineNr = { fg = "iris" },
-        FloatTitle = { bg = "overlay", fg = "text" },
-        WinSeparator = { link = "FloatBorder" },
-        TelescopeMatching = { fg = "love" },
-        TelescopeNormal = { bg = "surface" },
-        TelescopeTitle = { link = "FloatTitle" },
-        TelescopeSelection = { bg = "overlay", bold = true },
-        TelescopePreviewNormal = { bg = "overlay" },
-        TelescopePreviewBorder = { bg = "overlay", fg = "overlay" },
-        TelescopePreviewTitle = { bg = "overlay", fg = "overlay" },
-        MiniFilesBorderModified = { bg = "surface", fg = "gold" },
-        TreesitterContext = { link = "NormalFloat" },
-        TreesitterContextLineNumber = { link = "NormalFloat" },
-        BqfPreviewFloat = { link = "TelescopePreviewNormal" },
-        BqfPreviewBorder = { link = "TelescopePreviewBorder" },
-        QuickFixLine = { fg = "gold" },
-        PmenuSel = { bg = "overlay", bold = true, fg = "none" },
-        Search = { fg = "highlight", bg = "overlay", bold = true, blend = 100 },
-        CurSearch = { fg = "highlight", bg = "overlay", bold = true, underline = true },
-        LspInlayHint = { blend = 0 },
-        DapUIType = { fg = "foam", bold = true },
-        LspSignatureActiveParameter = { bold = true, bg = "overlay" },
-        CursorLine = { bg = "overlay" },
-        CursorLineDefault = { bg = "overlay" },
-        CursorLineRecording = { bg = "love", blend = 15 },
-        Number = { fg = "pine" },
+        highlight_groups = {
+          String = { italic = true },
+          Constant = { fg = "text" },
+          Comment = { italic = true, fg = "muted" },
+          CursorLineNr = { fg = "iris" },
+          FloatTitle = { bg = "overlay", fg = "text" },
+          WinSeparator = { link = "FloatBorder" },
+          TelescopeMatching = { fg = "love" },
+          TelescopeNormal = { bg = "surface" },
+          TelescopeTitle = { link = "FloatTitle" },
+          TelescopeSelection = { bg = "overlay", bold = true },
+          TelescopePreviewNormal = { bg = "overlay" },
+          TelescopePreviewBorder = { bg = "overlay", fg = "overlay" },
+          TelescopePreviewTitle = { bg = "overlay", fg = "overlay" },
+          MiniFilesBorderModified = { bg = "surface", fg = "gold" },
+          TreesitterContext = { link = "NormalFloat" },
+          TreesitterContextLineNumber = { link = "NormalFloat" },
+          BqfPreviewFloat = { link = "TelescopePreviewNormal" },
+          BqfPreviewBorder = { link = "TelescopePreviewBorder" },
+          QuickFixLine = { fg = "gold" },
+          PmenuSel = { bg = "overlay", bold = true, fg = "none" },
+          Search = { fg = "highlight", bg = "overlay", bold = true, blend = 100 },
+          CurSearch = { fg = "highlight", bg = "overlay", bold = true, underline = true },
+          LspInlayHint = { blend = 0 },
+          DapUIType = { fg = "foam", bold = true },
+          LspSignatureActiveParameter = { bold = true, bg = "overlay" },
+          CursorLine = { bg = "overlay" },
+          CursorLineDefault = { bg = "overlay" },
+          CursorLineRecording = { bg = "love", blend = 15 },
+          Number = { fg = "pine" },
 
-        CmpItemAbbrMatch = { fg = "love" },
-        CmpItemAbbrDeprecated = { fg = "muted" },
-        CmpItemAbbrDeprecatedDefault = { link = "CmpItemAbbrDeprecated" },
+          CmpItemAbbrMatch = { fg = "love" },
+          CmpItemAbbrDeprecated = { fg = "muted" },
+          CmpItemAbbrDeprecatedDefault = { link = "CmpItemAbbrDeprecated" },
 
-        NoiceVirtualText = { link = "Comment" },
+          NoiceVirtualText = { link = "Comment" },
 
-        Keyword = { bold = true },
+          Keyword = { bold = true },
 
-        ["@keyword.operator"] = { bold = true },
-        ["@variable.builtin"] = { bold = false },
-        ["@type.builtin.python"] = { fg = "rose", italic = true },
-        ["@markup.italic"] = { italic = true },
-        ["@constructor.lua"] = { link = "@punctuation.bracket" },
-        ["@punctuation.bracket"] = { bold = true },
-        ["@constant"] = { link = "Constant" },
+          ["@keyword.operator"] = { bold = true },
+          ["@variable.builtin"] = { bold = false },
+          ["@type.builtin.python"] = { fg = "rose", italic = true },
+          ["@markup.italic"] = { italic = true },
+          ["@constructor.lua"] = { link = "@punctuation.bracket" },
+          ["@punctuation.bracket"] = { bold = true },
+          ["@constant"] = { link = "Constant" },
 
-        ColorColumn = { bg = "none", blend = 0 },
+          ColorColumn = { bg = "none", blend = 0 },
 
-        RenderMarkdownH1Bg = { bg = "none", blend = 0 },
-        RenderMarkdownH2Bg = { link = "RenderMarkdownH1Bg" },
-        RenderMarkdownH3Bg = { link = "RenderMarkdownH1Bg" },
-        RenderMarkdownH4Bg = { link = "RenderMarkdownH1Bg" },
-        RenderMarkdownH5Bg = { link = "RenderMarkdownH1Bg" },
-        RenderMarkdownH6Bg = { link = "RenderMarkdownH1Bg" },
+          RenderMarkdownH1Bg = { bg = "none", blend = 0 },
+          RenderMarkdownH2Bg = { link = "RenderMarkdownH1Bg" },
+          RenderMarkdownH3Bg = { link = "RenderMarkdownH1Bg" },
+          RenderMarkdownH4Bg = { link = "RenderMarkdownH1Bg" },
+          RenderMarkdownH5Bg = { link = "RenderMarkdownH1Bg" },
+          RenderMarkdownH6Bg = { link = "RenderMarkdownH1Bg" },
 
-        RenderMarkdownDash = { fg = "overlay" },
-        RenderMarkdownCode = { link = "NormalFloat" },
-      },
-    })
-
-    vim.g.set_separators_solid = function()
-      vim.api.nvim_set_hl(0, "WinSeparator", { link = "FloatBorder" })
-    end
-
-    vim.g.set_separators_pretty = function()
-      vim.api.nvim_set_hl(0, "WinSeparator", {
-        fg = palette.surface,
-        bg = palette.base,
+          RenderMarkdownDash = { fg = "overlay" },
+          RenderMarkdownCode = { link = "NormalFloat" },
+        },
       })
-    end
 
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "undotree", "qf", "help" },
-      group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
-      callback = function()
-        vim.cmd "set winhighlight=Normal:NormalFloat"
-        vim.opt_local.colorcolumn = {}
-      end,
-    })
+      vim.g.set_separators_solid = function()
+        vim.api.nvim_set_hl(0, "WinSeparator", { link = "FloatBorder" })
+      end
 
-    vim.cmd.colorscheme "rose-pine"
-  end,
+      vim.g.set_separators_pretty = function()
+        vim.api.nvim_set_hl(0, "WinSeparator", {
+          fg = palette.surface,
+          bg = palette.base,
+        })
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = { "undotree", "qf", "help" },
+        group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
+        callback = function()
+          vim.cmd "set winhighlight=Normal:NormalFloat"
+          vim.opt_local.colorcolumn = {}
+        end,
+      })
+
+      vim.cmd.colorscheme "rose-pine"
+    end,
+  },
+
+  {
+    "zenbones-theme/zenbones.nvim",
+    dependencies = "rktjmp/lush.nvim",
+    enabled = false,
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd.colorscheme "zenbones"
+
+      local hl = {}
+      -- stylua: ignore start
+      hl.Normal       = { fg   = "#B4BDC3", bg = "#161617" }
+      hl.CursorLine   = { bg   = "#272830" }
+      hl.NormalFloat  = { bg   = "#1f1f22" }
+      hl.Pmenu        = { bg   = "#1f1f22" }
+      hl.PmenuSel     = { bg   = "#272830" }
+      -- hl.FloatBorder  = { fg   = "#1F1F22", bg = "#1F1F22" }
+      hl.NormalFloat  = { bg   = "#1f1f22" }
+      hl.WinSeparator = { link = "FloatBorder" }
+
+      -- hl.TelescopeBorder = { link = "FloatBorder" }
+
+      -- stylua: ignore end
+
+      hl.RenderMarkdownCode = { link = "NormalFloat" }
+      for i = 1, 6 do
+        hl["RenderMarkdownH" .. i .. "Bg"] = { bg = "none", blend = 0 }
+      end
+
+      for h, v in pairs(hl) do
+        vim.api.nvim_set_hl(0, h, v)
+      end
+    end,
+  },
 }
