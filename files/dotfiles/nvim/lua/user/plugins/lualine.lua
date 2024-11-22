@@ -1,21 +1,18 @@
 return {
   "nvim-lualine/lualine.nvim",
-  event = "VeryLazy",
+  -- event = "VeryLazy",
   config = function()
     local lualine = require "lualine"
     local colors = {
-      base = vim.g.get_bg "Normal",
-      text = vim.g.get_fg "Normal",
-      surface = vim.g.get_bg "NormalFloat",
-      muted = vim.g.get_fg "Comment",
-      iris = vim.g.get_fg "CursorLineNr",
+      text = vim.g.get_fg "StatusLine",
+      statusline = vim.g.get_bg "StatusLine",
+      comment = vim.g.get_fg "Comment",
     }
 
     local theme = {
       normal = {
-        a = { fg = colors.text, bg = colors.base, gui = "bold" },
-        b = { fg = colors.text, bg = colors.surface },
-        c = { fg = colors.muted, bg = colors.surface },
+        b = { fg = colors.text, bg = colors.statusline },
+        c = { fg = colors.comment, bg = colors.statusline },
       },
     }
 
@@ -54,7 +51,7 @@ return {
       function()
         return "%l:%L"
       end,
-      color = { fg = colors.iris, gui = "bold" },
+      color = { fg = colors.text, gui = "bold" },
     }
 
     local diagnostics = {

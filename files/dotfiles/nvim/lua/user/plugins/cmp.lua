@@ -107,9 +107,9 @@ return {
       preselect = cmp.PreselectMode.None,
       window = {
         completion = { col_offset = -2, side_padding = 0 },
-        -- documentation = cmp.config.window.bordered({
-        --   winhighlight = "Normal:NormalFloat,FloatBorder:FloatBorder,Error:None",
-        -- }),
+        documentation = cmp.config.window.bordered({
+          winhighlight = "Normal:Normal,FloatBorder:@constant,Error:None",
+        }),
       },
       formatting = {
         fields = { "kind", "abbr" },

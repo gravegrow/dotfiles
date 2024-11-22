@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     opts = {
       user_default_options = {
-        mode = "foreground",
+        mode = "virtualtext",
         names = false,
         virtualtext = "󰄮",
       },

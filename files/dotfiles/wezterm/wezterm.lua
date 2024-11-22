@@ -1,12 +1,10 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.font = wezterm.font 'BerkeleyMono Nerd Font Mono'
+config.font = wezterm.font 'Berkeley Mono Nerd Font Mono'
 config.font_size = 16
+config.line_height = 1.40
 config.window_close_confirmation = 'NeverPrompt'
-
--- config.font = wezterm.font 'Kode Mono'
--- config.line_height = 0.95
 
 config.window_padding = {
 	top = config.font_size,
@@ -31,13 +29,7 @@ local make_session_keymap = function(key, paths, header)
 		key = key,
 		mods = 'CTRL|SHIFT',
 		action = wezterm.action.SpawnCommandInNewTab({
-			args = {
-				'tmux',
-				'new-session',
-				'-As',
-				'Sessions',
-				'~/.config/scripts/tmux-sessionizer ' .. paths,
-			},
+			args = { 'tmux', 'new-session', '-As', 'Sessions', '~/.config/scripts/tmux-sessionizer ' .. paths },
 		}),
 	}
 end
@@ -64,8 +56,10 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
 	if name == 'ZEN_MODE' then
 		if value == 'on' then
 			overrides.font_size = 12
+			overrides.line_height = 1
 		else
 			overrides.font_size = nil
+			overrides.line_height = nil
 		end
 	end
 	window:set_config_overrides(overrides)

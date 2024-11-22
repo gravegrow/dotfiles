@@ -2,7 +2,7 @@ return {
   {
     "rose-pine/neovim",
     lazy = false,
-    -- enabled = false,
+    enabled = false,
     priority = 1000,
     name = "rose-pine",
     config = function()
@@ -116,41 +116,6 @@ return {
       })
 
       vim.cmd.colorscheme "rose-pine"
-    end,
-  },
-
-  {
-    "zenbones-theme/zenbones.nvim",
-    dependencies = "rktjmp/lush.nvim",
-    enabled = false,
-    lazy = false,
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme "zenbones"
-
-      local hl = {}
-      -- stylua: ignore start
-      hl.Normal       = { fg   = "#B4BDC3", bg = "#161617" }
-      hl.CursorLine   = { bg   = "#272830" }
-      hl.NormalFloat  = { bg   = "#1f1f22" }
-      hl.Pmenu        = { bg   = "#1f1f22" }
-      hl.PmenuSel     = { bg   = "#272830" }
-      -- hl.FloatBorder  = { fg   = "#1F1F22", bg = "#1F1F22" }
-      hl.NormalFloat  = { bg   = "#1f1f22" }
-      hl.WinSeparator = { link = "FloatBorder" }
-
-      -- hl.TelescopeBorder = { link = "FloatBorder" }
-
-      -- stylua: ignore end
-
-      hl.RenderMarkdownCode = { link = "NormalFloat" }
-      for i = 1, 6 do
-        hl["RenderMarkdownH" .. i .. "Bg"] = { bg = "none", blend = 0 }
-      end
-
-      for h, v in pairs(hl) do
-        vim.api.nvim_set_hl(0, h, v)
-      end
     end,
   },
 }

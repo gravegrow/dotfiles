@@ -121,22 +121,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
-local hex = function(n)
-  return string.format("#%06x", n)
-end
-
-local get_hl = function(hl_name)
-  return vim.api.nvim_get_hl(0, { name = hl_name }) or 0
-end
-
-vim.g.get_fg = function(hl_name)
-  return hex(get_hl(hl_name).fg)
-end
-
-vim.g.get_bg = function(hl_name)
-  return hex(get_hl(hl_name).bg)
-end
-
 vim.filetype.add({
   filename = {
     [".tmux"] = "tmux",
