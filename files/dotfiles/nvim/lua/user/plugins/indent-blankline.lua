@@ -7,5 +7,6 @@ return {
   opts = {
     indent = { char = "┆" },
     scope = { enabled = false },
+    exclude = { filetypes = { "undotree" } },
   },
 }

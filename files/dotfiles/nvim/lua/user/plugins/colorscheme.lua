@@ -2,32 +2,32 @@ return {
   {
     "rose-pine/neovim",
     lazy = false,
-    enabled = false,
+    enabled = true,
     priority = 1000,
     name = "rose-pine",
     config = function()
-    -- stylua: ignore
-    local palette = {
-      base              = "#161617",
-      surface           = "#1f1f22",
-      overlay           = "#272830",
-      muted             = "#4f4f59",
-      subtle            = "#626275",
-      text              = "#9A8F8A",
-      love              = "#945b5b",
-      gold              = "#B7927B",
-      rose              = "#be8c8c",
-      pine              = "#627691",
-      foam              = "#8EA4A2",
-      iris              = "#807e96",
-      highlight_med     = "#272830",
-      highlight         = "#dbd8d6",
-    }
+      -- stylua: ignore
+      local colors = {
+        base              = "#161617",
+        surface           = "#1f1f22",
+        overlay           = "#272830",
+        muted             = "#4f4f59",
+        subtle            = "#626275",
+        text              = "#c5c9c5",
+        love              = "#945b5b",
+        gold              = "#b6927b",
+        rose              = "#be8c8c",
+        pine              = "#627691",
+        foam              = "#8EA4A2",
+        iris              = "#807e96",
+        highlight_med     = "#272830",
+        highlight         = "#dbd8d6",
+      }
 
       require("rose-pine").setup({
         variant = "main",
         styles = { italic = false },
-        palette = { main = palette },
+        palette = { main = colors },
         groups = {
           border = "surface",
           error = "#945b5b",
@@ -40,6 +40,7 @@ return {
           Comment = { italic = true, fg = "muted" },
           CursorLineNr = { fg = "iris" },
           FloatTitle = { bg = "overlay", fg = "text" },
+          StatusLine = { bg = "surface", fg = "text" },
           WinSeparator = { link = "FloatBorder" },
           TelescopeMatching = { fg = "love" },
           TelescopeNormal = { bg = "surface" },
@@ -80,6 +81,7 @@ return {
           ["@constructor.lua"] = { link = "@punctuation.bracket" },
           ["@punctuation.bracket"] = { bold = true },
           ["@constant"] = { link = "Constant" },
+          ["@property"] = { fg = "iris" },
 
           ColorColumn = { bg = "none", blend = 0 },
 
@@ -101,8 +103,8 @@ return {
 
       vim.g.set_separators_pretty = function()
         vim.api.nvim_set_hl(0, "WinSeparator", {
-          fg = palette.surface,
-          bg = palette.base,
+          fg = colors.surface,
+          bg = colors.base,
         })
       end
 
@@ -110,12 +112,12 @@ return {
         pattern = { "undotree", "qf", "help" },
         group = vim.api.nvim_create_augroup("util-window-style", { clear = true }),
         callback = function()
-          vim.cmd "set winhighlight=Normal:NormalFloat"
+          vim.cmd("set winhighlight=Normal:NormalFloat")
           vim.opt_local.colorcolumn = {}
         end,
       })
 
-      vim.cmd.colorscheme "rose-pine"
+      vim.cmd.colorscheme("rose-pine")
     end,
   },
 }

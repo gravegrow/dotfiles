@@ -2,16 +2,16 @@ return {
   "nvim-lualine/lualine.nvim",
   -- event = "VeryLazy",
   config = function()
-    local lualine = require "lualine"
+    local lualine = require("lualine")
     local colors = {
-      text = vim.g.get_fg "StatusLine",
-      statusline = vim.g.get_bg "StatusLine",
-      comment = vim.g.get_fg "Comment",
+      text = vim.g.get_fg("StatusLine"),
+      statusline = vim.g.get_bg("StatusLine"),
+      comment = vim.g.get_fg("Comment"),
     }
 
     local theme = {
       normal = {
-        b = { fg = colors.text, bg = colors.statusline },
+        b = { fg = colors.text, bg = colors.statusline, gui = "bold" },
         c = { fg = colors.comment, bg = colors.statusline },
       },
     }
@@ -41,17 +41,12 @@ return {
         return msg
       end,
       padding = { left = -1, right = 1 },
-      color = {
-        fg = colors.text,
-        gui = "bold",
-      },
     }
 
     local location = {
       function()
         return "%l:%L"
       end,
-      color = { fg = colors.text, gui = "bold" },
     }
 
     local diagnostics = {
@@ -70,7 +65,6 @@ return {
               function()
                 return display_name
               end,
-              color = { gui = "bold" },
               padding = { left = -1, right = 1 },
             },
           },

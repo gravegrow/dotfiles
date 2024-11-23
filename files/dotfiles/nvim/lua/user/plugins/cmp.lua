@@ -108,7 +108,7 @@ return {
       window = {
         completion = { col_offset = -2, side_padding = 0 },
         documentation = cmp.config.window.bordered({
-          winhighlight = "Normal:Normal,FloatBorder:@constant,Error:None",
+          winhighlight = "Normal:NormalFloatSec,FloatBorder:FloatBorderSec,Error:None",
         }),
       },
       formatting = {

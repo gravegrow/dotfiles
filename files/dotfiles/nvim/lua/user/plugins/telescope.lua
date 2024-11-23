@@ -26,6 +26,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
           vertical = {
             prompt_position = "top",
             mirror = true,
+            preview_cutoff = 30,
             preview_height = 0.3,
           },
           horizontal = {
