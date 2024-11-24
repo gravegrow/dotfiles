@@ -96,7 +96,7 @@ return {
         capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
       end
 
-      local lspconfig = require "lspconfig"
+      local lspconfig = require("lspconfig")
 
       lspconfig.gdscript.setup({ capabilities = capabilities })
       lspconfig.gdshader_lsp.setup({ capabilities = capabilities })

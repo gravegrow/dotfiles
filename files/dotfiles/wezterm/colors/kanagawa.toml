@@ -1,0 +1,44 @@
+[colors]
+background = '#161617'
+foreground = '#ACA3A0'
+cursor_bg = '#837771'
+cursor_border = '#837771'
+cursor_fg = '#1C1917'
+
+brights = [
+	"#272830",
+	"#c4746e",
+	"#87a987",
+	"#b6927b",
+	"#8ba4b0",
+	"#938aa9",
+	"#7aa89f",
+	"#dcd7ba",
+]
+
+ansi = [
+	"#0D0C0C",
+	"#d77b75",
+	"#87a987",
+	"#c0a36e",
+	"#7e9cd8",
+	"#957fb8",
+	"#6a9589",
+	"#a99c8b",
+]
+# dragonWhite = "#c5c9c5",
+#  dragonGreen = "#87a987",
+#  dragonGreen2 = "#8a9a7b",
+#  dragonPink = "#a292a3",
+#  dragonOrange = "#b6927b",
+#  dragonOrange2 = "#b98d7b",
+#  dragonGray = "#a6a69c",
+#  dragonGray2 = "#9e9b93",
+#  dragonGray3 = "#7a8382",
+#  dragonBlue2 = "#8ba4b0",
+#  dragonViolet= "#8992a7",
+#  dragonRed = "#c4746e",
+#  dragonAqua = "#8ea4a2",
+#  dragonAsh = "#737c73",
+#  dragonTeal = "#949fb5",
+#  dragonYellow = "#c4b28a",--"#a99c8b",

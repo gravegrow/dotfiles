@@ -50,8 +50,8 @@ return {
     "hrsh7th/cmp-cmdline",
   },
   config = function()
-    local cmp = require "cmp"
-    local luasnip = require "luasnip"
+    local cmp = require("cmp")
+    local luasnip = require("luasnip")
 
     luasnip.config.setup()
     require("luasnip.loaders.from_vscode").lazy_load()
@@ -107,9 +107,9 @@ return {
       preselect = cmp.PreselectMode.None,
       window = {
         completion = { col_offset = -2, side_padding = 0 },
-        documentation = cmp.config.window.bordered({
-          winhighlight = "Normal:NormalFloatSec,FloatBorder:FloatBorderSec,Error:None",
-        }),
+        -- documentation = cmp.config.window.bordered({
+        --   winhighlight = "Normal:NormalFloatSec,FloatBorder:FloatBorderSec,Error:None",
+        -- }),
       },
       formatting = {
         fields = { "kind", "abbr" },
@@ -151,8 +151,8 @@ return {
 
           -- copied from cmp-under
           function(entry1, entry2)
-            local _, entry1_under = entry1.completion_item.label:find "^_+"
-            local _, entry2_under = entry2.completion_item.label:find "^_+"
+            local _, entry1_under = entry1.completion_item.label:find("^_+")
+            local _, entry2_under = entry2.completion_item.label:find("^_+")
             entry1_under = entry1_under or 0
             entry2_under = entry2_under or 0
             if entry1_under > entry2_under then
