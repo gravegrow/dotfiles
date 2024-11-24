@@ -6,11 +6,11 @@ local colors = {
   text       = "#b8b0ad",
   search     = "#dbd8d6",
   comment    = "#4f4f59",
+  property   = "#C4B28A",
+  string     = "#8A9A7B",
+  constant   = "#B6927B",
 
-  property  = "#807e96",
-  keyword   = "#807e96",
-  string    = "#9a9ebb",
-
+  -- keyword   = "#807e96",
   -- func      = "#b8b0ad",
   -- builtin   = "#b8b0ad",
   -- bracket   = "#505362",
@@ -37,6 +37,8 @@ local colors = {
   delta       = "#e6be8c",
 }
 
+vim.cmd.colorscheme("default")
+
 local function set_hl(name, opts)
   local source_opts = vim.api.nvim_get_hl(0, { name = name, create = true, link = false })
   vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", source_opts, opts))
@@ -49,6 +51,16 @@ hl.WinSeparator = { fg = colors.statusline, bg = colors.statusline }
 hl.CursorLine = { bg = colors.cursorline }
 hl.StatusLine = { fg = colors.text, bg = colors.statusline }
 hl.NonText = { fg = colors.cursorline }
+
+hl.Comment = { fg = colors.comment, italic = true }
+hl.String = { fg = colors.string }
+hl.Constant = { fg = colors.constant }
+
+hl["@property"] = { fg = colors.property }
+hl["@variable.member"] = { link = "@property" }
+hl["@lsp.type.property"] = { link = "@property" }
+
+hl["@lsp.typemod.variable.global"] = { link = "Constant" }
 
 hl.Search = { fg = colors.search, bg = colors.statusline }
 hl.CurSearch = { fg = colors.search, bg = "none", bold = true, underline = true }
@@ -72,32 +84,13 @@ hl.TelescopeTitle = { link = "FloatTitle" }
 hl.TelescopePreviewNormal = { link = "NormalFloatSec" }
 hl.TelescopePreviewBorder = { link = "FloatBorderSec" }
 hl.TelescopePreviewTitle = { link = "FloatTitleSec" }
-
 hl.TelescopeSelection = { link = "PmenuSel" }
 
-hl.Function = { fg = colors.func }
-hl.Comment = { fg = colors.comment, italic = true }
-hl.String = { fg = colors.string, italic = true }
-hl.Identifier = { fg = colors.property }
-hl.Statement = { fg = colors.keyword, italic = true, bold = false }
-
-hl["@variable"] = { fg = colors.text }
-hl["@variable.member"] = { link = "Identifier" }
-hl["@variable.parameter"] = { fg = colors.parameter }
-hl["@lsp.type.parameter"] = { link = "@variable.parameter" }
-hl["@function.builtin"] = { fg = colors.func, italic = true }
-hl["@punctuation.bracket"] = { fg = colors.bracket, bold = true }
-hl["@constructor.lua"] = { link = "@punctuation.bracket" }
 -- hl["@keyword.return"] = { fg =  }
 
 -- for name, opts in pairs(hl) do
 --   set_hl(name, opts)
 -- end
-
--- local function x(param)
---   return 0
--- end
--- x()
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "undotree", "qf", "help" },

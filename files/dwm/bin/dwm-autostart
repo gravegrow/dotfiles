@@ -13,7 +13,6 @@ adb devices &
 
 /usr/libexec/gsd-xsettings &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-# spoofdpi &
 ciadpi -q 1+s -O 1 -s 25+s -t 5 -a 2 &
 
 setxkbmap -layout us,ru -option grp:alt_space_toggle &

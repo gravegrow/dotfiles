@@ -130,18 +130,7 @@ return {
     priority = 1000,
     config = function()
       require("kanagawa").setup({
-        -- Default options:
-        compile = false, -- enable compiling the colorscheme
-        undercurl = true, -- enable undercurls
-        commentStyle = { italic = true },
-        functionStyle = {},
-        keywordStyle = { italic = true },
-        statementStyle = { bold = true },
-        typeStyle = {},
-        transparent = false, -- do not set background color
-        dimInactive = false, -- dim inactive window `:h hl-NormalNC`
-        terminalColors = true, -- define vim.g.terminal_color_{0,17}
-        colors = { -- add/modify theme and palette colors
+        colors = {
           palette = {
             dragonBlack2 = "#1f1f22",
             dragonBlack3 = "#161617",
@@ -151,23 +140,27 @@ return {
             dragonAsh = "#4f4f59",
             oldWhite = "#aca3a0",
           },
-          theme = { all = {
-            ui = {
-              bg_gutter = "none",
-            },
-          } },
+          theme = { all = { ui = { bg_gutter = "none" } } },
         },
         overrides = function(colors)
           local theme = colors.theme
           return {
-            Normal = { fg = "", bg = theme.ui.bg_p3 },
-            TelescopeTitle = { fg = theme.ui.special, bold = true },
-            TelescopePromptNormal = { bg = theme.ui.bg_p1 },
-            TelescopePromptBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+            Normal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p3 },
+            FloatTitle = { fg = theme.ui.special, bg = theme.ui.bg_p1, bold = true },
+
+            MiniFilesTitle = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+            MiniFilesTitleFocused = { fg = theme.syn.special1, bg = theme.ui.bg_m1 },
+
+            TelescopeTitle = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1, bold = true },
+            TelescopePreviewTitle = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim, bold = true },
+            TelescopePromptNormal = { bg = theme.ui.bg_m1 },
+            TelescopePromptCounter = { fg = theme.syn.comment },
+            TelescopePromptBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
             TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
             TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
             TelescopePreviewNormal = { bg = theme.ui.bg_dim },
             TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+
             Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m1 },
             PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
             PmenuSbar = { bg = theme.ui.bg_m1 },
@@ -175,9 +168,14 @@ return {
 
             StatusLine = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
             LineNr = { fg = theme.syn.comment },
+            CursorLineNr = { fg = theme.ui.fg_dim },
 
-            FloatBorder = { fg = theme.ui.bg_m3, bg = theme.ui.bg_m3 },
-            WinSeparator = { fg = theme.ui.bg_m3, bg = theme.ui.bg_m3 },
+            -- Identifier = { fg = theme.ui.fg_dim },
+            -- ["@variable.member"] = { fg = theme.ui.fg_dim },
+
+            NormalFloat = { bg = theme.ui.bg_m1 },
+            FloatBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+            WinSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
 
             ["@string.documentation"] = { fg = theme.syn.comment },
 
@@ -187,21 +185,20 @@ return {
 
             RenderMarkdownCode = { bg = theme.ui.bg_m3 },
 
-            RenderMarkdownH1Bg = { bg = "none", fg = theme.syn.statement },
-            RenderMarkdownH2Bg = { bg = "none", fg = theme.syn.type },
-            RenderMarkdownH3Bg = { bg = "none", fg = theme.syn.special1 },
-            RenderMarkdownH4Bg = { bg = "none", fg = theme.syn.type },
-            RenderMarkdownH5Bg = { bg = "none", fg = theme.syn.type },
-            RenderMarkdownH6Bg = { bg = "none", fg = theme.syn.type },
+            RenderMarkdownH1Bg = { bg = "none", fg = "#807e96" },
+            RenderMarkdownH2Bg = { bg = "none", fg = "#8EA4A2" },
+            RenderMarkdownH3Bg = { bg = "none", fg = "#b6927b" },
+            RenderMarkdownH4Bg = { bg = "none", fg = "#be8c8c" },
+            RenderMarkdownH5Bg = { bg = "none", fg = "#945b5b" },
+            RenderMarkdownH6Bg = { bg = "none", fg = "#627690" },
 
             ["@markup.list.markdown"] = { fg = "#627690" },
-
-            Underlined = { fg = theme.syn.type },
+            ["@markup.link.label.markdown_inline"] = { fg = "#8ea4a2", underline = false },
+            ["@markup.link.url.markdown_inline"] = { fg = "#627690", underline = true },
           }
         end,
-        theme = "wave", -- Load "wave" theme when 'background' option is not set
-        background = { -- map the value of 'background' option to a theme
-          dark = "dragon", -- try "dragon" !
+        background = {
+          dark = "dragon",
           light = "lotus",
         },
       })
