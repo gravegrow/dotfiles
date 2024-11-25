@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
--- config.font = wezterm.font 'Berkeley Mono Nerd Font Mono'
--- config.line_height = 1.40
+config.font = wezterm.font_with_fallback({ 'Berkeley Mono Variable', 'JetBrainsMono Nerd Font Mono' })
+config.line_height = 1.40
 
 config.font = wezterm.font({ family = 'VictorMono Nerd Font Mono ', weight = 'Medium' })
 config.line_height = 1.20
@@ -60,7 +60,7 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
 	if name == 'ZEN_MODE' then
 		if value == 'on' then
 			overrides.font_size = 12
-			overrides.font = wezterm.font 'Berkeley Mono Nerd Font Mono'
+			overrides.font = wezterm.font 'Berkeley Mono'
 			overrides.line_height = 1
 		else
 			overrides.font = nil
