@@ -135,7 +135,7 @@ return {
             dragonBlack2 = "#1f1f22",
             dragonBlack3 = "#161617",
             dragonBlack4 = "#272830",
-            dragonBlack5 = "#272830",
+            dragonBlack5 = "#1A1A1C",
             dragonBlack6 = "#272830",
             dragonAsh = "#4f4f59",
             oldWhite = "#aca3a0",
@@ -168,7 +168,7 @@ return {
 
             StatusLine = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
             LineNr = { fg = theme.syn.comment },
-            CursorLineNr = { fg = theme.ui.fg_dim },
+            CursorLineNr = { fg = theme.ui.fg_dim, bold = true },
 
             -- Identifier = { fg = theme.ui.fg_dim },
             -- ["@variable.member"] = { fg = theme.ui.fg_dim },
@@ -183,7 +183,8 @@ return {
             CurSearch = { fg = "#FFFFFF", bg = "none", bold = true, underline = true },
             IncSearch = { link = "CurSearch" },
 
-            RenderMarkdownCode = { bg = theme.ui.bg_m3 },
+            RenderMarkdownCode = { bg = theme.ui.bg_m1 },
+            RenderMarkdownInlineHighlight = { bg = "none", fg = theme.syn.operator, bold = true },
 
             RenderMarkdownH1Bg = { bg = "none", fg = "#807e96" },
             RenderMarkdownH2Bg = { bg = "none", fg = "#8EA4A2" },
@@ -192,9 +193,28 @@ return {
             RenderMarkdownH5Bg = { bg = "none", fg = "#945b5b" },
             RenderMarkdownH6Bg = { bg = "none", fg = "#627690" },
 
+            ["@markup.heading.1"] = { fg = "#807e96" },
+            ["@markup.heading.2"] = { fg = "#8EA4A2" },
+            ["@markup.heading.3"] = { fg = "#b6927b" },
+            ["@markup.heading.4"] = { fg = "#be8c8c" },
+            ["@markup.heading.5"] = { fg = "#945b5b" },
+            ["@markup.heading.6"] = { fg = "#627690" },
+
             ["@markup.list.markdown"] = { fg = "#627690" },
             ["@markup.link.label.markdown_inline"] = { fg = "#8ea4a2", underline = false },
             ["@markup.link.url.markdown_inline"] = { fg = "#627690", underline = true },
+
+            CursorLineDefault = { bg = "#1A1A1C" },
+            CursorLineRecording = { bg = "#301d20" },
+
+            MiniFilesBorderModified = { fg = theme.syn.constant, bg = theme.ui.bg_m1 },
+            LspInlayHint = { fg = theme.syn.constant },
+
+            NormalFloatSec = { link = "TelescopePreviewNormal" },
+            FloatBorderSec = { link = "TelescopePreviewBorder" },
+            FloatTitleSec = { link = "TelescopePreviewTitle" },
+
+            CmpItemAbbr = { link = "CmpItemMenu" },
           }
         end,
         background = {

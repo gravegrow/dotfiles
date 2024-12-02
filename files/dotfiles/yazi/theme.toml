@@ -36,4 +36,5 @@ prepend_dirs = [
 	{ name = "maya", text = "" },
 	{ name = "dotfiles", text = "󱁿" },
 	{ name = "Templates", text = "󱉟" },
+	{ name = "Games", text = "" },
 ]

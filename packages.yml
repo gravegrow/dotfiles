@@ -47,6 +47,8 @@ dev_packages:
   - ruby
   - clang
   - cmake
+  - dotnet-runtime
+  - dotnet-sdk
 
 software_packages:
   - android-tools

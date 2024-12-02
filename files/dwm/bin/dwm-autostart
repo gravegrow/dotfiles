@@ -6,7 +6,7 @@ xrandr --output HDMI-A-0 --right-of DisplayPort-1 --mode 1920x1080 --rate 60.00 
 
 xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank &
 
-# picom &
+picom &
 feh --bg-fill ~/.config/dotfiles/files/wallpapers/chaisawman-mine-palette.png &
 openrgb -p main &
 adb devices &

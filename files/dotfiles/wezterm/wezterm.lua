@@ -1,8 +1,8 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
-config.font = wezterm.font_with_fallback({ 'Berkeley Mono Variable', 'JetBrainsMono Nerd Font Mono' })
-config.line_height = 1.40
+-- config.font = wezterm.font_with_fallback({ 'Berkeley Mono Variable', 'JetBrainsMono Nerd Font Mono' })
+-- config.line_height = 1.40
 
 config.font = wezterm.font({ family = 'VictorMono Nerd Font Mono ', weight = 'Medium' })
 config.line_height = 1.20
@@ -45,6 +45,7 @@ config.keys = {
 	make_session_keymap(
 		'p',
 		''
+			.. '/media/storage/development/unity/projects/ '
 			.. '/media/storage/development/cpp '
 			.. '/media/storage/development/godot '
 			.. '/media/storage/development/warcraft '

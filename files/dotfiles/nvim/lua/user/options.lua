@@ -10,7 +10,7 @@ opt.writebackup = false -- Don't store backup while overwriting the file
 
 opt.mouse = "a" -- Enable mouse for all available modes
 
-vim.cmd "filetype plugin indent on" -- Enable all filetype plugins
+vim.cmd("filetype plugin indent on") -- Enable all filetype plugins
 
 -- Appearance
 opt.breakindent = true -- Indent wrapped lines to match line start
@@ -37,7 +37,7 @@ opt.wrap = false -- Display long lines as just one line
 
 opt.signcolumn = "yes" -- Always show sign column (otherwise it will shift text)
 opt.fillchars = { eob = " ", fold = "━" }
-opt.fillchars:append "vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣"
+opt.fillchars:append("vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣")
 
 opt.listchars = { tab = "┆ ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
 opt.list = true -- Define which helper symbols to show
@@ -45,7 +45,7 @@ opt.list = true -- Define which helper symbols to show
 opt.pumheight = 10 -- Make popup menu smaller
 opt.laststatus = 3 -- Make statusline global
 opt.cmdheight = 0 -- Cmdline height
-opt.shortmess:append "I" -- Disable intro screen
+opt.shortmess:append("I") -- Disable intro screen
 
 -- Editing
 opt.ignorecase = true -- Ignore case when searching (use `\C` to force not doing that)
@@ -112,11 +112,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*.md",
   group = vim.api.nvim_create_augroup("create-on-save", { clear = true }),
   callback = function()
-    local normalized = vim.fs.normalize(vim.fn.expand "%")
+    local normalized = vim.fs.normalize(vim.fn.expand("%"))
     local is_file = vim.fn.filereadable(normalized) ~= 0
 
     if not is_file then
-      vim.fn.mkdir(vim.fn.expand "%:h", "p")
+      vim.fn.mkdir(vim.fn.expand("%:h"), "p")
     end
   end,
 })

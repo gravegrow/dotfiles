@@ -1,9 +1,9 @@
 [colors]
 foreground = "#C5C9C5"
-background = "#161617"
+background = "#181816"
 
 cursor_bg = "#be8c8c"
-cursor_border = "#161617"
+cursor_border = "#181816"
 selection_bg = "#1F1F22"
 
 ansi = [
