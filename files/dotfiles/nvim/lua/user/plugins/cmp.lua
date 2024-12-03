@@ -187,6 +187,7 @@ return {
 
           lspkind_comparator({
             kind_priority = {
+              Snippet = 13,
               Field = 12,
               Property = 11,
               Constant = 10,
@@ -207,7 +208,6 @@ return {
               Keyword = 2,
               Constructor = 1,
               Interface = 1,
-              Snippet = 0,
               Text = 1,
               TypeParameter = 1,
               Unit = 1,

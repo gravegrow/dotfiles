@@ -17,7 +17,7 @@ return {
     },
 
     config = function(_, opts)
-      local render = require "render-markdown"
+      local render = require("render-markdown")
       render.setup(opts)
       -- render.disable()
     end,
@@ -34,7 +34,7 @@ return {
       on_attach = function(bufnr)
         local map = vim.keymap.set
         local opts = { buffer = bufnr }
-        local markdown = require "markdown.link"
+        local markdown = require("markdown.link")
 
         map({ "n", "i" }, "<M-CR>", "<Cmd>MDListItemBelow<CR>", opts)
         map({ "n", "i" }, "<M-S-o>", "<Cmd>MDListItemAbove<CR>", opts)
@@ -43,7 +43,7 @@ return {
         map({ "n" }, "<leader>mt", "<Cmd>MDInsertToc<CR>", opts)
 
         map({ "n" }, "<CR>", function()
-          vim.cmd ":norm m'f["
+          vim.cmd(":norm m'f[")
           markdown.follow()
         end, opts)
 
@@ -51,7 +51,7 @@ return {
           buffer = bufnr,
           group = vim.api.nvim_create_augroup("on-md-save", { clear = true }),
           callback = function()
-            vim.cmd "MDResetListNumbering"
+            vim.cmd("MDResetListNumbering")
           end,
         })
       end,

@@ -7,7 +7,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
       "nvim-telescope/telescope-fzf-native.nvim",
       build = "make",
       cond = function()
-        return vim.fn.executable "make" == 1
+        return vim.fn.executable("make") == 1
       end,
     },
     { "nvim-telescope/telescope-ui-select.nvim" },
@@ -34,7 +34,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
             preview_width = 0.55,
           },
         },
-        file_ignore_patterns = { ".spl" },
+        file_ignore_patterns = { ".spl", ".asset", ".meta", ".asmdef", ".unity" },
       },
       extensions = {
         ["ui-select"] = {
@@ -46,7 +46,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     pcall(require("telescope").load_extension, "fzf")
     pcall(require("telescope").load_extension, "ui-select")
 
-    local builtin = require "telescope.builtin"
+    local builtin = require("telescope.builtin")
 
     local document_diagnostics = function()
       builtin.diagnostics({ bufnr = 0 })
