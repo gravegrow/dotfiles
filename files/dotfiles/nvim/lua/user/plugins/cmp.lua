@@ -55,6 +55,7 @@ return {
 
     luasnip.config.setup()
     require("luasnip.loaders.from_vscode").lazy_load()
+
     local lspkind_comparator = function(conf)
       local lsp_types = require("cmp.types").lsp
       return function(entry1, entry2)
@@ -184,6 +185,7 @@ return {
           cmp.config.compare.recently_used,
           -- cmp.config.compare.offset,
           cmp.config.compare.exact,
+          cmp.config.compare.length,
 
           lspkind_comparator({
             kind_priority = {
