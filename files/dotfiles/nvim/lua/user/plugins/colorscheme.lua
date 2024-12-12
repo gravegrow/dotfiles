@@ -208,7 +208,7 @@ return {
             CursorLineRecording = { bg = "#301d20" },
 
             MiniFilesBorderModified = { fg = theme.syn.constant, bg = theme.ui.bg_m1 },
-            LspInlayHint = { fg = theme.syn.comment },
+            LspInlayHint = { fg = theme.syn.comment, italic = true },
 
             NormalFloatSec = { link = "TelescopePreviewNormal" },
             FloatBorderSec = { link = "TelescopePreviewBorder" },

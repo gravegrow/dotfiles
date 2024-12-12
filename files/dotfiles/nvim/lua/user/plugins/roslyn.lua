@@ -5,6 +5,10 @@ return {
     config = {
       on_init = function()
         vim.keymap.set("n", "<leader>rr", "<cmd>Roslyn restart<cr>", { desc = "[R]oslyn [R]estart" })
+        local ok, fidget = pcall(require, "fidget")
+        if ok then
+          vim.notify = fidget.notify
+        end
       end,
       settings = {
         ["csharp|completion"] = {

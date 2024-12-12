@@ -9,7 +9,10 @@ return {
         desc = "[M]arkdown [R]ender Toggle",
       },
     },
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "echasnovski/mini.nvim",
+    }, -- if you use the mini.nvim suite
     opts = {
       heading = { icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " } },
       code = { left_pad = 1 },

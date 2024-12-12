@@ -20,7 +20,7 @@ windowPref -topLeftCorner 24 0 -widthHeight 1512 1414 -maximized true MayaWindow
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false panelArrangementWin;
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false PluginInfoWin;
 windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false pluginManagerWindow;
-windowPref -topLeftCorner 730 2332 -widthHeight 1106 708 -maximized false PreferencesWindow;
+windowPref -topLeftCorner 182 2223 -widthHeight 969 891 -maximized false PreferencesWindow;
 windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempReporterWnd;
 windowPref -topLeftCorner 968 1241 -widthHeight 2197 876 -maximized false shelfEditor;
 windowPref -topLeftCorner 28 1885 -widthHeight 1545 1402 -maximized false Viewport20OptionsWindow;
@@ -38,7 +38,7 @@ windowPref -topLeftCorner 730 2438 -widthHeight 1000 708 -maximized false Rename
 windowPref -topLeftCorner 28 2325 -widthHeight 1105 1402 -maximized false FbxWarningWindow;
 windowPref -topLeftCorner 647 933 -widthHeight 200 180 -maximized false eyeLidSetupWin;
 windowPref -topLeftCorner 141 1121 -widthHeight 1710 1406 -maximized true assignNewMaterialWindow;
-windowPref -topLeftCorner 456 569 -widthHeight 772 80 -maximized false greasePencilFloatingWindow;
+windowPref -topLeftCorner 243 412 -widthHeight 772 80 -maximized false greasePencilFloatingWindow;
 windowPref -topLeftCorner 408 2165 -widthHeight 761 387 -maximized false splinifyWin;
 windowPref -topLeftCorner 28 2325 -widthHeight 1105 1402 -maximized false showHistoryWindow;
 windowPref -topLeftCorner 26 4 -widthHeight 1710 1406 -maximized false LayerEditorQuickEditWindow;
@@ -51,3 +51,4 @@ windowPref -topLeftCorner 730 2319 -widthHeight 1119 708 -maximized false Delete
 windowPref -topLeftCorner 178 2001 -widthHeight 665 790 -maximized false assetWindow;
 windowPref -topLeftCorner 668 38 -widthHeight 559 374 -maximized false window2;
 windowPref -topLeftCorner 20 1567 -widthHeight 1871 1418 -maximized false projectWindow;
+windowPref -topLeftCorner 344 206 -widthHeight 313 602 -maximized false PSD_Window;

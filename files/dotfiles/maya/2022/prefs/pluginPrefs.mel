@@ -1,4 +1,5 @@
 //Maya Preference 2022 (Release 1)
 //
 //
+evalDeferred("autoLoadPlugin(\"\", \"fbxmaya\", \"fbxmaya\")");
 evalDeferred("autoLoadPlugin(\"\", \"modelingToolkit\", \"modelingToolkit\")");
