@@ -11,7 +11,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2734,
+                            "controlWidth": 1810,
                             "controlHeight": 23,
                             "collapsed": false,
                             "controls": [
@@ -27,7 +27,7 @@
                                     "closed": false,
                                     "widthProperty": "free",
                                     "heightProperty": "fixed",
-                                    "controlWidth": 2734,
+                                    "controlWidth": 1810,
                                     "controlHeight": 23
                                 }
                             ]
@@ -36,7 +36,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2734,
+                            "controlWidth": 1810,
                             "controlHeight": 46,
                             "collapsed": false,
                             "controls": [
@@ -52,7 +52,7 @@
                                     "closed": false,
                                     "widthProperty": "free",
                                     "heightProperty": "fixed",
-                                    "controlWidth": 2734,
+                                    "controlWidth": 1810,
                                     "controlHeight": 46,
                                     "initCallback": "shelfInitCallback"
                                 }
@@ -67,7 +67,7 @@
                                     "tabWidget": {
                                         "selectedIndex": 0,
                                         "controlWidth": 40,
-                                        "controlHeight": 1012,
+                                        "controlHeight": 1022,
                                         "collapsed": false,
                                         "controls": [
                                             {
@@ -83,7 +83,7 @@
                                                 "widthProperty": "fixed",
                                                 "heightProperty": "free",
                                                 "controlWidth": 40,
-                                                "controlHeight": 1012
+                                                "controlHeight": 1022
                                             }
                                         ]
                                     }
@@ -92,7 +92,7 @@
                                     "tabWidget": {
                                         "selectedIndex": 2,
                                         "controlWidth": 311,
-                                        "controlHeight": 999,
+                                        "controlHeight": 1007,
                                         "collapsed": false,
                                         "controls": [
                                             {
@@ -108,7 +108,7 @@
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
                                                 "controlWidth": 335,
-                                                "controlHeight": 999,
+                                                "controlHeight": 0,
                                                 "initCallback": "outlinerStateCallback",
                                                 "stateString": "outlinerEditor -e -docTag \"isolOutln_fromSeln\" -showShapes 0 -showAssignedMaterials 0 -showTimeEditor 1 -showReferenceNodes 0 -showReferenceMembers 1 -showAttributes 0 -showConnected 0 -showAnimCurvesOnly 0 -showMuteInfo 0 -organizeByLayer 1 -organizeByClip 1 -showAnimLayerWeight 1 -autoExpandLayers 1 -autoExpand 0 -showDagOnly 1 -showAssets 1 -showContainedOnly 0 -showPublishedAsConnected 0 -showParentContainers 0 -showContainerContents 0 -ignoreDagHierarchy 0 -expandConnections 0 -showUpstreamCurves 1 -showUnitlessCurves 1 -showCompounds 1 -showLeafs 1 -showNumericAttrsOnly 0 -highlightActive 1 -autoSelectNewObjects 0 -doNotSelectNewObjects 0 -dropIsParent 1 -transmitFilters 0 -setFilter \"defaultSetFilter\" -showSetMembers 1 -allowMultiSelection 1 -alwaysToggleSelect 0 -directSelect 0 -isSet 0 -isSetMember 0 -displayMode \"DAG\" -expandObjects 0 -setsIgnoreFilters 1 -containersIgnoreFilters 0 -editAttrName 0 -showAttrValues 0 -highlightSecondary 0 -showUVAttrsOnly 0 -showTextureNodesOnly 0 -attrAlphaOrder \"default\" -animLayerFilterOptions \"allAffecting\" -sortOrder \"none\" -longNames 0 -niceNames 1 -selectCommand \"print(\\\"\\\")\" -showNamespace 1 -showPinIcons 0 -mapMotionTrails 0 -ignoreHiddenAttribute 0 -ignoreOutlinerColor 0 -renderFilterVisible 0 -renderFilterIndex 0 -selectionOrder \"chronological\" -expandAttribute 0 $editorName"
                                             },
@@ -125,7 +125,7 @@
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
                                                 "controlWidth": 368,
-                                                "controlHeight": 999
+                                                "controlHeight": 0
                                             },
                                             {
                                                 "objectName": "UVToolkitDockControl",
@@ -140,7 +140,7 @@
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
                                                 "controlWidth": 311,
-                                                "controlHeight": 999
+                                                "controlHeight": 1007
                                             },
                                             {
                                                 "objectName": "ngSkinTools2_mainWindow",
@@ -192,8 +192,8 @@
                                             {
                                                 "tabWidget": {
                                                     "selectedIndex": 0,
-                                                    "controlWidth": 2335,
-                                                    "controlHeight": 978,
+                                                    "controlWidth": 1413,
+                                                    "controlHeight": 988,
                                                     "collapsed": false,
                                                     "controls": [
                                                         {
@@ -208,8 +208,8 @@
                                                             "closed": false,
                                                             "widthProperty": "free",
                                                             "heightProperty": "free",
-                                                            "controlWidth": 2335,
-                                                            "controlHeight": 978,
+                                                            "controlWidth": 1413,
+                                                            "controlHeight": 988,
                                                             "initCallback": "mainPaneStateCallback",
                                                             "stateString": "global string $gMainPane; paneLayout -edit -configuration single $gMainPane;if(`modelPanel -exists modelPanel4`){ modelPanel -edit -parent $gMainPane modelPanel4; paneLayout -edit -setPane modelPanel4 1 $gMainPane;}"
                                                         }
@@ -219,7 +219,7 @@
                                             {
                                                 "tabWidget": {
                                                     "selectedIndex": 0,
-                                                    "controlWidth": 2335,
+                                                    "controlWidth": 1413,
                                                     "controlHeight": 28,
                                                     "collapsed": false,
                                                     "controls": [
@@ -235,7 +235,7 @@
                                                             "closed": false,
                                                             "widthProperty": "free",
                                                             "heightProperty": "fixed",
-                                                            "controlWidth": 2335,
+                                                            "controlWidth": 1413,
                                                             "controlHeight": 28
                                                         }
                                                     ]
@@ -248,7 +248,7 @@
                                     "tabWidget": {
                                         "selectedIndex": 0,
                                         "controlWidth": 264,
-                                        "controlHeight": 1012,
+                                        "controlHeight": 0,
                                         "collapsed": true,
                                         "controls": [
                                             {
@@ -264,7 +264,7 @@
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
                                                 "controlWidth": 264,
-                                                "controlHeight": 1012
+                                                "controlHeight": 0
                                             }
                                         ]
                                     }
@@ -275,7 +275,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2734,
+                            "controlWidth": 1310,
                             "controlHeight": 29,
                             "controls": [
                                 {
@@ -290,7 +290,7 @@
                                     "closed": true,
                                     "widthProperty": "free",
                                     "heightProperty": "fixed",
-                                    "controlWidth": 512,
+                                    "controlWidth": 15,
                                     "controlHeight": 29
                                 }
                             ]
@@ -299,8 +299,8 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2734,
-                            "controlHeight": 37,
+                            "controlWidth": 1432,
+                            "controlHeight": 32,
                             "controls": [
                                 {
                                     "objectName": "TimeSlider",
@@ -314,7 +314,7 @@
                                     "closed": true,
                                     "widthProperty": "free",
                                     "heightProperty": "free",
-                                    "controlWidth": 512,
+                                    "controlWidth": 1791,
                                     "controlHeight": 32
                                 }
                             ]
@@ -326,29 +326,11 @@
     ],
     "closedControls": [
         {
-            "objectName": "CharcoalEditor2Window",
-            "posX": 1220,
-            "posY": 100,
-            "controlHeight": 1219,
-            "controlWidth": 1019,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "nodeEditorPanel1Window",
-            "posX": 1211,
-            "posY": 29,
-            "controlHeight": 1398,
-            "controlWidth": 1101,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "nodeEditorPanel2Window",
-            "posX": 1158,
-            "posY": 257,
-            "controlHeight": 689,
-            "controlWidth": 1098,
+            "objectName": "createNodePanel2Window",
+            "posX": 13,
+            "posY": 38,
+            "controlHeight": 1385,
+            "controlWidth": 2152,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -362,20 +344,20 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "referenceEditorPanel1Window",
-            "posX": 816,
-            "posY": 239,
-            "controlHeight": 985,
-            "controlWidth": 1279,
-            "widthProperty": "free",
+            "objectName": "AttributeEditor",
+            "posX": 1513,
+            "posY": 185,
+            "controlHeight": 1157,
+            "controlWidth": 697,
+            "widthProperty": "preferred",
             "heightProperty": "free"
         },
         {
-            "objectName": "SetControlToolsWinObjectWorkspaceControl",
-            "posX": 1654,
-            "posY": 172,
-            "controlHeight": 1011,
-            "controlWidth": 293,
+            "objectName": "SimpleRigToolWorkspaceControl",
+            "posX": 13,
+            "posY": 35,
+            "controlHeight": 1388,
+            "controlWidth": 1695,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -389,29 +371,20 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "AttributeEditor",
-            "posX": 1513,
-            "posY": 185,
-            "controlHeight": 1157,
-            "controlWidth": 697,
-            "widthProperty": "preferred",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "hyperShadePanel1Window",
-            "posX": 1451,
-            "posY": 36,
-            "controlHeight": 827,
-            "controlWidth": 1392,
+            "objectName": "polyTexturePlacementPanel1Window",
+            "posX": 9,
+            "posY": 29,
+            "controlHeight": 1398,
+            "controlWidth": 1702,
             "widthProperty": "free",
             "heightProperty": "free"
         },
         {
-            "objectName": "scriptEditorPanel1Window",
-            "posX": 10,
-            "posY": 43,
-            "controlHeight": 1383,
-            "controlWidth": 1186,
+            "objectName": "CharcoalEditor2Window",
+            "posX": 1220,
+            "posY": 100,
+            "controlHeight": 1219,
+            "controlWidth": 1019,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -425,11 +398,20 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "createNodePanel2Window",
-            "posX": 13,
-            "posY": 38,
-            "controlHeight": 1385,
-            "controlWidth": 2152,
+            "objectName": "SetControlToolsWinObjectWorkspaceControl",
+            "posX": 1654,
+            "posY": 172,
+            "controlHeight": 1011,
+            "controlWidth": 293,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "nodeEditorPanel1Window",
+            "posX": 1211,
+            "posY": 29,
+            "controlHeight": 1398,
+            "controlWidth": 1101,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -443,20 +425,38 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "SimpleRigToolWorkspaceControl",
-            "posX": 13,
-            "posY": 35,
-            "controlHeight": 1388,
-            "controlWidth": 1695,
+            "objectName": "scriptEditorPanel1Window",
+            "posX": 10,
+            "posY": 43,
+            "controlHeight": 1383,
+            "controlWidth": 1186,
             "widthProperty": "free",
             "heightProperty": "free"
         },
         {
-            "objectName": "polyTexturePlacementPanel1Window",
-            "posX": 9,
-            "posY": 29,
-            "controlHeight": 1398,
-            "controlWidth": 1702,
+            "objectName": "hyperShadePanel1Window",
+            "posX": 1451,
+            "posY": 36,
+            "controlHeight": 827,
+            "controlWidth": 1392,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "referenceEditorPanel1Window",
+            "posX": 816,
+            "posY": 239,
+            "controlHeight": 985,
+            "controlWidth": 1279,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "nodeEditorPanel2Window",
+            "posX": 1158,
+            "posY": 257,
+            "controlHeight": 689,
+            "controlWidth": 1098,
             "widthProperty": "free",
             "heightProperty": "free"
         }

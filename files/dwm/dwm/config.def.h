@@ -85,17 +85,7 @@ static const Rule rules[] = {
     {"mpv",                                 NULL,     NULL,    0,           0,          0,          0,          0},
     {"polkit-gnome-authentication-agent-1", NULL,     NULL,    0,           1,          0,          0,         -1},
     {"stalonetray",                         NULL,     NULL,   ~0,           1,          0,          0,         -1},
-
-    {NULL, NULL, "Control Tools",                               0,           1,          0,          0,         -1},
-    {NULL, NULL, "Attribute Editor",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "Input Selection",                             0,           1,          0,          0,         -1},
-    {NULL, NULL, "Charcoal Editor 2",                           0,           1,          0,          0,         -1},
-    {NULL, NULL, "Constraint Options",                          0,           1,          0,          0,         -1},
-    {NULL, NULL, "Constraint Options",                          0,           1,          0,          0,         -1},
-    {NULL, NULL, "cometRename - 1.20",                          0,           1,          0,          0,         -1},
-    {NULL, NULL, "Attribute Spread Sheet",                      0,           1,          0,          0,         -1},
-    {NULL, NULL, "Component Editor",                            0,           1,          0,          0,         -1},
-    {NULL, NULL, "Rebuild Curve Options",                       0,           1,          0,          0,         -1},
+    {"Maya-2022", NULL, NULL,                                         0,           1,          0,          0,         -1},
 };
 
 /* layout(s) */

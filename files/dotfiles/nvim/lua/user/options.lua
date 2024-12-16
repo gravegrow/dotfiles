@@ -59,11 +59,11 @@ opt.virtualedit = "block" -- Allow going past the end of line in visual block mo
 opt.formatoptions = "qjl1" -- Don't autoformat comments
 
 opt.tabstop = 2 -- A TAB character looks like N spaces
-opt.expandtab = false -- If True pressing the TAB key will insert spaces instead of a TAB character
+opt.expandtab = true -- If True pressing the TAB key will insert spaces instead of a TAB character
 opt.softtabstop = 2 -- Number of spaces inserted instead of a TAB character
 opt.shiftwidth = 2 -- Number of spaces inserted when indenting
 
-opt.clipboard = "unnamedplus" --  Sync clipboard between OS and Neovim. See `:help 'clipboard'`
+-- opt.clipboard = "unnamedplus" --  Sync clipboard between OS and Neovim. See `:help 'clipboard'`
 opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 
 -- Decrease update time
