@@ -37,6 +37,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         file_ignore_patterns = { ".spl", ".asset", ".meta", ".asmdef", ".unity" },
       },
       extensions = {
+        fzf = {},
         ["ui-select"] = {
           require("telescope.themes").get_dropdown(),
         },

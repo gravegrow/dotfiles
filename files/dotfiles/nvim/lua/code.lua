@@ -50,4 +50,4 @@ local plugins = {
   },
 }
 
-require("lazy").setup(plugins, { change_detection = { notify = false }, ui = { backdrop = 100 } })
+require("lazy").setup(plugins)

@@ -11,7 +11,7 @@ return {
     },
   },
   config = function()
-    require("which-key").setup()
+    require("which-key").setup({ preset = "classic" })
     require("which-key").add({
       { "<leader>d", group = "[D]iagnostic" },
       { "<leader>r", group = "[R]ename" },

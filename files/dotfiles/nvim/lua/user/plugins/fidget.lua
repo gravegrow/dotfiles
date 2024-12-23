@@ -7,7 +7,7 @@ return {
         stack_upwards = false,
       },
       window = {
-        normal_hl = "Normal",
+        normal_hl = "Comment",
         -- border_hl = "Comment",
         -- border = "single",
         x_padding = 0,

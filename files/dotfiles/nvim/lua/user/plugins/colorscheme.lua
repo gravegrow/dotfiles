@@ -184,6 +184,7 @@ return {
             IncSearch = { link = "CurSearch" },
 
             RenderMarkdownCode = { bg = theme.ui.bg_m1 },
+            RenderMarkdownBullet = { fg = "#627690" },
             RenderMarkdownInlineHighlight = { bg = "none", fg = theme.syn.operator, bold = true },
 
             RenderMarkdownH1Bg = { bg = "none", fg = "#807e96" },
@@ -215,6 +216,11 @@ return {
             FloatTitleSec = { link = "TelescopePreviewTitle" },
 
             CmpItemAbbr = { link = "CmpItemMenu" },
+            BlinkDoc = { link = "NormalFloatSec" },
+            BlinkCmpDoc = { link = "NormalFloatSec" },
+            BlinkCmpDocBorder = { link = "FloatBorderSec" },
+            BlinkCmpDocSeparator = { bg = theme.ui.bg_dim, fg = theme.syn.comment },
+            BlinkCmpScrollBarThumb = { bg = theme.syn.comment },
           }
         end,
         background = {

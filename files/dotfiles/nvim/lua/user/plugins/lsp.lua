@@ -60,18 +60,18 @@ return {
         end,
       })
 
-      -- vim.api.nvim_create_autocmd("LspAttach", {
-      --   callback = function(args)
-      --     local client = vim.lsp.get_client_by_id(args.data.client_id)
-      --     if not client then
-      --       return
-      --     end
-      --
-      --     if client.name == "basedpyright" then
-      --       vim.highlight.priorities.semantic_tokens = 95
-      --     end
-      --   end,
-      -- })
+      vim.api.nvim_create_autocmd("LspAttach", {
+        callback = function(args)
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          if not client then
+            return
+          end
+
+          if client.name == "basedpyright" then
+            client.server_capabilities.semanticTokensProvider = nil
+          end
+        end,
+      })
 
       vim.diagnostic.config({
         severity_sort = true,
@@ -95,6 +95,11 @@ return {
 
       if status then
         capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
+      end
+
+      local status, blink_cmp = pcall(require, "blink.cmp")
+      if status then
+        capabilities = blink_cmp.get_lsp_capabilities(capabilities)
       end
 
       local lspconfig = require("lspconfig")

@@ -12,6 +12,7 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+        "c_sharp",
       },
       auto_install = true,
       highlight = { enable = true },
