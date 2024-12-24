@@ -192,7 +192,7 @@ cd_origin = "hovered"
 cd_offset = [0, 2, 50, 3]
 
 # create
-create_title = "Create:"
+create_title = ["Create:", "Create (dir):"]
 create_origin = "hovered"
 create_offset = [0, 1, 50, 3]
 

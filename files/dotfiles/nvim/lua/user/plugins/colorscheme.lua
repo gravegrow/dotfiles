@@ -221,6 +221,8 @@ return {
             BlinkCmpDocBorder = { link = "FloatBorderSec" },
             BlinkCmpDocSeparator = { bg = theme.ui.bg_dim, fg = theme.syn.comment },
             BlinkCmpScrollBarThumb = { bg = theme.syn.comment },
+            BlinkCmpMenuSelection = { bg = theme.ui.bg_p1 },
+            BlinkCmpLabelDescription = { fg = theme.syn.constant },
           }
         end,
         background = {

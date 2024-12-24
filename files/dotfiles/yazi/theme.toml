@@ -16,20 +16,12 @@ count_selected = { fg = "black", bg = "yellow", bold = true }
 separator_open = ""
 separator_close = ""
 separator_style = { fg = "darkgray", bg = "black" }
-mode_normal = { bg = "blue", fg = "black", bold = true }
-mode_select = { bg = "green", fg = "black", bold = true }
-#
-#
-# [help]
-# footer = { fg = "gray", bg = "black" }
 
-
-# [filetype]
-# rules = [
-# { name = "*", is = "link", fg = "lightblue" },
-# { name = "*/", is = "link", fg = "#97B7B3" },
-# { name = "*", is = "orphan", fg = "red" },
-# ]
+[mode]
+normal_main = { bg = "blue", fg = "black", bold = true }
+normal_alt = { fg = "blue", bg = "black", bold = true }
+select_main = { fg = "green", bg = "black", bold = true }
+select_alt = { bg = "green", fg = "black", bold = true }
 
 [icon]
 prepend_dirs = [
