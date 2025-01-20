@@ -1,5 +1,5 @@
 local servers = {
-  pyright = {},
+  basedpyright = {},
   ruff = {},
   clangd = {},
   taplo = {},
@@ -47,6 +47,8 @@ return {
           local function toggle_inlay_hints()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end
+
+          vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help, { buffer = event.buf })
 
           keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
           keymap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")

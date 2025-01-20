@@ -93,7 +93,6 @@ software_packages:
   - qt5ct
   - rofi
   - spicetify-cli
-  - spotify
   - starship
   - tealdeer
   - telegram-desktop

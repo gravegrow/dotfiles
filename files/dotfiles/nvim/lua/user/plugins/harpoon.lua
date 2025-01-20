@@ -6,7 +6,7 @@ return {
   opts = { settings = { save_on_toggle = true } },
 
   config = function(_, opts)
-    local harpoon = require "harpoon"
+    local harpoon = require("harpoon")
 
     harpoon:setup(opts)
 
@@ -14,7 +14,7 @@ return {
 
     vim.keymap.set("n", "<leader>a", function()
       harpoon:list():add()
-      local name = vim.fn.expand "%:t"
+      local name = vim.fn.expand("%:t")
       vim.notify('"' .. name .. '" added to Harpoon list.')
     end, { desc = "Harpoon [A]dd to list" })
 
@@ -28,6 +28,6 @@ return {
       end)
     end
 
-    vim.cmd "autocmd Filetype harpoon setlocal cursorline"
+    vim.cmd("autocmd Filetype harpoon setlocal cursorline")
   end,
 }

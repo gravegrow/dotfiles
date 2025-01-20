@@ -6,6 +6,7 @@ keymap({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 keymap({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting after search" })
+-- keymap("i", ":w", "<esc><cmd>update<cr>")
 
 keymap("x", "p", '"_dP', { desc = "Paste without copying visual selection" })
 keymap({ "n", "x" }, "<leader>p", '"+P', { desc = "Paste from global keyboard" })

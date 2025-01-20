@@ -2,30 +2,31 @@ return {
   {
     "rcarriga/nvim-dap-ui",
     event = "LspAttach",
+    enabled = true,
     dependencies = {
       "mfussenegger/nvim-dap",
       "nvim-neotest/nvim-nio",
     },
 
     config = function()
-      local dap, dapui = require "dap", require "dapui"
+      local dap, dapui = require("dap"), require("dapui")
       dapui.setup({
         controls = { enabled = false },
         layouts = {
           {
             elements = {
-              { id = "console", size = 0.40 },
+              { id = "console", size = 0.60 },
             },
             position = "bottom",
-            size = 12,
+            size = 0.25,
           },
           {
             elements = {
-              { id = "watches", size = 0.40 },
-              { id = "scopes", size = 0.60 },
+              { id = "watches", size = 0.50 },
+              { id = "breakpoints", size = 0.50 },
             },
             position = "top",
-            size = 12,
+            size = 0.25,
           },
         },
       })
@@ -33,24 +34,20 @@ return {
       local keymap = vim.keymap.set
       keymap("n", "<leader>df", dapui.float_element, { desc = "[F]loat UI element" })
 
-      dap.listeners.before.attach.dapui_config = function()
+      local function open()
         vim.g.set_separators_pretty()
         dapui.open()
       end
 
-      dap.listeners.before.launch.dapui_config = function()
+      local function close()
         vim.g.set_separators_pretty()
-        dapui.open()
+        dapui.close()
       end
 
-      dap.listeners.before.event_terminated.dapui_config = function()
-        vim.g.set_separators_solid()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        vim.g.set_separators_solid()
-        dapui.close()
-      end
+      dap.listeners.before.attach.dapui_config = open
+      dap.listeners.before.launch.dapui_config = open
+      dap.listeners.before.event_terminated.dapui_config = close
+      dap.listeners.before.event_exited.dapui_config = close
     end,
   },
 
@@ -72,7 +69,7 @@ return {
 
     config = function()
       local keymap = vim.keymap.set
-      local dap = require "dap"
+      local dap = require("dap")
 
       dap.adapters.codelldb = {
         type = "server",
@@ -104,6 +101,10 @@ return {
       keymap("n", "<leader>db", dap.toggle_breakpoint, { desc = "[B]reakpoint" })
       keymap("n", "<leader>dc", dap.continue, { desc = "[C]ontinue" })
       keymap("n", "<leader>dr", dap.repl.toggle, { desc = "[R]EPL" })
+      keymap("n", "<leader>ds", function()
+        local widgets = require("dap.ui.widgets")
+        widgets.centered_float(widgets.scopes, { border = "single" })
+      end, { desc = "[S]copes" })
 
       keymap("n", "<M-j>", dap.step_over, { desc = "Dap Step Over" })
       keymap("n", "<M-l>", dap.step_into, { desc = "Dap Step In" })

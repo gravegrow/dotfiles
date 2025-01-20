@@ -43,7 +43,8 @@ background = "#242424"
 foreground = "#B3BFD1"
 
 [urgency_critical]
-background = "#1E1E2E"
+font = BerkeleyMono Nerd Font Mono 16
+background = "#161617"
 foreground = "#B3BFD1"
 frame_color = "#FAB387"
 

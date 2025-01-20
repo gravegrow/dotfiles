@@ -1,3 +1,11 @@
+vim.g.set_separators_solid = function()
+  vim.api.nvim_set_hl(0, "WinSeparator", { link = "FloatBorder" })
+end
+
+vim.g.set_separators_pretty = function()
+  vim.api.nvim_set_hl(0, "WinSeparator", { link = "Comment" })
+end
+
 return {
   {
     "rose-pine/neovim",
@@ -222,7 +230,9 @@ return {
             BlinkCmpDocSeparator = { bg = theme.ui.bg_dim, fg = theme.syn.comment },
             BlinkCmpScrollBarThumb = { bg = theme.syn.comment },
             BlinkCmpMenuSelection = { bg = theme.ui.bg_p1 },
-            BlinkCmpLabelDescription = { fg = theme.syn.constant },
+            BlinkCmpLabelDescription = { link = "Comment" },
+            CmpItemAbbrMatch = { fg = theme.syn.constant, bold = true },
+            BlinkCmpLabelMatch = { fg = theme.syn.constant, bold = true },
           }
         end,
         background = {

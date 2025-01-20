@@ -42,6 +42,7 @@ config.keys = {
 	make_session_keymap('i', '~/.config/dotfiles/files/dotfiles/'),
 	make_session_keymap('n', '/media/storage/development/notes'),
 	make_session_keymap('m', '/media/storage/development/maya'),
+	make_session_keymap('u', '/media/storage/development/unity/projects/'),
 	make_session_keymap(
 		'p',
 		''

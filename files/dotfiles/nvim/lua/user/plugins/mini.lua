@@ -22,6 +22,7 @@ return {
         hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
         todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
         note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
+        info = { pattern = "%f[%w]()INFO()%f[%W]", group = "MiniHipatternsNote" },
       },
     })
 
