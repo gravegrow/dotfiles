@@ -58,11 +58,10 @@ return {
       { "theHamsta/nvim-dap-virtual-text", opts = {} },
       { "LiadOz/nvim-dap-repl-highlights", opts = {} },
       { "stevearc/overseer.nvim", opts = {} },
-
       {
         "jay-babu/mason-nvim-dap.nvim",
         opts = {
-          ensure_installed = { "cppdbg", "codelldb" },
+          ensure_installed = { "codelldb" },
         },
       },
     },
@@ -107,6 +106,7 @@ return {
       end, { desc = "[S]copes" })
 
       keymap("n", "<M-j>", dap.step_over, { desc = "Dap Step Over" })
+      keymap("n", "<M-k>", dap.step_back, { desc = "Dap Step Back" })
       keymap("n", "<M-l>", dap.step_into, { desc = "Dap Step In" })
       keymap("n", "<M-h>", dap.step_out, { desc = "Dap Step Out" })
     end,
