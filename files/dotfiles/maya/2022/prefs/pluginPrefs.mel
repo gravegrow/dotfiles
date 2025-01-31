@@ -1,5 +1,7 @@
 //Maya Preference 2022 (Release 1)
 //
 //
+evalDeferred("autoLoadPlugin(\"\", \"Unfold3D\", \"Unfold3D\")");
+evalDeferred("autoLoadPlugin(\"\", \"quatNodes\", \"quatNodes\")");
 evalDeferred("autoLoadPlugin(\"\", \"fbxmaya\", \"fbxmaya\")");
 evalDeferred("autoLoadPlugin(\"\", \"modelingToolkit\", \"modelingToolkit\")");

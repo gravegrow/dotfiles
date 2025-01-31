@@ -18,10 +18,11 @@ return { -- Fuzzy Finder (files, lsp, etc)
         prompt_prefix = " ",
         selection_caret = "▌ ",
         sorting_strategy = "ascending",
-        layout_strategy = "flex",
+        layout_strategy = "vertical",
         path_display = { "filename_first" },
         results_title = "",
         preview_title = "",
+
         layout_config = {
           vertical = {
             prompt_position = "top",

@@ -22,7 +22,7 @@ return {
     config = function(_, opts)
       local render = require("render-markdown")
       render.setup(opts)
-      -- render.disable()
+      render.disable()
     end,
   },
 

@@ -20,13 +20,13 @@ windowPref -topLeftCorner 24 0 -widthHeight 1512 1414 -maximized true MayaWindow
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false panelArrangementWin;
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false PluginInfoWin;
 windowPref -topLeftCorner 190 1138 -widthHeight 1162 1058 -maximized false pluginManagerWindow;
-windowPref -topLeftCorner 391 1036 -widthHeight 969 891 -maximized false PreferencesWindow;
+windowPref -topLeftCorner 273 1234 -widthHeight 969 891 -maximized false PreferencesWindow;
 windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempReporterWnd;
-windowPref -topLeftCorner 281 620 -widthHeight 2197 876 -maximized false shelfEditor;
+windowPref -topLeftCorner 302 650 -widthHeight 2197 876 -maximized false shelfEditor;
 windowPref -topLeftCorner 84 353 -widthHeight 1545 1402 -maximized false Viewport20OptionsWindow;
-windowPref -topLeftCorner 282 489 -widthHeight 1691 993 -maximized false HotkeyEditor;
-windowPref -topLeftCorner 628 1124 -widthHeight 682 438 -maximized false OptionBoxWindow;
-windowPref -topLeftCorner 535 2267 -widthHeight 394 902 -maximized false cometRenameWin;
+windowPref -topLeftCorner 226 770 -widthHeight 1691 993 -maximized false HotkeyEditor;
+windowPref -topLeftCorner 170 870 -widthHeight 1702 1396 -maximized false OptionBoxWindow;
+windowPref -topLeftCorner 358 1490 -widthHeight 394 902 -maximized false cometRenameWin;
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
 windowPref -topLeftCorner 28 2120 -widthHeight 1310 1402 -maximized false faceHelpImage;
@@ -35,7 +35,7 @@ windowPref -topLeftCorner 214 918 -widthHeight 1601 1010 -maximized false connec
 windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false createRenderNodeWindow;
 windowPref -topLeftCorner 341 356 -widthHeight 936 706 -maximized false expressionEditorWin;
 windowPref -topLeftCorner 730 2438 -widthHeight 1000 708 -maximized false RenameAttrWin;
-windowPref -topLeftCorner 28 2325 -widthHeight 1105 1402 -maximized false FbxWarningWindow;
+windowPref -topLeftCorner 18 1166 -widthHeight 1105 1402 -maximized false FbxWarningWindow;
 windowPref -topLeftCorner 647 933 -widthHeight 200 180 -maximized false eyeLidSetupWin;
 windowPref -topLeftCorner 141 1121 -widthHeight 1710 1406 -maximized true assignNewMaterialWindow;
 windowPref -topLeftCorner 243 412 -widthHeight 772 80 -maximized false greasePencilFloatingWindow;
@@ -52,3 +52,4 @@ windowPref -topLeftCorner 178 2001 -widthHeight 665 790 -maximized false assetWi
 windowPref -topLeftCorner 20 1567 -widthHeight 1871 1418 -maximized false projectWindow;
 windowPref -topLeftCorner 344 206 -widthHeight 313 602 -maximized false PSD_Window;
 windowPref -topLeftCorner 671 1610 -widthHeight 316 93 -maximized false UVSzwnd;
+windowPref -topLeftCorner 471 1435 -widthHeight 514 566 -maximized false largeCurveWindow;

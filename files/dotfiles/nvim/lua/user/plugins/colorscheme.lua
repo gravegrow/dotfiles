@@ -32,16 +32,13 @@ return {
             Normal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p3 },
             FloatTitle = { fg = theme.ui.special, bg = theme.ui.bg_p1, bold = true },
 
-            MiniFilesTitle = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-            MiniFilesTitleFocused = { fg = theme.syn.special1, bg = theme.ui.bg_m1 },
-
             TelescopeTitle = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1, bold = true },
             TelescopePreviewTitle = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim, bold = true },
             TelescopePromptNormal = { bg = theme.ui.bg_m1 },
             TelescopePromptCounter = { fg = theme.syn.comment },
             TelescopePromptBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-            TelescopeResultsBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_dim },
+            TelescopeResultsBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
             TelescopePreviewNormal = { bg = theme.ui.bg_dim },
             TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
 
@@ -54,12 +51,9 @@ return {
             LineNr = { fg = theme.syn.comment },
             CursorLineNr = { fg = theme.ui.fg_dim, bold = true },
 
-            -- Identifier = { fg = theme.ui.fg_dim },
-            -- ["@variable.member"] = { fg = theme.ui.fg_dim },
-
-            NormalFloat = { bg = theme.ui.bg_m1 },
-            FloatBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            WinSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
+            NormalFloat = { bg = theme.ui.bg_dim },
+            FloatBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
+            WinSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p3 },
 
             ["@string.documentation"] = { fg = theme.syn.comment },
 
@@ -67,7 +61,7 @@ return {
             CurSearch = { fg = "#FFFFFF", bg = "none", bold = true, underline = true },
             IncSearch = { link = "CurSearch" },
 
-            RenderMarkdownCode = { bg = theme.ui.bg_m1 },
+            RenderMarkdownCode = { bg = theme.ui.bg_m2 },
             RenderMarkdownBullet = { fg = "#627690" },
             RenderMarkdownInlineHighlight = { bg = "none", fg = theme.syn.operator, bold = true },
 
@@ -92,23 +86,26 @@ return {
             CursorLineDefault = { bg = "#1A1A1C" },
             CursorLineRecording = { bg = "#301d20" },
 
-            MiniFilesBorderModified = { fg = theme.syn.constant, bg = theme.ui.bg_m1 },
             LspInlayHint = { fg = theme.syn.comment, italic = true },
 
             NormalFloatSec = { link = "TelescopePreviewNormal" },
-            FloatBorderSec = { link = "TelescopePreviewBorder" },
+            FloatBorderSec = { fg = theme.syn.keyword, bg = theme.ui.bg_m2 },
             FloatTitleSec = { link = "TelescopePreviewTitle" },
 
+            BlinkCmpMenu = { link = "NormalFloatSec" },
+            BlinkCmpMenuSelection = { bg = theme.ui.bg_p2 },
             CmpItemAbbr = { link = "CmpItemMenu" },
-            BlinkDoc = { link = "NormalFloatSec" },
-            BlinkCmpDoc = { link = "NormalFloatSec" },
             BlinkCmpDocBorder = { link = "FloatBorderSec" },
-            BlinkCmpDocSeparator = { bg = theme.ui.bg_dim, fg = theme.syn.comment },
+            BlinkCmpDocSeparator = { bg = theme.ui.bg_p3, fg = theme.syn.comment },
             BlinkCmpScrollBarThumb = { bg = theme.syn.comment },
-            BlinkCmpMenuSelection = { bg = theme.ui.bg_p1 },
             BlinkCmpLabelDescription = { link = "Comment" },
             CmpItemAbbrMatch = { fg = theme.syn.constant, bold = true },
             BlinkCmpLabelMatch = { fg = theme.syn.constant, bold = true },
+
+            MiniFilesTitle = { fg = theme.ui.fg_dim, bg = theme.ui.bg_dim },
+            MiniFilesTitleFocused = { fg = theme.syn.special1, bg = theme.ui.bg_dim },
+            MiniFilesBorderModified = { fg = theme.syn.constant, bg = theme.ui.bg_m2 },
+            MiniFilesBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
           }
         end,
         background = {
@@ -117,7 +114,7 @@ return {
         },
       })
 
-      vim.cmd("colorscheme kanagawa")
+      vim.cmd.colorscheme("kanagawa")
     end,
   },
 }

@@ -57,7 +57,12 @@ return {
     dependencies = {
       { "theHamsta/nvim-dap-virtual-text", opts = {} },
       { "LiadOz/nvim-dap-repl-highlights", opts = {} },
-      { "stevearc/overseer.nvim", opts = {} },
+      {
+        "stevearc/overseer.nvim",
+        opts = {
+          templates = { "builtin", "user.cpp_compile", "user.cpp_clean" },
+        },
+      },
       {
         "jay-babu/mason-nvim-dap.nvim",
         opts = {
@@ -91,6 +96,15 @@ return {
         -- 	expressions = "native",
         -- 	stopOnEntry = false,
         -- },
+        {
+          name = "CODELLDB: Current File",
+          type = "codelldb",
+          request = "launch",
+          preLaunchTask = "Compile",
+          postDebugTask = "Clean",
+          expressions = "native",
+          program = "${workspaceFolder}/${fileBasenameNoExtension}",
+        },
       }
 
       vim.fn.sign_define("DapBreakpoint", { text = "󰃤", texthl = "Error" })

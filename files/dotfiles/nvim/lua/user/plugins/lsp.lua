@@ -75,10 +75,20 @@ return {
         end,
       })
 
+      local border = {
+        { "", "FloatBorder" },
+        { "", "FloatBorder" },
+        { "", "FloatBorder" },
+        { " ", "FloatBorder" },
+        { "", "FloatBorder" },
+        { "", "FloatBorder" },
+        { "", "FloatBorder" },
+        { " ", "FloatBorder" },
+      }
       vim.diagnostic.config({
         severity_sort = true,
         update_in_insert = false,
-        float = { border = "single" },
+        float = { border = "solid", header = false },
         virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
       })
 
@@ -88,8 +98,8 @@ return {
       vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
 
       local handlers = {
-        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
-        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
+        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
       }
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()

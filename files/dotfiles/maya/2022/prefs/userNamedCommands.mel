@@ -296,3 +296,9 @@ nameCommand
 	-command ("CreateBuffer")
 	CreateBufferNameCommand;
 
+nameCommand
+	-annotation "ToggleIsolateSelectNameCommand"
+	-sourceType "mel"
+	-command ("ToggleIsolateSelect")
+	ToggleIsolateSelectNameCommand;
+

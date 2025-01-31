@@ -21,6 +21,9 @@ return {
       completion = {
         documentation = {
           window = {
+            min_width = 63,
+            max_width = 63,
+            border = "single",
             direction_priority = {
               menu_north = { "n" },
               menu_south = { "n" },
@@ -45,7 +48,7 @@ return {
         },
       },
       signature = {
-        enabled = true,
+        enabled = false,
         window = {
           max_height = 10,
           border = "padded",

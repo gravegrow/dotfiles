@@ -32,15 +32,27 @@ return {
         go_in_plus = "<CR>",
       },
       windows = {
-        max_number = 3,
+        max_number = 1,
         width_focus = 30,
         width_preview = 20,
       },
     })
 
     function string:endswith(ending)
+      ---@diagnostic disable-next-line: param-type-mismatch
       return ending == "" or self:sub(-#ending) == ending
     end
+
+    vim.api.nvim_create_autocmd("User", {
+      pattern = "MiniFilesWindowUpdate",
+      callback = function(args)
+        local win_id = args.data.win_id
+
+        local config = vim.api.nvim_win_get_config(win_id)
+        config.height = 100
+        vim.api.nvim_win_set_config(win_id, config)
+      end,
+    })
 
     vim.keymap.set("n", "<c-e>", function()
       local minifiles = require("mini.files")
