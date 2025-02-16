@@ -34,20 +34,10 @@ return {
       local keymap = vim.keymap.set
       keymap("n", "<leader>df", dapui.float_element, { desc = "[F]loat UI element" })
 
-      local function open()
-        vim.g.set_separators_pretty()
-        dapui.open()
-      end
-
-      local function close()
-        vim.g.set_separators_pretty()
-        dapui.close()
-      end
-
-      dap.listeners.before.attach.dapui_config = open
-      dap.listeners.before.launch.dapui_config = open
-      dap.listeners.before.event_terminated.dapui_config = close
-      dap.listeners.before.event_exited.dapui_config = close
+      dap.listeners.before.attach.dapui_config = dapui.open
+      dap.listeners.before.launch.dapui_config = dapui.open
+      dap.listeners.before.event_terminated.dapui_config = dapui.close
+      dap.listeners.before.event_exited.dapui_config = dapui.close
     end,
   },
 

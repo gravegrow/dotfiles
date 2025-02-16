@@ -9,11 +9,11 @@ return {
       vim.keymap.set("n", "ghs", gitsigns.select_hunk, { desc = "[G]itsigns [H]unk [S]elec" })
     end,
     signs = {
-      add = { text = "┃" },
-      change = { text = "┃" },
-      delete = { text = "━" },
-      topdelete = { text = "━" },
-      changedelete = { text = "~" },
+      add = { text = "│" },
+      change = { text = "│" },
+      delete = { text = "│" },
+      topdelete = { text = "│" },
+      changedelete = { text = "│" },
       untracked = { text = "┆" },
     },
   },

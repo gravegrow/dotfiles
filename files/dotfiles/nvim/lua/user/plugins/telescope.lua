@@ -35,7 +35,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
             preview_width = 0.55,
           },
         },
-        file_ignore_patterns = { ".spl", ".asset", ".meta", ".asmdef", ".unity" },
+        file_ignore_patterns = { ".spl", ".asset", ".meta", ".asmdef", ".unity", ".fbx", ".obj", ".png" },
       },
       extensions = {
         fzf = {},

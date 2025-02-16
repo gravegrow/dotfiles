@@ -23,7 +23,7 @@ return {
           window = {
             min_width = 63,
             max_width = 63,
-            border = "single",
+            border = "solid",
             direction_priority = {
               menu_north = { "n" },
               menu_south = { "n" },

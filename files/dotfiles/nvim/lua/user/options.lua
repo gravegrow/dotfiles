@@ -20,6 +20,7 @@ opt.number = true -- Show line numbers
 opt.relativenumber = true -- Show line numbers
 opt.splitbelow = true -- Horizontal splits will be below
 opt.splitright = true -- Vertical splits will be to the right
+opt.hlsearch = false
 
 -- opt.colorcolumn = { 81 }
 

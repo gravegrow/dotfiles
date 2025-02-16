@@ -1,16 +1,8 @@
-vim.g.set_separators_solid = function()
-  vim.api.nvim_set_hl(0, "WinSeparator", { link = "FloatBorder" })
-end
-
-vim.g.set_separators_pretty = function()
-  vim.api.nvim_set_hl(0, "WinSeparator", { link = "Comment" })
-end
-
 return {
   {
     "rebelot/kanagawa.nvim",
     lazy = false,
-    enabled = true,
+    -- enabled = false,
     priority = 1000,
     config = function()
       require("kanagawa").setup({
@@ -30,9 +22,30 @@ return {
           local theme = colors.theme
           return {
             Normal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p3 },
-            FloatTitle = { fg = theme.ui.special, bg = theme.ui.bg_p1, bold = true },
+            Visual = { bg = theme.ui.bg_m1 },
+            FloatTitle = { fg = theme.syn.constant, bg = theme.ui.bg_p1, bold = true },
 
-            TelescopeTitle = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p1, bold = true },
+            NormalFloat = { bg = theme.ui.bg_dim },
+            FloatBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
+            WinSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p3 },
+
+            Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m1 },
+            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
+            PmenuSbar = { bg = theme.ui.bg_m2 },
+            PmenuThumb = { bg = theme.ui.bg_p2 },
+
+            StatusLine = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+            ColorColumn = { bg = theme.ui.bg_m2 },
+            LineNr = { fg = theme.syn.comment },
+            CursorLineNr = { fg = theme.ui.fg_dim, bold = true },
+
+            Search = { fg = "#FFFFFF", bg = theme.ui.bg_p1, bold = false, blend = 100 },
+            CurSearch = { fg = "#FFFFFF", bg = "none", bold = true, underline = true },
+            IncSearch = { link = "CurSearch" },
+
+            ["@string.documentation"] = { fg = theme.syn.comment },
+
+            TelescopeTitle = { fg = theme.syn.constant, bg = theme.ui.bg_p1, bold = true },
             TelescopePreviewTitle = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim, bold = true },
             TelescopePromptNormal = { bg = theme.ui.bg_m1 },
             TelescopePromptCounter = { fg = theme.syn.comment },
@@ -41,25 +54,6 @@ return {
             TelescopeResultsBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
             TelescopePreviewNormal = { bg = theme.ui.bg_dim },
             TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
-
-            Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_m1 },
-            PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2 },
-            PmenuSbar = { bg = theme.ui.bg_m1 },
-            PmenuThumb = { bg = theme.ui.bg_p2 },
-
-            StatusLine = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
-            LineNr = { fg = theme.syn.comment },
-            CursorLineNr = { fg = theme.ui.fg_dim, bold = true },
-
-            NormalFloat = { bg = theme.ui.bg_dim },
-            FloatBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
-            WinSeparator = { fg = theme.ui.bg_m1, bg = theme.ui.bg_p3 },
-
-            ["@string.documentation"] = { fg = theme.syn.comment },
-
-            Search = { fg = "#FFFFFF", bg = theme.ui.bg_p1, bold = false, blend = 100 },
-            CurSearch = { fg = "#FFFFFF", bg = "none", bold = true, underline = true },
-            IncSearch = { link = "CurSearch" },
 
             RenderMarkdownCode = { bg = theme.ui.bg_m2 },
             RenderMarkdownBullet = { fg = "#627690" },
@@ -89,7 +83,7 @@ return {
             LspInlayHint = { fg = theme.syn.comment, italic = true },
 
             NormalFloatSec = { link = "TelescopePreviewNormal" },
-            FloatBorderSec = { fg = theme.syn.keyword, bg = theme.ui.bg_m2 },
+            FloatBorderSec = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m2 },
             FloatTitleSec = { link = "TelescopePreviewTitle" },
 
             BlinkCmpMenu = { link = "NormalFloatSec" },
@@ -106,6 +100,11 @@ return {
             MiniFilesTitleFocused = { fg = theme.syn.special1, bg = theme.ui.bg_dim },
             MiniFilesBorderModified = { fg = theme.syn.constant, bg = theme.ui.bg_m2 },
             MiniFilesBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
+
+            MiniHipatternsFixme = { fg = theme.ui.bg_m2, bg = "#FF5D62" },
+            MiniHipatternsHack = { fg = theme.ui.bg_m2, bg = "#FFA066" },
+            MiniHipatternsTodo = { fg = theme.ui.bg_m2, bg = "#7FB4CA" },
+            MiniHipatternsNote = { fg = theme.ui.bg_m2, bg = "#7AA89F" },
           }
         end,
         background = {

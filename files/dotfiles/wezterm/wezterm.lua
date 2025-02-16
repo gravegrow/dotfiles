@@ -46,6 +46,7 @@ config.keys = {
 	make_session_keymap(
 		'p',
 		''
+			.. '/media/storage/development/projects '
 			.. '/media/storage/development/unity/projects/ '
 			.. '/media/storage/development/cpp '
 			.. '/media/storage/development/godot '
