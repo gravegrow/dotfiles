@@ -46,7 +46,7 @@ return {
             ["@string.documentation"] = { fg = theme.syn.comment },
 
             TelescopeTitle = { fg = theme.syn.constant, bg = theme.ui.bg_p1, bold = true },
-            TelescopePreviewTitle = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim, bold = true },
+            TelescopePreviewTitle = { fg = theme.syn.string, bg = theme.ui.bg_p1, bold = true },
             TelescopePromptNormal = { bg = theme.ui.bg_m1 },
             TelescopePromptCounter = { fg = theme.syn.comment },
             TelescopePromptBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },

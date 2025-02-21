@@ -1,15 +1,15 @@
 * {
-    background:    #242424;
-    bg1:    #141110;
-    bg2:    #141110;
-    bg3:    #AF9DA2;
+    background:    #1F1F22;
+    bg1:    #12120F;
+    bg2:    #1F1F22;
+    bg3:    #12120F;
     border: #12120F;
     fg0:    #9A8F8A;
     fg2:    #809BB3;
-    fg3:    #302B27;
+    fg3:    #4F4F59;
     fg4:    #AF9DA2;
     inputborder: #000000;
-    selection: #3D3D3D;
+    selection: #1A1A1C;
 
     border-radius: 0px;
 }

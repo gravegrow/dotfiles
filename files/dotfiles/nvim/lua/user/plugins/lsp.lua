@@ -1,5 +1,16 @@
 local servers = {
-  basedpyright = {},
+  basedpyright = {
+    settings = {
+      basedpyright = {
+        analysis = {
+          extraPaths = {
+            "/media/storage/development/maya/devkit2020.3/devkit/other/Python27/pymel/extras/completion/py",
+            "/media/storage/development/maya/devkit2020.3/devkit/other/Python27/pymel/extras/completion/pyi",
+          },
+        },
+      },
+    },
+  },
   ruff = {},
   clangd = {},
   taplo = {},

@@ -48,11 +48,11 @@ return {
         },
       },
       signature = {
-        enabled = false,
+        enabled = true,
+        trigger = { show_on_insert = true },
         window = {
-          max_height = 10,
-          border = "padded",
           winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder",
+          show_documentation = true,
         },
       },
     },

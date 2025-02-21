@@ -1,6 +1,6 @@
 return {
   "ray-x/lsp_signature.nvim",
-  enabled = true,
+  enabled = false,
   opts = {
     -- doc_lines = 0,
     handler_opts = {

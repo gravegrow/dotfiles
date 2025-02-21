@@ -1,7 +1,7 @@
 @import "colors.rasi"
 
 * {
-    font:   "JetBrainsMono Nerd Font Light 11";
+    font:   "BerkeleyMono Nerd Font Mono 11";
 }
 
 mainbox {
@@ -20,7 +20,7 @@ listview {
 window {
     location:       north east;
     width:          200;
-    y-offset:       20;
+    y-offset:       24;
     x-offset:       0;
 
     border:             1px;
