@@ -36,7 +36,7 @@ opt.listchars = { tab = "┆ ", trail = "·", nbsp = "␣" } -- Define which hel
 opt.list = true -- Define which helper symbols to show
 
 opt.pumheight = 10 -- Make popup menu smaller
-opt.laststatus = 3 -- Make statusline global
+-- opt.laststatus = 3 -- Make statusline global
 opt.cmdheight = 0 -- Cmdline height
 opt.shortmess:append("I") -- Disable intro screen
 

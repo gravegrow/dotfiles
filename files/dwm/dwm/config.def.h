@@ -1,3 +1,4 @@
+// clang-format off
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
@@ -38,14 +39,15 @@ static const char color_green[]  = "#8A9A7B";
 static const char color_blue[]   = "#627691";
 static const char color_teal[]   = "#8EA4A2";
 static const char color_purple[] = "#807e96";
+static const char color_border[] = "#443c3c";
 
 static const char color_black[]  = "#0d0d0d";
 static const char color_gray[]   = "#464646";
 
 static const char *colors[][3] = {
     /*               fg              bg         border   */
-    [SchemeNorm]   = {color_gray,  color_bg, color_black},
-    [SchemeSel]    = {color_gray,  color_bg, color_gray},
+    [SchemeNorm]   = {color_gray,  color_bg, color_bg},
+    [SchemeSel]    = {color_gray,  color_bg, color_border},
     [SchemeTitle]  = {color_fg,    color_bg, color_bg},
     [SchemeLayout] = {color_fg,    color_bg, color_black},
 };

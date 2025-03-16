@@ -35,6 +35,7 @@ return {
             PmenuThumb = { bg = theme.ui.bg_p2 },
 
             StatusLine = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
+            StatusLineNC = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m1 },
             ColorColumn = { bg = theme.ui.bg_m2 },
             LineNr = { fg = theme.syn.comment },
             CursorLineNr = { fg = theme.ui.fg_dim, bold = true },
@@ -54,6 +55,7 @@ return {
             TelescopeResultsBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
             TelescopePreviewNormal = { bg = theme.ui.bg_dim },
             TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+            TelescopeSelectionCaret = { bg = "#1A1A1C", fg = theme.syn.string },
 
             RenderMarkdownCode = { bg = theme.ui.bg_m2 },
             RenderMarkdownBullet = { fg = "#627690" },
@@ -81,9 +83,10 @@ return {
             CursorLineRecording = { bg = "#301d20" },
 
             LspInlayHint = { fg = theme.syn.comment, italic = true },
+            LspSignatureActiveParameter = { fg = theme.syn.constant, bold = true, underline = true },
 
             NormalFloatSec = { link = "TelescopePreviewNormal" },
-            FloatBorderSec = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m2 },
+            FloatBorderSec = { fg = theme.syn.special1, bg = theme.ui.bg_m2 },
             FloatTitleSec = { link = "TelescopePreviewTitle" },
 
             BlinkCmpMenu = { link = "NormalFloatSec" },
@@ -91,7 +94,7 @@ return {
             CmpItemAbbr = { link = "CmpItemMenu" },
             BlinkCmpDocBorder = { link = "FloatBorderSec" },
             BlinkCmpDocSeparator = { bg = theme.ui.bg_p3, fg = theme.syn.comment },
-            BlinkCmpScrollBarThumb = { bg = theme.syn.comment },
+            BlinkCmpScrollBarThumb = { bg = theme.syn.special1 },
             BlinkCmpLabelDescription = { link = "Comment" },
             CmpItemAbbrMatch = { fg = theme.syn.constant, bold = true },
             BlinkCmpLabelMatch = { fg = theme.syn.constant, bold = true },

@@ -46,18 +46,25 @@ return {
     event = "LspAttach",
     dependencies = {
       { "theHamsta/nvim-dap-virtual-text", opts = {} },
-      { "LiadOz/nvim-dap-repl-highlights", opts = {} },
       {
         "stevearc/overseer.nvim",
-        opts = {
-          templates = { "builtin", "user.cpp_compile", "user.cpp_clean" },
-        },
+        opts = { templates = { "builtin", "user.cpp.compile", "user.cpp.clean" } },
       },
       {
         "jay-babu/mason-nvim-dap.nvim",
-        opts = {
-          ensure_installed = { "codelldb" },
-        },
+        opts = { ensure_installed = { "codelldb" } },
+      },
+      {
+        "igorlfs/nvim-dap-view",
+        enabled = false,
+        opts = {},
+        config = function()
+          local dap, dapui = require("dap"), require("dap-view")
+          dap.listeners.before.attach.dapui_config = dapui.open
+          dap.listeners.before.launch.dapui_config = dapui.open
+          dap.listeners.before.event_terminated.dapui_config = dapui.close
+          dap.listeners.before.event_exited.dapui_config = dapui.close
+        end,
       },
     },
 
@@ -75,17 +82,6 @@ return {
       }
 
       dap.configurations.cpp = {
-        -- {
-        -- 	name = "CODELLDB: Launch file",
-        -- 	type = "codelldb",
-        -- 	request = "launch",
-        -- 	program = function()
-        -- 		return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-        -- 	end,
-        -- 	cwd = "${workspaceFolder}",
-        -- 	expressions = "native",
-        -- 	stopOnEntry = false,
-        -- },
         {
           name = "CODELLDB: Current File",
           type = "codelldb",

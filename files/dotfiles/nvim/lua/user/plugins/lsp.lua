@@ -2,6 +2,7 @@ local servers = {
   basedpyright = {
     settings = {
       basedpyright = {
+        typeCheckingMode = "standard",
         analysis = {
           extraPaths = {
             "/media/storage/development/maya/devkit2020.3/devkit/other/Python27/pymel/extras/completion/py",
@@ -59,7 +60,7 @@ return {
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end
 
-          vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help, { buffer = event.buf })
+          -- vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help, { buffer = event.buf })
 
           keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
           keymap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")

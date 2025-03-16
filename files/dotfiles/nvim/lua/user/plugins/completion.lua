@@ -10,6 +10,7 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+      cmdline = { completion = { menu = { auto_show = true } } },
       keymap = {
         preset = "default",
         ["<C-L>"] = { "snippet_forward", "fallback" },
@@ -23,7 +24,7 @@ return {
           window = {
             min_width = 63,
             max_width = 63,
-            border = "solid",
+            border = "single",
             direction_priority = {
               menu_north = { "n" },
               menu_south = { "n" },

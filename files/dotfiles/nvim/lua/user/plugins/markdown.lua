@@ -1,32 +1,5 @@
 return {
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown" },
-    keys = {
-      {
-        "<leader>mr",
-        "<CMD>RenderMarkdown toggle<CR>",
-        desc = "[M]arkdown [R]ender Toggle",
-      },
-    },
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "echasnovski/mini.nvim",
-    }, -- if you use the mini.nvim suite
-    opts = {
-      heading = { icons = { "󰎤 ", "󰎧 ", "󰎪 ", "󰎭 ", "󰎱 ", "󰎳 " } },
-      code = { left_pad = 1 },
-      bullet = { icons = { "•", "∘", "◆", "◇" } },
-    },
-
-    config = function(_, opts)
-      local render = require("render-markdown")
-      render.setup(opts)
-      render.disable()
-    end,
-  },
-
-  {
     "tadmccorkle/markdown.nvim",
     ft = "markdown",
     opts = {

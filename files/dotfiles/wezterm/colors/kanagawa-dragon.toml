@@ -2,28 +2,28 @@
 foreground = "#C5C9C5"
 background = "#181816"
 
-cursor_bg = "#be8c8c"
-cursor_border = "#181816"
+cursor_bg = "#938AA9"
+cursor_border = "#938AA9"
 selection_bg = "#1F1F22"
 
 ansi = [
-	"#1f1f22", # Black (Host)
-	"#C4746E", # Red (Syntax string)
-	"#8A9A7B", # Green (Command)
-	"#B7927B", # Yellow (Command second)
-	"#8BA4B0", # Blue (Path)
-	"#A292A3", # Magenta (Syntax var)
-	"#8EA4A2", # Cyan (Prompt)
-	"#90847f", # White
+	"#1f1f22",
+	"#c4746e",
+	"#8a9a7b",
+	"#b98d7b",
+	"#627691",
+	"#A292A3",
+	"#8EA4A2",
+	"#9e9b93",
 ]
 
 brights = [
-	"#272830", # Bright Black
-	'#E46876', # Bright Red (Command error)
-	'#87A987', # Bright Green (Exec)
-	'#b99b88', # Bright Yellow
-	'#627691', # Bright Blue (Folder)
-	'#938AA9', # Bright Magenta
-	'#7AA89F', # Bright Cyan
-	'#a3a8a3', # Bright White
+	"#272830",
+	'#E46876',
+	'#87A987',
+	'#b6927b',
+	'#8ba4b0',
+	'#938AA9',
+	'#7AA89F',
+	'#a3a8a3',
 ]

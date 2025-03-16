@@ -16,7 +16,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
     require("telescope").setup({
       defaults = {
         prompt_prefix = " ",
-        selection_caret = "▌ ",
+        selection_caret = " ",
         sorting_strategy = "ascending",
         layout_strategy = "vertical",
         path_display = { "filename_first" },

@@ -13,11 +13,33 @@ return {
       skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
       -- skip autopair when the cursor is inside these treesitter nodes
       skip_ts = { "string" },
-      -- skip autopair when next character is closing pair
       -- and there are more closing pairs than opening pairs
       skip_unbalanced = true,
       -- better deal with markdown code blocks
       markdown = true,
+      mappings = {
+        -- Single quote: Prevent pairing if either side is a letter
+        ['"'] = {
+          action = "closeopen",
+          pair = '""',
+          neigh_pattern = "[^%w\\][^%w]",
+          register = { cr = false },
+        },
+        -- Single quote: Prevent pairing if either side is a letter
+        ["'"] = {
+          action = "closeopen",
+          pair = "''",
+          neigh_pattern = "[^%w\\][^%w]",
+          register = { cr = false },
+        },
+        -- Backtick: Prevent pairing if either side is a letter
+        ["`"] = {
+          action = "closeopen",
+          pair = "``",
+          neigh_pattern = "[^%w\\][^%w]",
+          register = { cr = false },
+        },
+      },
     })
 
     require("mini.icons").setup({
