@@ -19,6 +19,44 @@ return {
         ["<C-D>"] = { "scroll_documentation_down", "fallback" },
       },
       appearance = { use_nvim_cmp_as_default = true },
+      sources = {
+        providers = {
+          buffer = {
+            max_items = 3,
+            min_keyword_length = 4,
+          },
+          snippets = {
+            should_show_items = function()
+              local trigger = ":"
+              local col = vim.api.nvim_win_get_cursor(0)[2]
+              local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+              return before_cursor:match(trigger .. "%w*$") ~= nil
+            end,
+            transform_items = function(_, items)
+              local trigger = ":"
+              local col = vim.api.nvim_win_get_cursor(0)[2]
+              local before_cursor = vim.api.nvim_get_current_line():sub(1, col)
+              local trigger_pos = before_cursor:find(trigger .. "[^" .. trigger .. "]*$")
+              if trigger_pos then
+                for _, item in ipairs(items) do
+                  if not item.trigger_text_modified then
+                    ---@diagnostic disable-next-line: inject-field
+                    item.trigger_text_modified = true
+                    item.textEdit = {
+                      newText = item.insertText or item.label,
+                      range = {
+                        start = { line = vim.fn.line(".") - 1, character = trigger_pos - 1 },
+                        ["end"] = { line = vim.fn.line(".") - 1, character = col },
+                      },
+                    }
+                  end
+                end
+              end
+              return items
+            end,
+          },
+        },
+      },
       completion = {
         documentation = {
           window = {

@@ -31,7 +31,7 @@ windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitRe
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
 windowPref -topLeftCorner 28 2120 -widthHeight 1310 1402 -maximized false faceHelpImage;
 windowPref -topLeftCorner 730 2319 -widthHeight 1119 708 -maximized false AddAttrWin;
-windowPref -topLeftCorner 232 956 -widthHeight 1601 1010 -maximized false connectWindowModal;
+windowPref -topLeftCorner 214 918 -widthHeight 1601 1010 -maximized false connectWindowModal;
 windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false createRenderNodeWindow;
 windowPref -topLeftCorner 341 356 -widthHeight 936 706 -maximized false expressionEditorWin;
 windowPref -topLeftCorner 730 2438 -widthHeight 1000 708 -maximized false RenameAttrWin;
@@ -54,3 +54,4 @@ windowPref -topLeftCorner 344 206 -widthHeight 313 602 -maximized false PSD_Wind
 windowPref -topLeftCorner 671 1610 -widthHeight 316 93 -maximized false UVSzwnd;
 windowPref -topLeftCorner 471 1435 -widthHeight 514 566 -maximized false largeCurveWindow;
 windowPref -topLeftCorner 331 1394 -widthHeight 650 776 -maximized false connectWindow;
+windowPref -topLeftCorner 617 1318 -widthHeight 800 250 -maximized false gradientAttributeEditor;

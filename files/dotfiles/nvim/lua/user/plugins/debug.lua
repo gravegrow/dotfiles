@@ -48,7 +48,16 @@ return {
       { "theHamsta/nvim-dap-virtual-text", opts = {} },
       {
         "stevearc/overseer.nvim",
-        opts = { templates = { "builtin", "user.cpp.compile", "user.cpp.clean" } },
+        opts = {
+          templates = {
+            "builtin",
+            "user.cpp.compile",
+            "user.cpp.clean",
+
+            "user.c.compile",
+            "user.c.clean",
+          },
+        },
       },
       {
         "jay-babu/mason-nvim-dap.nvim",
@@ -91,7 +100,19 @@ return {
           expressions = "native",
           program = "${workspaceFolder}/${fileBasenameNoExtension}",
         },
+        {
+          name = "CODELLDB: Select Executable",
+          type = "codelldb",
+          request = "launch",
+          program = function()
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = false,
+        },
       }
+
+      dap.configurations.c = dap.configurations.cpp
 
       vim.fn.sign_define("DapBreakpoint", { text = "󰃤", texthl = "Error" })
       vim.fn.sign_define("DapBreakpointRejected", { text = "󰨰", texthl = "Error" })

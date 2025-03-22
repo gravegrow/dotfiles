@@ -84,6 +84,7 @@ return {
 
             LspInlayHint = { fg = theme.syn.comment, italic = true },
             LspSignatureActiveParameter = { fg = theme.syn.constant, bold = true, underline = true },
+            ["@lsp.type.macro.c"] = { link = "Constant" },
 
             NormalFloatSec = { link = "TelescopePreviewNormal" },
             FloatBorderSec = { fg = theme.syn.special1, bg = theme.ui.bg_m2 },
@@ -104,10 +105,10 @@ return {
             MiniFilesBorderModified = { fg = theme.syn.constant, bg = theme.ui.bg_m2 },
             MiniFilesBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
 
-            MiniHipatternsFixme = { fg = theme.ui.bg_m2, bg = "#FF5D62" },
-            MiniHipatternsHack = { fg = theme.ui.bg_m2, bg = "#FFA066" },
-            MiniHipatternsTodo = { fg = theme.ui.bg_m2, bg = "#7FB4CA" },
-            MiniHipatternsNote = { fg = theme.ui.bg_m2, bg = "#7AA89F" },
+            MiniHipatternsFixme = { fg = theme.ui.bg, bg = "#FF5D62" },
+            MiniHipatternsHack = { fg = theme.ui.bg, bg = "#FFA066" },
+            MiniHipatternsTodo = { fg = theme.ui.bg, bg = "#7FB4CA" },
+            MiniHipatternsNote = { fg = theme.ui.bg, bg = "#7AA89F" },
           }
         end,
         background = {

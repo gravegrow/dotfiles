@@ -105,6 +105,7 @@ software_packages:
   - yazi
   - zathura
   - zathura-pdf-poppler
+  - zathura-djvu
   - reflector
   - rsync
 

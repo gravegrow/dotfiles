@@ -7,40 +7,40 @@ return {
     require("mini.splitjoin").setup()
     require("mini.surround").setup()
 
-    require("mini.pairs").setup({
-      modes = { insert = true, command = true, terminal = false },
-      -- skip autopair when next character is one of these
-      skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-      -- skip autopair when the cursor is inside these treesitter nodes
-      skip_ts = { "string" },
-      -- and there are more closing pairs than opening pairs
-      skip_unbalanced = true,
-      -- better deal with markdown code blocks
-      markdown = true,
-      mappings = {
-        -- Single quote: Prevent pairing if either side is a letter
-        ['"'] = {
-          action = "closeopen",
-          pair = '""',
-          neigh_pattern = "[^%w\\][^%w]",
-          register = { cr = false },
-        },
-        -- Single quote: Prevent pairing if either side is a letter
-        ["'"] = {
-          action = "closeopen",
-          pair = "''",
-          neigh_pattern = "[^%w\\][^%w]",
-          register = { cr = false },
-        },
-        -- Backtick: Prevent pairing if either side is a letter
-        ["`"] = {
-          action = "closeopen",
-          pair = "``",
-          neigh_pattern = "[^%w\\][^%w]",
-          register = { cr = false },
-        },
-      },
-    })
+    -- require("mini.pairs").setup({
+    --   modes = { insert = true, command = true, terminal = false },
+    --   -- skip autopair when next character is one of these
+    --   skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
+    --   -- skip autopair when the cursor is inside these treesitter nodes
+    --   skip_ts = { "string" },
+    --   -- and there are more closing pairs than opening pairs
+    --   skip_unbalanced = true,
+    --   -- better deal with markdown code blocks
+    --   markdown = true,
+    --   mappings = {
+    --     -- Single quote: Prevent pairing if either side is a letter
+    --     ['"'] = {
+    --       action = "closeopen",
+    --       pair = '""',
+    --       neigh_pattern = "[^%w\\][^%w]",
+    --       register = { cr = false },
+    --     },
+    --     -- Single quote: Prevent pairing if either side is a letter
+    --     ["'"] = {
+    --       action = "closeopen",
+    --       pair = "''",
+    --       neigh_pattern = "[^%w\\][^%w]",
+    --       register = { cr = false },
+    --     },
+    --     -- Backtick: Prevent pairing if either side is a letter
+    --     ["`"] = {
+    --       action = "closeopen",
+    --       pair = "``",
+    --       neigh_pattern = "[^%w\\][^%w]",
+    --       register = { cr = false },
+    --     },
+    --   },
+    -- })
 
     require("mini.icons").setup({
       extension = {
@@ -50,14 +50,52 @@ return {
     })
     require("mini.icons").mock_nvim_web_devicons()
 
+    local bordered_overlay = function(display, group, pattern)
+      pattern = pattern or ("%f[%w]()" .. display .. "()%f[%W]")
+
+      local hl = vim.api.nvim_get_hl(0, { name = group })
+      local group_inv = group .. "Reverse"
+      vim.api.nvim_set_hl(0, group_inv, { bg = hl.bg, fg = hl.fg, reverse = true })
+
+      return {
+        [display .. "Borders"] = {
+          pattern = pattern,
+          group = group_inv,
+          extmark_opts = function(_, _, info)
+            return {
+              virt_text = { { "" .. display .. "", group_inv } },
+              virt_text_pos = "overlay",
+              virt_text_win_col = info.from_col - 2,
+              priority = 200,
+            }
+          end,
+        },
+        [display] = {
+          pattern = pattern,
+          group = group,
+          extmark_opts = {
+            virt_text = { { display, group } },
+            virt_text_pos = "overlay",
+            priority = 201,
+          },
+        },
+      }
+    end
+
+    local highlighters = {}
+    local bordered_overlays = {
+      bordered_overlay("FIX", "MiniHipatternsFixme"),
+      bordered_overlay("HACK", "MiniHipatternsHack"),
+      bordered_overlay("TODO", "MiniHipatternsTodo"),
+      bordered_overlay("NOTE", "MiniHipatternsNote"),
+    }
+
+    for _, v in ipairs(bordered_overlays) do
+      highlighters = vim.tbl_extend("force", highlighters, v)
+    end
+
     require("mini.hipatterns").setup({
-      highlighters = {
-        fix = { pattern = "%f[%w]()FIX()%f[%W]", group = "MiniHipatternsFixme" },
-        hack = { pattern = "%f[%w]()HACK()%f[%W]", group = "MiniHipatternsHack" },
-        todo = { pattern = "%f[%w]()TODO()%f[%W]", group = "MiniHipatternsTodo" },
-        note = { pattern = "%f[%w]()NOTE()%f[%W]", group = "MiniHipatternsNote" },
-        info = { pattern = "%f[%w]()INFO()%f[%W]", group = "MiniHipatternsNote" },
-      },
+      highlighters = highlighters,
     })
 
     require("mini.files").setup({
@@ -91,10 +129,10 @@ return {
     vim.keymap.set("n", "<c-e>", function()
       local minifiles = require("mini.files")
       if not minifiles.close() then
-        minifiles.open(vim.api.nvim_buf_get_name(0), false)
-        minifiles.reveal_cwd()
+        -- minifiles.open(vim.api.nvim_buf_get_name(0), false)
+        -- minifiles.reveal_cwd()
+        minifiles.open()
 
-        -- minifiles.open()
         minifiles.refresh({
           content = {
             filter = function(entry)
