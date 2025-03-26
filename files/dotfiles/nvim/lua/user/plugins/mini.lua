@@ -7,41 +7,6 @@ return {
     require("mini.splitjoin").setup()
     require("mini.surround").setup()
 
-    -- require("mini.pairs").setup({
-    --   modes = { insert = true, command = true, terminal = false },
-    --   -- skip autopair when next character is one of these
-    --   skip_next = [=[[%w%%%'%[%"%.%`%$]]=],
-    --   -- skip autopair when the cursor is inside these treesitter nodes
-    --   skip_ts = { "string" },
-    --   -- and there are more closing pairs than opening pairs
-    --   skip_unbalanced = true,
-    --   -- better deal with markdown code blocks
-    --   markdown = true,
-    --   mappings = {
-    --     -- Single quote: Prevent pairing if either side is a letter
-    --     ['"'] = {
-    --       action = "closeopen",
-    --       pair = '""',
-    --       neigh_pattern = "[^%w\\][^%w]",
-    --       register = { cr = false },
-    --     },
-    --     -- Single quote: Prevent pairing if either side is a letter
-    --     ["'"] = {
-    --       action = "closeopen",
-    --       pair = "''",
-    --       neigh_pattern = "[^%w\\][^%w]",
-    --       register = { cr = false },
-    --     },
-    --     -- Backtick: Prevent pairing if either side is a letter
-    --     ["`"] = {
-    --       action = "closeopen",
-    --       pair = "``",
-    --       neigh_pattern = "[^%w\\][^%w]",
-    --       register = { cr = false },
-    --     },
-    --   },
-    -- })
-
     require("mini.icons").setup({
       extension = {
         cpp = { glyph = "" },
@@ -73,11 +38,14 @@ return {
         [display] = {
           pattern = pattern,
           group = group,
-          extmark_opts = {
-            virt_text = { { display, group } },
-            virt_text_pos = "overlay",
-            priority = 201,
-          },
+          extmark_opts = function(_, _, info)
+            return {
+              virt_text = { { display, group } },
+              virt_text_pos = "overlay",
+              virt_text_win_col = info.from_col - 1,
+              priority = 201,
+            }
+          end,
         },
       }
     end

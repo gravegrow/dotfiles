@@ -51,11 +51,9 @@ return {
         opts = {
           templates = {
             "builtin",
-            "user.cpp.compile",
-            "user.cpp.clean",
-
-            "user.c.compile",
-            "user.c.clean",
+            "user.cpp-compile",
+            "user.cpp-compile-all",
+            "user.cpp-clean",
           },
         },
       },
@@ -96,6 +94,15 @@ return {
           type = "codelldb",
           request = "launch",
           preLaunchTask = "Compile",
+          postDebugTask = "Clean",
+          expressions = "native",
+          program = "${workspaceFolder}/${fileBasenameNoExtension}",
+        },
+        {
+          name = "CODELLDB: All Files",
+          type = "codelldb",
+          request = "launch",
+          preLaunchTask = "CompileAll",
           postDebugTask = "Clean",
           expressions = "native",
           program = "${workspaceFolder}/${fileBasenameNoExtension}",

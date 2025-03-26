@@ -21,7 +21,8 @@ return { -- Fuzzy Finder (files, lsp, etc)
         layout_strategy = "vertical",
         path_display = { "filename_first" },
         results_title = "",
-        preview_title = "",
+        dynamic_preview_title = true,
+        borderchars = { "─", " ", " ", " ", "─", "─", " ", " " },
 
         layout_config = {
           vertical = {

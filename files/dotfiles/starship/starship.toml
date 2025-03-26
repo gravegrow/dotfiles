@@ -33,11 +33,11 @@ style = "fg:3 bg:black"
 format = "[](fg:black)[  $version ]($style bold)[$virtualenv ]($style)[](fg:black)"
 
 [c]
-detect_extensions = ["cpp"]
+detect_extensions = ["cpp", "hpp", "c", "h"]
 detect_files = ["CMakeLists.txt"]
-commands = [["clang++", "--version"]]
+commands = [['clang', '--version'], ['gcc', '--version'], ['cc', '--version']]
 style = "fg:blue bg:black bold"
-format = '[](fg:black)[  $name ]($style)[](fg:black)'
+format = '[](fg:black)[  $name ]($style)[](fg:black)'
 
 [lua]
 style = "fg:blue bg:black bold"

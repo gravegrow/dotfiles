@@ -54,7 +54,7 @@ return {
             TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_dim },
             TelescopeResultsBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
             TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-            TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_dim },
+            TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = "#1A1A1C" },
             TelescopeSelectionCaret = { bg = "#1A1A1C", fg = theme.syn.string },
 
             RenderMarkdownCode = { bg = theme.ui.bg_m2 },
@@ -105,10 +105,10 @@ return {
             MiniFilesBorderModified = { fg = theme.syn.constant, bg = theme.ui.bg_m2 },
             MiniFilesBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
 
-            MiniHipatternsFixme = { fg = theme.ui.bg, bg = "#FF5D62" },
-            MiniHipatternsHack = { fg = theme.ui.bg, bg = "#FFA066" },
-            MiniHipatternsTodo = { fg = theme.ui.bg, bg = "#7FB4CA" },
-            MiniHipatternsNote = { fg = theme.ui.bg, bg = "#7AA89F" },
+            MiniHipatternsFixme = { fg = theme.ui.bg, bg = "#945B5B" },
+            MiniHipatternsHack = { fg = theme.ui.bg, bg = "#B7927B" },
+            MiniHipatternsTodo = { fg = theme.ui.bg, bg = "#627691" },
+            MiniHipatternsNote = { fg = theme.ui.bg, bg = "#8EA4A2" },
           }
         end,
         background = {
