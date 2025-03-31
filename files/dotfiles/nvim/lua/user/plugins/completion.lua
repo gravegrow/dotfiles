@@ -70,6 +70,7 @@ return {
           },
         },
         menu = {
+          max_height = 8,
           draw = {
             columns = { { "kind_icon" }, { "label", gap = 1 } },
             components = {
@@ -91,7 +92,8 @@ return {
         trigger = { show_on_insert = true },
         window = {
           winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder",
-          show_documentation = true,
+          direction_priority = { "s" },
+          show_documentation = false,
         },
       },
     },

@@ -21,7 +21,7 @@ return {
         overrides = function(colors)
           local theme = colors.theme
           return {
-            Normal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_p3 },
+            Normal = { bg = theme.ui.bg_p3 },
             Visual = { bg = theme.ui.bg_m1 },
             FloatTitle = { fg = theme.syn.constant, bg = theme.ui.bg_p1, bold = true },
 
@@ -40,6 +40,7 @@ return {
             LineNr = { fg = theme.syn.comment },
             CursorLineNr = { fg = theme.ui.fg_dim, bold = true },
 
+            Folded = { bg = theme.ui.bg_m1 },
             Search = { fg = "#FFFFFF", bg = theme.ui.bg_p1, bold = false, blend = 100 },
             CurSearch = { fg = "#FFFFFF", bg = "none", bold = true, underline = true },
             IncSearch = { link = "CurSearch" },
@@ -87,7 +88,7 @@ return {
             ["@lsp.type.macro.c"] = { link = "Constant" },
 
             NormalFloatSec = { link = "TelescopePreviewNormal" },
-            FloatBorderSec = { fg = theme.syn.special1, bg = theme.ui.bg_m2 },
+            FloatBorderSec = { fg = theme.syn.comment, bg = theme.ui.bg_m2 },
             FloatTitleSec = { link = "TelescopePreviewTitle" },
 
             BlinkCmpMenu = { link = "NormalFloatSec" },

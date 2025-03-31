@@ -1,47 +1,5 @@
 return {
   {
-    "rcarriga/nvim-dap-ui",
-    event = "LspAttach",
-    enabled = true,
-    dependencies = {
-      "mfussenegger/nvim-dap",
-      "nvim-neotest/nvim-nio",
-    },
-
-    config = function()
-      local dap, dapui = require("dap"), require("dapui")
-      dapui.setup({
-        controls = { enabled = false },
-        layouts = {
-          {
-            elements = {
-              { id = "console", size = 0.60 },
-            },
-            position = "bottom",
-            size = 0.25,
-          },
-          {
-            elements = {
-              { id = "watches", size = 0.50 },
-              { id = "breakpoints", size = 0.50 },
-            },
-            position = "top",
-            size = 0.25,
-          },
-        },
-      })
-
-      local keymap = vim.keymap.set
-      keymap("n", "<leader>df", dapui.float_element, { desc = "[F]loat UI element" })
-
-      dap.listeners.before.attach.dapui_config = dapui.open
-      dap.listeners.before.launch.dapui_config = dapui.open
-      dap.listeners.before.event_terminated.dapui_config = dapui.close
-      dap.listeners.before.event_exited.dapui_config = dapui.close
-    end,
-  },
-
-  {
     "mfussenegger/nvim-dap",
     event = "LspAttach",
     dependencies = {
@@ -63,10 +21,20 @@ return {
       },
       {
         "igorlfs/nvim-dap-view",
-        enabled = false,
+        enabled = true,
         opts = {},
         config = function()
           local dap, dapui = require("dap"), require("dap-view")
+          dapui.setup({
+            winbar = {
+              -- sections = { "watches", "exceptions", "breakpoints", "threads", "repl" },
+              sections = { "watches", "breakpoints", "repl" },
+            },
+            windows = {
+              height = 8,
+              terminal = { position = "right" },
+            },
+          })
           dap.listeners.before.attach.dapui_config = dapui.open
           dap.listeners.before.launch.dapui_config = dapui.open
           dap.listeners.before.event_terminated.dapui_config = dapui.close

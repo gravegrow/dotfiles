@@ -22,7 +22,7 @@ return { -- Fuzzy Finder (files, lsp, etc)
         path_display = { "filename_first" },
         results_title = "",
         dynamic_preview_title = true,
-        borderchars = { "─", " ", " ", " ", "─", "─", " ", " " },
+        borderchars = { "━", " ", " ", " ", "━", "━", " ", " " },
 
         layout_config = {
           vertical = {

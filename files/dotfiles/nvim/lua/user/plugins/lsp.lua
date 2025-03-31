@@ -60,8 +60,6 @@ return {
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end
 
-          -- vim.keymap.set("i", "<M-k>", vim.lsp.buf.signature_help, { buffer = event.buf })
-
           keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
           keymap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
           keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
@@ -100,7 +98,7 @@ return {
       vim.diagnostic.config({
         severity_sort = true,
         update_in_insert = false,
-        float = { border = "solid", header = false },
+        float = { border = "solid", header = "" },
         virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
       })
 
@@ -109,17 +107,7 @@ return {
       vim.fn.sign_define("DiagnosticSignInfo", { text = "" })
       vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
 
-      local handlers = {
-        ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
-        ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
-      }
-
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      local status, cmp_lsp = pcall(require, "cmp_nvim_lsp")
-
-      if status then
-        capabilities = vim.tbl_deep_extend("force", capabilities, cmp_lsp.default_capabilities())
-      end
 
       local status, blink_cmp = pcall(require, "blink.cmp")
       if status then
@@ -155,7 +143,6 @@ return {
             lspconfig[server_name].setup({
               cmd = server.cmd,
               settings = server.settings,
-              handlers = handlers,
               filetypes = server.filetypes,
               capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
             })

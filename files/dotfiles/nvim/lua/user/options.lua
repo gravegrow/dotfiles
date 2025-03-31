@@ -35,7 +35,7 @@ opt.fillchars:append("vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋
 opt.listchars = { tab = "┆ ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
 opt.list = true -- Define which helper symbols to show
 
-opt.pumheight = 10 -- Make popup menu smaller
+opt.pumheight = 5 -- Make popup menu smaller
 -- opt.laststatus = 3 -- Make statusline global
 opt.cmdheight = 0 -- Cmdline height
 opt.shortmess:append("I") -- Disable intro screen
@@ -119,3 +119,12 @@ vim.filetype.add({
     [".tmux"] = "tmux",
   },
 })
+
+-- Nice and simple folding:
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = ""
+vim.opt.foldcolumn = "0"
+vim.opt.fillchars:append({ fold = " " })
