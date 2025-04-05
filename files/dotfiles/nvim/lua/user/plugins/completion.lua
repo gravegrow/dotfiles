@@ -59,6 +59,7 @@ return {
       },
       completion = {
         documentation = {
+          auto_show = true,
           window = {
             min_width = 63,
             max_width = 63,
@@ -88,7 +89,7 @@ return {
         },
       },
       signature = {
-        enabled = true,
+        enabled = false,
         trigger = { show_on_insert = true },
         window = {
           winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder",

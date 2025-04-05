@@ -94,7 +94,7 @@ return {
       end,
     })
 
-    vim.keymap.set("n", "<c-e>", function()
+    local open_minifiles = function()
       local minifiles = require("mini.files")
       if not minifiles.close() then
         -- minifiles.open(vim.api.nvim_buf_get_name(0), false)
@@ -141,6 +141,8 @@ return {
           },
         })
       end
-    end, { desc = "Mini File [E]xplorer" })
+    end
+
+    -- vim.keymap.set("n", "<c-e>", open_minifiles, { desc = "Mini File [E]xplorer" })
   end,
 }

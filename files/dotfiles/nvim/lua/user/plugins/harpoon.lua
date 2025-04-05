@@ -26,9 +26,9 @@ return {
       vim.notify = default
     end, { desc = "Harpoon [A]dd to list" })
 
-    vim.keymap.set("n", "<leader>e", function()
+    vim.keymap.set("n", "<leader>h", function()
       harpoon.ui:toggle_quick_menu(harpoon:list(), toggle_opts)
-    end, { desc = "Harpoon [E]xplorer toggle" })
+    end, { desc = "[H]arpoon toggle" })
 
     for i, v in ipairs({ "h", "j", "k", "l" }) do
       vim.keymap.set("n", ("<C-%s>"):format(v), function()

@@ -58,6 +58,17 @@ return {
             TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = "#1A1A1C" },
             TelescopeSelectionCaret = { bg = "#1A1A1C", fg = theme.syn.string },
 
+            SnacksPicker = { bg = theme.ui.bg },
+            SnacksPickerBorder = { fg = theme.ui.bg, bg = theme.ui.bg },
+            SnacksPickerInput = { bg = theme.ui.bg_dim },
+            SnacksPickerInputBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
+            SnacksPickerBoxBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
+            SnacksPickerPreviewBorder = { bg = theme.ui.bg, fg = theme.ui.bg_p1 },
+            SnacksPickerTree = { link = "NonText" },
+            SnacksPickerDir = { link = "Comment" },
+            SnacksPickerGitStatusUntracked = { link = "Comment" },
+            SnacksPickerTotals = { link = "LineNr" },
+
             RenderMarkdownCode = { bg = theme.ui.bg_m2 },
             RenderMarkdownBullet = { fg = "#627690" },
             RenderMarkdownInlineHighlight = { bg = "none", fg = theme.syn.operator, bold = true },
