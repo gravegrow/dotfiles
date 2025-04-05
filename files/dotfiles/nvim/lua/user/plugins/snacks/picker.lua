@@ -7,7 +7,7 @@ local layout = {
       box = "vertical",
       border = "none",
       { win = "list", border = "solid" },
-      { win = "preview", border = "single" },
+      { win = "preview", border = "top", height = 0.4 },
     },
   },
 }
@@ -70,7 +70,7 @@ return {
     -- Top Pickers & Explorer
     -- stylua: ignore start
     -- { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
-    { "<c-e>", function() Snacks.explorer() end, desc = "File Explorer" },
+    { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
     { "<leader><space>", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },

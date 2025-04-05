@@ -64,7 +64,7 @@ return {
             SnacksPickerInputBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
             SnacksPickerBoxBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
             SnacksPickerPreview = { bg = theme.ui.bg },
-            SnacksPickerPreviewBorder = { bg = theme.ui.bg, fg = theme.ui.bg_p1 },
+            SnacksPickerPreviewBorder = { bg = theme.ui.bg, fg = theme.ui.bg },
             SnacksPickerTree = { link = "NonText" },
             SnacksPickerDir = { link = "Comment" },
             SnacksPickerGitStatusUntracked = { link = "Comment" },
@@ -125,6 +125,11 @@ return {
             MiniHipatternsHack = { fg = theme.ui.bg, bg = "#B7927B" },
             MiniHipatternsTodo = { fg = theme.ui.bg, bg = "#627691" },
             MiniHipatternsNote = { fg = theme.ui.bg, bg = "#8EA4A2" },
+
+            MiniHipatternsFixmeB = { bg = theme.ui.bg, fg = "#945B5B" },
+            MiniHipatternsHackB = { bg = theme.ui.bg, fg = "#B7927B" },
+            MiniHipatternsTodoB = { bg = theme.ui.bg, fg = "#627691" },
+            MiniHipatternsNoteB = { bg = theme.ui.bg, fg = "#8EA4A2" },
           }
         end,
         background = {
