@@ -63,7 +63,7 @@ return {
           keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
           keymap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
           keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-          keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
+          -- keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
           keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
           keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
           keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")

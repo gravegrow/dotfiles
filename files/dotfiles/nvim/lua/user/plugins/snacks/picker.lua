@@ -1,59 +1,86 @@
-local layout = {
-  layout = {
-    box = "vertical",
-    border = "none",
-    { win = "input", height = 1, border = "solid", title = "{title} {live} {flags}" },
-    {
-      box = "vertical",
-      border = "none",
-      { win = "list", border = "solid" },
-      { win = "preview", border = "top", height = 0.4 },
-    },
-  },
-}
-
 return {
   "snacks.nvim",
   opts = {
     explorer = {},
     picker = {
-      layout = layout,
-      sources = {
-        explorer = {
-          follow_file = false,
-          win = {
-            list = {
-              keys = { ["o"] = "", ["O"] = "" },
-            },
-          },
+      prompt = "  ",
+      layout = {
+        preset = function()
+          return vim.o.columns > 90 and "horizontal" or "vertical"
+        end,
+      },
+      layouts = {
+        sidebar = {
           layout = {
-            preview = false,
-            layout = {
-              width = 40,
-              min_width = 40,
-              position = "left",
-              box = "vertical",
-              { win = "input", height = 1, border = "none" },
-              { win = "list", border = "none" },
+            width = 40,
+            min_width = 40,
+            height = 0,
+            position = "left",
+            border = "none",
+            box = "vertical",
+            { win = "input", height = 1, border = "none" },
+            { win = "list", border = "none" },
+            { win = "preview" },
+          },
+        },
+        ivy_no_input = {
+          layout = {
+            box = "vertical",
+            row = -1,
+            width = 0,
+            height = 6,
+            border = "top",
+            title = "{title} {live} {flags}",
+            title_pos = "left",
+            { win = "list", border = "none" },
+            { win = "preview" },
+          },
+        },
+        horizontal = {
+          layout = {
+            box = "vertical",
+            width = 0,
+            height = 0,
+            { win = "input", height = 1, border = "solid", title = "{title} {live} {flags}" },
+            {
+              box = "horizontal",
+              border = "none",
+              { win = "list", border = "solid", width = 50 },
+              { win = "preview", border = "left" },
             },
           },
         },
+        vertical = {
+          preview = false,
+          layout = {
+            box = "vertical",
+            width = 0,
+            height = 0,
+            { win = "input", height = 1, border = "solid", title = "{title} {live} {flags}" },
+            {
+              box = "vertical",
+              border = "none",
+              { win = "list", border = "solid" },
+              { win = "preview", border = "top", height = 0.65 },
+            },
+          },
+        },
+      },
+      sources = {
+        lsp_references = { layout = { preview = "main", preset = "ivy_no_input" } },
+        diagnostics = { layout = { preview = "main", preset = "ivy_no_input" } },
+        diagnostics_buffer = { layout = { preview = "main", preset = "ivy_no_input" } },
+        undo = { layout = { preview = "main", preset = "sidebar" } },
+        explorer = { layout = { preset = "sidebar" } },
         select = {
           layout = {
-            preview = false,
             layout = {
               backdrop = false,
               width = 0.5,
-              min_width = 80,
-              height = 0.4,
-              min_height = 3,
+              min_width = 60,
               box = "vertical",
-              border = "top",
-              title = "{title}",
-              title_pos = "center",
-              { win = "input", height = 1, border = "bottom" },
+              { win = "input", border = "solid", title = "{title}" },
               { win = "list", border = "solid", min_height = 3 },
-              { win = "preview", title = "{preview}", height = 0.4, border = "top" },
             },
           },
         },
@@ -69,13 +96,12 @@ return {
   keys = {
     -- Top Pickers & Explorer
     -- stylua: ignore start
-    -- { "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
     { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
     { "<leader><space>", function() Snacks.picker.buffers() end, desc = "Buffers" },
     { "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
     { "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
     { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-    { "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+    { "<leader>u", function() Snacks.picker.undo() end, desc = "Undo History" },
     -- find
     { "<leader>ff", function() Snacks.picker.files() end, desc = "Find Files" },
     { "<leader>fF", function() Snacks.picker.files({hidden = true}) end, desc = "Find Files" },
@@ -87,6 +113,7 @@ return {
     { "<leader>fd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
     { "<leader>fD", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+    { "<leader>fl", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },
     { "<leader>gl", function() Snacks.picker.git_log() end, desc = "Git Log" },
@@ -121,7 +148,7 @@ return {
     { "<leader>sq", function() Snacks.picker.qflist() end, desc = "Quickfix List" },
     { "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
     { "<leader>su", function() Snacks.picker.undo() end, desc = "Undo History" },
-    { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
+    -- { "<leader>uC", function() Snacks.picker.colorschemes() end, desc = "Colorschemes" },
     -- LSP
     { "gd", function() Snacks.picker.lsp_definitions() end, desc = "Goto Definition" },
     { "gD", function() Snacks.picker.lsp_declarations() end, desc = "Goto Declaration" },
