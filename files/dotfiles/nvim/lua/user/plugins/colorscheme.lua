@@ -23,7 +23,7 @@ return {
           return {
             Normal = { bg = theme.ui.bg_p3 },
             Visual = { bg = theme.ui.bg_m1 },
-            FloatTitle = { fg = theme.syn.constant, bg = theme.ui.bg_p1, bold = true },
+            FloatTitle = { bg = theme.ui.bg_m1, bold = true },
 
             NormalFloat = { bg = theme.ui.bg_dim },
             FloatBorder = { fg = theme.ui.bg_m2, bg = theme.ui.bg_m2 },
@@ -59,10 +59,11 @@ return {
             TelescopeSelectionCaret = { bg = theme.ui.bg_p2, fg = theme.syn.string },
 
             SnacksPicker = { bg = theme.ui.bg_dim },
+            -- SnacksPickerBox = { bg = theme.ui.bg_dim },
+            SnacksPickerBoxBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
             SnacksPickerBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
             SnacksPickerInput = { bg = theme.ui.bg_m1 },
             SnacksPickerInputBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            SnacksPickerBoxBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
             SnacksPickerPreview = { bg = theme.ui.bg_dim },
             SnacksPickerPreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_m1 },
             SnacksPickerTree = { link = "NonText" },

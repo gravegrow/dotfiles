@@ -6,7 +6,7 @@ return {
       prompt = "  ",
       layout = {
         preset = function()
-          return vim.o.columns > 90 and "horizontal" or "vertical"
+          return vim.o.columns > 100 and "horizontal" or "vertical"
         end,
       },
       layouts = {
@@ -23,72 +23,85 @@ return {
             { win = "preview" },
           },
         },
-        ivy_no_input = {
+        ivy = {
           layout = {
+            backdrop = false,
             box = "vertical",
             row = -1,
             width = 0,
-            height = 6,
-            border = "top",
-            title = "{title} {live} {flags}",
-            title_pos = "left",
+            height = 8,
+            { win = "input", height = 1, border = "none" },
             { win = "list", border = "none" },
             { win = "preview" },
           },
         },
         horizontal = {
           layout = {
-            box = "vertical",
-            width = 0,
-            height = 0,
-            { win = "input", height = 1, border = "solid", title = "{title} {live} {flags}" },
+            backdrop = false,
+            box = "horizontal",
+            width = 0.8,
+            height = 0.8,
             {
-              box = "horizontal",
-              border = "none",
-              { win = "list", border = "solid", width = 50 },
-              { win = "preview", border = "left" },
+              box = "vertical",
+              min_width = 50,
+              width = 50,
+              { win = "input", height = 1, border = "none" },
+              { win = "list", border = "solid" },
             },
+            { win = "preview", border = "left" },
           },
         },
         vertical = {
           preview = false,
           layout = {
+            backdrop = false,
             box = "vertical",
-            width = 0,
-            height = 0,
-            { win = "input", height = 1, border = "solid", title = "{title} {live} {flags}" },
+            width = 0.8,
+            height = 0.8,
+            { win = "input", height = 1, border = "none" },
             {
               box = "vertical",
-              border = "none",
               { win = "list", border = "solid" },
               { win = "preview", border = "top", height = 0.65 },
             },
           },
         },
-      },
-      sources = {
-        lsp_references = { layout = { preview = "main", preset = "ivy_no_input" } },
-        diagnostics = { layout = { preview = "main", preset = "ivy_no_input" } },
-        diagnostics_buffer = { layout = { preview = "main", preset = "ivy_no_input" } },
-        undo = { layout = { preview = "main", preset = "sidebar" } },
-        explorer = { layout = { preset = "sidebar" } },
         select = {
+          preview = false,
           layout = {
-            layout = {
-              backdrop = false,
-              width = 0.5,
-              min_width = 60,
-              box = "vertical",
-              { win = "input", border = "solid", title = "{title}" },
-              { win = "list", border = "solid", min_height = 3 },
-            },
+            backdrop = false,
+            width = 0.5,
+            min_width = 80,
+            height = 0.4,
+            min_height = 3,
+            box = "vertical",
+            { win = "input", height = 1, border = "top", title = "{title}" },
+            { win = "list", border = "solid", min_height = 3 },
+            { win = "preview", title = "{preview}", height = 0.4, border = "top" },
           },
         },
+      },
+      sources = {
+        lsp_symbols = { layout = { preset = "sidebar" } },
+        lsp_references = { layout = { preview = "main", preset = "ivy" } },
+        lines = { layout = { preview = false, preset = "ivy" } },
+        diagnostics = { layout = { preview = "main", preset = "ivy" } },
+        diagnostics_buffer = { layout = { preview = "main", preset = "ivy" } },
+        undo = { layout = { preview = "main", preset = "sidebar" } },
+        colorschemes = { layout = { preview = "input", preset = "select" } },
       },
       formatters = {
         file = {
           filename_first = true,
           truncate = 60,
+        },
+      },
+      win = {
+        input = {
+          keys = {
+            ["<c-d>"] = { "preview_scroll_down", mode = { "i", "n" } },
+            ["<c-u>"] = { "preview_scroll_up", mode = { "i", "n" } },
+          },
         },
       },
     },
@@ -107,12 +120,14 @@ return {
     { "<leader>fF", function() Snacks.picker.files({hidden = true}) end, desc = "Find Files" },
     { "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
     { "<leader>fo", function() Snacks.picker.recent() end, desc = "Recent" },
-    { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Recent" },
+    { "<leader>fk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
     { "<leader>ft", function() Snacks.picker.highlights() end, desc = "Highlights" },
     { "<leader>fh", function() Snacks.picker.help() end, desc = "Help" },
     { "<leader>fd", function() Snacks.picker.diagnostics_buffer() end, desc = "Buffer Diagnostics" },
     { "<leader>fD", function() Snacks.picker.diagnostics() end, desc = "Diagnostics" },
     { "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+    { "<leader>fW", function() Snacks.picker.grep_word({search = function () return vim.fn.expand("<cWORD>") end}) end,
+      desc = "cWORD", mode = { "n", "x" } },
     { "<leader>fl", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
     -- git
     { "<leader>gb", function() Snacks.picker.git_branches() end, desc = "Git Branches" },

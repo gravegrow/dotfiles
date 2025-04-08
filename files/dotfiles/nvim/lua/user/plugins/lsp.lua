@@ -85,17 +85,6 @@ return {
         end,
       })
 
-      local border = {
-        { "", "FloatBorder" },
-        { "", "FloatBorder" },
-        { "", "FloatBorder" },
-        { " ", "FloatBorder" },
-        { "", "FloatBorder" },
-        { "", "FloatBorder" },
-        { "", "FloatBorder" },
-        { " ", "FloatBorder" },
-      }
-
       vim.diagnostic.config({
         severity_sort = true,
         update_in_insert = false,
