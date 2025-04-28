@@ -23,6 +23,10 @@ show_indicators = no
 enable_recursive_icon_lookup = true
 icon_theme = "Papirus-Dark"
 
+[qbittorrent]
+appname = "qbittorrent"
+ignore = true
+
 [spotify]
 appname = "Spotify"
 min_icon_size = 64
@@ -47,5 +51,6 @@ font = BerkeleyMono Nerd Font Mono 16
 background = "#161617"
 foreground = "#B3BFD1"
 frame_color = "#FAB387"
+
 
 # vim: ft=cfg

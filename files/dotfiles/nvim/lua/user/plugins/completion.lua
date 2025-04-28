@@ -6,7 +6,7 @@ return {
       "rafamadriz/friendly-snippets",
     },
     event = { "InsertEnter", "CmdlineEnter" },
-    version = "*",
+    version = "1.*",
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
@@ -59,7 +59,7 @@ return {
       },
       completion = {
         documentation = {
-          auto_show = true,
+          auto_show = false,
           window = {
             min_width = 63,
             max_width = 63,
@@ -89,12 +89,12 @@ return {
         },
       },
       signature = {
-        enabled = false,
+        enabled = true,
         trigger = { show_on_insert = true },
         window = {
           winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder",
           direction_priority = { "s" },
-          show_documentation = false,
+          show_documentation = true,
         },
       },
     },

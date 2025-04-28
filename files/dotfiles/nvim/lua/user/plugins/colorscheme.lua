@@ -11,7 +11,7 @@ return {
             dragonBlack2 = "#1f1f22",
             dragonBlack3 = "#161617",
             dragonBlack4 = "#272830",
-            dragonBlack5 = "#1A1A1C",
+            dragoeBlack5 = "#1A1A1C",
             dragonBlack6 = "#272830",
             dragonAsh = "#4f4f59",
             oldWhite = "#aca3a0",
@@ -22,7 +22,7 @@ return {
           local theme = colors.theme
           return {
             Normal = { bg = theme.ui.bg_p3 },
-            Visual = { bg = theme.ui.bg_m1 },
+            Visual = { bg = theme.ui.bg_p1 },
             FloatTitle = { bg = theme.ui.bg_m1, bold = true },
 
             NormalFloat = { bg = theme.ui.bg_dim },
@@ -95,8 +95,8 @@ return {
             ["@markup.link.label.markdown_inline"] = { fg = "#8ea4a2", underline = false },
             ["@markup.link.url.markdown_inline"] = { fg = "#627690", underline = true },
 
-            CursorLine = { bg = theme.ui.bg_p2 },
-            CursorLineDefault = { bg = theme.ui.bg_p2 },
+            CursorLine = { bg = "#1F1F22" },
+            CursorLineDefault = { bg = "#1F1F22" },
             CursorLineRecording = { bg = "#301d20" },
 
             LspInlayHint = { fg = theme.syn.comment, italic = true },

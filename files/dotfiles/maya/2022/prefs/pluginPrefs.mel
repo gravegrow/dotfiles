@@ -1,9 +1,8 @@
 //Maya Preference 2022 (Release 1)
 //
 //
-evalDeferred("autoLoadPlugin(\"\", \"sphereReader.py\", \"sphereReader\")");
 evalDeferred("autoLoadPlugin(\"\", \"matrixNodes\", \"matrixNodes\")");
-evalDeferred("autoLoadPlugin(\"\", \"transformInterpolator.py\", \"transformInterpolator\")");
-evalDeferred("autoLoadPlugin(\"\", \"angleReader.py\", \"angleReader\")");
 evalDeferred("autoLoadPlugin(\"\", \"quatNodes\", \"quatNodes\")");
+evalDeferred("autoLoadPlugin(\"\", \"fbxmaya\", \"fbxmaya\")");
+evalDeferred("autoLoadPlugin(\"\", \"gpuCache\", \"gpuCache\")");
 evalDeferred("autoLoadPlugin(\"\", \"modelingToolkit\", \"modelingToolkit\")");

@@ -7,7 +7,7 @@ alias py='python3'
 alias lg='lazygit'
 alias bat='bat --style plain --theme ansi'
 
-alias proton='/home/gravegrow/.steam/steam/compatibilitytools.d/GE-Proton9-20/proton'
+alias proton="/media/games/SteamLibrary/steamapps/common/Proton\ -\ Experimental/proton"
 
 set -gx MANPAGER "nvim +Man!"
 set -U fish_color_autosuggestion 4f4f59

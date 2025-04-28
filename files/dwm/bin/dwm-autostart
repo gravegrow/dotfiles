@@ -15,6 +15,6 @@ adb devices &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
 # ciadpi -q 1+s -O 1 -s 25+s -t 5 -a 2 &
-ciadpi -s1 -q1 -Y -Ar -s5 -o25000+s -At -f-1 -r1+s -As -s1 -o1+s -s-1 -An -b+500 &
+# ciadpi -s1 -q1 -Y -Ar -s5 -o25000+s -At -f-1 -r1+s -As -s1 -o1+s -s-1 -An -b+500 &
 
 setxkbmap -layout us,ru -option grp:alt_space_toggle &

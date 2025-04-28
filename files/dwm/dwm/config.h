@@ -129,7 +129,7 @@ static const char *mutevol[] = {"dwm-volume-change", "toggle", NULL};
 /* commands */
 static const char *termcmd[] = {"wezterm", NULL};
 static const char *roficmd[] = {"rofi", "-show", "drun", "-terminal", "wezterm", NULL};
-static const char *privatebrowsercmd[] = {"dwm-browser", "--incognito", NULL};
+static const char *privatebrowsercmd[] = {"dwm-browser-private", NULL};
 static const char *browsercmd[] = { "dwm-browser", NULL};
 static const char *gpickcmd[] = {"dwm-gpick", NULL};
 static const char *filesguicmd[] = {"nemo", NULL};

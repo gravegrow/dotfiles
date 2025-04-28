@@ -90,15 +90,17 @@ return {
         update_in_insert = false,
         float = { border = "solid", header = "" },
         virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "󰰁",
+          },
+        },
       })
 
-      vim.fn.sign_define("DiagnosticSignError", { text = "" })
-      vim.fn.sign_define("DiagnosticSignWarn", { text = "" })
-      vim.fn.sign_define("DiagnosticSignInfo", { text = "" })
-      vim.fn.sign_define("DiagnosticSignHint", { text = "󰰁" })
-
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-
       local status, blink_cmp = pcall(require, "blink.cmp")
       if status then
         capabilities = blink_cmp.get_lsp_capabilities(capabilities)

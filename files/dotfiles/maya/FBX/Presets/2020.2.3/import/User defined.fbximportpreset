@@ -22,9 +22,9 @@
       <HardEdges UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Combine per-vertex Normals" dt="Bool" v="0"/>
       <BlindData UIH="1" UID="0" UIG="0" UIBG="0" lbENU="Blind Data" dt="Bool" v="1"/>
     </Geometry>
-    <Animation UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Animation" dt="Bool" v="1">
-      <ExtraGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Extra Options">
-        <Take UIH="0" UID="0" UIG="0" lbENU="Animation Take" dt="Enum" enumSelected="Animation" v="1" enumItem_0="No Animation" enumItem_1="Animation"/>
+    <Animation UIH="0" UID="0" UIG="0" UIBG="1" UIX="0" lbENU="Animation" dt="Bool" v="1">
+      <ExtraGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Extra Options">
+        <Take UIH="0" UID="0" UIG="0" lbENU="Animation Take" dt="Enum" enumSelected="Take 001" v="1" enumItem_0="No Animation" enumItem_1="Take 001"/>
         <TimeLine UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Fill Timeline" dt="Bool" v="0"/>
         <BakeAnimationLayers UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Bake Animation Layers" dt="Bool" v="1"/>
         <Markers UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Optical Markers" dt="Bool" v="0"/>
@@ -40,20 +40,20 @@
         <ForceWeightNormalize UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Pre-Normalize Weights" dt="Bool" v="0"/>
       </Deformation>
       <CurveFilter UIH="1" UID="0" UIG="0" UIBG="1" UIX="0" lbENU="Curve Filters" dt="Bool" v="0"/>
-      <ConstraintsGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Constraints">
+      <ConstraintsGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Constraints">
         <Constraint UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Constraints" dt="Bool" v="1"/>
         <CharacterType UIH="0" UID="0" UIG="0" lbENU="Skeleton Definitions as" dt="Enum" enumSelected="HumanIK" v="1" enumItem_0="None" enumItem_1="HumanIK"/>
       </ConstraintsGrp>
     </Animation>
-    <CameraGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Cameras">
+    <CameraGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Cameras">
       <Camera UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Cameras" dt="Bool" v="1"/>
     </CameraGrp>
-    <LightGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Lights">
+    <LightGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Lights">
       <Light UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Lights" dt="Bool" v="1"/>
     </LightGrp>
     <Audio UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Audio" dt="Bool" v="1"/>
   </IncludeGrp>
-  <AdvOptGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Advanced Options">
+  <AdvOptGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Advanced Options">
     <UnitsGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Units">
       <TotalUnitsScale UIH="0" UID="0" UIG="0" lbENU="Total Units Scale" dt="TextLine"/>
       <DynamicScaleConversion UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Automatic" dt="Bool" v="1"/>

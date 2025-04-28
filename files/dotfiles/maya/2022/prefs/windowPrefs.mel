@@ -19,13 +19,13 @@ windowPref -topLeftCorner 235 230 -widthHeight 1430 710 -maximized true contentB
 windowPref -topLeftCorner 24 0 -widthHeight 1512 1414 -maximized true MayaWindow;
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false panelArrangementWin;
 windowPref -topLeftCorner 808 871 -widthHeight 1147 598 -maximized false PluginInfoWin;
-windowPref -topLeftCorner 154 367 -widthHeight 1162 1058 -maximized false pluginManagerWindow;
+windowPref -topLeftCorner 205 1067 -widthHeight 1162 1058 -maximized false pluginManagerWindow;
 windowPref -topLeftCorner 273 1234 -widthHeight 969 891 -maximized false PreferencesWindow;
 windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempReporterWnd;
 windowPref -topLeftCorner 281 620 -widthHeight 2197 876 -maximized false shelfEditor;
-windowPref -topLeftCorner 426 220 -widthHeight 1225 931 -maximized false Viewport20OptionsWindow;
-windowPref -topLeftCorner 222 873 -widthHeight 1691 993 -maximized false HotkeyEditor;
-windowPref -topLeftCorner 363 1090 -widthHeight 980 648 -maximized false OptionBoxWindow;
+windowPref -topLeftCorner 310 1166 -widthHeight 1225 931 -maximized false Viewport20OptionsWindow;
+windowPref -topLeftCorner 202 737 -widthHeight 1691 993 -maximized false HotkeyEditor;
+windowPref -topLeftCorner 419 445 -widthHeight 682 626 -maximized false OptionBoxWindow;
 windowPref -topLeftCorner 335 1844 -widthHeight 394 902 -maximized false cometRenameWin;
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
@@ -43,7 +43,7 @@ windowPref -topLeftCorner 408 2165 -widthHeight 761 387 -maximized false splinif
 windowPref -topLeftCorner 28 2325 -widthHeight 1105 1402 -maximized false showHistoryWindow;
 windowPref -topLeftCorner 496 1097 -widthHeight 1244 445 -maximized false LayerEditorQuickEditWindow;
 windowPref -topLeftCorner 518 1437 -widthHeight 562 400 -maximized false NewFeatureHighlightWnd;
-windowPref -topLeftCorner 424 1150 -widthHeight 1105 696 -maximized false LockingKeyable;
+windowPref -topLeftCorner 438 1143 -widthHeight 1105 696 -maximized false LockingKeyable;
 windowPref -topLeftCorner 36 1725 -widthHeight 626 376 -maximized true teAnimSourceRemapNamespacesWindow;
 windowPref -topLeftCorner 523 1327 -widthHeight 786 415 -maximized false menuSetEditorWindow;
 windowPref -topLeftCorner 551 1497 -widthHeight 445 337 -maximized false namespaceEditor;
@@ -52,6 +52,7 @@ windowPref -topLeftCorner 178 2001 -widthHeight 665 790 -maximized false assetWi
 windowPref -topLeftCorner 20 1567 -widthHeight 1871 1418 -maximized false projectWindow;
 windowPref -topLeftCorner 344 206 -widthHeight 313 602 -maximized false PSD_Window;
 windowPref -topLeftCorner 671 1610 -widthHeight 316 93 -maximized false UVSzwnd;
-windowPref -topLeftCorner 471 1435 -widthHeight 514 566 -maximized false largeCurveWindow;
+windowPref -topLeftCorner 460 1463 -widthHeight 514 566 -maximized false largeCurveWindow;
 windowPref -topLeftCorner 331 1394 -widthHeight 650 776 -maximized false connectWindow;
 windowPref -topLeftCorner 617 1318 -widthHeight 800 250 -maximized false gradientAttributeEditor;
+windowPref -topLeftCorner 579 1559 -widthHeight 320 279 -maximized false uvSetEditor;
