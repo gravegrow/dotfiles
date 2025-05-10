@@ -91,7 +91,7 @@
                                 {
                                     "tabWidget": {
                                         "selectedIndex": 0,
-                                        "controlWidth": 263,
+                                        "controlWidth": 208,
                                         "controlHeight": 936,
                                         "collapsed": false,
                                         "controls": [
@@ -107,7 +107,7 @@
                                                 "closed": false,
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
-                                                "controlWidth": 263,
+                                                "controlWidth": 208,
                                                 "controlHeight": 936,
                                                 "initCallback": "outlinerStateCallback",
                                                 "stateString": "outlinerEditor -e -showShapes 0 -showAssignedMaterials 0 -showTimeEditor 1 -showReferenceNodes 1 -showReferenceMembers 1 -showAttributes 0 -showConnected 0 -showAnimCurvesOnly 0 -showMuteInfo 0 -organizeByLayer 1 -organizeByClip 1 -showAnimLayerWeight 1 -autoExpandLayers 1 -autoExpand 0 -showDagOnly 1 -showAssets 1 -showContainedOnly 1 -showPublishedAsConnected 0 -showParentContainers 0 -showContainerContents 1 -ignoreDagHierarchy 0 -expandConnections 0 -showUpstreamCurves 1 -showUnitlessCurves 1 -showCompounds 1 -showLeafs 1 -showNumericAttrsOnly 0 -highlightActive 1 -autoSelectNewObjects 0 -doNotSelectNewObjects 0 -dropIsParent 1 -transmitFilters 0 -setFilter \"defaultSetFilter\" -showSetMembers 1 -allowMultiSelection 1 -alwaysToggleSelect 0 -directSelect 0 -isSet 0 -isSetMember 0 -displayMode \"DAG\" -expandObjects 0 -setsIgnoreFilters 1 -containersIgnoreFilters 0 -editAttrName 0 -showAttrValues 0 -highlightSecondary 0 -showUVAttrsOnly 0 -showTextureNodesOnly 0 -attrAlphaOrder \"default\" -animLayerFilterOptions \"allAffecting\" -sortOrder \"none\" -longNames 0 -niceNames 1 -showNamespace 1 -showPinIcons 0 -mapMotionTrails 0 -ignoreHiddenAttribute 0 -ignoreOutlinerColor 0 -renderFilterVisible 0 -renderFilterIndex 0 -selectionOrder \"chronological\" -expandAttribute 0 $editorName"
@@ -139,8 +139,8 @@
                                                 "closed": false,
                                                 "widthProperty": "free",
                                                 "heightProperty": "free",
-                                                "controlWidth": 396,
-                                                "controlHeight": 933
+                                                "controlWidth": 480,
+                                                "controlHeight": 936
                                             }
                                         ]
                                     }
@@ -155,10 +155,10 @@
                                                     "children": [
                                                         {
                                                             "tabWidget": {
-                                                                "selectedIndex": 1,
-                                                                "controlWidth": 886,
+                                                                "selectedIndex": 0,
+                                                                "controlWidth": 859,
                                                                 "controlHeight": 902,
-                                                                "collapsed": true,
+                                                                "collapsed": false,
                                                                 "controls": [
                                                                     {
                                                                         "objectName": "nodeEditorPanel1Window",
@@ -172,7 +172,7 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 847,
+                                                                        "controlWidth": 859,
                                                                         "controlHeight": 902
                                                                     },
                                                                     {
@@ -187,7 +187,7 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 886,
+                                                                        "controlWidth": 751,
                                                                         "controlHeight": 902
                                                                     }
                                                                 ]
@@ -196,7 +196,7 @@
                                                         {
                                                             "tabWidget": {
                                                                 "selectedIndex": 0,
-                                                                "controlWidth": 2079,
+                                                                "controlWidth": 1380,
                                                                 "controlHeight": 915,
                                                                 "collapsed": false,
                                                                 "controls": [
@@ -212,7 +212,7 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 2079,
+                                                                        "controlWidth": 1380,
                                                                         "controlHeight": 915,
                                                                         "initCallback": "mainPaneStateCallback",
                                                                         "stateString": "global string $gMainPane; paneLayout -edit -configuration single $gMainPane;if(`modelPanel -exists modelPanel4`){ modelPanel -edit -parent $gMainPane modelPanel4; paneLayout -edit -setPane modelPanel4 1 $gMainPane;}"
@@ -226,7 +226,7 @@
                                             {
                                                 "tabWidget": {
                                                     "selectedIndex": 0,
-                                                    "controlWidth": 2136,
+                                                    "controlWidth": 2245,
                                                     "controlHeight": 28,
                                                     "collapsed": false,
                                                     "controls": [
@@ -242,7 +242,7 @@
                                                             "closed": false,
                                                             "widthProperty": "free",
                                                             "heightProperty": "fixed",
-                                                            "controlWidth": 2136,
+                                                            "controlWidth": 2245,
                                                             "controlHeight": 28
                                                         }
                                                     ]
@@ -254,8 +254,8 @@
                                 {
                                     "tabWidget": {
                                         "selectedIndex": 0,
-                                        "controlWidth": 1024,
-                                        "controlHeight": 933,
+                                        "controlWidth": 934,
+                                        "controlHeight": 936,
                                         "collapsed": true,
                                         "controls": [
                                             {
@@ -270,16 +270,16 @@
                                                 "closed": false,
                                                 "widthProperty": "free",
                                                 "heightProperty": "free",
-                                                "controlWidth": 1024,
-                                                "controlHeight": 933
+                                                "controlWidth": 934,
+                                                "controlHeight": 936
                                             }
                                         ]
                                     }
                                 },
                                 {
                                     "tabWidget": {
-                                        "selectedIndex": 1,
-                                        "controlWidth": 260,
+                                        "selectedIndex": 0,
+                                        "controlWidth": 208,
                                         "controlHeight": 949,
                                         "collapsed": false,
                                         "controls": [
@@ -310,7 +310,7 @@
                                                 "closed": false,
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
-                                                "controlWidth": 260,
+                                                "controlWidth": 311,
                                                 "controlHeight": 949,
                                                 "requiredPlugins": [
                                                     "modelingToolkit"
@@ -328,7 +328,7 @@
                                                 "closed": false,
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
-                                                "controlWidth": 279,
+                                                "controlWidth": 364,
                                                 "controlHeight": 949
                                             }
                                         ]
@@ -393,30 +393,21 @@
     ],
     "closedControls": [
         {
+            "objectName": "graphEditor1Window",
+            "posX": 2271,
+            "posY": 25,
+            "controlHeight": 1410,
+            "controlWidth": 1164,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
             "objectName": "shapePanel1Window",
             "posX": 1338,
             "posY": 515,
             "controlHeight": 500,
             "controlWidth": 826,
             "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "scriptEditorPanel1Window",
-            "posX": 537,
-            "posY": 563,
-            "controlHeight": 576,
-            "controlWidth": 747,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "AttributeEditor",
-            "posX": 1574,
-            "posY": 306,
-            "controlHeight": 1000,
-            "controlWidth": 576,
-            "widthProperty": "preferred",
             "heightProperty": "free"
         },
         {
@@ -429,12 +420,21 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "graphEditor1Window",
-            "posX": 2271,
-            "posY": 25,
-            "controlHeight": 1410,
-            "controlWidth": 1164,
+            "objectName": "scriptEditorPanel1Window",
+            "posX": 1066,
+            "posY": 214,
+            "controlHeight": 1056,
+            "controlWidth": 1548,
             "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "AttributeEditor",
+            "posX": 1212,
+            "posY": 238,
+            "controlHeight": 1000,
+            "controlWidth": 576,
+            "widthProperty": "preferred",
             "heightProperty": "free"
         }
     ],

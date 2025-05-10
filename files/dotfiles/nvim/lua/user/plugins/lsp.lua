@@ -46,7 +46,6 @@ return {
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "WhoIsSethDaniel/mason-tool-installer.nvim",
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -121,26 +120,16 @@ return {
         },
       })
 
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-      require("mason-lspconfig").setup({
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
+      for name, server in pairs(servers) do
+        server = server or {}
 
-            if server_name == "ruff" then
-              lspconfig[server_name].setup(server)
-              return
-            end
-
-            lspconfig[server_name].setup({
-              cmd = server.cmd,
-              settings = server.settings,
-              filetypes = server.filetypes,
-              capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
-            })
-          end,
-        },
-      })
+        lspconfig[name].setup({
+          cmd = server.cmd,
+          settings = server.settings,
+          filetypes = server.filetypes,
+          capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {}),
+        })
+      end
     end,
   },
 }

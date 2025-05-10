@@ -5,6 +5,7 @@ return {
     -- enabled = false,
     priority = 1000,
     config = function()
+      --- @diagnostic disable
       require("kanagawa").setup({
         colors = {
           palette = {
@@ -21,7 +22,6 @@ return {
         overrides = function(colors)
           local theme = colors.theme
           return {
-            Normal = { bg = theme.ui.bg_p3 },
             Visual = { bg = theme.ui.bg_p1 },
             FloatTitle = { bg = theme.ui.bg_m1, bold = true },
 
@@ -47,32 +47,6 @@ return {
 
             ["@string.documentation"] = { fg = theme.syn.comment },
 
-            TelescopeTitle = { fg = theme.syn.constant, bg = theme.ui.bg_p1, bold = true },
-            TelescopePreviewTitle = { fg = theme.syn.string, bg = theme.ui.bg_p1, bold = true },
-            TelescopePromptNormal = { bg = theme.ui.bg_m1 },
-            TelescopePromptCounter = { fg = theme.syn.comment },
-            TelescopePromptBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            TelescopeResultsNormal = { fg = theme.ui.fg_dim, bg = theme.ui.bg_dim },
-            TelescopeResultsBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
-            TelescopePreviewNormal = { bg = theme.ui.bg_dim },
-            TelescopePreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_p2 },
-            TelescopeSelectionCaret = { bg = theme.ui.bg_p2, fg = theme.syn.string },
-
-            SnacksPicker = { bg = theme.ui.bg_dim },
-            -- SnacksPickerBox = { bg = theme.ui.bg_dim },
-            SnacksPickerBoxBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            SnacksPickerBorder = { fg = theme.ui.bg_dim, bg = theme.ui.bg_dim },
-            SnacksPickerInput = { bg = theme.ui.bg_m1 },
-            SnacksPickerInputBorder = { fg = theme.ui.bg_m1, bg = theme.ui.bg_m1 },
-            SnacksPickerPreview = { bg = theme.ui.bg_dim },
-            SnacksPickerPreviewBorder = { bg = theme.ui.bg_dim, fg = theme.ui.bg_m1 },
-            SnacksPickerTree = { link = "NonText" },
-            SnacksPickerDir = { link = "Comment" },
-            SnacksPickerGitStatusUntracked = { link = "Comment" },
-            SnacksPickerTotals = { link = "LineNr" },
-            SnacksPickerCursorLine = { link = "CursorLine" },
-            SnacksPickerListCursorLine = { link = "CursorLine" },
-
             RenderMarkdownCode = { bg = theme.ui.bg_m2 },
             RenderMarkdownBullet = { fg = "#627690" },
             RenderMarkdownInlineHighlight = { bg = "none", fg = theme.syn.operator, bold = true },
@@ -95,10 +69,6 @@ return {
             ["@markup.link.label.markdown_inline"] = { fg = "#8ea4a2", underline = false },
             ["@markup.link.url.markdown_inline"] = { fg = "#627690", underline = true },
 
-            CursorLine = { bg = "#1F1F22" },
-            CursorLineDefault = { bg = "#1F1F22" },
-            CursorLineRecording = { bg = "#301d20" },
-
             LspInlayHint = { fg = theme.syn.comment, italic = true },
             LspSignatureActiveParameter = { fg = theme.syn.constant, bold = true, underline = true },
             ["@lsp.type.macro.c"] = { link = "Constant" },
@@ -106,16 +76,6 @@ return {
             NormalFloatSec = { link = "TelescopePreviewNormal" },
             FloatBorderSec = { fg = theme.syn.comment, bg = theme.ui.bg_m2 },
             FloatTitleSec = { link = "TelescopePreviewTitle" },
-
-            BlinkCmpMenu = { link = "NormalFloatSec" },
-            BlinkCmpMenuSelection = { bg = theme.ui.bg_p2 },
-            CmpItemAbbr = { link = "CmpItemMenu" },
-            BlinkCmpDocBorder = { link = "FloatBorderSec" },
-            BlinkCmpDocSeparator = { bg = theme.ui.bg_p3, fg = theme.syn.comment },
-            BlinkCmpScrollBarThumb = { bg = theme.syn.special1 },
-            BlinkCmpLabelDescription = { link = "Comment" },
-            CmpItemAbbrMatch = { fg = theme.syn.constant, bold = true },
-            BlinkCmpLabelMatch = { fg = theme.syn.constant, bold = true },
 
             MiniFilesTitle = { fg = theme.ui.fg_dim, bg = theme.ui.bg_dim },
             MiniFilesTitleFocused = { fg = theme.syn.special1, bg = theme.ui.bg_dim },

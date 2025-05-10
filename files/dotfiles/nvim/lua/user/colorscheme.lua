@@ -1,32 +1,57 @@
 -- stylua: ignore
-local colors = {
+local colors_dark = {
   text       = "#b8b0ad",
-  base       = "#161617",
-
-  statusline = "#1f1f22",
+  non_text   = "#272830",
+  comment    = "#4f4f59",
+  float      = "#12120F",
+  background = "#161617",
   cursorline = "#1A1A1C",
-
-  floatBorder = "#878787",
-  line        = "#282830",
-  comment     = "#646477",
-  builtin     = "#bad1ce",
-  func        = "#be8c8c",
-  string      = "#deb896",
-  number      = "#d2a374",
-  property    = "#c7c7d4",
-  constant    = "#b4b4ce",
-  parameter   = "#b9a3ba",
-  visual      = "#363738",
-  error       = "#d2788c",
-  warning     = "#e6be8c",
-  hint        = "#8ca0dc",
-  operator    = "#96a3b2",
-  keyword     = "#7894ab",
-  type        = "#a1b3b9",
-  search      = "#465362",
-  plus        = "#8faf77",
-  delta       = "#e6be8c",
+  statusline = "#1f1f22",
 }
+
+local function SetHiglights(palette)
+  local highlights = {
+    Normal = { fg = palette.text, bg = palette.background },
+    CursorLine = { bg = palette.cursorline },
+    CursorLineDefault = { bg = palette.cursorline },
+    CursorLineRecording = { bg = "#301d20" },
+
+    NormalFloat = { bg = palette.float },
+    FloatBorder = { fg = palette.float, bg = palette.float },
+
+    NonText = { fg = palette.non_text },
+    StatusLine = { bg = palette.statusline },
+
+    SnacksPicker = { bg = palette.float },
+    SnacksPickerBoxBorder = { fg = palette.float, bg = palette.float },
+    SnacksPickerBorder = { fg = palette.float, bg = palette.float },
+    SnacksPickerInput = { bg = palette.statusline },
+    SnacksPickerInputBorder = { fg = palette.statusline, bg = palette.statusline },
+    SnacksPickerPreview = { bg = palette.float },
+    SnacksPickerPreviewBorder = { bg = palette.float, fg = palette.statusline },
+    SnacksPickerTree = { link = "NonText" },
+    SnacksPickerDir = { link = "Comment" },
+    SnacksPickerGitStatusUntracked = { link = "Comment" },
+    SnacksPickerTotals = { link = "LineNr" },
+    SnacksPickerCursorLine = { link = "CursorLine" },
+    SnacksPickerListCursorLine = { link = "CursorLine" },
+
+    BlinkCmpMenu = { bg = palette.float },
+    BlinkCmpMenuSelection = { bg = palette.cursorline },
+    -- CmpItemAbbr = { link = "CmpItemMenu" },
+    -- BlinkCmpDocBorder = { link = "FloatBorderSec" },
+    -- BlinkCmpDocSeparator = { bg = theme.ui.bg_p3, fg = theme.syn.comment },
+    -- BlinkCmpScrollBarThumb = { bg = theme.syn.special1 },
+    -- BlinkCmpLabelDescription = { link = "Comment" },
+    -- CmpItemAbbrMatch = { fg = theme.syn.constant, bold = true },
+    -- BlinkCmpLabelMatch = { fg = theme.syn.constant, bold = true },
+  }
+
+  for name, opts in pairs(highlights) do
+    local source_opts = vim.api.nvim_get_hl(0, { name = name, create = true, link = false })
+    vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", source_opts, opts))
+  end
+end
 
 vim.cmd.hi("clear")
 vim.cmd.colorscheme("habamax")
@@ -40,18 +65,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-local function set_hl(name, opts)
-  local source_opts = vim.api.nvim_get_hl(0, { name = name, create = true, link = false })
-  vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", source_opts, opts))
-end
-
-local hl = {}
-
-local editor = {
-  Normal = { fg = colors.text, bg = colors.base },
-  CursorLine = { bg = colors.cursorline },
-}
-
--- for name, opts in pairs(editor) do
---   set_hl(name, opts)
--- end
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("colorscheme-update", { clear = true }),
+  callback = function()
+    if vim.o.background == "dark" then
+      SetHiglights(colors_dark)
+    else
+      -- SetHiglights(colors_light)
+    end
+  end,
+})
