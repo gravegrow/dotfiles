@@ -1,4 +1,5 @@
 {
+  "ash.nvim": { "branch": "main", "commit": "3223e825a96b89f867614317d0aa74342a57a62f" },
   "blink.cmp": { "branch": "main", "commit": "4f38ce99a472932d5776337f08f7a8180f1f571a" },
   "codedocs.nvim": { "branch": "main", "commit": "32dfb3b63c82fa63a988a8e836c0ac309d82bb9d" },
   "colorful-menu.nvim": { "branch": "master", "commit": "b92e7422f725b945f8a2b85248573d0b72a5678b" },

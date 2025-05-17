@@ -1,14 +1,14 @@
-local bordered_overlay = function(display, group, pattern)
+local bordered_overlay = function(display, hl, pattern)
   pattern = pattern or ("%f[%w]()" .. display .. "()%f[%W]")
-  local group_inv = group .. "B"
+  local hl_border = hl .. "Border"
 
   return {
     [display .. "Borders"] = {
       pattern = pattern,
-      group = group_inv,
+      group = hl_border,
       extmark_opts = function(_, _, info)
         return {
-          virt_text = { { "" .. display .. "", group_inv } },
+          virt_text = { { "" .. display .. "", hl_border } },
           virt_text_pos = "overlay",
           virt_text_win_col = info.from_col - 2,
           priority = 200,
@@ -17,10 +17,10 @@ local bordered_overlay = function(display, group, pattern)
     },
     [display] = {
       pattern = pattern,
-      group = group,
+      group = hl,
       extmark_opts = function(_, _, info)
         return {
-          virt_text = { { display, group } },
+          virt_text = { { display, hl } },
           virt_text_pos = "overlay",
           virt_text_win_col = info.from_col - 1,
           priority = 201,
