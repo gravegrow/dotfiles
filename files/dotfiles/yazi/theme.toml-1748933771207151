@@ -1,6 +1,6 @@
 "$schema" = "https://yazi-rs.github.io/schemas/theme.json"
 
-[mgr]
+[manager]
 hovered = { bg = "#1F1F22", bold = true }
 preview_hovered = { underline = false }
 find_keyword = { fg = "red", bold = true, italic = true }

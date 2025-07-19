@@ -302,3 +302,15 @@ nameCommand
 	-command ("ToggleIsolateSelect")
 	ToggleIsolateSelectNameCommand;
 
+nameCommand
+	-annotation "ToggleUseDefaultMaterialNameCommand"
+	-sourceType "mel"
+	-command ("ToggleUseDefaultMaterial")
+	ToggleUseDefaultMaterialNameCommand;
+
+nameCommand
+	-annotation "EnterConnectToolNameCommand"
+	-sourceType "mel"
+	-command ("EnterConnectTool")
+	EnterConnectToolNameCommand;
+

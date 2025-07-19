@@ -3,7 +3,7 @@
 "$schema" = "https://yazi-rs.github.io/schemas/keymap.json"
 
 
-[mgr]
+[manager]
 
 prepend_keymap =[
     { on = [ "<Enter>" ], run = "plugin smart-enter", desc = "Enter the child directory, or open the file" },
@@ -130,8 +130,8 @@ keymap = [
 	{ on = [ "}" ], run = "tab_swap -1", desc = "Swap the current tab with the previous tab" },
 	{ on = [ "{" ], run = "tab_swap 1",  desc = "Swap the current tab with the next tab" },
 
-	# # Tasks
-	# { on = [ "w" ], run = "tasks_show", desc = "Show the tasks manager" },
+	# Tasks
+	{ on = [ "w" ], run = "tasks_show", desc = "Show the tasks manager" },
 
 	# Goto
 	{ on = [ "g", "h" ],       run = "cd ~",                           desc = "Go to the home directory" },

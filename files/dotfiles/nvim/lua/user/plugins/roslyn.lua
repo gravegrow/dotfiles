@@ -1,15 +1,11 @@
 return {
   "seblj/roslyn.nvim",
+  keys = {
+    { "<leader>rr", "<cmd>Roslyn restart<cr>", mode = "n" },
+  },
   ft = "cs",
   opts = {
     config = {
-      on_init = function()
-        vim.keymap.set("n", "<leader>rr", "<cmd>Roslyn restart<cr>", { desc = "[R]oslyn [R]estart" })
-        local ok, fidget = pcall(require, "fidget")
-        if ok then
-          vim.notify = fidget.notify
-        end
-      end,
       settings = {
         ["csharp|completion"] = {
           dotnet_show_completion_items_from_unimported_namespaces = true,
@@ -31,4 +27,11 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require("roslyn").setup(opts)
+    local ok, fidget = pcall(require, "fidget")
+    if ok then
+      vim.notify = fidget.notify
+    end
+  end,
 }

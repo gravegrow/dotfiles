@@ -1,7 +1,7 @@
 {
     "linkedMenu": "modelingMenuSet",
     "autoSave": true,
-    "selectedShelf": "Sculpting",
+    "selectedShelf": "Polygons",
     "panels": [
         {
             "mainWindowPanel": true,
@@ -11,7 +11,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2746,
+                            "controlWidth": 2744,
                             "controlHeight": 23,
                             "collapsed": false,
                             "controls": [
@@ -27,7 +27,7 @@
                                     "closed": false,
                                     "widthProperty": "free",
                                     "heightProperty": "fixed",
-                                    "controlWidth": 2746,
+                                    "controlWidth": 2744,
                                     "controlHeight": 23
                                 }
                             ]
@@ -36,7 +36,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2746,
+                            "controlWidth": 2744,
                             "controlHeight": 46,
                             "collapsed": false,
                             "controls": [
@@ -67,7 +67,7 @@
                                     "tabWidget": {
                                         "selectedIndex": 0,
                                         "controlWidth": 40,
-                                        "controlHeight": 949,
+                                        "controlHeight": 1020,
                                         "collapsed": false,
                                         "controls": [
                                             {
@@ -83,16 +83,16 @@
                                                 "widthProperty": "fixed",
                                                 "heightProperty": "free",
                                                 "controlWidth": 40,
-                                                "controlHeight": 949
+                                                "controlHeight": 1020
                                             }
                                         ]
                                     }
                                 },
                                 {
                                     "tabWidget": {
-                                        "selectedIndex": 0,
-                                        "controlWidth": 208,
-                                        "controlHeight": 936,
+                                        "selectedIndex": 2,
+                                        "controlWidth": 316,
+                                        "controlHeight": 1007,
                                         "collapsed": false,
                                         "controls": [
                                             {
@@ -107,8 +107,8 @@
                                                 "closed": false,
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
-                                                "controlWidth": 208,
-                                                "controlHeight": 936,
+                                                "controlWidth": 326,
+                                                "controlHeight": 0,
                                                 "initCallback": "outlinerStateCallback",
                                                 "stateString": "outlinerEditor -e -showShapes 0 -showAssignedMaterials 0 -showTimeEditor 1 -showReferenceNodes 1 -showReferenceMembers 1 -showAttributes 0 -showConnected 0 -showAnimCurvesOnly 0 -showMuteInfo 0 -organizeByLayer 1 -organizeByClip 1 -showAnimLayerWeight 1 -autoExpandLayers 1 -autoExpand 0 -showDagOnly 1 -showAssets 1 -showContainedOnly 1 -showPublishedAsConnected 0 -showParentContainers 0 -showContainerContents 1 -ignoreDagHierarchy 0 -expandConnections 0 -showUpstreamCurves 1 -showUnitlessCurves 1 -showCompounds 1 -showLeafs 1 -showNumericAttrsOnly 0 -highlightActive 1 -autoSelectNewObjects 0 -doNotSelectNewObjects 0 -dropIsParent 1 -transmitFilters 0 -setFilter \"defaultSetFilter\" -showSetMembers 1 -allowMultiSelection 1 -alwaysToggleSelect 0 -directSelect 0 -isSet 0 -isSetMember 0 -displayMode \"DAG\" -expandObjects 0 -setsIgnoreFilters 1 -containersIgnoreFilters 0 -editAttrName 0 -showAttrValues 0 -highlightSecondary 0 -showUVAttrsOnly 0 -showTextureNodesOnly 0 -attrAlphaOrder \"default\" -animLayerFilterOptions \"allAffecting\" -sortOrder \"none\" -longNames 0 -niceNames 1 -showNamespace 1 -showPinIcons 0 -mapMotionTrails 0 -ignoreHiddenAttribute 0 -ignoreOutlinerColor 0 -renderFilterVisible 0 -renderFilterIndex 0 -selectionOrder \"chronological\" -expandAttribute 0 $editorName"
                                             },
@@ -124,8 +124,26 @@
                                                 "closed": false,
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
-                                                "controlWidth": 430,
+                                                "controlWidth": 368,
                                                 "controlHeight": 0
+                                            },
+                                            {
+                                                "objectName": "NEXDockControl",
+                                                "title": "Modeling Toolkit",
+                                                "uiScript": "dR_createNEXDockControl();",
+                                                "retain": true,
+                                                "deleteLater": true,
+                                                "loadImmediately": true,
+                                                "checkPlugins": false,
+                                                "tabDirection": 0,
+                                                "closed": false,
+                                                "widthProperty": "preferred",
+                                                "heightProperty": "free",
+                                                "controlWidth": 316,
+                                                "controlHeight": 1007,
+                                                "requiredPlugins": [
+                                                    "modelingToolkit"
+                                                ]
                                             },
                                             {
                                                 "objectName": "ngSkinTools2_mainWindow",
@@ -139,8 +157,8 @@
                                                 "closed": false,
                                                 "widthProperty": "free",
                                                 "heightProperty": "free",
-                                                "controlWidth": 480,
-                                                "controlHeight": 936
+                                                "controlWidth": 327,
+                                                "controlHeight": 1007
                                             }
                                         ]
                                     }
@@ -156,9 +174,9 @@
                                                         {
                                                             "tabWidget": {
                                                                 "selectedIndex": 0,
-                                                                "controlWidth": 859,
-                                                                "controlHeight": 902,
-                                                                "collapsed": false,
+                                                                "controlWidth": 767,
+                                                                "controlHeight": 973,
+                                                                "collapsed": true,
                                                                 "controls": [
                                                                     {
                                                                         "objectName": "nodeEditorPanel1Window",
@@ -172,8 +190,8 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 859,
-                                                                        "controlHeight": 902
+                                                                        "controlWidth": 767,
+                                                                        "controlHeight": 973
                                                                     },
                                                                     {
                                                                         "objectName": "hyperShadePanel1Window",
@@ -187,8 +205,8 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 751,
-                                                                        "controlHeight": 902
+                                                                        "controlWidth": 895,
+                                                                        "controlHeight": 896
                                                                     }
                                                                 ]
                                                             }
@@ -196,8 +214,8 @@
                                                         {
                                                             "tabWidget": {
                                                                 "selectedIndex": 0,
-                                                                "controlWidth": 1380,
-                                                                "controlHeight": 915,
+                                                                "controlWidth": 2062,
+                                                                "controlHeight": 986,
                                                                 "collapsed": false,
                                                                 "controls": [
                                                                     {
@@ -212,8 +230,8 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 1380,
-                                                                        "controlHeight": 915,
+                                                                        "controlWidth": 2062,
+                                                                        "controlHeight": 986,
                                                                         "initCallback": "mainPaneStateCallback",
                                                                         "stateString": "global string $gMainPane; paneLayout -edit -configuration single $gMainPane;if(`modelPanel -exists modelPanel4`){ modelPanel -edit -parent $gMainPane modelPanel4; paneLayout -edit -setPane modelPanel4 1 $gMainPane;}"
                                                                     }
@@ -226,7 +244,7 @@
                                             {
                                                 "tabWidget": {
                                                     "selectedIndex": 0,
-                                                    "controlWidth": 2245,
+                                                    "controlWidth": 2089,
                                                     "controlHeight": 28,
                                                     "collapsed": false,
                                                     "controls": [
@@ -242,7 +260,7 @@
                                                             "closed": false,
                                                             "widthProperty": "free",
                                                             "heightProperty": "fixed",
-                                                            "controlWidth": 2245,
+                                                            "controlWidth": 2089,
                                                             "controlHeight": 28
                                                         }
                                                     ]
@@ -254,8 +272,8 @@
                                 {
                                     "tabWidget": {
                                         "selectedIndex": 0,
-                                        "controlWidth": 934,
-                                        "controlHeight": 936,
+                                        "controlWidth": 528,
+                                        "controlHeight": 934,
                                         "collapsed": true,
                                         "controls": [
                                             {
@@ -270,8 +288,8 @@
                                                 "closed": false,
                                                 "widthProperty": "free",
                                                 "heightProperty": "free",
-                                                "controlWidth": 934,
-                                                "controlHeight": 936
+                                                "controlWidth": 528,
+                                                "controlHeight": 934
                                             }
                                         ]
                                     }
@@ -279,8 +297,8 @@
                                 {
                                     "tabWidget": {
                                         "selectedIndex": 0,
-                                        "controlWidth": 208,
-                                        "controlHeight": 949,
+                                        "controlWidth": 252,
+                                        "controlHeight": 1020,
                                         "collapsed": false,
                                         "controls": [
                                             {
@@ -295,26 +313,8 @@
                                                 "closed": false,
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
-                                                "controlWidth": 208,
-                                                "controlHeight": 949
-                                            },
-                                            {
-                                                "objectName": "NEXDockControl",
-                                                "title": "Modeling Toolkit",
-                                                "uiScript": "dR_createNEXDockControl();",
-                                                "retain": true,
-                                                "deleteLater": true,
-                                                "loadImmediately": true,
-                                                "checkPlugins": false,
-                                                "tabDirection": 3,
-                                                "closed": false,
-                                                "widthProperty": "preferred",
-                                                "heightProperty": "free",
-                                                "controlWidth": 311,
-                                                "controlHeight": 949,
-                                                "requiredPlugins": [
-                                                    "modelingToolkit"
-                                                ]
+                                                "controlWidth": 252,
+                                                "controlHeight": 1020
                                             },
                                             {
                                                 "objectName": "UVToolkitDockControl",
@@ -328,8 +328,44 @@
                                                 "closed": false,
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
-                                                "controlWidth": 364,
-                                                "controlHeight": 949
+                                                "controlWidth": 359,
+                                                "controlHeight": 943
+                                            },
+                                            {
+                                                "objectName": "XGenDockableWidget",
+                                                "title": "XGen",
+                                                "uiScript": "python(\"import maya.cmds as xguibootstrap\\nif not xguibootstrap.pluginInfo('xgenToolkit', q=True, loaded=True):\\n    xguibootstrap.loadPlugin('xgenToolkit')\\ndel xguibootstrap\\nxgui.createDockControl()\");",
+                                                "retain": true,
+                                                "deleteLater": true,
+                                                "loadImmediately": false,
+                                                "checkPlugins": false,
+                                                "tabDirection": 3,
+                                                "closed": false,
+                                                "widthProperty": "free",
+                                                "heightProperty": "free",
+                                                "controlWidth": 430,
+                                                "controlHeight": 949,
+                                                "requiredPlugins": [
+                                                    "xgenToolkit"
+                                                ]
+                                            },
+                                            {
+                                                "objectName": "XGenIgSplineDockWidget",
+                                                "title": "XGen Interactive Groom Editor",
+                                                "uiScript": "python(\"# Load xgenToolkit plug-in and create the main widget\\ndef xguiWorkspaceBootstrap():\\n    import maya.cmds as cmds\\n    if not cmds.pluginInfo('xgenToolkit', q=True, loaded=True):\\n        cmds.loadPlugin('xgenToolkit')\\nxguiWorkspaceBootstrap()\\ndel xguiWorkspaceBootstrap\\nxgui.createIgSplineEditor(restore=True)\");",
+                                                "retain": true,
+                                                "deleteLater": true,
+                                                "loadImmediately": false,
+                                                "checkPlugins": false,
+                                                "tabDirection": 3,
+                                                "closed": false,
+                                                "widthProperty": "free",
+                                                "heightProperty": "free",
+                                                "controlWidth": 460,
+                                                "controlHeight": 949,
+                                                "requiredPlugins": [
+                                                    "xgenToolkit"
+                                                ]
                                             }
                                         ]
                                     }
@@ -340,9 +376,8 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2746,
+                            "controlWidth": 512,
                             "controlHeight": 32,
-                            "collapsed": false,
                             "controls": [
                                 {
                                     "objectName": "TimeSlider",
@@ -353,10 +388,10 @@
                                     "loadImmediately": true,
                                     "checkPlugins": false,
                                     "tabDirection": 0,
-                                    "closed": false,
+                                    "closed": true,
                                     "widthProperty": "free",
                                     "heightProperty": "free",
-                                    "controlWidth": 2746,
+                                    "controlWidth": 512,
                                     "controlHeight": 32
                                 }
                             ]
@@ -365,9 +400,8 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 2746,
+                            "controlWidth": 512,
                             "controlHeight": 29,
-                            "collapsed": false,
                             "controls": [
                                 {
                                     "objectName": "RangeSlider",
@@ -378,10 +412,10 @@
                                     "loadImmediately": true,
                                     "checkPlugins": false,
                                     "tabDirection": 0,
-                                    "closed": false,
+                                    "closed": true,
                                     "widthProperty": "free",
                                     "heightProperty": "fixed",
-                                    "controlWidth": 2746,
+                                    "controlWidth": 512,
                                     "controlHeight": 29
                                 }
                             ]
@@ -393,6 +427,15 @@
     ],
     "closedControls": [
         {
+            "objectName": "createNodePanel2Window",
+            "posX": 1470,
+            "posY": 456,
+            "controlHeight": 558,
+            "controlWidth": 496,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
             "objectName": "graphEditor1Window",
             "posX": 2271,
             "posY": 25,
@@ -402,11 +445,56 @@
             "heightProperty": "free"
         },
         {
+            "objectName": "polySelectionConstraintPanel1Window",
+            "posX": 1889,
+            "posY": 641,
+            "controlHeight": 550,
+            "controlWidth": 767,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "relationshipPanel1Window",
+            "posX": 1265,
+            "posY": 300,
+            "controlHeight": 911,
+            "controlWidth": 883,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "posePanel1Window",
+            "posX": 1154,
+            "posY": 431,
+            "controlHeight": 626,
+            "controlWidth": 1126,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
             "objectName": "shapePanel1Window",
-            "posX": 1338,
-            "posY": 515,
+            "posX": 1326,
+            "posY": 500,
             "controlHeight": 500,
             "controlWidth": 826,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "AttributeEditor",
+            "posX": 1414,
+            "posY": 376,
+            "controlHeight": 720,
+            "controlWidth": 596,
+            "widthProperty": "preferred",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "scriptEditorPanel1Window",
+            "posX": 915,
+            "posY": 253,
+            "controlHeight": 1056,
+            "controlWidth": 1548,
             "widthProperty": "free",
             "heightProperty": "free"
         },
@@ -417,24 +505,6 @@
             "controlHeight": 835,
             "controlWidth": 1342,
             "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "scriptEditorPanel1Window",
-            "posX": 1066,
-            "posY": 214,
-            "controlHeight": 1056,
-            "controlWidth": 1548,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "AttributeEditor",
-            "posX": 1212,
-            "posY": 238,
-            "controlHeight": 1000,
-            "controlWidth": 576,
-            "widthProperty": "preferred",
             "heightProperty": "free"
         }
     ],

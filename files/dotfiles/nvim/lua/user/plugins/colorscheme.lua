@@ -7,7 +7,8 @@ return {
     config = function()
       require("kanso").setup({})
       vim.cmd.colorscheme("kanso")
-      vim.api.nvim_set_hl(0, "String", { fg = "#A08070" })
+      -- vim.api.nvim_set_hl(0, "String", { fg = "#A08070" })
+      vim.api.nvim_set_hl(0, "String", { fg = "#B6927B" })
     end,
   },
   {

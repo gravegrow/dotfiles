@@ -7,7 +7,7 @@ keymap({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting after search" })
 
-keymap("x", "p", '"_dP', { desc = "Paste without copying visual selection" })
+keymap("x", "p", "P", { desc = "Paste without copying visual selection" })
 keymap({ "n", "x" }, "<leader>p", '"+P', { desc = "Paste from global keyboard" })
 
 keymap({ "n", "x" }, "<leader>y", '"+y', { desc = "Yank to global keyboard" })
@@ -17,17 +17,6 @@ keymap("v", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })
 
 -- keymap("n", "<leader>dd", vim.diagnostic.open_float, { desc = "Show [D]iagnostic [D]isplay" })
 keymap("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open [D]iagnostic [Q]uickfix list" })
-
-keymap("n", "<leader>dd", function()
-  vim.diagnostic.config({ virtual_lines = { current_line = true }, virtual_text = false })
-  vim.api.nvim_create_autocmd("CursorMoved", {
-    group = vim.api.nvim_create_augroup("line-diagnostics", { clear = true }),
-    callback = function()
-      vim.diagnostic.config({ virtual_lines = false, virtual_text = true })
-      return true
-    end,
-  })
-end, { desc = "Show [D]iagnostic [D]isplay" })
 
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 

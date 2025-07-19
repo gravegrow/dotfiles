@@ -34,6 +34,7 @@ local function SetHiglights(palette)
     LineNr = { link = "Comment", bg = "none", italic = false },
     NonText = { fg = palette.non_text },
     SignColumn = { bg = "none" },
+    Colorcolumn = { bg = palette.float },
 
     CurSearch = { fg = palette.search, bg = palette.statusline, bold = true, underline = true },
     IncSearch = { link = "CurSearch" },

@@ -3439,7 +3439,7 @@ void centeredmaster(Monitor *m) {
 
   if (n > m->nmaster) {
     /* go mfact box in the center if more than nmaster clients */
-    mw = m->nmaster ? m->ww / 2 : 0;
+    mw = m->nmaster ? m->ww * m->mfact * 0.75757575 : 0;
     tw = m->ww - mw;
 
     if (n - m->nmaster > 1) {

@@ -12,6 +12,24 @@ local servers = {
       },
     },
   },
+  -- omnisharp = {
+  --   cmd = {
+  --     "dotnet",
+  --     vim.fn.stdpath("data") .. "/mason/packages/omnisharp/OmniSharp.dll",
+  --   },
+  --   root_dir = function()
+  --     return vim.loop.cwd() -- current working directory
+  --   end,
+  --   settings = {
+  --     FormattingOptions = {
+  --       EnableEditorConfigSupport = false,
+  --       OrganizeImports = true,
+  --     },
+  --     Sdk = {
+  --       IncludePrereleases = true,
+  --     },
+  --   },
+  -- },
   ruff = {},
   clangd = {},
   taplo = {},
@@ -68,7 +86,36 @@ return {
           keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
           keymap("<leader>ci", toggle_inlay_hints, "[C]ode [I]nlay Toggle")
           keymap("K", vim.lsp.buf.hover, "Hover Documentation")
+
+          keymap("<leader>dd", function()
+            vim.diagnostic.config({ virtual_lines = false, virtual_text = false })
+            vim.diagnostic.open_float()
+            vim.api.nvim_create_autocmd("CursorMoved", {
+              group = vim.api.nvim_create_augroup("line-diagnostics", { clear = true }),
+              callback = function()
+                vim.diagnostic.config({
+                  virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
+                })
+                return true
+              end,
+            })
+          end, "Show [D]iagnostic [D]isplay")
         end,
+      })
+
+      vim.diagnostic.config({
+        severity_sort = true,
+        update_in_insert = false,
+        float = { border = "solid", header = "" },
+        virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
+        signs = {
+          text = {
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "󰰁",
+          },
+        },
       })
 
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -78,25 +125,8 @@ return {
             return
           end
 
-          if client.name == "basedpyright" then
-            client.server_capabilities.semanticTokensProvider = nil
-          end
+          client.server_capabilities.semanticTokensProvider = nil
         end,
-      })
-
-      vim.diagnostic.config({
-        severity_sort = true,
-        update_in_insert = false,
-        float = { border = "solid", header = "" },
-        virtual_text = { severity = { min = vim.diagnostic.severity.WARN } },
-        signs = {
-          text = {
-            [vim.diagnostic.severity.WARN] = "",
-            [vim.diagnostic.severity.ERROR] = "",
-            [vim.diagnostic.severity.INFO] = "",
-            [vim.diagnostic.severity.HINT] = "󰰁",
-          },
-        },
       })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
