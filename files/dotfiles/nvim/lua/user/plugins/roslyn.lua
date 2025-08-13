@@ -4,8 +4,9 @@ return {
     { "<leader>rr", "<cmd>Roslyn restart<cr>", mode = "n" },
   },
   ft = "cs",
-  opts = {
-    config = {
+  config = function()
+    require("roslyn").setup()
+    vim.lsp.config("roslyn", {
       settings = {
         ["csharp|completion"] = {
           dotnet_show_completion_items_from_unimported_namespaces = true,
@@ -25,10 +26,7 @@ return {
           dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent = true,
         },
       },
-    },
-  },
-  config = function(_, opts)
-    require("roslyn").setup(opts)
+    })
     local ok, fidget = pcall(require, "fidget")
     if ok then
       vim.notify = fidget.notify

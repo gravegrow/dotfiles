@@ -8,6 +8,9 @@ keymap("n", "<leader>ca", function()
   vscode.call("keyboard-quickfix.openQuickFix")
 end)
 
+vim.opt.clipboard = "unnamedplus"
+vim.opt.hlsearch = false
+
 local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",

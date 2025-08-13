@@ -6,8 +6,7 @@ alias tree='ls --tree'
 alias py='python3'
 alias lg='lazygit'
 alias bat='bat --style plain --theme ansi'
-
-alias proton="/media/games/SteamLibrary/steamapps/common/Proton\ -\ Experimental/proton"
+alias gug='curl https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Unity.gitignore -o .gitignore'
 
 set -gx MANPAGER "nvim +Man!"
 set -U fish_color_autosuggestion 4f4f59

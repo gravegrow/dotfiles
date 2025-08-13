@@ -22,8 +22,6 @@ opt.splitbelow = true -- Horizontal splits will be below
 opt.splitright = true -- Vertical splits will be to the right
 opt.hlsearch = false
 
-opt.colorcolumn = { 81 }
-
 opt.ruler = false -- Don't show cursor position in command line
 opt.showmode = false -- Don't show mode in command line
 opt.wrap = false -- Display long lines as just one line

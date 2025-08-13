@@ -231,7 +231,7 @@ displayRGBColor -c modernSliderOutPlayRangeOPACITY 0.2 0.2 0.2;
 displayRGBColor -c modernLockedCurveColor 0.549 0.549 0.549;
 displayRGBColor -c modernLockedKeyColor 0 0 0;
 displayRGBColor -c renderViewBackground 0.168627 0.168627 0.168627;
-displayRGBColor -c renderViewCaption 0.733333 0.733333 0.733333;
+displayRGBColor -c renderViewCaption 0.7375 0.7375 0.7375;
 displayRGBColor -c renderViewActionCaption 1 1 1;
 displayRGBColor -c lockedVertex 0 0 0;
 displayRGBColor -c freezeVertex 0 0.5 1;

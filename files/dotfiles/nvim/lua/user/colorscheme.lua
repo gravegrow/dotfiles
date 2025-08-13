@@ -46,6 +46,7 @@ local function SetHiglights(palette)
     SnacksPickerList = { bg = palette.float },
     SnacksPickerBoxBorder = { fg = palette.float, bg = palette.float },
     SnacksPickerBorder = { fg = palette.float, bg = palette.float },
+    SnacksPickerListBorder = { fg = palette.float, bg = palette.float },
     SnacksPickerInput = { bg = palette.statusline },
     SnacksPickerInputBorder = { fg = palette.statusline, bg = palette.statusline },
     SnacksPickerPreview = { bg = palette.float },

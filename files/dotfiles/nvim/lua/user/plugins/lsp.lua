@@ -12,24 +12,6 @@ local servers = {
       },
     },
   },
-  -- omnisharp = {
-  --   cmd = {
-  --     "dotnet",
-  --     vim.fn.stdpath("data") .. "/mason/packages/omnisharp/OmniSharp.dll",
-  --   },
-  --   root_dir = function()
-  --     return vim.loop.cwd() -- current working directory
-  --   end,
-  --   settings = {
-  --     FormattingOptions = {
-  --       EnableEditorConfigSupport = false,
-  --       OrganizeImports = true,
-  --     },
-  --     Sdk = {
-  --       IncludePrereleases = true,
-  --     },
-  --   },
-  -- },
   ruff = {},
   clangd = {},
   taplo = {},

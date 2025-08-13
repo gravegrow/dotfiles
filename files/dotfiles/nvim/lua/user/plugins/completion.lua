@@ -93,7 +93,7 @@ return {
         trigger = { show_on_insert = true },
         window = {
           winhighlight = "Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder",
-          direction_priority = { "s" },
+          direction_priority = { "n" },
           show_documentation = true,
         },
       },

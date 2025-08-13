@@ -4,9 +4,12 @@ return {
     explorer = {},
     picker = {
       prompt = "  ",
+      exclude = {
+        "*.meta",
+      },
       layout = {
         preset = function()
-          return vim.o.columns > 100 and "horizontal" or "vertical"
+          return vim.o.columns > 91 and "horizontal" or "vertical"
         end,
       },
       layouts = {
@@ -43,12 +46,18 @@ return {
             height = 0.8,
             {
               box = "vertical",
-              min_width = 50,
-              width = 50,
               { win = "input", height = 1, border = "none" },
-              { win = "list", border = "solid" },
+              {
+                box = "horizontal",
+                {
+                  win = "list",
+                  border = "solid",
+                  min_width = 30,
+                  width = 30,
+                },
+                { win = "preview", border = "left" },
+              },
             },
-            { win = "preview", border = "left" },
           },
         },
         vertical = {

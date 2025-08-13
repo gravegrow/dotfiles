@@ -7,11 +7,11 @@ return {
         stack_upwards = false,
       },
       window = {
-        normal_hl = "Comment",
+        -- normal_hl = "Comment",
         -- border_hl = "Comment",
         -- border = "single",
         x_padding = 0,
-        winblend = 0,
+        winblend = 100,
       },
     },
   },
