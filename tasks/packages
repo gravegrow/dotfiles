@@ -1,0 +1,113 @@
+#!/bin/sh
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+cd $SCRIPT_DIR
+
+utils="$SCRIPT_DIR/../utils.sh"
+source $utils "$@"
+
+base_packages=(
+    curl
+    git
+    man
+    wget
+    xclip
+    xdg-user-dirs
+    xdg-utils
+    xdotool
+    xsel
+)
+
+xorg_packages=(
+    xorg
+    xorg-apps
+    xorg-apps
+    xorg-drivers
+    xorg-fonts
+    xorg-server
+    xorg-xinit
+    xorg-xkill
+    xorg-xrandr
+)
+
+
+dev_packages=(
+    curl
+    fd
+    fzf
+    github-cli
+    luarocks
+    poetry
+    python-neovim
+    python-uv
+    ripgrep
+    clang
+    cmake
+    dotnet-runtime
+    dotnet-sdk
+)
+
+software_packages=(
+    android-tools
+    bat
+    blueman
+    btop
+    discord
+    docker
+    docker-compose
+    dunst
+    entr
+    eza
+    fastfetch
+    feh
+    ffmpegthumbnailer
+    firefox
+    fish
+    flameshot
+    flatseal
+    gnome-calculator
+    gnome-calendar
+    gnome-disk-utility
+    gpick
+    jq
+    keepassxc
+    lazygit
+    lxappearance
+    mpv
+    nemo
+    neovim
+    ntfs-3g
+    openrgb
+    p7zip
+    paru
+    pavucontrol
+    picom
+    polkit-gnome
+    poppler
+    qbittorrent
+    qt5ct
+    rofi
+    spicetify-cli
+    starship
+    tealdeer
+    telegram-desktop
+    tmux
+    tree
+    unarchiver
+    unrar
+    unzip
+    wezterm
+    yazi
+    zathura
+    zathura-pdf-poppler
+    zathura-djvu
+    reflector
+    rsync
+)
+
+
+execute sudo pacman -Syu --noconfirm
+execute sudo pacman -S ${base_packages[@]} --noconfirm --needed
+execute sudo pacman -S ${xorg_packages[@]} --noconfirm --needed
+execute sudo pacman -S ${dev_packages[@]} --noconfirm --needed
+execute sudo pacman -S ${software_packages[@]} --noconfirm --needed

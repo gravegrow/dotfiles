@@ -32,5 +32,6 @@
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "unity-dap.nvim": { "branch": "main", "commit": "d43a6bbe23f02a675ee15e55dee6af375206691b" },
   "vague.nvim": { "branch": "main", "commit": "676e5b4d74f32ff91c1583eba9c326d2b749672f" },
-  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" }
+  "which-key.nvim": { "branch": "main", "commit": "370ec46f710e058c9c1646273e6b225acf47cbed" },
+  "xeno.nvim": { "branch": "master", "commit": "4a1d3946b5c3b9b581e76a84746a06b0977b1fed" }
 }

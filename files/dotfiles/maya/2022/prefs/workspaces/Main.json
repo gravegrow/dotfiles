@@ -11,7 +11,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 1680,
+                            "controlWidth": 2744,
                             "controlHeight": 23,
                             "collapsed": false,
                             "controls": [
@@ -27,7 +27,7 @@
                                     "closed": false,
                                     "widthProperty": "free",
                                     "heightProperty": "fixed",
-                                    "controlWidth": 1680,
+                                    "controlWidth": 2744,
                                     "controlHeight": 23
                                 }
                             ]
@@ -36,7 +36,7 @@
                     {
                         "tabWidget": {
                             "selectedIndex": 0,
-                            "controlWidth": 1680,
+                            "controlWidth": 2744,
                             "controlHeight": 46,
                             "collapsed": false,
                             "controls": [
@@ -125,7 +125,7 @@
                                                 "widthProperty": "preferred",
                                                 "heightProperty": "free",
                                                 "controlWidth": 374,
-                                                "controlHeight": 1007
+                                                "controlHeight": 0
                                             },
                                             {
                                                 "objectName": "NEXDockControl",
@@ -157,8 +157,8 @@
                                                 "closed": false,
                                                 "widthProperty": "free",
                                                 "heightProperty": "free",
-                                                "controlWidth": 234,
-                                                "controlHeight": 1007
+                                                "controlWidth": 415,
+                                                "controlHeight": 1006
                                             }
                                         ]
                                     }
@@ -174,7 +174,7 @@
                                                         {
                                                             "tabWidget": {
                                                                 "selectedIndex": 0,
-                                                                "controlWidth": 776,
+                                                                "controlWidth": 735,
                                                                 "controlHeight": 973,
                                                                 "collapsed": true,
                                                                 "controls": [
@@ -190,7 +190,7 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 776,
+                                                                        "controlWidth": 735,
                                                                         "controlHeight": 973
                                                                     },
                                                                     {
@@ -214,7 +214,7 @@
                                                         {
                                                             "tabWidget": {
                                                                 "selectedIndex": 0,
-                                                                "controlWidth": 945,
+                                                                "controlWidth": 1200,
                                                                 "controlHeight": 986,
                                                                 "collapsed": false,
                                                                 "controls": [
@@ -230,7 +230,7 @@
                                                                         "closed": false,
                                                                         "widthProperty": "free",
                                                                         "heightProperty": "free",
-                                                                        "controlWidth": 945,
+                                                                        "controlWidth": 1200,
                                                                         "controlHeight": 986,
                                                                         "initCallback": "mainPaneStateCallback",
                                                                         "stateString": "global string $gMainPane; paneLayout -edit -configuration single $gMainPane;if(`modelPanel -exists modelPanel4`){ modelPanel -edit -parent $gMainPane modelPanel4; paneLayout -edit -setPane modelPanel4 1 $gMainPane;}"
@@ -244,7 +244,7 @@
                                             {
                                                 "tabWidget": {
                                                     "selectedIndex": 0,
-                                                    "controlWidth": 882,
+                                                    "controlWidth": 1946,
                                                     "controlHeight": 28,
                                                     "collapsed": false,
                                                     "controls": [
@@ -260,7 +260,7 @@
                                                             "closed": false,
                                                             "widthProperty": "free",
                                                             "heightProperty": "fixed",
-                                                            "controlWidth": 882,
+                                                            "controlWidth": 1946,
                                                             "controlHeight": 28
                                                         }
                                                     ]
@@ -427,6 +427,60 @@
     ],
     "closedControls": [
         {
+            "objectName": "AttributeEditor",
+            "posX": 1296,
+            "posY": 413,
+            "controlHeight": 856,
+            "controlWidth": 896,
+            "widthProperty": "preferred",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "posePanel1Window",
+            "posX": 1154,
+            "posY": 431,
+            "controlHeight": 626,
+            "controlWidth": 1126,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "graphEditor1Window",
+            "posX": 2271,
+            "posY": 25,
+            "controlHeight": 1410,
+            "controlWidth": 1164,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "createNodePanel2Window",
+            "posX": 1492,
+            "posY": 442,
+            "controlHeight": 558,
+            "controlWidth": 496,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "shapePanel1Window",
+            "posX": 1277,
+            "posY": 524,
+            "controlHeight": 500,
+            "controlWidth": 826,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
+            "objectName": "scriptEditorPanel1Window",
+            "posX": 705,
+            "posY": 227,
+            "controlHeight": 1056,
+            "controlWidth": 1548,
+            "widthProperty": "free",
+            "heightProperty": "free"
+        },
+        {
             "objectName": "relationshipPanel1Window",
             "posX": 1265,
             "posY": 300,
@@ -445,66 +499,12 @@
             "heightProperty": "free"
         },
         {
-            "objectName": "shapePanel1Window",
-            "posX": 1277,
-            "posY": 524,
-            "controlHeight": 500,
-            "controlWidth": 826,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "createNodePanel2Window",
-            "posX": 1492,
-            "posY": 442,
-            "controlHeight": 558,
-            "controlWidth": 496,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
             "objectName": "componentEditorPanel1Window",
             "posX": 1859,
             "posY": 268,
             "controlHeight": 835,
             "controlWidth": 1342,
             "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "graphEditor1Window",
-            "posX": 2271,
-            "posY": 25,
-            "controlHeight": 1410,
-            "controlWidth": 1164,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "posePanel1Window",
-            "posX": 1154,
-            "posY": 431,
-            "controlHeight": 626,
-            "controlWidth": 1126,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "scriptEditorPanel1Window",
-            "posX": 1734,
-            "posY": 212,
-            "controlHeight": 1056,
-            "controlWidth": 1548,
-            "widthProperty": "free",
-            "heightProperty": "free"
-        },
-        {
-            "objectName": "AttributeEditor",
-            "posX": 1307,
-            "posY": 237,
-            "controlHeight": 1108,
-            "controlWidth": 780,
-            "widthProperty": "preferred",
             "heightProperty": "free"
         }
     ],

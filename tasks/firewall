@@ -1,0 +1,23 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+cd $SCRIPT_DIR
+
+utils="$SCRIPT_DIR/../utils.sh"
+source $utils "$@"
+
+
+info "UFW Firewall | Installilng"
+execute sudo pacman -Syu --noconfirm
+execute sudo pacman -S ufw --noconfirm --needed
+
+
+info "UFW Firewall | Configuring"
+
+execute sudo ufw disable
+execute sudo ufw limit 22/tcp
+execute sudo ufw allow 80/tcp
+execute sudo ufw allow 443/tcp
+execute sudo ufw default deny incoming
+execute sudo ufw default allow outgoing
+execute sudo ufw enable

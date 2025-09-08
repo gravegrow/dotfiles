@@ -19,6 +19,7 @@ local servers = {
   jsonls = {},
   bashls = {},
   neocmake = {},
+  glsl_analyzer = {},
   lua_ls = {
     settings = {
       Lua = {

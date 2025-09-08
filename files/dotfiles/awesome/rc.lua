@@ -15,16 +15,17 @@ theme.init(gears.filesystem.get_configuration_dir() .. 'theme.lua')
 
 local widgets = require('widgets')
 
-awful.spawn.with_shell('xrandr --output DisplayPort-1 --auto --mode "3440x1440_120.00" --set TearFree on')
-awful.spawn.with_shell('xrandr --output HDMI-A-0 --right-of DisplayPort-1 --auto --scale 1.3333x1.3333')
-awful.spawn.with_shell('xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank')
-
-awful.spawn.once('picom')
-awful.spawn('openrgb -p main')
-awful.spawn.once('/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1')
-awful.spawn.once('/usr/libexec/gsd-xsettings')
-awful.spawn('gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"')
-awful.spawn('gsettings set org.gnome.desktop.wm.preferences button-layout :')
+awful.spawn.with_shell('dwm-autostart')
+-- awful.spawn.with_shell('xrandr --output DisplayPort-1 --auto --mode "3440x1440_120.00" --set TearFree on')
+-- awful.spawn.with_shell('xrandr --output HDMI-A-0 --right-of DisplayPort-1 --auto --scale 1.3333x1.3333')
+-- awful.spawn.with_shell('xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank')
+--
+-- awful.spawn.once('picom')
+-- awful.spawn('openrgb -p main')
+-- awful.spawn.once('/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1')
+-- awful.spawn.once('/usr/libexec/gsd-xsettings')
+-- awful.spawn('gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"')
+-- awful.spawn('gsettings set org.gnome.desktop.wm.preferences button-layout :')
 
 local mods = {
 	SUPER = 'Mod4',
@@ -122,22 +123,20 @@ end)
 local apps = {
 	terminal = 'wezterm',
 	launcher = 'rofi -modi drun,run -show drun',
-	browser = 'firefox-esr',
-	browser_alt = 'brave-browser',
-	browser_private = 'firefox-esr --private-window',
+	browser = 'dwm-browser',
+	browser_private = 'dwm-browser-private',
 	file_explorer = 'wezterm -e yazi',
-	colorpicker = 'gpick --pick',
+	colorpicker = 'dwm-gpick',
 	screenshot_region = 'flameshot gui',
-	screenshot_screen = 'flameshot screen -p ~/Pictures/screenshot.png',
+	screenshot_screen = 'dwm-screenshot',
 }
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER }, 'w', function() mouse.screen.sidebar.visible = not mouse.screen.sidebar.visible end),
-	awful.key({ mods.SUPER, mods.CONTROL }, 'r', awesome.restart),
+	awful.key({ mods.SUPER, mods.CONTROL, mods.SHIFT }, 'r', awesome.restart),
 	awful.key({ mods.SUPER }, 'Return', function() awful.spawn(apps.terminal) end),
-	awful.key({ mods.SUPER }, 'f', function() awful.spawn(apps.browser) end),
-	awful.key({ mods.SUPER }, 'b', function() awful.spawn(apps.browser_alt) end),
+	awful.key({ mods.SUPER }, 'b', function() awful.spawn(apps.browser) end),
 	awful.key({ mods.SUPER }, 'e', function() awful.spawn(apps.file_explorer) end),
 	awful.key({ mods.SUPER, mods.SHIFT }, 'b', function() awful.spawn(apps.browser_private) end),
 	awful.key({ mods.SUPER }, 'p', function() awful.spawn(apps.screenshot_region) end),

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ ! -d $HOME/Pictures/Screenshots ]; then
-	mkdir -p $HOME/Pictures/Screenshots
+  mkdir -p $HOME/Pictures/Screenshots
 fi
 
 file=$HOME/Pictures/Screenshots/$(date +'%d-%m-%Y_%H-%-M-%S').png

@@ -76,6 +76,8 @@ static const char *tagsel[][2] = {
 static const Rule rules[] = {
     /* xprop(1): WM_CLASS(STRING) = instance, class WM_NAME(STRING) = title */
     /* class                                instance  title    tags mask    isfloating  isterminal  noswallow  monitor */
+    {"glfw-application",                    NULL,     NULL,    0,           1,          0,          0,         -1},
+    {"GLFW-Application",                    NULL,     NULL,    0,           1,          0,          0,         -1},
     {"Gimp",                                NULL,     NULL,    0,           1,          0,          0,         -1},
     {"Lutris",                              NULL,     NULL,    1 << 6,      0,          0,          0,          1},
     {"gnome-calculator",                    NULL,     NULL,    0,           1,          0,          0,         -1},

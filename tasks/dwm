@@ -1,0 +1,43 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" &>/dev/null && pwd)"
+cd $SCRIPT_DIR
+
+utils="$SCRIPT_DIR/../utils.sh"
+source $utils "$@"
+
+dwm_dependencies=(
+    base-devel
+    libx11
+    libxft
+    libxinerama
+    freetype2
+    fontconfig
+)
+
+info "DWM | Installilng Dependencies"
+execute sudo pacman -Syu --noconfirm
+execute sudo pacman -S ${dwm_dependencies[@]} --noconfirm --needed
+
+DWM_DIR=$(cd $SCRIPT_DIR/../files/dwm && pwd)
+
+info "DWM | Building DWM"
+execute cd $DWM_DIR/dwm
+execute sudo /usr/bin/make clean install
+
+info "DWM | Building DWMBLOCKS"
+execute cd $DWM_DIR/dwmblocks
+execute sudo /usr/bin/make clean install
+
+
+info "DWM | Setup Session"
+sessions="/usr/share/xsessions"
+
+if [ ! -d "$sessions" ]; then
+    execute mkdir $sessions
+fi
+
+execute sudo cp -f "$DWM_DIR/dwm.desktop" "$sessions/dwm.desktop"
+execute sudo cp -f "$DWM_DIR/dwm-session" "/usr/local/bin/dwm-session"
+execute sudo chmod +x "/usr/local/bin/dwm-session"
+

@@ -36,8 +36,8 @@ theme.widget_shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h
 theme.widget_margin = 5
 
 theme.green = '#A1ABA0'
-theme.bg_normal = '#141110'
-theme.bg_focus = '#141110'
+theme.bg_normal = '#161617'
+theme.bg_focus = '#161617'
 theme.bg_urgent = '#ff0000'
 theme.bg_minimize = '#444444'
 theme.bg_systray = theme.bg_normal
