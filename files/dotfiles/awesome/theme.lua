@@ -5,18 +5,11 @@
 local xresources = require('beautiful.xresources')
 local rnotification = require('ruled.notification')
 local dpi = xresources.apply_dpi
-
 local gears = require('gears')
 
 local theme = {}
 
-theme.app_icons = {}
-theme.app_icons['org.wezfurlong.wezterm'] = { icon = '', color = '#b4befe' }
-theme.app_icons.default = { icon = '󰧭', color = '#a6adc8' }
-theme.app_icons['Firefox-esr'] = { icon = '', color = '#fab387' }
-theme.app_icons['explorer.exe'] = { icon = '󰺷', color = '#921919' }
-
-theme.layout_icons = { tile = '󰙀', max = '' }
+theme.layout_icons = { tile = '󰙀', max = '', floating = '󰄶' }
 theme.selected = '#25211E'
 
 theme.app_inactive = '#45475a'
@@ -36,7 +29,7 @@ theme.widget_shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h
 theme.widget_margin = 5
 
 theme.green = '#A1ABA0'
-theme.bg_normal = '#161617'
+theme.bg_normal = '#0a0a0a'
 theme.bg_focus = '#161617'
 theme.bg_urgent = '#ff0000'
 theme.bg_minimize = '#444444'
@@ -47,7 +40,7 @@ theme.fg_focus = '#6E6763'
 theme.fg_urgent = '#6E6763'
 theme.fg_minimize = '#6E6763'
 
-theme.useless_gap = dpi(0)
+theme.useless_gap = dpi(5)
 theme.border_width = dpi(2)
 theme.border_color_normal = theme.bg_normal
 theme.border_color_active = theme.selected

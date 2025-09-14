@@ -3,77 +3,38 @@
 -- found (e.g. lgi). If LuaRocks is not installed, do nothing.
 pcall(require, 'luarocks.loader')
 
+require('awful.autofocus')
 local gears = require('gears')
 local awful = require('awful')
-require('awful.autofocus')
 local wibox = require('wibox')
 local theme = require('beautiful')
 local naughty = require('naughty')
 local ruled = require('ruled')
-
-theme.init(gears.filesystem.get_configuration_dir() .. 'theme.lua')
-
 local widgets = require('widgets')
 
 awful.spawn.with_shell('dwm-autostart')
--- awful.spawn.with_shell('xrandr --output DisplayPort-1 --auto --mode "3440x1440_120.00" --set TearFree on')
--- awful.spawn.with_shell('xrandr --output HDMI-A-0 --right-of DisplayPort-1 --auto --scale 1.3333x1.3333')
--- awful.spawn.with_shell('xset -display :0.0 -dpms && xset -display :0.0 s off && xset -display :0.0 s noblank')
---
--- awful.spawn.once('picom')
--- awful.spawn('openrgb -p main')
--- awful.spawn.once('/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1')
--- awful.spawn.once('/usr/libexec/gsd-xsettings')
--- awful.spawn('gsettings set org.gnome.desktop.interface gtk-theme "Orchis-Dark"')
--- awful.spawn('gsettings set org.gnome.desktop.wm.preferences button-layout :')
+theme.init(gears.filesystem.get_configuration_dir() .. 'theme.lua')
 
 local mods = {
 	SUPER = 'Mod4',
 	SHIFT = 'Shift',
 	CONTROL = 'Control',
 }
--- }}}
 
--- {{{ Tag layout
--- Table of layouts to cover with awful.layout.inc, order matters.
-tag.connect_signal(
-	'request::default_layouts',
-	function()
-		awful.layout.append_default_layouts({
-			awful.layout.suit.tile,
-			awful.layout.suit.max,
-		})
-	end
-)
--- }}}
-
--- {{{ Wallpaper
-screen.connect_signal(
-	'request::wallpaper',
-	function(s)
-		awful.wallpaper({
-			screen = s,
-			bg = theme.bg_normal,
-			widget = {
-				{
-					image = theme.wallpaper,
-					upscale = true,
-					downscale = true,
-					widget = wibox.widget.imagebox,
-				},
-				valign = 'center',
-				halign = 'center',
-				tiled = false,
-				widget = wibox.container.tile,
-			},
-		})
-	end
-)
--- }}}
+local apps = {
+	terminal = 'wezterm',
+	launcher = 'rofi -modi drun,run -show drun',
+	browser = 'dwm-browser',
+	browser_private = 'dwm-browser-private',
+	files_tui = 'dwm-files-tui',
+	files_gui = 'dwm-files-gui',
+	colorpicker = 'dwm-gpick',
+	screengrab = 'dwm-screengrab',
+	screenshot = 'dwm-screenshot',
+}
 
 screen.connect_signal('request::desktop_decoration', function(self)
-	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, self, awful.layout.layouts[1])
-
+	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, self, awful.layout.suit.tile)
 	self.systray = {
 		{
 			widget = wibox.widget.systray,
@@ -116,20 +77,7 @@ screen.connect_signal('request::desktop_decoration', function(self)
 	})
 end)
 
--- }}}
-
 -- {{{ Key bindings
-
-local apps = {
-	terminal = 'wezterm',
-	launcher = 'rofi -modi drun,run -show drun',
-	browser = 'dwm-browser',
-	browser_private = 'dwm-browser-private',
-	file_explorer = 'wezterm -e yazi',
-	colorpicker = 'dwm-gpick',
-	screenshot_region = 'flameshot gui',
-	screenshot_screen = 'dwm-screenshot',
-}
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
@@ -137,9 +85,10 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER, mods.CONTROL, mods.SHIFT }, 'r', awesome.restart),
 	awful.key({ mods.SUPER }, 'Return', function() awful.spawn(apps.terminal) end),
 	awful.key({ mods.SUPER }, 'b', function() awful.spawn(apps.browser) end),
-	awful.key({ mods.SUPER }, 'e', function() awful.spawn(apps.file_explorer) end),
+	awful.key({ mods.SUPER }, 'e', function() awful.spawn(apps.files_tui) end),
+	awful.key({ mods.SUPER, mods.SHIFT }, 'e', function() awful.spawn(apps.files_gui) end),
 	awful.key({ mods.SUPER, mods.SHIFT }, 'b', function() awful.spawn(apps.browser_private) end),
-	awful.key({ mods.SUPER }, 'p', function() awful.spawn(apps.screenshot_region) end),
+	awful.key({ mods.SUPER }, 'p', function() awful.spawn(apps.screengrab) end),
 	awful.key({ mods.SUPER }, 'c', function() awful.spawn(apps.colorpicker) end),
 	awful.key({ mods.SUPER }, 'space', function() awful.spawn.with_shell(apps.launcher) end),
 })
@@ -160,73 +109,35 @@ awful.keyboard.append_global_keybindings({
 	end),
 })
 
--- Tags related keybindings
-awful.keyboard.append_global_keybindings({
-	awful.key({ mods.SUPER }, 'Escape', awful.tag.history.restore),
-})
-
 -- Layouts
 awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER }, 't', function() awful.layout.set(awful.layout.suit.tile) end),
 	awful.key({ mods.SUPER }, 'm', function() awful.layout.set(awful.layout.suit.max) end),
+	awful.key({ mods.SUPER }, 'f', function() awful.layout.set(awful.layout.suit.floating) end),
 })
 
 -- Focus related keybindings
 awful.keyboard.append_global_keybindings({
-	awful.key({ mods.SUPER }, 'k', function() awful.client.focus.byidx(1) end, {
-		description = 'focus next by index',
-		group = 'client',
-	}),
-	awful.key({ mods.SUPER }, 'j', function() awful.client.focus.byidx(-1) end, {
-		description = 'focus previous by index',
-		group = 'client',
-	}),
-	awful.key({ mods.SUPER, mods.CONTROL }, 'j', function() awful.screen.focus_relative(1) end, {
-		description = 'focus the next screen',
-		group = 'screen',
-	}),
-	awful.key({ mods.SUPER, mods.CONTROL }, 'k', function() awful.screen.focus_relative(-1) end, {
-		description = 'focus the previous screen',
-		group = 'screen',
-	}),
+	awful.key({ mods.SUPER }, 'k', function() awful.client.focus.byidx(1) end),
+	awful.key({ mods.SUPER }, 'j', function() awful.client.focus.byidx(-1) end),
+	awful.key({ mods.SUPER, mods.CONTROL }, 'j', function() awful.screen.focus_relative(1) end),
+	awful.key({ mods.SUPER, mods.CONTROL }, 'k', function() awful.screen.focus_relative(-1) end),
 	awful.key({ mods.SUPER, mods.SHIFT }, 'n', function()
 		local c = awful.client.restore()
-		-- Focus restored client
 		if c then
 			c:activate({ raise = true, context = 'key.unminimize' })
 		end
-	end, {
-		description = 'restore minimized',
-		group = 'client',
-	}),
+	end),
 })
 
 -- Layout related keybindings
 awful.keyboard.append_global_keybindings({
-	awful.key({ mods.SUPER, mods.SHIFT }, 'j', function() awful.client.swap.byidx(1) end, {
-		description = 'swap with next client by index',
-		group = 'client',
-	}),
-	awful.key({ mods.SUPER, mods.SHIFT }, 'k', function() awful.client.swap.byidx(-1) end, {
-		description = 'swap with previous client by index',
-		group = 'client',
-	}),
-	awful.key({ mods.SUPER }, 'l', function() awful.tag.incmwfact(0.05) end, {
-		description = 'increase master width factor',
-		group = 'layout',
-	}),
-	awful.key({ mods.SUPER }, 'h', function() awful.tag.incmwfact(-0.05) end, {
-		description = 'decrease master width factor',
-		group = 'layout',
-	}),
-	awful.key({ mods.SUPER }, 'i', function() awful.tag.incncol(1, nil, true) end, {
-		description = 'increase the number of columns',
-		group = 'layout',
-	}),
-	awful.key({ mods.SUPER }, 'd', function() awful.tag.incncol(-1, nil, true) end, {
-		description = 'decrease the number of columns',
-		group = 'layout',
-	}),
+	awful.key({ mods.SUPER, mods.SHIFT }, 'j', function() awful.client.swap.byidx(1) end),
+	awful.key({ mods.SUPER, mods.SHIFT }, 'k', function() awful.client.swap.byidx(-1) end),
+	awful.key({ mods.SUPER }, 'l', function() awful.tag.incmwfact(0.05) end),
+	awful.key({ mods.SUPER }, 'h', function() awful.tag.incmwfact(-0.05) end),
+	awful.key({ mods.SUPER }, 'i', function() awful.tag.incncol(1, nil, true) end),
+	awful.key({ mods.SUPER }, 'd', function() awful.tag.incncol(-1, nil, true) end),
 })
 
 awful.keyboard.append_global_keybindings({
@@ -284,15 +195,7 @@ client.connect_signal('request::default_keybindings', function()
 			{ description = 'move to master' }
 		),
 		awful.key({ mods.SUPER, mods.SHIFT }, 'q', function(c) c:kill() end, { description = 'close' }),
-		awful.key({ mods.SUPER, mods.SHIFT }, 'space', function(c)
-			awful.client.floating.toggle()
-
-			-- if c.floating then
-			-- 	c.shape = theme.floating_shape
-			-- else
-			-- 	c.shape = gears.shape.rectangle
-			-- end
-		end, { description = 'toggle floating' }),
+		awful.key({ mods.SUPER, mods.SHIFT }, 'space', function(c) awful.client.floating.toggle() end),
 		awful.key({ mods.SUPER }, 'o', function(c) c:move_to_screen() end, { description = 'move to screen' }),
 		awful.key({ mods.SUPER }, 'n', function(c) c.minimized = true end, { description = 'minimize' }),
 	})
@@ -409,10 +312,7 @@ multibox.name = 'multibox'
 multibox.arrange = function(p)
 	local workarea = p.workarea
 	local clients = p.clients
-
 	local terminal_width = 200
-	local master_width = 2045
-	local second_width = workarea.width - terminal_width - master_width
 
 	local geometry = {
 		height = workarea.height,
@@ -420,22 +320,17 @@ multibox.arrange = function(p)
 		y = workarea.y,
 	}
 
-	geometry.width = master_width
+	geometry.width = workarea.width / 2
 	clients[1]:geometry(geometry)
 
+	geometry.width = workarea.width / 2
+	geometry.x = clients[2]:geometry(geometry)
+
 	geometry.width = terminal_width
-	geometry.x = geometry.x + master_width
-	clients[2]:geometry(geometry)
-
-	geometry.width = second_width
-	geometry.height = geometry.height / 2
-	geometry.x = geometry.x + terminal_width
-	clients[4]:geometry(geometry)
-
-	geometry.y = geometry.y + geometry.height
+	geometry.height = terminal_width
 	clients[3]:geometry(geometry)
 
-	for i = 5, #clients do
+	for i = 4, #clients do
 		local g = {}
 		g.width = 1280
 		g.height = 720

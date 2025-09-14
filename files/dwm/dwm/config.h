@@ -83,7 +83,7 @@ static const Rule rules[] = {
     {"gnome-calculator",                    NULL,     NULL,    0,           1,          0,          0,         -1},
     {"gnome-calendar",                      NULL,     NULL,    0,           1,          0,          0,         -1},
     {"Firefox",                             NULL,     NULL,    0,           0,          0,          0,         -1},
-    {"qBittorrent",                         NULL,     NULL,    1 << 4,      1,          0,          0,          1},
+    {"qBittorrent",                         NULL,     NULL,    1 << 4,      0,          0,          0,          1},
     {"discord",                             NULL,     NULL,    1 << 1,      0,          0,          0,          1},
     {"Spotify",                             NULL,     NULL,    1 << 2,      0,          0,          0,          1},
     {"mpv",                                 NULL,     NULL,    0,           0,          0,          0,          0},

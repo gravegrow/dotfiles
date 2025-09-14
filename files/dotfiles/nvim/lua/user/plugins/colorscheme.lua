@@ -1,5 +1,14 @@
 return {
   {
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
+    enabled = false,
+    config = function()
+      require("nordic").load()
+    end,
+  },
+  {
     "webhooked/kanso.nvim",
     lazy = false,
     priority = 1000,

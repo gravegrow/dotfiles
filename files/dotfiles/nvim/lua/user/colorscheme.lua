@@ -5,7 +5,7 @@ local colors_dark = {
   non_text   = "#272830",
   comment    = "#4f4f59",
   float      = "#0b0b0c",
-  background = "#161617",
+  background = "#161616",
   cursorline = "#1A1A1C",
   statusline = "#1f1f22",
 }

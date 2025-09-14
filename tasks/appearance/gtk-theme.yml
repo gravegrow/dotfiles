@@ -5,6 +5,8 @@
     - orchis-theme-git
     - kvantum-theme-orchis-git
     - kvantum-theme-materia
+    - nordic-theme
+    - nordic-darker-theme
   community.general.pacman:
     name: '{{ item }}'
   changed_when: false

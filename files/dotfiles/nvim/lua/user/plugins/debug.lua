@@ -1,11 +1,11 @@
 return {
-  {
-    "erifirin/unity-dap.nvim",
-    event = "LspAttach",
-    opts = {
-      -- your configuration; leave empty for default settings
-    },
-  },
+  -- {
+  --   "erifirin/unity-dap.nvim",
+  --   event = "LspAttach",
+  --   opts = {
+  --     -- your configuration; leave empty for default settings
+  --   },
+  -- },
   {
     "mfussenegger/nvim-dap",
     event = "LspAttach",

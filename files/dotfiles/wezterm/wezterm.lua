@@ -1,7 +1,7 @@
 local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 
--- config.font = wezterm.font_with_fallback({ 'Berkeley Mono Variable', 'JetBrainsMono Nerd Font Mono' })
+-- config.font = wezterm.font_with_fallback({ 'Berkeley Mono Nerd Font Mono', 'JetBrainsMono Nerd Font Mono' })
 -- config.line_height = 1.67
 
 config.font = wezterm.font({ family = 'VictorMono Nerd Font Mono ', weight = 'Medium' })
@@ -19,7 +19,7 @@ config.window_padding = {
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 
--- config.window_background_opacity = 0.98
+-- config.window_background_opacity = 0.99
 config.color_scheme = 'not-rose-pine'
 config.underline_thickness = '1px'
 config.underline_position = '-3px'
@@ -62,7 +62,7 @@ wezterm.on('user-var-changed', function(window, pane, name, value)
 	if name == 'ZEN_MODE' then
 		if value == 'on' then
 			overrides.font_size = 12
-			overrides.font = wezterm.font 'Berkeley Mono'
+			overrides.font = wezterm.font 'FiraCode Nerd Font Mono'
 			overrides.line_height = 1
 		else
 			overrides.font = nil

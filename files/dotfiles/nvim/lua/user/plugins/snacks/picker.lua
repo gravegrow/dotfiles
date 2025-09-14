@@ -52,8 +52,8 @@ return {
                 {
                   win = "list",
                   border = "solid",
-                  min_width = 30,
-                  width = 30,
+                  min_width = 35,
+                  width = 35,
                 },
                 { win = "preview", border = "left" },
               },
