@@ -10,8 +10,10 @@ window decoration {
     padding: 0;
 }
 
-* {
-  text-shadow: none;
+.background, headerbar, .sidebar-pane, .content-pane {
+    border-top-left-radius: 0px; 
+    border-top-right-radius: 0px; 
+    border-bottom-left-radius: 0px; 
+    border-bottom-right-radius: 0px; 
+    border-radius: 0px; 
 }
-
-.background, headerbar { border-radius: 0px; }
