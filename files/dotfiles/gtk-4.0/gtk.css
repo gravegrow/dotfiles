@@ -17,3 +17,7 @@ window decoration {
     border-bottom-right-radius: 0px; 
     border-radius: 0px; 
 }
+
+windowcontrols {
+	transform: translateX(300px);
+}
