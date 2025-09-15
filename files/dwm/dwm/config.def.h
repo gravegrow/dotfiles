@@ -2,7 +2,7 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx = 2; /* border pixel of windows */
+static const unsigned int borderpx = 1; /* border pixel of windows */
 static const unsigned int snap = 0;    /* snap pixel */
 static const unsigned int systraypinning = 1; /* 0: sloppy systray follows selected monitor, >0: pin systray to monitor X */
 static const unsigned int systrayonleft = 1; /* 0: systray in the right corner, >0: systray on left of status text */
@@ -41,12 +41,12 @@ static const char color_teal[]   = "#8EA4A2";
 static const char color_purple[] = "#807e96";
 static const char color_border[] = "#464647";
 
-static const char color_black[]  = "#0d0d0d";
+static const char color_black[]  = "#0a0a0a";
 static const char color_gray[]   = "#464646";
 
 static const char *colors[][3] = {
     /*               fg              bg         border   */
-    [SchemeNorm]   = {color_gray,  color_bg, color_bg},
+    [SchemeNorm]   = {color_gray,  color_bg, color_black},
     [SchemeSel]    = {color_gray,  color_bg, color_border},
     [SchemeTitle]  = {color_fg,    color_bg, color_bg},
     [SchemeLayout] = {color_fg,    color_bg, color_black},
@@ -135,10 +135,10 @@ static const char *roficmd[] = {"rofi", "-show", "drun", "-terminal", "wezterm",
 static const char *privatebrowsercmd[] = {"dwm-browser-private", NULL};
 static const char *browsercmd[] = { "dwm-browser", NULL};
 static const char *gpickcmd[] = {"dwm-gpick", NULL};
-static const char *filesguicmd[] = {"nemo", NULL};
-static const char *filestuicmd[] = {"wezterm", "-e", "yazi", NULL};
-static const char *screengrab[] = {"flameshot", "gui", NULL};
-static const char *screenshot[] = {"dwm-screenshot"};
+static const char *filesguicmd[] = {"dwm-files-gui", NULL};
+static const char *filestuicmd[] = {"dwm-files-tui", NULL};
+static const char *screengrab[] = {"dwm-screengrab", NULL};
+static const char *screenshot[] = {"dwm-screenshot", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
