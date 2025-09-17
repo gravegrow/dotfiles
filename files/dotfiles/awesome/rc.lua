@@ -53,115 +53,156 @@ local apps = {
 	screenshot = 'dwm-screenshot',
 }
 
--- {{{ Wallpaper
-screen.connect_signal(
-	'request::wallpaper',
-	function(s)
-		awful.wallpaper({
-			screen = s,
-			widget = {
-				{
-					image = beautiful.wallpaper,
-					upscale = true,
-					downscale = true,
-					widget = wibox.widget.imagebox,
-				},
-				valign = 'center',
-				halign = 'center',
-				tiled = false,
-				widget = wibox.container.tile,
-			},
-		})
-	end
-)
--- }}}
-
--- {{{ Wibar
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
-screen.connect_signal('request::desktop_decoration', function(s)
-	-- Each screen has its own tag table.
-	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, s, awful.layout.suit.tile)
-
-	-- Create a promptbox for each screen
-	s.mypromptbox = awful.widget.prompt()
-
-	-- Create an imagebox widget which will contain an icon indicating which layout we're using.
-	-- We need one layoutbox per screen.
-	s.mylayoutbox = awful.widget.layoutbox({
-		screen = s,
-		buttons = {
-			awful.button({}, 1, function() awful.layout.inc(1) end),
-			awful.button({}, 3, function() awful.layout.inc(-1) end),
-			awful.button({}, 4, function() awful.layout.inc(-1) end),
-			awful.button({}, 5, function() awful.layout.inc(1) end),
+local clock = {
+	{
+		{
+			widget = wibox.widget.textclock('%H'),
+			halign = 'center',
+			-- font = beautiful.clock_font,
 		},
-	})
+		{
+			{
+				widget = wibox.widget.textbox('──'),
+				halign = 'center',
+				-- font = theme.clock_font,
+			},
+			widget = wibox.container.margin,
+			top = -5,
+			bottom = -5,
+		},
+		{
+			widget = wibox.widget.textclock('%M'),
+			halign = 'center',
+			-- font = theme.clock_font,
+		},
+		layout = wibox.layout.fixed.vertical,
+	},
+	widget = wibox.container.margin,
+	top = 5,
+	bottom = 10,
+}
 
-	-- Create a taglist widget
-	s.mytaglist = awful.widget.taglist({
-		screen = s,
-		filter = awful.widget.taglist.filter.noempty,
+local power_button = {
+	{
+		{
+			{
+				text = '⏻',
+				widget = wibox.widget.textbox,
+				-- font = theme.icon_font,
+				halign = 'center',
+			},
+			top = 1,
+			bottom = 2,
+			widget = wibox.container.margin,
+		},
+		fg = beautiful.bg_normal,
+		bg = '#945B5B',
+		shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 5) end,
+		widget = wibox.container.background,
+	},
+	margins = 7,
+	widget = wibox.container.margin,
+}
+
+screen.connect_signal('request::desktop_decoration', function(scr)
+	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, scr, awful.layout.suit.tile)
+
+	scr.layouts = function()
+		local layouts = wibox.widget.textbox(beautiful.layout_icons.tile)
+		scr.selected_tag:connect_signal(
+			'property::layout',
+			function(t) layouts.text = beautiful.layout_icons[t.layout.name] or beautiful.layout_icons.fallback end
+		)
+
+		local widget = {
+			{
+				{
+					layouts,
+					-- fg = theme.fg_normal,
+					widget = wibox.container.background,
+				},
+				top = 5,
+				widget = wibox.container.margin,
+			},
+			widget = wibox.container.place,
+		}
+
+		return widget
+	end
+
+	scr.taglist = awful.widget.taglist({
+		screen = scr,
+		filter = function(t) return #t:clients() > 0 and t.index < 6 or t.selected end,
+		layout = wibox.layout.fixed.vertical,
+		style = {
+			shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end,
+		},
+		widget_template = {
+			{
+				{
+					{
+						{
+							id = 'text_role',
+							valign = 'center',
+							widget = wibox.widget.textbox,
+						},
+						valign = 'center',
+						widget = wibox.container.place,
+					},
+					top = 3,
+					bottom = 3,
+					widget = wibox.container.margin,
+				},
+				id = 'background_role',
+				widget = wibox.container.background,
+			},
+			margins = 5,
+			widget = wibox.container.margin,
+		},
+
 		buttons = {
 			awful.button({}, 1, function(t) t:view_only() end),
-			awful.button({ mods.SUPER }, 1, function(t)
+			awful.button({ 'Mod4' }, 1, function(t)
 				if client.focus then
 					client.focus:move_to_tag(t)
 				end
 			end),
-			awful.button({}, 3, awful.tag.viewtoggle),
-			awful.button({ mods.SUPER }, 3, function(t)
-				if client.focus then
-					client.focus:toggle_tag(t)
-				end
-			end),
-			awful.button({}, 4, function(t) awful.tag.viewprev(t.screen) end),
-			awful.button({}, 5, function(t) awful.tag.viewnext(t.screen) end),
 		},
 	})
 
-	-- Create a tasklist widget
-	s.mytasklist = awful.widget.tasklist({
-		screen = s,
-		filter = awful.widget.tasklist.filter.currenttags,
-		buttons = {
-			awful.button({}, 1, function(c) c:activate({ context = 'tasklist', action = 'toggle_minimization' }) end),
-			awful.button({}, 3, function() awful.menu.client_list({ theme = { width = 250 } }) end),
-			awful.button({}, 4, function() awful.client.focus.byidx(-1) end),
-			awful.button({}, 5, function() awful.client.focus.byidx(1) end),
+	scr.systray = {
+		{
+			widget = wibox.widget.systray,
+			horizontal = false,
 		},
-	})
+		margins = 8,
+		widget = wibox.container.margin,
+	}
 
-	-- Create the wibox
-	s.mywibox = awful.wibar({
-		position = 'top',
-		screen = s,
+	scr.sidebar = awful.wibar({
+		position = 'left',
+		width = 35,
+		screen = scr,
 		widget = {
-			layout = wibox.layout.align.horizontal,
-			{ -- Left widgets
-				layout = wibox.layout.fixed.horizontal,
-				mylauncher,
-				s.mytaglist,
-				s.mypromptbox,
+			layout = wibox.layout.align.vertical,
+			{
+				layout = wibox.layout.fixed.vertical,
+				scr.layouts(),
+				scr.taglist,
 			},
-			s.mytasklist, -- Middle widget
-			{ -- Right widgets
-				layout = wibox.layout.fixed.horizontal,
-				mykeyboardlayout,
-				wibox.widget.systray(),
-				mytextclock,
-				s.mylayoutbox,
+			{
+				valign = 'center',
+				widget = wibox.container.place,
+			},
+			{
+				layout = wibox.layout.fixed.vertical,
+				-- scr.systray,
+				clock,
+				-- power_button,
 			},
 		},
 	})
 end)
-
--- }}}
 
 -- {{{ Key bindings
 
@@ -199,8 +240,18 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER }, 'u', awful.client.urgent.jumpto),
 	awful.key({ mods.SUPER }, 'l', function() awful.tag.incmwfact(0.05) end),
 	awful.key({ mods.SUPER }, 'h', function() awful.tag.incmwfact(-0.05) end),
-	awful.key({ mods.SUPER }, 'i', function() awful.tag.incncol(1, nil, true) end),
-	awful.key({ mods.SUPER }, 'd', function() awful.tag.incncol(-1, nil, true) end),
+	awful.key({ mods.SUPER }, 'i', function()
+		awful.tag.incncol(1, nil, true)
+		local selected_tag = awful.screen.focused().selected_tag
+		local column_count = selected_tag.column_count
+		selected_tag.master_width_factor = beautiful.master_width_factor / column_count
+	end),
+	awful.key({ mods.SUPER }, 'd', function()
+		awful.tag.incncol(-1, nil, true)
+		local selected_tag = awful.screen.focused().selected_tag
+		local column_count = selected_tag.column_count
+		selected_tag.master_width_factor = beautiful.master_width_factor / column_count
+	end),
 	awful.key({ mods.SUPER, mods.SHIFT }, 'i', function() awful.tag.incnmaster(1, nil, true) end),
 	awful.key({ mods.SUPER, mods.SHIFT }, 'd', function() awful.tag.incnmaster(-1, nil, true) end),
 })
@@ -261,9 +312,7 @@ end)
 awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER }, 't', function() awful.layout.set(awful.layout.suit.tile) end),
 	awful.key({ mods.SUPER }, 'm', function() awful.layout.set(awful.layout.suit.max) end),
-	-- awful.key({ mods.SUPER }, 'f', function() awful.layout.set(awful.layout.suit.floating) end),
 })
-
 -- }}}
 
 -- {{{ Rules
@@ -278,6 +327,7 @@ ruled.client.connect_signal('request::rules', function()
 			raise = true,
 			screen = awful.screen.preferred,
 			placement = awful.placement.no_overlap + awful.placement.no_offscreen,
+			size_hints_honor = false,
 		},
 		callback = awful.client.setslave,
 	})
@@ -286,17 +336,14 @@ ruled.client.connect_signal('request::rules', function()
 	ruled.client.append_rule({
 		id = 'floating',
 		rule_any = {
-			instance = { 'copyq', 'pinentry' },
+			instance = {},
 			class = {
 				'Arandr',
 				'Blueman-manager',
 				'Gpick',
-				'Kruler',
-				'Sxiv',
-				'Tor Browser',
-				'Wpa_gui',
-				'veromix',
-				'xtightvncviewer',
+				'gnome-calculator',
+				'gnome-calendar',
+				'pavucontrol',
 			},
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
 			-- and the name shown there might not match defined rules here.
@@ -304,8 +351,6 @@ ruled.client.connect_signal('request::rules', function()
 				'Event Tester', -- xev.
 			},
 			role = {
-				'AlarmWindow', -- Thunderbird's calendar.
-				'ConfigManager', -- Thunderbird's about:config.
 				'pop-up', -- e.g. Google Chrome's (detached) Developer Tools.
 			},
 		},
@@ -333,6 +378,18 @@ client.connect_signal('property::floating', function(c)
 	if c.floating then
 		awful.placement.centered(c)
 		awful.placement.no_offscreen(c)
+	end
+end)
+
+screen.connect_signal('arrange', function(s)
+	local max = s.selected_tag.layout.name == 'max'
+	local only_one = #s.tiled_clients == 1
+	for _, c in pairs(s.clients) do
+		if (max or only_one) and not c.floating or c.maximized then
+			c.border_width = 0
+		else
+			c.border_width = beautiful.border_width
+		end
 	end
 end)
 

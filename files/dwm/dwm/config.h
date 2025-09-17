@@ -13,7 +13,7 @@ static const unsigned int systrayiconsize = 16; /* systray icon size in px */
 
 static const int swallowfloating = 0; /* 1 means swallow floating windows by default */
 
-static const unsigned int gappx = 0; /* gaps between windows */
+static const unsigned int gappx = 5; /* gaps between windows */
 static const int vertpad = 0;        /* vertical padding of bar */
 static const int sidepad = 2;    /* horizontal padding of bar */
 

@@ -7,7 +7,7 @@ entry3="Shutdown      "
 chosen=$(printf "$entry1\n$entry2\n$entry3" | rofi -dmenu -i -theme-str '@import "shutdown.rasi"')
 
 case "$chosen" in
-$entry1) pkill -u $USER ;;
+$entry1) killall dwm ;;
 $entry2) systemctl reboot ;;
 $entry3) systemctl poweroff ;;
 *) exit 1 ;;
