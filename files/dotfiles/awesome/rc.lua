@@ -13,8 +13,6 @@ local hotkeys_popup = require('awful.hotkeys_popup')
 require('awful.hotkeys_popup.keys')
 
 -- {{{ Error handling
--- Check if awesome encountered an error during startup and fell back to
--- another config (This code will only ever execute for the fallback config)
 naughty.connect_signal(
 	'request::display_error',
 	function(message, startup)
@@ -28,12 +26,7 @@ naughty.connect_signal(
 -- }}}
 
 awful.spawn.once('dwm-autostart')
-
--- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
 beautiful.init(gears.filesystem.get_configuration_dir() .. 'theme.lua')
-
--- This is used later as the default terminal and editor to run.
 
 local mods = {
 	SUPER = 'Mod4',
@@ -43,7 +36,7 @@ local mods = {
 
 local apps = {
 	terminal = 'wezterm',
-	launcher = 'rofi -modi drun,run -show drun',
+	launcher = 'dwm-applauncher',
 	browser = 'dwm-browser',
 	browser_private = 'dwm-browser-private',
 	files_tui = 'dwm-files-tui',
@@ -53,122 +46,10 @@ local apps = {
 	screenshot = 'dwm-screenshot',
 }
 
-local clock = {
-	{
-		{
-			widget = wibox.widget.textclock('%H'),
-			halign = 'center',
-			-- font = beautiful.clock_font,
-		},
-		{
-			{
-				widget = wibox.widget.textbox('──'),
-				halign = 'center',
-				-- font = theme.clock_font,
-			},
-			widget = wibox.container.margin,
-			top = -5,
-			bottom = -5,
-		},
-		{
-			widget = wibox.widget.textclock('%M'),
-			halign = 'center',
-			-- font = theme.clock_font,
-		},
-		layout = wibox.layout.fixed.vertical,
-	},
-	widget = wibox.container.margin,
-	top = 5,
-	bottom = 10,
-}
-
-local power_button = {
-	{
-		{
-			{
-				text = '⏻',
-				widget = wibox.widget.textbox,
-				-- font = theme.icon_font,
-				halign = 'center',
-			},
-			top = 1,
-			bottom = 2,
-			widget = wibox.container.margin,
-		},
-		fg = beautiful.bg_normal,
-		bg = '#945B5B',
-		shape = function(cr, w, h) return gears.shape.rounded_rect(cr, w, h, 5) end,
-		widget = wibox.container.background,
-	},
-	margins = 7,
-	widget = wibox.container.margin,
-}
+local spacer = wibox.container.background({ forced_height = 5 })
 
 screen.connect_signal('request::desktop_decoration', function(scr)
 	awful.tag({ '1', '2', '3', '4', '5', '6', '7', '8', '9' }, scr, awful.layout.suit.tile)
-
-	scr.layouts = function()
-		local layouts = wibox.widget.textbox(beautiful.layout_icons.tile)
-		scr.selected_tag:connect_signal(
-			'property::layout',
-			function(t) layouts.text = beautiful.layout_icons[t.layout.name] or beautiful.layout_icons.fallback end
-		)
-
-		local widget = {
-			{
-				{
-					layouts,
-					-- fg = theme.fg_normal,
-					widget = wibox.container.background,
-				},
-				top = 5,
-				widget = wibox.container.margin,
-			},
-			widget = wibox.container.place,
-		}
-
-		return widget
-	end
-
-	scr.taglist = awful.widget.taglist({
-		screen = scr,
-		filter = function(t) return #t:clients() > 0 and t.index < 6 or t.selected end,
-		layout = wibox.layout.fixed.vertical,
-		style = {
-			shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end,
-		},
-		widget_template = {
-			{
-				{
-					{
-						{
-							id = 'text_role',
-							valign = 'center',
-							widget = wibox.widget.textbox,
-						},
-						valign = 'center',
-						widget = wibox.container.place,
-					},
-					top = 3,
-					bottom = 3,
-					widget = wibox.container.margin,
-				},
-				id = 'background_role',
-				widget = wibox.container.background,
-			},
-			margins = 5,
-			widget = wibox.container.margin,
-		},
-
-		buttons = {
-			awful.button({}, 1, function(t) t:view_only() end),
-			awful.button({ 'Mod4' }, 1, function(t)
-				if client.focus then
-					client.focus:move_to_tag(t)
-				end
-			end),
-		},
-	})
 
 	scr.systray = {
 		{
@@ -179,7 +60,7 @@ screen.connect_signal('request::desktop_decoration', function(scr)
 		widget = wibox.container.margin,
 	}
 
-	scr.sidebar = awful.wibar({
+	scr.panel = awful.wibar({
 		position = 'left',
 		width = 35,
 		screen = scr,
@@ -187,8 +68,8 @@ screen.connect_signal('request::desktop_decoration', function(scr)
 			layout = wibox.layout.align.vertical,
 			{
 				layout = wibox.layout.fixed.vertical,
-				scr.layouts(),
-				scr.taglist,
+				require('widgets.layoutbox').setup(scr),
+				require('widgets.taglist').setup(scr),
 			},
 			{
 				valign = 'center',
@@ -197,8 +78,9 @@ screen.connect_signal('request::desktop_decoration', function(scr)
 			{
 				layout = wibox.layout.fixed.vertical,
 				-- scr.systray,
-				clock,
-				-- power_button,
+				require('widgets.clock').setup(),
+				spacer,
+				-- require('widgets.power_button').setup(),
 			},
 		},
 	})
@@ -256,6 +138,23 @@ awful.keyboard.append_global_keybindings({
 	awful.key({ mods.SUPER, mods.SHIFT }, 'd', function() awful.tag.incnmaster(-1, nil, true) end),
 })
 
+-- Volume
+awful.keyboard.append_global_keybindings({
+	awful.key({}, '#123', function()
+		awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+')
+		awesome.emit_signal('volume_change')
+	end),
+	awful.key({}, '#122', function()
+		awful.spawn('wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-')
+		awesome.emit_signal('volume_change')
+	end),
+	awful.key({}, '#121', function()
+		awful.spawn('wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle')
+		awesome.emit_signal('volume_change')
+	end),
+})
+
+-- Tags
 awful.keyboard.append_global_keybindings({
 	awful.key({
 		modifiers = { mods.SUPER },
