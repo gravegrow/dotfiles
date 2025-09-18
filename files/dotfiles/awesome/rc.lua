@@ -90,7 +90,7 @@ end)
 
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
-	awful.key({ mods.SUPER }, 'w', function() mouse.screen.sidebar.visible = not mouse.screen.sidebar.visible end),
+	awful.key({ mods.SUPER }, 'w', function() mouse.screen.panel.visible = not mouse.screen.panel.visible end),
 	awful.key({ mods.SUPER, mods.CONTROL, mods.SHIFT }, 'r', awesome.restart),
 	awful.key({ mods.SUPER }, 'Return', function() awful.spawn(apps.terminal) end),
 	awful.key({ mods.SUPER }, 'b', function() awful.spawn(apps.browser) end),
@@ -311,3 +311,46 @@ naughty.connect_signal('request::display', function(n) naughty.layout.box({ noti
 
 -- Enable sloppy focus, so that focus follows mouse.
 client.connect_signal('mouse::enter', function(c) c:activate({ context = 'mouse_enter', raise = false }) end)
+
+-- Example: A simple custom layout that stacks all clients vertically
+
+local function farming_arrange(tag)
+	-- Fullscreen?
+	local area = tag.workarea
+
+	for i, client in ipairs(tag.clients) do
+		local geometry
+		if i <= 2 then
+			geometry = {
+				x = area.x + (area.width / 2) * (i - 1) - beautiful.border_width,
+				y = area.y,
+				width = area.width / 2,
+				height = area.height,
+			}
+		elseif i == 3 then
+			geometry = {
+				x = area.x,
+				y = area.y,
+				height = 320,
+				width = 520,
+			}
+			client.ontop = true
+		else
+			geometry = {}
+			client.floating = true
+			client.ontop = true
+			awful.placement.centered(client)
+		end
+		tag.geometries[client] = geometry
+	end
+end
+
+local farming = {
+	nama = 'farming',
+	arrange = function(p) return farming_arrange(p, false) end,
+	skip_gap = function(nclients, t) return true end,
+}
+
+awful.keyboard.append_global_keybindings({
+	awful.key({ mods.SUPER, mods.SHIFT }, 'm', function() awful.layout.set(farming) end),
+})
