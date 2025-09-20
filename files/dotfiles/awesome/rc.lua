@@ -286,6 +286,7 @@ ruled.client.connect_signal('request::rules', function()
 			class = { 'Maya-2022' },
 		},
 		properties = {
+			maximized = false,
 			callback = function(c)
 				local windows = {
 					'Hypershade',
