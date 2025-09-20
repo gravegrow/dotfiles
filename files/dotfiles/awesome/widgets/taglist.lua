@@ -5,7 +5,10 @@ local gears = require('gears')
 local setup = function(scr)
 	return awful.widget.taglist({
 		screen = scr,
-		filter = function(t) return #t:clients() > 0 and t.index < 6 or t.selected end,
+		filter = function(t)
+			return scr.index == 1 and (#t:clients() > 0 and t.index < 6 or t.selected)
+				or (#t:clients() > 0 or t.selected)
+		end,
 		layout = wibox.layout.fixed.vertical,
 		style = {
 			shape = function(cr, w, h) gears.shape.rounded_rect(cr, w, h, 5) end,

@@ -3,11 +3,12 @@ local wibox = require('wibox')
 
 local setup = function(scr)
 	local layouts = wibox.widget.textbox(beautiful.layout_icons.tile)
+	local function callback(tag)
+		layouts.text = beautiful.layout_icons[tag.layout.name] or beautiful.layout_icons.fallback
+	end
 	for _, tag in pairs(scr.tags) do
-		tag:connect_signal(
-			'property::layout',
-			function(t) layouts.text = beautiful.layout_icons[t.layout.name] or beautiful.layout_icons.fallback end
-		)
+		tag:connect_signal('property::layout', callback)
+		tag:connect_signal('property::selected', callback)
 	end
 
 	local widget = {

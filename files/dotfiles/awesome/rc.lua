@@ -1,16 +1,16 @@
 pcall(require, 'luarocks.loader')
 local gears = require('gears')
 local awful = require('awful')
-require('awful.autofocus')
 local wibox = require('wibox')
 local beautiful = require('beautiful')
 local naughty = require('naughty')
 local ruled = require('ruled')
 local menubar = require('menubar')
-local hotkeys_popup = require('awful.hotkeys_popup')
+-- local hotkeys_popup = require('awful.hotkeys_popup')
 -- Enable hotkeys help widget for VIM and other apps
 -- when client with a matching name is opened:
-require('awful.hotkeys_popup.keys')
+-- require('awful.hotkeys_popup.keys')
+require('awful.autofocus')
 
 -- {{{ Error handling
 naughty.connect_signal(
@@ -62,7 +62,7 @@ screen.connect_signal('request::desktop_decoration', function(scr)
 
 	scr.panel = awful.wibar({
 		position = 'left',
-		width = 35,
+		width = beautiful.panel_width,
 		screen = scr,
 		widget = {
 			layout = wibox.layout.align.vertical,
@@ -78,6 +78,8 @@ screen.connect_signal('request::desktop_decoration', function(scr)
 			{
 				layout = wibox.layout.fixed.vertical,
 				-- scr.systray,
+				require('widgets.volume').setup(),
+				spacer,
 				require('widgets.clock').setup(),
 				spacer,
 				-- require('widgets.power_button').setup(),
@@ -263,11 +265,74 @@ ruled.client.connect_signal('request::rules', function()
 		properties = { titlebars_enabled = true },
 	})
 
-	-- Set Firefox to always map on the tag named "2" on screen 1.
-	-- ruled.client.append_rule {
-	--     rule       = { class = "Firefox"     },
-	--     properties = { screen = 1, tag = "2" }
-	-- }
+	ruled.client.append_rule({
+		rule_any = {
+			class = { 'Lutris' },
+		},
+		properties = {
+			tag = screen[2].tags[7],
+			switch_to_tags = true,
+			floating = true,
+			callback = function(c)
+				if c.name == 'Lutris' then
+					c.floating = false
+				end
+			end,
+		},
+	})
+
+	ruled.client.append_rule({
+		rule_any = {
+			class = { 'Maya-2022' },
+		},
+		properties = {
+			callback = function(c)
+				local windows = {
+					'Hypershade',
+				}
+				-- if not c.name:find('MAYA') then
+				-- 	c.floating = true
+				-- end
+			end,
+		},
+	})
+
+	ruled.client.append_rule({
+		rule_any = {
+			class = { 'gamescope' },
+		},
+		properties = {
+			screen = 1,
+		},
+	})
+
+	ruled.client.append_rule({
+		rule_any = {
+			class = { 'KeePassXC' },
+		},
+		except = {
+			name = 'Auto-Type - KeePassXC',
+		},
+		properties = {
+			tag = screen[2].tags[6],
+			switch_to_tags = true,
+		},
+	})
+
+	ruled.client.append_rule({
+		rule_any = {
+			class = { 'qBittorrent' },
+		},
+		properties = {
+			tag = screen[2].tags[5],
+			switch_to_tags = true,
+			callback = function(c)
+				if not c.name:find('qBittorrent') then
+					c.floating = true
+				end
+			end,
+		},
+	})
 end)
 -- }}}
 
@@ -315,7 +380,6 @@ client.connect_signal('mouse::enter', function(c) c:activate({ context = 'mouse_
 -- Example: A simple custom layout that stacks all clients vertically
 
 local function farming_arrange(tag)
-	-- Fullscreen?
 	local area = tag.workarea
 
 	for i, client in ipairs(tag.clients) do
@@ -347,7 +411,7 @@ end
 
 local farming = {
 	nama = 'farming',
-	arrange = function(p) return farming_arrange(p, false) end,
+	arrange = farming_arrange,
 	skip_gap = function(nclients, t) return true end,
 }
 

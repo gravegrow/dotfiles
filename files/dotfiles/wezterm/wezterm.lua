@@ -4,6 +4,7 @@ local config = wezterm.config_builder()
 -- config.font = wezterm.font_with_fallback({ 'Berkeley Mono Nerd Font Mono', 'JetBrainsMono Nerd Font Mono' })
 -- config.line_height = 1.67
 
+config.front_end = 'WebGpu'
 config.font = wezterm.font({ family = 'VictorMono Nerd Font Mono ', weight = 'Medium' })
 config.line_height = 1.35
 config.font_size = 18
