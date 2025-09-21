@@ -288,12 +288,17 @@ ruled.client.connect_signal('request::rules', function()
 		properties = {
 			maximized = false,
 			callback = function(c)
-				local windows = {
-					'Hypershade',
-				}
-				-- if not c.name:find('MAYA') then
-				-- 	c.floating = true
-				-- end
+				local filter_names = { 'Maya', 'Autodesk' }
+				local should_float = true
+
+				for _, name in pairs(filter_names) do
+					if c.name:find(name) then
+						should_float = false
+						break
+					end
+				end
+
+				c.floating = should_float
 			end,
 		},
 	})
