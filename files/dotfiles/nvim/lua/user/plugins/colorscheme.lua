@@ -19,20 +19,6 @@ return {
       vim.api.nvim_set_hl(0, "String", { fg = "#B6927B" })
     end,
   },
-  -- {
-  --   "kyza0d/xeno.nvim",
-  --   lazy = false,
-  --   priority = 1000, -- Load colorscheme early
-  --   config = function()
-  --     -- Create your custom theme here
-  --     require("xeno").new_theme("xeno-theme", {
-  --       base = "#161617",
-  --       accent = "#D19EBC",
-  --       contrast = 0.3,
-  --     })
-  --     vim.cmd("colorscheme xeno-theme")
-  --   end,
-  -- },
   {
     "vague2k/vague.nvim",
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
