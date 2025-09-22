@@ -43,6 +43,7 @@ optionVar
  -sva "CustomFileDialogSidebarUrls" "file:"
  -sva "CustomFileDialogSidebarUrls" "/home/user/Desktop"
  -sva "CustomFileDialogSidebarUrls" "/home/user/Documents"
+ -sva "CustomFileDialogSidebarUrls" "/media/storage/development/maya/maya-rigging"
  -sva "CustomFileDialogSidebarUrls" "/home/user"
  -sv "DAE_FBX exportOptions" "dae"
  -sv "DAE_FBXOptions" "dae"
@@ -184,8 +185,10 @@ optionVar
 optionVar
  -iv "RecentBackupsMaxSize" 4
  -ca "RecentFilesList"
+ -sva "RecentFilesList" "/media/storage/development/maya/erogame/maya/rig/rig_main.ma"
  -iv "RecentFilesMaxSize" 20
  -ca "RecentFilesTypeList"
+ -sva "RecentFilesTypeList" "mayaAscii"
  -ca "RecentProjectsList"
  -iv "RecentProjectsMaxSize" 20
  -iv "ResetModelViewsOnNewScene" 1
@@ -195,6 +198,7 @@ optionVar
 optionVar
  -iv "SafeModeAllowGlobalProc" 0
  -ca "SafeModeAllowedlistPaths"
+ -sva "SafeModeAllowedlistPaths" "/media/storage/development/maya/MayaToolset/mayatoolset"
  -iv "SafeModeBatchReportLevel" 0
  -iv "SafeModeBuiltInCheck" 0
  -ca "SafeModeBuiltInsBlocked"
@@ -373,14 +377,16 @@ optionVar
  -iv "assemblyDefinitionAddLocator" 1
  -iv "assemblyDefinitionShowUsageMsg" 1
  -iv "assemblyLoadRepOnCreation" 1
+ -sv "attrEdListType" "auto"
+ -iv "attrEdPaneRatio" 85
  -iv "attrEditorIsLongName" 1
  -sv "audioOptions" "o=0"
  -iv "autoAdjustmentActive" 0
  -iv "autoFillLastCommand" 0
- -sv "autoKeyCharacterState" "standard"
- -iv "autoKeyframeState" 0
- -iv "autoSaveDestination" 0;
+ -sv "autoKeyCharacterState" "standard";
 optionVar
+ -iv "autoKeyframeState" 0
+ -iv "autoSaveDestination" 0
  -iv "autoSaveEnable" 0
  -sv "autoSaveFolder" ""
  -iv "autoSaveInterval" 10
@@ -388,65 +394,66 @@ optionVar
  -iv "autoSaveMaxBackups" 10
  -iv "autoSavePrompt" 0
  -sv "azimuthElevationContext" "orbitCtx -e -image1 \"azimuthElevation.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"Azimuth Elevation Tool\" -orbitScale 1\n-localOrbit 1\nazimuthElevationContext"
- -iv "batchRenderMessagesVerbosity" 1
- -iv "bevelOutputPolygons" 0
- -iv "birail1OutputPoly" 0;
+ -iv "batchRenderMessagesVerbosity" 1;
 optionVar
+ -iv "bevelOutputPolygons" 0
+ -iv "birail1OutputPoly" 0
  -iv "birail2OutputPoly" 0
  -iv "birail3OutputPoly" 0
  -iv "blendOutputPoly" 0
+ -iv "blendShapeEditHUD" 1
  -iv "boundaryPolys" 0
  -sv "boxZoom2dContext" "view2dToolCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"2d View\" boxZoom2dContext"
  -sv "boxZoomContext" "boxZoomCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -zoomScale 1\nboxZoomContext"
- -sv "boxZoomtwContext" "texWinToolCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"UV Editor\" boxZoomtwContext"
+ -sv "boxZoomtwContext" "texWinToolCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"UV Editor\" boxZoomtwContext";
+optionVar
  -iv "bump2dUseTangentSpaceNormalsByDefault" 0
  -iv "cachePreferenceDynamicsSupportEnabled" 1
- -iv "cacheVisibility" 0;
-optionVar
+ -iv "cacheVisibility" 0
  -iv "cachedPlaybackCacheSmoothMeshes" 0
  -iv "cachedPlaybackDiscardFramesOutOfRange" 1
  -iv "cachedPlaybackDynamicsAsyncRefresh" 1
  -iv "cachedPlaybackEnable" 1
  -sv "cachedPlaybackFillDirection" "bidirectional"
  -sv "cachedPlaybackFillType" "syncAsync"
- -iv "cachedPlaybackHeight" 2
+ -iv "cachedPlaybackHeight" 2;
+optionVar
  -sv "cachedPlaybackHybridCacheMode" "disabled"
  -fv "cachedPlaybackMemoryThreshold" 50
- -sv "cachedPlaybackMode" "evaluationCache";
-optionVar
+ -sv "cachedPlaybackMode" "evaluationCache"
  -sv "cachedPlaybackPosition" "below"
  -iv "cachedPlaybackPreventFrameSkipping" 1
  -iv "cachedPlaybackResourceGuard" 1
  -iv "cachedPlaybackShowCacheStatus" 1
  -iv "cachedPlaybackShowCachedSubframes" 1
  -iv "cachedPlaybackShowInvalidatedFrames" 0
- -iv "cachedPlaybackShowWarningFrames" 1
+ -iv "cachedPlaybackShowWarningFrames" 1;
+optionVar
  -iv "cachedPlaybackShowWarningMessages" 1
  -iv "cameraNamesVisibility" 1
- -iv "canSuppressFileOpenErrorDialog" 0;
-optionVar
+ -iv "canSuppressFileOpenErrorDialog" 0
  -iv "capsLockVisibility" 1
  -sv "cbDockWidgetArea" "right"
  -iv "cbInMainWindow" 1
  -iv "channelsFieldWidth" 75
  -iv "channelsLayersPaneSize" 70
  -iv "channelsLayersSeparate" 0
- -iv "channelsLayersVisible" 1
+ -iv "channelsLayersVisible" 1;
+optionVar
  -iv "channelsLongName" 1
  -iv "channelsPrecision" 3
- -iv "channelsVisible" 0;
-optionVar
+ -iv "channelsVisible" 0
  -iv "circularFilletOutputPolygons" 0
  -sv "clDockWidgetArea" "right"
  -iv "clInMainWindow" 1
  -iv "clickBoxSize" 4
  -iv "cmdWindowTitleBarVis" 1
  -iv "collapseIconBarsInPanels" 0
- -iv "colorManagementColorPickerColorMgtEnabled" 1
+ -iv "colorManagementColorPickerColorMgtEnabled" 1;
+optionVar
  -sv "colorManagementColorPickerColorSpaceSelection" "Rendering Space"
  -iv "colorManagementEnabledByDefault" 1
- -iv "colorManagementManagePots" 1;
-optionVar
+ -iv "colorManagementManagePots" 1
  -iv "colorManagementOCIORulesEnabled" 0
  -sv "colorManagementPolicyFileName" ""
  -ca "colorMaterialBlend"
@@ -459,23 +466,30 @@ optionVar
  -iva "colorShadedDisplay" 0
  -iva "colorShadedDisplay" 0
  -iv "commandExecuterAutoCloseBraces" 1
- -iv "commandExecuterShowLineNumbers" 1
+ -iv "commandExecuterShowLineNumbers" 1;
+optionVar
  -iv "commandExecuterSpacesPerTab" 4
  -iv "commandExecuterTabsForIndent" 0
- -iv "commandLineHoldFocus" 0;
-optionVar
+ -iv "commandLineHoldFocus" 0
  -iv "commandLineInputFieldWidth" 26
  -iv "commandLineNumHistoryLines" 50
  -sv "commandLineSourceType" "mel"
  -iv "commandLineVisible" 1
+ -sv "commandReporterSourceTypeFilter" ""
+ -iv "commandReportercmdScrollFieldReporter1SuppressErrors" 0
+ -iv "commandReportercmdScrollFieldReporter1SuppressInfo" 0;
+optionVar
+ -iv "commandReportercmdScrollFieldReporter1SuppressResults" 0
+ -iv "commandReportercmdScrollFieldReporter1SuppressStackTrace" 0
+ -iv "commandReportercmdScrollFieldReporter1SuppressWarnings" 0
  -sv "commandportDefaultName" "commandportDefault"
  -iv "commandportOpenByDefault" 1
  -sv "connectToolMode" "segments"
  -fv "connectToolPinch" 0
  -iv "connectToolSegments" 0
- -fv "connectToolSlide" 0;
+ -fv "connectToolSlide" 0
+ -iv "containerAutoSelectContainer" 1;
 optionVar
- -iv "containerAutoSelectContainer" 1
  -iv "containerCentricSelection" 0
  -iv "containerChanBoxMaxNoTemplate" 400
  -iv "containerChanBoxMaxWithTemplate" 400
@@ -488,9 +502,9 @@ optionVar
  -iva "contentBrowserThumbnailSizes" 128
  -iva "contentBrowserThumbnailSizes" 256
  -iva "contentBrowserThumbnailSizes" 512
- -sv "create2dTextureType" "normal";
+ -sv "create2dTextureType" "normal"
+ -iv "createMaterialsWithShadingGroup" 1;
 optionVar
- -iv "createMaterialsWithShadingGroup" 1
  -iv "createNurbsPrimitiveAsTool" 0
  -iv "createPolyPrimitiveAsTool" 0
  -iv "createTexturesWithPlacement" 1
@@ -499,9 +513,10 @@ optionVar
  -iv "cteEditorSnapTolerance" 10
  -iv "currentDisplayLayerActive" 0
  -iv "currentFrameVisibility" 0
- -sv "currentHotkeySet" "Maya_Default";
+ -sv "currentHotkeySet" "Maya_Default_Duplicate2"
+ -sv "currentMenuBarTab" "modelingMenuSet";
 optionVar
- -sv "currentMenuBarTab" "modelingMenuSet"
+ -sv "curveContextEP" "curveEPCtx -e -image1 \"curveEP.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -degree 3\n-bezier 0\n-uniform 1\n-preserveShapeFraction 0.25\ncurveContextEP"
  -sv "customPathHelpUrl2022" ""
  -ca "customSelectPriority"
  -iva "customSelectPriority" 10
@@ -868,7 +883,7 @@ optionVar
  -iv "hsOpaqueContainers" 0
  -iv "hsShowRelationships" 1
  -iv "hyperShadeBringCreatePanelToFront" 1
- -sv "hyperShadeDockingLayout" "000000ff00000000fd00000003000000000000018800000382fc0200000001fc0000012d00000382000000c501000011fa000000000200000002fb00000024004c006f006f006b00640065007600430072006500610074006500500061006e0065006c0100000000ffffffff000000b300fffffffb00000020004c006f006f006b00640065007600420069006e007300500061006e0065006c0100000000ffffffff0000009e00ffffff000000010000022b000004affc0200000002fb0000002c004c006f006f006b00640065007600530068006100640065007200620061006c006c00500061006e0065006c0100000000000002150000003c00fffffffb00000028004c006f006f006b00640065007600500072006f0070006500720074007900500061006e0065006c010000021d000002920000004a00ffffff000000020000022700000125fc0100000001fb00000026004c006f006f006b00640065007600420072006f007700730065007200500061006e0065006c0100000000000002270000008700ffffff000000970000038200000004000000020000000800000002fc00000000"
+ -sv "hyperShadeDockingLayout" "000000ff00000000fd0000000300000000000000e4000002adfc0200000001fc0000012d000002ad000000c501000011fa000000000200000002fb00000024004c006f006f006b00640065007600430072006500610074006500500061006e0065006c0100000000ffffffff000000b300fffffffb00000020004c006f006f006b00640065007600420069006e007300500061006e0065006c0100000000ffffffff0000009e00ffffff000000010000022b000003dafc0200000002fb0000002c004c006f006f006b00640065007600530068006100640065007200620061006c006c00500061006e0065006c0100000000000001b60000003c00fffffffb00000028004c006f006f006b00640065007600500072006f0070006500720074007900500061006e0065006c01000001be0000021c0000004a00ffffff00000002000004d200000125fc0100000001fb00000026004c006f006f006b00640065007600420072006f007700730065007200500061006e0065006c0100000000000004d20000008700ffffff000003e6000002ad00000004000000020000000800000002fc00000000"
  -ca "hyperShadeFirstPaneTabs"
  -sva "hyperShadeFirstPaneTabs" "hyperShadeTab1"
  -sva "hyperShadeFirstPaneTabs" "hyperShadeTab2"
@@ -883,7 +898,7 @@ optionVar
  -iv "hyperShadePanelCreateBarIconsAndTextWidth" 172
  -iv "hyperShadePanelCreateBarShown" 1
  -sv "hyperShadePanelTabSectionsShown" "showTopTabsOnly"
- -sv "hyperShadePanelWorkAreaTab" "hyperShadePanel1dockStation|buttonsAndPaneForm|paneArrangement|secondPaneTabs|formLayout174";
+ -sv "hyperShadePanelWorkAreaTab" "hyperShadePanel1dockStation|buttonsAndPaneForm|paneArrangement|secondPaneTabs|formLayout128";
 optionVar
  -ca "hyperShadeSecondPaneTabs"
  -sva "hyperShadeSecondPaneTabs" "hyperShadeTab11"
@@ -894,9 +909,10 @@ optionVar
  -iv "hyperShadeTab10" 1
  -sv "hyperShadeTab10Filter" "ContainerNodes"
  -sv "hyperShadeTab10HypershadeName" "collection9HyperShadeEd"
- -sv "hyperShadeTab10Label" "Asset Nodes"
- -sv "hyperShadeTab10Type" "scene";
+ -sv "hyperShadeTab10IconSize" "mediumIcons"
+ -sv "hyperShadeTab10Label" "Asset Nodes";
 optionVar
+ -sv "hyperShadeTab10Type" "scene"
  -iv "hyperShadeTab11" 1
  -sv "hyperShadeTab11HypershadeName" "graph1HyperShadeEd"
  -sv "hyperShadeTab11Label" "Work Area"
@@ -905,44 +921,52 @@ optionVar
  -sv "hyperShadeTab1HypershadeName" "collection1HyperShadeEd"
  -sv "hyperShadeTab1IconSize" "mediumIcons"
  -sv "hyperShadeTab1Label" "Materials"
- -sv "hyperShadeTab1Type" "scene"
- -iv "hyperShadeTab2" 1;
+ -sv "hyperShadeTab1Type" "scene";
 optionVar
+ -iv "hyperShadeTab2" 1
  -sv "hyperShadeTab2Filter" "Textures"
  -sv "hyperShadeTab2HypershadeName" "collection2HyperShadeEd"
+ -sv "hyperShadeTab2IconSize" "mediumIcons"
  -sv "hyperShadeTab2Label" "Textures"
  -sv "hyperShadeTab2Type" "scene"
  -iv "hyperShadeTab3" 1
  -sv "hyperShadeTab3Filter" "Utilities"
  -sv "hyperShadeTab3HypershadeName" "collection3HyperShadeEd"
+ -sv "hyperShadeTab3IconSize" "mediumIcons";
+optionVar
  -sv "hyperShadeTab3Label" "Utilities"
  -sv "hyperShadeTab3Type" "scene"
- -iv "hyperShadeTab4" 1;
-optionVar
+ -iv "hyperShadeTab4" 1
  -sv "hyperShadeTab4Filter" "Rendering"
  -sv "hyperShadeTab4HypershadeName" "collection4HyperShadeEd"
+ -sv "hyperShadeTab4IconSize" "mediumIcons"
  -sv "hyperShadeTab4Label" "Rendering"
  -sv "hyperShadeTab4Type" "scene"
  -iv "hyperShadeTab5" 1
- -sv "hyperShadeTab5Filter" "LightsAndOpticalFX"
+ -sv "hyperShadeTab5Filter" "LightsAndOpticalFX";
+optionVar
  -sv "hyperShadeTab5HypershadeName" "collection5HyperShadeEd"
+ -sv "hyperShadeTab5IconSize" "mediumIcons"
  -sv "hyperShadeTab5Label" "Lights"
  -sv "hyperShadeTab5Type" "scene"
- -iv "hyperShadeTab6" 1;
-optionVar
+ -iv "hyperShadeTab6" 1
  -sv "hyperShadeTab6Filter" "Cameras"
  -sv "hyperShadeTab6HypershadeName" "collection6HyperShadeEd"
+ -sv "hyperShadeTab6IconSize" "mediumIcons"
  -sv "hyperShadeTab6Label" "Cameras"
- -sv "hyperShadeTab6Type" "scene"
+ -sv "hyperShadeTab6Type" "scene";
+optionVar
  -iv "hyperShadeTab7" 1
  -sv "hyperShadeTab7Filter" "ShadingGroups"
  -sv "hyperShadeTab7HypershadeName" "collection7HyperShadeEd"
+ -sv "hyperShadeTab7IconSize" "mediumIcons"
  -sv "hyperShadeTab7Label" "Shading Groups"
  -sv "hyperShadeTab7Type" "scene"
- -iv "hyperShadeTab8" 1;
-optionVar
+ -iv "hyperShadeTab8" 1
  -sv "hyperShadeTab8Filter" "BakeSets"
  -sv "hyperShadeTab8HypershadeName" "collection8HyperShadeEd"
+ -sv "hyperShadeTab8IconSize" "mediumIcons";
+optionVar
  -sv "hyperShadeTab8Label" "Bake Sets"
  -sv "hyperShadeTab8Type" "scene"
  -iv "hyperShadeTab9" 1
@@ -950,10 +974,10 @@ optionVar
  -iv "hyperShadeTab9DirectoriesShown" 1
  -sv "hyperShadeTab9DirectoriesVisorName" "directories1VisorEd"
  -iv "hyperShadeTab9FilesShown" 1
- -sv "hyperShadeTab9FilesVisorName" "files1VisorEd";
-optionVar
+ -sv "hyperShadeTab9FilesVisorName" "files1VisorEd"
  -sv "hyperShadeTab9Label" "Projects"
- -sv "hyperShadeTab9RootDirectory" "/home/user/maya/projects/"
+ -sv "hyperShadeTab9RootDirectory" "/home/user/maya/projects/";
+optionVar
  -sv "hyperShadeTab9Type" "disk"
  -iv "hyperShadeWorkAreaProportion" 100
  -iv "hypershadeSwatchPauseButtonState" 1
@@ -961,10 +985,10 @@ optionVar
  -sv "igAutoExportFolder" "${DESC}/groom"
  -fv "igAutoExportTpu" 5
  -fv "igBrushAttractMag" 0.9
- -iv "igBrushAttractStyle" 1;
-optionVar
+ -iv "igBrushAttractStyle" 1
  -fv "igBrushBendMag" 0.8
- -fv "igBrushElevDegrees" 1
+ -fv "igBrushElevDegrees" 1;
+optionVar
  -fv "igBrushElevGoalAngle" 30
  -fv "igBrushEraserBendMag" 0.1
  -fv "igBrushEraserLengthMag" 0.01
@@ -972,10 +996,10 @@ optionVar
  -iv "igBrushFalloff" 1
  -fv "igBrushLengthGoal" 5
  -fv "igBrushLengthIncr" 0.1
- -fv "igBrushMaskMag" 0.2;
-optionVar
+ -fv "igBrushMaskMag" 0.2
  -iv "igBrushMaskUse" 1
- -fv "igBrushNoiseAboutNDegrees" 1.5
+ -fv "igBrushNoiseAboutNDegrees" 1.5;
+optionVar
  -fv "igBrushNoiseMidMag" 0.075
  -fv "igBrushNoiseOffNDegrees" 2
  -fv "igBrushNoiseTipMag" 0.15
@@ -983,8 +1007,7 @@ optionVar
  -fv "igBrushNoiseWidthMag" 0.02
  -fv "igBrushOrientMag" 0.8
  -fv "igBrushPartMag" 0.3
- -fv "igBrushPoseBendMag" 0.5;
-optionVar
+ -fv "igBrushPoseBendMag" 0.5
  -fv "igBrushPoseOrientMag" 0.5
  -ca "igBrushRegionColor"
  -fva "igBrushRegionColor" 1
@@ -1002,6 +1025,17 @@ optionVar
  -fva "igBrushRegionColor" 0
  -fva "igBrushRegionColor" 0
  -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0
+ -fva "igBrushRegionColor" 0;
+optionVar
  -fv "igBrushRepelMag" 0.3
  -fv "igBrushSmoothBendMag" 0.2
  -fv "igBrushSmoothLengthMag" 0.2
@@ -1009,9 +1043,10 @@ optionVar
  -fv "igBrushSpacing" 0.1
  -fv "igBrushTwistMag" 1
  -fv "igBrushWidthGoal" 0.1
- -fv "igBrushWidthIncr" 0.02;
-optionVar
+ -fv "igBrushWidthIncr" 0.02
  -iv "ignoreSelectionPriority" 0
+ -iv "ikFKSwitchState" 0;
+optionVar
  -sv "ikHandleContext" "ikHandleCtx -e -image1 \"kinHandle.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -solverTypeH \"ikRPsolver\" -priorityH 1\n-weightH 1\n-poWeightH 1\n-autoPriorityH 0\n-snapHandleH 1\n-forceSolverH 1\n-stickyH \"off\" -createCurve 1\n-simplifyCurve 1\n-rootOnCurve 1\n-twistType \"linear\" -createRootAxis 0\n-parentCurve 1\n-snapCurve 0\n-numSpans 1\n-rootTwistMode 0\nikHandleContext"
  -fv "ikHandleDisplayScale" 1
  -sv "ikIkFkDisplayMethod" "ikfk"
@@ -1020,9 +1055,9 @@ optionVar
  -sv "ikSplineHandleContext" "ikSplineHandleCtx -e -image1 \"kinSplineHandle.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -solverTypeH \"ikSplineSolver\" -priorityH 1\n-weightH 1\n-poWeightH 1\n-autoPriorityH 0\n-snapHandleH 1\n-forceSolverH 1\n-stickyH \"off\" -createCurve 1\n-simplifyCurve 1\n-rootOnCurve 1\n-twistType \"linear\" -createRootAxis 0\n-parentCurve 1\n-snapCurve 0\n-numSpans 1\n-rootTwistMode 0\nikSplineHandleContext"
  -sv "imageOptions" ""
  -sv "inTangentType" "auto"
- -iv "inViewEditorVisible" 1;
+ -iv "inViewEditorVisible" 1
+ -iv "inViewMessageAssistEnable" 1;
 optionVar
- -iv "inViewMessageAssistEnable" 1
  -fv "inViewMessageDisplayTime" 2
  -iv "inViewMessageEnable" 1
  -iv "inViewMessageFontSize" 12
@@ -1031,9 +1066,9 @@ optionVar
  -iv "includeCommandsInSearch" 1
  -iv "includeKeywordsInResult" 1
  -sv "insertJointContext" "insertJointCtx -e -image1 \"kinInsert.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" insertJointContext"
- -sv "insertKeyContext" "insertKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -breakdown 0\n-preserveTangent 0\ninsertKeyContext";
+ -sv "insertKeyContext" "insertKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -breakdown 0\n-preserveTangent 0\ninsertKeyContext"
+ -sv "interactionModeToSuite" "undefined";
 optionVar
- -sv "interactionModeToSuite" "undefined"
  -iv "interfaceScalingMode" 1
  -fv "interfaceScalingValue" 1.25
  -iv "iprRenderMotionBlur" 1
@@ -1041,21 +1076,21 @@ optionVar
  -iv "iprRenderShadowMaps" 1
  -iv "isAttributeEditorVisible" 0
  -iv "isFirstTimeRunningMaya" 0
- -iv "isHotBoxAnimationRowVisible" 0
- -iv "isHotBoxClothRowVisible" 0;
+ -iv "isHotBoxAnimationRowVisible" 1
+ -iv "isHotBoxClothRowVisible" 0
+ -iv "isHotBoxCommonRowVisible" 1;
 optionVar
- -iv "isHotBoxCommonRowVisible" 0
- -iv "isHotBoxDynamicsRowVisible" 0
+ -iv "isHotBoxDynamicsRowVisible" 1
  -iv "isHotBoxLiveRowVisible" 0
- -iv "isHotBoxModelingRowVisible" 0
- -iv "isHotBoxPaneSpecificRowVisible" 0
+ -iv "isHotBoxModelingRowVisible" 1
+ -iv "isHotBoxPaneSpecificRowVisible" 1
  -iv "isHotBoxPolygonsRowVisible" 0
- -iv "isHotBoxRenderingRowVisible" 0
- -iv "isHotBoxRiggingRowVisible" 0
+ -iv "isHotBoxRenderingRowVisible" 1
+ -iv "isHotBoxRiggingRowVisible" 1
  -iv "isHotBoxRmbPopupsOn" 0
- -iv "isHotBoxShowAll" 1;
+ -iv "isHotBoxShowAll" 1
+ -iv "isHotBoxSurfacesRowVisible" 0;
 optionVar
- -iv "isHotBoxSurfacesRowVisible" 0
  -iv "isMarkingMenuOn" 1
  -iv "isShelfLoad" 1
  -iv "isShelfSave" 1
@@ -1064,9 +1099,9 @@ optionVar
  -iv "journalIsOn" 1
  -iv "keepKeysAtCurrentFrame" 0
  -iv "keySetPreserveCurveShape" 0
- -iv "keyUseChannelBox" 1;
+ -iv "keyUseChannelBox" 1
+ -sv "keyframeRegionDirectKeyContext" "keyframeRegionDirectKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -option \"over\" keyframeRegionDirectKeyContext";
 optionVar
- -sv "keyframeRegionDirectKeyContext" "keyframeRegionDirectKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -option \"over\" keyframeRegionDirectKeyContext"
  -sv "keyframeRegionDollyContext" "keyframeRegionDollyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" keyframeRegionDollyContext"
  -sv "keyframeRegionInsertKeyContext" "keyframeRegionInsertKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -breakdown 1\nkeyframeRegionInsertKeyContext"
  -sv "keyframeRegionMoveKeyContext" "keyframeRegionMoveKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -option \"over\" keyframeRegionMoveKeyContext"
@@ -1075,9 +1110,9 @@ optionVar
  -sv "keyframeRegionSetKeyContext" "keyframeRegionSetKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -breakdown 0\nkeyframeRegionSetKeyContext"
  -sv "keyframeRegionTrackContext" "keyframeRegionTrackCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" keyframeRegionTrackContext"
  -sv "lastLocalWS" "/home/user/maya/projects/default"
- -sv "latticeDeformKeyContext" "latticeDeformKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -latticeColumns 3\n-latticeRows 3\n-envelope 1\n-scaleLatticePts 0\nlatticeDeformKeyContext";
+ -sv "latticeDeformKeyContext" "latticeDeformKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -latticeColumns 3\n-latticeRows 3\n-envelope 1\n-scaleLatticePts 0\nlatticeDeformKeyContext"
+ -iv "layersVisible" 0;
 optionVar
- -iv "layersVisible" 0
  -sv "leDockWidgetArea" "right"
  -iv "leInMainWindow" 1
  -fv "lineWidth" 1
@@ -1086,9 +1121,9 @@ optionVar
  -sv "localHelpUrl2022" ""
  -iv "loftPolys" 0
  -sv "mDNN" "MASH#"
- -iv "mHOC" 1;
+ -iv "mHOC" 1
+ -iv "mIVM" 1;
 optionVar
- -iv "mIVM" 1
  -sv "mNDT" "linearNetwork"
  -iv "mNOC" 0
  -iv "mOGTN" 1
@@ -1097,9 +1132,9 @@ optionVar
  -iv "mainWindowMenubarVis" 1
  -iv "mainWindowTitleBarVis" 1
  -iv "manipClickBoxSize" 8
- -fv "manipGlobalScale" 1.5;
+ -fv "manipGlobalScale" 1.5
+ -fv "manipHandleSize" 35;
 optionVar
- -fv "manipHandleSize" 35
  -iv "manipHideOnCtrl" 0
  -iv "manipHideOnShift" 0
  -iv "manipHideOnShiftCtrl" 0
@@ -1108,9 +1143,9 @@ optionVar
  -fv "manipMiddleMouseRepos" 0
  -iv "manipPivotRotateHandleOffset" 50
  -iv "manipPlaneHandleOffset" 75
- -fv "manipPreviousStateSize" 6;
+ -fv "manipPreviousStateSize" 6
+ -iv "manipShowPenumbraDecayRegions" 0;
 optionVar
- -iv "manipShowPenumbraDecayRegions" 0
  -iv "manipShowPivotRotateHandle" 1
  -iv "manipShowPlaneHandles" 1
  -iv "manipSmartDuplicate" 1
@@ -1135,8 +1170,7 @@ optionVar
  -iva "markingMenuEditorDisplayAsMMFlags" 1
  -iva "markingMenuEditorDisplayAsMMFlags" 1
  -iva "markingMenuEditorDisplayAsMMFlags" 1
- -iva "markingMenuEditorDisplayAsMMFlags" 1;
-optionVar
+ -iva "markingMenuEditorDisplayAsMMFlags" 1
  -ca "markingMenuEditorFilenames"
  -sva "markingMenuEditorFilenames" "menu_ChangePanelLayout"
  -sva "markingMenuEditorFilenames" "menu_ChangePanelType"
@@ -1145,7 +1179,8 @@ optionVar
  -sva "markingMenuEditorFilenames" "menu_CommonModelingPanes"
  -sva "markingMenuEditorFilenames" "menu_PA_Style_LMB"
  -sva "markingMenuEditorFilenames" "menu_PA_Style_MMB"
- -sva "markingMenuEditorFilenames" "menu_PA_Style_RMB"
+ -sva "markingMenuEditorFilenames" "menu_PA_Style_RMB";
+optionVar
  -ca "markingMenuEditorIsNamedCommandFlags"
  -iva "markingMenuEditorIsNamedCommandFlags" 0
  -iva "markingMenuEditorIsNamedCommandFlags" 0
@@ -1162,9 +1197,9 @@ optionVar
  -iv "maxTextureResolution" 4096
  -sv "mayaAsciiOptions" "v=0;p=17;f=0"
  -sv "mayaBinaryOptions" "v=0;p=17;f=0"
- -iv "mayaDisableUfeSelection" 0;
+ -iv "mayaDisableUfeSelection" 0
+ -iv "mayaMacButtonMap" 3;
 optionVar
- -iv "mayaMacButtonMap" 3
  -sv "mayaMode" "modelingMenuSet"
  -iv "melDuplicateVariableWarnings" 1
  -sv "melOptions" "v=0;p=17;f=0"
@@ -1173,9 +1208,9 @@ optionVar
  -iv "metadataVisualInterpolation" 0
  -fv "metadataVisualMax" 1
  -sv "metadataVisualMethod" "color"
- -fv "metadataVisualMin" 0;
+ -fv "metadataVisualMin" 0
+ -fv "metadataVisualRayScale" 1;
 optionVar
- -fv "metadataVisualRayScale" 1
  -iv "miCacheOptimFileTextures" 0
  -iv "miCollapseHistoryOnProxyUpdate" 0
  -iv "miEnableRayTracingForSwatch" 1
@@ -1219,20 +1254,20 @@ optionVar
  -iva "minorNodeTypes" 1380209740
  -iva "minorNodeTypes" 1146244684
  -iva "minorNodeTypes" 1129137986
- -iv "minorNodeTypesDisplay" 0;
+ -iv "minorNodeTypesDisplay" 0
+ -sv "modelPanel1" "modelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels modelPanel1;\n$editorName = $panelName;\nmodelEditor -e -camera \"|top\" -useInteractiveMode 0\n-displayLights \"default\" -displayAppearance \"smoothShaded\" -activeOnly 0\n-ignorePanZoom 0\n-wireframeOnShaded 0\n-headsUpDisplay 1\n-holdOuts 1\n-selectionHiliteDisplay 1\n-useDefaultMaterial 0\n-bufferMode \"double\" -twoSidedLighting 0\n-backfaceCulling 0\n-xray 0\n-jointXray 0\n-activeComponentsXray 0\n-displayTextures 0\n-smoothWireframe 0\n-lineWidth 1\n-textureAnisotropic 0\n-textureHilight 1\n-textureSampling 2\n-textureDisplay \"modulate\" -textureMaxSize 16384\n-fogging 0\n-fogSource \"fragment\" -fogMode \"linear\" -fogStart 0\n-fogEnd 100\n-fogDensity 0.1\n-fogColor 0.5 0.5 0.5 1 -depthOfFieldPreview 1\n-maxConstantTransparency 1\n-rendererName \"vp2Renderer\" -objectFilterShowInHUD 1\n-isFiltered 0\n-colorResolution 256 256 -bumpResolution 512 512 -textureCompression 0\n-transparencyAlgorithm \"frontAndBackCull\" -transpInShadows 0\n-cullingOverride \"none\" -lowQualityLighting 0\n-maximumNumHardwareLights 1\n-occlusionCulling 0\n-shadingModel 0\n-useBaseRenderer 0\n-useReducedRenderer 0\n-smallObjectCulling 0\n-smallObjectThreshold -1 -interactiveDisableShadows 0\n-interactiveBackFaceCull 0\n-sortTransparent 1\n-controllers 1\n-nurbsCurves 1\n-nurbsSurfaces 1\n-polymeshes 1\n-subdivSurfaces 1\n-planes 1\n-lights 1\n-cameras 1\n-controlVertices 1\n-hulls 1\n-grid 1\n-imagePlane 1\n-joints 1\n-ikHandles 1\n-deformers 1\n-dynamics 1\n-particleInstancers 1\n-fluids 1\n-hairSystems 1\n-follicles 1\n-nCloths 1\n-nParticles 1\n-nRigids 1\n-dynamicConstraints 1\n-locators 1\n-manipulators 1\n-pluginShapes 1\n-dimensions 1\n-handles 1\n-pivots 1\n-textures 1\n-strokes 1\n-motionTrails 1\n-clipGhosts 1\n-greasePencils 1\n-shadows 0\n-captureSequenceNumber -1\n-width 1\n-height 1\n-sceneRenderFilter 0\n$editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e -pluginObjects \"gpuCacheDisplayFilter\" 1 $editorName";
 optionVar
- -sv "modelPanel1" "modelPanel -edit -l (localizedPanelLabel(\"Top View\")) -mbv $menusOkayInPanels modelPanel1;\n$editorName = $panelName;\nmodelEditor -e -camera \"|top\" -useInteractiveMode 0\n-displayLights \"default\" -displayAppearance \"smoothShaded\" -activeOnly 0\n-ignorePanZoom 0\n-wireframeOnShaded 0\n-headsUpDisplay 1\n-holdOuts 1\n-selectionHiliteDisplay 1\n-useDefaultMaterial 0\n-bufferMode \"double\" -twoSidedLighting 0\n-backfaceCulling 0\n-xray 0\n-jointXray 0\n-activeComponentsXray 0\n-displayTextures 0\n-smoothWireframe 0\n-lineWidth 1\n-textureAnisotropic 0\n-textureHilight 1\n-textureSampling 2\n-textureDisplay \"modulate\" -textureMaxSize 16384\n-fogging 0\n-fogSource \"fragment\" -fogMode \"linear\" -fogStart 0\n-fogEnd 100\n-fogDensity 0.1\n-fogColor 0.5 0.5 0.5 1 -depthOfFieldPreview 1\n-maxConstantTransparency 1\n-rendererName \"vp2Renderer\" -objectFilterShowInHUD 1\n-isFiltered 0\n-colorResolution 256 256 -bumpResolution 512 512 -textureCompression 0\n-transparencyAlgorithm \"frontAndBackCull\" -transpInShadows 0\n-cullingOverride \"none\" -lowQualityLighting 0\n-maximumNumHardwareLights 1\n-occlusionCulling 0\n-shadingModel 0\n-useBaseRenderer 0\n-useReducedRenderer 0\n-smallObjectCulling 0\n-smallObjectThreshold -1 -interactiveDisableShadows 0\n-interactiveBackFaceCull 0\n-sortTransparent 1\n-controllers 1\n-nurbsCurves 1\n-nurbsSurfaces 1\n-polymeshes 1\n-subdivSurfaces 1\n-planes 1\n-lights 1\n-cameras 1\n-controlVertices 1\n-hulls 1\n-grid 1\n-imagePlane 1\n-joints 1\n-ikHandles 1\n-deformers 1\n-dynamics 1\n-particleInstancers 1\n-fluids 1\n-hairSystems 1\n-follicles 1\n-nCloths 1\n-nParticles 1\n-nRigids 1\n-dynamicConstraints 1\n-locators 1\n-manipulators 1\n-pluginShapes 1\n-dimensions 1\n-handles 1\n-pivots 1\n-textures 1\n-strokes 1\n-motionTrails 1\n-clipGhosts 1\n-greasePencils 1\n-shadows 0\n-captureSequenceNumber -1\n-width 1\n-height 1\n-sceneRenderFilter 0\n$editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e -pluginObjects \"gpuCacheDisplayFilter\" 1 $editorName"
  -sv "modelPanel2" "modelPanel -edit -l (localizedPanelLabel(\"Side View\")) -mbv $menusOkayInPanels modelPanel2;\n$editorName = $panelName;\nmodelEditor -e -camera \"|side\" -useInteractiveMode 0\n-displayLights \"default\" -displayAppearance \"smoothShaded\" -activeOnly 0\n-ignorePanZoom 0\n-wireframeOnShaded 0\n-headsUpDisplay 1\n-holdOuts 1\n-selectionHiliteDisplay 1\n-useDefaultMaterial 0\n-bufferMode \"double\" -twoSidedLighting 0\n-backfaceCulling 0\n-xray 0\n-jointXray 0\n-activeComponentsXray 0\n-displayTextures 0\n-smoothWireframe 0\n-lineWidth 1\n-textureAnisotropic 0\n-textureHilight 1\n-textureSampling 2\n-textureDisplay \"modulate\" -textureMaxSize 16384\n-fogging 0\n-fogSource \"fragment\" -fogMode \"linear\" -fogStart 0\n-fogEnd 100\n-fogDensity 0.1\n-fogColor 0.5 0.5 0.5 1 -depthOfFieldPreview 1\n-maxConstantTransparency 1\n-rendererName \"vp2Renderer\" -objectFilterShowInHUD 1\n-isFiltered 0\n-colorResolution 256 256 -bumpResolution 512 512 -textureCompression 0\n-transparencyAlgorithm \"frontAndBackCull\" -transpInShadows 0\n-cullingOverride \"none\" -lowQualityLighting 0\n-maximumNumHardwareLights 1\n-occlusionCulling 0\n-shadingModel 0\n-useBaseRenderer 0\n-useReducedRenderer 0\n-smallObjectCulling 0\n-smallObjectThreshold -1 -interactiveDisableShadows 0\n-interactiveBackFaceCull 0\n-sortTransparent 1\n-controllers 1\n-nurbsCurves 1\n-nurbsSurfaces 1\n-polymeshes 1\n-subdivSurfaces 1\n-planes 1\n-lights 1\n-cameras 1\n-controlVertices 1\n-hulls 1\n-grid 1\n-imagePlane 1\n-joints 1\n-ikHandles 1\n-deformers 1\n-dynamics 1\n-particleInstancers 1\n-fluids 1\n-hairSystems 1\n-follicles 1\n-nCloths 1\n-nParticles 1\n-nRigids 1\n-dynamicConstraints 1\n-locators 1\n-manipulators 1\n-pluginShapes 1\n-dimensions 1\n-handles 1\n-pivots 1\n-textures 1\n-strokes 1\n-motionTrails 1\n-clipGhosts 1\n-greasePencils 1\n-shadows 0\n-captureSequenceNumber -1\n-width 1\n-height 1\n-sceneRenderFilter 0\n$editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e -pluginObjects \"gpuCacheDisplayFilter\" 1 $editorName"
- -sv "modelPanel3" "modelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels modelPanel3;\n$editorName = $panelName;\nmodelEditor -e -camera \"|front\" -useInteractiveMode 0\n-displayLights \"default\" -displayAppearance \"smoothShaded\" -activeOnly 0\n-ignorePanZoom 0\n-wireframeOnShaded 0\n-headsUpDisplay 1\n-holdOuts 1\n-selectionHiliteDisplay 1\n-useDefaultMaterial 0\n-bufferMode \"double\" -twoSidedLighting 0\n-backfaceCulling 0\n-xray 0\n-jointXray 0\n-activeComponentsXray 0\n-displayTextures 0\n-smoothWireframe 0\n-lineWidth 1\n-textureAnisotropic 0\n-textureHilight 1\n-textureSampling 2\n-textureDisplay \"modulate\" -textureMaxSize 16384\n-fogging 0\n-fogSource \"fragment\" -fogMode \"linear\" -fogStart 0\n-fogEnd 100\n-fogDensity 0.1\n-fogColor 0.5 0.5 0.5 1 -depthOfFieldPreview 1\n-maxConstantTransparency 1\n-rendererName \"vp2Renderer\" -objectFilterShowInHUD 1\n-isFiltered 0\n-colorResolution 256 256 -bumpResolution 512 512 -textureCompression 0\n-transparencyAlgorithm \"frontAndBackCull\" -transpInShadows 0\n-cullingOverride \"none\" -lowQualityLighting 0\n-maximumNumHardwareLights 1\n-occlusionCulling 0\n-shadingModel 0\n-useBaseRenderer 0\n-useReducedRenderer 0\n-smallObjectCulling 0\n-smallObjectThreshold -1 -interactiveDisableShadows 0\n-interactiveBackFaceCull 0\n-sortTransparent 1\n-controllers 1\n-nurbsCurves 1\n-nurbsSurfaces 1\n-polymeshes 1\n-subdivSurfaces 1\n-planes 1\n-lights 1\n-cameras 1\n-controlVertices 1\n-hulls 1\n-grid 1\n-imagePlane 1\n-joints 1\n-ikHandles 1\n-deformers 1\n-dynamics 1\n-particleInstancers 1\n-fluids 1\n-hairSystems 1\n-follicles 1\n-nCloths 1\n-nParticles 1\n-nRigids 1\n-dynamicConstraints 1\n-locators 1\n-manipulators 1\n-pluginShapes 1\n-dimensions 1\n-handles 1\n-pivots 1\n-textures 1\n-strokes 1\n-motionTrails 1\n-clipGhosts 1\n-greasePencils 1\n-shadows 0\n-captureSequenceNumber -1\n-width 1\n-height 1\n-sceneRenderFilter 0\n$editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e -pluginObjects \"gpuCacheDisplayFilter\" 1 $editorName"
- -sv "modelPanel4" "modelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels modelPanel4;\n$editorName = $panelName;\nmodelEditor -e -camera \"|persp\" -useInteractiveMode 0\n-displayLights \"default\" -displayAppearance \"smoothShaded\" -activeOnly 0\n-ignorePanZoom 0\n-wireframeOnShaded 0\n-headsUpDisplay 1\n-holdOuts 1\n-selectionHiliteDisplay 1\n-useDefaultMaterial 0\n-bufferMode \"double\" -twoSidedLighting 0\n-backfaceCulling 0\n-xray 0\n-jointXray 0\n-activeComponentsXray 0\n-displayTextures 0\n-smoothWireframe 0\n-lineWidth 1\n-textureAnisotropic 0\n-textureHilight 1\n-textureSampling 2\n-textureDisplay \"modulate\" -textureMaxSize 16384\n-fogging 0\n-fogSource \"fragment\" -fogMode \"linear\" -fogStart 0\n-fogEnd 100\n-fogDensity 0.1\n-fogColor 0.5 0.5 0.5 1 -depthOfFieldPreview 1\n-maxConstantTransparency 1\n-rendererName \"vp2Renderer\" -objectFilterShowInHUD 1\n-isFiltered 0\n-colorResolution 256 256 -bumpResolution 512 512 -textureCompression 0\n-transparencyAlgorithm \"frontAndBackCull\" -transpInShadows 0\n-cullingOverride \"none\" -lowQualityLighting 0\n-maximumNumHardwareLights 1\n-occlusionCulling 0\n-shadingModel 0\n-useBaseRenderer 0\n-useReducedRenderer 0\n-smallObjectCulling 0\n-smallObjectThreshold -1 -interactiveDisableShadows 0\n-interactiveBackFaceCull 0\n-sortTransparent 1\n-controllers 1\n-nurbsCurves 1\n-nurbsSurfaces 1\n-polymeshes 1\n-subdivSurfaces 1\n-planes 1\n-lights 1\n-cameras 1\n-controlVertices 1\n-hulls 1\n-grid 1\n-imagePlane 1\n-joints 1\n-ikHandles 1\n-deformers 1\n-dynamics 1\n-particleInstancers 1\n-fluids 1\n-hairSystems 1\n-follicles 1\n-nCloths 1\n-nParticles 1\n-nRigids 1\n-dynamicConstraints 1\n-locators 1\n-manipulators 1\n-pluginShapes 1\n-dimensions 1\n-handles 1\n-pivots 1\n-textures 1\n-strokes 1\n-motionTrails 1\n-clipGhosts 1\n-greasePencils 1\n-shadows 0\n-captureSequenceNumber -1\n-width 521\n-height 1171\n-sceneRenderFilter 0\n$editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e -pluginObjects \"gpuCacheDisplayFilter\" 1 $editorName"
+ -sv "modelPanel3" "modelPanel -edit -l (localizedPanelLabel(\"Front View\")) -mbv $menusOkayInPanels modelPanel3;\n$editorName = $panelName;\nmodelEditor -e -camera \"|front\" -useInteractiveMode 0\n-displayLights \"default\" -displayAppearance \"smoothShaded\" -activeOnly 0\n-ignorePanZoom 0\n-wireframeOnShaded 0\n-headsUpDisplay 1\n-holdOuts 1\n-selectionHiliteDisplay 1\n-useDefaultMaterial 0\n-bufferMode \"double\" -twoSidedLighting 0\n-backfaceCulling 0\n-xray 0\n-jointXray 0\n-activeComponentsXray 0\n-displayTextures 0\n-smoothWireframe 0\n-lineWidth 1\n-textureAnisotropic 0\n-textureHilight 1\n-textureSampling 2\n-textureDisplay \"modulate\" -textureMaxSize 16384\n-fogging 0\n-fogSource \"fragment\" -fogMode \"linear\" -fogStart 0\n-fogEnd 100\n-fogDensity 0.1\n-fogColor 0.5 0.5 0.5 1 -depthOfFieldPreview 1\n-maxConstantTransparency 1\n-rendererName \"vp2Renderer\" -objectFilterShowInHUD 1\n-isFiltered 0\n-colorResolution 256 256 -bumpResolution 512 512 -textureCompression 0\n-transparencyAlgorithm \"frontAndBackCull\" -transpInShadows 0\n-cullingOverride \"none\" -lowQualityLighting 0\n-maximumNumHardwareLights 1\n-occlusionCulling 0\n-shadingModel 0\n-useBaseRenderer 0\n-useReducedRenderer 0\n-smallObjectCulling 0\n-smallObjectThreshold -1 -interactiveDisableShadows 0\n-interactiveBackFaceCull 0\n-sortTransparent 1\n-controllers 1\n-nurbsCurves 1\n-nurbsSurfaces 1\n-polymeshes 1\n-subdivSurfaces 1\n-planes 1\n-lights 1\n-cameras 1\n-controlVertices 1\n-hulls 1\n-grid 1\n-imagePlane 1\n-joints 1\n-ikHandles 1\n-deformers 1\n-dynamics 1\n-particleInstancers 1\n-fluids 1\n-hairSystems 1\n-follicles 1\n-nCloths 1\n-nParticles 1\n-nRigids 1\n-dynamicConstraints 1\n-locators 1\n-manipulators 1\n-pluginShapes 1\n-dimensions 1\n-handles 1\n-pivots 1\n-textures 1\n-strokes 1\n-motionTrails 1\n-clipGhosts 1\n-greasePencils 1\n-shadows 0\n-captureSequenceNumber -1\n-width 2441\n-height 1167\n-sceneRenderFilter 0\n$editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e -pluginObjects \"gpuCacheDisplayFilter\" 1 $editorName"
+ -sv "modelPanel4" "modelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels modelPanel4;\n$editorName = $panelName;\nmodelEditor -e -camera \"|persp\" -useInteractiveMode 0\n-displayLights \"default\" -displayAppearance \"smoothShaded\" -activeOnly 0\n-ignorePanZoom 0\n-wireframeOnShaded 0\n-headsUpDisplay 1\n-holdOuts 1\n-selectionHiliteDisplay 1\n-useDefaultMaterial 0\n-bufferMode \"double\" -twoSidedLighting 0\n-backfaceCulling 0\n-xray 0\n-jointXray 0\n-activeComponentsXray 0\n-displayTextures 0\n-smoothWireframe 0\n-lineWidth 1\n-textureAnisotropic 0\n-textureHilight 1\n-textureSampling 2\n-textureDisplay \"modulate\" -textureMaxSize 16384\n-fogging 0\n-fogSource \"fragment\" -fogMode \"linear\" -fogStart 0\n-fogEnd 100\n-fogDensity 0.1\n-fogColor 0.5 0.5 0.5 1 -depthOfFieldPreview 1\n-maxConstantTransparency 1\n-rendererName \"vp2Renderer\" -objectFilterShowInHUD 1\n-isFiltered 0\n-colorResolution 256 256 -bumpResolution 512 512 -textureCompression 0\n-transparencyAlgorithm \"frontAndBackCull\" -transpInShadows 0\n-cullingOverride \"none\" -lowQualityLighting 0\n-maximumNumHardwareLights 1\n-occlusionCulling 0\n-shadingModel 0\n-useBaseRenderer 0\n-useReducedRenderer 0\n-smallObjectCulling 0\n-smallObjectThreshold -1 -interactiveDisableShadows 0\n-interactiveBackFaceCull 0\n-sortTransparent 1\n-controllers 1\n-nurbsCurves 1\n-nurbsSurfaces 1\n-polymeshes 1\n-subdivSurfaces 1\n-planes 1\n-lights 1\n-cameras 1\n-controlVertices 1\n-hulls 1\n-grid 1\n-imagePlane 1\n-joints 1\n-ikHandles 1\n-deformers 1\n-dynamics 1\n-particleInstancers 1\n-fluids 1\n-hairSystems 1\n-follicles 1\n-nCloths 1\n-nParticles 1\n-nRigids 1\n-dynamicConstraints 1\n-locators 1\n-manipulators 1\n-pluginShapes 1\n-dimensions 1\n-handles 1\n-pivots 1\n-textures 1\n-strokes 1\n-motionTrails 1\n-clipGhosts 1\n-greasePencils 1\n-shadows 0\n-captureSequenceNumber -1\n-width 1266\n-height 1158\n-sceneRenderFilter 0\n$editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e -pluginObjects \"gpuCacheDisplayFilter\" 1 $editorName"
  -iv "modelWithToolAlignCurve" 0
  -iv "modelWithToolAlignSurface" 0
  -iv "modelWithToolAttachCurve" 0
  -iv "modelWithToolAttachSurface" 0
  -iv "modelWithToolBevel" 0
- -iv "modelWithToolBoundary" 0;
+ -iv "modelWithToolBoundary" 0
+ -iv "modelWithToolCircFillet" 0;
 optionVar
- -iv "modelWithToolCircFillet" 0
  -iv "modelWithToolCloseCurve" 0
  -iv "modelWithToolCloseSurface" 0
  -iv "modelWithToolCutCurve" 0
@@ -1241,9 +1276,9 @@ optionVar
  -iv "modelWithToolDetachSurface" 0
  -iv "modelWithToolDuplCurve" 0
  -iv "modelWithToolDuplicateSurface" 0
- -iv "modelWithToolExtendCosCurve" 0;
+ -iv "modelWithToolExtendCosCurve" 0
+ -iv "modelWithToolExtendCurve" 0;
 optionVar
- -iv "modelWithToolExtendCurve" 0
  -iv "modelWithToolExtendSurface" 0
  -iv "modelWithToolExtrude" 0
  -iv "modelWithToolFilletCurve" 0
@@ -1252,9 +1287,9 @@ optionVar
  -iv "modelWithToolGlobalStitch" 0
  -iv "modelWithToolInsertCurve" 0
  -iv "modelWithToolInsertSurface" 0
- -iv "modelWithToolIntersect" 0;
+ -iv "modelWithToolIntersect" 0
+ -iv "modelWithToolIntersectCurve" 0;
 optionVar
- -iv "modelWithToolIntersectCurve" 0
  -iv "modelWithToolLoft" 0
  -iv "modelWithToolOffsetCoS" 0
  -iv "modelWithToolOffsetCurve" 0
@@ -1263,9 +1298,9 @@ optionVar
  -iv "modelWithToolProject" 0
  -iv "modelWithToolProjectTangent" 0
  -iv "modelWithToolRebuildCurve" 0
- -iv "modelWithToolRebuildSurface" 0;
+ -iv "modelWithToolRebuildSurface" 0
+ -iv "modelWithToolReverseCurve" 0;
 optionVar
- -iv "modelWithToolReverseCurve" 0
  -iv "modelWithToolReverseSurface" 0
  -iv "modelWithToolRevolve" 0
  -iv "modelWithToolSmoothCurve" 0
@@ -1274,9 +1309,9 @@ optionVar
  -sv "moveKeyContext" "moveKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -option \"over\" -moveFunction \"constant\" moveKeyContext"
  -sv "moveOptions" "precision=6;attrNames=;"
  -iv "multiCutDeleteFaces" 0
- -fv "multiCutEdgeFlow" 1;
+ -fv "multiCutEdgeFlow" 1
+ -iv "multiCutExtractFaces" 0;
 optionVar
- -iv "multiCutExtractFaces" 0
  -ca "multiCutExtractOffset"
  -fva "multiCutExtractOffset" 0.5
  -fva "multiCutExtractOffset" 0.5
@@ -1300,9 +1335,9 @@ optionVar
  -iv "multiCutIgnoreBackfaces" 0
  -iv "multiCutSmoothingAngle" 180
  -iv "multiCutSnapStep" 10
- -iv "multiCutSubdivisions" 1;
+ -iv "multiCutSubdivisions" 1
+ -iv "multiCutUseEdgeFlow" 0;
 optionVar
- -iv "multiCutUseEdgeFlow" 0
  -sv "nameOfHotBoxC1MarkingMenu" "CommonModelingPanes"
  -sv "nameOfHotBoxC2MarkingMenu" "CommonModelingPanes"
  -sv "nameOfHotBoxC3MarkingMenu" "CommonModelingPanes"
@@ -1311,9 +1346,9 @@ optionVar
  -sv "nameOfHotBoxE3MarkingMenu" "ControlPaneVisibility"
  -sv "nameOfHotBoxN1MarkingMenu" "ChangePanelLayout"
  -sv "nameOfHotBoxN2MarkingMenu" "ChangePanelLayout"
- -sv "nameOfHotBoxN3MarkingMenu" "ChangePanelLayout";
+ -sv "nameOfHotBoxN3MarkingMenu" "ChangePanelLayout"
+ -sv "nameOfHotBoxS1MarkingMenu" "ChangePanelType";
 optionVar
- -sv "nameOfHotBoxS1MarkingMenu" "ChangePanelType"
  -sv "nameOfHotBoxS2MarkingMenu" "ChangePanelType"
  -sv "nameOfHotBoxS3MarkingMenu" "ChangePanelType"
  -sv "nameOfHotBoxW1MarkingMenu" "ChangeSelectionMask"
@@ -1325,9 +1360,9 @@ optionVar
  -ca "newFeatureHighlightColor"
  -fva "newFeatureHighlightColor" 0.082002
  -fva "newFeatureHighlightColor" 1
- -fva "newFeatureHighlightColor" 0.0350042;
+ -fva "newFeatureHighlightColor" 0.0350042
+ -iv "newNurbsIsoparms" 0;
 optionVar
- -iv "newNurbsIsoparms" 0
  -iv "newNurbsPointsShaded" 4
  -iv "newNurbsPointsWire" 5
  -iv "newPolyBackFaceCull" 0
@@ -1336,9 +1371,9 @@ optionVar
  -iv "newPolyBorderMapHilite" 0
  -iv "newPolyColorChannel" 3
  -iv "newPolyColorShaded" 0
- -iv "newPolyCreaseEdgeHilite" 1;
+ -iv "newPolyCreaseEdgeHilite" 1
+ -iv "newPolyCreaseVertexHilite" 1;
 optionVar
- -iv "newPolyCreaseVertexHilite" 1
  -iv "newPolyDefaultSmoothDrawType" 1
  -iv "newPolyDefaultVertexNormalMethod" 3
  -iv "newPolyEdgeDisp" 0
@@ -1347,9 +1382,9 @@ optionVar
  -iv "newPolyFacetTrngleDisp" 0
  -iv "newPolyFacetWarpDisp" 0
  -iv "newPolyHoleFacesHilite" 0
- -iv "newPolyMaterialBlend" 1;
+ -iv "newPolyMaterialBlend" 1
+ -fv "newPolyNormalSize" 0.4;
 optionVar
- -fv "newPolyNormalSize" 0.4
  -iv "newPolyNumEdgeDisp" 0
  -iv "newPolyNumFacetDisp" 0
  -iv "newPolyNumUvDisp" 0
@@ -1358,35 +1393,42 @@ optionVar
  -iv "newPolyVertexNormals" 0
  -fv "newPolyVertexSize" 3
  -iv "newPolyVtxBackCull" 1
- -iv "newPolyVtxDisp" 0;
+ -iv "newPolyVtxDisp" 0
+ -sv "newScenePanelConfiguration" "Single Perspective View";
 optionVar
- -sv "newScenePanelConfiguration" "Single Perspective View"
  -iv "newSurfaceDisplayCV" 0
  -iv "newSurfaceDisplayEP" 0
  -iv "newSurfaceDisplayHull" 0
  -iv "newSurfaceDisplayOrigin" 0
- -sv "ngSkinTools2_ngSkinTools2__brush_settings" "{\"common\": {\"brush_projection_mode\": 0, \"mode\": 1, \"brush_radius\": 2, \"brush_shape\": 0, \"intensity\": 1.0, \"iterations\": 1, \"tablet_mode\": 0, \"mirror\": false, \"influences_limit\": 0, \"fixed_influences_per_vertex\": false, \"limit_to_component_selection\": false, \"use_volume_neighbours\": false, \"distribute_to_other_influences\": false, \"sample_joint_on_stroke_start\": false}, \"mode_settings\": {\"1\": {\"intensity\": 1.0, \"brush_shape\": 0}, \"2\": {\"intensity\": 0.1, \"brush_shape\": 0}, \"3\": {\"intensity\": 0.95, \"brush_shape\": 0}, \"4\": {\"intensity\": 0.2, \"iterations\": 5, \"brush_shape\": 1}, \"5\": {\"intensity\": 0.2, \"iterations\": 5, \"brush_shape\": 1}}, \"projection_settings\": {\"0\": {\"brush_radius\": 2}, \"1\": {\"brush_radius\": 100}}}"
+ -sv "ngSkinTools2_config" "{\"influencesViewShowUsedInfluencesOnly\": true}"
+ -sv "ngSkinTools2_ngSkinTools2__brush_settings" "{\"common\": {\"brush_projection_mode\": 0, \"mode\": 2, \"brush_radius\": 4.491289209951562, \"brush_shape\": 0, \"intensity\": 0.043, \"iterations\": 1, \"tablet_mode\": 0, \"mirror\": false, \"influences_limit\": 0, \"fixed_influences_per_vertex\": false, \"limit_to_component_selection\": false, \"use_volume_neighbours\": false, \"distribute_to_other_influences\": false, \"sample_joint_on_stroke_start\": false}, \"mode_settings\": {\"1\": {\"intensity\": 1.0, \"brush_shape\": 0}, \"2\": {\"intensity\": 0.043, \"brush_shape\": 0}, \"3\": {\"intensity\": 0.95, \"brush_shape\": 0}, \"4\": {\"intensity\": 0.2, \"iterations\": 5, \"brush_shape\": 1}, \"5\": {\"intensity\": 0.2, \"iterations\": 5, \"brush_shape\": 1}}, \"projection_settings\": {\"0\": {\"brush_radius\": 4.491289209951562}, \"1\": {\"brush_radius\": 100}}}"
  -sv "ngSkinTools2_paint_display_settings" "{\"wireframeColor\": [0.7019607843137254, 0.6627450980392157, 0.5215686274509804]}"
  -sv "ngSkinTools2_updateCheckUniqueClientId" "71e236aefa5e634470f36e3a58cf142bd40d8f83"
  -iv "nodeEdAddNewNodes" 1
  -iv "nodeEdAdditiveGraphingMode" 0;
 optionVar
- -iv "nodeEdAutoSizeNodes" 1
+ -iv "nodeEdAutoSizeNodes" 0
  -iv "nodeEdConnectNodeOnCreation" 0
  -iv "nodeEdConnectOnDrop" 0
+ -fv "nodeEdConnectionMinSegment" 0.03
+ -fv "nodeEdConnectionOffset" 0.03
+ -fv "nodeEdConnectionRoundness" 0.8
+ -sv "nodeEdConnectionStyle" "bezier"
+ -iv "nodeEdConnectionTension" -100
  -iv "nodeEdConsistentNodeNameSize" 1
- -iv "nodeEdCopyConnectionsOnPaste" 1
+ -iv "nodeEdCopyConnectionsOnPaste" 1;
+optionVar
  -iv "nodeEdDefaultNodeViewMode" 0
  -iv "nodeEdDefaultPinnedState" 0
  -iv "nodeEdExtendToShapes" 1
  -iv "nodeEdGridSnapping" 0
- -iv "nodeEdGridVisibility" 1;
-optionVar
+ -iv "nodeEdGridVisibility" 1
  -iv "nodeEdHighlightConnectionsBifrost" 1
  -iv "nodeEdHighlightConnectionsRegular" 0
  -iv "nodeEdIgnoreAssets" 1
  -iv "nodeEdLODLimit" 1000
- -sv "nodeEdLayoutEngine" "slate"
+ -sv "nodeEdLayoutEngine" "slate";
+optionVar
  -ca "nodeEdNoImplicitAddTypes"
  -sva "nodeEdNoImplicitAddTypes" "defaultRenderingList"
  -sva "nodeEdNoImplicitAddTypes" "defaultTextureList"
@@ -1401,30 +1443,58 @@ optionVar
  -iv "nodeEdSaveGraphInfoWithPanel" 1
  -iv "nodeEdShowNamespace" 1
  -iv "nodeEdShowSGShapes" 0
- -iv "nodeEdShowShapes" 1;
-optionVar
+ -iv "nodeEdShowShapes" 1
  -iv "nodeEdShowTransforms" 1
  -iv "nodeEdSyncedSelection" 1
  -iv "nodeEdUseAssetsAndPublishedAttributes" 1
  -iv "nodeEditorIsLongName" 1
- -iv "nodeEditorShowBookmarkIcons" 1
+ -iv "nodeEditorShowBookmarkIcons" 1;
+optionVar
  -iv "nodeEditorShowDepthTraversalIcons" 1
  -iv "nodeEditorShowDisplayIcons" 1
  -iv "nodeEditorShowFilterUI" 1
  -iv "nodeEditorShowGridIcons" 1
- -iv "nodeEditorShowLayoutIcons" 1;
-optionVar
+ -iv "nodeEditorShowLayoutIcons" 1
  -iv "nodeEditorShowLodPinIcons" 1
  -iv "nodeEditorShowRegraphIcons" 1
  -iv "numShelves" 17
+ -iv "nurbsCircleAxisType" 2
+ -fv "nurbsCircleAxisX" 0;
+optionVar
+ -fv "nurbsCircleAxisY" 1
+ -fv "nurbsCircleAxisZ" 0
+ -iv "nurbsCircleDegree" 3
+ -fv "nurbsCircleEndSweep" 360
+ -iv "nurbsCirclePivotType" 1
+ -fv "nurbsCirclePivotX" 0
+ -fv "nurbsCirclePivotY" 0
+ -fv "nurbsCirclePivotZ" 0
+ -fv "nurbsCircleRadius" 1
+ -iv "nurbsCircleSections" 8;
+optionVar
+ -fv "nurbsCircleTolerance" 0.01
+ -iv "nurbsCircleUseGlobalTol" 1
+ -iv "nurbsCircleUseTolerance" 0
  -iv "nurbsPrimitiveAsToolExitOnComplete" 1
  -sv "nurbsSelect" "selectContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" nurbsSelect"
+ -fv "nurbsSquareCenterX" 0
+ -fv "nurbsSquareCenterY" 0
+ -fv "nurbsSquareCenterZ" 0
+ -iv "nurbsSquareDegree" 3
+ -iv "nurbsSquareNormalType" 2;
+optionVar
+ -fv "nurbsSquareNormalX" 0
+ -fv "nurbsSquareNormalY" 1
+ -fv "nurbsSquareNormalZ" 0
+ -fv "nurbsSquareSide1" 1
+ -fv "nurbsSquareSide2" 1
+ -iv "nurbsSquareSpansPerSide" 1
  -iv "objectDetailsVisibility" 0
  -iv "oneTimeDefaultPluginLoad2008Ext2" 1
  -iv "oneTimeDefaultPluginLoad2011" 1
- -iv "oneTimeDefaultPluginLoad2012" 1
- -iv "oneTimeDefaultPluginLoad2013" 1;
+ -iv "oneTimeDefaultPluginLoad2012" 1;
 optionVar
+ -iv "oneTimeDefaultPluginLoad2013" 1
  -iv "oneTimeDefaultPluginLoad2013Update" 1
  -iv "oneTimeDefaultPluginLoad2014" 1
  -iv "oneTimeDefaultPluginLoad2014Update" 1
@@ -1433,9 +1503,9 @@ optionVar
  -iv "oneTimeDefaultPluginLoad2016" 1
  -iv "oneTimeDefaultPluginLoad2016Ext1" 1
  -iv "oneTimeDefaultPluginLoad2016Ext2" 1
- -iv "oneTimeDefaultPluginLoad2017" 1
- -iv "oneTimeDefaultPluginLoad2018" 1;
+ -iv "oneTimeDefaultPluginLoad2017" 1;
 optionVar
+ -iv "oneTimeDefaultPluginLoad2018" 1
  -iv "oneTimeDefaultPluginLoad2019" 1
  -iv "oneTimeDefaultPluginLoad2020Update1" 1
  -iv "oneTimeDefaultPluginLoad2021" 1
@@ -1444,6 +1514,10 @@ optionVar
  -iv "oneTimeDefaultPluginLoad65" 1
  -iv "oneTimeDefaultPluginLoad70" 1
  -iv "oneTimeUnlimitedPluginLoad30" 1
+ -ca "optionBoxDimensionsRebuildCurve"
+ -iva "optionBoxDimensionsRebuildCurve" 545
+ -iva "optionBoxDimensionsRebuildCurve" 350;
+optionVar
  -ca "optionvarCustomCurvesTypeBevel"
  -sva "optionvarCustomCurvesTypeBevel" ""
  -sva "optionvarCustomCurvesTypeBevel" ""
@@ -1469,8 +1543,7 @@ optionVar
  -sva "optionvarCustomCurvesTypeExtrude" ""
  -sva "optionvarCustomCurvesTypeExtrude" ""
  -sva "optionvarCustomCurvesTypeExtrude" ""
- -sva "optionvarCustomCurvesTypeExtrude" "";
-optionVar
+ -sva "optionvarCustomCurvesTypeExtrude" ""
  -sv "outTangentType" "auto"
  -iv "outlinerAutoSelectSetMembers" 0
  -iv "paintEffectsDisplayMesh" 1
@@ -1478,10 +1551,10 @@ optionVar
  -iv "particleCountVisibility" 0
  -sv "performanceSettingBindSkinAndFlexors" "0"
  -sv "performanceSettingBlendShapes" "0"
- -sv "performanceSettingClusterResolution" "0"
- -sv "performanceSettingClusters" "0"
- -sv "performanceSettingFlexors" "0";
+ -sv "performanceSettingClusterResolution" "0";
 optionVar
+ -sv "performanceSettingClusters" "0"
+ -sv "performanceSettingFlexors" "0"
  -fv "performanceSettingGlobalClusterResolution" 5
  -fv "performanceSettingGlobalLatticeResolution" 0.01
  -sv "performanceSettingLatticeResolution" "0"
@@ -1489,10 +1562,10 @@ optionVar
  -sv "performanceSettingPaintEffects" "0"
  -sv "performanceSettingSculpts" "0"
  -sv "performanceSettingStitchSurfaces" "0"
- -sv "performanceSettingTrimDisplay" "0"
- -sv "performanceSettingWires" "0"
- -iv "planarTrimPolys" 0;
+ -sv "performanceSettingTrimDisplay" "0";
 optionVar
+ -sv "performanceSettingWires" "0"
+ -iv "planarTrimPolys" 0
  -fv "playbackMax" 120
  -fv "playbackMaxDefault" 120
  -fv "playbackMaxRange" 200
@@ -1500,10 +1573,10 @@ optionVar
  -fv "playbackMin" 1
  -fv "playbackMinDefault" 1
  -fv "playbackMinRange" 1
- -fv "playbackMinRangeDefault" 1
- -iv "playbackRangeVisible" 0
- -sv "playblastFile" "playblast";
+ -fv "playbackMinRangeDefault" 1;
 optionVar
+ -iv "playbackRangeVisible" 0
+ -sv "playblastFile" "playblast"
  -sv "plug-inOptions" ""
  -sv "polyAppendFacetContext" "polyAppendFacetCtx -e -image1 \"polyAppendFacet.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -append 1\n-subdivision 1\n-texture 1\n-rotate 0\n-isRotateAvailable 0\n-planarConstraint 1\n-maximumNumberOfPoints -1\npolyAppendFacetContext"
  -iv "polyAutoConvertAction" 1
@@ -1511,10 +1584,10 @@ optionVar
  -iv "polyAutoShowColorPerVertex" 1
  -iv "polyCount" 0
  -iv "polyCountVisibility" 0
- -sv "polyCreaseContext" "polyCreaseCtx -e -image1 \"polyCrease.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -extendSelection 0\n-relative 0\npolyCreaseContext"
- -sv "polyCreateFacetContext" "polyCreateFacetCtx -e -image1 \"polyCreateFacet.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -append 0\n-subdivision 1\n-texture 1\n-planarConstraint 1\n-maximumNumberOfPoints -1\npolyCreateFacetContext"
- -iv "polyCreateMeshesSingleSided" 0;
+ -sv "polyCreaseContext" "polyCreaseCtx -e -image1 \"polyCrease.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -extendSelection 0\n-relative 0\npolyCreaseContext";
 optionVar
+ -sv "polyCreateFacetContext" "polyCreateFacetCtx -e -image1 \"polyCreateFacet.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -append 0\n-subdivision 1\n-texture 1\n-planarConstraint 1\n-maximumNumberOfPoints -1\npolyCreateFacetContext"
+ -iv "polyCreateMeshesSingleSided" 0
  -sv "polyCutContext" "polyCutCtx -e -image1 \"polyCut.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -deleteFaces 0\n-extractFaces 0\n-extractOffset 0.5 0.5 0.5 polyCutContext"
  -fv "polyDefaultTangentSmoothingAngle" 0
  -iv "polyDefaultTangentSpace" 0
@@ -1522,43 +1595,55 @@ optionVar
  -iv "polyDisplayHardEdgeBackfaceCulling" 0
  -iv "polyDisplayLimitedToSelectedOV" 1
  -iv "polyDisplayWireBackfaceCulling" 0
- -iv "polyDistributeUVDirection" 1
- -iv "polyFaceSensitive" 1
- -iv "polyKeepFacetsGrouped" 1;
+ -iv "polyDistributeUVDirection" 1;
 optionVar
+ -iv "polyFaceSensitive" 1
+ -iv "polyKeepFacetsGrouped" 1
  -sv "polyMergeEdgeContext" "polyMergeEdgeCtx -e -image1 \"polyMergeEdge.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -constructionHistory 1\n-caching 0\n-frozen 0\n-nodeState 0\n-mergeMode 1\n-firstEdge 0\n-secondEdge 0\n-mergeTexture 0\npolyMergeEdgeContext"
  -sv "polyMergeFacetContext" "polyMergeFacetCtx -e -image1 \"polyMergeFacet.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -constructionHistory 1\n-caching 0\n-frozen 0\n-nodeState 0\n-mergeMode 6\n-firstFacet 0\n-secondFacet 0\npolyMergeFacetContext"
  -sv "polyMergeVertexContext" "targetWeldCtx -e -image1 \"weld_NEX32.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -mergeToCenter 0\n-preserveUV 1\npolyMergeVertexContext"
  -iv "polyNudgeUVAbsolute" 0
  -fv "polyNudgeUVFactor" 0.1
  -iv "polyPrimitiveAsToolExitOnComplete" 1
- -fv "polyRotateUVAngle" 90
+ -iv "polyPrimitiveCylinderAxis" 2
+ -iv "polyPrimitiveCylinderCreateUVs" 1;
+optionVar
+ -fv "polyPrimitiveCylinderHeight" 2
+ -iv "polyPrimitiveCylinderNormalize" 1
+ -iv "polyPrimitiveCylinderPreserveAspectRatio" 1
+ -fv "polyPrimitiveCylinderRadius" 1
+ -iv "polyPrimitiveCylinderRoundCap" 0
+ -iv "polyPrimitiveCylinderSX" 20
+ -iv "polyPrimitiveCylinderSY" 1
+ -iv "polyPrimitiveCylinderSZ" 1
+ -iv "polyPrimitiveCylinderTexture" 1
+ -fv "polyRotateUVAngle" 90;
+optionVar
  -iv "polyScaleDirection" 0
  -fv "polyScaleUVFactor" 2
- -sv "polySelectContext" "polySelectCtx -e -image1 \"polySelectTool.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -mode 1\npolySelectContext";
-optionVar
+ -sv "polySelectContext" "polySelectCtx -e -image1 \"polySelectTool.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -mode 1\npolySelectContext"
  -sv "polySelectEditContext" "polySelectEditCtx -e -image1 \"polySplitEdgeRing.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -mode 1\n-autoComplete 1\n-divisions 2\n-useEqualMultiplier 1\n-fixQuads 1\n-smoothingAngle 30\n-splitType 1\n-insertWithEdgeFlow 0\n-adjustEdgeFlow 1\npolySelectEditContext"
  -sv "polySlideEdgeContext" "polySlideEdgeCtx -e -image1 \"slideEdgeTool.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -edgeDirection 0\n-direction 0\n-absolute 0\n-useSnapping 1\n-snappingTolerance 0.1\n-snappingPoints 1\npolySlideEdgeContext"
  -iv "polySnapShellDirection" 0
  -sv "polySplitContext" "polySplitCtx -e -image1 \"polySplitFacet.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -subdivision 1\n-precsnap 10\n-magnetsnap 1\n-enablesnap 1\n-snaptoedge 1\n-smoothingangle 0\npolySplitContext"
  -sv "polySplitContext2" "polySplitCtx2 -e -image1 \"polySplitFacet.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -edgeMagnets 1\n-snappingTolerance 2\n-constrainToEdges 1\n-detachEdges 0\n-snappedToEdgeColor 1 0 0 -snappedToFaceColor 0 0 1 -snappedToVertexColor 0 1 0 -snappedToMagnetColor 1 0 0 -highlightPointColor 1 0.5 0 -splitLineColor 1 0.5 0 -insertWithEdgeFlow 0\n-adjustEdgeFlow 1\npolySplitContext2"
  -iv "polyUVFlipDirection" 1
- -iv "polyUVPivotBoundarySelector" 0
+ -iv "polyUVPivotBoundarySelector" 0;
+optionVar
  -fv "polyUVTexelDensity" 32
  -iv "polyUVTexelDensityMapSize" 512
- -iv "polyUVpivotMaxU" 1;
-optionVar
+ -iv "polyUVpivotMaxU" 1
  -iv "polyUVpivotMaxV" 1
  -iv "polyUVpivotMinU" 0
  -iv "polyUVpivotMinV" 0
  -iv "polyUVsnapMaxU" 1
  -iv "polyUVsnapMaxV" 1
  -iv "polyUVsnapMinU" 0
- -iv "polyUVsnapMinV" 0
+ -iv "polyUVsnapMinV" 0;
+optionVar
  -sv "polyVertexNormalEdit" "polyVertexNormalCtx -e -image1 \"vertexNormalEdit.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -rotatemode 0\n-relativemode 0\n-lockmode 0\npolyVertexNormalEdit"
  -iv "popUpHelpMode" 1
- -iv "popUpSimpleHelpMode" 0;
-optionVar
+ -iv "popUpSimpleHelpMode" 0
  -iv "popupMenuSelection" 0
  -ca "poseEditorTreeViewSelection"
  -sva "poseEditorTreeViewSelection" ""
@@ -1571,22 +1656,23 @@ optionVar
  -iv "postFrames" 3
  -iv "preFrames" 3
  -iv "preSelectHilite" 1
- -sv "preferredRenderer" "arnold"
+ -sv "preferredRenderer" "arnold";
+optionVar
  -sv "preferredRendererFallback" "arnold"
  -iv "preferredRendererSet" 1
- -iv "prepopulateController" 1;
-optionVar
+ -iv "prepopulateController" 1
+ -sv "primitivePlacementRule" "AtOrigin"
  -sv "proxyOptionsNewProxyTag" ""
  -sv "proxyOptionsNewReferenceTag" ""
  -sv "proxyOptionsProxyTag" ""
  -sv "proxyOptionsReferenceTag" ""
  -iv "proxyOptionsUseNewProxyTag" 1
- -iv "proxyOptionsUseNewReferenceTag" 1
+ -iv "proxyOptionsUseNewReferenceTag" 1;
+optionVar
  -iv "quadDrawAutoWeld" 1
  -iv "quadDrawAutoWeldTolerance" 10
  -iv "quadDrawExtend" 0
- -fv "quadDrawMeshAlpha" 0.75;
-optionVar
+ -fv "quadDrawMeshAlpha" 0.75
  -ca "quadDrawMeshColorOverride"
  -fva "quadDrawMeshColorOverride" 0
  -fva "quadDrawMeshColorOverride" 0.33
@@ -1599,18 +1685,35 @@ optionVar
  -fva "quadDrawOverlayAppendMeshColor" 0
  -fva "quadDrawOverlayAppendMeshColor" 1
  -iv "quadDrawRelax" 3
- -iv "quadDrawSnapToBackfaces" 0
+ -iv "quadDrawSnapToBackfaces" 0;
+optionVar
  -iv "quadDrawStripSize" 20
  -iv "quadDrawUseMeshAlpha" 1
  -iv "quadDrawUseMeshColorOverride" 1
- -iv "quadDrawUseMeshOffset" 0;
-optionVar
+ -iv "quadDrawUseMeshOffset" 0
  -sv "quickFieldMode" "Abs"
  -ca "quickPanelButtonLayout"
  -sva "quickPanelButtonLayout" "Single Perspective View"
  -sva "quickPanelButtonLayout" "Four View"
  -sva "quickPanelButtonLayout" "Front/Persp"
  -sva "quickPanelButtonLayout" "Persp/Graph/Hypergraph"
+ -iv "rebuildCurveChanges" 1
+ -iv "rebuildCurveEndKnots" 1
+ -iv "rebuildCurveEuc" 0
+ -iv "rebuildCurveKeepControlPoints" 0;
+optionVar
+ -iv "rebuildCurveKeepEndPoints" 1
+ -iv "rebuildCurveKeepEndTangents" 0
+ -iv "rebuildCurveKeepNumSpans" 0
+ -iv "rebuildCurveKeepOriginal" 0
+ -iv "rebuildCurveKeepRange" 0
+ -iv "rebuildCurveLac" 1
+ -fv "rebuildCurveLocalTolerance" 0.05
+ -iv "rebuildCurveType" 0
+ -iv "rebuildCurveTypeUniformDegree" 3
+ -iv "rebuildCurveTypeUniformNumSpans" 4;
+optionVar
+ -iv "rebuildCurveUseGlobalTolerance" 1
  -iv "rebuildSurfacePolys" 0
  -iv "refAnimCurvesEditable" 0
  -iv "refLockEditable" 0
@@ -1618,9 +1721,9 @@ optionVar
  -sv "regionSelectKeyContext" "regionSelectKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" regionSelectKeyContext"
  -iv "renderLayerMerge" 0
  -iv "renderSetupEnable" 1
- -iv "renderViewAutoRenderRegion" 0;
+ -iv "renderViewAutoRenderRegion" 0
+ -iv "renderViewAutoResize" 1;
 optionVar
- -iv "renderViewAutoResize" 1
  -iv "renderViewRenderAllLayers" 0
  -iv "renderViewRenderLayersMode" 0
  -iv "renderViewRenderSelectedObj" 0
@@ -1629,9 +1732,9 @@ optionVar
  -sv "renderedImageName" "test"
  -sv "retimeKeyContext" "retimeKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -snapOnFrame 0\nretimeKeyContext"
  -iv "revolveOutputPolygons" 0
- -sv "rollContext" "rollCtx -e -image1 \"roll.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"Roll Tool\" -rollScale 1\nrollContext";
+ -sv "rollContext" "rollCtx -e -image1 \"roll.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"Roll Tool\" -rollScale 1\nrollContext"
+ -iv "rotationInterpolationDefault" 1;
 optionVar
- -iv "rotationInterpolationDefault" 1
  -iv "roundRangesToWholeValue" 1
  -iv "saveActionsPreferences" 1
  -iv "saveActionsScriptEditor" 1
@@ -1640,9 +1743,9 @@ optionVar
  -sv "scaleKeyContext" "scaleKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -type \"manip\" -scaleSpecifiedKeys 1\nscaleKeyContext"
  -iv "sceneTimecodeVisibility" 0
  -iv "scriptEditorAddPep263Header" 0
- -iv "scriptEditorEncodingUtf8" 1;
+ -iv "scriptEditorEncodingUtf8" 1
+ -iv "searchFieldDelay" 1000;
 optionVar
- -iv "searchFieldDelay" 1000
  -iv "selectAffectsActive" 1
  -iv "selectClickDrag" 0
  -sv "selectKeyContext" "selectKeyCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" selectKeyContext"
@@ -1651,10 +1754,10 @@ optionVar
  -iv "selectPrefPreSelectBackfacing" 1
  -iv "selectPrefPreSelectClosest" 1
  -sv "selectPrefPriorityMode" "animation"
- -iv "selectPrefUseDepth" 0;
+ -iv "selectPrefUseDepth" 0
+ -iv "selectSingleMarquee" 0;
 optionVar
- -iv "selectSingleMarquee" 0
- -iv "selectedShelf" 11
+ -iv "selectedShelf" 1
  -iv "selectionChildHighlightMode" 0
  -iv "seqDoubleClickSetTimeRange" 1
  -sv "setEditContext" "setEditCtx -e -image1 \"setEdit.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" setEditContext"
@@ -1662,9 +1765,9 @@ optionVar
  -iv "shadeTemplates" 0
  -sv "shelfAlign1" "left"
  -sv "shelfAlign10" "left"
- -sv "shelfAlign11" "left";
+ -sv "shelfAlign11" "left"
+ -sv "shelfAlign12" "left";
 optionVar
- -sv "shelfAlign12" "left"
  -sv "shelfAlign13" "left"
  -sv "shelfAlign14" "left"
  -sv "shelfAlign15" "left"
@@ -1673,9 +1776,9 @@ optionVar
  -sv "shelfAlign2" "left"
  -sv "shelfAlign3" "left"
  -sv "shelfAlign4" "left"
- -sv "shelfAlign5" "left";
+ -sv "shelfAlign5" "left"
+ -sv "shelfAlign6" "left";
 optionVar
- -sv "shelfAlign6" "left"
  -sv "shelfAlign7" "left"
  -sv "shelfAlign8" "left"
  -sv "shelfAlign9" "left"
@@ -1684,9 +1787,9 @@ optionVar
  -sv "shelfFile11" "shelf_Main"
  -sv "shelfFile12" "shelf_Shit"
  -sv "shelfFile13" "shelf_TURTLE"
- -sv "shelfFile14" "shelf_XGen";
+ -sv "shelfFile14" "shelf_XGen"
+ -sv "shelfFile15" "shelf_ngSkinTools2";
 optionVar
- -sv "shelfFile15" "shelf_ngSkinTools2"
  -sv "shelfFile16" "shelf_MASH"
  -sv "shelfFile17" "shelf_MotionGraphics"
  -sv "shelfFile2" "shelf_Polygons"
@@ -1695,9 +1798,9 @@ optionVar
  -sv "shelfFile5" "shelf_Animation"
  -sv "shelfFile6" "shelf_Rendering"
  -sv "shelfFile7" "shelf_FX"
- -sv "shelfFile8" "shelf_FXCaching";
+ -sv "shelfFile8" "shelf_FXCaching"
+ -sv "shelfFile9" "shelf_Custom";
 optionVar
- -sv "shelfFile9" "shelf_Custom"
  -sv "shelfItemSize" "Small"
  -sv "shelfItemStyle" "iconOnly"
  -iv "shelfLoad1" 1
@@ -1706,9 +1809,9 @@ optionVar
  -iv "shelfLoad12" 1
  -iv "shelfLoad13" 1
  -iv "shelfLoad14" 1
- -iv "shelfLoad15" 1;
+ -iv "shelfLoad15" 1
+ -iv "shelfLoad16" 1;
 optionVar
- -iv "shelfLoad16" 1
  -iv "shelfLoad17" 1
  -iv "shelfLoad2" 1
  -iv "shelfLoad3" 1
@@ -1717,9 +1820,9 @@ optionVar
  -iv "shelfLoad6" 0
  -iv "shelfLoad7" 0
  -iv "shelfLoad8" 0
- -iv "shelfLoad9" 0;
+ -iv "shelfLoad9" 0
+ -sv "shelfName1" "CurvesSurfaces";
 optionVar
- -sv "shelfName1" "CurvesSurfaces"
  -sv "shelfName10" "MSPlugin"
  -sv "shelfName11" "Main"
  -sv "shelfName12" "Shit"
@@ -1728,9 +1831,9 @@ optionVar
  -sv "shelfName15" "ngSkinTools2"
  -sv "shelfName16" "MASH"
  -sv "shelfName17" "MotionGraphics"
- -sv "shelfName2" "Polygons";
+ -sv "shelfName2" "Polygons"
+ -sv "shelfName3" "Sculpting";
 optionVar
- -sv "shelfName3" "Sculpting"
  -sv "shelfName4" "Rigging"
  -sv "shelfName5" "Animation"
  -sv "shelfName6" "Rendering"
@@ -1739,9 +1842,9 @@ optionVar
  -sv "shelfName9" "Custom"
  -iv "shelfTabsVisible" 1
  -sv "shelfVersion1" "2010"
- -sv "shelfVersion2" "2010";
+ -sv "shelfVersion2" "2010"
+ -sv "shelfVersion3" "2016";
 optionVar
- -sv "shelfVersion3" "2016"
  -sv "shelfVersion4" "2016"
  -sv "shelfVersion5" "2010"
  -sv "shelfVersion6" "2010"
@@ -1750,9 +1853,9 @@ optionVar
  -sv "shelfVersion9" "2010"
  -sv "shelvesLastUpdated" "2022"
  -iv "showCustomMenuSetsMenusInHotBox" 0
- -iv "showGrid" 1;
+ -iv "showGrid" 1
+ -iv "showHistoryOnEmptySearchField" 1;
 optionVar
- -iv "showHistoryOnEmptySearchField" 1
  -iv "showHomeScreenOnStartup" 1
  -iv "showIconsInMenus" 1
  -iv "showLineNumbersIsOn" 1
@@ -1761,9 +1864,9 @@ optionVar
  -iv "showStatusFiles" 1
  -iv "showStatusHistory" 0
  -iv "showStatusIPMButton" 1
- -iv "showStatusInputField" 0;
+ -iv "showStatusInputField" 0
+ -iv "showStatusRender" 1;
 optionVar
- -iv "showStatusRender" 1
  -iv "showStatusSelectMasks" 0
  -iv "showStatusSelectMode" 1
  -iv "showStatusSelectionSet" 0
@@ -1776,11 +1879,11 @@ optionVar
  -fva "smpContinuity" 1
  -ca "smpDisplaySmoothMesh"
  -iva "smpDisplaySmoothMesh" 0
- -iva "smpDisplaySmoothMesh" 0;
-optionVar
+ -iva "smpDisplaySmoothMesh" 0
  -ca "smpDisplaySubdComps"
  -iva "smpDisplaySubdComps" 0
- -iva "smpDisplaySubdComps" 0
+ -iva "smpDisplaySubdComps" 0;
+optionVar
  -ca "smpKeepBorder"
  -iva "smpKeepBorder" 0
  -iva "smpKeepBorder" 0
@@ -1803,9 +1906,9 @@ optionVar
  -iva "smpSmoothMeshSelectionMode" 0
  -ca "smpSmoothUVs"
  -iva "smpSmoothUVs" 1
- -iva "smpSmoothUVs" 1;
+ -iva "smpSmoothUVs" 1
+ -iv "snapMagnet" 0;
 optionVar
- -iv "snapMagnet" 0
  -fv "snapMagnetTolerance" 0.1
  -iv "snapTimeToSelection" 0
  -sv "snapTogetherToolCtx" "snapTogetherCtx -e -image1 \"snapTogetherTool.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -setOrientation 1\n-clearSelection 1\n-snapPolygonFace 0\nsnapTogetherToolCtx"
@@ -1814,9 +1917,9 @@ optionVar
  -fv "soundVolume" 1
  -iv "splitterHandleMargin" 3
  -iv "squareSrfPolys" 0
- -iv "stackTraceIsOn" 0;
+ -iv "stackTraceIsOn" 0
+ -fv "stackedCurvesSpace" 0.2;
 optionVar
- -fv "stackedCurvesSpace" 0.2
  -iv "statusLineVisible" 1
  -iv "subdivComponentDisplayStyle" 0
  -iv "sweepOutputPolygons" 0
@@ -1825,9 +1928,9 @@ optionVar
  -iv "symmetricModellingOption" 0
  -sv "symmetricModellingSeamFalloffCurve" "0,1,2,1,0,2"
  -iv "symmetricModellingSeamOption" 1
- -fv "symmetricModellingSeamTolerance" 0.01;
+ -fv "symmetricModellingSeamTolerance" 0.01
+ -sv "symmetricModellingSpaceOption" "object";
 optionVar
- -sv "symmetricModellingSpaceOption" "object"
  -fv "symmetricModellingToleranceValue" 0.1
  -iv "symmetryVisibility" 1
  -fv "tangentialTolerance" 0.1
@@ -1836,9 +1939,9 @@ optionVar
  -sv "texMoveContext" "texMoveContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -snapComponentsRelative 1\n-snap 0\n-snapValue 0.1\n-snapPixelMode 1\n-tweakMode 0\n-editPivotMode 0\ntexMoveContext"
  -sv "texMoveUVShellCtx" "texMoveUVShellContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -mask 1\n-iterations 16\n-shellBorder 0.3\ntexMoveUVShellCtx"
  -sv "texRotateContext" "texRotateContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -snap 0\n-snapRelative 0\n-snapValue 15\n-tweakMode 0\n-editPivotMode 0\ntexRotateContext"
- -sv "texScaleContext" "texScaleContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -snap 0\n-snapRelative 0\n-snapValue 1\n-preventNegativeScale 1\n-tweakMode 0\n-editPivotMode 0\ntexScaleContext";
+ -sv "texScaleContext" "texScaleContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -snap 0\n-snapRelative 0\n-snapValue 1\n-preventNegativeScale 1\n-tweakMode 0\n-editPivotMode 0\ntexScaleContext"
+ -sv "texSmoothCtx" "texSmoothContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -pinBorder 0\n-space 1\ntexSmoothCtx";
 optionVar
- -sv "texSmoothCtx" "texSmoothContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -pinBorder 0\n-space 1\ntexSmoothCtx"
  -sv "texSmudgeUVCtx" "texSmudgeUVContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -effectType \"fixed\" -functionType \"exponential\" -radius 0.075\n-pressure 0.01\n-dragSlider \"none\" -smudgeIsMiddle 0\ntexSmudgeUVCtx"
  -sv "texTweakContext" "texTweakUVContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -tolerance 10 texTweakContext"
  -iv "textureEditorAutoLoadTexturesState" 0
@@ -1847,9 +1950,9 @@ optionVar
  -iv "timeEditorAllowConstraintsOverride" 0
  -iv "timeEditorGranularity" 200
  -iv "timeEditorHUD" 1
- -iv "timeEditorMinimumClipWidth" 8;
+ -iv "timeEditorMinimumClipWidth" 8
+ -iv "timeEditorSnapTolerance" 10;
 optionVar
- -iv "timeEditorSnapTolerance" 10
  -sv "timeSliderAnimLayerOptions" "activeAndSelected"
  -iv "timeSliderAnimLayerWeight" 1
  -iv "timeSliderBookmarkVisible" 1
@@ -1858,9 +1961,9 @@ optionVar
  -fv "timeSliderMaxPlaySpeed" 0
  -fv "timeSliderPlayBy" 1
  -sv "timeSliderPlayLoop" "continuous"
- -fv "timeSliderPlaySpeed" 0;
+ -fv "timeSliderPlaySpeed" 0
+ -sv "timeSliderPlayView" "active";
 optionVar
- -sv "timeSliderPlayView" "active"
  -fv "timeSliderRepeatChunk" 1
  -iv "timeSliderRepeatOnHold" 0
  -sv "timeSliderShowFrames" "active"
@@ -1869,9 +1972,9 @@ optionVar
  -iv "timeSliderSnapping" 1
  -sv "timeSliderSoundDisplay" "both"
  -iv "timeSliderStepLoop" 1
- -iv "timeSliderTickSize" 1;
+ -iv "timeSliderTickSize" 1
+ -iv "timeSliderTickSpan" 0;
 optionVar
- -iv "timeSliderTickSpan" 0
  -iv "timeSliderVisible" 0
  -iv "toggleOriginAxis" 0
  -iv "toolMessageHorizontalOffset" 0
@@ -1880,9 +1983,9 @@ optionVar
  -iv "toolMessageVisible" 1
  -iv "toolSettingsVisible" 1
  -iv "toolboxVisible" 1
- -fv "totalAnimateRollTime" 0.5;
+ -fv "totalAnimateRollTime" 0.5
+ -sv "track2dContext" "view2dToolCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"2d View\" track2dContext";
 optionVar
- -sv "track2dContext" "view2dToolCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"2d View\" track2dContext"
  -sv "trackContext" "trackCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 1\n-toolName \"Track Tool\" -trackGeometry 0\n-trackScale 1\ntrackContext"
  -sv "tracktwContext" "texWinToolCtx -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"UV Editor\" tracktwContext"
  -sv "transformTexSelectContext" "texSelectContext -e -image1 \"vacantCell.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" transformTexSelectContext"
@@ -1891,9 +1994,9 @@ optionVar
  -iv "trsManipsPreserveChildPosition" 0
  -iv "trsManipsPreserveUvs" 0
  -iv "trsManipsSnapPivotOri" 1
- -iv "trsManipsSnapPivotPos" 1;
+ -iv "trsManipsSnapPivotPos" 1
+ -iv "trsManipsTweakMode" 0;
 optionVar
- -iv "trsManipsTweakMode" 0
  -sv "trsManipsXformConstraint" "none"
  -iv "trsManipsXformConstraintAlongNormal" 1
  -sv "tumbleContext" "tumbleCtx -e -image1 \"tumble.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 1\n-toolName \"Tumble Tool\" -tumbleScale 1\n-objectTumble 0\n-localTumble 1\n-autoSetPivot 0\n-autoOrthoConstrain 1\n-orthoStep 5\n-orthoLock 1\ntumbleContext"
@@ -1902,9 +2005,9 @@ optionVar
  -iv "undoIsEnabled" 1
  -iv "undoIsInfinite" 1
  -iv "undoLength" 50
- -sv "upAxisDirection" "y";
+ -sv "upAxisDirection" "y"
+ -iv "useDefaultFileExtensions" 1;
 optionVar
- -iv "useDefaultFileExtensions" 1
  -iv "useNewScenePanelConfig" 1
  -iv "useSaveScenePanelConfig" 1
  -iv "useScenePanelConfig" 1
@@ -1913,9 +2016,9 @@ optionVar
  -sv "userDefinedImageViewerCmdForImage" ""
  -sv "userDefinedImageViewerCmdForSequence" ""
  -fv "uvTkDistributeFactor" 0
- -iv "uvTkLayoutType" 0;
+ -iv "uvTkLayoutType" 0
+ -iv "uvTkMeasureType" 2;
 optionVar
- -iv "uvTkMeasureType" 2
  -iv "uvTkNormalizeDirection" 0
  -fv "uvTkNudgeFactorFieldToggleValue0" 0
  -fv "uvTkNudgeFactorFieldToggleValue1" 0.1
@@ -1924,9 +2027,9 @@ optionVar
  -fv "uvTkScaleFactorFieldToggleValue0" 0
  -fv "uvTkScaleFactorFieldToggleValue1" 2
  -iv "uvTkStitchType" 0
- -iv "uvTkStraightenDirection" 0;
+ -iv "uvTkStraightenDirection" 0
+ -fv "uvTkStraightenTolerance" 30;
 optionVar
- -fv "uvTkStraightenTolerance" 30
  -fv "uvTkTexelDensityFieldToggleValue0" 0
  -fv "uvTkTexelDensityFieldToggleValue1" 32
  -iv "uvTkUnfoldDirection" 2
@@ -1935,9 +2038,9 @@ optionVar
  -iv "viewCubeFitToView" 1
  -fv "viewCubeInactiveOpacity" 0.5
  -iv "viewCubePreserveSceneUp" 1
- -sv "viewCubeScreenPosition" "topRight";
+ -sv "viewCubeScreenPosition" "topRight"
+ -iv "viewCubeShowCompass" 0;
 optionVar
- -iv "viewCubeShowCompass" 0
  -iv "viewCubeShowCube" 1
  -sv "viewCubeSize" "normal"
  -iv "viewCubeSnapToClosest" 0
@@ -1946,12 +2049,12 @@ optionVar
  -iv "vp2PauseState" 0
  -sv "vp2RenderingEngine" "OpenGLCoreProfileCompat"
  -sv "walkContext" "walkCtx -e -image1 \"walk.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -alternateContext 0\n-toolName \"Walk Tool\" -walkToolHud 1\n-walkSpeed 1\n-walkHeight 3\n-walkSensitivity 1\n-crouchCount 3\nwalkContext"
- -iv "weightedTangents" 0;
-optionVar
+ -iv "weightedTangents" 0
  -ca "weightsColorOutOfRange"
  -fva "weightsColorOutOfRange" 0.4
  -fva "weightsColorOutOfRange" 0.4
- -fva "weightsColorOutOfRange" 0.4
+ -fva "weightsColorOutOfRange" 0.4;
+optionVar
  -sv "weightsColorRamp" "1,0,0,0.5,1,1,1,0,1,1,0,0,0,0,1"
  -ca "weightsColorRampMax"
  -fva "weightsColorRampMax" 1
@@ -1966,20 +2069,20 @@ optionVar
  -sv "wireCtx" "wireContext -e -image1 \"wire.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -holder 0\n-groupWithBase 0\n-envelope 1\n-crossingEffect 0\n-dropoffDistance 1\n-localInfluence 0\n-deformationOrder \"Default\" -exclusivePartition \"deformPartition\" -exclusive 0\nwireCtx"
  -iv "wireframeOnShadedActive" 1
  -sv "workingUnitAngular" "deg"
- -sv "workingUnitAngularDefault" "deg";
+ -sv "workingUnitAngularDefault" "deg"
+ -sv "workingUnitLinear" "cm";
 optionVar
- -sv "workingUnitLinear" "cm"
  -sv "workingUnitLinearDefault" "cm"
  -sv "workingUnitTime" "film"
  -sv "workingUnitTimeDefault" "film"
  -sv "workspaceLayoutToLoadOnStartup" "Main"
  -iv "workspaceLinkHotKeySetEnabled" 0
- -sv "workspaceLinkHotKeySetValue" "Maya_Default"
+ -sv "workspaceLinkHotKeySetValue" "Maya_Default_Duplicate2"
  -iv "workspaceLinkMenuSetEnabled" 1
  -sv "workspaceLinkMenuSetValue" "modelingMenuSet"
- -iv "workspaceLinkVP2PresetEnabled" 0;
+ -iv "workspaceLinkVP2PresetEnabled" 0
+ -iv "workspacesAutoSave" 1;
 optionVar
- -iv "workspacesAutoSave" 1
  -iv "workspacesDockingDelayTime" 300
  -iv "workspacesInFullScreenUIMode" 0
  -iv "workspacesInZoomInUIMode" 0
@@ -1988,9 +2091,9 @@ optionVar
  -iv "workspacesNarrowPanelInitialWidth" 260
  -iv "workspacesWidePanelInitialHeight" 800
  -iv "workspacesWidePanelInitialWidth" 460
- -sv "wrinkleCtx" "wrinkleContext -e -image1 \"wrinkle.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -style \"radial\" -wrinkleCount 3\n-branchCount 2\n-branchDepth 0\n-wrinkleIntensity 0.5\n-thickness 1\n-randomness 0.2\nwrinkleCtx";
+ -sv "wrinkleCtx" "wrinkleContext -e -image1 \"wrinkle.png\" -image2 \"vacantCell.png\" -image3 \"vacantCell.png\" -style \"radial\" -wrinkleCount 3\n-branchCount 2\n-branchDepth 0\n-wrinkleIntensity 0.5\n-thickness 1\n-randomness 0.2\nwrinkleCtx"
+ -iv "xgenIsPtexCacheSizePerThread" 2;
 optionVar
- -iv "xgenIsPtexCacheSizePerThread" 2
  -iv "xgenPtexCacheSize" 500
  -fv "xgenPtexCacheSizeThreadScale" 1
  -iv "xgenThreadingGen" 1
@@ -2000,15 +2103,15 @@ optionVar
 
 panelConfiguration -label (localizedPanelLabel("Current Layout")) 
 	-userCreated false
-	-defaultImage ""
+	-defaultImage "vacantCell.xP:/"
 	-image ""
 	-sc false
-	-configString "paneLayout -e -cn \"single\" $gMainPane"
+	-configString "global string $gMainPane; paneLayout -e -cn \"single\" -ps 1 100 100 $gMainPane;"
 	-ap false
 		(localizedPanelLabel("Persp View")) 
 		"modelPanel"
-		"{global int $gUseMenusInPanels;\t\t\t\t   modelPanel -mbv $gUseMenusInPanels -unParent -label (localizedPanelLabel(\"Perspective\")) -cam `findStartUpCamera persp`;}"
-		"modelPanel -e -label (localizedPanelLabel(\"Perspective\")) -cam `findStartUpCamera persp` $panelName";
+		"$panelName = `modelPanel -unParent -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels `;\n$editorName = $panelName;\nmodelEditor -e \n    -docTag \"RADRENDER\" \n    -cam `findStartUpCamera persp` \n    -useInteractiveMode 0\n    -displayLights \"default\" \n    -displayAppearance \"smoothShaded\" \n    -activeOnly 0\n    -ignorePanZoom 0\n    -wireframeOnShaded 0\n    -headsUpDisplay 1\n    -holdOuts 1\n    -selectionHiliteDisplay 1\n    -useDefaultMaterial 0\n    -bufferMode \"double\" \n    -twoSidedLighting 1\n    -backfaceCulling 0\n    -xray 0\n    -jointXray 1\n    -activeComponentsXray 0\n    -displayTextures 0\n    -smoothWireframe 0\n    -lineWidth 1\n    -textureAnisotropic 0\n    -textureHilight 1\n    -textureSampling 2\n    -textureDisplay \"modulate\" \n    -textureMaxSize 16384\n    -fogging 0\n    -fogSource \"fragment\" \n    -fogMode \"linear\" \n    -fogStart 0\n    -fogEnd 100\n    -fogDensity 0.1\n    -fogColor 0.5 0.5 0.5 1 \n    -depthOfFieldPreview 1\n    -maxConstantTransparency 1\n    -rendererName \"vp2Renderer\" \n    -objectFilterShowInHUD 1\n    -isFiltered 0\n    -colorResolution 256 256 \n    -bumpResolution 512 512 \n    -textureCompression 0\n    -transparencyAlgorithm \"frontAndBackCull\" \n    -transpInShadows 0\n    -cullingOverride \"none\" \n    -lowQualityLighting 0\n    -maximumNumHardwareLights 1\n    -occlusionCulling 0\n    -shadingModel 0\n    -useBaseRenderer 0\n    -useReducedRenderer 0\n    -smallObjectCulling 0\n    -smallObjectThreshold -1 \n    -interactiveDisableShadows 0\n    -interactiveBackFaceCull 0\n    -sortTransparent 1\n    -controllers 1\n    -nurbsCurves 1\n    -nurbsSurfaces 1\n    -polymeshes 1\n    -subdivSurfaces 1\n    -planes 1\n    -lights 1\n    -cameras 1\n    -controlVertices 1\n    -hulls 1\n    -grid 1\n    -imagePlane 1\n    -joints 1\n    -ikHandles 1\n    -deformers 1\n    -dynamics 1\n    -particleInstancers 1\n    -fluids 1\n    -hairSystems 1\n    -follicles 1\n    -nCloths 1\n    -nParticles 1\n    -nRigids 1\n    -dynamicConstraints 1\n    -locators 1\n    -manipulators 1\n    -pluginShapes 1\n    -dimensions 1\n    -handles 1\n    -pivots 1\n    -textures 1\n    -strokes 1\n    -motionTrails 1\n    -clipGhosts 1\n    -greasePencils 1\n    -shadows 0\n    -captureSequenceNumber -1\n    -width 1398\n    -height 1172\n    -sceneRenderFilter 0\n    $editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e \n    -pluginObjects \"gpuCacheDisplayFilter\" 1 \n    $editorName"
+		"modelPanel -edit -l (localizedPanelLabel(\"Persp View\")) -mbv $menusOkayInPanels  $panelName;\n$editorName = $panelName;\nmodelEditor -e \n    -docTag \"RADRENDER\" \n    -cam `findStartUpCamera persp` \n    -useInteractiveMode 0\n    -displayLights \"default\" \n    -displayAppearance \"smoothShaded\" \n    -activeOnly 0\n    -ignorePanZoom 0\n    -wireframeOnShaded 0\n    -headsUpDisplay 1\n    -holdOuts 1\n    -selectionHiliteDisplay 1\n    -useDefaultMaterial 0\n    -bufferMode \"double\" \n    -twoSidedLighting 1\n    -backfaceCulling 0\n    -xray 0\n    -jointXray 1\n    -activeComponentsXray 0\n    -displayTextures 0\n    -smoothWireframe 0\n    -lineWidth 1\n    -textureAnisotropic 0\n    -textureHilight 1\n    -textureSampling 2\n    -textureDisplay \"modulate\" \n    -textureMaxSize 16384\n    -fogging 0\n    -fogSource \"fragment\" \n    -fogMode \"linear\" \n    -fogStart 0\n    -fogEnd 100\n    -fogDensity 0.1\n    -fogColor 0.5 0.5 0.5 1 \n    -depthOfFieldPreview 1\n    -maxConstantTransparency 1\n    -rendererName \"vp2Renderer\" \n    -objectFilterShowInHUD 1\n    -isFiltered 0\n    -colorResolution 256 256 \n    -bumpResolution 512 512 \n    -textureCompression 0\n    -transparencyAlgorithm \"frontAndBackCull\" \n    -transpInShadows 0\n    -cullingOverride \"none\" \n    -lowQualityLighting 0\n    -maximumNumHardwareLights 1\n    -occlusionCulling 0\n    -shadingModel 0\n    -useBaseRenderer 0\n    -useReducedRenderer 0\n    -smallObjectCulling 0\n    -smallObjectThreshold -1 \n    -interactiveDisableShadows 0\n    -interactiveBackFaceCull 0\n    -sortTransparent 1\n    -controllers 1\n    -nurbsCurves 1\n    -nurbsSurfaces 1\n    -polymeshes 1\n    -subdivSurfaces 1\n    -planes 1\n    -lights 1\n    -cameras 1\n    -controlVertices 1\n    -hulls 1\n    -grid 1\n    -imagePlane 1\n    -joints 1\n    -ikHandles 1\n    -deformers 1\n    -dynamics 1\n    -particleInstancers 1\n    -fluids 1\n    -hairSystems 1\n    -follicles 1\n    -nCloths 1\n    -nParticles 1\n    -nRigids 1\n    -dynamicConstraints 1\n    -locators 1\n    -manipulators 1\n    -pluginShapes 1\n    -dimensions 1\n    -handles 1\n    -pivots 1\n    -textures 1\n    -strokes 1\n    -motionTrails 1\n    -clipGhosts 1\n    -greasePencils 1\n    -shadows 0\n    -captureSequenceNumber -1\n    -width 1398\n    -height 1172\n    -sceneRenderFilter 0\n    $editorName;\nmodelEditor -e -viewSelected 0 $editorName;\nmodelEditor -e \n    -pluginObjects \"gpuCacheDisplayFilter\" 1 \n    $editorName";
 panelConfiguration -label (localizedPanelLabel("Single Perspective View")) 
 	-userCreated false
 	-defaultImage "singlePerspLayout.png"
@@ -2356,28 +2459,28 @@ makePaintable  -at "multiFloat" -sm "deformer" "cMuscleSplineDeformer" "weights"
 makePaintable  -at "multiFloat" -sm "deformer" "cMuscleRelative" "weights";
 makePaintable  -at "multiFloat" -sm "deformer" "cMuscleMirror" "weights";
 makePaintable  -at "multiFloat" -sm "deformer" "bulgeMesh" "weights";
-makePaintable  -at "doubleArray" -aa "goalPP0" "particle" "goalPP";
-makePaintable  -at "doubleArray" "polyReduce" "vertexWeights";
-makePaintable  -at "doubleArray" "cacheFile" "perPtWeights";
-makePaintable  -at "doubleArray" "skinCluster" "paintWeights";
-makePaintable  -at "multiFloat" -sm "deformer" "blendShape" "baseWeights";
-makePaintable  -at "multiFloat" -sm "deformer" "blendShape" "paintTargetWeights";
-makePaintable  -at "multiDouble" "componentFalloff" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "solidify" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "morph" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "shrinkWrap" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "transferAttributes" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "ffd" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "proximityWrap" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "tension" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "deltaMush" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "wire" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "jiggle" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "softMod" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "nonLinear" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "oceanDeformer" "weights";
-makePaintable  -at "multiFloat" -sm "deformer" "textureDeformer" "weights";
 makePaintable  -at "multiFloat" -sm "deformer" "cluster" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "textureDeformer" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "oceanDeformer" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "nonLinear" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "softMod" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "jiggle" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "wire" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "deltaMush" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "tension" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "proximityWrap" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "ffd" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "transferAttributes" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "shrinkWrap" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "morph" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "solidify" "weights";
+makePaintable  -at "multiDouble" "componentFalloff" "weights";
+makePaintable  -at "multiFloat" -sm "deformer" "blendShape" "paintTargetWeights";
+makePaintable  -at "multiFloat" -sm "deformer" "blendShape" "baseWeights";
+makePaintable  -at "doubleArray" "skinCluster" "paintWeights";
+makePaintable  -at "doubleArray" "cacheFile" "perPtWeights";
+makePaintable  -at "doubleArray" "polyReduce" "vertexWeights";
+makePaintable  -at "doubleArray" -aa "goalPP0" "particle" "goalPP";
 
 nurbsToSubdivPref -mpc 1000 -rn 1 -mp 1 -cp 1 -st 0 -ct 1 -br 0 -o 1 -t00 1 -t01 0 -t02 0 -t10 0 -t11 1 -t12 0 -t20 0 -t21 0 -t22 1 -t30 0 -t31 0 -t32 0 ;
 ikSystem -e -sn true -ar false ;

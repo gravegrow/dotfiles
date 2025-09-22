@@ -12,7 +12,7 @@ local function update_volume()
 			return
 		end
 		local volume_match = string.match(stdout, 'Volume: (%d?%.?%d+)')
-		naughty.notify({ text = volume_match })
+		naughty.notify({ text = volume_match, title = 'Volume' })
 	end)
 end
 

@@ -77,10 +77,12 @@ screen.connect_signal('request::desktop_decoration', function(scr)
 			},
 			{
 				layout = wibox.layout.fixed.vertical,
-				-- scr.systray,
+
 				require('widgets.volume').setup(),
 				spacer,
 				require('widgets.clock').setup(),
+				spacer,
+				require('widgets.settings').setup(),
 				spacer,
 				-- require('widgets.power_button').setup(),
 			},
@@ -245,6 +247,7 @@ ruled.client.connect_signal('request::rules', function()
 				'gnome-calculator',
 				'gnome-calendar',
 				'pavucontrol',
+				'zenity',
 			},
 			-- Note that the name property shown in xprop might be set slightly after creation of the client
 			-- and the name shown there might not match defined rules here.
@@ -274,7 +277,7 @@ ruled.client.connect_signal('request::rules', function()
 			switch_to_tags = true,
 			floating = true,
 			callback = function(c)
-				if c.name == 'Lutris' then
+				if not c.name == 'Lutris' then
 					c.floating = false
 				end
 			end,
