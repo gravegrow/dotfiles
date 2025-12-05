@@ -29,6 +29,10 @@ ueberzug_scale  = 1
 ueberzug_offset = [ 0, 0, 0, 0 ]
 
 [opener]
+
+run = [
+	{ run = 'bash "$@"', desc = "RUN", block = false, for = "unix" },
+]
 edit = [
 	{ run = '${EDITOR:-vi} "$@"', desc = "$EDITOR", block = true, for = "unix" },
 	{ run = 'code %*',    orphan = true, desc = "code",           for = "windows" },
@@ -59,6 +63,7 @@ play = [
 
 [open]
 rules = [
+	{ name = "*.sh", use = [ "edit","run", "open", "reveal" ] },
 	# Folder
 	{ name = "*/", use = [ "edit", "open", "reveal" ] },
 	# Text

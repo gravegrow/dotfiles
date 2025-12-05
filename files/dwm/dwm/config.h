@@ -89,13 +89,13 @@ static const Rule rules[] = {
     {"mpv",                                 NULL,     NULL,    0,           0,          0,          0,          0},
     {"polkit-gnome-authentication-agent-1", NULL,     NULL,    0,           1,          0,          0,         -1},
     {"stalonetray",                         NULL,     NULL,   ~0,           1,          0,          0,         -1},
-    {"Maya-2022", NULL, NULL,                                         0,           1,          0,          0,         -1},
+    {"Maya-2022", NULL, NULL,                                  0,           1,          0,          0,         -1},
 };
 
 /* layout(s) */
 static const float mfact = 0.66; /* factor of master area size [0.05..0.95] */
 static const int nmaster = 1;    /* number of clients in master area */
-static const int resizehints = 0; /* 1 means respect size hints in tiled resizals */
+static const int resizehints = 0; /* 1 means respect size hints in tile resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {

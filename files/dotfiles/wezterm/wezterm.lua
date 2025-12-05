@@ -17,6 +17,7 @@ config.window_padding = {
 	right = '1cell',
 }
 
+-- config.enable_wayland = true
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 

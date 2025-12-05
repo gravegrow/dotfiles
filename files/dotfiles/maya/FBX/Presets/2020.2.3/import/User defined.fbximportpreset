@@ -5,7 +5,7 @@
     <PlugInUIHeight UIH="1" UID="0" UIG="0" lbENU="Plugin UI Height" dt="Integer" v="500"/>
     <PlugInUIXpos UIH="1" UID="0" UIG="0" lbENU="Plugin UI X Position" dt="Integer" v="100"/>
     <PlugInUIYpos UIH="1" UID="0" UIG="0" lbENU="Plugin UI Y Position" dt="Integer" v="100"/>
-    <PresetSelected UIH="1" UID="0" UIG="0" lbENU="Preset Selected" dt="KString" v="/usr/autodesk/maya2022/plug-ins/fbx/plug-ins/FBX/Presets/import/Autodesk Media and Entertainment.fbximportpreset"/>
+    <PresetSelected UIH="1" UID="0" UIG="0" lbENU="Preset Selected" dt="KString" v="/home/user/maya/FBX/Presets/2020.2.3/import/User defined.fbximportpreset"/>
     <UILIndex UIH="1" UID="0" UIG="0" lbENU="UI language" dt="Enum" enumSelected="ENU" v="0" enumItem_0="ENU" enumItem_1="DEU" enumItem_2="FRA" enumItem_3="JPN" enumItem_4="KOR" enumItem_5="CHS" enumItem_6="PTB"/>
     <PluginProductFamily UIH="0" UID="0" UIG="0" lbENU="Plugin product family" dt="KString" v="Maya  ( API cut number: 20220300 )"/>
   </PlugInGrp>
@@ -22,10 +22,10 @@
       <HardEdges UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Combine per-vertex Normals" dt="Bool" v="0"/>
       <BlindData UIH="1" UID="0" UIG="0" UIBG="0" lbENU="Blind Data" dt="Bool" v="1"/>
     </Geometry>
-    <Animation UIH="0" UID="0" UIG="0" UIBG="1" UIX="0" lbENU="Animation" dt="Bool" v="1">
-      <ExtraGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Extra Options">
-        <Take UIH="0" UID="0" UIG="0" lbENU="Animation Take" dt="Enum" enumSelected="Animation" v="1" enumItem_0="No Animation" enumItem_1="Animation"/>
-        <TimeLine UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Fill Timeline" dt="Bool" v="0"/>
+    <Animation UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Animation" dt="Bool" v="1">
+      <ExtraGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Extra Options">
+        <Take UIH="0" UID="0" UIG="0" lbENU="Animation Take" dt="Enum" enumSelected="Run" v="10" enumItem_0="No Animation" enumItem_1="Idle" enumItem_2="Unwield" enumItem_3="Wield" enumItem_4="Fire" enumItem_5="Reload" enumItem_6="Ability_On" enumItem_7="Reload_Ability" enumItem_8="Inspect" enumItem_9="Inspect_Ability" enumItem_10="Run"/>
+        <TimeLine UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Fill Timeline" dt="Bool" v="1"/>
         <BakeAnimationLayers UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Bake Animation Layers" dt="Bool" v="1"/>
         <Markers UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Optical Markers" dt="Bool" v="0"/>
         <Quaternion UIH="0" UID="0" UIG="0" lbENU="Quaternion Interpolation Mode" dt="Enum" enumSelected="Resample As Euler Interpolation" v="2" enumItem_0="Retain Quaternion Interpolation" enumItem_1="Set As Euler Interpolation" enumItem_2="Resample As Euler Interpolation"/>
@@ -34,7 +34,7 @@
         <NullsToPivot UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Update Pivotsd from Nulls" dt="Bool" v="1"/>
         <PointCache UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Geometry Cache File(s)" dt="Bool" v="1"/>
       </ExtraGrp>
-      <Deformation UIH="0" UID="0" UIG="0" UIBG="1" UIX="0" lbENU="Deformations" dt="Bool" v="1">
+      <Deformation UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Deformations" dt="Bool" v="1">
         <Skins UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Skins" dt="Bool" v="1"/>
         <Shape UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Blend Shapes" dt="Bool" v="1"/>
         <ForceWeightNormalize UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Pre-Normalize Weights" dt="Bool" v="0"/>
