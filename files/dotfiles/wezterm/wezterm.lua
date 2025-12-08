@@ -59,20 +59,4 @@ config.keys = {
 	{ key = 'Tab', mods = 'CTRL|SHIFT', action = wezterm.action.DisableDefaultAssignment },
 }
 
-wezterm.on('user-var-changed', function(window, pane, name, value)
-	local overrides = window:get_config_overrides() or {}
-	if name == 'ZEN_MODE' then
-		if value == 'on' then
-			overrides.font_size = 12
-			overrides.font = wezterm.font 'FiraCode Nerd Font Mono'
-			overrides.line_height = 1
-		else
-			overrides.font = nil
-			overrides.font_size = nil
-			overrides.line_height = nil
-		end
-	end
-	window:set_config_overrides(overrides)
-end)
-
 return config

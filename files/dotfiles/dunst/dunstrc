@@ -4,6 +4,7 @@ frame_width = 1
 separator_color= frame
 separator_height = 1
 corner_radius = 0
+follow = mouse
 
 origin = top-right
 offset = 10x30
