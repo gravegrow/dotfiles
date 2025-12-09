@@ -24,7 +24,7 @@
     </Geometry>
     <Animation UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Animation" dt="Bool" v="1">
       <ExtraGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Extra Options">
-        <Take UIH="0" UID="0" UIG="0" lbENU="Animation Take" dt="Enum" enumSelected="Run" v="10" enumItem_0="No Animation" enumItem_1="Idle" enumItem_2="Unwield" enumItem_3="Wield" enumItem_4="Fire" enumItem_5="Reload" enumItem_6="Ability_On" enumItem_7="Reload_Ability" enumItem_8="Inspect" enumItem_9="Inspect_Ability" enumItem_10="Run"/>
+        <Take UIH="0" UID="0" UIG="0" lbENU="Animation Take" dt="Enum" enumSelected="Take 001" v="1" enumItem_0="No Animation" enumItem_1="Take 001"/>
         <TimeLine UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Fill Timeline" dt="Bool" v="1"/>
         <BakeAnimationLayers UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Bake Animation Layers" dt="Bool" v="1"/>
         <Markers UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Optical Markers" dt="Bool" v="0"/>

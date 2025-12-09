@@ -16,7 +16,7 @@ windowPref -topLeftCorner 250 200 -widthHeight 700 400 -maximized true dynPaintS
 windowPref -topLeftCorner 250 200 -widthHeight 550 562 -maximized true blindDataEditor1Window;
 windowPref -topLeftCorner 150 200 -widthHeight 1120 640 -maximized true polyTexturePlacementPanel1Window;
 windowPref -topLeftCorner 235 230 -widthHeight 1430 710 -maximized true contentBrowserPanel1Window;
-windowPref -topLeftCorner 7 47 -widthHeight 1476 1426 -maximized false MayaWindow;
+windowPref -topLeftCorner 0 43 -widthHeight 4258 1800 -maximized false MayaWindow;
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false panelArrangementWin;
 windowPref -topLeftCorner 420 1145 -widthHeight 1147 598 -maximized false PluginInfoWin;
 windowPref -topLeftCorner 117 562 -widthHeight 1162 1058 -maximized false pluginManagerWindow;
@@ -25,7 +25,7 @@ windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempR
 windowPref -topLeftCorner 262 1222 -widthHeight 1037 962 -maximized false shelfEditor;
 windowPref -topLeftCorner 252 1105 -widthHeight 1225 931 -maximized false Viewport20OptionsWindow;
 windowPref -topLeftCorner 326 931 -widthHeight 1576 786 -maximized false HotkeyEditor;
-windowPref -topLeftCorner 497 1375 -widthHeight 682 438 -maximized false OptionBoxWindow;
+windowPref -topLeftCorner 497 2246 -widthHeight 682 438 -maximized false OptionBoxWindow;
 windowPref -topLeftCorner 321 975 -widthHeight 394 902 -maximized false cometRenameWin;
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
@@ -56,5 +56,5 @@ windowPref -topLeftCorner 460 1463 -widthHeight 514 566 -maximized false largeCu
 windowPref -topLeftCorner 387 894 -widthHeight 650 776 -maximized false connectWindow;
 windowPref -topLeftCorner 617 1318 -widthHeight 800 250 -maximized false gradientAttributeEditor;
 windowPref -topLeftCorner 579 1559 -widthHeight 320 279 -maximized false uvSetEditor;
-windowPref -topLeftCorner 315 300 -widthHeight 1031 856 -maximized false colorPreferenceWindow;
+windowPref -topLeftCorner 356 1721 -widthHeight 1031 856 -maximized false colorPreferenceWindow;
 windowPref -topLeftCorner 616 1441 -widthHeight 550 200 -maximized false commandSearchAndReplaceWnd;

@@ -1,4 +1,4 @@
-set -l FZF_ICONS --prompt '" "' --pointer '' --scrollbar '┃'
+set -l FZF_ICONS --prompt '" "' --pointer '" "' --scrollbar '┃'
 set -l FZF_BORDERS --border none --preview-window sharp --margin 1
 set -l FZF_HEIGHT --height '~99% '--min-height 15
 set -l FZF_LAYOUT --reverse --cycle --info=inline-right

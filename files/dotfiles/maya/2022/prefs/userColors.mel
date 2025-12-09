@@ -148,7 +148,7 @@ displayColor -c -active polyEdgeId 21;
 displayColor -c -active polyFace 4;
 displayColor -c -active polyFaceId 14;
 displayColor -c -active polyUV 14;
-displayColor -c -active polyVertex 4;
+displayColor -c -active polyVertex 1;
 displayColor -c -active polyVertexId 17;
 displayColor -c -active polymesh 16;
 displayColor -c -active positionMarker 16;
