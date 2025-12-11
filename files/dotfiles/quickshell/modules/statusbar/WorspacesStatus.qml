@@ -12,7 +12,7 @@ Repeater {
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         width: root.width
-        height: root.width
+        height: indextext.height
         color: root.color
 
         MouseArea {

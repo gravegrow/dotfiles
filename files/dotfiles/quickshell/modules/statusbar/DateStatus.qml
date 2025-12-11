@@ -4,9 +4,11 @@ import QtQuick.Layouts
 Rectangle {
     id: root
     width: 35
-    height: 93
-    color: "#0a0a0a"
+    height: day.height + weekday.height + 5
+    color: "#0A0A0A"
     property string textcolor: "#9A8F8A"
+    property string fontfamily: "BerkeleyMono Nerd Font Mono"
+    property int size: 13
 
     DateProcess {
         id: date
@@ -15,53 +17,25 @@ Rectangle {
     ColumnLayout {
         anchors.fill: parent
 
-        Item {
-            Layout.fillHeight: true
-        }
-
         Text {
-            anchors.horizontalCenter: parent.horizontalCenter
-            text: date.weekday
-            color: root.textcolor
-            font.family: "BerkeleyMono Nerd Font Mono"
-            font.bold: true
-            font.pixelSize: 11
-        }
-
-        Rectangle {
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: 16
-            height: 2
-            color: root.textcolor
-        }
-
-        Text {
+            id: day
             anchors.horizontalCenter: parent.horizontalCenter
             text: date.day
             color: root.textcolor
-            font.family: "BerkeleyMono Nerd Font Mono"
             font.bold: true
-            font.pixelSize: 14
-        }
-
-        Rectangle {
-            anchors.horizontalCenter: parent.horizontalCenter
-            width: 16
-            height: 2
-            color: root.textcolor
+            font.family: root.fontfamily
+            font.pixelSize: root.size
         }
 
         Text {
+            id: weekday
             anchors.horizontalCenter: parent.horizontalCenter
-            text: date.month
+            anchors.top: day.bottom
+            text: date.weekday
             color: root.textcolor
-            font.family: "BerkeleyMono Nerd Font Mono"
-            font.bold: true
-            font.pixelSize: 11
-        }
-
-        Item {
-            Layout.fillHeight: true
+            font.family: day.font.family
+            font.pixelSize: day.font.pixelSize * 0.7
+            font.bold: day.font.bold
         }
     }
 }
