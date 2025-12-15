@@ -4,6 +4,20 @@ return {
     enabled = true,
     opts = {
         explorer = {},
+        indent = {
+            indent = {
+                priority = 1,
+                enabled = true,
+                char = "┆",
+                only_scope = false,
+                only_current = false,
+            },
+            scope = {
+                enabled = true,
+                char = "┆",
+            },
+            animate = { enabled = false },
+        },
         picker = {
             prompt = "  ",
             exclude = {

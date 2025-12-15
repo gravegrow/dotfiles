@@ -3,11 +3,13 @@ local colorscheme = "zenbones"
 
 ---@class Colors
 local  colors_dark = {
-    dark    = "#141313",
+    dark    = "#121111",
+    gray    = "#4f4f59",
     light   = "#B4BDC3",
-    line    = "#1d1b1b",
-    linealt = "#201d1d",
+    line    = "#212021",
+    linealt = "#242324",
     visual  = "#1F1F22",
+    recording  = "#301d20",
 }
 
 ---@param colors Colors
@@ -16,12 +18,17 @@ local function SetHiglights(colors)
         Normal = { bg = "none" },
         NormalAlt = { bg = colors.dark },
         Visual = { bg = colors.visual },
-        -- Comment = { fg = colors.comment },
         SignColumn = { bg = "none" },
+        Comment = { fg = colors.gray, italic = true },
+        MatchParen = { fg = colors.light, bold = true, bg = "none" },
+        Search = { bg = colors.visual },
+        IncSearch = { bg = colors.line, fg = colors.light, underline = true },
 
         NormalFloat = { bg = "none" },
         FloatBorder = { fg = colors.light, bg = "none" },
         -- FloatTitle = { link = "Boolean", bold = true },
+
+        WhichKeyNormal = { bg = colors.dark },
 
         Statusline = { bg = colors.dark },
         StatuslineNC = { bg = colors.dark },
@@ -31,12 +38,17 @@ local function SetHiglights(colors)
 
         Pmenu = { bg = colors.dark },
         Cursorline = { bg = colors.line },
+        CursorlineDefault = { bg = colors.line },
+        CursorlineRecording = { bg = colors.recording },
         CursorlineNr = { link = "String", bold = true },
+
+        DiagnosticUnnecessary = { fg = colors.gray },
 
         BlinkCmpMenu = { bg = colors.dark },
         BlinkCmpMenuSelection = { bg = colors.linealt },
         BlinkCmpScrollBarThumb = { link = "@variable.builtin" },
         BlinkCmpScrollBarGutter = { bg = colors.dark },
+        BlinkCmpLabelDeprecated = { link = "Comment", strikethrough = true },
 
         BlinkCmpKindEnum = { link = "@lsp.type.enum", bg = colors.visual },
         BlinkCmpKindFile = { link = "@variable.builtin", bg = colors.visual },
@@ -73,11 +85,7 @@ end
 vim.api.nvim_create_autocmd("ColorScheme", {
     group = vim.api.nvim_create_augroup("ColorschemeUpdate", { clear = true }),
     callback = function()
-        if vim.o.background == "dark" then
-            SetHiglights(colors_dark)
-        else
-            -- SetHiglights(colors_light)
-        end
+        SetHiglights(colors_dark)
     end,
 })
 

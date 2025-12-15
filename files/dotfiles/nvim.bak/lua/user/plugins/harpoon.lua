@@ -15,15 +15,8 @@ return {
     vim.keymap.set("n", "<leader>a", function()
       harpoon:list():add()
 
-      local default = vim.notify
-      local status, fidget = pcall(require, "fidget")
-      if status then
-        vim.notify = fidget.notify
-      end
-
       local name = vim.fn.expand("%:t")
       vim.notify('"' .. name .. '" added to Harpoon list.')
-      vim.notify = default
     end, { desc = "Harpoon [A]dd to list" })
 
     vim.keymap.set("n", "<leader>h", function()
