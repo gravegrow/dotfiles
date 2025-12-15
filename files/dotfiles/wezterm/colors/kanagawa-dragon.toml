@@ -1,19 +1,19 @@
 [colors]
 foreground = "#C5C9C5"
-background = "#181816"
+background = "#181616"
 
-cursor_bg = "#938AA9"
-cursor_border = "#938AA9"
-selection_bg = "#1F1F22"
+cursor_bg = "#b6927b"
+cursor_border = "#b6927b"
+selection_bg = "#282727"
 
 ansi = [
-	"#1f1f22",
+	"#1D1C19",
 	"#c4746e",
 	"#8a9a7b",
-	"#b98d7b",
+	"#b6927b",
 	"#627691",
 	"#A292A3",
-	"#8EA4A2",
+	"#8ba4b0",
 	"#9e9b93",
 ]
 

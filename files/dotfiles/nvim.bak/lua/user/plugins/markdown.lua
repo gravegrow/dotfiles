@@ -31,7 +31,6 @@ return {
           end,
         })
       end,
-
       hooks = {
         follow_link = function(opts, fallback)
           if vim.startswith(opts.dest, "#") then

@@ -1,11 +1,18 @@
 return {
   {
-    "AlexvZyl/nordic.nvim",
+    "zenbones-theme/zenbones.nvim",
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    dependencies = "rktjmp/lush.nvim",
     lazy = false,
     priority = 1000,
-    enabled = false,
+    -- you can set set configuration options here
     config = function()
-      require("nordic").load()
+      vim.g.zenbones_darken_comments = 45
+      -- vim.cmd.colorscheme("zenbones")
+
+      -- vim.api.nvim_set_hl(0, "String", { fg = "#A1938C", italic = true })
     end,
   },
   {
@@ -20,22 +27,9 @@ return {
     end,
   },
   {
-    "vague2k/vague.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other plugins
-    enabled = false,
-    config = function()
-      -- NOTE: you do not need to call setup if you don't want to.
-      require("vague").setup({
-        -- optional configuration here
-      })
-      vim.cmd("colorscheme vague")
-    end,
-  },
-  {
     "rebelot/kanagawa.nvim",
     lazy = false,
-    enabled = false,
+    -- enabled = false,
     priority = 1000,
     config = function()
       --- @diagnostic disable
@@ -49,7 +43,7 @@ return {
         },
       })
 
-      vim.cmd.colorscheme("kanagawa")
+      -- vim.cmd.colorscheme("kanagawa")
     end,
   },
 }

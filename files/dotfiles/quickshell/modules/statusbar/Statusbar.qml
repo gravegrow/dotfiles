@@ -94,9 +94,9 @@ PanelWindow {
                 id: volumetext
                 anchors.centerIn: parent
                 font.family: root.fontfamily
-                font.pixelSize: 16
+                font.pixelSize: 18
                 text: volumecontrol.isMuted ? "󰝟" : "󰕾"
-                color: volumecontrol.isMuted ? "#D27E99" : root.textcolor
+                color: volumecontrol.isMuted ? "#c4746e" : root.textcolor
             }
         }
 

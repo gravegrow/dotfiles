@@ -7,15 +7,8 @@ local config = wezterm.config_builder()
 config.front_end = 'WebGpu'
 config.font = wezterm.font({ family = 'VictorMono Nerd Font Mono ', weight = 'Medium' })
 config.line_height = 1.35
-config.font_size = 18
+config.font_size = 18.5
 config.window_close_confirmation = 'NeverPrompt'
-
-config.window_padding = {
-	top = config.font_size,
-	bottom = config.font_size,
-	left = '1cell',
-	right = '1cell',
-}
 
 -- config.enable_wayland = true
 config.enable_tab_bar = false

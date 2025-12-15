@@ -1,48 +1,67 @@
 import QtQuick
+import Quickshell.Io
 import QtQuick.Layouts
 
 Rectangle {
     id: timestatus
     width: root.width
     color: "#333333"
-    height: timeminutes.height + timehours.height + separator.height * 2
+    height: lower.height + upper.height + separator.height * 2
     property int size: 12
 
     anchors.horizontalCenter: parent.horizontalCenter
 
     MouseArea {
+        id: mousearea
         anchors.fill: parent
         hoverEnabled: true
-        onEntered: {
-            date.visible = true;
-            timehours.visible = false;
-            timeminutes.visible = false;
-            separator.visible = false;
-        }
-        onExited: {
-            date.visible = false;
-            timehours.visible = true;
-            timeminutes.visible = true;
-            separator.visible = true;
+        property bool showDate
+        onEntered: showDate = true
+        onExited: showDate = false
+    }
+
+    Process {
+        id: dateprocess
+        command: ["date", "+%H:%M:%d:%a:%b"]
+        running: true
+
+        property string hours
+        property string minutes
+        property string day
+        property string weekday
+        property string month
+
+        stdout: StdioCollector {
+            onStreamFinished: {
+                var result = this.text.trim().split(":");
+                dateprocess.hours = result[0];
+                dateprocess.minutes = result[1];
+                dateprocess.day = result[2];
+                dateprocess.weekday = result[3].toUpperCase();
+                dateprocess.month = result[4];
+            }
         }
     }
 
-    TimeProcess {
-        id: timeprocess
+    Timer {
+        interval: 1000
+        running: true
+        repeat: true
+        onTriggered: dateprocess.running = true
     }
 
-    DateStatus {
-        id: date
-        color: parent.color
-        size: timestatus.size
+    Rectangle {
+        id: separator
+        height: 1
+        width: upper.width
+        color: root.textcolor
         anchors.centerIn: parent
-        visible: false
     }
 
     Text {
-        id: timehours
+        id: upper
         anchors.horizontalCenter: parent.horizontalCenter
-        text: timeprocess.hours
+        text: mousearea.showDate ? dateprocess.day : dateprocess.hours
         color: root.textcolor
         font.bold: true
         font.family: root.fontfamily
@@ -50,22 +69,15 @@ Rectangle {
         anchors.bottom: separator.top
     }
 
-    Rectangle {
-        id: separator
-        height: 1
-        width: timehours.width
-        color: root.textcolor
-        anchors.centerIn: parent
-    }
-
     Text {
-        id: timeminutes
+        id: lower
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: separator.bottom
-        text: timeprocess.minutes
+        height: upper.height
+        text: mousearea.showDate ? dateprocess.weekday : dateprocess.minutes
         color: root.textcolor
-        font.family: timehours.font.family
-        font.pixelSize: timehours.font.pixelSize
-        font.bold: timehours.font.bold
+        font.family: upper.font.family
+        font.pixelSize: upper.font.pixelSize
+        font.bold: upper.font.bold
     }
 }

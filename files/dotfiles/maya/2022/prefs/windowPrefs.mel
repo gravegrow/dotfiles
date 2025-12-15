@@ -25,7 +25,7 @@ windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempR
 windowPref -topLeftCorner 244 1079 -widthHeight 1037 962 -maximized false shelfEditor;
 windowPref -topLeftCorner 252 1105 -widthHeight 1225 931 -maximized false Viewport20OptionsWindow;
 windowPref -topLeftCorner 326 931 -widthHeight 1576 786 -maximized false HotkeyEditor;
-windowPref -topLeftCorner 13 1612 -widthHeight 1815 1414 -maximized false OptionBoxWindow;
+windowPref -topLeftCorner 14 1976 -widthHeight 1450 1412 -maximized false OptionBoxWindow;
 windowPref -topLeftCorner 13 1885 -widthHeight 1542 1414 -maximized false cometRenameWin;
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;

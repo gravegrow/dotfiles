@@ -19,4 +19,10 @@ ShellRoot {
             screenID: 1
         }
     }
+
+    Loader {
+        active: true
+        sourceComponent: VolumeOSD {
+        }
+    }
 }
