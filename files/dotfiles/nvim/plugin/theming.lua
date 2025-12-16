@@ -1,4 +1,4 @@
-local colorscheme = "kanagawa-dragon"
+local colorscheme = "zenbones"
 
 -- stylua: ignore
 ---@class Colors
@@ -40,8 +40,9 @@ local function SetHiglights(colors)
         Cursorline = { bg = colors.line },
         CursorlineDefault = { bg = colors.line },
         CursorlineRecording = { bg = colors.recording },
-        CursorlineNr = { link = "String", bold = true },
+        CursorlineNr = { link = "Boolean", bold = true },
 
+        DiagnosticDeprecated = { link = "Comment", strikethrough = true },
         DiagnosticUnnecessary = { fg = colors.gray },
 
         BlinkCmpMenu = { bg = colors.dark },
@@ -49,6 +50,7 @@ local function SetHiglights(colors)
         BlinkCmpScrollBarThumb = { link = "@variable.builtin" },
         BlinkCmpScrollBarGutter = { bg = colors.dark },
         BlinkCmpLabelDeprecated = { link = "Comment", strikethrough = true },
+        BlinkCmpLabelMatch = { link = "SnacksPickerMatch" },
 
         BlinkCmpKindEnum = { link = "@lsp.type.enum", bg = colors.visual },
         BlinkCmpKindFile = { link = "@variable.builtin", bg = colors.visual },
@@ -75,6 +77,13 @@ local function SetHiglights(colors)
         BlinkCmpKindEnumMember = { link = "@lsp.type.enumMember", bg = colors.visual },
         BlinkCmpKindConstructor = { link = "@constructor", bg = colors.visual },
         BlinkCmpKindTypeParameter = { link = "@lsp.type.parameter", bg = colors.visual },
+
+        RenderMarkdownH1Bg = { bg = "#201f23" },
+        RenderMarkdownH2Bg = { bg = "#201f23" },
+        RenderMarkdownH3Bg = { bg = "#201f23" },
+        RenderMarkdownH4Bg = { bg = "#201f23" },
+        RenderMarkdownH5Bg = { bg = "#201f23" },
+        RenderMarkdownH6Bg = { bg = "#201f23" },
     }
 
     for name, opts in pairs(highlights) do
