@@ -1,11 +1,11 @@
 [colors]
-background = '#1C1917'
+background = '#181616'
 foreground = '#9A8F8A'
 cursor_bg = '#837771'
 cursor_border = '#837771'
 cursor_fg = '#1C1917'
 ansi = [
-	'#141110',
+	'#121111',
 	'#af9da2',
 	'#a1aba0',
 	'#cfc5af',

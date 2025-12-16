@@ -15,7 +15,7 @@ config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 
 -- config.window_background_opacity = 0.99
-config.color_scheme = 'not-rose-pine'
+config.color_scheme = 'zenbones'
 config.underline_thickness = '1px'
 config.underline_position = '-3px'
 config.strikethrough_position = '0.5cell'

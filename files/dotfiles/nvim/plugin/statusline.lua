@@ -92,7 +92,7 @@ local function lineinfo(hl)
     if vim.bo.filetype == "alpha" then
         return ""
     end
-    return "%#" .. hl .. "#" .. " %c:%l | %L "
+    return "%#" .. hl .. "#" .. " %c:%l | %L %#Comment# "
 end
 
 local function fillspace()
