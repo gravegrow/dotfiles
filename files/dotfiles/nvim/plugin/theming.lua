@@ -1,15 +1,15 @@
-local colorscheme = "zenbones"
--- stylua: ignore
+local colorscheme = "kanagawa-dragon"
 
+-- stylua: ignore
 ---@class Colors
-local  colors_dark = {
-    dark    = "#121111",
-    gray    = "#4f4f59",
-    light   = "#B4BDC3",
-    line    = "#212021",
-    linealt = "#242324",
-    visual  = "#1F1F22",
-    recording  = "#301d20",
+local colors_dark = {
+    dark      = "#121111",
+    gray      = "#4f4f59",
+    light     = "#B4BDC3",
+    line      = "#212021",
+    linealt   = "#242324",
+    visual    = "#1F1F22",
+    recording = "#301d20",
 }
 
 ---@param colors Colors
@@ -25,7 +25,7 @@ local function SetHiglights(colors)
         IncSearch = { bg = colors.line, fg = colors.light, underline = true },
 
         NormalFloat = { bg = "none" },
-        FloatBorder = { fg = colors.light, bg = "none" },
+        FloatBorder = { bg = "none" },
         -- FloatTitle = { link = "Boolean", bold = true },
 
         WhichKeyNormal = { bg = colors.dark },

@@ -56,6 +56,6 @@ vim.diagnostic.config({
 --         if not client then
 --             return
 --         end
--- client.server_capabilities.semanticTokensProvider = nil
+--         client.server_capabilities.semanticTokensProvider = nil
 --     end,
 -- })
