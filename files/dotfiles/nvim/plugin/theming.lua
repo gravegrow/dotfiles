@@ -29,8 +29,8 @@ local function SetHiglights(colors)
 
         WhichKeyNormal = { bg = colors.dark },
 
-        Statusline = { bg = colors.dark },
-        StatuslineNC = { bg = colors.dark },
+        Statusline = { bg = "none" },
+        StatuslineNC = { bg = "none" },
         StatuslineText = { fg = colors.light, bold = true },
 
         SnacksPickerDir = { link = "Comment" },

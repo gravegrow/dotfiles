@@ -130,17 +130,7 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     group = "Statusline",
-    callback = function()
-        -- Calls your Lua function 'Statusline.inactive()'
-        vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
-    end,
-})
-
-vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter", "FileType" }, {
-    group = "Statusline",
-    pattern = "nofile",
-    callback = function()
-        -- Calls your Lua function 'Statusline.inactive()'
+    callback = function(buff)
         vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
     end,
 })
