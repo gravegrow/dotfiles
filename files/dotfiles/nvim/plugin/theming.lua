@@ -15,16 +15,11 @@ local colors_dark = {
     glow      = "#D27E99",
 }
 
-local function Space() end
-
 ---@param colors Colors
 local function SetHiglights(colors)
     local highlights = {
         Normal = { bg = "none" },
-        NormalAlt = { bg = colors.dark },
         Visual = { bg = colors.visual },
-        SignColumn = { bg = "none" },
-        MatchParen = { fg = colors.light, bold = true, bg = "none" },
         Search = { bg = colors.visual },
         IncSearch = { bg = "none", fg = colors.light, underline = true, bold = true },
 
@@ -54,7 +49,7 @@ local function SetHiglights(colors)
 
         BlinkCmpMenu = { bg = colors.dark },
         BlinkCmpMenuSelection = { bg = colors.linealt },
-        BlinkCmpScrollBarThumb = { link = "@variable.builtin" },
+        BlinkCmpScrollBarThumb = { bg = colors.visual },
         BlinkCmpScrollBarGutter = { bg = colors.dark },
         BlinkCmpLabelDeprecated = { link = "Comment", strikethrough = true },
         BlinkCmpLabelMatch = { fg = colors.glow, bold = true },
