@@ -24,6 +24,36 @@ return {
                 "*.meta",
             },
             layout = { preset = "sidebar" },
+            layouts = {
+                sidebar = {
+                    preview = "main",
+                    layout = {
+                        backdrop = false,
+                        width = 40,
+                        min_width = 40,
+                        height = 0,
+                        position = "left",
+                        box = "vertical",
+                        {
+                            box = "horizontal",
+                            height = 1,
+                            border = "top",
+                            {
+                                win = "input",
+                                height = 1,
+                                border = "none",
+                            },
+                        },
+                        {
+                            win = "list",
+                            border = "top",
+                            title = "{title} {live} {flags}",
+                            title_pos = "center",
+                        },
+                        { win = "preview", title = "{preview}", height = 0.4, border = "top" },
+                    },
+                },
+            },
             sources = {
                 lsp_symbols = { layout = { preset = "sidebar" } },
                 lsp_references = { layout = { preview = "main", preset = "ivy" } },

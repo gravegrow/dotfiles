@@ -1,5 +1,11 @@
 return {
     {
+        "wnkz/monoglow.nvim",
+        lazy = false,
+        priority = 1000,
+        config = true,
+    },
+    {
         "webhooked/kanso.nvim",
         lazy = false,
         priority = 1000,

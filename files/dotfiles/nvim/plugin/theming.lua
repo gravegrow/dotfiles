@@ -1,16 +1,21 @@
-local colorscheme = "zenbones"
+local colorscheme = "monoglow-lack"
 
 -- stylua: ignore
 ---@class Colors
 local colors_dark = {
-    dark      = "#121111",
-    gray      = "#4f4f59",
-    light     = "#B4BDC3",
-    line      = "#212021",
-    linealt   = "#242324",
-    visual    = "#1F1F22",
+    dark      = "#0A0A0A",
+    gray      = "#2f2f2f",
+    light     = "#CCCCCC",
+    line      = "#1F1F1F",
+    linealt   = "#1c1c1c",
+    visual    = "#1F1F1f",
+    darkgray1 = "#202020",
+    darkgray2 = "#282828",
     recording = "#301d20",
+    glow      = "#D27E99",
 }
+
+local function Space() end
 
 ---@param colors Colors
 local function SetHiglights(colors)
@@ -19,10 +24,9 @@ local function SetHiglights(colors)
         NormalAlt = { bg = colors.dark },
         Visual = { bg = colors.visual },
         SignColumn = { bg = "none" },
-        Comment = { fg = colors.gray, italic = true },
         MatchParen = { fg = colors.light, bold = true, bg = "none" },
         Search = { bg = colors.visual },
-        IncSearch = { bg = colors.line, fg = colors.light, underline = true },
+        IncSearch = { bg = "none", fg = colors.light, underline = true, bold = true },
 
         NormalFloat = { bg = "none" },
         FloatBorder = { bg = "none" },
@@ -35,6 +39,9 @@ local function SetHiglights(colors)
         StatuslineText = { fg = colors.light, bold = true },
 
         SnacksPickerDir = { link = "Comment" },
+        SnacksPickerMatch = { fg = colors.glow, bold = true },
+        SnacksIndent = { fg = colors.darkgray1 },
+        SnacksIndentScope = { fg = colors.darkgray2 },
 
         Pmenu = { bg = colors.dark },
         Cursorline = { bg = colors.line },
@@ -50,7 +57,7 @@ local function SetHiglights(colors)
         BlinkCmpScrollBarThumb = { link = "@variable.builtin" },
         BlinkCmpScrollBarGutter = { bg = colors.dark },
         BlinkCmpLabelDeprecated = { link = "Comment", strikethrough = true },
-        BlinkCmpLabelMatch = { link = "SnacksPickerMatch" },
+        BlinkCmpLabelMatch = { fg = colors.glow, bold = true },
 
         BlinkCmpKindEnum = { link = "@lsp.type.enum", bg = colors.visual },
         BlinkCmpKindFile = { link = "@variable.builtin", bg = colors.visual },
@@ -108,5 +115,11 @@ _G.merge_set_hl = function(name, opts)
     end
     vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", source_opts, opts))
 end
+
+require("monoglow").setup({
+    on_colors = function(colors)
+        colors.glow = colors_dark.glow
+    end,
+})
 
 vim.cmd.colorscheme(colorscheme)
