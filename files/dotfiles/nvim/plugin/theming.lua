@@ -8,7 +8,7 @@ local colors_dark = {
     light     = "#CCCCCC",
     line      = "#1F1F1F",
     linealt   = "#1c1c1c",
-    visual    = "#1F1F1f",
+    visual    = "#1c1c1c",
     darkgray1 = "#202020",
     darkgray2 = "#282828",
     recording = "#301d20",
@@ -29,10 +29,11 @@ local function SetHiglights(colors)
 
         WhichKeyNormal = { bg = colors.dark },
 
-        Statusline = { bg = "none" },
-        StatuslineNC = { bg = "none" },
+        Statusline = { bg = colors.dark },
+        StatuslineNC = { bg = colors.dark },
         StatuslineText = { fg = colors.light, bold = true },
 
+        SnacksPickerInput = { bg = colors.dark },
         SnacksPickerDir = { link = "Comment" },
         SnacksPickerMatch = { fg = colors.glow, bold = true },
         SnacksIndent = { fg = colors.darkgray1 },
