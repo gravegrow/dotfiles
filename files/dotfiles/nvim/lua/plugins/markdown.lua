@@ -10,6 +10,9 @@ return {
             heading = {
                 icons = { " 󰎤 ", " 󰎧 ", " 󰎪 ", " 󰎭 ", " 󰎱 ", " 󰎳 ", " 󰎶 ", " 󰎹 ", " 󰎼 " },
             },
+            code = {
+                style = "normal",
+            },
         },
     },
     {

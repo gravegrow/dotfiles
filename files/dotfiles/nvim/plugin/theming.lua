@@ -4,6 +4,7 @@ local colorscheme = "monoglow-lack"
 ---@class Colors
 local colors_dark = {
     dark      = "#0A0A0A",
+    back      = "#101010",
     gray      = "#2f2f2f",
     light     = "#CCCCCC",
     line      = "#1F1F1F",
@@ -81,6 +82,7 @@ local function SetHiglights(colors)
         BlinkCmpKindConstructor = { link = "@constructor", bg = colors.visual },
         BlinkCmpKindTypeParameter = { link = "@lsp.type.parameter", bg = colors.visual },
 
+        RenderMarkdownCode = { bg = colors.back },
         RenderMarkdownH1Bg = { bg = "#201f23" },
         RenderMarkdownH2Bg = { bg = "#201f23" },
         RenderMarkdownH3Bg = { bg = "#201f23" },
