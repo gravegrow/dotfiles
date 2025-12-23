@@ -18,7 +18,12 @@ return {
             nerd_font_variant = "mono",
         },
 
-        cmdline = { completion = { menu = { auto_show = true } } },
+        cmdline = {
+            keymap = { preset = "inherit" },
+            completion = {
+                menu = { auto_show = true },
+            },
+        },
         signature = { enabled = true },
         completion = {
             keyword = {

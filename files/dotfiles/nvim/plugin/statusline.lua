@@ -20,11 +20,45 @@ local function is_new_file()
         and vim.fn.filereadable(filename) == 0
 end
 
+local function shorten_path(path, sep, max_len)
+    local len = #path
+    if len <= max_len then
+        return path
+    end
+
+    local segments = vim.split(path, sep)
+    for idx = 1, #segments - 1 do
+        if len <= max_len then
+            break
+        end
+
+        local segment = segments[idx]
+        local shortened = segment:sub(1, vim.startswith(segment, ".") and 2 or 1)
+        segments[idx] = shortened
+        len = len - (#segment - #shortened)
+    end
+
+    return table.concat(segments, sep)
+end
+
 local function filename(hl)
     hl = hl or "Comment"
     local data = vim.fn.expand("%:~:.")
     if data == "" then
         data = symbols.unnamed
+    end
+
+    local shorting_target = 35
+    if type(shorting_target) == "function" then
+        shorting_target = shorting_target()
+    end
+
+    if shorting_target ~= 0 then
+        local windwidth = vim.fn.winwidth(0)
+        local estimated_space_available = windwidth - shorting_target
+        local path_separator = package.config:sub(1, 1)
+
+        data = shorten_path(data, path_separator, estimated_space_available)
     end
 
     local file_status = {}
@@ -95,6 +129,9 @@ local function lineinfo(hl)
     return "%#" .. hl .. "#" .. " %c:%l | %L %#Comment# "
 end
 
+local function trunk()
+    return "%<"
+end
 local function fillspace()
     return "%="
 end
@@ -105,6 +142,7 @@ Statusline.active = function()
     return table.concat({
         icon(),
         lsp("StatuslineText"),
+        trunk(),
         filename(),
         fillspace(),
         lineinfo("StatuslineText"),

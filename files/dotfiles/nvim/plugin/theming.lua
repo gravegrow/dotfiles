@@ -1,4 +1,4 @@
-local colorscheme = "monoglow-lack"
+local colorscheme = "monoglow"
 
 -- stylua: ignore
 ---@class Colors
@@ -7,13 +7,14 @@ local colors_dark = {
     back      = "#101010",
     gray      = "#2f2f2f",
     light     = "#CCCCCC",
-    line      = "#1F1F1F",
+    line      = "#202020",
     linealt   = "#1c1c1c",
-    visual    = "#1c1c1c",
+    visual    = "#1A1A1A",
     darkgray1 = "#202020",
     darkgray2 = "#282828",
     recording = "#301d20",
     glow      = "#D27E99",
+    glowalt   = "#7FB4CA",
 }
 
 ---@param colors Colors
@@ -26,9 +27,13 @@ local function SetHiglights(colors)
 
         NormalFloat = { bg = "none" },
         FloatBorder = { bg = "none" },
-        -- FloatTitle = { link = "Boolean", bold = true },
 
         WhichKeyNormal = { bg = colors.dark },
+
+        Type = { link = "@property" },
+        ["@type.builtin"] = { link = "@property" },
+        ["Keyword"] = { bold = true },
+        ["@keyword"] = { bold = true },
 
         Statusline = { bg = colors.dark },
         StatuslineNC = { bg = colors.dark },
@@ -89,6 +94,14 @@ local function SetHiglights(colors)
         RenderMarkdownH4Bg = { bg = "#201f23" },
         RenderMarkdownH5Bg = { bg = "#201f23" },
         RenderMarkdownH6Bg = { bg = "#201f23" },
+
+        DiffAdd = { fg = "#98BB6C", bg = "none" },
+        DiffChange = { fg = "#9CABCA", bg = "none" },
+        DiffDelete = { fg = "#FF5D62", bg = "none" },
+
+        GitSignsAddInline = { fg = "#98BB6C", bg = "#161A13", bold = true },
+        GitSignsChangeInline = { fg = "#9CABCA", bg = "#17191A", bold = true },
+        GitSignsDeleteInline = { fg = "#FF5D62", bg = "#261717", bold = true },
     }
 
     for name, opts in pairs(highlights) do
@@ -100,6 +113,10 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     group = vim.api.nvim_create_augroup("ColorschemeUpdate", { clear = true }),
     callback = function()
         SetHiglights(colors_dark)
+
+        for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
+            vim.api.nvim_set_hl(0, group, {})
+        end
     end,
 })
 
@@ -113,11 +130,5 @@ _G.merge_set_hl = function(name, opts)
     end
     vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", source_opts, opts))
 end
-
-require("monoglow").setup({
-    on_colors = function(colors)
-        colors.glow = colors_dark.glow
-    end,
-})
 
 vim.cmd.colorscheme(colorscheme)

@@ -20,6 +20,7 @@ vim.o.pumheight = 10
 vim.o.virtualedit = "block" -- Allow going past end of line in blockwise mode
 vim.o.autoindent = true -- Use auto indent
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
+vim.opt.shortmess:append("I") -- Disable intro screen
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copt.ying) text",

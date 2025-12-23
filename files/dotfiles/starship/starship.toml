@@ -62,10 +62,10 @@ only_detached = true
 # vimcmd_visual_symbol = '[«](yellow)'
 # vimcmd_replace_symbol = '[«](purple)'
 # vimcmd_replace_one_symbol = '[«](purple)'
-error_symbol = '[](#c76b77)'
+error_symbol = '[](#c76b77)'
 
 [jobs]
-symbol = '[](#A6E3A1)'
+symbol = '[](#A6E3A1)'
 symbol_threshold = 1
 
 [sudo]
