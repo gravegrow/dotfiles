@@ -31,6 +31,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
                 end,
             })
         end, "Show [D]iagnostic [D]isplay")
+
+        local client = vim.lsp.get_client_by_id(event.data.client_id)
+        if client then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
     end,
 })
 

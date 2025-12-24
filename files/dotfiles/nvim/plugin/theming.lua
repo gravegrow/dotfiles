@@ -32,8 +32,8 @@ local function SetHiglights(colors)
 
         Type = { link = "@property" },
         ["@type.builtin"] = { link = "@property" },
-        ["Keyword"] = { bold = true },
-        ["@keyword"] = { bold = true },
+        -- ["Keyword"] = { italic = true },
+        -- ["@keyword"] = { italic = true },
 
         Statusline = { bg = colors.dark },
         StatuslineNC = { bg = colors.dark },
@@ -113,10 +113,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
     group = vim.api.nvim_create_augroup("ColorschemeUpdate", { clear = true }),
     callback = function()
         SetHiglights(colors_dark)
-
-        for _, group in ipairs(vim.fn.getcompletion("@lsp", "highlight")) do
-            vim.api.nvim_set_hl(0, group, {})
-        end
     end,
 })
 
