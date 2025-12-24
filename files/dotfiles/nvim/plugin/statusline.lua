@@ -76,6 +76,13 @@ local function filename(hl)
     return "%#" .. hl .. "# " .. data .. (#file_status > 0 and " " .. table.concat(file_status, "") or "")
 end
 
+local signs = {
+    WARN = vim.diagnostic.config().signs.text[vim.diagnostic.severity.WARN],
+    ERROR = vim.diagnostic.config().signs.text[vim.diagnostic.severity.ERROR],
+    HINT = vim.diagnostic.config().signs.text[vim.diagnostic.severity.HINT],
+    INFO = vim.diagnostic.config().signs.text[vim.diagnostic.severity.INFO],
+}
+
 local function lsp(hl)
     hl = hl or "Keyword"
     local client = "%#" .. hl .. "#"
@@ -106,16 +113,16 @@ local function lsp(hl)
     local info = ""
 
     if count["errors"] ~= 0 then
-        errors = " %#DiagnosticSignError# " .. count["errors"]
+        errors = " %#DiagnosticSignError#" .. signs.ERROR .. " " .. count["errors"]
     end
     if count["warnings"] ~= 0 then
-        warnings = " %#DiagnosticSignWarn# " .. count["warnings"]
+        warnings = " %#DiagnosticSignWarn#" .. signs.WARN .. " " .. count["warnings"]
     end
     if count["hints"] ~= 0 then
-        hints = " %#DiagnosticSignHint#󰰁 " .. count["hints"]
+        hints = " %#DiagnosticSignHint#" .. signs.HINT .. " " .. count["hints"]
     end
     if count["info"] ~= 0 then
-        info = " %#DiagnosticSignInfo# " .. count["info"]
+        info = " %#DiagnosticSignInfo#" .. signs.INFO .. " " .. count["info"]
     end
 
     return client .. errors .. warnings .. hints .. info

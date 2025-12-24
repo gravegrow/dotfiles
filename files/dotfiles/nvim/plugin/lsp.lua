@@ -46,10 +46,10 @@ vim.diagnostic.config({
     virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
     signs = {
         text = {
-            [vim.diagnostic.severity.WARN] = "",
-            [vim.diagnostic.severity.ERROR] = "",
-            [vim.diagnostic.severity.INFO] = "",
-            [vim.diagnostic.severity.HINT] = "󰰁",
+            [vim.diagnostic.severity.WARN] = "󰬞",
+            [vim.diagnostic.severity.ERROR] = "󰬌",
+            [vim.diagnostic.severity.INFO] = "󰬐",
+            [vim.diagnostic.severity.HINT] = "󰬏",
         },
     },
 })
