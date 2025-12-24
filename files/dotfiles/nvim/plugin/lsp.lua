@@ -19,13 +19,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, "[C]ode [I]nlay Toggle")
 
         keymap("<leader>dd", function()
+            local old_lines = vim.diagnostic.config().virtual_lines
+            local old_text = vim.diagnostic.config().virtual_text
             vim.diagnostic.config({ virtual_lines = false, virtual_text = false })
             vim.diagnostic.open_float()
             vim.api.nvim_create_autocmd("CursorMoved", {
                 group = "LspConfig",
                 callback = function()
                     vim.diagnostic.config({
-                        virtual_text = { severity = { min = vim.diagnostic.severity.ERROR } },
+                        virtual_text = old_text,
+                        virtual_lines = old_lines,
                     })
                     return true
                 end,

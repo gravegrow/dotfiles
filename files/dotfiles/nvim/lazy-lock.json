@@ -24,6 +24,7 @@
   "roslyn-filewatch.nvim": { "branch": "main", "commit": "cf8c683e266d87aa6b9dea477e5b603359c3c15e" },
   "roslyn.nvim": { "branch": "main", "commit": "4deb46ce892c279d3183661342c93aa2ec9716c6" },
   "snacks.nvim": { "branch": "main", "commit": "fe7cfe9800a182274d0f868a74b7263b8c0c020b" },
+  "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "d9d12d4bfb9a4c5b8b8bdf7f612551df6972946c" },
   "which-key.nvim": { "branch": "main", "commit": "3aab2147e74890957785941f0c1ad87d0a44c15a" },
   "zenbones.nvim": { "branch": "main", "commit": "4635a3f46d1066975d1074cd9f61f93cb1e32f64" }
 }
