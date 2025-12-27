@@ -38,6 +38,7 @@ local function SetHiglights(colors)
         Statusline = { bg = colors.dark },
         StatuslineNC = { bg = colors.dark },
         StatuslineText = { fg = colors.light, bold = true },
+        MsgArea = { fg = colors.light, bg = colors.dark },
 
         SnacksPickerInput = { bg = colors.dark },
         SnacksPickerDir = { link = "Comment" },
@@ -102,6 +103,10 @@ local function SetHiglights(colors)
         GitSignsAddInline = { fg = "#98BB6C", bg = "#161A13", bold = true },
         GitSignsChangeInline = { fg = "#9CABCA", bg = "#17191A", bold = true },
         GitSignsDeleteInline = { fg = "#FF5D62", bg = "#261717", bold = true },
+
+        DiagnosticUnderlineWarn = { link = "DiagnosticVirtualTextWarn", underline = true },
+        DiagnosticUnderlineError = { link = "DiagnosticVirtualTextError", underline = true },
+        DiagnosticUnderlineInfo = { underline = true, undercurl = false },
     }
 
     for name, opts in pairs(highlights) do

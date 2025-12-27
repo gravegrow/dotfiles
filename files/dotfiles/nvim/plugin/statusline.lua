@@ -145,12 +145,12 @@ end
 
 Statusline = {}
 
-Statusline.active = function()
+Statusline.active = function(file)
     return table.concat({
         icon(),
         lsp("StatuslineText"),
         trunk(),
-        filename(),
+        filename(file),
         fillspace(),
         lineinfo("StatuslineText"),
     })
@@ -162,19 +162,17 @@ function Statusline.inactive()
     })
 end
 
+local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
+
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
-    group = vim.api.nvim_create_augroup("Statusline", { clear = true }),
+    group = group,
     callback = function(buff)
-        if buff.file == "" then
-            vim.opt_local.statusline = "%#Statusline#"
-            return
-        end
         vim.opt_local.statusline = "%!v:lua.Statusline.active()"
     end,
 })
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
-    group = "Statusline",
+    group = group,
     callback = function(buff)
         vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
     end,
