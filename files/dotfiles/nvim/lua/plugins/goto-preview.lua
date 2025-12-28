@@ -3,7 +3,7 @@ return {
     dependencies = { "rmagatti/logger.nvim" },
     event = "BufEnter",
     opts = {
-        height = 8,
+        -- height = 8,
         default_mappings = true,
     },
 }

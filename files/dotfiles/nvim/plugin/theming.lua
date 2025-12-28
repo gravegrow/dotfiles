@@ -20,7 +20,6 @@ local colors_dark = {
 ---@param colors Colors
 local function SetHiglights(colors)
     local highlights = {
-        Normal = { bg = "none" },
         Visual = { bg = colors.visual },
         Search = { bg = colors.visual },
         IncSearch = { bg = "none", fg = colors.light, underline = true, bold = true },
@@ -88,14 +87,6 @@ local function SetHiglights(colors)
         BlinkCmpKindConstructor = { link = "@constructor", bg = colors.visual },
         BlinkCmpKindTypeParameter = { link = "@lsp.type.parameter", bg = colors.visual },
 
-        RenderMarkdownCode = { bg = colors.back },
-        RenderMarkdownH1Bg = { bg = "#201f23" },
-        RenderMarkdownH2Bg = { bg = "#201f23" },
-        RenderMarkdownH3Bg = { bg = "#201f23" },
-        RenderMarkdownH4Bg = { bg = "#201f23" },
-        RenderMarkdownH5Bg = { bg = "#201f23" },
-        RenderMarkdownH6Bg = { bg = "#201f23" },
-
         DiffAdd = { fg = "#98BB6C", bg = "none" },
         DiffChange = { fg = "#9CABCA", bg = "none" },
         DiffDelete = { fg = "#FF5D62", bg = "none" },
@@ -104,8 +95,8 @@ local function SetHiglights(colors)
         GitSignsChangeInline = { fg = "#9CABCA", bg = "#17191A", bold = true },
         GitSignsDeleteInline = { fg = "#FF5D62", bg = "#261717", bold = true },
 
-        DiagnosticUnderlineWarn = { link = "DiagnosticVirtualTextWarn", underline = true },
-        DiagnosticUnderlineError = { link = "DiagnosticVirtualTextError", underline = true },
+        DiagnosticUnderlineWarn = { link = "DiagnosticWarn", italic = true, underline = true },
+        DiagnosticUnderlineError = { link = "DiagnosticError", italic = true, underline = true },
         DiagnosticUnderlineInfo = { underline = true, undercurl = false },
     }
 

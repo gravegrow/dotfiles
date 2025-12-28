@@ -3,6 +3,12 @@ local M = {}
 M.bg = "#000000"
 M.fg = "#ffffff"
 
+---@return string
+---@param value integer
+M.inToHex = function(value)
+    return string.format("#%06x", value)
+end
+
 ---@param c  string
 local function rgb(c)
     c = string.lower(c)
