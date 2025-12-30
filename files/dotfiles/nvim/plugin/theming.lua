@@ -31,8 +31,10 @@ local function SetHiglights(colors)
 
         Type = { link = "@property" },
         ["@type.builtin"] = { link = "@property" },
-        -- ["Keyword"] = { italic = true },
-        -- ["@keyword"] = { italic = true },
+        -- ["Keyword"] = { bold = false },
+        -- ["@keyword"] = { bold = false },
+
+        ["@string.documentation.python"] = { link = "Comment" },
 
         Statusline = { bg = colors.dark },
         StatuslineNC = { bg = colors.dark },

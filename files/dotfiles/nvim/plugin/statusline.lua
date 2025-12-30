@@ -167,6 +167,10 @@ local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
     group = group,
     callback = function(buff)
+        if buff.file == "" then
+            vim.opt_local.statusline = " "
+            return
+        end
         vim.opt_local.statusline = "%!v:lua.Statusline.active()"
     end,
 })
