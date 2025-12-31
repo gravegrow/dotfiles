@@ -17,3 +17,4 @@ files/dwm/dwm/drw.o
 files/dwm/dwm/dwm
 files/dwm/dwm/dwm.o
 files/dwm/dwm/util.o
+files/dotfiles/nvim/lazy-lock.json
