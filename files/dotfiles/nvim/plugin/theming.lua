@@ -20,6 +20,7 @@ local colors_dark = {
 ---@param colors Colors
 local function SetHiglights(colors)
     local highlights = {
+        Normal = { bg = colors.back },
         Visual = { bg = colors.visual },
         Search = { bg = colors.visual },
         IncSearch = { bg = "none", fg = colors.light, underline = true, bold = true },

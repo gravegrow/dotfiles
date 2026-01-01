@@ -1,9 +1,8 @@
 [colors]
-foreground = "#9A8F8A"
 background = "#101010"
+foreground = "#9A8F8A"
 
-
-cursor_fg = "#161617"
+cursor_fg = "#101010"
 cursor_bg = "#D27E99"
 cursor_border = "#D27E99"
 

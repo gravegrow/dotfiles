@@ -22,6 +22,7 @@ vim.o.autoindent = true -- Use auto indent
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 vim.opt.shortmess:append("I") -- Disable intro screen
 vim.opt.laststatus = 3
+vim.opt.ignorecase = true
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copt.ying) text",

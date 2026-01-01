@@ -10,12 +10,11 @@ config.font_size = 18
 -- config.font_size = 18.5
 
 config.window_close_confirmation = "NeverPrompt"
-config.front_end = "WebGpu"
+-- config.front_end = "WebGpu"
 
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
 
--- config.window_background_opacity = 0.99
 config.color_scheme = "daily"
 config.underline_thickness = "1px"
 config.underline_position = "-3px"
