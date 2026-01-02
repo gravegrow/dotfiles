@@ -29,7 +29,7 @@ static const unsigned int ulinestroke = 2; /* thickness / height of the underlin
 static const unsigned int ulinevoffset = 2; /* how far above the bottom of the bar the line should appear */
 static const int ulineall = 1; /* 1 to show underline on all tags, 0 for just the active ones */
 
-static const char color_bg[]     = "#161617";
+static const char color_bg[]     = "#0a0a0a";
 static const char color_fg[]     = "#9A8F8A";
 
 static const char color_red[]    = "#945B5B";

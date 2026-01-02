@@ -7,6 +7,6 @@ case $BUTTON in
 esac
 
 fg=#945B5B
-bg=#161617
+bg=#0a0a0a
 
 printf "^c$fg^^b$bg^  "

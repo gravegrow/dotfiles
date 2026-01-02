@@ -6,7 +6,7 @@ case $BUTTON in
 3) dwm-volume-change 5%- ;;
 esac
 
-bg=#161617
+bg=#0a0a0a
 fg=#807e96
 muted_fg=#ED8796
 

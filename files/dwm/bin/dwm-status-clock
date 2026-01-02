@@ -15,7 +15,7 @@ case $BUTTON in
 	# 3) notify-send "clock 3";;
 esac
 
-barcolor=#161617
+barcolor=#0a0a0a
 widgetcolor=#627691
 
 if [[ $1 ]]; then
