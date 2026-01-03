@@ -43,8 +43,8 @@ marker_marked   = { fg = "lightcyan",   bg = "lightcyan" }
 marker_selected = { fg = "lightyellow", bg = "lightyellow" }
 
 # Count
-count_copied   = { fg = "white", bg = "green" }
-count_cut      = { fg = "white", bg = "red" }
+count_copied   = { fg = "black", bg = "green" }
+count_cut      = { fg = "black", bg = "red" }
 count_selected = { fg = "black", bg = "yellow" }
 
 # Border
@@ -77,8 +77,8 @@ normal_main = { fg = "black", bg = "blue", bold = true }
 normal_alt  = { fg = "blue", bg = "black" }
 
 # Select mode
-select_main = { bg = "red", bold = true }
-select_alt  = { fg = "red", bg = "gray" }
+select_main = { bg = "green", bold = true }
+select_alt  = { fg = "green", bg = "gray" }
 
 # Unset mode
 unset_main = { bg = "red", bold = true }

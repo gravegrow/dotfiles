@@ -3,6 +3,7 @@ return {
     lazy = false,
     enabled = true,
     opts = {
+        image = { enabled = false },
         explorer = {},
         indent = {
             indent = {
