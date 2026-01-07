@@ -98,9 +98,9 @@ local function SetHiglights(colors)
         GitSignsChangeInline = { fg = "#9CABCA", bg = "#17191A", bold = true },
         GitSignsDeleteInline = { fg = "#FF5D62", bg = "#261717", bold = true },
 
-        DiagnosticUnderlineWarn = { link = "DiagnosticWarn", italic = true, underline = true },
-        DiagnosticUnderlineError = { link = "DiagnosticError", italic = true, underline = true },
-        DiagnosticUnderlineInfo = { underline = true, undercurl = false },
+        -- DiagnosticUnderlineWarn = { link = "DiagnosticWarn", italic = true, underline = true },
+        -- DiagnosticUnderlineError = { link = "DiagnosticError", italic = true, underline = true },
+        -- DiagnosticUnderlineInfo = { underline = true, undercurl = false },
     }
 
     for name, opts in pairs(highlights) do

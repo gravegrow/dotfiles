@@ -5,13 +5,13 @@ return {
     config = function()
         require("tiny-inline-diagnostic").setup({
             preset = "powerline",
-            options = {
-                severity = {
-                    vim.diagnostic.severity.ERROR,
-                    vim.diagnostic.severity.WARN,
-                    vim.diagnostic.severity.INFO,
-                },
-            },
+            -- options = {
+            --     severity = {
+            --         vim.diagnostic.severity.ERROR,
+            --         vim.diagnostic.severity.WARN,
+            --         vim.diagnostic.severity.INFO,
+            --     },
+            -- },
         })
         vim.diagnostic.config({ virtual_text = false })
     end,
