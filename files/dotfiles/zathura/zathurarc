@@ -8,4 +8,4 @@ set recolor "true"
 set recolor-darkcolor "#C5C9C5"
 set recolor-lightcolor "#161617"
 
-set scroll-step 500
+# set scroll-step 500

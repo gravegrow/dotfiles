@@ -1,8 +1,8 @@
 //Maya Preference 2022 (Release 1)
 //
 //
-evalDeferred("autoLoadPlugin(\"\", \"mayaHIK\", \"mayaHIK\")");
 evalDeferred("autoLoadPlugin(\"\", \"invertShape\", \"invertShape\")");
+evalDeferred("autoLoadPlugin(\"\", \"mayaHIK\", \"mayaHIK\")");
 evalDeferred("autoLoadPlugin(\"\", \"curveWarp\", \"curveWarp\")");
 evalDeferred("autoLoadPlugin(\"\", \"tiffFloatReader\", \"tiffFloatReader\")");
 evalDeferred("autoLoadPlugin(\"\", \"MASH\", \"MASH\")");
@@ -18,8 +18,8 @@ evalDeferred("autoLoadPlugin(\"\", \"lookdevKit\", \"lookdevKit\")");
 evalDeferred("autoLoadPlugin(\"\", \"Unfold3D\", \"Unfold3D\")");
 evalDeferred("autoLoadPlugin(\"\", \"Type\", \"Type\")");
 evalDeferred("autoLoadPlugin(\"\", \"mayaCharacterization\", \"mayaCharacterization\")");
-evalDeferred("autoLoadPlugin(\"\", \"meshReorder\", \"meshReorder\")");
 evalDeferred("autoLoadPlugin(\"\", \"modelingToolkit\", \"modelingToolkit\")");
+evalDeferred("autoLoadPlugin(\"\", \"meshReorder\", \"meshReorder\")");
 evalDeferred("autoLoadPlugin(\"\", \"MayaMuscle\", \"MayaMuscle\")");
 evalDeferred("autoLoadPlugin(\"\", \"rotateHelper\", \"rotateHelper\")");
 evalDeferred("autoLoadPlugin(\"\", \"matrixNodes\", \"matrixNodes\")");

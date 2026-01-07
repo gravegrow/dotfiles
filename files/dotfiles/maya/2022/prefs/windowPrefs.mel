@@ -16,10 +16,10 @@ windowPref -topLeftCorner 250 200 -widthHeight 700 400 -maximized true dynPaintS
 windowPref -topLeftCorner 250 200 -widthHeight 550 562 -maximized true blindDataEditor1Window;
 windowPref -topLeftCorner 150 200 -widthHeight 1120 640 -maximized true polyTexturePlacementPanel1Window;
 windowPref -topLeftCorner 235 230 -widthHeight 1430 710 -maximized true contentBrowserPanel1Window;
-windowPref -topLeftCorner 0 40 -widthHeight 3400 1440 -maximized false MayaWindow;
+windowPref -topLeftCorner 2 42 -widthHeight 3396 1436 -maximized false MayaWindow;
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false panelArrangementWin;
 windowPref -topLeftCorner 420 1145 -widthHeight 1147 598 -maximized false PluginInfoWin;
-windowPref -topLeftCorner 117 562 -widthHeight 1162 1058 -maximized false pluginManagerWindow;
+windowPref -topLeftCorner 14 2309 -widthHeight 1117 1412 -maximized false pluginManagerWindow;
 windowPref -topLeftCorner 238 1133 -widthHeight 1172 962 -maximized false PreferencesWindow;
 windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempReporterWnd;
 windowPref -topLeftCorner 244 1079 -widthHeight 1037 962 -maximized false shelfEditor;
@@ -31,7 +31,7 @@ windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitRe
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
 windowPref -topLeftCorner 28 2120 -widthHeight 1310 1402 -maximized false faceHelpImage;
 windowPref -topLeftCorner 730 2319 -widthHeight 1119 708 -maximized false AddAttrWin;
-windowPref -topLeftCorner 213 917 -widthHeight 1601 1010 -maximized false connectWindowModal;
+windowPref -topLeftCorner 229 917 -widthHeight 1601 1010 -maximized false connectWindowModal;
 windowPref -topLeftCorner 734 2325 -widthHeight 1105 696 -maximized false createRenderNodeWindow;
 windowPref -topLeftCorner 365 1250 -widthHeight 936 706 -maximized false expressionEditorWin;
 windowPref -topLeftCorner 730 2438 -widthHeight 1000 708 -maximized false RenameAttrWin;
