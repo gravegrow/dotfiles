@@ -24,6 +24,7 @@ local function SetHiglights(colors)
         Visual = { bg = colors.visual },
         Search = { bg = colors.visual },
         IncSearch = { bg = "none", fg = colors.light, underline = true, bold = true },
+        String = { fg = "#708090" },
 
         NormalFloat = { bg = "none" },
         FloatBorder = { bg = "none" },
