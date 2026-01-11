@@ -18,3 +18,5 @@ gsettings set org.gnome.desktop.interface gtk-theme $GTK_THEME &
 gsettings set org.gnome.desktop.wm.preferences theme $GTK_THEME &
 
 setxkbmap -layout us,ru -option grp:alt_space_toggle &
+
+xdotool mousemove 0 2000 &

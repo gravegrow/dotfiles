@@ -37,6 +37,9 @@ local function SetHiglights(colors)
         -- ["@keyword"] = { bold = false },
 
         ["@string.documentation.python"] = { link = "Comment" },
+        ["@string.escape"] = { link = "Operator" },
+        ["@string.regexp"] = { link = "Operator" },
+        ["@string.special"] = { link = "Operator" },
 
         Statusline = { bg = colors.dark },
         StatuslineNC = { bg = colors.dark },
