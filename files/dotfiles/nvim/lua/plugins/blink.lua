@@ -17,7 +17,6 @@ return {
         appearance = {
             nerd_font_variant = "mono",
         },
-
         cmdline = {
             keymap = { preset = "inherit" },
             completion = {
@@ -33,14 +32,15 @@ return {
             menu = {
                 border = "none",
                 draw = {
-                    padding = { 0, 1 },
+                    -- padding = { 0, 1 },
                     components = {
-                        kind_icon = {
-                            text = function(ctx)
-                                return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
-                            end,
-                        },
+                        -- kind_icon = {
+                        --     text = function(ctx)
+                        --         return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
+                        --     end,
+                        -- },
                         label = {
+                            width = { fill = true, min = 35, max = 60 },
                             text = function(ctx)
                                 return require("colorful-menu").blink_components_text(ctx)
                             end,
@@ -54,6 +54,12 @@ return {
         },
         sources = {
             default = { "lsp", "path", "snippets", "buffer" },
+            providers = {
+                buffer = {
+                    max_items = 3,
+                    min_keyword_length = 4,
+                },
+            },
         },
         fuzzy = { implementation = "prefer_rust_with_warning" },
     },

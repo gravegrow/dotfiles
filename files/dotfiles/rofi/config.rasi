@@ -1,1 +1,4 @@
-@theme "themes/colors.rasi"
+@import "shared/colors.rasi"
+@import "shared/fonts.rasi"
+
+@import "launcher.rasi"

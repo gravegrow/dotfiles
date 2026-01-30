@@ -16,7 +16,7 @@ windowPref -topLeftCorner 250 200 -widthHeight 700 400 -maximized true dynPaintS
 windowPref -topLeftCorner 250 200 -widthHeight 550 562 -maximized true blindDataEditor1Window;
 windowPref -topLeftCorner 150 200 -widthHeight 1120 640 -maximized true polyTexturePlacementPanel1Window;
 windowPref -topLeftCorner 235 230 -widthHeight 1430 710 -maximized true contentBrowserPanel1Window;
-windowPref -topLeftCorner 14 54 -widthHeight 1681 1412 -maximized false MayaWindow;
+windowPref -topLeftCorner 0 40 -widthHeight 3400 1440 -maximized false MayaWindow;
 windowPref -topLeftCorner 43 12 -widthHeight 1694 1377 -maximized false panelArrangementWin;
 windowPref -topLeftCorner 420 1145 -widthHeight 1147 598 -maximized false PluginInfoWin;
 windowPref -topLeftCorner 14 2309 -widthHeight 1117 1412 -maximized false pluginManagerWindow;
@@ -25,8 +25,8 @@ windowPref -topLeftCorner 480 1146 -widthHeight 640 480 -maximized false czTempR
 windowPref -topLeftCorner 244 1079 -widthHeight 1037 962 -maximized false shelfEditor;
 windowPref -topLeftCorner 252 1105 -widthHeight 1225 931 -maximized false Viewport20OptionsWindow;
 windowPref -topLeftCorner 326 931 -widthHeight 1576 786 -maximized false HotkeyEditor;
-windowPref -topLeftCorner 14 1976 -widthHeight 1450 1412 -maximized false OptionBoxWindow;
-windowPref -topLeftCorner 13 1885 -widthHeight 1542 1414 -maximized false cometRenameWin;
+windowPref -topLeftCorner 320 1901 -widthHeight 681 438 -maximized false OptionBoxWindow;
+windowPref -topLeftCorner 23 1806 -widthHeight 1542 1414 -maximized false cometRenameWin;
 windowPref -topLeftCorner 608 1595 -widthHeight 250 246 -maximized false asFitResample;
 windowPref -topLeftCorner 32 10 -widthHeight 1699 1392 -maximized false Addshelf_win;
 windowPref -topLeftCorner 28 2120 -widthHeight 1310 1402 -maximized false faceHelpImage;

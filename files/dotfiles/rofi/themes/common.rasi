@@ -1,5 +1,5 @@
 * {
-    font:   "BerkeleyMono Nerd Font Mono Medium 11";
+    font:   "BerkeleyMono Nerd Font Mono Medium 12";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -56,7 +56,7 @@ entry {
     placeholder:        "Search";
     placeholder-color:  @fg3;
     text-color: @fg4;
-    font:   "BerkeleyMono Nerd Font Mono Bold 13";
+    font:   "BerkeleyMono Nerd Font Mono Bold 12";
 }
 
 message {
