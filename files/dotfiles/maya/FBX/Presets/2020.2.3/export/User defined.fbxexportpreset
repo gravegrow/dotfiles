@@ -17,7 +17,7 @@
   </StatisticsGrp>
   <IncludeGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Include">
     <Geometry UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Geometry">
-      <SmoothingGroups UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Smoothing Groups" dt="Bool" v="0"/>
+      <SmoothingGroups UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Smoothing Groups" dt="Bool" v="1"/>
       <expHardEdges UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Split per-vertex Normals" dt="Bool" v="0"/>
       <TangentsandBinormals UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Tangents and Binormals" dt="Bool" v="0"/>
       <SmoothMesh UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Smooth Mesh" dt="Bool" v="1"/>
@@ -25,11 +25,11 @@
       <BlindData UIH="1" UID="0" UIG="0" UIBG="0" lbENU="Blind Data" dt="Bool" v="1"/>
       <AnimationOnly UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Convert to Null objects" dt="Bool" v="0"/>
       <Instances UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Preserve Instances" dt="Bool" v="0"/>
-      <ContainerObjects UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Referenced Assets Content" dt="Bool" v="1"/>
+      <ContainerObjects UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Referenced Assets Content" dt="Bool" v="0"/>
       <Triangulate UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Triangulate" dt="Bool" v="0"/>
       <GeometryNurbsSurfaceAs UIH="0" UID="0" UIG="0" lbENU="Convert NURBS surface to" dt="Enum" enumSelected="NURBS" v="0" enumItem_0="NURBS" enumItem_1="Interactive Display Mesh" enumItem_2="Software Render Mesh"/>
     </Geometry>
-    <Animation UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Animation" dt="Bool" v="0">
+    <Animation UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Animation" dt="Bool" v="1">
       <ExtraGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Extra Options">
         <UseSceneName UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Use scene name" dt="Bool" v="0"/>
         <RemoveSingleKey UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Remove single key" dt="Bool" v="0"/>
@@ -44,7 +44,7 @@
       </BakeComplexAnimation>
       <Deformation UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Deformations" dt="Bool" v="1">
         <Skins UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Skins" dt="Bool" v="1"/>
-        <Shape UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Blend Shapes" dt="Bool" v="0"/>
+        <Shape UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Blend Shapes" dt="Bool" v="1"/>
         <ShapeAttributes UIH="0" UID="0" UIG="0" UIBG="1" UIX="1" lbENU="Blend Shape Options" dt="Bool" v="0">
           <ShapeAttributesValues UIH="0" UID="0" UIG="0" lbENU="Attribute Values" dt="Enum" enumSelected="Relative" v="0" enumItem_0="Relative" enumItem_1="Absolute"/>
         </ShapeAttributes>
@@ -63,7 +63,7 @@
       </PointCache>
       <ConstraintsGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Constraints">
         <Constraint UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Constraints" dt="Bool" v="0"/>
-        <Character UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Skeleton Definitions" dt="Bool" v="0"/>
+        <Character UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Skeleton Definitions" dt="Bool" v="1"/>
       </ConstraintsGrp>
     </Animation>
     <CameraGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Cameras">
@@ -79,21 +79,21 @@
     <BindPose UIH="1" UID="0" UIG="0" UIBG="0" lbENU="Bind Pose" dt="Bool" v="1"/>
     <PivotToNulls UIH="1" UID="0" UIG="0" UIBG="0" lbENU="Pivot To Null" dt="Bool" v="0"/>
     <BypassRrsInheritance UIH="1" UID="0" UIG="0" UIBG="0" lbENU="Bypass Rrs Inheritance" dt="Bool" v="0"/>
-    <InputConnectionsGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Connections">
+    <InputConnectionsGrp UIH="1" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Connections">
       <IncludeChildren UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Include Children" dt="Bool" v="1"/>
       <InputConnections UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Input Connections" dt="Bool" v="1"/>
     </InputConnectionsGrp>
   </IncludeGrp>
   <AdvOptGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Advanced Options">
-    <UnitsGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Units">
+    <UnitsGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Units">
       <TotalUnitsScale UIH="0" UID="0" UIG="0" lbENU="Total Units Scale" dt="TextLine"/>
       <DynamicScaleConversion UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Automatic" dt="Bool" v="1"/>
       <UnitsSelector UIH="0" UID="1" UIG="0" lbENU="Scene units converted to" dt="Enum" enumSelected="Centimeters" v="1" enumItem_0="Millimeters" enumItem_1="Centimeters" enumItem_2="Decimeters" enumItem_3="Meters" enumItem_4="Kilometers" enumItem_5="Inches" enumItem_6="Feet" enumItem_7="Yards" enumItem_8="Miles"/>
     </UnitsGrp>
-    <AxisConvGrp UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="Axis Conversion">
+    <AxisConvGrp UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="Axis Conversion">
       <UpAxis UIH="0" UID="0" UIG="0" lbENU="Up Axis" dt="Enum" enumSelected="Y" v="0" enumItem_0="Y" enumItem_1="Z"/>
     </AxisConvGrp>
-    <UI UIH="0" UID="0" UIG="1" UIX="0" UIP="0" lbENU="UI">
+    <UI UIH="0" UID="0" UIG="1" UIX="1" UIP="0" lbENU="UI">
       <ShowWarningsManager UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Show Warning Manager" dt="Bool" v="1"/>
       <GenerateLogData UIH="0" UID="0" UIG="0" UIBG="0" lbENU="Generate Log Data" dt="Bool" v="1"/>
       <PluginVersionsURL UIH="1" UID="0" UIG="0" lbENU="Plugin Versions URL" dt="KString" v="http://download.autodesk.com/us/fbx/versions/fbxversion.xml"/>

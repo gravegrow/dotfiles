@@ -55,3 +55,15 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
         vim.opt.formatoptions:remove({ "c", "r", "o" })
     end,
 })
+
+vim.api.nvim_create_autocmd("CursorMoved", {
+    group = vim.api.nvim_create_augroup("auto-hlsearch", { clear = true }),
+    callback = function()
+        -- Check if hlsearch is active (vim.v.hlsearch == 1) and if the cursor is not on a current match
+        if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
+            vim.schedule(function()
+                vim.cmd.nohlsearch()
+            end)
+        end
+    end,
+})

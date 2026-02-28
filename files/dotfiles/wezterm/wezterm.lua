@@ -1,6 +1,8 @@
 local wezterm = require "wezterm"
 local config = wezterm.config_builder()
 
+config.ulimit_nofile = 64000
+
 config.font = wezterm.font_with_fallback({ "Berkeley Mono Nerd Font Mono", "JetBrainsMono Nerd Font Mono" })
 config.line_height = 1.63
 config.font_size = 18
