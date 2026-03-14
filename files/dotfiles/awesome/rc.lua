@@ -82,8 +82,6 @@ screen.connect_signal('request::desktop_decoration', function(scr)
 				spacer,
 				require('widgets.clock').setup(),
 				spacer,
-				require('widgets.settings').setup(),
-				spacer,
 				-- require('widgets.power_button').setup(),
 			},
 		},

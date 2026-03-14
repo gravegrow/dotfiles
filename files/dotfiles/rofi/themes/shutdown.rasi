@@ -17,14 +17,18 @@ listview {
     fixed-height: true;
 }
 
+element selected normal, element selected active {
+    background-color:   #9A8F8A;
+}
+
 window {
     location:       north east;
-    width:          200;
-    y-offset:       24;
-    x-offset:       0;
+    width:          210;
+    y-offset:       95;
+    x-offset:       -110;
 
-    border:             1px;
-    border-radius:      @border-radius;
-    border-color:       @border;
+    border:             2px;
+    border-radius:      0;
+    border-color:       #202020;
     background-color:   @background;
 }

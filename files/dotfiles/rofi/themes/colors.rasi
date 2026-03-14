@@ -11,7 +11,7 @@
     inputborder: #000000;
     selection: #202020;
 
-    border-radius: 7px;
+    border-radius: 5px;
 }
 
 @import "common.rasi"

@@ -32,13 +32,8 @@ return {
             menu = {
                 border = "none",
                 draw = {
-                    -- padding = { 0, 1 },
+                    columns = { { "kind_icon" }, { "label", gap = 1 } },
                     components = {
-                        -- kind_icon = {
-                        --     text = function(ctx)
-                        --         return " " .. ctx.kind_icon .. ctx.icon_gap .. " "
-                        --     end,
-                        -- },
                         label = {
                             width = { fill = true, min = 35, max = 60 },
                             text = function(ctx)
