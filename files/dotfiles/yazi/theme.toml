@@ -280,6 +280,10 @@ dirs  = [
 	{ name = "Pictures", text = "" },
 	{ name = "Public", text = "" },
 	{ name = "Videos", text = "" },
+	{ name = "Games", text = "󰺷" },
+	{ name = "Remotes", text = "󰢹" },
+	{ name = "Templates", text = "" },
+	{ name = "maya", text = "" },
 ]
 files = [
 	{ name = ".babelrc", text = "", fg = "#cbcb41" },

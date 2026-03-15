@@ -44,7 +44,10 @@ return {
                 "*.ttf",
                 "*.otf",
                 "*.mat",
-                "*.shadergraph",
+                "Packages/",
+                "*.dll",
+                "*.nuspec",
+                "*.asmdef",
             },
             layout = { preset = "sidebar" },
             layouts = {

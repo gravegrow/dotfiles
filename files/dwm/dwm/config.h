@@ -79,6 +79,7 @@ static const Rule rules[] = {
     {"glfw-application",                    NULL,     NULL,    0,           1,          0,          0,         -1},
     {"GLFW-Application",                    NULL,     NULL,    0,           1,          0,          0,         -1},
     {"Gimp",                                NULL,     NULL,    0,           1,          0,          0,         -1},
+    {"pavucontrol",                         NULL,     NULL,    0,           1,          0,          0,         -1},
     {"Lutris",                              NULL,     NULL,    1 << 6,      0,          0,          0,          1},
     {"gnome-calculator",                    NULL,     NULL,    0,           1,          0,          0,         -1},
     {"gnome-calendar",                      NULL,     NULL,    0,           1,          0,          0,         -1},
