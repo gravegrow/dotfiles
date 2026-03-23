@@ -22,10 +22,14 @@ element selected normal, element selected active {
     background-color:   #9A8F8A;
 }
 
+element-text {
+    horizontal-align: 0.50;
+}
+
 window {
     location:       north east;
     anchor:       north east;
-    width:          235;
+    width:          260;
     y-offset:       24;
     x-offset:       0;
 
