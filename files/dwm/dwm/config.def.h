@@ -212,4 +212,6 @@ static const Button buttons[] = {
     {ClkStatusText, 0, Button1, sigstatusbar, {.i = 1}},
     {ClkStatusText, 0, Button2, sigstatusbar, {.i = 2}},
     {ClkStatusText, 0, Button3, sigstatusbar, {.i = 3}},
+    {ClkStatusText, 0, Button4, sigstatusbar, {.i = 4}},
+    {ClkStatusText, 0, Button5, sigstatusbar, {.i = 5}},
 };

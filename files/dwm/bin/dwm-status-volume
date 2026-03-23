@@ -4,6 +4,8 @@ case $BUTTON in
 1) dwm-volume-change 5%+ ;;
 2) dwm-volume-change "toggle" ;;
 3) dwm-volume-change 5%- ;;
+4) dwm-volume-change 1%+ ;;
+5) dwm-volume-change 1%- ;;
 esac
 
 bg=#0a0a0a
