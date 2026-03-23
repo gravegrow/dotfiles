@@ -22,4 +22,4 @@ function volume-change() {
 }
 
 volume-change
-pkill -RTMIN+1 dwmblocks
+pkill -RTMIN+2 dwmblocks

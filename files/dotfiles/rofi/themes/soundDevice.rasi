@@ -1,0 +1,36 @@
+@import "colors.rasi"
+
+* {
+    font:   "BerkeleyMono Nerd Font Mono 11";
+}
+
+mainbox {
+  children: [listview];
+}
+
+listview {
+    background-color:   transparent;
+
+    margin:     0px 0 0;
+    lines:      3;
+    columns:    1;
+    fixed-height: false;
+}
+
+element selected normal, element selected active {
+    background-color:   #9A8F8A;
+}
+
+window {
+    location:       north east;
+    anchor:         north east;
+    width:          250;
+    y-offset:       29;
+    x-offset:       -5;
+    height:         0%;
+
+    border:             2px;
+    border-radius:      0;
+    border-color:       #202020;
+    background-color:   @background;
+}

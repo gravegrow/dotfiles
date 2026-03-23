@@ -1,0 +1,27 @@
+#!/bin/bash
+
+function rofi-menu() {
+    sinks=$(pactl list short sinks | awk '{print $1}')
+    sinksArray=( $(echo $sinks) )
+    entries=$(pactl list sinks | grep "device.description = " | grep -o '"\(.*\)"')
+    selection=$(echo "$entries" | rofi -dmenu -i -theme-str '@import "soundDevice.rasi"' -p "Audio Output" -format 'i')
+
+    if [ -n "$selection" ]; then
+        sink=${sinksArray[$selection]}
+        pactl set-default-sink "$sink"
+        # Optional notification
+        # notify-send "Audio Output Changed" "$(pactl list short sinks | grep "$selection" | awk '{print $2}')"
+    fi
+}
+
+case $BUTTON in
+    1) rofi-menu ;;
+esac
+
+
+bg=#0a0a0a
+fg=#708090
+
+icon="󰓃 "
+
+printf "^c$fg^^b$bg^$icon"
