@@ -16,7 +16,7 @@ case $BUTTON in
 esac
 
 barcolor=#0a0a0a
-widgetcolor=#627691
+widgetcolor=#708090
 
 if [[ $1 ]]; then
 	printf "^c$widgetcolor^^b$barcolor^ "
@@ -24,5 +24,5 @@ if [[ $1 ]]; then
 else
 	printf "^c$widgetcolor^^b$barcolor^ "
 	printf "󰥔 "
-	date "+%d %a %H:%M"
+	date "+%d %a %H:%M "
 fi

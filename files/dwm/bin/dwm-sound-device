@@ -20,8 +20,8 @@ esac
 
 
 bg=#0a0a0a
-fg=#708090
+fg=#8E8E8E
 
-icon="󰓃 "
+icon="󰕾"
 
 printf "^c$fg^^b$bg^$icon"

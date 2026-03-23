@@ -9,7 +9,7 @@ case $BUTTON in
 esac
 
 bg=#0a0a0a
-fg=#807e96
+fg=#8E8E8E
 muted_fg=#ED8796
 
 volume=$(wpctl get-volume @DEFAULT_AUDIO_SINK@)
@@ -24,9 +24,9 @@ volume=${volume#Volume: }
 volume=$(printf "%.0f" ${volume//./})
 
 case 1 in
-$((volume > 5))) icon="󰕾" ;;
-$((volume >= 1))) icon="󰕾 " ;;
+$((volume > 5))) icon="" ;;
+$((volume >= 1))) icon=" " ;;
 *) muted ;;
 esac
 
-printf "^c$fg^^b$bg^$icon $volume%%"
+printf "^c$fg^^b$bg^$icon $volume%% "
