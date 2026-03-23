@@ -1,5 +1,5 @@
 * {
-    font:   "BerkeleyMono Nerd Font Mono Medium 12";
+    font:   "BerkeleyMono Nerd Font Mono Medium 20";
 
     background-color:   transparent;
     text-color:         @fg0;
@@ -34,7 +34,7 @@ mainbox {
 
 element selected {
     text-color: @fg2;
-    font:   "BerkeleyMono Nerd Font Mono Bold 12";
+    font:   "BerkeleyMono Nerd Font Mono Bold 20";
 }
 
 inputbar {
@@ -56,7 +56,7 @@ entry {
     placeholder:        "Search";
     placeholder-color:  @fg3;
     text-color: @fg4;
-    font:   "BerkeleyMono Nerd Font Mono Bold 12";
+    font:   "BerkeleyMono Nerd Font Mono Bold 20";
 }
 
 message {

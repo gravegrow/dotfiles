@@ -1,7 +1,7 @@
 @import "colors.rasi"
 
 * {
-    font:   "BerkeleyMono Nerd Font Mono 11";
+    font:   "BerkeleyMono Nerd Font Mono 14";
 }
 
 mainbox {
@@ -10,6 +10,7 @@ mainbox {
 
 listview {
     background-color:   transparent;
+    scrollbar: false;
 
     margin:     0px 0 0;
     lines:      3;
@@ -24,13 +25,13 @@ element selected normal, element selected active {
 window {
     location:       north east;
     anchor:         north east;
-    width:          250;
-    y-offset:       29;
-    x-offset:       -5;
+    width:          300;
+    y-offset:       24;
+    x-offset:       0;
     height:         0%;
 
-    border:             2px;
-    border-radius:      0;
+    border:             0px 0px 0px 0px;
+    border-radius:      0px 0px 0px 15px;
     border-color:       #202020;
     background-color:   @background;
 }
