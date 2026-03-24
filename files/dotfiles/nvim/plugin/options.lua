@@ -23,6 +23,7 @@ vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below
 vim.opt.shortmess:append("I") -- Disable intro screen
 vim.opt.laststatus = 3
 vim.opt.ignorecase = true
+vim.opt.isfname:append("32,(,)")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking (copt.ying) text",
