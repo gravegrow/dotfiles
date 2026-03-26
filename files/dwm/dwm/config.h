@@ -76,20 +76,21 @@ static const char *tagsel[][2] = {
 static const Rule rules[] = {
     /* xprop(1): WM_CLASS(STRING) = instance, class WM_NAME(STRING) = title */
     /* class                                instance  title    tags mask    isfloating  isterminal  noswallow  monitor */
-    {"glfw-application",                    NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"GLFW-Application",                    NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"Gimp",                                NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"pavucontrol",                         NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"Lutris",                              NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"gnome-calculator",                    NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"gnome-calendar",                      NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"Firefox",                             NULL,     NULL,    0,           0,          0,          0,         -1},
-    {"qBittorrent",                         NULL,     NULL,    1 << 2,      0,          0,          0,          1},
-    {"discord",                             NULL,     NULL,    1 << 1,      0,          0,          0,          1},
-    {"mpv",                                 NULL,     NULL,    0,           0,          0,          0,          0},
-    {"polkit-gnome-authentication-agent-1", NULL,     NULL,    0,           1,          0,          0,         -1},
-    {"stalonetray",                         NULL,     NULL,   ~0,           1,          0,          0,         -1},
-    {"Maya-2022", NULL, NULL,                                  0,           1,          0,          0,         -1},
+    {"glfw-application",                    NULL, NULL,           0,              1, 0, 0, -1},
+    {"GLFW-Application",                    NULL, NULL,           0,              1, 0, 0, -1},
+    {"Gimp",                                NULL, NULL,           0,              1, 0, 0, -1},
+    {"pavucontrol",                         NULL, NULL,           0,              1, 0, 0, -1},
+    {"Lutris",                              NULL, NULL,           0,              1, 0, 0, -1},
+    {"gnome-calculator",                    NULL, NULL,           0,              1, 0, 0, -1},
+    {"gnome-calendar",                      NULL, NULL,           0,              1, 0, 0, -1},
+    {"Firefox",                             NULL, NULL,           0,              0, 0, 0, -1},
+    {"qBittorrent",                         NULL, NULL,           1         << 2, 0, 0, 0, 1},
+    {"qBittorrent",                         NULL, "Add  torrent", 1  << 2,        1, 0, 0, 1},
+    {"discord",                             NULL, NULL,           1         << 1, 0, 0, 0, 1},
+    {"mpv",                                 NULL, NULL,           0,              0, 0, 0, 0},
+    {"polkit-gnome-authentication-agent-1", NULL, NULL,           0,              1, 0, 0, -1},
+    {"stalonetray",                         NULL, NULL,           ~0,             1, 0, 0, -1},
+    {"Maya-2022",                           NULL, NULL,           0,              1, 0, 0, -1},
 };
 
 /* layout(s) */
