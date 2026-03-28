@@ -1,75 +1,55 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-format = """
-$directory$git_branch$git_commit$python$c$lua
-$sudo$shell$jobs$character"""
-
-add_newline = true
+format = """\
+$directory\
+$git_branch\
+$git_commit\
+$git_sate\
+$fill \
+$python\
+$c\
+$cpp\
+$dotnet\
+$lua
+$sudo$jobs$status$character
+"""
 
 [fill]
-symbol = ' '
+symbol = '╴'
 
-[shell]
+[status]
+format = '[\[$status\] ]($style)'
+style = 'red'
 disabled = false
-fish_indicator = ""
-bash_indicator = " bash "
-format = "[$indicator]($style)"
-style = "fg:#A1ABA0"
-
-[cmd_duration]
-style = "fg:yellow bg:black bold"
-format = "[](fg:black)[  $duration ]($style)[](fg:black)"
-
-
-[directory]
-truncation_length = 8
-home_symbol = "~"
-style = "fg:blue bold"
-format = "[ $path ]($style)"
-
-
-[python]
-style = "fg:3 bg:black"
-format = "[](fg:black)[  $version ]($style bold)[$virtualenv ]($style)[](fg:black)"
-
-[c]
-detect_extensions = ["cpp", "hpp", "c", "h"]
-detect_files = ["CMakeLists.txt"]
-commands = [['clang', '--version'], ['gcc', '--version'], ['cc', '--version']]
-style = "fg:blue bg:black bold"
-format = '[](fg:black)[  $name ]($style)[](fg:black)'
-
-[lua]
-style = "fg:blue bg:black bold"
-format = '[](fg:black)[ 󰢱 lua ]($style)[](fg:black)'
-
-[git_branch]
-style = "fg:green bold"
-symbol = ""
-format = "[$symbol $branch ]($style)"
-only_attached = true
-
-[git_commit]
-style = "fg:green bold"
-format = '[󰜘 $hash$tag]($style) '
-tag_symbol = " -"
-tag_disabled = false
-only_detached = true
-
-[character]
-# success_symbol = '[»](green)'
-# vimcmd_symbol = '[«](green)'
-# vimcmd_visual_symbol = '[«](yellow)'
-# vimcmd_replace_symbol = '[«](purple)'
-# vimcmd_replace_one_symbol = '[«](purple)'
-error_symbol = '[](#c76b77)'
-
-[jobs]
-symbol = '[](#A6E3A1)'
-symbol_threshold = 1
 
 [sudo]
-style = 'yellow'
-symbol = ''
-format = "[$symbol ]($style)"
 disabled = false
+style = 'yellow'
+format = '[$symbol ]($style)'
+symbol = '󱦚'
+
+[jobs]
+symbol = '󱁤'
+
+
+[directory]                   
+truncation_length = 8         
+home_symbol = '~'             
+style = 'fg:blue bold'        
+format = '[ $path ]($style)' 
+
+[git_branch]
+format = '[┃](fg:black) [$symbol$branch(:$remote_branch)]($style) '
+style = "bold green"
+
+[git_commit]
+style = "purple"
+
+[python]
+format = '[${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+symbol = ""
+
+[dotnet]
+format = '[$symbol ($version )($tfm )]($style)'
+version_format = 'v${major}.${minor}'
+symbol = ''
