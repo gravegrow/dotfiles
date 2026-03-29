@@ -14,8 +14,7 @@ fi
 CURRENT_SESSION=$(tmux display-message -p '#S')
 [[ "$CURRENT_SESSION" != "$SESSION_NAME" ]] && exit 0
 
-selected=$(find $PATHS -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" |
-    fzf --preview 'ls -1 --color always {}' --preview-window=bottom,40%)
+selected=$(find $PATHS -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf)
 
 [[ -z $selected ]] && exit 0
 
