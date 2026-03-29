@@ -19,6 +19,7 @@ return {
             "vimls",
             "basedpyright",
             "ruff",
+            "bashls",
         },
     },
 }

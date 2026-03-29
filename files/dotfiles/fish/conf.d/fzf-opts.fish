@@ -1,5 +1,5 @@
 set -l FZF_ICONS --prompt '" "' --pointer '" "' --scrollbar '┃'
-set -l FZF_BORDERS --border none --preview-window sharp --margin 1
+set -l FZF_BORDERS --border none --preview-window sharp,border-bold --margin 1
 set -l FZF_HEIGHT --height '~99% '--min-height 15
 set -l FZF_LAYOUT --reverse --cycle --info=inline-right
 set -l FZF_COLORS --color 'gutter:"#101010",pointer:2,scrollbar:4,hl+:1,hl:1,info:3' \
