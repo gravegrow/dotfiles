@@ -10,9 +10,9 @@
 
 set --global fish_color_autosuggestion 4f4f59
 set --global fish_color_cancel -r
-set --global fish_color_command blue
+set --global fish_color_command green
 set --global fish_color_comment red
-set --global fish_color_cwd green
+set --global fish_color_cwd blue
 set --global fish_color_cwd_root red
 set --global fish_color_end green
 set --global fish_color_error brred

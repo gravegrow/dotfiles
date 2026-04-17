@@ -10,8 +10,7 @@ $c\
 $cpp\
 $dotnet\
 $lua
-$sudo$jobs$status$character
-"""
+$sudo$jobs$status$character"""
 
 add_newline = false
 
@@ -29,6 +28,9 @@ style = 'yellow'
 format = '[$symbol ]($style)'
 symbol = '󱦚'
 
+[character]
+success_symbol = '[❯](bold white)'
+
 [jobs]
 symbol = '󱁤'
 
@@ -39,7 +41,7 @@ style = 'bold blue'
 format = '[$read_only]($read_only_style)[ $path]($style)'
 
 [git_branch]
-format = ' [](bold black) [$symbol$branch(:$remote_branch)]($style)'
+format = ' [➤](bold black) [$symbol$branch(:$remote_branch)]($style)'
 style = "bold green"
 
 [git_commit]
@@ -47,30 +49,31 @@ format = ' [\($hash$tag\)]($style)'
 style = "red"
 
 [python]
-format = ' [](bold black) [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = ' [➤](bold black) [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 symbol = ""
 
 [dotnet]
-format = ' [](bold black) [$symbol ($version )($tfm )]($style)'
+style = 'blue'
+format = ' [➤](bold black) [$symbol ($version )($tfm )]($style)'
 version_format = 'v${major}.${minor}'
 symbol = ''
 
 [c]
 style = 'blue'
 commands = [ [ 'clang', '--version' ], [ 'cc', '--version' ], [ 'gcc', '--version' ] ]
-format = ' [](bold black) [$symbol $name $version]($style)'
+format = ' [➤](bold black) [$symbol $name $version]($style)'
 version_format = 'v${major}.${minor}'
 symbol = ''
 
 [cpp]
-disabled = false
 style = 'blue'
+disabled = false
 commands = [ [ 'clang++', '--version' ], [ 'c++', '--version' ], [ 'g++', '--version' ] ]
-format = ' [](bold black) [$symbol $name $version]($style)'
+format = ' [➤](bold black) [$symbol $name $version]($style)'
 version_format = 'v${major}.${minor}'
 symbol = ''
 
 [lua]
-format = ' [](bold black) [$symbol ($version )]($style)'
+format = ' [➤](bold black) [$symbol ($version )]($style)'
 version_format = 'v${major}.${minor}'
 symbol = ''

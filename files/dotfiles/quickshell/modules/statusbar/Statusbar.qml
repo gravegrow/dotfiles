@@ -12,7 +12,7 @@ PanelWindow {
     exclusiveZone: implicitWidth
 
     color: "#0A0A0A"
-    implicitWidth: 35
+    implicitWidth: 28
     screen: Quickshell.screens[screenID]
 
     property string textcolor: "#9A8F8A"

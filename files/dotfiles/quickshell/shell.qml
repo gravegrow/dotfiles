@@ -14,7 +14,7 @@ ShellRoot {
     }
 
     Loader {
-        active: true
+        active: false
         sourceComponent: Statusbar {
             screenID: 1
         }
