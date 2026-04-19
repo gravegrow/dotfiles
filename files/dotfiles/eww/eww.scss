@@ -1,0 +1,131 @@
+* {
+  all: unset;
+}
+
+// Variable Color's
+$background: #1A1B26;
+$foreground: #A9B1D6;
+
+$black: #24283B;
+$gray: #565F89;
+$red: #D27E99;
+$green: #73DACA;
+$yellow: #E0AF68;
+$blue: #7AA2F7;
+$magenta: #BB9AF7;
+$cyan: #7DCFFF;
+$white: $foreground;
+
+window {
+  background: #0a0a0a;
+  color: #998E89;
+
+  font-family: "BerkeleyMono Nerd Font Mono";
+  font-size: 16px;
+}
+
+.topsection {
+  margin-top: 10;
+}
+
+.botsection {
+  margin-bottom: 10;
+}
+
+.time {
+  font-size: 1em;
+  font-weight: bold;
+  // background: #1a1a1a;
+  // margin: 0 1px;
+  // padding: 5px 0;
+  // border-radius: 3px;
+}
+
+.dwm-layouts {
+  font-size: 1.0em;
+}
+
+.dwm-title {
+  font-size: 0.7em;
+  font-weight: Normal;
+}
+
+.tag-container {
+  font-weight: bold;
+  button {
+    padding: 3px;
+  }
+
+  button:hover {
+      color: #ffffff;
+      background-color: #101010
+    }
+}
+
+.tag-selected {
+  color: #D27E99;
+}
+
+.tag-urgent {
+  color: #E80047;
+}
+
+.tag-occupied {
+  color: #464646;
+}
+
+.volume {
+  .volume-icon {
+    font-size: 1.3em;
+  }
+}
+
+
+// Powermenu
+.powermenu {
+  font-size: 1.3em;
+}
+
+.button-off{
+  color: $red;
+}
+
+.button-reb{
+  color: $yellow
+}
+.button-quit{
+  color: $magenta;
+}
+.button-lock{
+  color: $blue;
+}
+
+// System Tray
+menu {
+  padding: 10px 10px;
+  background-color: #101010;
+  border: 2px solid #0a0a0a;
+  border-radius: 12px;
+
+  >menuitem {
+    font-size: 16px;
+    padding: 2px 5px;
+
+    &:disabled label {
+      color: #998E89;
+    }
+
+    &:hover {
+      border-radius: 2;
+      background-color: #202020;
+    }
+  }
+
+  separator {
+    padding-top: 1px;
+
+    &:last-child {
+      padding: unset;
+    }
+  }
+}

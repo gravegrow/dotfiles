@@ -1,0 +1,135 @@
+(defwidget statusbar [screen]
+  (centerbox :orientation "v"
+    (topsection :screen screen)
+    (midsection :screen screen)
+    (botsection :screen screen)
+  ))
+
+(defwidget topsection [screen]
+  (box :class "topsection"
+       :orientation "v"
+       :valign "start"
+       :space-evenly false
+       :spacing 10
+    (dwm-layouts :screen screen)
+    (dwm-tags :screen screen)
+  ))
+
+(defwidget midsection [screen]
+  (box
+    :class "midsection"
+    :halign "center"
+    :orientation "v"
+  ))
+
+(defwidget botsection [screen]
+  (box
+    :class "botsection"
+    :valign "end"
+    :orientation "v"
+    :space-evenly false
+    :spacing 15
+    (volume)
+    (time)
+    (power)
+  ))
+
+(defwidget dwm-tags [screen]
+  (literal :content {screen == 0 ? dwm-tags : dwm-tags-two}))
+
+(defwidget dwm-layouts [screen]
+  (box :class "dwm-layouts" {screen == 0 ? dwm-layouts : dwm-layouts-two}))
+
+(defwidget dwm-title [screen]
+  (box :class "dwm-title"
+    :orientation "v"
+    (label :text "Desktop" :angle -90 :show-truncated false)))
+
+(defvar volume false)
+(defwidget volume []
+  (eventbox
+    :onhover "eww update volume=true"
+    :onhoverlost "eww update volume=false"
+    (box :class "volume"
+      :orientation "v"
+      :space-evenly "false"
+      :vexpand "false"
+      (revealer
+	:transition "slideup"
+	:reveal volume
+	:duration "200ms"
+	(button
+	  :class "volume-text"
+	  :onclick "notify-send '20'" "20"))
+      (button
+	:class "volume-icon"
+	:onclick "usr-sound-device soundDeviceAlt.rasi" "󰕾"))))
+
+(deflisten dwm-tags "scripts/dwm-tags 0")
+(deflisten dwm-tags-two "scripts/dwm-tags 1")
+(deflisten dwm-layouts "scripts/dwm-layouts 0")
+(deflisten dwm-layouts-two "scripts/dwm-layouts 1")
+(deflisten dwm-title "scripts/dwm-title")
+
+(defwidget time []
+  (box :orientation "v"
+       :class "time"
+       :space-evenly false
+       :spacing 0
+    hour min
+  ))
+
+(defpoll hour :interval "1s" "date +%H")
+(defpoll min  :interval "1s" "date +%M")
+
+(defvar power false)
+(defwidget power []
+  (eventbox :onhover "eww update power=true"
+    :onhoverlost "eww update power=false"
+
+    (box :orientation "v"
+      :space-evenly "false"
+      :vexpand "false"
+      :class "powermenu"
+
+      (revealer :transition "slideup"
+	:reveal power
+	:duration "550ms"
+	(box :orientation "v"
+	  :space-evenly "false"
+
+	  (button :class "button-reb"
+	    :tooltip "Reboot"
+	    :onclick "" "")
+
+	  (button :class "button-quit"
+	    :tooltip "Logout"
+	    :onclick "" "⏼")))
+
+      (button :class "button-off"
+	:tooltip "Shutdown"
+	:onclick "" ""))))
+
+(defwindow statusbar0 []
+  :monitor 0
+  :windowtype "dock"
+  :wm-ignore true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "40"
+                      :height "100%"
+                      :anchor "top left")
+  :reserve (struts :side "top" :distance "4%")
+  (statusbar :screen 0))
+
+(defwindow statusbar1 []
+  :monitor 1
+  :windowtype "dock"
+  :wm-ignore true
+  :geometry (geometry :x "0%"
+                      :y "0%"
+                      :width "40"
+                      :height "100%"
+                      :anchor "top left")
+  :reserve (struts :side "top" :distance "4%")
+  (statusbar :screen 1))

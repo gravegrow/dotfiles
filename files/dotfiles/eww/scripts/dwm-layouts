@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+MONITOR=${1:-0}
+
+function get-layout-symbol() {
+    dwm-msg get_monitors |
+        jq -r --argjson monitor "$MONITOR" \
+            '.[] | select(.num == $monitor) | .layout.symbol.current'
+}
+
+get-layout-symbol
+
+dwm-msg subscribe layout_change_event | while read -r _; do
+    get-layout-symbol
+done

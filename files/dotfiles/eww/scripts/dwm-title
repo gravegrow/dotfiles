@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+dwm-msg subscribe client_focus_change_event |
+    jq -r --unbuffered 'select(.client_focus_change_event) | .[].new_win_id' |
+    while read -r event; do
+        dwm-msg get_dwm_client "$event" | jq -r --unbuffered '.name'
+    done

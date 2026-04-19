@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+ROFI_MENU=${1:-soundDevice.rasi}
+
+function change-sink() {
+    local id=$1
+
+    if [[ -n $id ]]; then
+        sink=${sinksArray[$id]}
+        pactl set-default-sink "$sink"
+    fi
+}
+
+sinks=$(pactl list short sinks | awk '{print $1}')
+mapfile sinksArray < <(echo "$sinks")
+entries=$(pactl list sinks | grep "device.description" | grep -oP '(?<=")[^"]*')
+echo "$entries" | rofi -dmenu -i -theme-str "@import '$ROFI_MENU'" -p "Audio Output" -format 'i' | while read -r value; do
+    sink=${sinksArray[$value]}
+    pactl set-default-sink "$sink"
+done
