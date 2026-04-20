@@ -20,7 +20,7 @@ function get-layout-symbols() {
 
 TAG_NAMES=(1 2 3 4 5 6 7 8 9)
 
-function generate-tags() {
+function get-tag-widgets() {
     local data=$1
     local length selected occupied urgent monitor_data
 
@@ -60,11 +60,9 @@ function update() {
         return
     fi
 
-    generate-tags "$data"
-
     echo -n "{"
     format layouts "$(get-layout-symbols "$data"),"
-    format tags "$(generate-tags "$data")"
+    format tags "$(get-tag-widgets "$data")"
     echo "}"
 }
 
