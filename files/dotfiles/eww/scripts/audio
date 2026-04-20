@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+case "$1" in
+"symbol")
+    pactl subscribe | grep --line-buffered "Event 'change' on sink" | while read -r _; do
+        eww update volume-value="$(pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1)"
+        if [[ "$(pactl get-sink-mute @DEFAULT_SINK@ | awk '{print $2}')" == 'yes' ]]; then
+            echo "󰖁"
+            continue
+        fi
+        case "$(pactl get-default-sink)" in
+        *Razer*) echo "" ;;
+        bluez_output*) echo "󰥰" ;;
+        *) echo "󰕾" ;;
+        esac
+    done
+    ;;
+"volume")
+    pactl get-sink-volume @DEFAULT_SINK@ | grep -Po '\d+(?=%)' | head -n 1
+    ;;
+esac

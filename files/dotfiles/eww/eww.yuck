@@ -30,15 +30,20 @@
     :space-evenly false
     :spacing 15
     (volume)
-    (time)
+    (datetime)
     (power)
   ))
 
-(defwidget dwm-tags [screen]
-  (literal :content {screen == 0 ? dwm-tags : dwm-tags-two}))
+(deflisten dwm "scripts/dwm-hook")
 
 (defwidget dwm-layouts [screen]
-  (box :class "dwm-layouts" {screen == 0 ? dwm-layouts : dwm-layouts-two}))
+  (label :class "dwm-layouts"
+         :text `${dwm["layouts"][screen]}`))
+
+(defwidget dwm-tags [screen]
+  (eventbox :onhover `[[ "$(dwm-msg get_monitors | jq -r '.[] | select(.num == ${screen}) | .is_selected')" == false ]] && dwm-msg run_command focusmon ${screen}`
+  (literal :class "dwm-tags"
+           :content `${dwm["tags"][screen]}`)))
 
 (defwidget dwm-title [screen]
   (box :class "dwm-title"
@@ -46,10 +51,13 @@
     (label :text "Desktop" :angle -90 :show-truncated false)))
 
 (defvar volume false)
+(deflisten volume-icon :initial "󰕾" "scripts/audio symbol")
+(defvar volume-value 21)
 (defwidget volume []
   (eventbox
     :onhover "eww update volume=true"
     :onhoverlost "eww update volume=false"
+    :onscroll "usr-volume {} 1%"
     (box :class "volume"
       :orientation "v"
       :space-evenly "false"
@@ -60,27 +68,47 @@
 	:duration "200ms"
 	(button
 	  :class "volume-text"
-	  :onclick "notify-send '20'" "20"))
+	  :onclick " " volume-value))
       (button
 	:class "volume-icon"
-	:onclick "usr-sound-device soundDeviceAlt.rasi" "󰕾"))))
+	:onclick "usr-sound-device soundDeviceAlt.rasi &"
+	:onrightclick "usr-volume mute"
+	volume-icon))))
 
-(deflisten dwm-tags "scripts/dwm-tags 0")
-(deflisten dwm-tags-two "scripts/dwm-tags 1")
-(deflisten dwm-layouts "scripts/dwm-layouts 0")
-(deflisten dwm-layouts-two "scripts/dwm-layouts 1")
-(deflisten dwm-title "scripts/dwm-title")
+(defvar showdate false)
+(defwidget datetime []
+  (eventbox :onhover "eww update showdate=true"
+            :onhoverlost "eww update showdate=false"
+    (box :class "datetime"
+         :orientation "v"
+         :space-evenly false
+         :spacing 0
+      (revealer :transition "slideup"
+	        :reveal showdate
+	        :duration "300ms"
+	(date))
+      (time))))
+
+
+(defwidget date []
+  (box :class "date"
+       :orientation "v"
+       :space-evenly false
+    day
+    (label :class "dotw"
+           :text dotw)))
 
 (defwidget time []
-  (box :orientation "v"
-       :class "time"
+  (box :class "time"
+       :orientation "v"
        :space-evenly false
-       :spacing 0
-    hour min
-  ))
+    hour min))
+
 
 (defpoll hour :interval "1s" "date +%H")
 (defpoll min  :interval "1s" "date +%M")
+(defpoll day  :interval "1s" "date +%d")
+(defpoll dotw :interval "1s" "date +%^a")
 
 (defvar power false)
 (defwidget power []
@@ -100,15 +128,15 @@
 
 	  (button :class "button-reb"
 	    :tooltip "Reboot"
-	    :onclick "" "")
+	    :onclick "reboot" "")
 
 	  (button :class "button-quit"
 	    :tooltip "Logout"
-	    :onclick "" "⏼")))
+	    :onclick "pkill -u $USER" "⏼")))
 
       (button :class "button-off"
 	:tooltip "Shutdown"
-	:onclick "" ""))))
+	:onclick "shutdown now" ""))))
 
 (defwindow statusbar0 []
   :monitor 0

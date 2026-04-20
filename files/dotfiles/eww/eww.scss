@@ -3,8 +3,8 @@
 }
 
 // Variable Color's
-$background: #1A1B26;
-$foreground: #A9B1D6;
+$background: #0a0a0a;
+$foreground: #998E89;
 
 $black: #24283B;
 $gray: #565F89;
@@ -17,11 +17,11 @@ $cyan: #7DCFFF;
 $white: $foreground;
 
 window {
-  background: #0a0a0a;
-  color: #998E89;
+  background: $background;
+  color: $foreground;
 
   font-family: "BerkeleyMono Nerd Font Mono";
-  font-size: 16px;
+  font-size: 18px;
 }
 
 .topsection {
@@ -32,13 +32,14 @@ window {
   margin-bottom: 10;
 }
 
-.time {
-  font-size: 1em;
+.datetime {
+  font-size: 0.87em;
   font-weight: bold;
-  // background: #1a1a1a;
-  // margin: 0 1px;
-  // padding: 5px 0;
-  // border-radius: 3px;
+}
+
+.dotw {
+  font-size: 0.7em;
+  margin-bottom: 10;
 }
 
 .dwm-layouts {
@@ -74,12 +75,13 @@ window {
   color: #464646;
 }
 
-.volume {
-  .volume-icon {
-    font-size: 1.3em;
-  }
+.volume-text {
+  font-size: 0.9em
 }
 
+.volume-icon {
+  font-size: 1.3em;
+}
 
 // Powermenu
 .powermenu {
