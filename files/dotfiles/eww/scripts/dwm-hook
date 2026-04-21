@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+TAG_NAMES=(1 2 3 4 5 6 7 8 9)
 EVENTS=(
     layout_change_event
     tag_change_event
@@ -18,7 +19,14 @@ function get-layout-symbols() {
     echo "$data" | jq -rc '[.[] |  .layout.symbol.current ]'
 }
 
-TAG_NAMES=(1 2 3 4 5 6 7 8 9)
+function get-titles() {
+    local data=$1
+    echo "$data" | jq -cr --unbuffered |
+        jq '.[] | if .is_selected then .clients.selected else -1 end' |
+        while read -r index; do
+            [[ $index -gt 0 ]] && dwm-msg get_dwm_client "$index" | jq -rc '.name' || echo ""
+        done | jq -R . | jq -sc
+}
 
 function get-tag-widgets() {
     local data=$1
@@ -62,7 +70,8 @@ function update() {
 
     echo -n "{"
     format layouts "$(get-layout-symbols "$data"),"
-    format tags "$(get-tag-widgets "$data")"
+    format tags "$(get-tag-widgets "$data"),"
+    format titles "$(get-titles "$data")"
     echo "}"
 }
 

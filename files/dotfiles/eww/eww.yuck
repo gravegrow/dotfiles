@@ -20,6 +20,7 @@
     :class "midsection"
     :halign "center"
     :orientation "v"
+    (dwm-title :screen screen)
   ))
 
 (defwidget botsection [screen]
@@ -28,7 +29,8 @@
     :valign "end"
     :orientation "v"
     :space-evenly false
-    :spacing 15
+    :spacing 10
+    (systraysholder)
     (volume)
     (datetime)
     (power)
@@ -46,9 +48,12 @@
            :content `${dwm["tags"][screen]}`)))
 
 (defwidget dwm-title [screen]
-  (box :class "dwm-title"
-    :orientation "v"
-    (label :text "Desktop" :angle -90 :show-truncated false)))
+  (box :orientation "v"
+    :space-evenly false
+    (label :class "title-text"
+           :text `${dwm["titles"][screen]}`
+           :angle 90
+           :limit-width 60)))
 
 (defvar volume false)
 (deflisten volume-icon :initial "󰕾" "scripts/audio symbol")
@@ -59,9 +64,9 @@
     :onhoverlost "eww update volume=false"
     :onscroll "usr-volume {} 1%"
     (box :class "volume"
-      :orientation "v"
-      :space-evenly "false"
-      :vexpand "false"
+         :orientation "v"
+         :space-evenly "false"
+         :vexpand "false"
       (revealer
 	:transition "slideup"
 	:reveal volume
@@ -110,6 +115,19 @@
 (defpoll day  :interval "1s" "date +%d")
 (defpoll dotw :interval "1s" "date +%^a")
 
+(defvar showsystray false)
+(defwidget systraysholder []
+  (box :orientation "v"
+       :space-evenly false
+    (button :class "systray-button"
+            :onclick "eww update showsystray=${!showsystray}" "︿")
+    (revealer :transition "slideup"
+              :reveal showsystray
+              :duration "200ms"
+      (systray :orientation "v"
+               :space-evenly false
+               :icon-size 20))))
+
 (defvar power false)
 (defwidget power []
   (eventbox :onhover "eww update power=true"
@@ -120,23 +138,11 @@
       :vexpand "false"
       :class "powermenu"
 
-      (revealer :transition "slideup"
-	:reveal power
-	:duration "550ms"
-	(box :orientation "v"
-	  :space-evenly "false"
-
-	  (button :class "button-reb"
-	    :tooltip "Reboot"
-	    :onclick "reboot" "")
-
-	  (button :class "button-quit"
-	    :tooltip "Logout"
-	    :onclick "pkill -u $USER" "⏼")))
-
       (button :class "button-off"
 	:tooltip "Shutdown"
-	:onclick "shutdown now" ""))))
+	:onclick "" ""))))
+
+
 
 (defwindow statusbar0 []
   :monitor 0
