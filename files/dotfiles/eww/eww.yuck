@@ -120,7 +120,7 @@
   (box :orientation "v"
        :space-evenly false
     (button :class "systray-button"
-            :onclick "eww update showsystray=${!showsystray}" "︿")
+            :onclick "eww update showsystray=${!showsystray}" `${showsystray ?  "﹀" : "︿"}`)
     (revealer :transition "slideup"
               :reveal showsystray
               :duration "200ms"
