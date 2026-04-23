@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+screnshots="$HOME/Pictures/Screenshots"
+
+if [[ ! -d screnshots ]]; then
+    mkdir -p "$screnshots"
+fi
+
+file=$screnshots/$(date +'%d-%m-%Y_%H-%-M-%S').png
+
+flameshot screen -c -p "$file"
+notify-send "Screenshot" "$file" -i "$file" -a "flameshot"

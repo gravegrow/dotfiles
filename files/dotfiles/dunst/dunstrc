@@ -37,7 +37,7 @@ max_icon_size = 64
 [flameshot]
 appname = "flameshot"
 min_icon_size = 64
-max_icon_size = 64
+max_icon_size = 128
 
 [urgency_low]
 background = "#242424"

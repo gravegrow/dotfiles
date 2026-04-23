@@ -126,6 +126,7 @@
               :duration "200ms"
       (systray :orientation "v"
                :space-evenly false
+               :spacing 10
                :icon-size 20))))
 
 (defvar power false)
