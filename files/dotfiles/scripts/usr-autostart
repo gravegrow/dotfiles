@@ -19,4 +19,4 @@ gsettings set org.gnome.desktop.wm.preferences theme "$GTK_THEME" &
 
 setxkbmap -layout us,ru -option grp:alt_space_toggle &
 
-eww close-all && eww open-many statusbar0 statusbar1 &
+eww daemon && eww close-all && eww open-many statusbar0 statusbar1 &

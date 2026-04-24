@@ -43,9 +43,8 @@
          :text `${dwm["layouts"][screen]}`))
 
 (defwidget dwm-tags [screen]
-  (eventbox :onhover `[[ "$(dwm-msg get_monitors | jq -r '.[] | select(.num == ${screen}) | .is_selected')" == false ]] && dwm-msg run_command focusmon ${screen}`
   (literal :class "dwm-tags"
-           :content `${dwm["tags"][screen]}`)))
+           :content `${dwm["tags"][screen]}`))
 
 (defwidget dwm-title [screen]
   (box :orientation "v"

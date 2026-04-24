@@ -38,6 +38,7 @@ function get-tag-widgets() {
         read -r selected occupied urgent < <(echo "$monitor_data" |
             jq -r '.tag_state | "\(.selected) \(.occupied) \(.urgent)"')
 
+        echo -n "(eventbox :onhover \`[[ \"\$(dwm-msg get_monitors | jq -r '.[] | select(.num == $i) | .is_selected')\" == false ]] && dwm-msg run_command focusmon $i\`"
         echo -n "(box :class 'tag-container' :orientation 'v' :space-evenly false"
 
         for j in {0..8}; do
@@ -52,7 +53,7 @@ function get-tag-widgets() {
                 echo -n "(button :class '$class' :onclick 'dwm-msg run_command view $mask' '$tag_name') "
             fi
         done
-        echo ")"
+        echo "))"
     done | jq -R . | jq -sc
 }
 
