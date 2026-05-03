@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+status=warp-cli status | grep -e "Disconnected"

@@ -42,6 +42,14 @@
   (label :class "dwm-layouts"
          :text `${dwm["layouts"][screen]}`))
 
+(defpoll warp-icon :interval "5s"
+  `[[ -n $(warp-cli status | grep -o "Disconnected") ]] && echo "󰌙" || echo "󰌘"`
+)
+
+(defwidget warp-status []
+  (button :class "warp-status"
+          :onclick `[[ -n $(warp-cli status | grep -o "Disconnected") ]] && warp-cli connect || warp-cli disconnect; eww poll warp-icon` warp-icon))
+
 (defwidget dwm-tags [screen]
   (literal :class "dwm-tags"
            :content `${dwm["tags"][screen]}`))

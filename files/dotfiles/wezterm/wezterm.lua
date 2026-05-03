@@ -3,18 +3,22 @@ local config = wezterm.config_builder()
 
 -- config.ulimit_nofile = 64000
 
--- config.font = wezterm.font_with_fallback({ "TX - 02", "JetBrainsMono Nerd Font Mono" })
 config.font = wezterm.font_with_fallback({ "Berkeley Mono", "JetBrainsMono Nerd Font Mono" })
--- config.font = wezterm.font_with_fallback({ "Ioskeley Mono Nerd Font", "JetBrainsMono Nerd Font Mono" })
-config.line_height = 1.65
+config.line_height = 1.22
 config.font_size = 18
 
--- config.font = wezterm.font({ family = "VictorMono Nerd Font Mono ", weight = "Medium" })
--- config.line_height = 1.35
--- config.font_size = 18.5
-
 config.window_close_confirmation = "NeverPrompt"
--- config.front_end = "WebGpu"
+config.window_content_alignment = {
+    horizontal = "Center",
+    vertical = "Center",
+}
+
+config.window_padding = {
+    left = 9,
+    right = 9,
+    top = 9,
+    bottom = 9,
+}
 
 config.enable_tab_bar = false
 config.cursor_blink_rate = 0
@@ -23,8 +27,6 @@ config.color_scheme = "daily"
 config.underline_thickness = "1px"
 config.underline_position = "-3px"
 config.strikethrough_position = "0.5cell"
-
-config.max_fps = 120
 
 local make_session_keymap = function(key, paths, header)
     return {

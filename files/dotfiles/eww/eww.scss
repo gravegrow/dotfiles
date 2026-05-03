@@ -15,15 +15,20 @@ $blue: #7AA2F7;
 $magenta: #BB9AF7;
 $cyan: #7DCFFF;
 $white: $foreground;
+$text-font: "Berkeley Mono";
+$icon-font: "JetBrainsMono Nerd Font Mono";
 
 window {
   background: $background;
   color: $foreground;
 
-  font-family: "BerkeleyMono Nerd Font Mono";
+  font-family: $text-font;
   font-size: 18px;
 }
 
+.warp-status {
+  font-size: 1.5em;
+}
 
 .topsection {
   margin-top: 10;
@@ -45,12 +50,12 @@ window {
 }
 
 .dwm-layouts {
+  font-family: $icon-font;
   font-size: 1.0em;
 }
 
 .title-text {
-  font-size: 0.9em;
-  font-family: "monospace";
+  font-size: 17px;
   color: #464646;
 }
 
@@ -60,10 +65,13 @@ window {
     padding: 3px;
   }
 
+  padding: 0px 5px;
+
   button:hover {
-      color: #ffffff;
-      background-color: #101010
-    }
+    color: #998E89;
+    background-color: #1a1a1a;
+    border-radius: 5px;
+  }
 }
 
 .tag-selected {
@@ -83,11 +91,13 @@ window {
 }
 
 .volume-icon {
+  font-family: $icon-font;
   font-size: 1.3em;
 }
 
 // Powermenu
 .powermenu {
+  font-family: $icon-font;
   font-size: 1.3em;
 }
 

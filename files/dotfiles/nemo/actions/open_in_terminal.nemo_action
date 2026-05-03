@@ -1,7 +1,0 @@
-[Nemo Action]
-
-Name=Open in Terminal
-Comment=Open the terminal in the selected folder
-Exec=wezterm start --cwd %F
-Selection=any
-Extensions=dir;
