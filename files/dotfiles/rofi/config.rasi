@@ -2,3 +2,10 @@
 @import "shared/fonts.rasi"
 
 @import "launcher.rasi"
+
+configuration {
+ /* inside configuration*/
+
+    kb-cancel: "Escape,MousePrimary";
+    hover-select: true;
+}

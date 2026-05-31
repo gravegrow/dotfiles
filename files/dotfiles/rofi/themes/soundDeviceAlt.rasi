@@ -1,7 +1,7 @@
 @import "colors.rasi"
 
 * {
-    font:   "BerkeleyMono Nerd Font Mono 14";
+    font:   "Ioskeley Mono Term 14";
 }
 
 mainbox {
@@ -32,7 +32,7 @@ window {
     anchor:         south west;
     width:          230;
     y-offset:       -7%;
-    x-offset:       40;
+    x-offset:       0;
     height:         0%;
 
     border:             0px 0px 0px 0px;

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+SCREEN=${1:-0}
+
+eww open --toggle statusbar"$SCREEN"

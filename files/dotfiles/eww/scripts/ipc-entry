@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
+
+case $XDG_CURRENT_DESKTOP in
+Hyprland)
+    "$SCRIPT_DIR/hyprland-hook"
+    ;;
+*)
+    "$SCRIPT_DIR/dwm-hook"
+    ;;
+esac

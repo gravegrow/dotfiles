@@ -122,7 +122,13 @@ window {
   color: $blue;
 }
 
+
 // System Tray
+.systray-button {
+  font-family: $icon-font;
+  font-size: 1.2em;
+}
+
 menu {
   padding: 10px 10px;
   background-color: #101010;

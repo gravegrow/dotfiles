@@ -36,7 +36,7 @@
     (power)
   ))
 
-(deflisten dwm "scripts/dwm-hook")
+(deflisten dwm "scripts/ipc-entry")
 
 (defwidget dwm-layouts [screen]
   (label :class "dwm-layouts"
@@ -127,7 +127,7 @@
   (box :orientation "v"
        :space-evenly false
     (button :class "systray-button"
-            :onclick "eww update showsystray=${!showsystray}" `${showsystray ?  "﹀" : "︿"}`)
+            :onclick "eww update showsystray=${!showsystray}" "󰇘" )
     (revealer :transition "slideup"
               :reveal showsystray
               :duration "200ms"
@@ -156,22 +156,24 @@
   :monitor 0
   :windowtype "dock"
   :wm-ignore true
+  :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "40"
                       :height "100%"
-                      :anchor "top left")
-  :reserve (struts :side "top" :distance "4%")
+                      :anchor "center left")
+  :reserve (struts :side "left" :distance "40")
   (statusbar :screen 0))
 
 (defwindow statusbar1 []
   :monitor 1
   :windowtype "dock"
   :wm-ignore true
+  :exclusive true
   :geometry (geometry :x "0%"
                       :y "0%"
                       :width "40"
                       :height "100%"
-                      :anchor "top left")
+                      :anchor "center left")
   :reserve (struts :side "top" :distance "4%")
   (statusbar :screen 1))

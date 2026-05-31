@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+function format() {
+    echo -n "\"$1\" : $2"
+}
+
+# { "󰙀",      tilewide },
+# { "󰄶",      NULL },    /* no layout function means floating behavior */
+# { "",      monocle },
+# { "󰙀",      tile },    /* first entry is default */
+# { "󰵆",      centeredmaster },
+# { "󰅨",      centeredfloatingmaster },
+
+function layout-symbol() {
+    case "$1" in
+    "master")
+        echo "󰙀"
+        ;;
+    "monocle")
+        echo ""
+        ;;
+    *)
+        echo "󰄶"
+        ;;
+    esac
+
+}
+
+function get-layout-symbols() {
+    monitors=$(hyprctl -j monitors)
+    workspaces=$(hyprctl -j workspaces)
+
+    echo "$monitors" | jq -c '.[]' | while read -r monitor; do
+        active_ws=$(echo "$monitor" | jq -r '.activeWorkspace.id')
+        layout=$(echo "$workspaces" | jq -r ".[] | select(.id == $active_ws) | .tiledLayout")
+        layout-symbol "$layout"
+    done | jq -R . | jq -sc
+
+}
+
+function get-window-titles() {
+    window=$(hyprctl activewindow -j)
+    monitorID=$(echo "$window" | jq -ec ".monitor")
+    title=$(echo "$window" | jq -ec ".title")
+    hyprctl monitors -j | jq -ec --argjson id "$monitorID" --argjson title "$title" '[if .[].id == $id then $title else "" end]'
+}
+
+function get-tag-widgets() {
+    local monIDs workspaces monData activeWS
+
+    monIDs=$(hyprctl monitors -j | jq -rc '.[] | .id')
+
+    for id in $monIDs; do
+        workspaces=$(hyprctl workspaces -j | jq -rc "[.[] | select(.monitorID == $id) | .id] | sort []")
+        monData=$(hyprctl monitors -j | jq -rc ".[] | select(.id == $id)")
+        activeWS=$(echo "$monData" | jq -rc '.activeWorkspace.id')
+
+        echo -n "(box :class 'tag-container' :orientation 'v' :space-evenly false"
+
+        class="tag-occupied"
+        for tag in $workspaces; do
+            [[ "$tag" == "$activeWS" ]] && class="tag-selected" || class="tag-occupied"
+
+            echo -n "(button :class '$class' :onclick 'hyprctl dispatch \"hl.dsp.focus({ workspace = \"$tag\" })\"' '$((tag % 10))') "
+        done
+        echo ")"
+    done | jq -R . | jq -sc
+}
+
+function update() {
+    echo -n "{"
+    format layouts "$(get-layout-symbols),"
+    format tags "$(get-tag-widgets),"
+    format titles "$(get-window-titles)"
+    echo "}"
+}
+
+socat -U - UNIX-CONNECT:"$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock" | while read -r line; do
+    update
+done

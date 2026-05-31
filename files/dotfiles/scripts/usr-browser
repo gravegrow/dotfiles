@@ -1,3 +1,12 @@
 #!/usr/bin/env bash
 
-brave
+DISPLAY_SERVER="$XDG_SESSION_TYPE"
+
+case "$DISPLAY_SERVER" in
+wayland)
+    brave --disable-features=WaylandFractionalScaleV1
+    ;;
+*)
+    brave
+    ;;
+esac
