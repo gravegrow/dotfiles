@@ -44,6 +44,10 @@ hl.layout.register("tilewide", {
 	layout_msg = function(ctx, msg)
 		local command, arg = msg:match("^(%S+)%s*(.*)$")
 		--
+		hl.notification.create({
+			text = command .. " | " .. arg,
+			duration = 4000,
+		})
 		if command == "mfact" then
 			state.mfact = clamp(state.mfact + tonumber(arg), 0.1, 0.9)
 		elseif command == "incnmaster" then
@@ -58,15 +62,6 @@ hl.layout.register("tilewide", {
 				state.mfact = math.max(0.15, math.min(0.85, state.mfact + delta))
 			end
 		end
-		-- elseif command == "grow" then
-		-- 	state.ratio = clamp(state.ratio + 0.05, 0.1, 0.9)
-		-- elseif command == "shrink" then
-		-- 	state.ratio = clamp(state.ratio - 0.05, 0.1, 0.9)
-		-- elseif command == "rotate" then
-		-- 	state.offset = (state.offset + 1) % #sides
-		-- else
-		-- 	return "spiral: expected ratio <0.1..0.9>, grow, shrink, or rotate"
-		-- end
 
 		return true
 	end,

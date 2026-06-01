@@ -28,7 +28,9 @@ local browser_private = "usr-browser-private"
 local files_gui = "usr-files-gui"
 local files_tui = "usr-files-tui"
 local applauncher = "usr-applauncher"
+local colopicker = "usr-colorpicker"
 
+local MAIN_LAYOUT = "master"
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -74,20 +76,19 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
 	general = {
-
-		gaps_in = 3,
+		gaps_in = 0,
 		gaps_out = 12,
 
-		border_size = 2,
+		border_size = 1,
 
 		col = {
-			active_border = { colors = { "rgba(4b555fff)" } },
-			inactive_border = "rgba(0a0a0aff)",
+			active_border = { colors = { "rgba(968d88FF)" } },
+			inactive_border = "rgba(00000000)",
 		},
 
 		allow_tearing = false,
 
-		layout = "master",
+		layout = MAIN_LAYOUT,
 	},
 
 	decoration = {
@@ -199,6 +200,7 @@ Bind.run({ LEADER, "E" }, files_tui)
 Bind.run({ LEADER, "SHIFT", "E" }, files_gui)
 Bind.run({ LEADER, "B" }, browser)
 Bind.run({ LEADER, "SHIFT", "B" }, browser_private)
+Bind.run({ LEADER, "C" }, colopicker)
 
 Bind.layout_msg({ LEADER, "J" }, "cyclenext")
 Bind.layout_msg({ LEADER, "K" }, "cycleprev")
@@ -212,8 +214,8 @@ Bind.layout_msg({ LEADER, "SHIFT", "J" }, "swapwithmaster")
 Bind.layout_msg({ LEADER, "H" }, "mfact -0.05")
 Bind.layout_msg({ LEADER, "L" }, "mfact +0.05")
 
-Bind.layout_msg({ LEADER, "I" }, "incnmaster +1")
-Bind.layout_msg({ LEADER, "D" }, "incnmaster -1")
+Bind.layout_msg({ LEADER, "I" }, "addmaster")
+Bind.layout_msg({ LEADER, "D" }, "removemaster")
 
 Bind.bind({ LEADER, "comma" }, function()
 	hl.dispatch(hl.dsp.focus({ monitor = (hl.get_active_monitor().id - 1) % #hl.get_monitors() }))
@@ -236,6 +238,7 @@ Bind.bind({ LEADER, "M" }, function()
 		workspace = tostring(hl.get_active_workspace().id),
 		layout = "monocle",
 		no_border = true,
+		no_rounding = false,
 	})
 end)
 
@@ -246,12 +249,13 @@ Bind.bind({ LEADER, "T" }, function()
 	end
 	hl.workspace_rule({
 		workspace = tostring(workspace.id),
-		layout = "master",
+		layout = MAIN_LAYOUT,
 		no_border = #workspace:get_windows() == 1,
+		no_rounding = true,
 	})
 end)
 
-for _, event in pairs({ "window.open", "window.close", "window.destroy", "window.kill" }) do
+for _, event in pairs({ "window.open", "window.close", "window.destroy", "window.kill", "window.active" }) do
 	hl.on(event, function(_)
 		local workspace = hl.get_active_workspace()
 		if workspace == nil then
@@ -261,6 +265,7 @@ for _, event in pairs({ "window.open", "window.close", "window.destroy", "window
 		hl.workspace_rule({
 			workspace = tostring(workspace.id),
 			no_border = show_border,
+			no_rounding = not show_border,
 		})
 	end)
 end
@@ -278,7 +283,7 @@ local function move_to_workspace(index)
 		workspace = index,
 		on_current_monitor = true,
 		follow = false,
-		layout = "master",
+		-- layout = "master",
 	}))
 end
 

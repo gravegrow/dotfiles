@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
-selected=$(find $@ -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf)
+export FZF_DEFAULT_OPTS="\
+  --prompt '  ' --pointer ' ' --scrollbar '┃' --gutter ' '\
+  --border none --preview-window sharp --reverse --cycle --info inline-right \
+  --color pointer:4,scrollbar:4,info:8 \
+  --color fg:7,fg+:15,bg+:-1,border:gray \
+  --color preview-bg:-1,preview-border:gray \
+  --color hl:#D27E99,hl+:#D27E99 \
+  --bind ctrl-y:accept,ctrl-u:preview-up,ctrl-d:preview-down"
+
+selected=$(find "$@" -mindepth 1 -maxdepth 1 -type d -not -path "*/.git" | fzf)
 
 if [[ -z $selected ]]; then
 	exit 0
@@ -8,13 +17,13 @@ fi
 
 selected_name=$(basename "$selected" | tr . -)
 
-if ! tmux has-session -t=$selected_name 2>/dev/null; then
-	tmux new-session -ds $selected_name -c $selected
+if ! tmux has-session -t="$selected_name" 2>/dev/null; then
+	tmux new-session -ds "$selected_name" -c "$selected"
 
 	if [[ -f "$selected/.tmux" ]]; then
 		cd "$selected"
-		tmux source -t $selected_name "$selected/.tmux"
+		tmux source -t "$selected_name" "$selected/.tmux"
 	fi
 fi
 
-tmux switch-client -t $selected_name
+tmux switch-client -t "$selected_name"
