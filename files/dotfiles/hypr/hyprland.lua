@@ -79,11 +79,11 @@ hl.config({
 		gaps_in = 0,
 		gaps_out = 12,
 
-		border_size = 1,
+		border_size = 2,
 
 		col = {
 			active_border = { colors = { "rgba(968d88FF)" } },
-			inactive_border = "rgba(00000000)",
+			inactive_border = "rgba(0a0a0aFF)",
 		},
 
 		allow_tearing = false,
@@ -95,6 +95,9 @@ hl.config({
 		rounding = 12,
 		rounding_power = 2,
 		blur = {
+			enabled = false,
+		},
+		shadow = {
 			enabled = false,
 		},
 	},

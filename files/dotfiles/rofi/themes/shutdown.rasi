@@ -1,7 +1,7 @@
 @import "colors.rasi"
 
 * {
-    font:   "BerkeleyMono Nerd Font Mono 14";
+    font:   "BerkeleyMono 14";
 }
 
 mainbox {
@@ -23,18 +23,18 @@ element selected normal, element selected active {
 }
 
 element-text {
-    horizontal-align: 0.50;
+    horizontal-align: 0.5;
 }
 
 window {
-    location:       north east;
-    anchor:       north east;
-    width:          260;
-    y-offset:       24;
+    location:       south west;
+    anchor:         south west;
+    width:          240;
+    y-offset:       0;
     x-offset:       0;
 
     border:             0px 0px 0px 0px;
-    border-radius:      0px 0px 0px 15px;
+    border-radius:      0px 15px 0px 0px;
     border-color:       #202020;
     background-color:   @background;
 }

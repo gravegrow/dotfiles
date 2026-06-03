@@ -10,6 +10,10 @@ else
     compinit -C
 fi
 
+# zstyle ':completion:*' completer _expand _complete _ignored _approximate
+# zstyle ':completion:*' file-sort name
+# zstyle ':completion:*' ignore-parents parent pwd
+
 autoload -U select-word-style
 select-word-style bash
 
@@ -49,7 +53,7 @@ bindkey '^[[1;5C' forward-word
 alias ls="eza --color=always"
 alias cat="bat --color=always --style=plain --theme=base16"
 
-ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
 ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=15'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=cyan,bold'

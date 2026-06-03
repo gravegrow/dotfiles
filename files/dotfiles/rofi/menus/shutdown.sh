@@ -1,6 +1,6 @@
 #!/bin/sh
 
-entry1="Logout        ⏼"
+entry1="Logout        󰤁"
 entry2="Reboot        "
 entry3="Shutdown      "
 

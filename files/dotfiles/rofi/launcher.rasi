@@ -36,6 +36,7 @@ configuration {
     alternate-urgent-foreground: var(background);
     alternate-active-background: var(active);
     alternate-active-foreground: var(background);
+    iconFont:                    var(iconFont);
 }
 
 /*****----- Main Window -----*****/
@@ -100,6 +101,7 @@ prompt {
     enabled:                     true;
     background-color:            inherit;
     text-color:                  inherit;
+    font:                        "JetBrainsMono Nerd Font Mono 16";
 }
 textbox-prompt-colon {
     enabled:                     true;
@@ -153,7 +155,7 @@ listview {
     reverse:                     false;
     fixed-height:                true;
     fixed-columns:               true;
-    
+
     spacing:                     5px;
     margin:                      0px;
     padding:                     0px;
@@ -255,6 +257,8 @@ button {
     background-color:            @alternate-background;
     text-color:                  inherit;
     cursor:                      pointer;
+    font:                        "JetBrainsMono Nerd Font Mono 18";
+
 }
 button selected {
     background-color:            var(selected-normal-background);
