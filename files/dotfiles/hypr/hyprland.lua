@@ -1,20 +1,22 @@
 require("layouts.tilewide")
+local Bind = require("binds")
+local utils = require("utils")
 
-local monitor1 = "DP-2"
-local monitor2 = "HDMI-A-1"
+local MONITOR_01_NAME = "DP-2"
+local MONITOR_02_NAME = "HDMI-A-1"
 
 hl.monitor({
-	output = monitor1,
-	mode = "3440x1440@144",
-	position = "0x0",
-	scale = 1,
+    output = MONITOR_01_NAME,
+    mode = "3440x1440@144",
+    position = "0x0",
+    scale = 1,
 })
 
 hl.monitor({
-	output = monitor2,
-	mode = "1920x1080@60",
-	position = "3440x0",
-	scale = 0.75,
+    output = MONITOR_02_NAME,
+    mode = "1920x1080@60",
+    position = "3440x0",
+    scale = 0.75,
 })
 
 ---------------------
@@ -31,6 +33,7 @@ local applauncher = "usr-applauncher"
 local colopicker = "usr-colorpicker"
 
 local MAIN_LAYOUT = "master"
+
 -------------------
 ---- AUTOSTART ----
 -------------------
@@ -39,10 +42,11 @@ local MAIN_LAYOUT = "master"
 
 -- Autostart necessary processes (like notifications daemons, status bars, etc.)
 -- Or execute your favorite apps at launch like this:
---
+
 hl.on("hyprland.start", function()
-	hl.exec_cmd("eww open-many statusbar0 statusbar1")
-	hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("eww open-many statusbar0 statusbar1")
+    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
 end)
 
 -------------------------------
@@ -75,51 +79,54 @@ hl.env("HYPRCURSOR_SIZE", "24")
 -----------------------
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
 hl.config({
-	general = {
-		gaps_in = 0,
-		gaps_out = 12,
+    general = {
+        gaps_in = 0,
+        gaps_out = 12,
 
-		border_size = 2,
+        border_size = 0,
 
-		col = {
-			active_border = { colors = { "rgba(968d88FF)" } },
-			inactive_border = "rgba(0a0a0aFF)",
-		},
+        col = {
+            active_border = { colors = { "rgba(d27e99FF)" } },
+            inactive_border = "rgba(202020FF)",
+        },
 
-		allow_tearing = false,
+        allow_tearing = false,
 
-		layout = MAIN_LAYOUT,
-	},
+        layout = MAIN_LAYOUT,
+    },
 
-	decoration = {
-		rounding = 12,
-		rounding_power = 2,
-		blur = {
-			enabled = false,
-		},
-		shadow = {
-			enabled = false,
-		},
-	},
+    decoration = {
+        rounding = 12,
+        rounding_power = 2,
+        blur = {
+            enabled = false,
+        },
+        shadow = {
+            enabled = false,
+        },
+    },
 
-	animations = {
-		enabled = false,
-	},
+    animations = {
+        enabled = false,
+    },
 
-	render = {
-		cm_enabled = false,
-	},
+    render = {
+        cm_enabled = false,
+    },
 
-	cursor = {
-		no_warps = true,
-	},
+    cursor = {
+        no_warps = true,
+    },
 })
 
 hl.config({
-	master = {
-		new_status = "slave",
-		mfact = 0.6,
-	},
+    master = {
+        new_status = "slave",
+        mfact = 0.6,
+    },
+    xwayland = {
+        force_zero_scaling = true,
+    },
 })
 
 ----------------
@@ -127,10 +134,12 @@ hl.config({
 ----------------
 
 hl.config({
-	misc = {
-		force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
-		disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
-	},
+    misc = {
+        force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
+        disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
+        enable_swallow = true,
+        swallow_regex = "^(org.wezfurlong.wezterm)$",
+    },
 })
 
 ---------------
@@ -138,34 +147,27 @@ hl.config({
 ---------------
 
 hl.config({
-	input = {
-		kb_layout = "us,ru",
-		kb_variant = "",
-		kb_model = "",
-		kb_options = "grp:alt_space_toggle",
-		kb_rules = "",
+    input = {
+        kb_layout = "us,ru",
+        kb_variant = "",
+        kb_model = "",
+        kb_options = "grp:alt_space_toggle",
+        kb_rules = "",
 
-		follow_mouse = 1,
+        follow_mouse = 1,
 
-		sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
+        sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
 
-		touchpad = {
-			natural_scroll = false,
-		},
-	},
+        touchpad = {
+            natural_scroll = false,
+        },
+    },
 })
 
 hl.gesture({
-	fingers = 3,
-	direction = "horizontal",
-	action = "workspace",
-})
-
--- Example per-device config
--- See https://wiki.hypr.land/Configuring/Advanced-and-Cool/Devices/ for more
-hl.device({
-	name = "epic-mouse-v1",
-	sensitivity = -0.5,
+    fingers = 3,
+    direction = "horizontal",
+    action = "workspace",
 })
 
 ---------------------
@@ -174,28 +176,8 @@ hl.device({
 
 local LEADER = "SUPER" -- Sets "Windows" key as main modifier
 
-local Bind = {}
-
-Bind.bind = function(keys, command)
-	local sequence = LEADER
-	for _, key in ipairs(keys) do
-		sequence = sequence .. " + " .. key
-	end
-	return hl.bind(sequence, command)
-end
-
-Bind.run = function(keys, command)
-	return Bind.bind(keys, hl.dsp.exec_cmd(command))
-end
-
-Bind.layout_msg = function(keys, msg)
-	return Bind.bind(keys, hl.dsp.layout(msg))
-end
-
 Bind.bind({ LEADER, "SHIFT", "Q" }, hl.dsp.window.close())
-
-Bind.bind({ LEADER, "SHIFT", "Space" }, hl.dsp.window.float({ action = "toggle" }))
-Bind.bind({ LEADER, "mouse:274" }, hl.dsp.window.float({ action = "toggle" }))
+Bind.bind({ LEADER, "W" }, utils.toggle_statusbar)
 
 Bind.run({ LEADER, "Space" }, applauncher)
 Bind.run({ LEADER, "Return" }, terminal)
@@ -205,11 +187,13 @@ Bind.run({ LEADER, "B" }, browser)
 Bind.run({ LEADER, "SHIFT", "B" }, browser_private)
 Bind.run({ LEADER, "C" }, colopicker)
 
+Bind.bind({ LEADER, "SHIFT", "Space" }, utils.toggle_floating_centered)
+Bind.bind({ LEADER, "mouse:274" }, utils.toggle_floating_centered)
+
+Bind.bind({ LEADER, "SHIFT", "F" }, hl.dsp.window.fullscreen({ action = "toggle" }))
+
 Bind.layout_msg({ LEADER, "J" }, "cyclenext")
 Bind.layout_msg({ LEADER, "K" }, "cycleprev")
-
--- Bind.layout_msg({ LEADER, "SHIFT", "J" }, "swapnext")
--- Bind.layout_msg({ LEADER, "SHIFT", "K" }, "swapprev")
 
 Bind.layout_msg({ LEADER, "F" }, "focusmaster")
 Bind.layout_msg({ LEADER, "SHIFT", "J" }, "swapwithmaster")
@@ -217,87 +201,32 @@ Bind.layout_msg({ LEADER, "SHIFT", "J" }, "swapwithmaster")
 Bind.layout_msg({ LEADER, "H" }, "mfact -0.05")
 Bind.layout_msg({ LEADER, "L" }, "mfact +0.05")
 
-Bind.layout_msg({ LEADER, "I" }, "addmaster")
-Bind.layout_msg({ LEADER, "D" }, "removemaster")
+-- Bind.layout_msg({ LEADER, "I" }, "incnmaster +1")
+-- Bind.layout_msg({ LEADER, "D" }, "incnmaster -1")
 
 Bind.bind({ LEADER, "comma" }, function()
-	hl.dispatch(hl.dsp.focus({ monitor = (hl.get_active_monitor().id - 1) % #hl.get_monitors() }))
+    hl.dispatch(hl.dsp.focus({ monitor = (hl.get_active_monitor().id - 1) % #hl.get_monitors() }))
 end)
 
 Bind.bind({ LEADER, "period" }, function()
-	hl.dispatch(hl.dsp.focus({ monitor = (hl.get_active_monitor().id + 1) % #hl.get_monitors() }))
+    hl.dispatch(hl.dsp.focus({ monitor = (hl.get_active_monitor().id + 1) % #hl.get_monitors() }))
 end)
 
 Bind.bind({ LEADER, "SHIFT", "comma" }, function()
-	hl.dispatch(hl.dsp.window.move({ monitor = (hl.get_active_monitor().id - 1) % #hl.get_monitors() }))
+    hl.dispatch(hl.dsp.window.move({ monitor = (hl.get_active_monitor().id - 1) % #hl.get_monitors() }))
 end)
 
 Bind.bind({ LEADER, "SHIFT", "period" }, function()
-	hl.dispatch(hl.dsp.window.move({ monitor = (hl.get_active_monitor().id + 1) % #hl.get_monitors() }))
+    hl.dispatch(hl.dsp.window.move({ monitor = (hl.get_active_monitor().id + 1) % #hl.get_monitors() }))
 end)
 
-Bind.bind({ LEADER, "M" }, function()
-	hl.workspace_rule({
-		workspace = tostring(hl.get_active_workspace().id),
-		layout = "monocle",
-		no_border = true,
-		no_rounding = false,
-	})
-end)
-
-Bind.bind({ LEADER, "T" }, function()
-	local workspace = hl.get_active_workspace()
-	if workspace == nil then
-		return
-	end
-	hl.workspace_rule({
-		workspace = tostring(workspace.id),
-		layout = MAIN_LAYOUT,
-		no_border = #workspace:get_windows() == 1,
-		no_rounding = true,
-	})
-end)
-
-for _, event in pairs({ "window.open", "window.close", "window.destroy", "window.kill", "window.active" }) do
-	hl.on(event, function(_)
-		local workspace = hl.get_active_workspace()
-		if workspace == nil then
-			return
-		end
-		local show_border = #workspace:get_windows() == 1 or workspace.tiled_layout == "monocle"
-		hl.workspace_rule({
-			workspace = tostring(workspace.id),
-			no_border = show_border,
-			no_rounding = not show_border,
-		})
-	end)
-end
-
-local function swap_workspace(index)
-	local id = hl.get_active_monitor().id
-	index = id * 10 + index
-	hl.dispatch(hl.dsp.focus({ workspace = index, on_current_monitor = true }))
-end
-
-local function move_to_workspace(index)
-	local id = hl.get_active_monitor().id
-	index = id * 10 + index
-	hl.dispatch(hl.dsp.window.move({
-		workspace = index,
-		on_current_monitor = true,
-		follow = false,
-		-- layout = "master",
-	}))
-end
+Bind.bind({ LEADER, "T" }, utils.switch_layout(MAIN_LAYOUT))
+Bind.bind({ LEADER, "M" }, utils.switch_layout("monocle"))
 
 for i = 1, 10 do
-	local key = i % 10
-	hl.bind(LEADER .. " + " .. key, function()
-		swap_workspace(key)
-	end)
-	hl.bind(LEADER .. " + SHIFT + " .. key, function()
-		move_to_workspace(i)
-	end)
+    local key = i % 10
+    Bind.bind({ LEADER, key }, utils.swap_workspace(key))
+    Bind.bind({ LEADER, "SHIFT", key }, utils.move_to_workspace(i))
 end
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
@@ -306,24 +235,24 @@ hl.bind(LEADER .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
-	"XF86AudioRaiseVolume",
-	hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
-	{ locked = true, repeating = true }
+    "XF86AudioRaiseVolume",
+    hl.dsp.exec_cmd("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+"),
+    { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioLowerVolume",
-	hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
-	{ locked = true, repeating = true }
+    "XF86AudioLowerVolume",
+    hl.dsp.exec_cmd("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"),
+    { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
-	{ locked = true, repeating = true }
+    "XF86AudioMute",
+    hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"),
+    { locked = true, repeating = true }
 )
 hl.bind(
-	"XF86AudioMicMute",
-	hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
-	{ locked = true, repeating = true }
+    "XF86AudioMicMute",
+    hl.dsp.exec_cmd("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"),
+    { locked = true, repeating = true }
 )
 
 -- Requires playerctl
@@ -342,41 +271,62 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true 
 -- Example window rules that are useful
 
 for i = 1, 10 do
-	hl.workspace_rule({ workspace = tostring(i), monitor = monitor1 })
-	hl.workspace_rule({ workspace = tostring(i + 10), monitor = monitor2 })
+    hl.workspace_rule({ workspace = tostring(i), monitor = MONITOR_01_NAME })
+    hl.workspace_rule({ workspace = tostring(i + 10), monitor = MONITOR_02_NAME })
 end
 
 hl.window_rule({
-	-- Ignore maximize requests from all apps. You'll probably like this.
-	name = "suppress-maximize-events",
-	match = { class = ".*" },
+    -- Ignore maximize requests from all apps. You'll probably like this.
+    name = "suppress-maximize-events",
+    match = { class = ".*" },
 
-	suppress_event = "maximize",
+    suppress_event = "maximize",
 })
 
 hl.window_rule({
-	name = "fix-xwayland-drags",
-	match = {
-		class = "^$",
-		title = "^$",
-		xwayland = true,
-		float = true,
-		fullscreen = false,
-		pin = false,
-	},
+    name = "fix-xwayland-drags",
+    match = {
+        class = "^$",
+        title = "^$",
+        xwayland = true,
+        float = true,
+        fullscreen = false,
+        pin = false,
+    },
 
-	no_focus = true,
+    no_focus = true,
 })
 
 hl.window_rule({
-	name = "qBittorrent-workspace",
-	monitor = 1,
-	workspace = 15,
-	match = { class = "org.qbittorrent.qBittorrent" },
+    name = "qBittorrent-workspace",
+    monitor = 1,
+    workspace = 15,
+    match = { class = "org.qbittorrent.qBittorrent" },
 })
 
 hl.window_rule({
-	name = "mpv-monitor",
-	monitor = 0,
-	match = { class = "mpv" },
+    name = "mpv-monitor",
+    monitor = 0,
+    match = { class = "mpv" },
+})
+
+hl.window_rule({
+    name = "start-floating",
+    match = { class = "org.gnome.Calculator" },
+    float = true,
+})
+
+hl.window_rule({
+    name = "floating-tweaks",
+    match = { float = true },
+    center = true,
+    border_size = 2,
+    rounding = 11,
+    border_color = "rgb(202020)",
+})
+
+hl.workspace_rule({
+    workspace = "w[tv2-99]",
+    border_size = 1,
+    no_rounding = true,
 })

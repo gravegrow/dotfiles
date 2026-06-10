@@ -148,7 +148,7 @@
 
       (button :class "button-off"
 	:tooltip "Shutdown"
-	:onclick "/home/user/.config/dotfiles/files/dotfiles/rofi/menus/shutdown.sh" ""))))
+	:onclick "/home/user/.config/dotfiles/files/dotfiles/rofi/menus/shutdown.sh &" ""))))
 
 
 

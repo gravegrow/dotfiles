@@ -3,17 +3,7 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-autoload -Uz compinit
-if [ "$(date +'%j')" != "$(stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)" ]; then
-    compinit
-else
-    compinit -C
-fi
-
-# zstyle ':completion:*' completer _expand _complete _ignored _approximate
-# zstyle ':completion:*' file-sort name
-# zstyle ':completion:*' ignore-parents parent pwd
-
+autoload -Uz compinit && compinit
 autoload -U select-word-style
 select-word-style bash
 
@@ -47,14 +37,18 @@ bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
 
 [[ -z $LS_COLORS ]] && eval "$(dircolors -b)"
 
 alias ls="eza --color=always"
 alias cat="bat --color=always --style=plain --theme=base16"
 
-ZSH_AUTOSUGGEST_STRATEGY=(completion history match_prev_cmd)
-ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="(nvim *|./*)"
+
+ZSH_AUTOSUGGEST_STRATEGY=(history completion match_prev_cmd)
+# ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=15'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=cyan,bold'
 
@@ -109,6 +103,14 @@ _fix_cursor() {
 }
 
 precmd_functions+=(_fix_cursor)
+
+function yazi() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	command yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ "$cwd" != "$PWD" ] && [ -d "$cwd" ] && builtin cd -- "$cwd"
+	command rm -f -- "$tmp"
+}
 
 eval "$(fzf --zsh)"
 eval "$(starship init zsh)"
