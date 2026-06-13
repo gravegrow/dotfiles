@@ -113,4 +113,4 @@ function yazi() {
 }
 
 eval "$(fzf --zsh)"
-eval "$(starship init zsh)"
+eval "$(starship init zsh)" && clear

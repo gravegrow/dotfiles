@@ -5,19 +5,26 @@ local utils = require("utils")
 local MONITOR_01_NAME = "DP-2"
 local MONITOR_02_NAME = "HDMI-A-1"
 
-hl.monitor({
-    output = MONITOR_01_NAME,
-    mode = "3440x1440@144",
-    position = "0x0",
-    scale = 1,
-})
+local setup = {}
 
-hl.monitor({
-    output = MONITOR_02_NAME,
-    mode = "1920x1080@60",
-    position = "3440x0",
-    scale = 0.75,
-})
+setup.monitors = {
+    {
+        output = MONITOR_01_NAME,
+        mode = "3440x1440@144",
+        position = "0x0",
+        scale = 1,
+    },
+    {
+        output = MONITOR_02_NAME,
+        mode = "1920x1080@60",
+        position = "3440x0",
+        scale = 0.75,
+    },
+}
+
+for _, spec in ipairs(setup.monitors) do
+    hl.monitor(spec)
+end
 
 ---------------------
 ---- MY PROGRAMS ----
@@ -54,7 +61,9 @@ end)
 -------------------------------
 
 hl.env("XCURSOR_SIZE", "24")
-hl.env("HYPRCURSOR_SIZE", "24")
+hl.env("XCURSOR_THEME", "Nordzy-cursors-white")
+hl.env("QT_QPA_PLATFORMTHEME", "qt6ct")
+hl.env("QT_SCALE_FACTOR", "1")
 
 -----------------------
 ----- PERMISSIONS -----
@@ -138,7 +147,7 @@ hl.config({
         force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
         enable_swallow = true,
-        swallow_regex = "^(org.wezfurlong.wezterm)$",
+        swallow_regex = "^(kitty)$",
     },
 })
 
@@ -155,19 +164,8 @@ hl.config({
         kb_rules = "",
 
         follow_mouse = 1,
-
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
-
-        touchpad = {
-            natural_scroll = false,
-        },
     },
-})
-
-hl.gesture({
-    fingers = 3,
-    direction = "horizontal",
-    action = "workspace",
 })
 
 ---------------------
@@ -175,9 +173,6 @@ hl.gesture({
 ---------------------
 
 local LEADER = "SUPER" -- Sets "Windows" key as main modifier
-
-Bind.bind({ LEADER, "SHIFT", "Q" }, hl.dsp.window.close())
-Bind.bind({ LEADER, "W" }, utils.toggle_statusbar)
 
 Bind.run({ LEADER, "Space" }, applauncher)
 Bind.run({ LEADER, "Return" }, terminal)
@@ -187,6 +182,8 @@ Bind.run({ LEADER, "B" }, browser)
 Bind.run({ LEADER, "SHIFT", "B" }, browser_private)
 Bind.run({ LEADER, "C" }, colopicker)
 
+Bind.bind({ LEADER, "SHIFT", "Q" }, hl.dsp.window.close())
+Bind.bind({ LEADER, "W" }, utils.toggle_statusbar)
 Bind.bind({ LEADER, "SHIFT", "Space" }, utils.toggle_floating_centered)
 Bind.bind({ LEADER, "mouse:274" }, utils.toggle_floating_centered)
 
@@ -201,8 +198,8 @@ Bind.layout_msg({ LEADER, "SHIFT", "J" }, "swapwithmaster")
 Bind.layout_msg({ LEADER, "H" }, "mfact -0.05")
 Bind.layout_msg({ LEADER, "L" }, "mfact +0.05")
 
--- Bind.layout_msg({ LEADER, "I" }, "incnmaster +1")
--- Bind.layout_msg({ LEADER, "D" }, "incnmaster -1")
+Bind.layout_msg({ LEADER, "I" }, "incnmaster +1")
+Bind.layout_msg({ LEADER, "D" }, "incnmaster -1")
 
 Bind.bind({ LEADER, "comma" }, function()
     hl.dispatch(hl.dsp.focus({ monitor = (hl.get_active_monitor().id - 1) % #hl.get_monitors() }))
@@ -256,10 +253,10 @@ hl.bind(
 )
 
 -- Requires playerctl
-hl.bind("XF86AudioNext", hl.dsp.exec_cmd("playerctl next"), { locked = true })
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
-hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("playerctl previous"), { locked = true })
+hl.bind("XF86AudioNext", hl.dsp.exec_cmd("rmpc next"), { locked = true })
+hl.bind("XF86AudioPause", hl.dsp.exec_cmd("rmpc togglepause"), { locked = true })
+hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("rmpc togglepause"), { locked = true })
+hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("rmpc prev"), { locked = true })
 
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----

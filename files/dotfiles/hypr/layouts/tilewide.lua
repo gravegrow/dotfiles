@@ -1,5 +1,5 @@
 local state = {
-    mfact = 0.66,
+    mfact = 0.60,
     nmaster = 1,
 }
 
@@ -19,10 +19,14 @@ hl.layout.register("tilewide", {
             return
         end
 
-        local active_masters = math.min(n, state.nmaster)
+        local active_masters = math.min(n - 1, state.nmaster)
         local total_slaves = n - active_masters
 
-        state.nmaster = total_slaves == 0 and clamp(state.nmaster, 1, active_masters - 1) or state.nmaster
+        state.nmaster = clamp(state.nmaster, 1, n - 1)
+
+        if state.nmaster > 2 then
+            state.mfact = 1 - (1 / (state.nmaster + 1))
+        end
 
         local master_area = ctx:split(ctx.area, "left", state.mfact)
         local slave_area = ctx:split(ctx.area, "right", 1 - state.mfact)
@@ -43,16 +47,18 @@ hl.layout.register("tilewide", {
 
     layout_msg = function(ctx, msg)
         local command, arg = msg:match("^(%S+)%s*(.*)$")
+        local num_clients = #ctx.targets
 
         hl.notification.create({
             text = command .. " | " .. arg,
-            duration = 4000,
+            timeout = 4000,
         })
 
         if command == "mfact" then
             state.mfact = clamp(state.mfact + tonumber(arg), 0.1, 0.9)
         elseif command == "incnmaster" then
             state.nmaster = clamp(state.nmaster + tonumber(arg), 1, #ctx.targets - 1)
+            state.mfact = 1 - (1 / (state.nmaster + 1))
         elseif command == "cyclenext" then
             hl.dispatch(hl.dsp.window.cycle_next({ next = true, tiled = true }))
         elseif command == "cycleprev" then
