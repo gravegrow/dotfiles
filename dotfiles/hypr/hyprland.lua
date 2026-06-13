@@ -84,6 +84,7 @@ hl.env("XCURSOR_THEME", "Nordzy-cursors-white")
 ---- LOOK AND FEEL ----
 -----------------------
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+
 hl.config({
     general = {
         gaps_in = 0,
