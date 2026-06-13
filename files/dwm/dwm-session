@@ -1,7 +1,0 @@
-#!/bin/bash
-
-dwm-autostart
-
-while type dwm >/dev/null; do
-  dwm && continue || break
-done

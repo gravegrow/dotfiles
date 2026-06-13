@@ -1,0 +1,182 @@
+2025-11-21 11:34:53: LOG: Export: /media/storage/shared/SkinStriker.fbx
+2025-11-21 11:34:53: LOG: [WARNING] No Morph Target Found - The Morph Target object's controlling slider may not have been deleted. The morph target object :  / Look_Left / Look_LeftShape is not available in the scene.
+Ignoring this target. The morph target object :  / Look_Right / Look_RightShape is not available in the scene.
+Ignoring this target. The morph target object :  / Look_Up / Look_UpShape is not available in the scene.
+Ignoring this target. The morph target object :  / Look_Down / Look_DownShape is not available in the scene.
+Ignoring this target. The morph target object :  / Blink / BlinkShape is not available in the scene.
+Ignoring this target. The morph target object :  / Eyebrow_Up / Eyebrow_UpShape is not available in the scene.
+Ignoring this target. The morph target object :  / Eyebrow_Down / Eyebrow_DownShape is not available in the scene.
+Ignoring this target. The morph target object :  / Eyebrow_Outer / Eyebrow_OuterShape is not available in the scene.
+Ignoring this target. The morph target object :  / Sq
+2025-11-21 11:36:25: LOG: Export: /media/storage/shared/SkinStriker.fbx
+2025-11-25 11:18:53: LOG: Export: /media/storage/shared/XM556.fbx
+2025-11-25 11:19:17: LOG: Export: /media/storage/shared/XM556.fbx
+2025-11-25 11:19:41: LOG: Export: /media/storage/shared/XM556.fbx
+2025-11-25 11:20:28: LOG: Export: /media/storage/shared/XM556.fbx
+2025-11-25 11:23:01: LOG: Export: /media/storage/shared/XM556.fbx
+2025-11-25 11:25:58: LOG: Export: /media/storage/shared/XM556.fbx
+2025-12-10 12:45:35: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 12:51:51: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 12:57:51: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 13:06:48: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 15:15:40: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 15:48:59: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 15:49:08: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 16:10:23: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 16:27:13: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 16:36:09: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 16:46:49: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 16:49:14: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 16:54:16: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 16:57:04: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 17:02:26: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-10 17:03:38: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 10:51:59: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 10:51:59: LOG: [WARNING] Skin Definition - The plug-in has found the following skin definition problems :  Unable to find the bind pose for :  / Bip001 / Bip001Pelvis / Bip001Spine / Bip001Spine1 / Bip001LClavicle / Bip001LUpperArm / Bip001LForearm / Bip001LHand / Bone_weappon_L. No bind poses in the hierarchy containing the object will be exported. Unable to find the bind pose for :  / Bip001 / Bip001Pelvis / Bip001Spine / Bip001Spine1 / Bip001RClavicle / Bip001RUpperArm / Bip001RForearm / Bip001RHand / Bone_weappon_R. No bind poses in the hierarchy containing the object will be exported.
+2025-12-11 11:13:24: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 11:14:20: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 11:24:08: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 11:30:54: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 11:32:43: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 11:51:06: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 11:56:42: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 12:03:59: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 12:24:02: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 13:51:27: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 13:57:18: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 14:20:17: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 15:31:17: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 15:31:17: LOG: [WARNING] Unable to export some material(s) - The plug-in does not support the following material types:
+ Material  will be exported as a grey Lambert material.
+2025-12-11 15:33:56: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 15:33:57: LOG: [WARNING] Unable to export some material(s) - The plug-in does not support the following material types:
+ Material  will be exported as a grey Lambert material.
+2025-12-11 15:37:03: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 15:53:56: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 15:58:15: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 16:04:20: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 16:09:17: LOG: Export: /media/storage/development/maya/ll-work/skins/lod2.fbx
+2025-12-11 16:09:17: LOG: [WARNING] Unable to export some material(s) - The plug-in does not support the following material types:
+ Material  will be exported as a grey Lambert material.
+2025-12-11 16:11:28: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 16:11:29: LOG: [WARNING] Skin Definition - The plug-in has found the following skin definition problems :  Unable to find the bind pose for :  / Bip001 / Bip001Pelvis / Bip001Spine / Bip001Spine1 / Bip001LClavicle / Bip001LUpperArm / Bip001LForearm / Bip001LHand / Bone_weappon_L. No bind poses in the hierarchy containing the object will be exported. Unable to find the bind pose for :  / Bip001 / Bip001Pelvis / Bip001Spine / Bip001Spine1 / Bip001RClavicle / Bip001RUpperArm / Bip001RForearm / Bip001RHand / Bone_weappon_R. No bind poses in the hierarchy containing the object will be exported.
+2025-12-11 16:16:35: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-11 17:05:57: LOG: Export: /media/storage/shared/SkinBrazilianUndercoverCopFemale.fbx
+2025-12-12 14:11:09: LOG: Export: /media/storage/shared/SkinAmericanSniper.fbx
+2025-12-12 16:10:23: LOG: Export: /media/storage/shared/SkinAmericanSniper.fbx
+2025-12-12 17:00:10: LOG: Export: /media/storage/shared/SkinAmericanSniper.fbx
+2025-12-12 17:22:48: LOG: Export: /media/storage/shared/SkinRussianOMON.fbx
+2025-12-12 17:31:14: LOG: Export: /media/storage/shared/SkinRussianOMON.fbx
+2025-12-12 17:31:51: LOG: Export: /media/storage/shared/SkinRussianOMON.fbx
+2026-01-12 13:26:28: LOG: Export: /media/storage/shared/Balisong_Melee_World.fbx
+2026-01-14 14:32:53: LOG: Export: /media/storage/shared/TwinFire_Special_Screen.fbx
+2026-01-19 13:37:48: LOG: Export: /media/storage/shared/Balisong_Melee_newUV.fbx
+2026-01-21 14:05:50: LOG: Export: /media/storage/shared/TwinFire_Special_Screen.fbx
+2026-01-21 17:43:44: LOG: Export: /media/storage/shared/Boots_Rebel.fbx
+2026-01-21 17:43:44: LOG: [WARNING] Unsupported transform node with multiple shape nodes - This scene contains at least one transform node with multiple shape nodes. The plug-in will export only one of the shape nodes.
+The name(s) of transform node(s):  |Boots_Rebel
+2026-01-21 17:44:39: LOG: Export: /media/storage/shared/Boots_Rebel.fbx
+2026-01-21 17:44:39: LOG: [WARNING] Unsupported transform node with multiple shape nodes - This scene contains at least one transform node with multiple shape nodes. The plug-in will export only one of the shape nodes.
+The name(s) of transform node(s):  |Boots_Rebel
+2026-01-21 17:45:40: LOG: Export: /media/storage/shared/Boots_Rebel.fbx
+2026-01-21 17:47:43: LOG: Export: /media/storage/shared/Gloves_Rebel.fbx
+2026-01-21 17:49:09: LOG: Export: /media/storage/shared/Helmet_Rebel.fbx
+2026-01-28 14:18:29: LOG: Export: /media/storage/shared/MSOAnniversary.fbx
+2026-01-30 14:41:35: LOG: Export: /media/storage/shared/GuideHands.fbx
+2026-01-30 15:12:03: LOG: Export: /media/storage/shared/GuideHands.fbx
+2026-02-09 11:23:57: LOG: Export: /home/user/Desktop/col_test.fbx
+2026-02-16 13:10:01: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:15:05: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:17:57: LOG: Export: /home/user/Desktop/tipPoint.fbx
+2026-02-16 13:19:28: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:21:34: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:22:20: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:25:58: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:27:48: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:36:18: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:38:22: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:39:55: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:41:13: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:41:52: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:44:43: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:45:35: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:46:59: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:47:59: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:48:42: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:49:15: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:49:16: LOG: [WARNING] Malformed Mesh - The following vertices have identical 3D coordinates.
+	This may cause import problems :  Vertices 1010 and 1031 of mesh SkinHuntress_Lod2.
+Vertices 550 and 1032 of mesh SkinHuntress_Lod2.
+Vertices 579 and 1033 of mesh SkinHuntress_Lod2.
+Vertices 1011 and 1034 of mesh SkinHuntress_Lod2.
+
+2026-02-16 13:49:16: LOG: [WARNING] Geometry conversion - Because the 'Split per-vertex Normals' option is activated, some vertices on exported geometries were 
+	duplicated so that the correct number of normals are defined. To keep the original 
+	number of vertices with the geometry, disable this option. 
+	Note: Hard edges and smoothing groups are also lost. 
+	
+2026-02-16 13:49:58: LOG: Export: /home/user/Desktop/SkinHuntress2 .fbx
+2026-02-16 13:51:18: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:51:59: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-16 13:52:49: LOG: Export: /home/user/Desktop/SkinHuntress.fbx
+2026-02-24 15:26:03: LOG: Export: /media/storage/shared/Underdog_Special_Barrel1_Base.fbx
+2026-02-24 15:26:11: LOG: Export: /media/storage/shared/Underdog_Special_Barrel1_World.fbx
+2026-02-24 15:26:17: LOG: Export: /media/storage/shared/Underdog_Special_Barrel2_Base.fbx
+2026-02-24 15:26:26: LOG: Export: /media/storage/shared/Underdog_Special_Barrel2_World.fbx
+2026-02-24 15:26:33: LOG: Export: /media/storage/shared/Underdog_Special_Grip_Base.fbx
+2026-02-24 15:26:41: LOG: Export: /media/storage/shared/Underdog_Special_Grip_World.fbx
+2026-02-24 15:26:47: LOG: Export: /media/storage/shared/Underdog_Special_Laser1_Base.fbx
+2026-02-24 15:26:53: LOG: Export: /media/storage/shared/Underdog_Special_Laser1_World.fbx
+2026-02-24 15:26:59: LOG: Export: /media/storage/shared/Underdog_Special_Laser2_Base.fbx
+2026-02-24 15:27:04: LOG: Export: /media/storage/shared/Underdog_Special_Laser2_World.fbx
+2026-02-24 17:17:05: LOG: Export: /media/storage/shared/base_separated.fbx
+2026-02-24 17:18:52: LOG: Export: /media/storage/shared/world_separated.fbx
+2026-02-24 17:19:04: LOG: Export: /media/storage/shared/world_separated.fbx
+2026-02-24 17:46:48: LOG: Export: /media/storage/shared/base_separated.fbx
+2026-02-24 18:06:45: LOG: Export: /media/storage/shared/base_separated.fbx
+2026-02-24 18:10:52: LOG: Export: /media/storage/shared/base_separated.fbx
+2026-02-26 18:16:20: LOG: Export: /media/storage/shared/Underdog_Special_World.fbx
+2026-02-26 18:16:20: LOG: [WARNING] Unable to export some material(s) - The plug-in does not support the following material types:
+ Material  will be exported as a grey Lambert material.
+2026-02-26 18:18:04: LOG: Export: /media/storage/shared/Underdog_Special_World.fbx
+2026-02-26 18:27:15: LOG: Export: /media/storage/shared/Underdog_Special.fbx
+2026-02-27 11:09:33: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 11:09:34: LOG: [WARNING] Unable to export some material(s) - The plug-in does not support the following material types:
+ Material  will be exported as a grey Lambert material.
+2026-02-27 11:13:58: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 11:13:58: LOG: [WARNING] Unable to export some material(s) - The plug-in does not support the following material types:
+ Material  will be exported as a grey Lambert material.
+2026-02-27 11:16:43: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 11:16:56: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 11:23:06: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 11:34:31: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 11:35:02: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 11:36:37: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:14:50: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:21:23: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:22:12: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:27:03: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:35:34: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:44:32: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:55:32: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 13:56:04: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 14:08:58: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 14:27:39: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-02-27 14:51:23: LOG: Export: /media/storage/shared/SkinFounder.fbx
+2026-03-02 11:43:58: LOG: Export: /media/storage/shared/test.fbx
+2026-03-02 11:44:04: LOG: Export: /media/storage/shared/test.fbx
+2026-03-02 11:46:22: LOG: Export: /media/storage/shared/test.fbx
+2026-03-03 12:39:19: LOG: Export: /media/storage/shared/Bloodhound_SMG_Base_Updated.fbx
+2026-03-03 12:39:19: LOG: [WARNING] Unable to export some material(s) - The plug-in does not support the following material types:
+ Material  will be exported as a grey Lambert material.
+2026-03-03 12:49:25: LOG: Export: /media/storage/shared/Bloodhound_SMG_Base_Updated.fbx
+2026-03-03 12:50:49: LOG: Export: /media/storage/shared/Bloodhound_SMG_Base_Updated.fbx
+2026-03-03 12:52:36: LOG: Export: /media/storage/shared/Bloodhound_SMG_Base_Updated.fbx
+2026-04-07 12:01:35: LOG: Export: /media/storage/shared/ToxicCricket.fbx
+2026-04-07 12:01:36: LOG: [WARNING] Animation curve tangent type changed to User - The plug-in has changed some animation curves tangents type to User to ensure interoperability.  This mode change will not affect the animation curves' values
+ Weapon_visibility Toxic_Root_visibility IK_Hand_L_visibility IK_Pole_R_visibility IK_Hand_R_visibility IK_Pole_L_visibility
+2026-04-07 12:11:10: LOG: Export: /media/storage/shared/ToxicCricket.fbx
+2026-04-07 12:11:11: LOG: [WARNING] Animation curve tangent type changed to User - The plug-in has changed some animation curves tangents type to User to ensure interoperability.  This mode change will not affect the animation curves' values
+ Weapon_visibility Toxic_Root_visibility IK_Hand_L_visibility IK_Pole_R_visibility IK_Hand_R_visibility IK_Pole_L_visibility
+2026-04-27 18:23:45: LOG: Export: /media/storage/shared/CharacterSkin_Pitbull.fbx
+2026-04-27 18:25:37: LOG: Export: /media/storage/shared/CharacterSkin_Pitbull.fbx

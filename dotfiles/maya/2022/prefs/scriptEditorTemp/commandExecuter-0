@@ -1,0 +1,10 @@
+from maya import cmds
+
+df = cmds.deformer('pCylinder1', type='curveDeformer')[0]
+cmds.connectAttr('inCrv.worldSpace', df + '.inCrv')
+cmds.connectAttr('baseCrv.worldSpace', df + '.baseCrv')
+cmds.connectAttr('P.worldMatrix', df + '.matrixJoints[0].matrixJoint')
+cmds.connectAttr('O.worldMatrix', df + '.matrixJoints[1].matrixJoint')
+cmds.connectAttr('Q.worldMatrix', df + '.matrixJoints[2].matrixJoint')
+cmds.refresh()
+cmds.setAttr(df + '.initialize', False)
