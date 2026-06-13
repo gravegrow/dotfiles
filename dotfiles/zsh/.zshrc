@@ -52,7 +52,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion match_prev_cmd)
 ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=15'
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=cyan,bold'
 
-
+export GOPATH=$HOME/.config/go
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export MANPAGER="$EDITOR +Man!"
 export FZF_DEFAULT_OPTS="\

@@ -51,12 +51,12 @@ format = ' [\($hash$tag\)]($style)'
 style = "red"
 
 [python]
-format = ' [➤](bold black) [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+format = ' [➤](bold white) [${symbol} ${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
 symbol = ""
 
 [dotnet]
 style = 'blue'
-format = ' [➤](bold black) [$symbol ($version )($tfm )]($style)'
+format = ' [➤](bold white) [$symbol ($version )($tfm )]($style)'
 version_format = 'v${major}.${minor}'
 symbol = ''
 
@@ -76,6 +76,6 @@ version_format = 'v${major}.${minor}'
 symbol = ''
 
 [lua]
-format = ' [➤](bold black) [$symbol ($version )]($style)'
+format = ' [➤](bold white) [$symbol ($version )]($style)'
 version_format = 'v${major}.${minor}'
 symbol = ''

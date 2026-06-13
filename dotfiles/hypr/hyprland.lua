@@ -52,7 +52,7 @@ local MAIN_LAYOUT = "master"
 hl.on("hyprland.start", function()
     hl.exec_cmd("eww open-many statusbar0 statusbar1")
     hl.exec_cmd("hyprpaper")
-    hl.exec_cmd("/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1")
+    hl.exec_cmd("systemctl --user start hyprpolkitagent")
 end)
 
 -------------------------------
@@ -84,6 +84,7 @@ hl.env("XCURSOR_THEME", "Nordzy-cursors-white")
 ---- LOOK AND FEEL ----
 -----------------------
 -- Refer to https://wiki.hypr.land/Configuring/Basics/Variables/
+
 hl.config({
     general = {
         gaps_in = 0,

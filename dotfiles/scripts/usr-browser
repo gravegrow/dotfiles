@@ -4,9 +4,9 @@ DISPLAY_SERVER="$XDG_SESSION_TYPE"
 
 case "$DISPLAY_SERVER" in
 wayland)
-    brave --disable-features=WaylandFractionalScaleV1
+    brave-browser --disable-features=WaylandFractionalScaleV1 "$@"
     ;;
 *)
-    brave
+    brave-browser "$@"
     ;;
 esac
