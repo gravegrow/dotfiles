@@ -12,6 +12,7 @@ return {
             "markdown_inline",
             "python",
             "c_sharp",
+            "ron",
         }
 
         local isnt_installed = function(lang)

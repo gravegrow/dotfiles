@@ -30,6 +30,11 @@ bindkey -v
 bindkey -M viins '^W' backward-kill-word
 bindkey -M vicmd '^W' backward-kill-word
 bindkey -M visual '^W' backward-kill-word
+bindkey -M viins "^[[H" beginning-of-line
+bindkey -M viins "^[[F" end-of-line
+bindkey -M vicmd "^[[H" beginning-of-line
+bindkey -M vicmd "^[[F" end-of-line
+
 bindkey '^W' backward-kill-word
 bindkey '^?' backward-delete-char
 bindkey '^y' autosuggest-accept
