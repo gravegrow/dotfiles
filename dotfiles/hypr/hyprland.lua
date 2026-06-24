@@ -37,6 +37,8 @@ local files_gui = "usr-files-gui"
 local files_tui = "usr-files-tui"
 local applauncher = "usr-applauncher"
 local colopicker = "usr-colorpicker"
+local screenshot = "usr-screenshot"
+local screengrab = "usr-screengrab"
 
 local MAIN_LAYOUT = "master"
 
@@ -51,8 +53,18 @@ local MAIN_LAYOUT = "master"
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("eww open-many statusbar0 statusbar1")
-    hl.exec_cmd("hyprpaper")
+    hl.exec_cmd("systemctl --user start hyprland-session.target")
+    hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP XDG_CONFIG_HOME HOME")
+
+    -- hl.exec_cmd("hyprpaper")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
+end)
+
+hl.on("hyprland.shutdown", function()
+    os.execute("systemctl --user stop hyprland-session.target && sleep 0.1")
+    -- uses a blocking exec function and sleeps a bit to give things time to close
+    -- you might also want to kill troublesome/crashing non-systemd background services here:
+    -- os.execute("pkill wallpaperthing; systemctl --user stop hyprland-session.target && sleep 0.1")
 end)
 
 -------------------------------
@@ -144,8 +156,10 @@ hl.config({
     misc = {
         force_default_wallpaper = 0, -- Set to 0 or 1 to disable the anime mascot wallpapers
         disable_hyprland_logo = true, -- If true disables the random hyprland logo / anime girl background. :(
+        disable_splash_rendering = true,
         enable_swallow = true,
         swallow_regex = "^(kitty)$",
+        background_color = "rgba(0a0a0aFF)",
     },
 })
 
@@ -179,6 +193,9 @@ Bind.run({ LEADER, "SHIFT", "E" }, files_gui)
 Bind.run({ LEADER, "B" }, browser)
 Bind.run({ LEADER, "SHIFT", "B" }, browser_private)
 Bind.run({ LEADER, "C" }, colopicker)
+
+Bind.run({ LEADER, "SHIFT", "S" }, screenshot)
+Bind.run({ LEADER, "S" }, screengrab)
 
 Bind.bind({ LEADER, "SHIFT", "Q" }, hl.dsp.window.close())
 Bind.bind({ LEADER, "W" }, utils.toggle_statusbar)
@@ -217,6 +234,7 @@ end)
 
 Bind.bind({ LEADER, "T" }, utils.switch_layout(MAIN_LAYOUT))
 Bind.bind({ LEADER, "M" }, utils.switch_layout("monocle"))
+Bind.bind({ LEADER, "N" }, utils.switch_layout("lua:tilewide"))
 
 for i = 1, 10 do
     local key = i % 10
@@ -307,7 +325,7 @@ hl.window_rule({
 
 hl.window_rule({
     name = "start-floating",
-    match = { class = "org.gnome.Calculator" },
+    match = { class = "org.gnome.(Calculator|Calendar)" },
     float = true,
 })
 
@@ -317,17 +335,77 @@ hl.window_rule({
     workspace = tostring(hl.get_active_workspace()),
 })
 
+hl.workspace_rule({
+    workspace = "w[tv2-99]",
+    border_size = 1,
+    no_rounding = true,
+})
+
 hl.window_rule({
     name = "floating-tweaks",
-    match = { float = true },
+    match = {
+        float = true,
+    },
     center = true,
     border_size = 2,
     rounding = 11,
     border_color = "rgb(202020)",
 })
 
-hl.workspace_rule({
-    workspace = "w[tv2-99]",
-    border_size = 1,
-    no_rounding = true,
+hl.window_rule({
+    name = "krita-menus",
+    match = {
+        float = true,
+        class = "(krita|Maya-2022)",
+    },
+    center = false,
+    rounding = 0,
 })
+
+-- local last_x = 0
+-- local last_y = 0
+--
+-- -- Seed initial position natively at startup
+-- local start_pos = hl.get_cursor_pos()
+-- last_x, last_y = start_pos.x, start_pos.y
+--
+-- -- Define the delta calculation function
+-- local function track_mouse_delta()
+--     -- Native, low-overhead position retrieval
+--     local current_pos = hl.get_cursor_pos()
+--     local current_x = current_pos.x
+--     local current_y = current_pos.y
+--
+--     -- Calculate Delta (Current - Last)
+--     local delta_x = current_x - last_x
+--     local delta_y = current_y - last_y
+--
+--     -- Execute logic if the mouse has moved
+--     if delta_x ~= 0 or delta_y ~= 0 then
+--         -------------------------------------------------------------
+--         -- YOUR CUSTOM ACTION HERE
+--         -------------------------------------------------------------
+--         -- Example trigger on fast movement
+--         if math.abs(delta_x) > 50 or math.abs(delta_y) > 50 then
+--             hl.notification.create({
+--                 text = "Fast gesture detected! ΔX: " .. delta_x .. " ΔY: " .. delta_y,
+--                 timeout = 1000,
+--             })
+--         end
+--
+--         -- Update benchmarks for the next tick
+--         last_x = current_x
+--         last_y = current_y
+--     end
+-- end
+--
+-- -- Create the recurring 16ms timer loop (approx. 60Hz polling rate)
+-- local mouseTimer = hl.timer(track_mouse_delta, { timeout = 16, type = "repeat" })
+-- mouseTimer:set_enabled(true)
+
+-- hl.bind("Super_L", function()
+--     hl.notification.create({
+--         text = "pressed",
+--         timeout = 1000,
+--     })
+-- end)

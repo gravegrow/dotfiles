@@ -1,6 +1,7 @@
 local state = {
-    mfact = 0.60,
+    mfact = 0.66,
     nmaster = 1,
+    should_swap = false,
 }
 
 local function clamp(x, min, max)
@@ -9,39 +10,41 @@ end
 
 hl.layout.register("tilewide", {
     recalculate = function(ctx)
-        local n = #ctx.targets
-        if n == 0 then
+        local num_clients = #ctx.targets
+
+        if num_clients == 0 then
             return
         end
 
-        if n == 1 then
+        if num_clients == 1 then
             ctx.targets[1]:place(ctx.area)
             return
         end
 
-        local active_masters = math.min(n - 1, state.nmaster)
-        local total_slaves = n - active_masters
-
-        state.nmaster = clamp(state.nmaster, 1, n - 1)
-
-        if state.nmaster > 2 then
-            state.mfact = 1 - (1 / (state.nmaster + 1))
+        -- INDEX is fucking readonly
+        if state.should_swap then
+            ctx.targets[1].index, ctx.targets[2].index = ctx.targets[2].index, ctx.targets[1].index
+            state.should_swap = false
         end
+
+        state.nmaster = clamp(state.nmaster, 1, num_clients - 1)
+
+        local num_masters = math.min(num_clients - 1, state.nmaster)
+        local num_slaves = num_clients - num_masters
 
         local master_area = ctx:split(ctx.area, "left", state.mfact)
         local slave_area = ctx:split(ctx.area, "right", 1 - state.mfact)
-        --
+
         ctx.area = master_area
-        for i = 1, active_masters do
-            local master_box = ctx:column(i, active_masters)
+        for i = 1, num_masters do
+            local master_box = ctx:column(i, num_masters)
             ctx.targets[i]:place(master_box)
         end
 
         ctx.area = slave_area
-        for i = (active_masters + 1), n do
-            local slave_index = i - active_masters
-            local slave_box = ctx:row(slave_index, total_slaves)
-            ctx.targets[i]:place(slave_box)
+        for i = 1, num_slaves do
+            local slave_box = ctx:row(i, num_slaves)
+            ctx.targets[i + num_masters]:place(slave_box)
         end
     end,
 
@@ -51,23 +54,23 @@ hl.layout.register("tilewide", {
 
         hl.notification.create({
             text = command .. " | " .. arg,
-            timeout = 4000,
+            timeout = 1000,
         })
 
         if command == "mfact" then
-            state.mfact = clamp(state.mfact + tonumber(arg), 0.1, 0.9)
+            state.should_swap = true
+            -- state.mfact = clamp(state.mfact + tonumber(arg), 0.1, 0.9)
         elseif command == "incnmaster" then
-            state.nmaster = clamp(state.nmaster + tonumber(arg), 1, #ctx.targets - 1)
-            state.mfact = 1 - (1 / (state.nmaster + 1))
+            state.nmaster = state.nmaster + tonumber(arg)
         elseif command == "cyclenext" then
             hl.dispatch(hl.dsp.window.cycle_next({ next = true, tiled = true }))
         elseif command == "cycleprev" then
             hl.dispatch(hl.dsp.window.cycle_next({ next = false, tiled = true }))
-        elseif command == "resizearg" or msg:find("resize") then
-            local delta = tonumber(arg)
-            if delta then
-                state.mfact = math.max(0.15, math.min(0.85, state.mfact + delta))
-            end
+            -- elseif command == "resizearg" or msg:find("resize") then
+            --     local delta = tonumber(arg)
+            --     if delta then
+            --         state.mfact = math.max(0.15, math.min(0.85, state.mfact + delta))
+            -- end
         end
 
         return true

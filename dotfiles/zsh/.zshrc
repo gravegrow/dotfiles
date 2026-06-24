@@ -51,6 +51,7 @@ alias ls="eza --color=always"
 alias cat="bat --color=always --style=plain --theme=base16"
 
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="(nvim *|./*)"
+# ZSH_AUTOSUGGEST_COMPLETION_IGNORE="z *"
 
 ZSH_AUTOSUGGEST_STRATEGY=(history completion match_prev_cmd)
 # ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
