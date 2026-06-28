@@ -1,0 +1,11 @@
+# vim: ft=ini
+
+default-timeout=3000
+background-color=#212121
+border-size=2
+border-color=#202020
+border-radius=0
+text-alignment=center
+
+[urgency=high]
+ignore-timeout=1

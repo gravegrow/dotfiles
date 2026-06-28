@@ -105,8 +105,8 @@ hl.config({
         border_size = 0,
 
         col = {
-            active_border = { colors = { "rgba(d27e99FF)" } },
-            inactive_border = "rgba(202020FF)",
+            active_border = { colors = { "rgb(d27e99)" } },
+            inactive_border = "rgba(030303FF)",
         },
 
         allow_tearing = false,
@@ -278,15 +278,22 @@ hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("rmpc prev"), { locked = true })
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
 
--- See https://wiki.hypr.land/Configuring/Basics/Window-Rules/
--- and https://wiki.hypr.land/Configuring/Basics/Workspace-Rules/
-
--- Example window rules that are useful
-
 for i = 1, 10 do
     hl.workspace_rule({ workspace = tostring(i), monitor = MONITOR_01_NAME })
     hl.workspace_rule({ workspace = tostring(i + 10), monitor = MONITOR_02_NAME })
 end
+
+hl.workspace_rule({
+    workspace = "w[tv2-99]",
+    border_size = 1,
+    no_rounding = true,
+})
+
+hl.window_rule({
+    name = "polkit-workspace",
+    match = { class = "polkit-gnome-authentication-agent-1" },
+    workspace = tostring(hl.get_active_workspace()),
+})
 
 hl.window_rule({
     -- Ignore maximize requests from all apps. You'll probably like this.
@@ -330,18 +337,6 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name = "polkit-workspace",
-    match = { class = "polkit-gnome-authentication-agent-1" },
-    workspace = tostring(hl.get_active_workspace()),
-})
-
-hl.workspace_rule({
-    workspace = "w[tv2-99]",
-    border_size = 1,
-    no_rounding = true,
-})
-
-hl.window_rule({
     name = "floating-tweaks",
     match = {
         float = true,
@@ -353,10 +348,10 @@ hl.window_rule({
 })
 
 hl.window_rule({
-    name = "krita-menus",
+    name = "float-menus",
     match = {
         float = true,
-        class = "(krita|Maya-2022)",
+        class = "(krita|Maya-2022|Vial)",
     },
     center = false,
     rounding = 0,

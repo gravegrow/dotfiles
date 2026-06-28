@@ -1,7 +1,8 @@
 local state = {
     mfact = 0.66,
     nmaster = 1,
-    should_swap = false,
+    targets = {},
+    request_swap = false,
 }
 
 local function clamp(x, min, max)
@@ -21,10 +22,17 @@ hl.layout.register("tilewide", {
             return
         end
 
-        -- INDEX is fucking readonly
-        if state.should_swap then
-            ctx.targets[1].index, ctx.targets[2].index = ctx.targets[2].index, ctx.targets[1].index
-            state.should_swap = false
+        if #state.targets ~= #ctx.targets then
+            state.targets = ctx.targets
+        end
+
+        if state.request_swap then
+            for i, target in ipairs(state.targets) do
+                if target.window.active then
+                    state.targets[i], state.targets[1] = state.targets[1], state.targets[i]
+                end
+                state.request_swap = false
+            end
         end
 
         state.nmaster = clamp(state.nmaster, 1, num_clients - 1)
@@ -38,39 +46,38 @@ hl.layout.register("tilewide", {
         ctx.area = master_area
         for i = 1, num_masters do
             local master_box = ctx:column(i, num_masters)
-            ctx.targets[i]:place(master_box)
+            state.targets[i]:place(master_box)
         end
 
         ctx.area = slave_area
         for i = 1, num_slaves do
             local slave_box = ctx:row(i, num_slaves)
-            ctx.targets[i + num_masters]:place(slave_box)
+            state.targets[i + num_masters]:place(slave_box)
         end
     end,
 
     layout_msg = function(ctx, msg)
         local command, arg = msg:match("^(%S+)%s*(.*)$")
+        local targets = #ctx.targets
         local num_clients = #ctx.targets
 
-        hl.notification.create({
-            text = command .. " | " .. arg,
-            timeout = 1000,
-        })
+        -- hl.notification.create({
+        --     text = command .. " | " .. arg,
+        --     timeout = 1000,
+        -- })
 
         if command == "mfact" then
-            state.should_swap = true
-            -- state.mfact = clamp(state.mfact + tonumber(arg), 0.1, 0.9)
+            state.mfact = clamp(state.mfact + tonumber(arg), 0.1, 0.9)
         elseif command == "incnmaster" then
             state.nmaster = state.nmaster + tonumber(arg)
         elseif command == "cyclenext" then
             hl.dispatch(hl.dsp.window.cycle_next({ next = true, tiled = true }))
         elseif command == "cycleprev" then
             hl.dispatch(hl.dsp.window.cycle_next({ next = false, tiled = true }))
-            -- elseif command == "resizearg" or msg:find("resize") then
-            --     local delta = tonumber(arg)
-            --     if delta then
-            --         state.mfact = math.max(0.15, math.min(0.85, state.mfact + delta))
-            -- end
+        elseif command == "cycleprev" then
+            hl.dispatch(hl.dsp.window.cycle_next({ next = false, tiled = true }))
+        elseif command == "swapwithmaster" then
+            state.request_swap = true
         end
 
         return true
