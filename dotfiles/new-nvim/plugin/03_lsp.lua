@@ -1,5 +1,6 @@
+local group = vim.api.nvim_create_augroup("lsp-config", { clear = true })
 vim.api.nvim_create_autocmd("LspAttach", {
-    group = vim.api.nvim_create_augroup("lsp-config", { clear = true }),
+    group = group,
     callback = function(event)
         local keymap = function(keys, func, desc)
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -24,7 +25,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.diagnostic.config({ virtual_lines = false, virtual_text = false })
             vim.diagnostic.open_float()
             vim.api.nvim_create_autocmd("CursorMoved", {
-                group = "LspConfig",
+                desc = "Restores virtual text diagnostics on cursor move",
+                group = group,
                 callback = function()
                     vim.diagnostic.config({
                         virtual_text = old_text,
@@ -36,9 +38,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, "Show [D]iagnostic [D]isplay")
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client then
-            client.server_capabilities.semanticTokensProvider = nil
-        end
+        if client then client.server_capabilities.semanticTokensProvider = nil end
+        vim.lsp.document_color.enable(false, { bufnr = event.buf })
     end,
 })
 

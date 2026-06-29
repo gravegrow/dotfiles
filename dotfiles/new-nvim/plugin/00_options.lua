@@ -14,7 +14,7 @@ vim.opt.fillchars:append("vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
 vim.opt.list = true
 vim.opt.cmdheight = 0
-vim.opt.winborder = "single"
+vim.opt.winborder = "rounded"
 vim.opt.undofile = true
 vim.opt.swapfile = false
 vim.opt.cursorline = true

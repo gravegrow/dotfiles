@@ -1,0 +1,8 @@
+{
+  "plugins": {
+    "monoglow.nvim": {
+      "rev": "a249b1f55bfe9171e2f8aff7acf140f78ca4b2bb",
+      "src": "https://github.com/wnkz/monoglow.nvim"
+    }
+  }
+}

@@ -1,12 +1,12 @@
-function icon()
-    local icon = ""
+local function icon()
+    local symbol = ""
     local hl = "Keyword"
 
     if _G.MiniIcons then
-        _, icon, hl, _ = pcall(_G.MiniIcons.get, "file", vim.fn.expand("%:p"))
+        _, symbol, hl, _ = pcall(_G.MiniIcons.get, "file", vim.fn.expand("%:p"))
     end
 
-    return string.format("%s%s# %s ", "%#", hl, icon)
+    return string.format("%s%s# %s ", "%#", hl, symbol)
 end
 
 local symbols = {
@@ -26,15 +26,11 @@ end
 
 local function shorten_path(path, sep, max_len)
     local len = #path
-    if len <= max_len then
-        return path
-    end
+    if len <= max_len then return path end
 
     local segments = vim.split(path, sep)
     for idx = 1, #segments - 1 do
-        if len <= max_len then
-            break
-        end
+        if len <= max_len then break end
 
         local segment = segments[idx]
         local shortened = segment:sub(1, vim.startswith(segment, ".") and 2 or 1)
@@ -48,14 +44,10 @@ end
 local function filename(hl)
     hl = hl or "Comment"
     local data = vim.fn.expand("%:~:.")
-    if data == "" then
-        data = symbols.unnamed
-    end
+    if data == "" then data = symbols.unnamed end
 
     local shorting_target = 35
-    if type(shorting_target) == "function" then
-        shorting_target = shorting_target()
-    end
+    if type(shorting_target) == "function" then shorting_target = shorting_target() end
 
     if shorting_target ~= 0 then
         local windwidth = vim.fn.winwidth(0)
@@ -66,16 +58,10 @@ local function filename(hl)
     end
 
     local file_status = {}
-    if vim.bo.modified then
-        table.insert(file_status, symbols.modified)
-    end
-    if vim.bo.modifiable == false or vim.bo.readonly == true then
-        table.insert(file_status, symbols.readonly)
-    end
+    if vim.bo.modified then table.insert(file_status, symbols.modified) end
+    if vim.bo.modifiable == false or vim.bo.readonly == true then table.insert(file_status, symbols.readonly) end
 
-    if is_new_file() then
-        table.insert(file_status, symbols.newfile)
-    end
+    if is_new_file() then table.insert(file_status, symbols.newfile) end
 
     return "%#" .. hl .. "# " .. data .. (#file_status > 0 and " " .. table.concat(file_status, "") or "")
 end
@@ -116,33 +102,24 @@ local function lsp(hl)
     local hints = ""
     local info = ""
 
-    if count["errors"] ~= 0 then
-        errors = " %#DiagnosticSignError#" .. signs.ERROR .. " " .. count["errors"]
-    end
-    if count["warnings"] ~= 0 then
-        warnings = " %#DiagnosticSignWarn#" .. signs.WARN .. " " .. count["warnings"]
-    end
-    if count["hints"] ~= 0 then
-        hints = " %#DiagnosticSignHint#" .. signs.HINT .. " " .. count["hints"]
-    end
-    if count["info"] ~= 0 then
-        info = " %#DiagnosticSignInfo#" .. signs.INFO .. " " .. count["info"]
-    end
+    if count["errors"] ~= 0 then errors = " %#DiagnosticSignError#" .. signs.ERROR .. " " .. count["errors"] end
+    if count["warnings"] ~= 0 then warnings = " %#DiagnosticSignWarn#" .. signs.WARN .. " " .. count["warnings"] end
+    if count["hints"] ~= 0 then hints = " %#DiagnosticSignHint#" .. signs.HINT .. " " .. count["hints"] end
+    if count["info"] ~= 0 then info = " %#DiagnosticSignInfo#" .. signs.INFO .. " " .. count["info"] end
 
     return client .. errors .. warnings .. hints .. info
 end
 
 local function lineinfo(hl)
     hl = hl or "Keyword"
-    if vim.bo.filetype == "alpha" then
-        return ""
-    end
+    if vim.bo.filetype == "alpha" then return "" end
     return "%#" .. hl .. "#" .. " %c:%l | %L %#Comment# "
 end
 
 local function trunk()
     return "%<"
 end
+
 local function fillspace()
     return "%="
 end
@@ -152,11 +129,11 @@ Statusline = {}
 Statusline.active = function(file)
     return table.concat({
         icon(),
-        lsp("StatuslineText"),
+        lsp("Special"),
         trunk(),
         filename(file),
         fillspace(),
-        lineinfo("StatuslineText"),
+        lineinfo("Special"),
     })
 end
 
