@@ -1,20 +1,8 @@
 {
   "plugins": {
-    "blink.cmp": {
-      "rev": "bda905a4bf1b3edfa708b0be193b8c63d8620c96",
-      "src": "https://github.com/saghen/blink.cmp"
-    },
     "blink.indent": {
       "rev": "8b69b9262891fe81fe728fe6a52fa2a84dd5d5e0",
       "src": "https://github.com/saghen/blink.indent"
-    },
-    "blink.lib": {
-      "rev": "5876dd95deeb70aadbe9f1c0b7117a135061cdac",
-      "src": "https://github.com/saghen/blink.lib"
-    },
-    "blink.pairs": {
-      "rev": "aad9046bc4670dc91301cd62a6948feb36c55f4a",
-      "src": "https://github.com/saghen/blink.pairs"
     },
     "codediff.nvim": {
       "rev": "7608f3b436ce1f84a4888f75e53079caa981a2e9",
@@ -23,6 +11,14 @@
     "conform.nvim": {
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
+    },
+    "filepaths_ls.nvim": {
+      "rev": "c5ebc0aa1cb0c7dc4509be834ca54f2c8364c11b",
+      "src": "https://github.com/antonk52/filepaths_ls.nvim"
+    },
+    "friendly-snippets": {
+      "rev": "6cd7280adead7f586db6fccbd15d2cac7e2188b9",
+      "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "gitsigns.nvim": {
       "rev": "2038c666bd9d8a0b7349a0b6ee00dc83104b9ecf",

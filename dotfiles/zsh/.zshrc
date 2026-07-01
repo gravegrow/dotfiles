@@ -50,7 +50,6 @@ bindkey "^[[F" end-of-line
 [[ -z $LS_COLORS ]] && eval "$(dircolors -b)"
 
 alias ls="eza --color=always"
-alias cat="bat --color=always --style=plain --theme=base16"
 
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="(nvim *|./*)"
 # ZSH_AUTOSUGGEST_COMPLETION_IGNORE="z *"

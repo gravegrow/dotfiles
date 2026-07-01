@@ -66,11 +66,12 @@ local function filename(hl)
     return "%#" .. hl .. "# " .. data .. (#file_status > 0 and " " .. table.concat(file_status, "") or "")
 end
 
-local signs = {
-    WARN = vim.diagnostic.config().signs.text[vim.diagnostic.severity.WARN],
-    ERROR = vim.diagnostic.config().signs.text[vim.diagnostic.severity.ERROR],
-    HINT = vim.diagnostic.config().signs.text[vim.diagnostic.severity.HINT],
-    INFO = vim.diagnostic.config().signs.text[vim.diagnostic.severity.INFO],
+local signs
+local levels = {
+    errors = "Error",
+    warnings = "Warn",
+    info = "Info",
+    hints = "Hint",
 }
 
 local function lsp(hl)
@@ -78,20 +79,24 @@ local function lsp(hl)
     local client = "%#" .. hl .. "#"
     local clients = vim.lsp.get_clients({ bufnr = 0 })
 
+    if #clients == 0 then return "" end
+
     if next(clients) ~= nil then
         for _, c in ipairs(clients) do
             client = client .. c.name:gsub("_", "-")
+            if signs == nil then
+                signs = {
+                    WARN = vim.diagnostic.config().signs.text[vim.diagnostic.severity.WARN],
+                    ERROR = vim.diagnostic.config().signs.text[vim.diagnostic.severity.ERROR],
+                    HINT = vim.diagnostic.config().signs.text[vim.diagnostic.severity.HINT],
+                    INFO = vim.diagnostic.config().signs.text[vim.diagnostic.severity.INFO],
+                }
+            end
             break
         end
     end
 
     local count = {}
-    local levels = {
-        errors = "Error",
-        warnings = "Warn",
-        info = "Info",
-        hints = "Hint",
-    }
 
     for k, level in pairs(levels) do
         count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = level }))

@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end,
 })
 
-vim.diagnostic.config({
+local config = {
     severity_sort = true,
     update_in_insert = false,
     float = { header = "" },
@@ -56,4 +56,12 @@ vim.diagnostic.config({
             [vim.diagnostic.severity.HINT] = "󰬏",
         },
     },
+}
+
+vim.api.nvim_create_autocmd("LspAttach", {
+    desc = "Changes cursorline color when starting recording a macro",
+    group = vim.api.nvim_create_augroup("set-diagnostic-config", { clear = true }),
+    callback = function()
+        vim.diagnostic.config(config)
+    end,
 })

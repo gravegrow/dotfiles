@@ -1,13 +1,13 @@
 local cursor_line_nr_hl
-local rec_group =
-    vim.api.nvim_create_augroup("macro-recording", { clear = true }), vim.api.nvim_create_autocmd("RecordingEnter", {
-        desc = "Changes cursorline color when starting recording a macro",
-        group = rec_group,
-        callback = function()
-            cursor_line_nr_hl = vim.api.nvim_get_hl(0, { name = "CursorLineNR" })
-            vim.api.nvim_set_hl(0, "CursorLineNR", { fg = "#ff0000" })
-        end,
-    })
+local rec_group = vim.api.nvim_create_augroup("macro-recording", { clear = true })
+vim.api.nvim_create_autocmd("RecordingEnter", {
+    desc = "Changes cursorline color when starting recording a macro",
+    group = rec_group,
+    callback = function()
+        cursor_line_nr_hl = vim.api.nvim_get_hl(0, { name = "CursorLineNR" })
+        vim.api.nvim_set_hl(0, "CursorLineNR", { fg = "#ff0000" })
+    end,
+})
 
 vim.api.nvim_create_autocmd("RecordingLeave", {
     desc = "Restores cursorline color when starting recording a macro",

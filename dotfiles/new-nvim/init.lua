@@ -1,3 +1,9 @@
+require("vim._core.ui2").enable({})
+
+------------------------------------
+--           COLOSCHEME           --
+------------------------------------
+
 vim.pack.add({ "https://github.com/wnkz/monoglow.nvim" })
 require("monoglow").setup({
     on_colors = function(colors)
@@ -12,6 +18,10 @@ require("monoglow").setup({
     end,
 })
 vim.cmd.colorscheme("monoglow-lack")
+
+------------------------------------
+--          CORE PLUGINS          --
+------------------------------------
 
 vim.pack.add({
     "https://github.com/romus204/tree-sitter-manager.nvim",
@@ -54,8 +64,19 @@ require("conform").setup({
     },
 })
 
-vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
+------------------------------------
+--           MINI NVIM            --
+------------------------------------
 
+vim.pack.add({
+    "https://github.com/nvim-mini/mini.nvim",
+    "https://github.com/antonk52/filepaths_ls.nvim",
+})
+vim.lsp.enable("filepaths_ls")
+
+require("mini.completion").setup()
+require("mini.pairs").setup()
+require("mini.cmdline").setup()
 require("mini.icons").setup()
 require("mini.icons").mock_nvim_web_devicons()
 require("mini.align").setup()
@@ -78,9 +99,34 @@ require("mini.notify").setup({
         end,
     },
 })
+require("mini.files").setup({
+    mappings = {
+        close = "<ESC>",
+        go_in = "l",
+        go_in_plus = "L",
+        go_out = "h",
+        go_out_plus = "H",
+        mark_goto = "'",
+        mark_set = "m",
+        reset = "<BS>",
+        reveal_cwd = "@",
+        show_help = "g?",
+        synchronize = "=",
+        trim_left = "<",
+        trim_right = ">",
+    },
+})
+vim.keymap.set("n", "<C-E>", MiniFiles.open)
 
-vim.pack.add({ "https://github.com/esmuellert/codediff.nvim" })
-vim.pack.add({ "https://github.com/lewis6991/gitsigns.nvim" })
+------------------------------------
+--          QOL PLUGINS           --
+------------------------------------
+
+vim.pack.add({
+    "https://github.com/lewis6991/gitsigns.nvim",
+    "https://github.com/esmuellert/codediff.nvim",
+})
+
 local signs = {
     add = { text = "│" },
     change = { text = "│" },
@@ -89,6 +135,7 @@ local signs = {
     changedelete = { text = "│" },
     untracked = { text = "┆" },
 }
+
 require("gitsigns").setup({
     on_attach = function()
         local gitsigns = package.loaded.gitsigns
@@ -112,11 +159,7 @@ require("colorizer").setup({
 vim.pack.add({ "https://github.com/folke/which-key.nvim" })
 require("which-key").setup({ preset = "helix" })
 
-vim.pack.add({
-    "https://github.com/saghen/blink.lib",
-    "https://github.com/saghen/blink.indent",
-    "https://github.com/saghen/blink.cmp",
-})
+vim.pack.add({ "https://github.com/saghen/blink.indent" })
 require("blink.indent").setup({
     scope = { enabled = false },
     static = {
@@ -124,7 +167,3 @@ require("blink.indent").setup({
         highlighs = { "NonText" },
     },
 })
-
-local cmp = require("blink.cmp")
-cmp.build():pwait()
-cmp.setup()
