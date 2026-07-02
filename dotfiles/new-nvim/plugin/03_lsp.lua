@@ -6,19 +6,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
-        keymap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-        keymap("gt", vim.lsp.buf.type_definition, "[G]oto [T]ype Definition")
-        keymap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-        keymap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-        keymap("gi", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-        keymap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-        keymap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+        keymap("gd", vim.lsp.buf.definition, "Goto Definition")
+        keymap("gt", vim.lsp.buf.type_definition, "Goto Type Definition")
+        keymap("gD", vim.lsp.buf.declaration, "Goto Declaration")
+        keymap("gi", vim.lsp.buf.implementation, "Goto Implementation")
+        keymap("<leader>rn", vim.lsp.buf.rename, "Rename")
+        keymap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
         keymap("K", vim.lsp.buf.hover, "Hover Documentation")
 
         keymap("<leader>ci", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-        end, "[C]ode [I]nlay Toggle")
+        end, "Code Inlay Toggle")
 
+        keymap("<leader>dq", vim.diagnostic.setloclist, "Open Diagnostic Quickfix list")
         keymap("<leader>dd", function()
             local old_lines = vim.diagnostic.config().virtual_lines
             local old_text = vim.diagnostic.config().virtual_text
@@ -35,10 +35,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     return true
                 end,
             })
-        end, "Show [D]iagnostic [D]isplay")
+        end, "Show Diagnostic Display")
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client then client.server_capabilities.semanticTokensProvider = nil end
+        if client then
+            client.server_capabilities.semanticTokensProvider = nil
+        end
         vim.lsp.document_color.enable(false, { bufnr = event.buf })
     end,
 })

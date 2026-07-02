@@ -1,4 +1,6 @@
-require("vim._core.ui2").enable({})
+-- require("vim._core.ui2").enable({})
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 ------------------------------------
 --           COLOSCHEME           --
@@ -95,28 +97,63 @@ require("mini.notify").setup({
         config = function()
             local has_statusline = vim.o.laststatus > 0
             local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
-            return { anchor = "SE", title = "", col = vim.o.columns, row = vim.o.lines - pad }
+            return {
+                anchor = "SE",
+                title = "",
+                col = vim.o.columns,
+                row = vim.o.lines - pad,
+            }
         end,
     },
 })
+
 require("mini.files").setup({
     mappings = {
         close = "<ESC>",
-        go_in = "l",
-        go_in_plus = "L",
-        go_out = "h",
-        go_out_plus = "H",
-        mark_goto = "'",
-        mark_set = "m",
-        reset = "<BS>",
-        reveal_cwd = "@",
-        show_help = "g?",
-        synchronize = "=",
-        trim_left = "<",
-        trim_right = ">",
+        go_in = "L",
+        go_in_plus = "l",
+        go_out = "H",
+        go_out_plus = "h",
+    },
+    content = {
+        filter = function(fs_entry)
+            return not vim.startswith(fs_entry.name, ".")
+        end,
     },
 })
-vim.keymap.set("n", "<C-E>", MiniFiles.open)
+
+vim.keymap.set("n", "<C-E>", function(...)
+    if not MiniFiles.close() then
+        MiniFiles.open(...)
+    end
+end)
+
+local show_dotfiles = false
+
+local filter_show = function(_)
+    return true
+end
+
+local filter_hide = function(fs_entry)
+    return not vim.startswith(fs_entry.name, ".")
+end
+
+local toggle_dotfiles = function()
+    show_dotfiles = not show_dotfiles
+    local new_filter = show_dotfiles and filter_show or filter_hide
+    MiniFiles.refresh({ content = { filter = new_filter } })
+end
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "MiniFilesBufferCreate",
+    callback = function(args)
+        local buf_id = args.data.buf_id
+        vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
+        vim.keymap.set("n", "<CR>", function()
+            require("mini.files").go_in({ close_on_file = true })
+        end, { buffer = buf_id, desc = "Go in and close" })
+    end,
+})
 
 ------------------------------------
 --          QOL PLUGINS           --
@@ -139,9 +176,9 @@ local signs = {
 require("gitsigns").setup({
     on_attach = function()
         local gitsigns = package.loaded.gitsigns
-        vim.keymap.set("n", "ghp", gitsigns.preview_hunk, { desc = "[G]itsigns [H]unk [P]review" })
-        vim.keymap.set("n", "ghr", gitsigns.reset_hunk, { desc = "[G]itsigns [H]unk [R]eset" })
-        vim.keymap.set("n", "ghs", gitsigns.select_hunk, { desc = "[G]itsigns [H]unk [S]elec" })
+        vim.keymap.set("n", "ghp", gitsigns.preview_hunk, { desc = "Gitsigns Hunk Preview" })
+        vim.keymap.set("n", "ghr", gitsigns.reset_hunk, { desc = "Gitsigns Hunk Reset" })
+        vim.keymap.set("n", "ghs", gitsigns.select_hunk, { desc = "Gitsigns Hunk Select" })
     end,
     signs = signs,
     signs_staged = signs,
@@ -156,9 +193,6 @@ require("colorizer").setup({
     },
 })
 
-vim.pack.add({ "https://github.com/folke/which-key.nvim" })
-require("which-key").setup({ preset = "helix" })
-
 vim.pack.add({ "https://github.com/saghen/blink.indent" })
 require("blink.indent").setup({
     scope = { enabled = false },
@@ -166,4 +200,53 @@ require("blink.indent").setup({
         char = "┆",
         highlighs = { "NonText" },
     },
+})
+
+vim.pack.add({ "https://github.com/y3owk1n/warp.nvim" })
+local warp = require("warp")
+warp.setup()
+
+for i, key in ipairs({ "H", "J", "K", "L" }) do
+    vim.keymap.set("n", "<C-" .. key .. ">", function()
+        warp.goto_index(i)
+    end)
+end
+
+vim.keymap.set("n", "<leader>hw", warp.show_list, { desc = "Open Window" })
+vim.keymap.set("n", "<leader>ha", function()
+    local name = vim.fs.basename(vim.api.nvim_buf_get_name(0))
+    warp.add()
+    vim.notify("Warp Add: " .. name, nil, { timeout_ms = 1000 })
+end, { desc = "Add" })
+
+vim.api.nvim_create_autocmd("User", {
+    group = vim.api.nvim_create_augroup("warp-mini-intergration", { clear = true }),
+    pattern = { "MiniFilesActionRename", "MiniFilesActionMove" },
+    callback = function(ev)
+        local from, to = ev.data.from, ev.data.to
+        local warp_exists
+
+        warp_exists, warp = pcall(require, "warp")
+        if warp_exists then
+            warp.on_file_update(from, to)
+        end
+    end,
+})
+
+vim.pack.add({ "https://github.com/stevearc/quicker.nvim" })
+require("quicker").setup()
+
+vim.pack.add({ "https://github.com/folke/which-key.nvim" })
+local whichkey = require("which-key")
+whichkey.setup({
+    preset = "helix",
+})
+
+whichkey.add({
+    { "gh", group = "Gitsigns Hunk" },
+    { "gr", group = "LSP Actions" },
+    { "<leader>c", group = "Code" },
+    { "<leader>r", group = "Rename" },
+    { "<leader>h", group = "Warp" },
+    { "<leader>d", group = "Diagnostics" },
 })
