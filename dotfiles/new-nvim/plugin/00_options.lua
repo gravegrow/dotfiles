@@ -25,9 +25,10 @@ vim.opt.ignorecase = true
 vim.opt.isfname:append("32,(,)")
 vim.opt.conceallevel = 0
 vim.o.complete = ".,w,b,kspell" -- Use less sources
-vim.opt.completeopt = { "menuone", "noinsert", "fuzzy", "nosort" }
+vim.opt.completeopt = { "menuone", "noselect", "fuzzy" }
 vim.o.completetimeout = 100 -- Limit sources delay
 vim.opt.wildmode = { "noselect", "full" }
 vim.opt.wildoptions = { "pum", "fuzzy" }
 vim.opt.pumheight = 10
 vim.opt.pummaxwidth = 40
+vim.opt.termguicolors = true

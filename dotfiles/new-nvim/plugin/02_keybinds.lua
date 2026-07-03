@@ -12,7 +12,19 @@ keymap("v", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 keymap("n", "gf", ":edit <cfile><cr>", { desc = "[G]o to [F]ile" })
 
-vim.keymap.set("n", "<leader>q", function()
+keymap("i", "<C-y>", function()
+    if vim.fn.pumvisible() ~= 0 then
+        if vim.fn.complete_info().selected == -1 then
+            return "<C-n><C-y>"
+        else
+            return "<C-y>"
+        end
+    else
+        return "<C-y>"
+    end
+end, { expr = true, silent = true })
+
+keymap("n", "<leader>q", function()
     local qf_exists = false
     for _, win in pairs(vim.fn.getwininfo()) do
         if win.quickfix == 1 then

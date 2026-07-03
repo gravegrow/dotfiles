@@ -55,3 +55,15 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
         vim.fn.setpos(".", save_cursor)
     end,
 })
+
+vim.api.nvim_create_user_command("Grep", "silent! grep! <args> | copen", {
+    nargs = "+",
+    bang = true,
+    complete = function(ArgLead, CmdLine, CursorPos)
+        local args = vim.split(CmdLine, "%s+")
+        if #args <= 2 or CursorPos < #CmdLine then
+            return {}
+        end
+        return vim.fn.getcompletion(ArgLead, "file")
+    end,
+})

@@ -1,6 +1,8 @@
--- require("vim._core.ui2").enable({})
+require("vim._core.ui2").enable({})
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.opt.termguicolors = true
+local keymap = vim.keymap.set
 
 ------------------------------------
 --           COLOSCHEME           --
@@ -19,6 +21,7 @@ require("monoglow").setup({
         hl.StatusLineNC = { bg = "#0a0a0a" }
     end,
 })
+
 vim.cmd.colorscheme("monoglow-lack")
 
 ------------------------------------
@@ -76,9 +79,9 @@ vim.pack.add({
 })
 vim.lsp.enable("filepaths_ls")
 
-require("mini.completion").setup()
+-- require("mini.completion").setup()
+-- require("mini.cmdline").setup()
 require("mini.pairs").setup()
-require("mini.cmdline").setup()
 require("mini.icons").setup()
 require("mini.icons").mock_nvim_web_devicons()
 require("mini.align").setup()
@@ -122,7 +125,7 @@ require("mini.files").setup({
     },
 })
 
-vim.keymap.set("n", "<C-E>", function(...)
+keymap("n", "<C-E>", function(...)
     if not MiniFiles.close() then
         MiniFiles.open(...)
     end
@@ -148,12 +151,29 @@ vim.api.nvim_create_autocmd("User", {
     pattern = "MiniFilesBufferCreate",
     callback = function(args)
         local buf_id = args.data.buf_id
-        vim.keymap.set("n", "g.", toggle_dotfiles, { buffer = buf_id })
-        vim.keymap.set("n", "<CR>", function()
+        keymap("n", "g.", toggle_dotfiles, { buffer = buf_id })
+        keymap("n", "<CR>", function()
             require("mini.files").go_in({ close_on_file = true })
         end, { buffer = buf_id, desc = "Go in and close" })
     end,
 })
+
+------------------------------------
+--          FILE PICKER           --
+------------------------------------
+
+vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" })
+local fzf = require("fzf-lua")
+fzf.setup({
+    "telescope",
+    defaults = {
+        cwd_prompt = false,
+        formatter = "path.filename_first",
+    },
+    winopts = { backdrop = 100 },
+})
+
+keymap("n", "<leader>ff", fzf.files, { desc = "Files" })
 
 ------------------------------------
 --          QOL PLUGINS           --
@@ -176,9 +196,9 @@ local signs = {
 require("gitsigns").setup({
     on_attach = function()
         local gitsigns = package.loaded.gitsigns
-        vim.keymap.set("n", "ghp", gitsigns.preview_hunk, { desc = "Gitsigns Hunk Preview" })
-        vim.keymap.set("n", "ghr", gitsigns.reset_hunk, { desc = "Gitsigns Hunk Reset" })
-        vim.keymap.set("n", "ghs", gitsigns.select_hunk, { desc = "Gitsigns Hunk Select" })
+        keymap("n", "ghp", gitsigns.preview_hunk, { desc = "Gitsigns Hunk Preview" })
+        keymap("n", "ghr", gitsigns.reset_hunk, { desc = "Gitsigns Hunk Reset" })
+        keymap("n", "ghs", gitsigns.select_hunk, { desc = "Gitsigns Hunk Select" })
     end,
     signs = signs,
     signs_staged = signs,
@@ -204,16 +224,16 @@ require("blink.indent").setup({
 
 vim.pack.add({ "https://github.com/y3owk1n/warp.nvim" })
 local warp = require("warp")
-warp.setup()
+warp.setup({ root_markers = {} })
 
 for i, key in ipairs({ "H", "J", "K", "L" }) do
-    vim.keymap.set("n", "<C-" .. key .. ">", function()
+    keymap("n", "<C-" .. key .. ">", function()
         warp.goto_index(i)
     end)
 end
 
-vim.keymap.set("n", "<leader>hw", warp.show_list, { desc = "Open Window" })
-vim.keymap.set("n", "<leader>ha", function()
+keymap("n", "<leader>hw", warp.show_list, { desc = "Open Window" })
+keymap("n", "<leader>ha", function()
     local name = vim.fs.basename(vim.api.nvim_buf_get_name(0))
     warp.add()
     vim.notify("Warp Add: " .. name, nil, { timeout_ms = 1000 })
@@ -249,4 +269,77 @@ whichkey.add({
     { "<leader>r", group = "Rename" },
     { "<leader>h", group = "Warp" },
     { "<leader>d", group = "Diagnostics" },
+    { "<leader>f", group = "FZF" },
 })
+
+----------------------------------
+--         COMPLETIONS           --
+----------------------------------
+
+vim.pack.add({
+    { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("1.*") },
+    "https://github.com/rafamadriz/friendly-snippets",
+    "https://github.com/xzbdmw/colorful-menu.nvim",
+})
+
+require("blink.cmp").setup({
+    cmdline = {
+        keymap = { preset = "inherit" },
+        completion = {
+            menu = { auto_show = true },
+            list = {
+                selection = {
+                    preselect = false,
+                },
+            },
+        },
+    },
+    signature = {
+        enabled = true,
+        window = { winhighlight = "FloatBorder:FloatBorder" },
+    },
+    completion = {
+        accept = {
+            auto_brackets = {
+                enabled = false,
+            },
+        },
+        menu = {
+            border = "none",
+            winhighlight = "Normal:Pmenu,CursorLine:PmenuSel,BlinkCmpLabelMatch:Search",
+            draw = {
+                columns = { { "kind_icon" }, { "label", gap = 1 } },
+                components = {
+                    label = {
+                        text = require("colorful-menu").blink_components_text,
+                        highlight = require("colorful-menu").blink_components_highlight,
+                    },
+                },
+            },
+        },
+        documentation = {
+            auto_show = true,
+            window = { winhighlight = "FloatBorder:FloatBorder" },
+        },
+        list = {
+            selection = {
+                preselect = false,
+            },
+        },
+    },
+    sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        providers = {
+            buffer = {
+                max_items = 3,
+                min_keyword_length = 4,
+            },
+        },
+    },
+})
+
+-- for _, plug in ipairs(vim.pack.get()) do
+--     if not plug.active then
+--         vim.pack.del({ plug.spec.name })
+--     end
+-- end

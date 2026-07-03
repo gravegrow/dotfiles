@@ -1,6 +1,10 @@
-local function icon()
+local function icon(hl)
+    if vim.bo.buftype == "nofile" then
+        return ""
+    end
+
     local symbol = ""
-    local hl = "Keyword"
+    hl = hl or "Normal"
 
     if _G.MiniIcons then
         _, symbol, hl, _ = pcall(_G.MiniIcons.get, "file", vim.fn.expand("%:p"))
@@ -26,11 +30,15 @@ end
 
 local function shorten_path(path, sep, max_len)
     local len = #path
-    if len <= max_len then return path end
+    if len <= max_len then
+        return path
+    end
 
     local segments = vim.split(path, sep)
     for idx = 1, #segments - 1 do
-        if len <= max_len then break end
+        if len <= max_len then
+            break
+        end
 
         local segment = segments[idx]
         local shortened = segment:sub(1, vim.startswith(segment, ".") and 2 or 1)
@@ -42,12 +50,20 @@ local function shorten_path(path, sep, max_len)
 end
 
 local function filename(hl)
+    if vim.bo.buftype == "nofile" then
+        return ""
+    end
+
     hl = hl or "Comment"
     local data = vim.fn.expand("%:~:.")
-    if data == "" then data = symbols.unnamed end
+    if data == "" then
+        data = symbols.unnamed
+    end
 
     local shorting_target = 35
-    if type(shorting_target) == "function" then shorting_target = shorting_target() end
+    if type(shorting_target) == "function" then
+        shorting_target = shorting_target()
+    end
 
     if shorting_target ~= 0 then
         local windwidth = vim.fn.winwidth(0)
@@ -58,10 +74,16 @@ local function filename(hl)
     end
 
     local file_status = {}
-    if vim.bo.modified then table.insert(file_status, symbols.modified) end
-    if vim.bo.modifiable == false or vim.bo.readonly == true then table.insert(file_status, symbols.readonly) end
+    if vim.bo.modified then
+        table.insert(file_status, symbols.modified)
+    end
+    if vim.bo.modifiable == false or vim.bo.readonly == true then
+        table.insert(file_status, symbols.readonly)
+    end
 
-    if is_new_file() then table.insert(file_status, symbols.newfile) end
+    if is_new_file() then
+        table.insert(file_status, symbols.newfile)
+    end
 
     return "%#" .. hl .. "# " .. data .. (#file_status > 0 and " " .. table.concat(file_status, "") or "")
 end
@@ -79,20 +101,24 @@ local function lsp(hl)
     local client = "%#" .. hl .. "#"
     local clients = vim.lsp.get_clients({ bufnr = 0 })
 
-    if #clients == 0 then return "" end
+    if #clients == 0 then
+        return ""
+    end
 
     if next(clients) ~= nil then
         for _, c in ipairs(clients) do
-            client = client .. c.name:gsub("_", "-")
-            if signs == nil then
-                signs = {
-                    WARN = vim.diagnostic.config().signs.text[vim.diagnostic.severity.WARN],
-                    ERROR = vim.diagnostic.config().signs.text[vim.diagnostic.severity.ERROR],
-                    HINT = vim.diagnostic.config().signs.text[vim.diagnostic.severity.HINT],
-                    INFO = vim.diagnostic.config().signs.text[vim.diagnostic.severity.INFO],
-                }
+            if c.name ~= "filepaths_ls" then
+                client = client .. c.name
+                if signs == nil then
+                    signs = {
+                        WARN = vim.diagnostic.config().signs.text[vim.diagnostic.severity.WARN],
+                        ERROR = vim.diagnostic.config().signs.text[vim.diagnostic.severity.ERROR],
+                        HINT = vim.diagnostic.config().signs.text[vim.diagnostic.severity.HINT],
+                        INFO = vim.diagnostic.config().signs.text[vim.diagnostic.severity.INFO],
+                    }
+                end
+                break
             end
-            break
         end
     end
 
@@ -107,17 +133,27 @@ local function lsp(hl)
     local hints = ""
     local info = ""
 
-    if count["errors"] ~= 0 then errors = " %#DiagnosticSignError#" .. signs.ERROR .. " " .. count["errors"] end
-    if count["warnings"] ~= 0 then warnings = " %#DiagnosticSignWarn#" .. signs.WARN .. " " .. count["warnings"] end
-    if count["hints"] ~= 0 then hints = " %#DiagnosticSignHint#" .. signs.HINT .. " " .. count["hints"] end
-    if count["info"] ~= 0 then info = " %#DiagnosticSignInfo#" .. signs.INFO .. " " .. count["info"] end
+    if count["errors"] ~= 0 then
+        errors = " %#DiagnosticSignError#" .. signs.ERROR .. " " .. count["errors"]
+    end
+    if count["warnings"] ~= 0 then
+        warnings = " %#DiagnosticSignWarn#" .. signs.WARN .. " " .. count["warnings"]
+    end
+    if count["hints"] ~= 0 then
+        hints = " %#DiagnosticSignHint#" .. signs.HINT .. " " .. count["hints"]
+    end
+    if count["info"] ~= 0 then
+        info = " %#DiagnosticSignInfo#" .. signs.INFO .. " " .. count["info"]
+    end
 
     return client .. errors .. warnings .. hints .. info
 end
 
 local function lineinfo(hl)
     hl = hl or "Keyword"
-    if vim.bo.filetype == "alpha" then return "" end
+    if vim.bo.filetype == "alpha" then
+        return ""
+    end
     return "%#" .. hl .. "#" .. " %c:%l | %L %#Comment# "
 end
 
@@ -129,9 +165,9 @@ local function fillspace()
     return "%="
 end
 
-Statusline = {}
+local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
 
-Statusline.active = function(file)
+_G.statusline_active = function(file)
     return table.concat({
         icon(),
         lsp("Special"),
@@ -142,13 +178,9 @@ Statusline.active = function(file)
     })
 end
 
-function Statusline.inactive()
-    return table.concat({
-        filename(),
-    })
+_G.statusline_inactive = function()
+    return table.concat({ filename() })
 end
-
-local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
 
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
     group = group,
@@ -157,13 +189,13 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
             vim.opt_local.statusline = " "
             return
         end
-        vim.opt_local.statusline = "%!v:lua.Statusline.active()"
+        vim.opt_local.statusline = "%!v:lua.statusline_active()"
     end,
 })
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     group = group,
-    callback = function(buff)
-        vim.opt_local.statusline = "%!v:lua.Statusline.inactive()"
+    callback = function(_)
+        vim.opt_local.statusline = "%!v:lua.statusline_inactive()"
     end,
 })
