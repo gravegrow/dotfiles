@@ -42,7 +42,6 @@ require("blink.cmp").setup({
     },
     sources = {
         default = { "lsp", "snippets", "path", "buffer" },
-        -- min_keyword_length = 3,
         providers = {
             buffer = {
                 max_items = 3,

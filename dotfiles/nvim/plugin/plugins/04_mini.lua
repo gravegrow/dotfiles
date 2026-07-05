@@ -32,6 +32,49 @@ require("mini.notify").setup({
     },
 })
 
+local filter_show = function(_)
+    return true
+end
+
+local unity_filetypes = {
+    ".meta",
+    ".inputactions",
+    ".asset",
+    ".asmdef",
+    ".unity",
+}
+
+local is_unityfile = function(fs_entry)
+    for _, ft in ipairs(unity_filetypes) do
+        if vim.endswith(fs_entry.name, ft) then
+            return false
+        end
+    end
+    return true
+end
+
+local is_dotfile = function(fs_entry)
+    return not vim.startswith(fs_entry.name, ".")
+end
+
+local is_git_ignored = function(fs_entry)
+    local dir = vim.fs.dirname(fs_entry.path)
+    local obj = vim.system({ "git", "check-ignore", "-q", fs_entry.path }, { cwd = dir }):wait()
+    return obj.code ~= 0
+end
+
+local filter_hide = function(fs_entry)
+    return is_dotfile(fs_entry) and is_git_ignored(fs_entry) and is_unityfile(fs_entry)
+end
+
+local show_dotfiles = false
+local toggle_dotfiles = function()
+    show_dotfiles = not show_dotfiles
+    MiniFiles.refresh({ content = {
+        filter = show_dotfiles and filter_show or filter_hide,
+    } })
+end
+
 require("mini.files").setup({
     mappings = {
         close = "<ESC>",
@@ -41,9 +84,7 @@ require("mini.files").setup({
         go_out_plus = "h",
     },
     content = {
-        filter = function(fs_entry)
-            return not vim.startswith(fs_entry.name, ".")
-        end,
+        filter = filter_hide,
     },
 })
 
@@ -52,22 +93,6 @@ keymap("n", "<C-E>", function(...)
         MiniFiles.open(...)
     end
 end)
-
-local show_dotfiles = false
-
-local filter_show = function(_)
-    return true
-end
-
-local filter_hide = function(fs_entry)
-    return not vim.startswith(fs_entry.name, ".")
-end
-
-local toggle_dotfiles = function()
-    show_dotfiles = not show_dotfiles
-    local new_filter = show_dotfiles and filter_show or filter_hide
-    MiniFiles.refresh({ content = { filter = new_filter } })
-end
 
 vim.api.nvim_create_autocmd("User", {
     pattern = "MiniFilesBufferCreate",
