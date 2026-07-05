@@ -274,6 +274,16 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("rmpc togglepause"), { locked = true }
 hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("rmpc togglepause"), { locked = true })
 hl.bind("XF86AudioPrev", hl.dsp.exec_cmd("rmpc prev"), { locked = true })
 
+hl.bind("SUPER + X", function()
+    if hl.get_workspace("special:minimized") then
+        hl.dispatch(hl.dsp.window.move({ workspace = hl.get_active_workspace(), window = "tag:minimized" }))
+        hl.dispatch(hl.dsp.window.clear_tags({ window = "tag:minimized" }))
+    else
+        hl.dispatch(hl.dsp.window.tag({ tag = "minimized", window = hl.get_active_window() }))
+        hl.dispatch(hl.dsp.window.move({ workspace = "special:minimized", follow = false }))
+    end
+end)
+
 --------------------------------
 ---- WINDOWS AND WORKSPACES ----
 --------------------------------
