@@ -2,28 +2,44 @@ local keymap = vim.keymap.set
 
 vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" })
 local fzf = require("fzf-lua")
+
 fzf.setup({
     "telescope",
+    register_ui_select = true,
     defaults = {
         cwd_prompt = false,
         formatter = "path.filename_first",
     },
-    winopts = {
-        backdrop = 100,
-        layout = "flex",
-        preview = {
-            layout = "flex",
-            vertical = "down:45%",
-        },
-    },
+    winopts = { backdrop = 100 },
     fzf_opts = {
         ["--layout"] = "reverse",
     },
-    lsp = {
-        code_actions = {
-            previewer = false,
+    undotree = {
+        winopts = {
+            fullscreen = true,
+            preview = {
+                layout = "horizontal",
+            },
         },
     },
+
+    ui_select = function(fzf_opts, items)
+        if fzf_opts.kind == "codeaction" then
+            local height = function()
+                local max_height = math.floor(vim.o.lines * 0.6)
+                local dynamic_height = #items + 4
+                return math.min(max_height, dynamic_height)
+            end
+            fzf_opts.winopts = {
+                row = 0.5,
+                col = 0.5,
+                height = height(),
+                width = 0.8,
+                preview = { hidden = "hidden" },
+            }
+        end
+        return fzf_opts
+    end,
     file_ignore_patterns = {
         -- 2. Metadata files and target scripts
         "%.meta$", -- Unity's internal tracker assets
@@ -63,14 +79,6 @@ fzf.setup({
         "%.dll$",
         "%.pdb$",
         "%.mdb$",
-    },
-    undotree = {
-        winopts = {
-            fullscreen = true,
-            preview = {
-                layout = "horizontal",
-            },
-        },
     },
 })
 
