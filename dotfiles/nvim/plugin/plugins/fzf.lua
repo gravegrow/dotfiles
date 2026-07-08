@@ -5,7 +5,6 @@ local fzf = require("fzf-lua")
 
 fzf.setup({
     "telescope",
-    register_ui_select = true,
     defaults = {
         cwd_prompt = false,
         formatter = "path.filename_first",
@@ -22,7 +21,6 @@ fzf.setup({
             },
         },
     },
-
     ui_select = function(fzf_opts, items)
         if fzf_opts.kind == "codeaction" then
             local height = function()
@@ -31,25 +29,31 @@ fzf.setup({
                 return math.min(max_height, dynamic_height)
             end
             fzf_opts.winopts = {
-                row = 0.5,
-                col = 0.5,
+                title = false,
+                relative = "cursor",
+                row = 1,
                 height = height(),
-                width = 0.8,
+                width = 1,
                 preview = { hidden = "hidden" },
             }
         end
         return fzf_opts
     end,
     file_ignore_patterns = {
-        -- 2. Metadata files and target scripts
-        "%.meta$", -- Unity's internal tracker assets
-        "%.asset$", -- ScriptableObjects/Scenes (keep if you edit raw YAML, remove if not)
+        "%.godot$",
+        "%.import$",
+        "%.uid$",
+        "%.tscn$",
+        "%.tres$",
+        "%.meta$",
+        "%.asset$",
         "%.inputactions$",
         "%.unity$",
         "%.nuspec$",
         "%.asmdef$",
 
         -- 3. Audio & Video formats
+        "%.svg$",
         "%.mp3$",
         "%.wav$",
         "%.ogg$",
@@ -81,8 +85,6 @@ fzf.setup({
         "%.mdb$",
     },
 })
-
-fzf.register_ui_select()
 
 keymap("n", "<leader>ff", function()
     fzf.files({ hidden = false })

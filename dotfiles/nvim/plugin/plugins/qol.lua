@@ -91,6 +91,7 @@ whichkey.add({
     { "<leader>h", group = "Warp" },
     { "<leader>d", group = "Diagnostics" },
     { "<leader>f", group = "FZF" },
+    { "<leader>n", group = "Neotest" },
 })
 
 -- for _, plug in ipairs(vim.pack.get()) do

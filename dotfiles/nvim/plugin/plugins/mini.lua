@@ -36,16 +36,20 @@ local filter_show = function(_)
     return true
 end
 
-local unity_filetypes = {
+local exclude_filetypes = {
     ".meta",
     ".inputactions",
     ".asset",
     ".asmdef",
     ".unity",
+    ".tscn",
+    ".import",
+    ".godot",
+    ".uid",
 }
 
 local is_unityfile = function(fs_entry)
-    for _, ft in ipairs(unity_filetypes) do
+    for _, ft in ipairs(exclude_filetypes) do
         if vim.endswith(fs_entry.name, ft) then
             return false
         end
