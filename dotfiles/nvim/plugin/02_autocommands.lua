@@ -1,6 +1,8 @@
 local cursor_line_nr_hl
+local autocmd = vim.api.nvim_create_autocmd
+
 local rec_group = vim.api.nvim_create_augroup("macro-recording", { clear = true })
-vim.api.nvim_create_autocmd("RecordingEnter", {
+autocmd("RecordingEnter", {
     desc = "Changes cursorline color when starting recording a macro",
     group = rec_group,
     callback = function()
@@ -9,7 +11,7 @@ vim.api.nvim_create_autocmd("RecordingEnter", {
     end,
 })
 
-vim.api.nvim_create_autocmd("RecordingLeave", {
+autocmd("RecordingLeave", {
     desc = "Restores cursorline color when starting recording a macro",
     group = rec_group,
     callback = function()
@@ -17,7 +19,7 @@ vim.api.nvim_create_autocmd("RecordingLeave", {
     end,
 })
 
-vim.api.nvim_create_autocmd("TextYankPost", {
+autocmd("TextYankPost", {
     desc = "Highlight when yanking text",
     group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
     callback = function()
@@ -25,7 +27,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
+autocmd({ "BufEnter" }, {
     desc = "Changes formatting options",
     group = vim.api.nvim_create_augroup("format-options", { clear = true }),
     callback = function()
@@ -33,7 +35,7 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
     end,
 })
 
-vim.api.nvim_create_autocmd("CursorMoved", {
+autocmd("CursorMoved", {
     desc = "Clear search highlight when moving cursor",
     group = vim.api.nvim_create_augroup("auto-hlsearch", { clear = true }),
     callback = function()
@@ -45,7 +47,7 @@ vim.api.nvim_create_autocmd("CursorMoved", {
     end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+autocmd({ "BufWritePre" }, {
     desc = "Remove whitespaces",
     group = vim.api.nvim_create_augroup("clear-whitespaces", { clear = true }),
     pattern = "*",
@@ -65,5 +67,17 @@ vim.api.nvim_create_user_command("Grep", "silent! grep! <args> | copen", {
             return {}
         end
         return vim.fn.getcompletion(ArgLead, "file")
+    end,
+})
+
+autocmd({ "FocusGained", "WinEnter" }, {
+    callback = function()
+        vim.o.cursorline = true
+    end,
+})
+
+autocmd({ "FocusLost", "WinLeave" }, {
+    callback = function()
+        vim.o.cursorline = false
     end,
 })

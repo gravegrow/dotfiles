@@ -49,15 +49,20 @@ local function shorten_path(path, sep, max_len)
     return table.concat(segments, sep)
 end
 
-local function filename(hl)
+local function filename(hl, name_only)
+    name_only = name_only or false
+    hl = hl or "Comment"
+
     if vim.bo.buftype == "nofile" then
-        return ""
+        return " " .. vim.bo.filetype
     end
 
-    hl = hl or "Comment"
     local data = vim.fn.expand("%:~:.")
     if data == "" then
         data = symbols.unnamed
+    end
+    if name_only then
+        return "%#" .. hl .. "# " .. data
     end
 
     local shorting_target = 35
@@ -178,10 +183,6 @@ _G.statusline_active = function(file)
     })
 end
 
-_G.statusline_inactive = function()
-    return table.concat({ filename() })
-end
-
 vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
     group = group,
     callback = function(buff)
@@ -195,7 +196,11 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     group = group,
-    callback = function(_)
+    callback = function()
+        local name = filename()
+        _G.statusline_inactive = function()
+            return table.concat({ name })
+        end
         vim.opt_local.statusline = "%!v:lua.statusline_inactive()"
     end,
 })

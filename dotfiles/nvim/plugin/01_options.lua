@@ -13,7 +13,6 @@ vim.opt.fillchars = { eob = " " }
 vim.opt.fillchars:append("vert:┃,horiz:━,horizdown:┳,horizup:┻,verthoriz:╋,vertleft:┫,vertright:┣")
 vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" } -- Define which helper symbols to show tab = "» "
 vim.opt.list = true
-vim.opt.cmdheight = 0
 vim.opt.winborder = "rounded"
 vim.opt.undofile = true
 vim.opt.swapfile = false
@@ -22,7 +21,8 @@ vim.o.virtualedit = "block" -- Allow going past end of line in blockwise mode
 vim.o.autoindent = true -- Use auto indent
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 vim.opt.shortmess:append("I") -- Disable intro screen
-vim.opt.laststatus = 3
+vim.opt.cmdheight = 0
+vim.opt.laststatus = 2
 vim.opt.ignorecase = true
 vim.opt.isfname:append("32,(,)")
 vim.opt.conceallevel = 0

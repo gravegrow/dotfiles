@@ -10,7 +10,30 @@ neotest.setup({
         require("neotest-vstest"),
     },
     summary = {
-        open = "botright split | resize " .. math.floor(vim.o.lines * 0.25),
+        open = "botright split | resize " .. math.floor(vim.o.lines * 0.3),
+    },
+    highlights = {
+        adapter_name = "Search",
+        border = "NeotestBorder",
+        dir = "String",
+        expand_marker = "Whitespace",
+        failed = "NeotestFailed",
+        file = "@property",
+        focused = "NeotestFocused",
+        indent = "Whitespace",
+        marked = "NeotestMarked",
+        namespace = "@function.call",
+        passed = "NeotestPassed",
+        running = "NeotestRunning",
+        select_win = "NeotestWinSelect",
+        skipped = "NeotestSkipped",
+        target = "NeotestTarget",
+        test = "NeotestTest",
+        unknown = "NeotestUnknown",
+        watching = "NeotestWatching",
+    },
+    icons = {
+        running_animated = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" },
     },
 })
 

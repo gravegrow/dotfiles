@@ -31,9 +31,9 @@ fzf.setup({
             fzf_opts.winopts = {
                 title = false,
                 relative = "cursor",
-                row = 1,
+                row = 1.01,
                 height = height(),
-                width = 1,
+                width = 80,
                 preview = { hidden = "hidden" },
             }
         end
