@@ -92,3 +92,9 @@ whichkey.add({
     { "<leader>d", group = "Diagnostics" },
     { "<leader>f", group = "FZF" },
 })
+
+-- for _, plug in ipairs(vim.pack.get()) do
+--     if not plug.active then
+--         vim.pack.del({ plug.spec.name })
+--     end
+-- end

@@ -64,7 +64,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export MANPAGER="$EDITOR +Man!"
 export FZF_DEFAULT_OPTS="\
   --prompt '  ' --pointer ' ' --scrollbar '┃' --gutter ' '\
-  --border none --preview-window sharp --reverse --cycle --info inline-right \
+  --border none --preview-window  --reverse --cycle --info inline-right \
   --color pointer:4,scrollbar:4,info:8 \
   --color fg:7,fg+:15,bg+:-1,border:gray \
   --color preview-bg:-1,preview-border:gray \

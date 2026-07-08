@@ -4,12 +4,25 @@ vim.pack.add({ "https://github.com/ibhagwan/fzf-lua" })
 local fzf = require("fzf-lua")
 fzf.setup({
     "telescope",
-    fzf_opts = {
-        ["--layout"] = "reverse",
-    },
     defaults = {
         cwd_prompt = false,
         formatter = "path.filename_first",
+    },
+    winopts = {
+        backdrop = 100,
+        layout = "flex",
+        preview = {
+            layout = "flex",
+            vertical = "down:45%",
+        },
+    },
+    fzf_opts = {
+        ["--layout"] = "reverse",
+    },
+    lsp = {
+        code_actions = {
+            previewer = false,
+        },
     },
     file_ignore_patterns = {
         -- 2. Metadata files and target scripts
@@ -51,13 +64,6 @@ fzf.setup({
         "%.pdb$",
         "%.mdb$",
     },
-    winopts = { backdrop = 100 },
-    lsp = {
-        code_actions = {
-            previewer = false,
-            winopts = { height = 0.40, width = 0.80 },
-        },
-    },
     undotree = {
         winopts = {
             fullscreen = true,
@@ -84,8 +90,9 @@ keymap("n", "<leader>fF", function()
     })
 end, { desc = "Files with Hidden" })
 
+keymap("n", "<leader>fo", fzf.oldfiles, { desc = "Oldfiles" })
 keymap("n", "<leader>fb", fzf.buffers, { desc = "Buffers" })
-keymap("n", "<leader>f/", fzf.live_grep, { desc = "Grep" })
+keymap("n", "<leader>fg", fzf.live_grep, { desc = "Grep" })
 keymap("n", "<leader>fu", fzf.undotree, { desc = "Undootree" })
 keymap("n", "<leader>fd", fzf.diagnostics_document, { desc = "Diagnostics Document" })
 keymap("n", "<leader>fD", fzf.diagnostics_workspace, { desc = "Diagnostics Workspace" })

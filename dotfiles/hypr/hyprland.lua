@@ -361,56 +361,8 @@ hl.window_rule({
     name = "float-menus",
     match = {
         float = true,
-        class = "(krita|Maya-2022|Vial)",
+        class = "(krita|Maya-2022|Vial|Godot)",
     },
     center = false,
     rounding = 0,
 })
-
--- local last_x = 0
--- local last_y = 0
---
--- -- Seed initial position natively at startup
--- local start_pos = hl.get_cursor_pos()
--- last_x, last_y = start_pos.x, start_pos.y
---
--- -- Define the delta calculation function
--- local function track_mouse_delta()
---     -- Native, low-overhead position retrieval
---     local current_pos = hl.get_cursor_pos()
---     local current_x = current_pos.x
---     local current_y = current_pos.y
---
---     -- Calculate Delta (Current - Last)
---     local delta_x = current_x - last_x
---     local delta_y = current_y - last_y
---
---     -- Execute logic if the mouse has moved
---     if delta_x ~= 0 or delta_y ~= 0 then
---         -------------------------------------------------------------
---         -- YOUR CUSTOM ACTION HERE
---         -------------------------------------------------------------
---         -- Example trigger on fast movement
---         if math.abs(delta_x) > 50 or math.abs(delta_y) > 50 then
---             hl.notification.create({
---                 text = "Fast gesture detected! ΔX: " .. delta_x .. " ΔY: " .. delta_y,
---                 timeout = 1000,
---             })
---         end
---
---         -- Update benchmarks for the next tick
---         last_x = current_x
---         last_y = current_y
---     end
--- end
---
--- -- Create the recurring 16ms timer loop (approx. 60Hz polling rate)
--- local mouseTimer = hl.timer(track_mouse_delta, { timeout = 16, type = "repeat" })
--- mouseTimer:set_enabled(true)
-
--- hl.bind("Super_L", function()
---     hl.notification.create({
---         text = "pressed",
---         timeout = 1000,
---     })
--- end)

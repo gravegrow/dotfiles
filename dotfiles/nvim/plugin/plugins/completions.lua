@@ -44,6 +44,8 @@ require("blink.cmp").setup({
         default = { "lsp", "snippets", "path", "buffer" },
         providers = {
             buffer = {
+                name = "Buffer",
+                module = "blink.cmp.sources.buffer",
                 max_items = 3,
             },
             snippets = {
