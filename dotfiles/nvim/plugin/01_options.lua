@@ -22,7 +22,7 @@ vim.o.autoindent = true -- Use auto indent
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor
 vim.opt.shortmess:append("I") -- Disable intro screen
 vim.opt.cmdheight = 0
-vim.opt.laststatus = 2
+vim.opt.laststatus = 3
 vim.opt.ignorecase = true
 vim.opt.isfname:append("32,(,)")
 vim.opt.conceallevel = 0
@@ -34,3 +34,4 @@ vim.opt.wildoptions = { "pum", "fuzzy" }
 vim.opt.pumheight = 10
 vim.opt.pummaxwidth = 40
 vim.opt.termguicolors = true
+vim.o.shada = "'100,<50,s10,:1000,/100,@100,h"

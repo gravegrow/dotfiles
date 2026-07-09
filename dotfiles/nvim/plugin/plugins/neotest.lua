@@ -39,8 +39,9 @@ neotest.setup({
 
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>nt", neotest.summary.toggle, { desc = "Neotest Toggle Summary" })
-keymap("n", "<leader>nr", neotest.summary.toggle, { desc = "Neotest Toggle Summary" })
+keymap("n", "<leader>nt", function()
+    neotest.summary.toggle({ enter = true })
+end, { desc = "Neotest Toggle Summary" })
 
 vim.keymap.set("n", "<leader>nR", function()
     require("neotest").run.run(vim.loop.cwd())

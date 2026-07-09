@@ -196,7 +196,7 @@ vim.api.nvim_create_autocmd({ "WinEnter", "BufEnter" }, {
 
 vim.api.nvim_create_autocmd({ "WinLeave", "BufLeave" }, {
     group = group,
-    callback = function()
+    callback = function(args)
         local name = filename()
         _G.statusline_inactive = function()
             return table.concat({ name })
