@@ -81,3 +81,24 @@ autocmd({ "FocusLost", "WinLeave" }, {
         vim.o.cursorline = false
     end,
 })
+
+-- Autocommand to remember folds per file
+vim.api.nvim_create_autocmd({ "BufWinLeave", "BufWritePost", "BufHidden" }, {
+    desc = "Save folds before leaving or writing a buffer",
+    pattern = { "*.*" },
+    callback = function()
+        if vim.bo.buftype == "" then
+            vim.cmd("mkview")
+        end
+    end,
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+    desc = "Restore folds when entering a buffer",
+    pattern = { "*.*" },
+    callback = function()
+        if vim.bo.buftype == "" then
+            vim.cmd("silent! loadview")
+        end
+    end,
+})

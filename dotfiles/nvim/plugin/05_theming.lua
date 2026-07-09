@@ -1,4 +1,4 @@
-local palette = {
+local colors = {
     foreground = "#9A8F8A",
     background = "#101010",
 
@@ -21,19 +21,29 @@ local palette = {
     color15 = "#9A8F8A",
 }
 
-for name, color in pairs(palette) do
+_G.ui_colors = colors
+_G.merge_set_hl = function(name, opts)
+    local source_opts = vim.api.nvim_get_hl(0, { name = name, create = true, link = false })
+    if opts.link then
+        source_opts = vim.api.nvim_get_hl(0, { name = opts.link, create = true, link = false })
+        opts.link = nil
+    end
+    vim.api.nvim_set_hl(0, name, vim.tbl_extend("force", source_opts, opts))
+end
+
+for name, color in pairs(colors) do
     for _, prefix in ipairs({ "ui_fg", "ui_bg" }) do
         vim.api.nvim_set_hl(0, prefix .. "_" .. name, { fg = color })
     end
 end
 
 local diag_hl = {
-    ["DiagnosticSignError"] = palette.color1,
-    ["DiagnosticSignWarn"] = palette.color3,
-    ["DiagnosticSignHint"] = palette.foreground,
-    ["DiagnosticSignInfo"] = palette.color6,
+    ["DiagnosticSignError"] = colors.color1,
+    ["DiagnosticSignWarn"] = colors.color3,
+    ["DiagnosticSignHint"] = colors.foreground,
+    ["DiagnosticSignInfo"] = colors.color6,
 }
 
 for hl, color in pairs(diag_hl) do
-    vim.api.nvim_set_hl(0, hl, { fg = color, bold = true })
+    _G.merge_set_hl(hl, { fg = color, bold = true })
 end

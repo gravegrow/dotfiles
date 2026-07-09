@@ -24,7 +24,7 @@ local exclude_filetypes = {
     ".aif", ".aiff", ".mod", ".it", ".s3m", ".xm", ".gltf", ".glb",
     ".fbx", ".obj", ".dae", ".3ds", ".dxf", ".blend", ".max", ".maya",
     ".mb", ".modo", ".mp4", ".mov", ".webm", ".avi", ".m4v", ".mpg",
-    ".mpeg", ".ogv", ".asset"
+    ".mpeg", ".ogv", ".asset", ".unity"
 }
 -- stylua: ignore end
 
@@ -199,3 +199,17 @@ require("mini.notify").setup({
         end,
     },
 })
+
+local colors = _G.ui_colors
+local set_hl = _G.merge_set_hl
+
+local highlights = {
+    MiniPickNormal = { fg = colors.foreground, italic = true },
+    MiniPickMatchCurrent = { bold = true },
+    MiniPickMatchMarked = { fg = "#d27e99", bold = true },
+    MiniPickMatchRanges = { fg = "#d27e99", bold = true },
+}
+
+for hl, opts in pairs(highlights) do
+    set_hl(hl, opts)
+end

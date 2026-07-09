@@ -60,3 +60,11 @@ for _, key in ipairs({ "d", "u", "o", "i" }) do
         { desc = string.format("Center screen when moving with <C-%s>", key) }
     )
 end
+
+keymap("n", "<leader>Dp", function()
+    for _, plug in ipairs(vim.pack.get()) do
+        if not plug.active then
+            vim.pack.del({ plug.spec.name })
+        end
+    end
+end, { desc = "Delete Inacive Plugins" })
