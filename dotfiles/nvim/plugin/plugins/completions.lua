@@ -48,21 +48,6 @@ require("blink.cmp").setup({
                 module = "blink.cmp.sources.buffer",
                 max_items = 3,
             },
-            snippets = {
-                name = "Snippets",
-                module = "blink.cmp.sources.snippets",
-                should_show_items = function(ctx)
-                    local line = ctx.line
-                    local col = ctx.cursor[2]
-
-                    if col == 0 then
-                        return true
-                    end
-
-                    local char_before = line:sub(col, col)
-                    return char_before:match("%s") ~= nil
-                end,
-            },
         },
     },
 })

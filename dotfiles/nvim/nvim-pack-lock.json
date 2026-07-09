@@ -49,6 +49,10 @@
       "rev": "a249b1f55bfe9171e2f8aff7acf140f78ca4b2bb",
       "src": "https://github.com/wnkz/monoglow.nvim"
     },
+    "neoscroll.nvim": {
+      "rev": "c8d29979cb0cb3a2437a8e0ae683fd82f340d3b8",
+      "src": "https://github.com/karb94/neoscroll.nvim"
+    },
     "neotest": {
       "rev": "fb84d87285698f7055f618083c351984449119b8",
       "src": "https://github.com/nvim-neotest/neotest"

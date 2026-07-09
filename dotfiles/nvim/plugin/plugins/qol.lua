@@ -77,6 +77,17 @@ vim.api.nvim_create_autocmd("User", {
 vim.pack.add({ "https://github.com/stevearc/quicker.nvim" })
 require("quicker").setup()
 
+vim.pack.add({ "https://github.com/karb94/neoscroll.nvim" })
+require("neoscroll").setup({
+    mappings = {
+        "<C-u>",
+        "<C-d>",
+        "zz",
+    },
+    duration_multiplier = 0.2,
+    easing = "quadratic",
+})
+
 vim.pack.add({ "https://github.com/folke/which-key.nvim" })
 local whichkey = require("which-key")
 whichkey.setup({

@@ -172,14 +172,14 @@ end
 
 local group = vim.api.nvim_create_augroup("Statusline", { clear = true })
 
-_G.statusline_active = function(file)
+_G.statusline_active = function()
     return table.concat({
         icon(),
-        lsp("Special"),
+        lsp("StatusLineFg"),
         trunk(),
-        filename(file),
+        filename("StatusLineFgAlt"),
         fillspace(),
-        lineinfo("Special"),
+        lineinfo("StatusLineFg"),
     })
 end
 

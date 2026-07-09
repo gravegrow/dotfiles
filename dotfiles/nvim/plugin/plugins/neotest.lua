@@ -44,9 +44,13 @@ keymap("n", "<leader>nt", function()
 end, { desc = "Neotest Toggle Summary" })
 
 vim.keymap.set("n", "<leader>nR", function()
-    require("neotest").run.run(vim.loop.cwd())
+    neotest.run.run(vim.loop.cwd())
 end, { desc = "Run All Tests in Project" })
 
 vim.keymap.set("n", "<leader>nr", function()
-    require("neotest").run.run(vim.api.nvim_buf_get_name(0))
+    neotest.run.run(vim.api.nvim_buf_get_name(0))
 end, { desc = "Run Current File Tests" })
+
+vim.keymap.set("n", "<leader>no", function()
+    neotest.output.open()
+end, { desc = "Output Window" })

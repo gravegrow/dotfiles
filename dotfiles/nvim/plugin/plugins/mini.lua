@@ -33,26 +33,21 @@ local miniextra = require("mini.extra")
 miniextra.setup()
 
 minipick.setup({
-    window = {
-        config = function()
-            return { height = math.max(math.floor(vim.o.lines * 0.3), 5) }
-        end,
-        prompt_prefix = "  ",
-    },
     mappings = {
-        quickfix = {
-            char = "<C-q>",
+        choose = "<C-Y>",
+        choose_y = {
+            char = "<CR>",
             func = function()
-                local matches = minipick.get_picker_matches()
-                if not matches then
-                    return true
-                end
-
-                local targets = #matches.marked ~= 0 and matches.marked or matches.all
-                minipick.default_choose_marked(targets, { list_type = "quickfix" })
+                minipick.default_choose(minipick.get_picker_matches().current)
                 return true
             end,
         },
+    },
+    window = {
+        config = function()
+            return { height = math.max(math.floor(vim.o.lines * 0.30), 5) }
+        end,
+        prompt_prefix = "  ",
     },
 })
 
@@ -89,6 +84,48 @@ keymap("n", "<leader>fo", miniextra.pickers.oldfiles, { desc = "Oldfiles" })
 keymap("n", "<leader>fb", minipick.builtin.buffers, { desc = "Buffers" })
 keymap("n", "<leader>fg", minipick.builtin.grep_live, { desc = "Grep" })
 keymap("n", "<leader>fd", miniextra.pickers.diagnostic, { desc = "Diagnostics" })
+keymap("n", "<leader>fl", function()
+    miniextra.pickers.buf_lines({ scope = "current" })
+end, { desc = "Lines" })
+
+local win_height
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "MiniPickStop",
+    callback = function()
+        win_height = nil
+    end,
+})
+
+vim.api.nvim_create_autocmd("User", {
+    pattern = "MiniPickMatch",
+    callback = function()
+        if win_height then
+            return
+        end
+
+        local state = minipick.get_picker_state()
+        if not state or not state.windows or not state.windows.main then
+            return
+        end
+
+        local matches = minipick.get_picker_matches()
+        if matches.all == nil then
+            return
+        end
+        local item_count = #matches.all
+        if item_count < 1 then
+            return
+        end
+
+        local max_height = math.max(math.floor(vim.o.lines * 0.30), 5)
+        win_height = math.min(item_count, max_height)
+
+        vim.api.nvim_win_set_config(state.windows.main, {
+            height = win_height,
+        })
+    end,
+})
 
 ----------------------------------------
 --            MINI FILES              --
@@ -184,10 +221,18 @@ require("mini.notify").setup({
         format = function(notif)
             return " " .. notif.msg .. " "
         end,
+        sort = function(notif_array)
+            notif_array = vim.tbl_filter(function(notif)
+                return notif.msg ~= "Not in bound"
+            end, notif_array)
+
+            return require("mini.notify").default_sort(notif_array)
+        end,
     },
     window = {
         max_width_share = 0.5,
         winblend = 0,
+
         config = function()
             local has_statusline = vim.o.laststatus > 0
             local pad = vim.o.cmdheight + (has_statusline and 1 or 0)
@@ -201,17 +246,16 @@ require("mini.notify").setup({
     },
 })
 
-local colors = _G.ui_colors
 local set_hl = _G.merge_set_hl
 
 local highlights = {
-    MiniPickNormal = { fg = colors.foreground, italic = true },
+    MiniPickNormal = { link = "@property", italic = true },
     MiniPickMatchCurrent = { bold = true },
-    MiniPickMatchMarked = { fg = "#d27e99", bold = true },
-    MiniPickMatchRanges = { fg = "#d27e99", bold = true },
-    MiniPickPrompt = { fg = colors.foreground, bold = true },
-    MiniPickPromptCaret = { fg = "#d27e99" },
-    MiniPickPromptPrefix = { fg = "#d27e99" },
+    MiniPickMatchMarked = { link = "Search", bold = true },
+    MiniPickMatchRanges = { link = "Search", bold = true },
+    MiniPickPrompt = { link = "@property", bold = true },
+    MiniPickPromptCaret = { link = "Search" },
+    MiniPickPromptPrefix = { link = "Search" },
 }
 
 for hl, opts in pairs(highlights) do

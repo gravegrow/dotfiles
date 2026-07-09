@@ -5,15 +5,6 @@ require("monoglow").setup({
     end,
     on_highlights = function(hl, colors)
         hl.String = { fg = colors.lack }
-        hl.NormalFloat = { link = "Normal" }
-        hl.FloatBorder = { fg = colors.gray4 }
-        hl.StatusLine = { bg = "#0a0a0a" }
-        hl.StatusLineNC = { bg = "#0a0a0a" }
-        hl.PmenuSel = { bg = colors.gray3 }
-        hl.GitSignsAddLn = { link = "Added" }
-        hl.GitSignsAddPreview = { link = "Added" }
-        hl.GitSignsDeleteLn = { link = "Removed" }
-        hl.GitSignsDeletePreview = { link = "Removed" }
     end,
 })
 

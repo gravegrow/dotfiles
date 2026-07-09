@@ -1,16 +1,16 @@
 local keymap = vim.keymap.set
 
-keymap({ "n", "v" }, "<Space>", "<Nop>", { desc = "Unbind space" })
+keymap({ "n", "x" }, "<Space>", "<Nop>", { desc = "Unbind space" })
 keymap({ "n", "x" }, "j", [[v:count == 0 ? 'gj' : 'j']], { expr = true })
 keymap({ "n", "x" }, "k", [[v:count == 0 ? 'gk' : 'k']], { expr = true })
 keymap("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Clear highlighting after search" })
 keymap("x", "p", "P", { desc = "Paste without copying visual selection" })
 keymap({ "n", "x" }, "<leader>p", '"+P', { desc = "Paste from global clipboard" })
 keymap({ "n", "x" }, "<leader>y", '"+y', { desc = "Yank to global clipboard" })
-keymap("v", "y", "myy`y", { desc = "Keep cursor position while Yanking" })
-keymap("v", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })
+keymap("x", "y", "myy`y", { desc = "Keep cursor position while Yanking" })
+keymap("x", "Y", "myY`y", { desc = "Keep cursor position while Yanking" })
 keymap("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
-keymap("n", "gf", ":edit <cfile><cr>", { desc = "[G]o to [F]ile" })
+keymap("n", "gf", ":edit <cfile><cr>", { desc = "Edit File" })
 
 keymap("i", "<C-y>", function()
     if vim.fn.pumvisible() ~= 0 then
@@ -38,14 +38,14 @@ keymap("n", "<leader>q", function()
     end
 end, { desc = "Toggle Quickfix List" })
 
-keymap("n", "<c-n>", function()
+keymap("n", "<C-N>", function()
     local status = pcall(vim.cmd.cnext)
     if not status then
         pcall(vim.cmd.cfirst)
     end
 end, { desc = "Next QF item" })
 
-keymap("n", "<c-p>", function()
+keymap("n", "<C-P>", function()
     local status = pcall(vim.cmd.cprev)
     if not status then
         pcall(vim.cmd.clast)
@@ -61,10 +61,21 @@ for _, key in ipairs({ "d", "u", "o", "i" }) do
     )
 end
 
-keymap("n", "<leader>Dp", function()
-    for _, plug in ipairs(vim.pack.get()) do
-        if not plug.active then
-            vim.pack.del({ plug.spec.name })
-        end
+keymap("n", "<F12>", function()
+    local inactive_plugs = vim.tbl_filter(function(plug)
+        return not plug.active
+    end, vim.pack.get())
+    if #inactive_plugs == 0 then
+        return vim.notify("No plugins to delete.")
+    end
+    local inactive_names = vim.tbl_map(function(plug)
+        return plug.spec.name
+    end, inactive_plugs)
+
+    local msg = "Delete inactive plugin(s)?\n" .. table.concat(inactive_names, "\n")
+    local choice = vim.fn.confirm(msg, "&Yes\n&No")
+
+    if choice == 1 then
+        vim.pack.del(inactive_names)
     end
 end, { desc = "Delete Inacive Plugins" })

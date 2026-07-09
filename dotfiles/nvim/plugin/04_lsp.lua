@@ -6,12 +6,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
+        vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "Code Action" })
+
         keymap("gd", vim.lsp.buf.definition, "Goto Definition")
         keymap("gt", vim.lsp.buf.type_definition, "Goto Type Definition")
         keymap("gD", vim.lsp.buf.declaration, "Goto Declaration")
         keymap("gi", vim.lsp.buf.implementation, "Goto Implementation")
         keymap("<leader>rn", vim.lsp.buf.rename, "Rename")
-        keymap("<leader>ca", vim.lsp.buf.code_action, "Code Action")
         keymap("K", vim.lsp.buf.hover, "Hover Documentation")
 
         keymap("<leader>ci", function()
@@ -38,7 +39,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end, "Show Diagnostic Display")
 
         local client = vim.lsp.get_client_by_id(event.data.client_id)
-        if client then
+        if client ~= nil then
             client.server_capabilities.semanticTokensProvider = nil
         end
         vim.lsp.document_color.enable(false, { bufnr = event.buf })
