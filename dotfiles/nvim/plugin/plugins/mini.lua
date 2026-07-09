@@ -37,6 +37,7 @@ minipick.setup({
         config = function()
             return { height = math.max(math.floor(vim.o.lines * 0.3), 5) }
         end,
+        prompt_prefix = "  ",
     },
     mappings = {
         quickfix = {
@@ -208,6 +209,9 @@ local highlights = {
     MiniPickMatchCurrent = { bold = true },
     MiniPickMatchMarked = { fg = "#d27e99", bold = true },
     MiniPickMatchRanges = { fg = "#d27e99", bold = true },
+    MiniPickPrompt = { fg = colors.foreground, bold = true },
+    MiniPickPromptCaret = { fg = "#d27e99" },
+    MiniPickPromptPrefix = { fg = "#d27e99" },
 }
 
 for hl, opts in pairs(highlights) do

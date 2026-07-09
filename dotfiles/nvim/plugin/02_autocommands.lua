@@ -82,7 +82,6 @@ autocmd({ "FocusLost", "WinLeave" }, {
     end,
 })
 
--- Autocommand to remember folds per file
 vim.api.nvim_create_autocmd({ "BufWinLeave", "BufWritePost", "BufHidden" }, {
     desc = "Save folds before leaving or writing a buffer",
     pattern = { "*.*" },

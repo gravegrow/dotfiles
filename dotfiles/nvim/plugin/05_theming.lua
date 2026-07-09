@@ -32,8 +32,8 @@ _G.merge_set_hl = function(name, opts)
 end
 
 for name, color in pairs(colors) do
-    for _, prefix in ipairs({ "ui_fg", "ui_bg" }) do
-        vim.api.nvim_set_hl(0, prefix .. "_" .. name, { fg = color })
+    for _, prefix in ipairs({ "fg", "bg" }) do
+        vim.api.nvim_set_hl(0, string.format("ui_%s_%s", prefix, name), { [prefix] = color })
     end
 end
 
