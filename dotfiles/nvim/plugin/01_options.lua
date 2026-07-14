@@ -41,3 +41,5 @@ vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
 vim.opt.foldlevelstart = 99
 vim.opt.report = 99
+vim.opt.mousescroll = "ver:1,hor:6"
+vim.cmd("packadd nvim.undotree")

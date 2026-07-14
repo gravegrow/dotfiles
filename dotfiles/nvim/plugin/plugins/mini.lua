@@ -2,14 +2,29 @@ local keymap = vim.keymap.set
 
 vim.pack.add({ "https://github.com/nvim-mini/mini.nvim" })
 
-require("mini.cmdline").setup({ autocomplete = { enable = false } })
-require("mini.pairs").setup()
-require("mini.icons").setup()
-require("mini.icons").mock_nvim_web_devicons()
+require("mini.ai").setup()
 require("mini.align").setup()
+require("mini.cmdline").setup({ autocomplete = { enable = false } })
+require("mini.icons").mock_nvim_web_devicons()
+require("mini.icons").setup()
+require("mini.move").setup()
+require("mini.operators").setup()
+require("mini.pairs").setup()
 require("mini.splitjoin").setup()
 require("mini.surround").setup()
-require("mini.move").setup()
+
+local animate = require("mini.animate")
+animate.setup({
+    scroll = {
+        enable = true,
+        timing = animate.gen_timing.quadratic({ duration = 50, unit = "total" }),
+        subscroll = animate.gen_subscroll.equal({ max_output_steps = 120 }),
+    },
+    cursor = { enable = false },
+    resize = { enable = false },
+    open = { enable = false },
+    close = { enable = false },
+})
 
 ----------------------------------------
 --            MINI PICK               --
@@ -17,16 +32,19 @@ require("mini.move").setup()
 
 -- stylua: ignore start
 local exclude_filetypes = {
-    ".meta", ".asmdef", ".inputactions", ".sln", ".slnx", ".csproj",
-    ".uid", ".tscn", ".godot", ".import", ".png", ".jpg", ".jpeg",
-    ".webp", ".svg", ".bmp", ".tga", ".gif", ".psd", ".psb", ".tiff",
-    ".tif", ".iff", ".exr", ".hdr", ".dds", ".wav", ".mp3", ".ogg",
-    ".aif", ".aiff", ".mod", ".it", ".s3m", ".xm", ".gltf", ".glb",
-    ".fbx", ".obj", ".dae", ".3ds", ".dxf", ".blend", ".max", ".maya",
-    ".mb", ".modo", ".mp4", ".mov", ".webm", ".avi", ".m4v", ".mpg",
-    ".mpeg", ".ogv", ".asset", ".unity"
-}
--- stylua: ignore end
+    ".3ds", ".aif", ".aiff", ".asmdef", ".asset",
+    ".avi", ".blend", ".bmp", ".csproj", ".dae",
+    ".dds", ".dxf", ".exr", ".fbx", ".gif",
+    ".glb", ".gltf", ".godot", ".hdr", ".iff",
+    ".import", ".inputactions", ".it", ".jpeg", ".jpg",
+    ".m4v", ".max", ".maya", ".mb", ".meta",
+    ".mod", ".modo", ".mov", ".mp3", ".mp4",
+    ".mpeg", ".mpg", ".obj", ".ogg", ".ogv",
+    ".png", ".psb", ".psd", ".s3m", ".sln",
+    ".slnx", ".svg", ".tga", ".tif", ".tiff",
+    ".tscn", ".uid", ".unity", ".wav", ".webm",
+    ".webp", ".xm",
+} -- stylua: ignore end
 
 local minipick = require("mini.pick")
 local miniextra = require("mini.extra")
@@ -113,6 +131,7 @@ vim.api.nvim_create_autocmd("User", {
         if matches.all == nil then
             return
         end
+
         local item_count = #matches.all
         if item_count < 1 then
             return

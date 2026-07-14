@@ -38,9 +38,8 @@ _G.merge_set_hl = function(name, opts)
 end
 
 for name, color in pairs(colors) do
-    for _, prefix in ipairs({ "fg", "bg" }) do
-        vim.api.nvim_set_hl(0, string.format("ui_%s_%s", prefix, name), { [prefix] = color })
-    end
+    vim.api.nvim_set_hl(0, string.format("ui_%s_%s", "fg", name), { fg = color })
+    vim.api.nvim_set_hl(0, string.format("ui_%s_%s", "bg", name), { bg = color, fg = colors.color0 })
 end
 
 local highligts = {

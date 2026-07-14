@@ -52,7 +52,7 @@ keymap("n", "<C-P>", function()
     end
 end, { desc = "Prev QF item" })
 
-for _, key in ipairs({ "d", "u", "o", "i" }) do
+for _, key in ipairs({ "o", "i" }) do
     keymap(
         "n",
         string.format("<c-%s>", key),
