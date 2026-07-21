@@ -5,6 +5,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 FPATH="$HOME/.docker/completions:$FPATH"
 
+autoload -Uz edit-command-line
+zle -N edit-command-line
 autoload -Uz compinit && compinit
 autoload -U select-word-style
 select-word-style bash
@@ -27,6 +29,7 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+unsetopt flow_control
 
 bindkey -v
 bindkey -M viins '^W' backward-kill-word
@@ -36,6 +39,8 @@ bindkey -M viins "^[[H" beginning-of-line
 bindkey -M viins "^[[F" end-of-line
 bindkey -M vicmd "^[[H" beginning-of-line
 bindkey -M vicmd "^[[F" end-of-line
+bindkey -M viins '^E' edit-command-line
+bindkey -M vicmd '^E' edit-command-line
 
 bindkey '^W' backward-kill-word
 bindkey '^?' backward-delete-char
@@ -46,6 +51,10 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey "^[[H" beginning-of-line
 bindkey "^[[F" end-of-line
+
+
+
+export KEYTIMEOUT=1
 
 [[ -z $LS_COLORS ]] && eval "$(dircolors -b)"
 

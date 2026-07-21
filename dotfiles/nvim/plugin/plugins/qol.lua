@@ -53,10 +53,10 @@ for i, key in ipairs({ "H", "J", "K", "L" }) do
     end)
 end
 
-keymap("n", "<leader>hw", warp.show_list, { desc = "Open Window" })
-keymap("n", "<leader>ha", function()
-    local name = vim.fs.basename(vim.api.nvim_buf_get_name(0))
+keymap("n", "<leader>ww", warp.show_list, { desc = "Open Window" })
+keymap("n", "<leader>wa", function()
     warp.add()
+    local name = vim.fs.basename(vim.api.nvim_buf_get_name(0))
     vim.notify("Warp Add: " .. name, nil, { timeout_ms = 1000 })
 end, { desc = "Add" })
 
@@ -85,9 +85,9 @@ whichkey.add({
     { "gh", group = "Gitsigns Hunk" },
     { "gr", group = "LSP Actions" },
     { "<leader>c", group = "Code" },
-    { "<leader>r", group = "Rename" },
-    { "<leader>h", group = "Warp" },
+    -- { "<leader>r", group = "Rename" },
+    { "<leader>w", group = "Warp" },
     { "<leader>d", group = "Diagnostics" },
-    { "<leader>f", group = "FZF" },
+    { "<leader>f", group = "Find" },
     { "<leader>n", group = "Neotest" },
 })

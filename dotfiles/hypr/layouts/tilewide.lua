@@ -22,19 +22,6 @@ hl.layout.register("tilewide", {
             return
         end
 
-        if #state.targets ~= #ctx.targets then
-            state.targets = ctx.targets
-        end
-
-        if state.request_swap then
-            for i, target in ipairs(state.targets) do
-                if target.window.active then
-                    state.targets[i], state.targets[1] = state.targets[1], state.targets[i]
-                end
-                state.request_swap = false
-            end
-        end
-
         state.nmaster = clamp(state.nmaster, 1, num_clients - 1)
 
         local num_masters = math.min(num_clients - 1, state.nmaster)
@@ -46,13 +33,13 @@ hl.layout.register("tilewide", {
         ctx.area = master_area
         for i = 1, num_masters do
             local master_box = ctx:column(i, num_masters)
-            state.targets[i]:place(master_box)
+            ctx.targets[i]:place(master_box)
         end
 
         ctx.area = slave_area
         for i = 1, num_slaves do
             local slave_box = ctx:row(i, num_slaves)
-            state.targets[i + num_masters]:place(slave_box)
+            ctx.targets[i + num_masters]:place(slave_box)
         end
     end,
 
@@ -77,7 +64,6 @@ hl.layout.register("tilewide", {
         elseif command == "cycleprev" then
             hl.dispatch(hl.dsp.window.cycle_next({ next = false, tiled = true }))
         elseif command == "swapwithmaster" then
-            state.request_swap = true
         end
 
         return true
