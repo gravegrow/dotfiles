@@ -14,7 +14,7 @@ vim.lsp.config("roslyn_ls", {
     capabilities = {
         workspace = {
             didChangeWatchedFiles = {
-                dynamicRegistration = false,
+                dynamicRegistration = true,
             },
         },
     },

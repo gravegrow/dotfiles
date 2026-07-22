@@ -1,5 +1,16 @@
 #!/usr/bin/env bash
 
+case "$1" in
+private)
+    flatpak run app.zen_browser.zen -private-window
+    ;;
+*)
+    flatpak run app.zen_browser.zen
+    ;;
+esac
+
+exit
+
 DISPLAY_SERVER="$XDG_SESSION_TYPE"
 
 case "$DISPLAY_SERVER" in

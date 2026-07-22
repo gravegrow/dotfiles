@@ -44,7 +44,8 @@ local exclude_filetypes = {
     ".slnx", ".svg", ".tga", ".tif", ".tiff",
     ".tscn", ".uid", ".unity", ".wav", ".webm",
     ".webp", ".xm",
-} -- stylua: ignore end
+}
+-- stylua: ignore end
 
 local minipick = require("mini.pick")
 local miniextra = require("mini.extra")
@@ -106,46 +107,6 @@ keymap("n", "<leader>fl", function()
     miniextra.pickers.buf_lines({ scope = "current" })
 end, { desc = "Lines" })
 
-local win_height
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "MiniPickStop",
-    callback = function()
-        win_height = nil
-    end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-    pattern = "MiniPickMatch",
-    callback = function()
-        if win_height then
-            return
-        end
-
-        local state = minipick.get_picker_state()
-        if not state or not state.windows or not state.windows.main then
-            return
-        end
-
-        local matches = minipick.get_picker_matches()
-        if matches.all == nil then
-            return
-        end
-
-        local item_count = #matches.all
-        if item_count < 1 then
-            return
-        end
-
-        local max_height = math.max(math.floor(vim.o.lines * 0.30), 5)
-        win_height = math.min(item_count, max_height)
-
-        vim.api.nvim_win_set_config(state.windows.main, {
-            height = win_height,
-        })
-    end,
-})
-
 ----------------------------------------
 --            MINI FILES              --
 ----------------------------------------
@@ -175,9 +136,26 @@ local filter_filetypes = function(fs_entry)
     end
 end
 
+local checked_files = {}
 local filter_gitignore = function(fs_entry)
-    apply_filter(fs_entry, function()
-        return vim.system({ "git", "check-ignore", "-q", fs_entry.path }):wait().code == 0
+    local path = fs_entry.path
+
+    if filtered_entries[path] or checked_files[path] then
+        return
+    end
+
+    local handle
+    handle = vim.loop.spawn("git", {
+        args = { "check-ignore", "-q", path },
+    }, function(code, _)
+        if code == 0 then
+            filtered_entries[path] = true
+        else
+            checked_files[path] = true
+        end
+        if handle then
+            handle:close()
+        end
     end)
 end
 

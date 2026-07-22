@@ -32,7 +32,7 @@ end
 
 local terminal = "usr-terminal"
 local browser = "usr-browser"
-local browser_private = "usr-browser-private"
+local browser_private = "usr-browser private"
 local files_gui = "usr-files-gui"
 local files_tui = "usr-files-tui"
 local applauncher = "usr-applauncher"
