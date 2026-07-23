@@ -1,6 +1,5 @@
 import Quickshell
 import QtQuick
-import Quickshell.Io
 import Quickshell.Hyprland
 
 // qmllint disable uncreatable-type

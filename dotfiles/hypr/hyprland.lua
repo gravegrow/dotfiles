@@ -351,18 +351,21 @@ hl.window_rule({
     match = {
         float = true,
     },
-    center = true,
     border_size = 2,
-    rounding = 11,
+    rounding = 8,
     border_color = "rgb(202020)",
 })
 
-hl.window_rule({
-    name = "float-menus",
-    match = {
-        float = true,
-        class = "(krita|Maya-2022|Vial|Godot)",
-    },
-    center = false,
-    rounding = 0,
-})
+local function try_center_floating(win, predicate)
+    if predicate and win.floating then
+        hl.dispatch(hl.dsp.window.center({ window = win }))
+    end
+end
+
+hl.on("window.open", function(win)
+    if win == nil then
+        return
+    end
+
+    try_center_floating(win, string.lower(win.class) ~= string.lower(win.title))
+end)

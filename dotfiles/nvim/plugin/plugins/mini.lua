@@ -57,8 +57,8 @@ minipick.setup({
         choose_y = {
             char = "<CR>",
             func = function()
-                minipick.default_choose(minipick.get_picker_matches().current)
-                return true
+                local keys = vim.api.nvim_replace_termcodes("<C-Y>", true, false, true)
+                vim.api.nvim_feedkeys(keys, "m", true)
             end,
         },
     },
